@@ -8,7 +8,7 @@ No debe notificar si no hay novedades significativas. Debe avisar si se incorpor
 
 ## Repositorio y límites de actuación
 
-- Directorio activo: `C:\Users\blash\Documents\ChatGPT\Observatorio electoral`.
+- Directorio activo: la carpeta de trabajo de este chat, dedicada al Observatorio Electoral.
 - Único remoto autorizado: `https://github.com/bhermoso/observatorio-electoral.git`.
 - Único sitio: `https://bhermoso.github.io/observatorio-electoral/`.
 - Proyectos ajenos excluidos: Aula de Salud Comunitaria, Compás NG y cualquier otro repositorio.

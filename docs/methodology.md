@@ -3,7 +3,7 @@
 ## Tres naturalezas de información
 
 1. `official`: escrutinio definitivo del Congreso del 23 de julio de 2023 publicado por la JEC. Datos históricos con CERA.
-2. `poll-estimate`: estimación de voto publicada por el CIS; no equivale a voto directo ni a un recuento real. Selección inicial de dos estudios y cuatro formaciones. No es un archivo exhaustivo.
+2. `poll-estimate`: estimación de voto publicada por un instituto y su comitente; no equivale a voto directo ni a un recuento real. El archivo incorpora estudios del CIS, 40dB., GAD3, IMOP, DYM y Ateneo del Dato. Cada ficha conserva fechas, ámbito, escenario y evidencia. No es un archivo exhaustivo.
 3. `simulation`: cálculo didáctico sobre votos transformados mediante pesos. No es una predicción y no hereda el carácter oficial de su base.
 
 ## Denominadores
@@ -26,7 +26,9 @@ Si no hay votos elegibles, se rechaza el escenario. No se adjudican escaños arb
 
 ## Encuestas y microdatos
 
-Los errores de muestreo de las fichas describen un supuesto de muestreo aleatorio simple y no son intervalos de confianza de la estimación electoral. No se calcula un promedio con solo dos estudios del mismo instituto. Para reanalizar entrevistas, descargar el fichero original y su diccionario en el CIS; usar PESO a nivel nacional y, en el estudio 3411, PESOPROV o PESOCCAA para sus respectivos ámbitos. No aplicar esos pesos a los agregados del dashboard.
+Los errores de muestreo de las fichas describen un supuesto de muestreo aleatorio simple y no son intervalos de confianza de la estimación electoral. El observatorio presenta estudios individuales; no calcula un promedio propio. Los modelos y promedios externos se identifican con su autor y fecha, fuera del recuento de encuestas. Los escaños publicados conservan puntos y horquillas por separado; los ausentes no equivalen a cero. La visualización conjunta Sumar/FA no establece equivalencia entre candidaturas de años o escenarios distintos.
+
+Para reanalizar entrevistas, descargar el fichero original y su diccionario en el CIS; usar PESO a nivel nacional y, en el estudio 3411, PESOPROV o PESOCCAA para sus respectivos ámbitos. No aplicar esos pesos a los agregados del dashboard. Ver [archivo y verificación](poll-archive.md) y [política de mantenimiento](maintenance.md).
 
 ## Validación
 

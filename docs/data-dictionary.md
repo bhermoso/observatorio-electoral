@@ -18,7 +18,7 @@ Todos los ficheros de datos están en UTF-8; los CSV usan comas, cabeceras y cam
 
 ## polls.json y polls.csv
 
-Estudio, instituto, fechas de campo/publicación, tamaño realizado de muestra, modo, ámbito, valores porcentuales de PP/PSOE/Sumar/VOX sobre voto válido, enlace de estimación y documentación. Los cuatro valores no suman el total electoral. `kind=poll-estimate`.
+Estudio, instituto, comitente, fechas de campo/publicación, tamaño realizado de muestra, modo, ámbito, escenario, enlace de estimación y documentación. `polls.json` incluye los resultados y su verificación; `polls.csv` exporta los metadatos. Las etiquetas de formación originales se conservan y la selección de porcentajes puede ser parcial: no debe suponerse que suma el total electoral. `kind=poll-estimate`.
 
 ## Acceso a entrevistas originales
 
