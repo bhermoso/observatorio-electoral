@@ -1,6 +1,9 @@
 import fs from 'node:fs';
+import {validatePolls} from '../schema.mjs';
+const coverage=validatePolls(JSON.parse(fs.readFileSync('data/polls.json')),JSON.parse(fs.readFileSync('data/references.json')));
+console.log(`Validación: ${coverage.polls} encuestas, ${coverage.institutes} institutos y ${coverage.references} referencias.`);
 fs.mkdirSync('dist',{recursive:true});
-for(const f of ['index.html','styles.css','app.mjs','engine.mjs','map.mjs']) fs.copyFileSync(f,`dist/${f}`);
+for(const f of ['index.html','styles.css','app.mjs','engine.mjs','map.mjs','polls.mjs']) fs.copyFileSync(f,`dist/${f}`);
 fs.cpSync('data','dist/data',{recursive:true});
 fs.cpSync('docs','dist/docs',{recursive:true});
 fs.writeFileSync('dist/.nojekyll','');

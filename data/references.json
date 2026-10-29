@@ -1,0 +1,95 @@
+[
+  {
+    "id": "metroscopia",
+    "kind": "institute-reference",
+    "name": "Metroscopia",
+    "publisher": "Metroscopia",
+    "source": "https://metroscopia.org/lo-que-medimos/",
+    "methodology": "https://metroscopia.org/como-medimos/",
+    "verified": "2026-10-29",
+    "status": "pending-electoral-record",
+    "notes": "Instituto incorporado al directorio. En las publicaciones consultadas no se ha localizado un sondeo electoral reciente con cifras, fechas y ficha suficientes para transcribirlo. Sus estudios de clima social no se convierten en intención de voto ni en escaños."
+  },
+  {
+    "id": "elpais-llaneras-2026-10-03",
+    "kind": "aggregate-model",
+    "name": "Promedio de EL PAÍS · Kiko Llaneras",
+    "publisher": "EL PAÍS",
+    "published": "2026-10-03",
+    "verified": "2026-10-29",
+    "status": "dated-reference",
+    "source": "https://elpais.com/actualidad/newsletter-kiko-llaneras/2026-10-03/que-dicen-las-encuestas-si-hay-elecciones-la-ventaja-pp-vox-y-las-opciones-de-sanchez.html",
+    "approximateValues": {
+      "PP": 33,
+      "PSOE": 26,
+      "VOX": 18,
+      "Sumar": 6,
+      "Podemos": 3
+    },
+    "modelSeats": {
+      "PP": 137,
+      "PSOE": 107,
+      "VOX": 62,
+      "Sumar": 9,
+      "Podemos": 3,
+      "Resto": 32
+    },
+    "notes": "Referencia del 3 de octubre, no una cifra actualizada a hoy. Los porcentajes están redondeados en el texto original. Los escaños son resultados centrales del modelo de EL PAÍS. No es una encuesta independiente y queda fuera del archivo de entrevistas y de cualquier cómputo de institutos.",
+    "methodology": "Promedio de sondeos y modelo provincial con incertidumbre y 20.000 simulaciones, según la explicación de la publicación. No se reproduce ni se atribuye este modelo al observatorio."
+  },
+  {
+    "id": "iesa-csic",
+    "kind": "institute-reference",
+    "name": "IESA-CSIC · Córdoba",
+    "publisher": "Instituto de Estudios Sociales Avanzados, CSIC",
+    "source": "https://www.iesa.csic.es/",
+    "methodology": "https://www.ciencia.gob.es/Noticias/2022/Junio/Diana-Morant-visita-el-Instituto-de-Estudios-Sociales-Avanzados-en-Cordoba.html",
+    "status": "research-source",
+    "notes": "Centro público de investigación social del CSIC en Córdoba, identificado en la fuente del Ministerio de Ciencia. Se registra como fuente de estudios y metodología; no se le atribuye una estimación electoral actual sin un informe concreto. Su web institucional no respondió en esta revisión.",
+    "verified": "2026-10-29"
+  },
+  {
+    "id": "cadpea-ugr",
+    "kind": "institute-reference",
+    "name": "CADPEA / Laboratorio CATI · UGR",
+    "publisher": "Universidad de Granada",
+    "source": "https://secretariageneral.ugr.es/sites/webugr/secretariageneral/public/inline-files/FICHA%20T%C3%89CNICA.pdf",
+    "methodology": "https://cpolitica.ugr.es/docencia/grados/grado-ciencias-politicas-y-la-administracion/politica-gobierno-y-admon-andalucia/guia-docente",
+    "status": "historical-research-source",
+    "notes": "La ficha institucional del EGOPA Verano 2015 identifica a CADPEA y al laboratorio de encuestas telefónicas de la UGR: 1.200 entrevistas en Andalucía, campo del 29 de junio al 18 de julio de 2015, mediante CATI. Es una referencia histórica, no una encuesta nacional actual. CATI identifica el método; el productor del estudio es CADPEA/UGR.",
+    "verified": "2026-10-29"
+  },
+  {
+    "id": "gesop",
+    "kind": "institute-reference",
+    "name": "GESOP · Gabinet d’Estudis Socials i Opinió Pública",
+    "publisher": "GESOP",
+    "source": "https://www.icps.cat/recerca/sondeigs-i-dades/sondeigs/sondeigs-d-opinio-catalunya",
+    "methodology": "https://gesop.net/",
+    "status": "pending-electoral-record",
+    "notes": "Empresa de investigación y trabajo de campo identificada en las fichas oficiales del ICPS. Se sigue por separado del ICPS: realizar las entrevistas no convierte ambos nombres en dos encuestas. El sondeo para El Periódico localizado queda pendiente de contrastar el informe original antes de incorporar sus cifras.",
+    "verified": "2026-10-29"
+  },
+  {
+    "id": "icps",
+    "kind": "institute-reference",
+    "name": "ICPS · Institut de Ciències Polítiques i Socials",
+    "publisher": "ICPS",
+    "source": "https://www.icps.cat/recerca/sondeigs-i-dades/sondeigs/sondeigs-d-opinio-catalunya",
+    "methodology": "https://www.icps.cat/recerca/sondeigs-i-dades/basedadesintegrada",
+    "status": "research-source",
+    "notes": "Fuente académica catalana con serie anual y microdatos. La ficha de 2025 declara 2.000 entrevistas CAPI, campo del 13 de octubre al 22 de noviembre de 2025 y GESOP como empresa de campo. Sus resultados se refieren a Cataluña y no se extrapolan a España. La descarga de bases puede requerir registro en el proveedor.",
+    "verified": "2026-10-29"
+  },
+  {
+    "id": "centra",
+    "kind": "institute-reference",
+    "name": "Fundación CENTRA · Barómetro Andaluz",
+    "publisher": "Fundación Centro de Estudios Andaluces",
+    "source": "https://www.centrodeestudiosandaluces.es/barometro",
+    "methodology": "https://www.fundacioncentra.eu/encuestas/estudio-preelectoral-elecciones-autonomicas-2026",
+    "status": "regional-source",
+    "notes": "Fuente institucional autonómica, separada del IESA-CSIC y de CADPEA. La ficha del barómetro de septiembre de 2026 declara 3.600 entrevistas CATI, campo del 11 al 25 de septiembre y COTESA como empresa de campo. Las estimaciones al Parlamento andaluz deben mantenerse separadas del Congreso.",
+    "verified": "2026-10-29"
+  }
+]

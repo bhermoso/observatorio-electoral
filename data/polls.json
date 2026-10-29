@@ -1,4 +1,417 @@
 [
- {"id":"3411","institute":"CIS","title":"Preelectoral generales 2023","fieldStart":"2023-06-08","fieldEnd":"2023-06-27","published":"2023-07-05","sample":29201,"mode":"CATI","scope":"España","kind":"poll-estimate","values":{"PP":31.4,"PSOE":31.2,"Sumar":16.4,"VOX":10.6},"source":"https://www.cis.es/documents/d/cis/3411_estimacion","technical":"https://www.cis.es/documents/20117/1557956/FT3411.pdf","catalog":"https://datos.gob.es/es/catalogo/ea0040772-preelectoral-elecciones-generales-2023","microdata":"https://www.cis.es/es/estudios/preelectoral-elecciones-generales-2023?showModal=true","questionnaire":"https://www.cis.es/documents/20117/1557956/cues3411.pdf","weight":"PESO (nacional), PESOPROV (provincia), PESOCCAA (comunidad)","verified":"2026-10-28"},
- {"id":"3415","institute":"CIS","title":"Flash generales 2023","fieldStart":"2023-07-10","fieldEnd":"2023-07-12","published":"2023-07-17","sample":8798,"mode":"CATI","scope":"España","kind":"poll-estimate","values":{"PP":30.8,"PSOE":32.2,"Sumar":14.9,"VOX":11.8},"source":"https://www.cis.es/documents/d/cis/es3415marMT_a","technical":"https://www.cis.es/documents/20117/1557966/FT3415pdf.pdf","catalog":"https://datos.gob.es/es/catalogo/ea0040772-encuesta-flash-elecciones-generales-2023","microdata":"https://www.cis.es/es/estudios/encuesta-flash-elecciones-generales-2023?showModal=true","questionnaire":"https://datos.gob.es/es/catalogo/ea0040772-encuesta-flash-elecciones-generales-2023","weight":"PESO (nacional)","verified":"2026-10-28"}
+  {
+    "id": "3411",
+    "institute": "CIS",
+    "title": "Preelectoral generales 2023",
+    "fieldStart": "2023-06-08",
+    "fieldEnd": "2023-06-27",
+    "published": "2023-07-05",
+    "sample": 29201,
+    "mode": "CATI",
+    "scope": "España",
+    "kind": "poll-estimate",
+    "values": {
+      "PP": 31.4,
+      "PSOE": 31.2,
+      "Sumar": 16.4,
+      "VOX": 10.6
+    },
+    "source": "https://www.cis.es/documents/d/cis/3411_estimacion",
+    "technical": "https://www.cis.es/documents/20117/1557956/FT3411.pdf",
+    "catalog": "https://datos.gob.es/es/catalogo/ea0040772-preelectoral-elecciones-generales-2023",
+    "microdata": "https://www.cis.es/es/estudios/preelectoral-elecciones-generales-2023?showModal=true",
+    "questionnaire": "https://www.cis.es/documents/20117/1557956/cues3411.pdf",
+    "weight": "PESO (nacional), PESOPROV (provincia), PESOCCAA (comunidad)",
+    "verified": "2026-10-28",
+    "publisher": "CIS",
+    "universe": "Población española de 18 años o más",
+    "scenario": "Candidaturas de 2023",
+    "seats": {
+      "PP": {
+        "min": 122,
+        "max": 140
+      },
+      "PSOE": {
+        "min": 115,
+        "max": 135
+      },
+      "Sumar": {
+        "min": 43,
+        "max": 50
+      },
+      "VOX": {
+        "min": 21,
+        "max": 29
+      }
+    },
+    "seatNotes": "Horquillas del informe original de estimación; selección de cuatro formaciones.",
+    "notes": "Archivo histórico. La coalición Sumar de 2023 incluía Podemos; no es directamente comparable con candidaturas separadas de 2026.",
+    "coverage": "partial",
+    "denominator": "votos válidos",
+    "verification": "Documento oficial indexado y catálogo estatal",
+    "sourcePages": "Tabla de estimación nacional"
+  },
+  {
+    "id": "3415",
+    "institute": "CIS",
+    "title": "Flash generales 2023",
+    "fieldStart": "2023-07-10",
+    "fieldEnd": "2023-07-12",
+    "published": "2023-07-17",
+    "sample": 8798,
+    "mode": "CATI",
+    "scope": "España",
+    "kind": "poll-estimate",
+    "values": {
+      "PP": 30.8,
+      "PSOE": 32.2,
+      "Sumar": 14.9,
+      "VOX": 11.8
+    },
+    "source": "https://www.cis.es/documents/d/cis/es3415marMT_a",
+    "technical": "https://www.cis.es/documents/20117/1557966/FT3415pdf.pdf",
+    "catalog": "https://datos.gob.es/es/catalogo/ea0040772-encuesta-flash-elecciones-generales-2023",
+    "microdata": "https://www.cis.es/es/estudios/encuesta-flash-elecciones-generales-2023?showModal=true",
+    "questionnaire": "https://datos.gob.es/es/catalogo/ea0040772-encuesta-flash-elecciones-generales-2023",
+    "weight": "PESO (nacional)",
+    "verified": "2026-10-28",
+    "publisher": "CIS",
+    "universe": "Población española de 18 años o más",
+    "scenario": "Candidaturas de 2023",
+    "seats": null,
+    "seatNotes": "La estimación consultada no publica reparto de escaños.",
+    "notes": "Archivo histórico. Se transcriben cuatro formaciones; no suman el 100 %.",
+    "coverage": "partial",
+    "denominator": "votos válidos",
+    "verification": "Documento oficial indexado y catálogo estatal",
+    "sourcePages": "Tabla de estimación nacional"
+  },
+  {
+    "id": "cis-3582",
+    "institute": "CIS",
+    "publisher": "CIS",
+    "title": "Barómetro de octubre 2026 · estudio 3582",
+    "fieldStart": "2026-10-01",
+    "fieldEnd": "2026-10-06",
+    "published": "2026-10-14",
+    "sample": 5025,
+    "mode": "CATI",
+    "scope": "España",
+    "universe": "Población española de 18 años o más",
+    "scenario": "Sumar / Frente Amplio separado de Podemos",
+    "values": {
+      "PSOE": 34,
+      "PP": 22.2,
+      "VOX": 17.1,
+      "Sumar/FA": 6.1,
+      "Podemos": 3.1,
+      "ERC": 3,
+      "SALF": 1.8,
+      "EH Bildu": 1.6,
+      "Junts": 1.1,
+      "BNG": 0.9,
+      "PNV": 0.6,
+      "CC": 0.2,
+      "UPN": 0.1,
+      "Otros": 7.9,
+      "Blanco": 0.3
+    },
+    "coverage": "full",
+    "source": "https://www.cis.es/documents/d/guest/3582_estimacion-pdf",
+    "technical": "https://www.cis.es/documents/d/guest/es3582mar_A-pdf",
+    "microdata": "https://www.cis.es/es/estudios/barometro-de-octubre-2026",
+    "catalog": "https://www.cis.es/es/estudios/barometro-de-octubre-2026",
+    "publicationSource": "https://www.cis.es/es/w/avance-de-resultados-del-estudio-3582-bar%C3%B3metro-de-octubre-2026-",
+    "weight": "PESO (nacional), PESOCCAA (comunidad)",
+    "seats": null,
+    "seatNotes": "El documento del CIS publica porcentajes, no una estimación de escaños.",
+    "notes": "Estimación y voto directo son medidas distintas. El informe indica imputación de UPN al 0,1 %. No se introduce un reparto propio.",
+    "verification": "PDF original descargado y tabla revisada visualmente; ficha original descargada. Fecha de publicación contrastada con el anuncio y la cobertura del 14 de octubre.",
+    "sourcePages": "Estimación: página 3. Ficha: página 3 del avance de resultados.",
+    "kind": "poll-estimate",
+    "denominator": "votos válidos",
+    "verified": "2026-10-29"
+  },
+  {
+    "id": "40db-2026-10-flash",
+    "institute": "40dB.",
+    "publisher": "EL PAÍS / Cadena SER",
+    "title": "Encuesta flash · octubre 2026",
+    "fieldStart": "2026-10-07",
+    "fieldEnd": "2026-10-08",
+    "published": "2026-10-09",
+    "sample": 800,
+    "mode": "CAWI",
+    "scope": "España, excepto Ceuta y Melilla",
+    "universe": "Residentes en España de 18 años o más con derecho a voto; excepto Ceuta y Melilla",
+    "scenario": "Listas separadas: Sumar / Frente Amplio y Podemos",
+    "values": {
+      "PP": 31.9,
+      "PSOE": 28.1,
+      "VOX": 18.9,
+      "Sumar/FA": 5.3,
+      "Podemos": 2.3,
+      "SALF": 1.8,
+      "Otros + blanco": 11.7
+    },
+    "coverage": "grouped",
+    "source": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_informe_voto_barometro_flash.pdf",
+    "technical": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_informe_voto_barometro_flash.pdf",
+    "seats": {
+      "PP": {
+        "point": 132,
+        "min": 123,
+        "max": 140
+      },
+      "PSOE": {
+        "point": 112,
+        "min": 105,
+        "max": 117
+      },
+      "VOX": {
+        "point": 66,
+        "min": 63,
+        "max": 74
+      },
+      "Sumar/FA": {
+        "point": 5,
+        "min": 5,
+        "max": 7
+      },
+      "Podemos": {
+        "point": 2,
+        "min": 2,
+        "max": 2
+      },
+      "ERC": {
+        "point": 8
+      },
+      "Junts": {
+        "point": 7
+      },
+      "EH Bildu": {
+        "point": 7
+      },
+      "PNV": {
+        "point": 6
+      },
+      "BNG": {
+        "point": 2
+      },
+      "CC": {
+        "point": 1
+      },
+      "UPN": {
+        "point": 1
+      },
+      "Adelante Andalucía": {
+        "point": 1
+      }
+    },
+    "seatNotes": "Puntos centrales y horquillas publicados en la página 8. Los extremos por partido no forman un único Congreso ni se deben sumar. Los 33 escaños de Otros se desglosan según la nota del gráfico.",
+    "notes": "El informe también ofrece un escenario de candidatura unitaria; no se mezcla con esta fila. La muestra excluye Ceuta y Melilla. No se interpreta Otros + blanco como un partido.",
+    "verification": "PDF original descargado; páginas 8 y 26 revisadas visualmente.",
+    "sourcePages": "Voto: página 5; escaños: página 8; ficha: página 26.",
+    "kind": "poll-estimate",
+    "denominator": "votos válidos",
+    "verified": "2026-10-29"
+  },
+  {
+    "id": "gad3-2026-10",
+    "institute": "GAD3",
+    "publisher": "ABC / Vocento",
+    "title": "Barómetro ABC · octubre 2026",
+    "fieldStart": "2026-10-06",
+    "fieldEnd": "2026-10-08",
+    "published": "2026-10-12",
+    "sample": 1077,
+    "mode": "CATI",
+    "scope": "España",
+    "universe": "Población de 18 años o más con derecho a voto",
+    "scenario": "Estimación publicada por GAD3 para ABC",
+    "values": {
+      "PP": 31.4,
+      "PSOE": 26.4,
+      "VOX": 18.2,
+      "Sumar": 7.4
+    },
+    "coverage": "partial",
+    "source": "https://www.gad3.com/barometro-abc-estimacion-de-voto-nacional-octubre-2026/",
+    "technical": "https://www.gad3.com/barometro-abc-estimacion-de-voto-nacional-octubre-2026/",
+    "seats": {
+      "PP": {
+        "point": 133
+      },
+      "PSOE": {
+        "point": 107
+      },
+      "VOX": {
+        "point": 65
+      },
+      "Sumar": {
+        "point": 10
+      },
+      "Otros (escaños)": {
+        "point": 35
+      }
+    },
+    "seatNotes": "La página del instituto agrupa 35 escaños en Otros. No se completan sus porcentajes ni el desglose con datos de agregadores.",
+    "notes": "La fuente recoge 11,2 % para Otros: junto a las cuatro cifras principales no suma 100 %. Se conserva la discrepancia en esta nota y no se publica ese agregado en la tabla comparable. 926 entrevistas a móviles y 151 a fijos.",
+    "verification": "Página original del instituto consultada mediante el lector web; la descarga directa devolvió 403. Ficha técnica en la misma publicación.",
+    "sourcePages": "Texto de resultados y ficha técnica de la página del instituto.",
+    "kind": "poll-estimate",
+    "denominator": "votos válidos",
+    "verified": "2026-10-29"
+  },
+  {
+    "id": "imop-2026-10-ola2",
+    "institute": "IMOP Insights",
+    "publisher": "El Confidencial",
+    "title": "Preelectoral · ola 2, octubre 2026",
+    "fieldStart": "2026-10-13",
+    "fieldEnd": "2026-10-16",
+    "published": "2026-10-23",
+    "sample": 1000,
+    "mode": null,
+    "scope": "España",
+    "universe": "Población censada de 18 años o más",
+    "scenario": "Frente Amplio y Podemos separados; PP incluye UPN en escaños",
+    "values": {
+      "PP": 28.5,
+      "PSOE": 27.1,
+      "VOX": 20
+    },
+    "coverage": "partial",
+    "source": "https://www.imop.es/encuesta-pre-electoral-el-confidencial-ola-2/",
+    "technical": "https://www.imop.es/encuesta-pre-electoral-el-confidencial-ola-2/",
+    "seats": {
+      "PP": {
+        "point": 123
+      },
+      "PSOE": {
+        "point": 113
+      },
+      "VOX": {
+        "point": 72
+      },
+      "Frente Amplio": {
+        "point": 14
+      },
+      "Podemos": {
+        "point": 1
+      },
+      "ERC": {
+        "point": 8
+      },
+      "Junts": {
+        "point": 4
+      },
+      "PNV": {
+        "point": 5
+      },
+      "EH Bildu": {
+        "point": 6
+      },
+      "BNG": {
+        "point": 2
+      },
+      "CC": {
+        "point": 1
+      },
+      "UPN": {
+        "point": 0
+      },
+      "Adelante Andalucía": {
+        "point": 1
+      },
+      "SALF": {
+        "point": 0
+      }
+    },
+    "seatNotes": "Se transcribe la tabla de datos del gráfico original del instituto. PP incorpora UPN: no debe interpretarse su cero como una predicción independiente de UPN.",
+    "notes": "La fuente original solo desglosa porcentajes de PP, PSOE y Vox; los demás no se rellenan desde recopiladores. El método de entrevista no aparece en la publicación consultada.",
+    "publicationNote": "El encabezado dice 21 de octubre, pero los metadatos datePublished indican 23 de octubre. Se usa la fecha de metadatos y se conserva esta discrepancia.",
+    "verification": "HTML original descargado. Campo y muestra en la cabecera; escaños verificados en los datos del gráfico del instituto.",
+    "sourcePages": "Cabecera; porcentajes publicados; gráfico de escaños, matriz const data.",
+    "kind": "poll-estimate",
+    "denominator": "votos válidos",
+    "verified": "2026-10-29"
+  },
+  {
+    "id": "dym-2026-10",
+    "institute": "DYM",
+    "publisher": "20minutos",
+    "title": "Barómetro de octubre 2026",
+    "fieldStart": "2026-10-05",
+    "fieldEnd": "2026-10-07",
+    "published": "2026-10-09",
+    "sample": 1011,
+    "mode": "CAWI",
+    "scope": "España",
+    "universe": "Población de 18 años o más",
+    "scenario": "Sumar y Podemos separados",
+    "values": {
+      "PP": 34,
+      "PSOE": 28.2,
+      "VOX": 18.2,
+      "Sumar": 3.6,
+      "Podemos": 2.6
+    },
+    "coverage": "partial",
+    "source": "https://www.20minutos.es/nacional/psoe-absorbe-intencion-votos-sumar-podemos-mientras-pp-vox-consolidan-su-mayoria_7046598_0.html",
+    "technical": "https://www.20minutos.es/nacional/psoe-absorbe-intencion-votos-sumar-podemos-mientras-pp-vox-consolidan-su-mayoria_7046598_0.html",
+    "seats": {
+      "PP": {
+        "min": 139,
+        "max": 143
+      },
+      "PSOE": {
+        "min": 107,
+        "max": 111
+      },
+      "VOX": {
+        "min": 61,
+        "max": 65
+      }
+    },
+    "seatNotes": "Solo se transcriben las horquillas expresamente verificadas en el texto del medio que publica la encuesta. No se inventan puntos centrales ni escaños de otras formaciones.",
+    "notes": "Cuotas por sexo, edad y ocupación según la ficha publicada. El margen general de la ficha no equivale a un intervalo de confianza por partido.",
+    "verification": "Publicación original del medio comitente: texto y ficha técnica.",
+    "sourcePages": "Párrafos de resultados y apartado FICHA TÉCNICA.",
+    "kind": "poll-estimate",
+    "denominator": "votos válidos",
+    "verified": "2026-10-29"
+  },
+  {
+    "id": "ateneo-2026-10-25",
+    "institute": "Ateneo del Dato",
+    "publisher": "elDiario.es",
+    "title": "Encuesta de octubre · segunda entrega",
+    "fieldStart": "2026-10-20",
+    "fieldEnd": "2026-10-22",
+    "published": "2026-10-25",
+    "sample": 2000,
+    "mode": "CAWI",
+    "scope": "España",
+    "universe": "Residentes en España mayores de edad con nacionalidad española",
+    "scenario": "Frente Amplio incluye coaliciones valenciana y canaria; Podemos separado en otros territorios",
+    "values": {
+      "PP": 31.1,
+      "PSOE": 27.6,
+      "VOX": 19.8,
+      "Frente Amplio": 6.8,
+      "Podemos": 2.7
+    },
+    "coverage": "partial",
+    "source": "https://www.eldiario.es/politica/bloque-izquierdas-recorta-distancias-pp-vox-mantienen-mayoria-absoluta_1_13611052.html",
+    "technical": "https://www.eldiario.es/politica/bloque-izquierdas-recorta-distancias-pp-vox-mantienen-mayoria-absoluta_1_13611052.html",
+    "seats": null,
+    "seatNotes": "No se ha transcrito un reparto de escaños de esta publicación. Las horquillas de recopiladores externos quedan fuera hasta verificarlas en el gráfico original correspondiente.",
+    "notes": "La fuente incluye en Frente Amplio los apoyos de Compromís-Front Valencià y de la coalición canaria indicada en el artículo. No equivale automáticamente a Sumar de 2023.",
+    "verification": "Publicación original del medio comitente: texto y ficha técnica.",
+    "sourcePages": "Párrafos de estimación de voto y apartado Ficha técnica.",
+    "kind": "poll-estimate",
+    "denominator": "votos válidos",
+    "verified": "2026-10-29"
+  }
 ]

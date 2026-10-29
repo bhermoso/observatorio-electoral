@@ -3,3 +3,5 @@
 
 .atlas-map{display:block;width:100%;height:auto;background:#f5f8f4;border-radius:8px;margin:18px 0}.map-district{cursor:pointer;stroke:#fff;stroke-width:1;outline:none}.map-district:hover,.map-district:focus{stroke:#102a2a;stroke-width:2}.map-district[aria-pressed=true]{stroke:#173331;stroke-width:2}.map-attribution{font-size:10px;line-height:1.5}
 .district{min-width:0;overflow-wrap:anywhere}.weight-grid label{min-width:0;overflow-wrap:anywhere}
+
+.current-polls{margin:25px 0}.poll-comparison{min-width:1060px}.poll-comparison td{vertical-align:top}.poll-comparison th{white-space:nowrap}.published-seat{color:#276850!important;margin-top:4px}.poll-detail{scroll-margin-top:24px}.poll-checkbox{display:flex;align-items:center;gap:8px;min-width:200px}.poll-checkbox input{width:auto}.reference-directory h3{margin-top:14px}
