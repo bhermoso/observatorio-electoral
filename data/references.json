@@ -91,5 +91,17 @@
     "status": "regional-source",
     "notes": "Fuente institucional autonómica, separada del IESA-CSIC y de CADPEA. La ficha del barómetro de septiembre de 2026 declara 3.600 entrevistas CATI, campo del 11 al 25 de septiembre y COTESA como empresa de campo. Las estimaciones al Parlamento andaluz deben mantenerse separadas del Congreso.",
     "verified": "2026-10-29"
+  },
+  {
+    "id": "gps-euskadi",
+    "kind": "institute-reference",
+    "name": "Gabinete de Prospección Sociológica · Gobierno Vasco",
+    "publisher": "Presidencia del Gobierno Vasco",
+    "source": "https://www.euskadi.eus/estudios-sociologicos/",
+    "methodology": "https://www.euskadi.eus/gobierno-vasco/-/todos-los-estudios-por-orden-cronologico/",
+    "status": "pending-regional-electoral-record",
+    "verified": "2026-10-30",
+    "leadSource": "https://www.eldiario.es/euskadi/victoria-eh-bildu-votos-escanos-generales-pse-ee-segundo-pnv-tercero-euskadi-sociometro_1_13626270.html",
+    "notes": "Servicio público de investigación social de la Presidencia del Gobierno Vasco, identificado en su catálogo institucional. Se ha localizado una noticia electoral del 30 de octubre, pero no el informe original correspondiente con ficha y tablas verificadas. No se transcriben sus cifras ni se cuenta como una encuesta incorporada. Sus estudios se refieren al País Vasco; no se extrapolan a España ni se confunden Congreso, Parlamento Vasco y Juntas Generales."
   }
 ]
