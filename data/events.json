@@ -1,0 +1,19 @@
+[
+  {
+    "id": "urda-2026-10-28",
+    "kind": "documented-event",
+    "date": "2026-10-28",
+    "datePrecision": "day",
+    "title": "Accidente ferroviario en Urda (Toledo)",
+    "category": "Transporte y seguridad",
+    "location": "Urda, Toledo",
+    "scope": "España",
+    "summary": "Colisión de un tren AVE de Renfe y un tren de Iryo en la línea Madrid–Andalucía, a la altura de Urda. Se registra la existencia y la fecha del suceso; las causas y sus posibles consecuencias políticas requieren evidencia específica.",
+    "verified": "2026-10-29",
+    "sources": [
+      {"publisher": "Agencia EFE", "published": "2026-10-28", "url": "https://efe.com/castilla-la-mancha/2026-10-28/accidente-ferroviario-urda-toledo/"},
+      {"publisher": "EL PAÍS", "published": "2026-10-28", "url": "https://elpais.com/espana/2026-10-28/donde-ha-sido-el-choque-mapas-y-primeras-informaciones-del-accidente-de-tren-en-toledo.html"}
+    ],
+    "notes": "La comprobación se apoya en las publicaciones originales de EFE y EL PAÍS. El comunicado de Renfe localizado en el buscador devolvía 404 al abrirlo y no se utiliza como evidencia verificada. No se transcriben balances provisionales de víctimas ni se atribuyen responsabilidades. No se asigna signo, intensidad ni corrección electoral al acontecimiento."
+  }
+]

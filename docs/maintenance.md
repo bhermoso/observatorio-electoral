@@ -48,3 +48,5 @@ Las limitaciones concretas, incluida la discrepancia de fechas en IMOP y la cifr
 ## Acontecimientos y encuestas
 
 Un accidente, sentencia, crisis o decisión política se registra con fecha y fuente comprobada, sin penalizaciones o bonificaciones electorales automáticas. Distinguir fecha de entrevistas de fecha de publicación. Comparar estudios equivalentes y no afirmar causalidad por proximidad temporal. Un dato ya recogido en una encuesta no debe recibir además una corrección manual por el mismo supuesto efecto.
+
+El registro está en `data/events.json` y la vista pública en `#contexto`. Cada revisión diaria debe leer [criterios de acontecimientos](events.md), incorporar hechos documentados que cumplan esos criterios y revisar si hay encuestas con campo posterior. No utilizar borradores, rumores ni fuentes inaccesibles como si estuvieran verificados. La compilación valida también este registro. Mantener el análisis temporal separado de los pesos del laboratorio.

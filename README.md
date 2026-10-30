@@ -47,4 +47,6 @@ El atlas usa geometría generalizada oficial Eurostat/GISCO NUTS 2024 agrupada e
 
 ## Actualización continua
 
+La vista **Acontecimientos** (`#contexto`) cruza hechos documentados con intervalos de trabajo de campo, ofrece ventanas de 14, 30 y 90 días y exporta el análisis. Los posibles pares antes/después se seleccionan con criterios conservadores y sus diferencias son descriptivas. El registro inicial del accidente de Urda no tiene todavía encuestas posteriores en el archivo. No se trasladan efectos supuestos a los pesos del laboratorio. Ver [criterios y datos](docs/events.md).
+
 Una tarea de este chat revisa diariamente las fuentes a las 09:00 (Europe/Madrid), incorpora únicamente novedades verificables y publica tras pruebas y validación de Pages. Su ejecución depende de la app, herramientas, permisos y límites de cuenta. No hay un scraper que transforme automáticamente noticias en cifras electorales. Ver [política de mantenimiento](docs/maintenance.md).
