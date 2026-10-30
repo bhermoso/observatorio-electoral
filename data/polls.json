@@ -413,5 +413,98 @@
     "kind": "poll-estimate",
     "denominator": "votos válidos",
     "verified": "2026-10-29"
+  },
+  {
+    "id": "sigma-dos-2026-10-26",
+    "institute": "Sigma Dos",
+    "publisher": "El Mundo",
+    "fieldCompany": "Sigma Dos SL",
+    "title": "Sondeo 26 de octubre · elecciones generales",
+    "fieldStart": "2026-10-08",
+    "fieldEnd": "2026-10-22",
+    "published": "2026-10-26",
+    "sample": 3122,
+    "mode": "CATI + CAWI",
+    "scope": "España",
+    "universe": "Personas de 18 y más años residentes en España con derecho a voto",
+    "scenario": "Frente Amplio, Adelante Andalucía y Compromís separados en el gráfico; Podemos separado",
+    "values": {
+      "PP": 30.6,
+      "PSOE": 26.1,
+      "VOX": 19.9,
+      "Frente Amplio": 7.4,
+      "Podemos": 2.8,
+      "ERC": 2.5,
+      "EH Bildu": 1.2,
+      "Junts": 1.2,
+      "Adelante Andalucía": 1,
+      "PNV": 0.9,
+      "BNG": 0.9,
+      "Compromís": 0.8,
+      "Coalición Canaria": 0.4
+    },
+    "seats": {
+      "PP": {
+        "min": 125,
+        "max": 131
+      },
+      "PSOE": {
+        "min": 103,
+        "max": 109
+      },
+      "VOX": {
+        "min": 66,
+        "max": 69
+      },
+      "Frente Amplio": {
+        "min": 10,
+        "max": 12
+      },
+      "Podemos": {
+        "point": 1
+      },
+      "ERC": {
+        "min": 8,
+        "max": 9
+      },
+      "EH Bildu": {
+        "min": 7,
+        "max": 8
+      },
+      "Junts": {
+        "min": 6,
+        "max": 7
+      },
+      "Adelante Andalucía": {
+        "min": 2,
+        "max": 3
+      },
+      "PNV": {
+        "min": 4,
+        "max": 5
+      },
+      "BNG": {
+        "point": 2
+      },
+      "Compromís": {
+        "min": 2,
+        "max": 3
+      },
+      "Coalición Canaria": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "source": "https://www.sigmados.com/noticia?id=OUze2FxEIVfARtu3",
+    "technical": "https://www.sigmados.com/noticia?id=OUze2FxEIVfARtu3",
+    "coverage": "partial",
+    "kind": "poll-estimate",
+    "denominator": "votos válidos",
+    "verified": "2026-10-30",
+    "notes": "Texto y gráfico distinguen Frente Amplio (7,4 %), Compromís (0,8 %) y Adelante Andalucía (1 %). No se sustituye esa clasificación por Sumar 8,2 % de recopiladores. Porcentajes transcritos parciales: no se completa el residuo ni se inventa SALF. El campo termina el 22 de octubre, antes del accidente de Urda.",
+    "seatNotes": "Horquillas originales, sin puntos medios ni suma de extremos. Podemos y BNG tienen puntos publicados. Coalición Canaria conserva la horquilla 0–1, no un cero fijo.",
+    "verification": "Revisión de la publicación original del instituto en navegador: texto, ficha técnica y gráfico ampliado. El enlace indexado con id=6KFRJttWfJrtP8C5 no encontraba la noticia; se localizó el identificador vigente mediante el catálogo del instituto. La descarga directa devolvía 403.",
+    "sourcePages": "Noticia Sondeo 26 de octubre, párrafos de resultados; gráfico ampliado Sondeo de intención de voto; bloque FICHA TÉCNICA: 3.122 entrevistas, 8–22 de octubre, CATI y CAWI.",
+    "samplingNotes": "Teléfono: selección aleatoria de hogar y cuotas de sexo y edad; panel Trust Survey: asignación proporcional por sexo y edad; distribución por comunidad autónoma. Error general declarado ±2,1 %, confianza 95,5 %, supuesto de dos categorías equiprobables; no es un intervalo de cada estimación electoral."
   }
 ]

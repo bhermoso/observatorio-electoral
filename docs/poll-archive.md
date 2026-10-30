@@ -1,6 +1,6 @@
 # Archivo de encuestas y fuentes de referencia
 
-Actualización revisada: 29 de octubre de 2026. Ocho estudios, seis institutos con datos transcritos. La selección no es exhaustiva y no se actualiza automáticamente.
+Actualización revisada: 30 de octubre de 2026. Nueve estudios, siete institutos con datos transcritos. La selección no es exhaustiva; se revisa mediante una tarea programada.
 
 ## Registro incorporado
 
@@ -13,6 +13,7 @@ Actualización revisada: 29 de octubre de 2026. Ocho estudios, seis institutos c
 | GAD3 / ABC–Vocento | 12/10/2026 | 06–08/10/2026 | 1.077 | Puntos; Otros conserva el grupo de la fuente |
 | DYM / 20minutos | 09/10/2026 | 05–07/10/2026 | 1.011 | Tres horquillas verificadas en el texto original |
 | IMOP Insights / El Confidencial | Metadatos 23/10/2026; encabezado 21/10 | 13–16/10/2026 | 1.000 | Tabla completa del gráfico del instituto |
+| Sigma Dos / El Mundo | 26/10/2026 | 08–22/10/2026 | 3.122 | Once horquillas y dos puntos, con categorías originales |
 | Ateneo del Dato / elDiario.es | 25/10/2026 | 20–22/10/2026 | 2.000 | Sin transcribir hasta verificar el gráfico original |
 
 Los enlaces originales, localizadores y observaciones de cada registro están en `data/polls.json` y en la ficha visible del archivo. No se rellenan campos desde otros recopiladores cuando hay discrepancias con la fuente primaria.
@@ -32,7 +33,7 @@ Las huellas de los documentos descargados se conservan en `data/poll-source-hash
 
 Metroscopia está registrada con su fuente institucional y metodología: https://metroscopia.org/lo-que-medimos/ y https://metroscopia.org/como-medimos/. No se ha localizado en las fuentes consultadas un registro electoral reciente con ficha suficiente para transcribir; no se afirma que no exista. No se convierten estudios de clima social en voto estimado.
 
-El promedio de EL PAÍS de Kiko Llaneras se registra por separado con referencia al **3 de octubre de 2026**, no como dato del día: https://elpais.com/actualidad/newsletter-kiko-llaneras/2026-10-03/que-dicen-las-encuestas-si-hay-elecciones-la-ventaja-pp-vox-y-las-opciones-de-sanchez.html. Porcentajes redondeados y puntos centrales del modelo externo, según la publicación. No se mezcla con las encuestas de origen ni se reproduce su modelo. El contenido está en `data/references.json`; no se incluye en los ocho sondeos ni en el número de institutos con datos.
+El promedio de EL PAÍS de Kiko Llaneras se registra por separado con referencia al **3 de octubre de 2026**, no como dato del día: https://elpais.com/actualidad/newsletter-kiko-llaneras/2026-10-03/que-dicen-las-encuestas-si-hay-elecciones-la-ventaja-pp-vox-y-las-opciones-de-sanchez.html. Porcentajes redondeados y puntos centrales del modelo externo, según la publicación. No se mezcla con las encuestas de origen ni se reproduce su modelo. El contenido está en `data/references.json`; no se incluye en los nueve sondeos ni en el número de institutos con datos.
 
 ## Reglas de mantenimiento
 
@@ -46,4 +47,10 @@ No hay promedio propio. No se asume que una encuesta anterior al 28 de octubre d
 
 ## Ampliación del directorio académico y territorial
 
-Se documentan IESA-CSIC (Córdoba), CADPEA y laboratorio CATI de la UGR, ICPS y su serie Sondeig d’Opinió Catalunya, GESOP como productor/empresa de campo, y CENTRA con su barómetro andaluz. No aumentan las ocho encuestas nacionales transcritas mientras no se incorpore un estudio electoral concreto y verificable. La documentación de 2015 de la UGR y el sondeo ICPS de 2025 se identifican como históricos. Las ejecuciones diarias deben revisar nuevos originales, sin confundir estudios de clima social, métodos de entrevista, encuestas autonómicas y estimaciones nacionales.
+Se documentan IESA-CSIC (Córdoba), CADPEA y laboratorio CATI de la UGR, ICPS y su serie Sondeig d’Opinió Catalunya, GESOP como productor/empresa de campo, y CENTRA con su barómetro andaluz. No aumentan las nueve encuestas nacionales transcritas mientras no se incorpore un estudio electoral concreto y verificable. La documentación de 2015 de la UGR y el sondeo ICPS de 2025 se identifican como históricos. Las ejecuciones diarias deben revisar nuevos originales, sin confundir estudios de clima social, métodos de entrevista, encuestas autonómicas y estimaciones nacionales.
+
+## Revisión del 30 de octubre de 2026
+
+Se incorpora el sondeo de Sigma Dos para El Mundo publicado el 26 de octubre: https://www.sigmados.com/noticia?id=OUze2FxEIVfARtu3. Verificados texto, ficha y gráfico ampliado en el navegador. El catálogo actual del instituto permitió corregir un identificador de noticia obsoleto de los resultados de búsqueda; la descarga directa devolvía 403. Campo 8–22 de octubre, 3.122 entrevistas, CATI + CAWI. Se conservan Frente Amplio, Compromís y Adelante Andalucía separados. No se adopta el 8,2 % agrupado de recopiladores. Coalición Canaria tiene intervalo 0–1; las horquillas no se suman ni se convierten en puntos medios.
+
+Esta incorporación amplía cobertura histórica reciente, sin aportar entrevistas posteriores al accidente del 28 de octubre. GESOP continúa pendiente: el enlace del comitente no permitió verificar el original. Las búsquedas y catálogos consultados no justifican añadir una encuesta posterior ni completar cifras desde recopiladores. Las fechas de verificación anteriores se conservan en sus fichas.
