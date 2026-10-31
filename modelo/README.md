@@ -28,6 +28,7 @@ Salidas en `modelo/salida/`: `informe.md` (tablas), `pronostico.json` (cifras), 
 - **Peso de las casas que publican a diario.** Su varianza se multiplica por el número de encuestas propias en ±7 días, para que una casa no domine el promedio por volumen.
 - **Tolerancias proporcionales al tamaño del partido.** La deriva diaria, el sesgo de casa y el error no muestral escalan con √(p/25).
 - **Error de industria.** 1,5 pp para un partido del 25 %, a partir del 23J, donde el error medio de las casas fue de −2,5 en el PSOE y su raíz cuadrática media de 1,4 pp en los cuatro grandes partidos.
+- **Error común entre bloques.** La mitad de la varianza del error de industria (`RHO_BLOQUE = 0.5`) es un factor que mueve en sentidos opuestos a PP, Vox y UPN frente a PSOE, Sumar y Podemos. Es un supuesto: con una sola elección no se puede estimar. El informe muestra la sensibilidad con 0, 0,5 y 0,8.
 - **Urda.** No se aplica ningún efecto supuesto. En cuanto entren encuestas con campo posterior al 28-oct, el informe calcula los pares y el salto, y los compara con el umbral de detección.
 
 ## Añadir encuestas

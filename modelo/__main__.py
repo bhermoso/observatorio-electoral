@@ -98,6 +98,28 @@ def main():
     w(f"- Promedio simple: última encuesta de cada casa en 30 días, mismo peso ({', '.join(casas_simple)}).\n")
 
     # ---------- Evaluación ----------
+    # ---------- Sensibilidad a la correlación del error de industria ----------
+    sens = []
+    for rho in (0.0, PR.RHO_BLOQUE, 0.8):
+        sm = PR.simular(ajustes["consenso_privadas"], dias, n=min(a.n, 2500), rho_bloque=rho)
+        P_, E_, V_ = sm["partidos"], sm["escanos"], sm["votos"]
+        pv = E_[:, P_.index("PP")] + E_[:, P_.index("VOX")]
+        dif = V_[:, P_.index("PP")] - V_[:, P_.index("PSOE")]
+        sens.append(dict(rho=rho, p_mayoria=float(np.mean(pv >= 176)),
+                         pp_primero=float(np.mean(E_.argmax(1) == P_.index("PP"))),
+                         ppvox=(float(np.median(pv)), float(np.percentile(pv, 5)), float(np.percentile(pv, 95))),
+                         dif=(float(np.median(dif)), float(np.percentile(dif, 5)), float(np.percentile(dif, 95)))))
+    w("### Sensibilidad: error común entre bloques\n")
+    w("Fracción de la varianza del error de industria que desplaza voto entre bloques (PP, Vox, UPN frente a "
+      "PSOE, Sumar, Podemos). No se puede estimar con una sola elección evaluada; "
+      f"el pronóstico usa {PR.RHO_BLOQUE}. Variante `consenso_privadas`.\n")
+    w(tabla(["Correlación entre bloques", "PP − PSOE (pp, 90 %)", "PP + Vox escaños (90 %)", "P(PP+Vox ≥ 176)", "P(PP primero)"],
+            [[f"{x['rho']:.1f}" + (" (pronóstico)" if x['rho'] == PR.RHO_BLOQUE else ""),
+              f"{x['dif'][0]:+.1f} ({x['dif'][1]:+.1f} a {x['dif'][2]:+.1f})",
+              f"{x['ppvox'][0]:.0f} ({x['ppvox'][1]:.0f}–{x['ppvox'][2]:.0f})",
+              f"{x['p_mayoria']:.0%}", f"{x['pp_primero']:.0%}"] for x in sens]))
+    w("")
+
     w("## 2. Evaluación de las encuestas frente al 23J\n")
     w("Última encuesta de cada casa en las 3 semanas previas. Error = encuesta − resultado (pp). "
       f"Resultado oficial: {', '.join(f'{p} {res23[p]:.2f}' for p in P4)}.\n")
@@ -244,7 +266,7 @@ def main():
                            sims=sims, resumen=resumen, simple=simple, casas_simple=casas_simple, err=err,
                            ind=ind, simple23=simple23, bt=bt, res23=res23, est=est, ses_prev=ses_prev,
                            umbrales=umbrales, prev_all=prev_all, casado=CASADO, urda=URDA, eleccion=ELECCION,
-                           contraste=contraste)
+                           contraste=contraste, sensibilidad=sens)
     json.dump(datos, open(os.path.join(SALIDA, "datos_pagina.json"), "w", encoding="utf-8"),
               ensure_ascii=False, default=str, separators=(",", ":"))
     plantilla = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pagina", "plantilla.html")

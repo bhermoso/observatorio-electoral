@@ -87,3 +87,21 @@ class TestDatosReales(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestErrorCorrelacionado(unittest.TestCase):
+    def _aj(self, mu):
+        T = 5
+        return {p: dict(media=np.full(T, m), sd=np.full(T, 0.5), escala=float(np.sqrt(m / 25)))
+                for p, m in mu.items()}
+
+    def test_bloques_amplia_diferencia_y_conserva_marginal(self):
+        from modelo.motor.pronostico import simular
+        aj = self._aj({"PP": 32.0, "PSOE": 27.0, "VOX": 19.0, "SUMAR": 6.0, "PODEMOS": 3.0})
+        a = simular(aj, 0, n=1500, rho_bloque=0.0)
+        b = simular(aj, 0, n=1500, rho_bloque=0.8)
+        P = a["partidos"]
+        i, j = P.index("PP"), P.index("PSOE")
+        dif = lambda s: np.std(s["votos"][:, i] - s["votos"][:, j])
+        self.assertGreater(dif(b), dif(a) * 1.15)
+        self.assertAlmostEqual(np.std(b["votos"][:, i]), np.std(a["votos"][:, i]), delta=0.35)

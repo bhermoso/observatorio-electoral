@@ -7,6 +7,13 @@ Fuentes de incertidumbre (independientes, sumadas en varianza):
    (único precedente con datos en el sistema): RMS ~1,4 pp. Se usa sd = 1,5 pp para
    un partido del 25 %, escalada con sqrt(p/25), mínimo 0,3 pp.
 4. Error provincial del traslado a escaños (lognormal, sd 0,08).
+
+El error de industria no es independiente entre partidos. Una fracción `rho_bloque` de
+su varianza es un factor común que desplaza voto entre bloques (signo + para PP, Vox y
+UPN; − para PSOE, Sumar y Podemos; 0 para el resto). Motivo de método: todas las casas
+ponderan por recuerdo de voto y comparten el mismo tipo de fallo. En el 23J la diferencia
+entre bloques se infló 2,3 pp. Con una sola elección no se puede estimar rho: es un
+supuesto declarado (0,5 por defecto) y el informe muestra la sensibilidad.
 """
 from datetime import timedelta
 import numpy as np
@@ -16,6 +23,8 @@ from .escanos import Base
 PARTIDOS = ["PP", "PSOE", "VOX", "SUMAR", "PODEMOS", "SALF", "ERC", "JUNTS", "BILDU", "PNV",
             "BNG", "CC", "UPN"]
 BLANCO = 0.8   # % de voto en blanco sobre válidos (23J: 0,8 %)
+RHO_BLOQUE = 0.5
+SIGNO_BLOQUE = {"PP": 1, "VOX": 1, "UPN": 1, "PSOE": -1, "SUMAR": -1, "PODEMOS": -1}
 BLOQUES = {"PP+VOX": ["PP", "VOX"], "PP+VOX+UPN": ["PP", "VOX", "UPN"],
            "PSOE+SUMAR+PODEMOS": ["PSOE", "SUMAR", "PODEMOS"],
            "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC":
@@ -49,7 +58,7 @@ def estimar(encuestas, inicio, hoy, variante, errores_23j=None, eventos=(), tau=
 REGIONALES = ["ERC", "JUNTS", "BILDU", "PNV", "BNG", "CC", "UPN"]
 
 
-def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29):
+def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29, rho_bloque=RHO_BLOQUE):
     """Simula el 29N. Los partidos regionales sin estimación en las encuestas del corte
     conservan su voto nacional del 23J como hipótesis (marcados en `sin_encuestas`),
     con la misma incertidumbre que tendría un partido de su tamaño sin datos."""
@@ -69,12 +78,19 @@ def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29)
                     for i, p in enumerate(partidos)])
     sd_hoy = np.array([ajustes[p]["sd"][-1] if p in ajustes else 3.0 * esc[i] for i, p in enumerate(partidos)])
     sd_ind = np.maximum(1.5 * np.sqrt(np.clip(mu, 0, None) / 25), 0.3)
-    sd_tot = np.sqrt(sd_hoy ** 2 + (tau * esc) ** 2 * dias_restantes + sd_ind ** 2)
+    sd_resto = np.sqrt(sd_hoy ** 2 + (tau * esc) ** 2 * dias_restantes)
+    sd_tot = np.sqrt(sd_resto ** 2 + sd_ind ** 2)
+    signo = np.array([SIGNO_BLOQUE.get(p, 0) for p in partidos], dtype=float)
+    # Partidos sin bloque: todo su error de industria es propio.
+    comun = np.where(signo != 0, np.sqrt(rho_bloque), 0.0)
+    propio = np.sqrt(1 - comun ** 2)
     votos = np.zeros((n, len(partidos)))
     escanos = np.zeros((n, len(partidos)), dtype=int)
     R = len(base.provincias)
     for k in range(n):
-        v = np.clip(mu + rng.normal(0, 1, len(mu)) * sd_tot, 0.01, None)
+        z = rng.normal()
+        ind = sd_ind * (comun * signo * z + propio * rng.normal(0, 1, len(mu)))
+        v = np.clip(mu + rng.normal(0, 1, len(mu)) * sd_resto + ind, 0.01, None)
         otros = max(100 - BLANCO - v.sum(), 0.5)
         tot = v.sum() + otros
         v = v * (100 - BLANCO) / tot
@@ -83,7 +99,7 @@ def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29)
         e = base.repartir(base.proyectar(nac, rng.normal(0, sd_prov, (R, len(nac)))))
         escanos[k] = e.sum(0)[:-1]
     return dict(partidos=partidos, votos=votos, escanos=escanos, sd_total=dict(zip(partidos, sd_tot)),
-                sin_encuestas=sin)
+                sin_encuestas=sin, rho_bloque=rho_bloque)
 
 
 def resumir(sim):
