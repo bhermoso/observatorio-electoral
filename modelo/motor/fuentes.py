@@ -69,7 +69,8 @@ def cargar_verificadas():
                         campo_ini=_fecha(s["fieldStart"]) if s.get("fieldStart") else None,
                         n=int(s.get("sample") or 1000), modo=s.get("mode") or "",
                         voto=voto, origen="verificada", url=s.get("source", ""),
-                        ciclo=ciclo_de(fin), ambito=s.get("scope", "")))
+                        ciclo=ciclo_de(fin), ambito=s.get("scope", ""),
+                        publicacion=_fecha(s["published"]) if s.get("published") else None))
     return out
 
 
@@ -114,7 +115,8 @@ def cargar_29n():
             por_id[r["estudio_id"]] = dict(casa=casa_canonica(r["fuente"]), estudio=r["estudio_id"],
                                            campo_fin=fin, campo_ini=ini, n=int(r.get("n") or 1000),
                                            modo=r.get("metodologia", ""), voto={}, origen="terceros-29n",
-                                           url=r["fuente_url"], ciclo=ciclo_de(fin), ambito="España")
+                                           url=r["fuente_url"], ciclo=ciclo_de(fin), ambito="España",
+                                           publicacion=_fecha(r["fecha_publicacion"]) if r.get("fecha_publicacion") else None)
         por_id[r["estudio_id"]]["voto"][p] = float(r["porcentaje"])
     return list(por_id.values())
 
@@ -171,3 +173,10 @@ def referencias_agregadores():
                         url=r.get("source"), notas=r.get("notes", ""), metodo=r.get("methodology", ""),
                         verificado=r.get("verified")))
     return out
+
+
+def publicada_antes(e, fecha, retraso=2):
+    """¿Era pública la encuesta en `fecha`? Usa la fecha de publicación si consta; si no,
+    supone que se publicó `retraso` días después del fin de campo (supuesto declarado)."""
+    pub = e.get("publicacion") or (e["campo_fin"] + timedelta(days=retraso))
+    return pub <= fecha
