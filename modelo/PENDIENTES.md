@@ -8,6 +8,7 @@ Localizadas el 31-oct-2026 con el buscador; desde la sesión no se pudo abrir ni
 | Boletín de Kiko Llaneras (EL PAÍS), 13-oct-2026: «¿Qué dicen las encuestas si hay elecciones?» | Perfil de Muck Rack (https://muckrack.com/kiko-llaneras/articles) | Texto original: promedio, escaños, fecha de las encuestas incluidas |
 | Boletines de Llaneras posteriores al 13-oct y cualquier análisis sobre Urda | No localizados | Búsqueda en elpais.com |
 | Encuesta con datos del 30-oct-2026 citada por Diario Crítico (PSOE 31,6 %) | Diario Crítico (https://www.diariocritico.com/nacional/ultimas-encuestas-29n-que-dicen) | Instituto, ficha técnica; sin ellos no es incorporable |
+| Sigma Dos, oleada de octubre con «PP y Vox 201 escaños, PSOE 117» (no coincide con la registrada del 26-oct: PSOE 103–109) | Demócrata (https://www.democrata.es/encuestas/elecciones-generales/encuesta-elecciones-generales-sigma-dos-pp-vox-201-escanos-psoe-117-octubre-2026/), localizada en la revisión de prueba del 31-oct | Original de Sigma Dos o del medio; confirmar si es una oleada distinta, campo y muestra |
 | Institutos del promedio de Demócrata (16) ausentes del registro | https://www.democrata.es/elecciones-generales-espana/herramientas/encuestas | Lista de institutos y originales de cada uno |
 
 Las referencias de EL PAÍS se registran en `data/references.json` como `aggregate-model`; el motor las usa automáticamente como contraste (sección 5 del informe).
