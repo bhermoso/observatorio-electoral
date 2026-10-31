@@ -1,0 +1,2 @@
+f092c6dcc86cf44a471523d999cc011f5004efdffd86a7e5246752123de57ac6  modelo/externos/wikipedia_2019_2023.csv
+8ea4fb8cc534fb149cc857657a97ac85a87e6b633eca11529b3db6177c4bf9ce  modelo/externos/29n_encuestadores.jsonl

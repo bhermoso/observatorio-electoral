@@ -1,0 +1,89 @@
+import unittest
+from datetime import date, timedelta
+import numpy as np
+from modelo.motor.dhondt import dhondt
+from modelo.motor.tendencia import ajustar
+from modelo.motor import eventos as EV, evaluacion as V, fuentes as F
+from modelo.motor.escanos import Base
+
+
+def sintetica(casas, dias, nivel, salto=0.0, fecha_salto=None, ruido=0.4, semilla=1, n=1500):
+    rng = np.random.default_rng(semilla)
+    ini = date(2026, 1, 1)
+    out = []
+    for d in range(0, dias, 3):
+        f = ini + timedelta(days=d)
+        for c, sesgo in casas.items():
+            v = nivel + sesgo + (salto if fecha_salto and f >= fecha_salto else 0) + rng.normal(0, ruido)
+            out.append(dict(casa=c, campo_fin=f, campo_ini=f, n=n, voto={"A": v}, estudio=f"{c}{d}",
+                            origen="test", url="", modo="", ciclo="test"))
+    return out, ini
+
+
+class TestDhondt(unittest.TestCase):
+    def test_cocientes(self):
+        self.assertEqual(dhondt([100000, 80000, 30000, 20000], 7).tolist(), [3, 3, 1, 0])
+
+    def test_umbral(self):
+        self.assertEqual(dhondt([50, 47.5, 2.5], 40)[2], 0)
+
+
+class TestTendencia(unittest.TestCase):
+    def test_sesgos_y_nivel(self):
+        enc, ini = sintetica({"X": 0.0, "Y": 0.0, "CIS": 6.0}, 120, 30.0)
+        r = ajustar(enc, "A", ini, ini + timedelta(days=119))
+        self.assertAlmostEqual(r["media"][-1], 30.0, delta=0.6)
+        self.assertAlmostEqual(r["sesgos"]["CIS"][0], 6.0, delta=0.8)
+
+    def test_salto(self):
+        fs = date(2026, 3, 1)
+        enc, ini = sintetica({"X": 0.0, "Y": 1.0, "Z": -1.0}, 120, 30.0, salto=-3.0, fecha_salto=fs)
+        r = ajustar(enc, "A", ini, ini + timedelta(days=119), eventos=[fs])
+        s = r["saltos"][fs]
+        self.assertAlmostEqual(s["salto"], -3.0, delta=3 * s["sd"])
+        self.assertLess(s["salto"], -1.5)
+
+    def test_prior_calibrado_desplaza_nivel(self):
+        enc, ini = sintetica({"X": 0.0, "Y": 0.0}, 60, 30.0)
+        r = ajustar(enc, "A", ini, ini + timedelta(days=59), prior_sesgos={"X": (2.0, 0.3), "Y": (2.0, 0.3)})
+        self.assertAlmostEqual(r["media"][-1], 28.0, delta=0.7)
+
+
+class TestEventos(unittest.TestCase):
+    def test_pares_excluyen_solapes(self):
+        ev = date(2026, 10, 28)
+        mk = lambda c, i, f, v: dict(casa=c, campo_ini=i, campo_fin=f, voto={"A": v}, n=1000)
+        enc = [mk("X", date(2026, 10, 20), date(2026, 10, 22), 30), mk("X", date(2026, 10, 27), date(2026, 10, 30), 99),
+               mk("X", date(2026, 11, 2), date(2026, 11, 4), 28)]
+        m, det = EV.pares(enc, ev, ["A"])
+        self.assertEqual(det["X"]["cambio"]["A"], -2)
+
+
+class TestEvaluacion(unittest.TestCase):
+    def test_error_final(self):
+        enc = [dict(casa="X", campo_fin=date(2023, 7, 15), voto={"PP": 35.0}, estudio="a", origen="t", url=""),
+               dict(casa="X", campo_fin=date(2023, 6, 1), voto={"PP": 40.0}, estudio="b", origen="t", url="")]
+        e = V.error_final(enc, date(2023, 7, 23), {"PP": 33.0}, ["PP"])
+        self.assertAlmostEqual(e["X"]["error"]["PP"], 2.0)
+
+
+class TestDatosReales(unittest.TestCase):
+    def test_reproduce_escanos_23j(self):
+        b = Base(["PP", "PSOE", "VOX", "SUMAR", "ERC", "JUNTS", "BILDU", "PNV", "BNG", "CC", "UPN", "OTROS"],
+                 {"SUMAR": 1.0})
+        e = dict(zip(b.partidos, b.repartir(b.cuota).sum(0).tolist()))
+        self.assertEqual(e, {"PP": 137, "PSOE": 121, "VOX": 33, "SUMAR": 31, "ERC": 7, "JUNTS": 7, "BILDU": 6,
+                             "PNV": 5, "BNG": 1, "CC": 1, "UPN": 1, "OTROS": 0})
+
+    def test_resultado_23j(self):
+        r = F.resultado_23j()
+        self.assertAlmostEqual(r["PP"], 33.06, delta=0.01)
+        self.assertAlmostEqual(r["PSOE"], 31.68, delta=0.01)
+
+    def test_fuentes_con_origen(self):
+        enc = F.todas()
+        self.assertTrue(all(e["origen"] in ("verificada", "terceros-wikipedia", "terceros-29n") for e in enc))
+
+
+if __name__ == "__main__":
+    unittest.main()
