@@ -2,7 +2,7 @@
 
 ## Programación
 
-Se ha creado una automatización diaria de este chat a las **09:00, Europe/Madrid**, para buscar nuevas publicaciones, contrastarlas, actualizar el archivo y publicar las incorporaciones que superen las comprobaciones. Es una revisión programada por el agente, no una fuente de datos en tiempo real ni un proceso de extracción garantizado a cada instante. Las ejecuciones dependen de la disponibilidad de la app, permisos, herramientas, fuentes y límites de uso de la cuenta.
+La automatización activa de este chat está configurada **cada 60 minutos**, según la programación comprobada el 31 de octubre de 2026. Busca nuevas publicaciones, las contrasta y publica incorporaciones que superen las comprobaciones. La mención anterior a una revisión diaria a las 09:00 quedó desfasada. Es una revisión programada por el agente, no una fuente de datos en tiempo real ni un proceso de extracción garantizado a cada instante. Las ejecuciones dependen de la disponibilidad de la app, permisos, herramientas, fuentes y límites de uso de la cuenta.
 
 No debe notificar si no hay novedades significativas. Debe avisar si se incorporan o corrigen datos relevantes, falla la actualización o se necesita una intervención. No se envían mensajes a institutos, periodistas ni otros terceros.
 
@@ -44,6 +44,8 @@ Las limitaciones concretas, incluida la discrepancia de fechas en IMOP y la cifr
 5. Actualizar `data/polls.json`, los CSV, la cobertura visible y el historial. Evitar commits que solo cambien una fecha.
 6. Ejecutar `node scripts/export-csv.mjs`, `npm test` y `npm run build`. La compilación también valida el esquema y la cobertura.
 7. Revisar búsqueda por instituto, detalle, ausentes, puntos, horquillas, acceso a fuentes y visualización móvil. Publicar al remoto autorizado y comprobar Actions y respuesta HTTP antes de afirmar que el cambio está publicado.
+
+La vista `#analisis` calcula medias y proyecciones en el navegador desde el archivo publicado: una nueva encuesta se incluye cuando cumple fecha, ventana, ámbito y deduplicación por instituto. Leer [sus supuestos](analysis.md). Mantener separadas las cifras del instituto y las del modelo; nunca etiquetar «Resto 2023» como candidaturas actuales ni atribuir intervalos de confianza a los puntos de escaños.
 
 ## Acontecimientos y encuestas
 

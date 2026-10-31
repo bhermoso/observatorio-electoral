@@ -47,6 +47,8 @@ El atlas usa geometría generalizada oficial Eurostat/GISCO NUTS 2024 agrupada e
 
 ## Actualización continua
 
+La vista **Promedio y escaños** (`#analisis`) selecciona una encuesta por instituto, calcula medias con pesos configurables y recencia opcional, y calibra PP/PSOE/Vox al promedio mediante ajuste proporcional provincial sobre 2023. Ofrece suma nacional, 52 repartos y descarga auditable. El resto conserva las candidaturas y proporciones provinciales históricas; no es un pronóstico completo de las candidaturas actuales. Ver [metodología del promedio y la proyección](docs/analysis.md).
+
 La vista **Acontecimientos** (`#contexto`) cruza hechos documentados con intervalos de trabajo de campo, ofrece ventanas de 14, 30 y 90 días y exporta el análisis. Los posibles pares antes/después se seleccionan con criterios conservadores y sus diferencias son descriptivas. El registro inicial del accidente de Urda no tiene todavía encuestas posteriores en el archivo. No se trasladan efectos supuestos a los pesos del laboratorio. Ver [criterios y datos](docs/events.md).
 
-Una tarea de este chat revisa diariamente las fuentes a las 09:00 (Europe/Madrid), incorpora únicamente novedades verificables y publica tras pruebas y validación de Pages. Su ejecución depende de la app, herramientas, permisos y límites de cuenta. No hay un scraper que transforme automáticamente noticias en cifras electorales. Ver [política de mantenimiento](docs/maintenance.md).
+Una tarea de este chat revisa las fuentes cada 60 minutos, incorpora únicamente novedades verificables y publica tras pruebas y validación de Pages. Su ejecución depende de la app, herramientas, permisos y límites de cuenta. No hay un scraper que transforme automáticamente noticias en cifras electorales. Ver [política de mantenimiento](docs/maintenance.md).

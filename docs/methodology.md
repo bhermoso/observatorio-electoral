@@ -26,7 +26,7 @@ Si no hay votos elegibles, se rechaza el escenario. No se adjudican escaños arb
 
 ## Encuestas y microdatos
 
-Los errores de muestreo de las fichas describen un supuesto de muestreo aleatorio simple y no son intervalos de confianza de la estimación electoral. El observatorio presenta estudios individuales; no calcula un promedio propio. Los modelos y promedios externos se identifican con su autor y fecha, fuera del recuento de encuestas. Los escaños publicados conservan puntos y horquillas por separado; los ausentes no equivalen a cero. La visualización conjunta Sumar/FA no establece equivalencia entre candidaturas de años o escenarios distintos.
+Los errores de muestreo de las fichas describen un supuesto de muestreo aleatorio simple y no son intervalos de confianza de la estimación electoral. El archivo presenta estudios individuales y la vista Promedio y escaños añade un promedio configurable con una proyección condicionada; consultar analysis.md. Los modelos y promedios externos se identifican con su autor y fecha, fuera del recuento de encuestas. Los escaños publicados conservan puntos y horquillas por separado; los ausentes no equivalen a cero. La visualización conjunta Sumar/FA no establece equivalencia entre candidaturas de años o escenarios distintos.
 
 Para reanalizar entrevistas, descargar el fichero original y su diccionario en el CIS; usar PESO a nivel nacional y, en el estudio 3411, PESOPROV o PESOCCAA para sus respectivos ámbitos. No aplicar esos pesos a los agregados del dashboard. Ver [archivo y verificación](poll-archive.md) y [política de mantenimiento](maintenance.md).
 

@@ -43,7 +43,7 @@ El promedio de EL PAÍS de Kiko Llaneras se registra por separado con referencia
 4. Documentar las discrepancias y el método de verificación. No extrapolar escaños de un porcentaje nacional.
 5. Deduplicar por identificador y estudio, regenerar ambos CSV con `node scripts/export-csv.mjs`, ejecutar `npm test` y `npm run build` y revisar la ficha en navegador antes de publicar.
 
-No hay promedio propio. No se asume que una encuesta anterior al 28 de octubre de 2026 mida el efecto del accidente de Urda. La fecha relevante para esa comparación es la de las entrevistas, no la de publicación.
+La vista Promedio y escaños incorpora un promedio configurable y una proyección condicionada; sus supuestos se describen en analysis.md. No se asume que una encuesta anterior al 28 de octubre de 2026 mida el efecto del accidente de Urda. La fecha relevante para esa comparación es la de las entrevistas, no la de publicación.
 
 ## Ampliación del directorio académico y territorial
 
