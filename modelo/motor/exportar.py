@@ -146,7 +146,7 @@ def ejemplo_dhondt(provincia="Toledo"):
 
 
 def datos(enc, actuales, inicio, hoy, dias, ajustes, sims, resumen, simple, casas_simple, err, ind, simple23,
-          bt, res23, est, ses_prev, umbrales, prev_all, casado, urda, eleccion, contraste=(), sensibilidad=()):
+          bt, res23, est, ses_prev, umbrales, prev_all, casado, urda, eleccion, contraste=(), sensibilidad=(), retro_cortes=()):
     ref = ajustes["consenso_privadas"]
     finales23 = [e for e in enc if e["ciclo"] == "2019-23" and e["campo_fin"] >= eleccion.replace(year=2023, month=5, day=1)
                  and e["origen"] != "terceros-wikipedia"]
@@ -172,6 +172,7 @@ def datos(enc, actuales, inicio, hoy, dias, ajustes, sims, resumen, simple, casa
         dhondt_ejemplo=ejemplo_dhondt(),
         contraste=list(contraste),
         sensibilidad=list(sensibilidad), rho_bloque=PR.RHO_BLOQUE,
+        retro_cortes=list(retro_cortes),
         casado=dict(serie=serie_evento(prev_all, casado),
                     pares={p: [_r(m), _r(s), n] for p, (m, s, n) in m_c.items()},
                     efectos={p: {str(k): ([_r(v[0]), _r(v[1])] if v else None) for k, v in r.items()

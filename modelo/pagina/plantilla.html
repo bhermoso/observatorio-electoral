@@ -209,6 +209,10 @@ industria = 1,5 pp × √(p/25) × ( √0,5 · factor de bloque ± √0,5 · err
   <p>Se ejecuta el modelo con las encuestas disponibles hasta el 22 de julio de 2023 y se compara con el resultado.</p>
   <div class="tbl"><table id="t-bt"></table></div>
   <div class="callout" id="bt-lectura"></div>
+  <h3>Retroprueba por distancia a la elección</h3>
+  <p>La misma prueba, repetida con las encuestas que ya se habían publicado 30, 15, 7 y 1 día antes del 23 de julio de 2023. El 29N está ahora a una distancia comparable al primer corte. Se comprueba también si el resultado real cayó dentro del intervalo del 90 % que el modelo habría dado.</p>
+  <div class="tbl"><table id="t-cortes"></table></div>
+  <div class="callout" id="cortes-lectura"></div>
   <h3>Comparabilidad entre ciclos</h3>
   <p>Sesgo de cada casa respecto al consenso de las privadas en 2019-2023 (noviembre de 2019 a enero de 2023) y en 2023-2026. IZQ es el espacio a la izquierda del PSOE: Unidas Podemos + Más País en el primer ciclo, Sumar + Podemos en el segundo, solo cuando la casa publica ambos.</p>
   <div class="tbl"><table id="t-est"></table></div>
@@ -442,6 +446,15 @@ $("#dh-in").addEventListener("input",dhondt); dhondt();
   Object.entries(D.retroprueba_23j).forEach(([v,d])=>{h+=`<tr><td>Modelo · ${VNOM[v]}</td>${P4.map(p=>cel(d[p])).join("")}<td class="n"><b>${fmt(mae(d),2)}</b></td></tr>`});
   $("#t-bt").innerHTML=h+"</tbody>";
   $("#bt-lectura").innerHTML=`<b>Lectura.</b> En 2023 el modelo no mejora al promedio simple. La diferencia procede del PSOE: el promedio simple da al CIS el mismo peso que a cualquier otra casa, y en 2023 el CIS fue la única casa que acertó con el PSOE. El modelo detecta el sesgo del CIS respecto al resto y lo corrige, con lo que lo acerca a las privadas, que fallaron. Con una sola elección no se puede saber si esto se repetirá. La variante calibrada no puede retroprobarse en 2023, porque usaría el resultado que pretende predecir.`;
+  {
+    const RC=D.retro_cortes||[];
+    let hc=`<thead><tr><th>Corte</th><th class="n">Casas</th>${P4.map(p=>`<th class="n">${NOM[p]}<br>simple</th><th class="n">${NOM[p]}<br>modelo</th>`).join("")}<th class="n">Dentro del 90 %</th></tr></thead><tbody>`;
+    let din=0,tot=0;
+    RC.forEach(f=>{const m=f.modelos.consenso_privadas;const k=Object.values(m.dentro).filter(Boolean).length,n=Object.keys(m.dentro).length;din+=k;tot+=n;
+      hc+=`<tr><td>${f.dias} día${f.dias>1?"s":""} antes<br><span style="color:var(--fg3);font-size:12px">${fecha(f.corte)}</span></td><td class="n">${f.n_recientes}</td>${P4.map(p=>`${cel(f.simple[p])}<td class="n ${m.error[p]==null?"":m.error[p]>0?"pos":"neg"}">${sg(m.error[p])}${m.dentro[p]===false?' <b title="fuera del intervalo del 90 %">✕</b>':""}</td>`).join("")}<td class="n">${k}/${n}</td></tr>`});
+    $("#t-cortes").innerHTML=hc+`</tbody><tfoot><tr><td colspan="${3+2*P4.length}" class="note">Error en puntos (encuesta − resultado). Modelo: variante consenso privadas. ✕ = el resultado quedó fuera del intervalo del 90 % del pronóstico. Una encuesta cuenta en un corte solo si ya estaba publicada ese día.</td></tr></tfoot>`;
+    $("#cortes-lectura").innerHTML=`<b>Lectura.</b> El intervalo del 90 % contuvo el resultado en ${din} de ${tot} casos; lo esperable sería alrededor de 9 de cada 10. El fallo se concentra en el PSOE: las encuestas lo infravaloraron entre 3 y 5 puntos a lo largo de toda la campaña y quedó fuera del intervalo en todos los cortes. A 30 días el error fue mayor (el PSOE subió en las últimas semanas) y solo había cuatro casas con encuesta reciente en el sistema. Con una sola elección no se puede saber si aquel fallo fue excepcional o si el error de industria supuesto es demasiado bajo; si fuera lo segundo, las probabilidades del pronóstico actual estarían sobrestimadas.`;
+  }
   const PE=["PP","PSOE","VOX","IZQ"], S=D.estabilidad, casas=[...new Set(PE.flatMap(p=>Object.keys((S[p]||{}).casas||{})))].sort();
   h=`<thead><tr><th>Casa</th>${PE.map(p=>`<th class="n">${NOM[p]}<br>2019-23 → 2023-26</th>`).join("")}</tr></thead><tbody>`;
   casas.forEach(c=>{h+=`<tr><td>${esc(c)}</td>${PE.map(p=>{const x=((S[p]||{}).casas||{})[c];return `<td class="n">${x?`${sg(x[0])} → ${sg(x[1])}`:"—"}</td>`}).join("")}</tr>`});

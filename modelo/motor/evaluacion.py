@@ -89,3 +89,40 @@ def ficha_casas(encuestas):
                       ultima=max(e["campo_fin"] for e in propias),
                       origenes=sorted({e["origen"] for e in propias}))
     return out
+
+
+def retroprueba_cortes(encuestas, fecha_eleccion, resultado, partidos, cortes=(30, 15, 7, 1),
+                       inicio=None, tau=0.15, dias_simple=30):
+    """Para cada corte (días antes de la elección), usa solo las encuestas ya publicadas
+    ese día y compara con el resultado: promedio simple y modelo (dos variantes).
+    Para el modelo también comprueba si el resultado cae dentro del intervalo del 90 %
+    del pronóstico (estimación + movimiento hasta la elección + error de industria),
+    con las mismas fórmulas que pronostico.simular."""
+    from .fuentes import publicada_antes
+    out = []
+    for d in cortes:
+        corte = fecha_eleccion - timedelta(days=d)
+        disp = [e for e in encuestas if e["campo_fin"] < fecha_eleccion and publicada_antes(e, corte)]
+        ult = {}
+        for e in sorted(disp, key=lambda e: e["campo_fin"]):
+            if (corte - e["campo_fin"]).days <= dias_simple:
+                ult[e["casa"]] = e
+        simple = {p: float(np.mean([e["voto"][p] for e in ult.values() if p in e["voto"]])) - resultado[p]
+                  for p in partidos if any(p in e["voto"] for e in ult.values())}
+        fila = dict(dias=d, corte=corte, casas_recientes=sorted(ult), n_recientes=len(ult),
+                    simple=simple, modelos={})
+        for var, kw in (("consenso_privadas", {}), ("consenso_todas", {"excluir_ancla": ()})):
+            errs, dentro, sds = {}, {}, {}
+            for p in partidos:
+                r = ajustar(disp, p, inicio or (fecha_eleccion - timedelta(days=200)), corte, tau=tau, **kw)
+                if r is None:
+                    continue
+                m = float(r["media"][-1])
+                sd_ind = max(1.5 * np.sqrt(max(m, 0) / 25), 0.3)
+                sd = float(np.sqrt(r["sd"][-1] ** 2 + (tau * r["escala"]) ** 2 * d + sd_ind ** 2))
+                errs[p] = m - resultado[p]
+                sds[p] = sd
+                dentro[p] = abs(errs[p]) <= 1.645 * sd
+            fila["modelos"][var] = dict(error=errs, sd=sds, dentro=dentro)
+        out.append(fila)
+    return out

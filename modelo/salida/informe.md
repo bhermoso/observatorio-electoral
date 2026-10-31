@@ -71,6 +71,18 @@ Fracción de la varianza del error de industria que desplaza voto entre bloques 
 | Modelo `consenso_privadas` | +0.9 | -3.7 | +0.7 | +0.4 | 1.45 |
 | Modelo `consenso_todas` | +0.6 | -3.3 | +0.4 | +0.8 | 1.25 |
 
+**Retroprueba por cortes** (encuestas ya publicadas en cada fecha; error en pp; «fuera» = el resultado quedó fuera del intervalo del 90 % del pronóstico del modelo):
+
+| Corte | Casas con encuesta reciente | Promedio simple | Modelo consenso privadas | Dentro del intervalo |
+|---|---|---|---|---|
+| 30 días (2023-06-23) | 4 | PP +0.5 PSOE -5.5 VOX +1.6 SUMAR +1.3 | PP +0.4 PSOE -5.4 (fuera) VOX +1.6 SUMAR +0.6 | 3/4 |
+| 15 días (2023-07-08) | 5 | PP -0.1 PSOE -4.1 VOX +0.8 SUMAR +1.5 | PP +0.2 PSOE -4.7 (fuera) VOX +1.7 SUMAR +0.9 | 3/4 |
+| 7 días (2023-07-16) | 5 | PP +0.6 PSOE -2.6 VOX -0.2 SUMAR +1.1 | PP +0.7 PSOE -4.2 (fuera) VOX +1.1 SUMAR +0.4 | 3/4 |
+| 1 día (2023-07-22) | 8 | PP +0.8 PSOE -2.7 VOX -0.1 SUMAR +0.7 | PP +1.0 PSOE -3.8 (fuera) VOX +0.7 SUMAR +0.4 | 3/4 |
+
+Cobertura del intervalo del 90 %: 12 de 16 casos. El PSOE quedó fuera en todos los cortes: las encuestas lo infravaloraron más de lo que el modelo considera posible. Con una sola elección no se puede saber si fue excepcional o si el error de industria supuesto (1,5 pp para un partido del 25 %) es demasiado bajo.
+
+
 La variante calibrada no se puede retroprobar en el 23J (usaría el propio resultado). Con una sola elección evaluada, ninguna diferencia entre métodos es concluyente.
 
 ## 3. Cocinas: cómo trabaja y hacia dónde se desvía cada casa

@@ -134,6 +134,23 @@ def main():
     for var, d in bt.items():
         filas.append([f"Modelo `{var}`"] + [f1(d.get(p), True) for p in P4] + [f"{mae(d):.2f}"])
     w(tabla(["Método"] + P4 + ["MAE"], filas))
+    rp = V.retroprueba_cortes(enc, E23, res23, P4, inicio=date(2023, 1, 1))
+    w("\n**Retroprueba por cortes** (encuestas ya publicadas en cada fecha; error en pp; "
+      "«fuera» = el resultado quedó fuera del intervalo del 90 % del pronóstico del modelo):\n")
+    filas = []
+    for f in rp:
+        m = f["modelos"]["consenso_privadas"]
+        filas.append([f"{f['dias']} día{'' if f['dias'] == 1 else 's'} ({f['corte'].isoformat()})", f["n_recientes"],
+                      " ".join(f"{p} {f1(f['simple'].get(p), True)}" for p in P4),
+                      " ".join(f"{p} {f1(m['error'].get(p), True)}{'' if m['dentro'].get(p, True) else ' (fuera)'}" for p in P4),
+                      f"{sum(m['dentro'].values())}/{len(m['dentro'])}"])
+    w(tabla(["Corte", "Casas con encuesta reciente", "Promedio simple", "Modelo consenso privadas",
+             "Dentro del intervalo"], filas))
+    dentro = sum(sum(f["modelos"]["consenso_privadas"]["dentro"].values()) for f in rp)
+    total = sum(len(f["modelos"]["consenso_privadas"]["dentro"]) for f in rp)
+    w(f"\nCobertura del intervalo del 90 %: {dentro} de {total} casos. El PSOE quedó fuera en todos los cortes: "
+      "las encuestas lo infravaloraron más de lo que el modelo considera posible. Con una sola elección no se puede "
+      "saber si fue excepcional o si el error de industria supuesto (1,5 pp para un partido del 25 %) es demasiado bajo.\n")
     w("\nLa variante calibrada no se puede retroprobar en el 23J (usaría el propio resultado). "
       "Con una sola elección evaluada, ninguna diferencia entre métodos es concluyente.\n")
 
@@ -266,7 +283,7 @@ def main():
                            sims=sims, resumen=resumen, simple=simple, casas_simple=casas_simple, err=err,
                            ind=ind, simple23=simple23, bt=bt, res23=res23, est=est, ses_prev=ses_prev,
                            umbrales=umbrales, prev_all=prev_all, casado=CASADO, urda=URDA, eleccion=ELECCION,
-                           contraste=contraste, sensibilidad=sens)
+                           contraste=contraste, sensibilidad=sens, retro_cortes=rp)
     json.dump(datos, open(os.path.join(SALIDA, "datos_pagina.json"), "w", encoding="utf-8"),
               ensure_ascii=False, default=str, separators=(",", ":"))
     plantilla = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pagina", "plantilla.html")
