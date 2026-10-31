@@ -1,6 +1,6 @@
 # Archivo de encuestas y fuentes de referencia
 
-Actualización revisada: 30 de octubre de 2026. Nueve estudios, siete institutos con datos transcritos. La selección no es exhaustiva; se revisa mediante una tarea programada.
+Actualización revisada: 31 de octubre de 2026. Nueve estudios, siete institutos con datos transcritos. La selección no es exhaustiva; se revisa mediante una tarea programada.
 
 ## Registro incorporado
 
@@ -23,7 +23,7 @@ Los enlaces originales, localizadores y observaciones de cada registro están en
 - CIS 3582: https://www.cis.es/documents/d/guest/3582_estimacion-pdf y https://www.cis.es/documents/d/guest/es3582mar_A-pdf. Descarga directa de ambos PDF, extracción y revisión visual de la tabla de estimación. La publicación se contrasta con el anuncio del CIS y la cobertura fechada del 14 de octubre. PESO y PESOCCAA según la ficha original.
 - 40dB.: https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_informe_voto_barometro_flash.pdf. Voto en página 5, escaños en página 8 y ficha en página 26; tablas revisadas visualmente. La muestra excluye Ceuta y Melilla. El escenario unitario del mismo informe no se añade como una encuesta independiente.
 - GAD3: https://www.gad3.com/barometro-abc-estimacion-de-voto-nacional-octubre-2026/. Texto y ficha del instituto. La descarga directa del HTML dio 403; el lector web permitió revisar el original. Cuatro porcentajes y cinco grupos de escaños. La cifra de Otros del texto no cuadra con las principales; no se incorpora como dato comparable. No se decide entre valores contradictorios de Podemos en recopiladores.
-- IMOP: https://www.imop.es/encuesta-pre-electoral-el-confidencial-ola-2/. HTML original descargado: campo, muestra, tres porcentajes y matriz de datos del gráfico de escaños. Solo se verifica información pública; no se ejecutan scripts del proveedor. La página combina encabezado 21 de octubre y metadatos datePublished del 23: discrepancia conservada. Método de entrevista ausente en la página consultada, por tanto `null`.
+- IMOP: https://www.imop.es/encuesta-pre-electoral-el-confidencial-ola-2/. HTML original descargado: campo, muestra, tres porcentajes y matriz de datos del gráfico de escaños. Solo se verifica información pública; no se ejecutan scripts del proveedor. La página combina encabezado 21 de octubre y metadatos datePublished del 23: discrepancia conservada. El método no se había verificado en la revisión inicial. El 31 de octubre se confirma CATI/CAWI en el pie del original y se completa el registro.
 - DYM: https://www.20minutos.es/nacional/psoe-absorbe-intencion-votos-sumar-podemos-mientras-pp-vox-consolidan-su-mayoria_7046598_0.html. Resultados y ficha publicados por el comitente; solo se transcriben escaños expresamente verificados en el texto.
 - Ateneo: https://www.eldiario.es/politica/bloque-izquierdas-recorta-distancias-pp-vox-mantienen-mayoria-absoluta_1_13611052.html. Resultados y ficha del comitente; las coaliciones valenciana y canaria se incluyen en Frente Amplio según su nota.
 
@@ -58,3 +58,7 @@ Esta incorporación amplía cobertura histórica reciente, sin aportar entrevist
 ### Fuente vasca pendiente de informe original
 
 El 30 de octubre se localizó una noticia de elDiario.es sobre un Sociómetro para las generales en Euskadi. Se verificó la identidad del Gabinete de Prospección Sociológica en su catálogo oficial: https://www.euskadi.eus/estudios-sociologicos/. El catálogo cronológico consultado no permitió localizar el informe concreto con ficha y tablas. Se incorpora solo como referencia institucional pendiente, sin cifras ni aumento del recuento de encuestas. La noticia sirve de pista de búsqueda en `leadSource`, no sustituye la documentación del productor. Mantener separados los ámbitos y las elecciones; no confundir el Sociómetro 89 de junio sobre Juntas Generales con el estudio anunciado en octubre.
+
+## Corrección documental del 31 de octubre de 2026
+
+La publicación original de IMOP, https://www.imop.es/encuesta-pre-electoral-el-confidencial-ola-2/, declara en su pie una encuesta CATI/CAWI del 13 al 16 de octubre, con muestra de 1.000. Se completa `mode` de la ola 2, antes `null`, como `CATI + CAWI`. No cambian estimaciones de voto, escaños, fechas de campo ni fecha de publicación. Se conserva la discrepancia entre el encabezado del 21 de octubre y la fuente/metadatos del 23. No es una encuesta nueva ni implica entrevistas posteriores al accidente de Urda.

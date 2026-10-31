@@ -272,7 +272,7 @@
     "fieldEnd": "2026-10-16",
     "published": "2026-10-23",
     "sample": 1000,
-    "mode": null,
+    "mode": "CATI + CAWI",
     "scope": "España",
     "universe": "Población censada de 18 años o más",
     "scenario": "Frente Amplio y Podemos separados; PP incluye UPN en escaños",
@@ -329,13 +329,13 @@
       }
     },
     "seatNotes": "Se transcribe la tabla de datos del gráfico original del instituto. PP incorpora UPN: no debe interpretarse su cero como una predicción independiente de UPN.",
-    "notes": "La fuente original solo desglosa porcentajes de PP, PSOE y Vox; los demás no se rellenan desde recopiladores. El método de entrevista no aparece en la publicación consultada.",
+    "notes": "La fuente original solo desglosa porcentajes de PP, PSOE y Vox; los demás no se rellenan desde recopiladores. En la revisión del 31 de octubre se verifica el método mixto CATI/CAWI en el pie de la publicación original, antes registrado como no verificado.",
     "publicationNote": "El encabezado dice 21 de octubre, pero los metadatos datePublished indican 23 de octubre. Se usa la fecha de metadatos y se conserva esta discrepancia.",
-    "verification": "HTML original descargado. Campo y muestra en la cabecera; escaños verificados en los datos del gráfico del instituto.",
-    "sourcePages": "Cabecera; porcentajes publicados; gráfico de escaños, matriz const data.",
+    "verification": "HTML original descargado. Campo y muestra en la cabecera; escaños verificados en los datos del gráfico del instituto. Revisión adicional del 31/10/2026: el pie de la página declara CATI/CAWI, campo 13–16 de octubre y muestra de 1.000; permite completar el método sin cambiar cifras.",
+    "sourcePages": "Cabecera; porcentajes publicados; gráfico de escaños, matriz const data. Pie Fuente: IMOP Insights para El Confidencial. 23 Octubre 2026, seguido de la descripción Encuesta CATI/CAWI.",
     "kind": "poll-estimate",
     "denominator": "votos válidos",
-    "verified": "2026-10-29"
+    "verified": "2026-10-31"
   },
   {
     "id": "dym-2026-10",
