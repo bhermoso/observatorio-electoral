@@ -35,7 +35,8 @@ class Base:
             destino = MAPA_23J.get(cod, "OTROS")
             reparto = reparto_sumar if destino == "SUMAR" else {destino: 1.0}
             for p, f in reparto.items():
-                self.votos[idx[r["district"]], col[p]] += float(r["votes"]) * f
+                # Partido sin estimación en las encuestas del corte: su voto de 2023 va a OTROS.
+                self.votos[idx[r["district"]], col.get(p, col["OTROS"])] += float(r["votes"]) * f
         self.cuota = self.votos / self.validos[:, None]
         self.peso = self.validos / self.validos.sum()
         self.nacional = self.peso @ self.cuota

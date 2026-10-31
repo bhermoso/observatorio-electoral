@@ -156,3 +156,18 @@ def resultado_23j():
         if cod in mapa:
             votos[mapa[cod]] = votos.get(mapa[cod], 0) + int(r["votes"])
     return {p: 100 * v / validos for p, v in votos.items()}
+
+
+def referencias_agregadores():
+    """Promedios y modelos externos registrados en data/references.json (p. ej. EL PAÍS).
+    No son encuestas: solo se usan como contraste del motor."""
+    out = []
+    for r in json.load(open(os.path.join(RAIZ, "data", "references.json"), encoding="utf-8")):
+        if r.get("kind") != "aggregate-model" or not r.get("published"):
+            continue
+        voto = {PARTIDOS.get(k, k): v for k, v in (r.get("approximateValues") or r.get("values") or {}).items()}
+        esc = {PARTIDOS.get(k, k): v for k, v in (r.get("modelSeats") or {}).items()}
+        out.append(dict(id=r["id"], nombre=r["name"], fecha=_fecha(r["published"]), voto=voto, escanos=esc,
+                        url=r.get("source"), notas=r.get("notes", ""), metodo=r.get("methodology", ""),
+                        verificado=r.get("verified")))
+    return out

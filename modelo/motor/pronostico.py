@@ -46,19 +46,30 @@ def estimar(encuestas, inicio, hoy, variante, errores_23j=None, eventos=(), tau=
     return out
 
 
+REGIONALES = ["ERC", "JUNTS", "BILDU", "PNV", "BNG", "CC", "UPN"]
+
+
 def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29):
+    """Simula el 29N. Los partidos regionales sin estimación en las encuestas del corte
+    conservan su voto nacional del 23J como hipótesis (marcados en `sin_encuestas`),
+    con la misma incertidumbre que tendría un partido de su tamaño sin datos."""
     rng = np.random.default_rng(semilla)
-    partidos = [p for p in PARTIDOS if p in ajustes]
-    mu = np.array([ajustes[p]["media"][-1] for p in partidos])
-    sd_hoy = np.array([ajustes[p]["sd"][-1] for p in partidos])
-    sd_ind = np.maximum(1.5 * np.sqrt(np.clip(mu, 0, None) / 25), 0.3)
-    esc = np.array([ajustes[p]["escala"] for p in partidos])
-    sd_tot = np.sqrt(sd_hoy ** 2 + (tau * esc) ** 2 * dias_restantes + sd_ind ** 2)
+    estimados = [p for p in PARTIDOS if p in ajustes]
+    mu_e = {p: ajustes[p]["media"][-1] for p in estimados}
     rep = {"SUMAR": 1.0}
-    if "SUMAR" in partidos and "PODEMOS" in partidos:
-        a, b = mu[partidos.index("SUMAR")], mu[partidos.index("PODEMOS")]
+    if "SUMAR" in mu_e and "PODEMOS" in mu_e:
+        a, b = mu_e["SUMAR"], mu_e["PODEMOS"]
         rep = {"SUMAR": a / (a + b), "PODEMOS": b / (a + b)}
+    sin = [p for p in REGIONALES if p not in ajustes]
+    partidos = [p for p in PARTIDOS if p in ajustes or p in sin]
     base = Base(partidos + ["OTROS"], rep)
+    nac23 = dict(zip(base.partidos, 100 * base.nacional))
+    mu = np.array([mu_e[p] if p in mu_e else nac23[p] for p in partidos])
+    esc = np.array([ajustes[p]["escala"] if p in ajustes else np.sqrt(max(mu[i], 0.5) / 25)
+                    for i, p in enumerate(partidos)])
+    sd_hoy = np.array([ajustes[p]["sd"][-1] if p in ajustes else 3.0 * esc[i] for i, p in enumerate(partidos)])
+    sd_ind = np.maximum(1.5 * np.sqrt(np.clip(mu, 0, None) / 25), 0.3)
+    sd_tot = np.sqrt(sd_hoy ** 2 + (tau * esc) ** 2 * dias_restantes + sd_ind ** 2)
     votos = np.zeros((n, len(partidos)))
     escanos = np.zeros((n, len(partidos)), dtype=int)
     R = len(base.provincias)
@@ -71,7 +82,8 @@ def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29)
         nac = np.append(v, otros * (100 - BLANCO) / tot) / 100
         e = base.repartir(base.proyectar(nac, rng.normal(0, sd_prov, (R, len(nac)))))
         escanos[k] = e.sum(0)[:-1]
-    return dict(partidos=partidos, votos=votos, escanos=escanos, sd_total=dict(zip(partidos, sd_tot)))
+    return dict(partidos=partidos, votos=votos, escanos=escanos, sd_total=dict(zip(partidos, sd_tot)),
+                sin_encuestas=sin)
 
 
 def resumir(sim):

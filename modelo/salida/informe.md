@@ -117,7 +117,23 @@ PP ±3.1 pp, PSOE ±1.2 pp, VOX ±1.8 pp. Un efecto de Urda menor que esto no se
 
 El método detecta la subida de Vox; la caída del PP (real, de 2 a 4 puntos según la casa) queda en el límite porque el PP tuvo grandes oscilaciones en ese ciclo, lo que eleva su umbral.
 
-## 5. Límites conocidos
+## 5. Contraste con promedios externos
+
+Para comparar en igualdad de condiciones, el motor se ejecuta con los datos que existían en la fecha de cada referencia (encuestas con campo terminado hasta ese día), variante `consenso_privadas`.
+
+### Promedio de EL PAÍS · Kiko Llaneras — 2026-10-03
+
+| Partido | Referencia voto % | Motor voto % | Referencia escaños | Motor escaños (90 %) |
+|---|---|---|---|---|
+| PP | 33.0 | 33.5 | 137 | 143 (126–160) |
+| PSOE | 26.0 | 25.7 | 107 | 105 (90–121) |
+| VOX | 18.0 | 18.1 | 62 | 63 (50–78) |
+| SUMAR | 6.0 | 5.9 | 9 | 8 (4–14) |
+| PODEMOS | 3.0 | — | 3 | — |
+
+Encuestas disponibles para el motor en esa fecha: 5 de 5 casas. Fuente: https://elpais.com/actualidad/newsletter-kiko-llaneras/2026-10-03/que-dicen-las-encuestas-si-hay-elecciones-la-ventaja-pp-vox-y-las-opciones-de-sanchez.html. Referencia del 3 de octubre, no una cifra actualizada a hoy. Los porcentajes están redondeados en el texto original. Los escaños son resultados centrales del modelo de EL PAÍS. No es una encuesta independiente y queda fuera del archivo de entrevistas y de cualquier cómputo de institutos.
+
+## 6. Límites conocidos
 
 - Un solo precedente evaluado (23J). Faltan 2015, 2016 y 2019 (requieren acceso a Wikipedia o a las fuentes originales).
 - Ciclo 2023-26 con pocas encuestas antes de octubre de 2026: la tendencia previa es poco informativa.
