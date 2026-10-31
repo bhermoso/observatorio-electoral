@@ -112,17 +112,37 @@ def retroprueba_cortes(encuestas, fecha_eleccion, resultado, partidos, cortes=(3
         fila = dict(dias=d, corte=corte, casas_recientes=sorted(ult), n_recientes=len(ult),
                     simple=simple, modelos={})
         for var, kw in (("consenso_privadas", {}), ("consenso_todas", {"excluir_ancla": ()})):
-            errs, dentro, sds = {}, {}, {}
+            errs, dentro, sds, resto = {}, {}, {}, {}
             for p in partidos:
                 r = ajustar(disp, p, inicio or (fecha_eleccion - timedelta(days=200)), corte, tau=tau, **kw)
                 if r is None:
                     continue
                 m = float(r["media"][-1])
                 sd_ind = max(1.5 * np.sqrt(max(m, 0) / 25), 0.3)
-                sd = float(np.sqrt(r["sd"][-1] ** 2 + (tau * r["escala"]) ** 2 * d + sd_ind ** 2))
+                sd_resto = float(np.sqrt(r["sd"][-1] ** 2 + (tau * r["escala"]) ** 2 * d))
+                sd = float(np.sqrt(sd_resto ** 2 + sd_ind ** 2))
+                resto[p] = (sd_resto, m)
                 errs[p] = m - resultado[p]
                 sds[p] = sd
                 dentro[p] = abs(errs[p]) <= 1.645 * sd
-            fila["modelos"][var] = dict(error=errs, sd=sds, dentro=dentro)
+            fila["modelos"][var] = dict(error=errs, sd=sds, dentro=dentro, resto=resto)
         out.append(fila)
     return out
+
+
+def industria_que_cubre(retro, variante="consenso_privadas", z=1.645):
+    """Error de industria mínimo (pp para un partido del 25 %) con el que el intervalo
+    del 90 % habría contenido todos los casos de la retroprueba. Devuelve (valor, caso
+    que lo determina)."""
+    mejor, caso = 0.0, None
+    for f in retro:
+        m = f["modelos"][variante]
+        for p, e in m["error"].items():
+            sd_resto, nivel = m["resto"][p]
+            falta = (abs(e) / z) ** 2 - sd_resto ** 2
+            if falta <= 0:
+                continue
+            b = np.sqrt(falta) / np.sqrt(max(nivel, 0.5) / 25)
+            if b > mejor:
+                mejor, caso = float(b), (f["dias"], p, float(e))
+    return mejor, caso

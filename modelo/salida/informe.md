@@ -83,6 +83,15 @@ Fracción de la varianza del error de industria que desplaza voto entre bloques 
 Cobertura del intervalo del 90 %: 12 de 16 casos. El PSOE quedó fuera en todos los cortes: las encuestas lo infravaloraron más de lo que el modelo considera posible. Con una sola elección no se puede saber si fue excepcional o si el error de industria supuesto (1,5 pp para un partido del 25 %) es demasiado bajo.
 
 
+**Sensibilidad al tamaño del error de industria.** Para que el intervalo del 90 % hubiera contenido los 16 casos de la retroprueba, el error de industria tendría que haber sido de 2.9 pp para un partido del 25 % (lo determina PSOE a 30 días, error -5.4); el pronóstico usa 1,5.
+
+| Error de industria (pp al 25 %) | consenso_privadas | consenso_todas | calibrada_23j |
+|---|---|---|---|
+| 1.50 (pronóstico) | 200 (184–217) · P(≥176) 99% · PP 1º 92% | 197 (180–213) · P(≥176) 98% · PP 1º 85% | 193 (175–209) · P(≥176) 94% · PP 1º 69% |
+| 2.22 | 200 (176–222) · P(≥176) 96% · PP 1º 86% | 196 (172–218) · P(≥176) 93% · PP 1º 78% | 193 (168–215) · P(≥176) 88% · PP 1º 65% |
+| 2.93 (cubre 2023) | 200 (168–229) · P(≥176) 90% · PP 1º 81% | 196 (164–224) · P(≥176) 86% · PP 1º 73% | 192 (161–221) · P(≥176) 81% · PP 1º 62% |
+
+
 La variante calibrada no se puede retroprobar en el 23J (usaría el propio resultado). Con una sola elección evaluada, ninguna diferencia entre métodos es concluyente.
 
 ## 3. Cocinas: cómo trabaja y hacia dónde se desvía cada casa

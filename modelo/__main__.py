@@ -151,6 +151,28 @@ def main():
     w(f"\nCobertura del intervalo del 90 %: {dentro} de {total} casos. El PSOE quedó fuera en todos los cortes: "
       "las encuestas lo infravaloraron más de lo que el modelo considera posible. Con una sola elección no se puede "
       "saber si fue excepcional o si el error de industria supuesto (1,5 pp para un partido del 25 %) es demasiado bajo.\n")
+    b23, caso23 = V.industria_que_cubre(rp)
+    sens_ind = []
+    for b in (1.5, round((1.5 + b23) / 2, 2), round(b23, 2)):
+        for var in PR.VARIANTES:
+            sm = PR.simular(ajustes[var], dias, n=min(a.n, 2000), industria=b)
+            P_, E_ = sm["partidos"], sm["escanos"]
+            pv = E_[:, P_.index("PP")] + E_[:, P_.index("VOX")]
+            sens_ind.append(dict(industria=b, variante=var, p_mayoria=float(np.mean(pv >= 176)),
+                                 pp_primero=float(np.mean(E_.argmax(1) == P_.index("PP"))),
+                                 ppvox=(float(np.median(pv)), float(np.percentile(pv, 5)), float(np.percentile(pv, 95)))))
+    w(f"\n**Sensibilidad al tamaño del error de industria.** Para que el intervalo del 90 % hubiera contenido los 16 casos "
+      f"de la retroprueba, el error de industria tendría que haber sido de {b23:.1f} pp para un partido del 25 % "
+      f"(lo determina {caso23[1]} a {caso23[0]} días, error {caso23[2]:+.1f}); el pronóstico usa 1,5.\n")
+    filas = []
+    for b in sorted({x["industria"] for x in sens_ind}):
+        fila = [f"{b:.2f}" + (" (pronóstico)" if b == 1.5 else " (cubre 2023)" if b == round(b23, 2) else "")]
+        for var in PR.VARIANTES:
+            x = next(y for y in sens_ind if y["industria"] == b and y["variante"] == var)
+            fila.append(f"{x['ppvox'][0]:.0f} ({x['ppvox'][1]:.0f}–{x['ppvox'][2]:.0f}) · P(≥176) {x['p_mayoria']:.0%} · PP 1º {x['pp_primero']:.0%}")
+        filas.append(fila)
+    w(tabla(["Error de industria (pp al 25 %)"] + list(PR.VARIANTES), filas))
+    w("")
     w("\nLa variante calibrada no se puede retroprobar en el 23J (usaría el propio resultado). "
       "Con una sola elección evaluada, ninguna diferencia entre métodos es concluyente.\n")
 
@@ -283,7 +305,8 @@ def main():
                            sims=sims, resumen=resumen, simple=simple, casas_simple=casas_simple, err=err,
                            ind=ind, simple23=simple23, bt=bt, res23=res23, est=est, ses_prev=ses_prev,
                            umbrales=umbrales, prev_all=prev_all, casado=CASADO, urda=URDA, eleccion=ELECCION,
-                           contraste=contraste, sensibilidad=sens, retro_cortes=rp)
+                           contraste=contraste, sensibilidad=sens, retro_cortes=rp,
+                           sens_industria=sens_ind, industria_23j=dict(valor=b23, caso=caso23))
     json.dump(datos, open(os.path.join(SALIDA, "datos_pagina.json"), "w", encoding="utf-8"),
               ensure_ascii=False, default=str, separators=(",", ":"))
     plantilla = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pagina", "plantilla.html")

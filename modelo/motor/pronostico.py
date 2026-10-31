@@ -58,7 +58,8 @@ def estimar(encuestas, inicio, hoy, variante, errores_23j=None, eventos=(), tau=
 REGIONALES = ["ERC", "JUNTS", "BILDU", "PNV", "BNG", "CC", "UPN"]
 
 
-def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29, rho_bloque=RHO_BLOQUE):
+def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29, rho_bloque=RHO_BLOQUE,
+            industria=1.5):
     """Simula el 29N. Los partidos regionales sin estimación en las encuestas del corte
     conservan su voto nacional del 23J como hipótesis (marcados en `sin_encuestas`),
     con la misma incertidumbre que tendría un partido de su tamaño sin datos."""
@@ -77,7 +78,7 @@ def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29,
     esc = np.array([ajustes[p]["escala"] if p in ajustes else np.sqrt(max(mu[i], 0.5) / 25)
                     for i, p in enumerate(partidos)])
     sd_hoy = np.array([ajustes[p]["sd"][-1] if p in ajustes else 3.0 * esc[i] for i, p in enumerate(partidos)])
-    sd_ind = np.maximum(1.5 * np.sqrt(np.clip(mu, 0, None) / 25), 0.3)
+    sd_ind = np.maximum(industria * np.sqrt(np.clip(mu, 0, None) / 25), 0.3 * industria / 1.5)
     sd_resto = np.sqrt(sd_hoy ** 2 + (tau * esc) ** 2 * dias_restantes)
     sd_tot = np.sqrt(sd_resto ** 2 + sd_ind ** 2)
     signo = np.array([SIGNO_BLOQUE.get(p, 0) for p in partidos], dtype=float)
@@ -99,7 +100,7 @@ def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29,
         e = base.repartir(base.proyectar(nac, rng.normal(0, sd_prov, (R, len(nac)))))
         escanos[k] = e.sum(0)[:-1]
     return dict(partidos=partidos, votos=votos, escanos=escanos, sd_total=dict(zip(partidos, sd_tot)),
-                sin_encuestas=sin, rho_bloque=rho_bloque)
+                sin_encuestas=sin, rho_bloque=rho_bloque, industria=industria)
 
 
 def resumir(sim):

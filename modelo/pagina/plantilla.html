@@ -104,6 +104,9 @@ ul.tight{padding-left:20px;margin:6px 0}ul.tight li{margin:3px 0}
   <h3>Sensibilidad al error común entre bloques</h3>
   <p class="note">Cuando las encuestas fallan, suelen fallar en bloque: si sobrestiman a la derecha, subestiman a la izquierda. El modelo supone que la mitad del error de industria es común a cada bloque y de signo contrario entre ellos. Con una sola elección evaluada este valor no se puede estimar; la tabla muestra cuánto cambia el resultado según el supuesto (variante consenso privadas).</p>
   <div class="tbl"><table id="t-sens"></table></div>
+  <h3>Sensibilidad al tamaño del error de industria</h3>
+  <p class="note" id="sind-intro"></p>
+  <div class="tbl"><table id="t-sind"></table></div>
   <h3>Escaños de PP + Vox en las simulaciones</h3>
   <div class="controls"><span class="seg" id="seg-hist" role="group" aria-label="Variante"></span></div>
   <div class="chart" id="c-hist"></div>
@@ -300,6 +303,14 @@ $("#hdr-meta").innerHTML = `<span>${dTot} encuestas en el sistema</span>` + Obje
   let h=`<thead><tr><th>Error común entre bloques</th><th class="n">PP − PSOE (pp)</th><th class="n">PP + Vox escaños</th><th class="n">P(PP+Vox ≥ 176)</th><th class="n">P(PP primero)</th></tr></thead><tbody>`;
   S.forEach(x=>{h+=`<tr><td>${fmt(x.rho*100,0)} %${x.rho===D.rho_bloque?" <b>(usado en el pronóstico)</b>":""}</td><td class="n">${sg(x.dif[0])} <span style="color:var(--fg3)">(${sg(x.dif[1])} a ${sg(x.dif[2])})</span></td><td class="n">${fmt(x.ppvox[0],0)} <span style="color:var(--fg3)">(${fmt(x.ppvox[1],0)}–${fmt(x.ppvox[2],0)})</span></td><td class="n"><b>${Math.round(x.p_mayoria*100)} %</b></td><td class="n"><b>${Math.round(x.pp_primero*100)} %</b></td></tr>`});
   $("#t-sens").innerHTML=h+"</tbody>";
+}
+{
+  const S=D.sens_industria||[], c=D.industria_cubre_23j;
+  if(c){$("#sind-intro").innerHTML=`El pronóstico supone que el error común de las encuestas es de 1,5 puntos para un partido del 25 %. En la retroprueba del 23J ese valor resultó insuficiente: para que el intervalo del 90 % hubiera contenido todos los casos habría hecho falta ${fmt(c.valor)} puntos (lo determina el ${NOM[c.caso[1]]} a ${c.caso[0]} días de la elección, con un error de ${sg(c.caso[2])}). La tabla muestra el pronóstico con el valor actual, uno intermedio y el que habría cubierto 2023. Con una sola elección evaluada no se puede decidir cuál es el adecuado.`}
+  const bs=[...new Set(S.map(x=>x.industria))].sort((a,b)=>a-b);
+  let h=`<thead><tr><th>Error de industria</th>${VARS.map(v=>`<th class="n">${VNOM[v]}<br>PP+Vox escaños</th><th class="n">P(≥176)</th><th class="n">P(PP 1º)</th>`).join("")}</tr></thead><tbody>`;
+  bs.forEach(b=>{h+=`<tr><td>${fmt(b,2)} pp${b===1.5?" <b>(pronóstico)</b>":c&&Math.abs(b-c.valor)<0.01?" <b>(cubre 2023)</b>":""}</td>`+VARS.map(v=>{const x=S.find(y=>y.industria===b&&y.variante===v);return x?`<td class="n">${fmt(x.ppvox[0],0)} <span style="color:var(--fg3)">(${fmt(x.ppvox[1],0)}–${fmt(x.ppvox[2],0)})</span></td><td class="n"><b>${Math.round(x.p_mayoria*100)} %</b></td><td class="n">${Math.round(x.pp_primero*100)} %</td>`:"<td></td><td></td><td></td>"}).join("")+"</tr>"});
+  $("#t-sind").innerHTML=h+"</tbody>";
 }
 function drawHist(v){
   const c=$("#c-hist"); c.innerHTML=""; const H=D.histogramas[v], arr=H.hist["PP+VOX"], n=H.n;
