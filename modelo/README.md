@@ -8,7 +8,7 @@ python3 -m modelo --hoy 2026-11-05    # otro corte
 python3 -m unittest discover -s modelo/tests -t .
 ```
 
-Salidas: `modelo/salida/informe.md` (tablas) y `modelo/salida/pronostico.json` (todas las cifras).
+Salidas en `modelo/salida/`: `informe.md` (tablas), `pronostico.json` (cifras), `datos_pagina.json` y `pagina.html`. La página explica las encuestas con su ficha técnica y el modelo paso a paso, con los datos del corte; se genera desde `modelo/pagina/plantilla.html`.
 
 ## Qué hace cada parte
 
@@ -19,6 +19,7 @@ Salidas: `modelo/salida/informe.md` (tablas) y `modelo/salida/pronostico.json` (
 | `motor/evaluacion.py` | Error de la última encuesta de cada casa frente al resultado, error común de la industria, sesgo de cada casa por ciclo y su estabilidad entre ciclos. Ficha de método (modo, muestra, días de campo) sacada de los datos. |
 | `motor/eventos.py` | Efecto de un acontecimiento: pares antes/después por casa, salto y cambio acumulado según el modelo, umbral de detección calibrado con placebos. Excluye las encuestas cuyo campo coincide con el suceso. |
 | `motor/escanos.py`, `motor/dhondt.py` | Traslado del voto nacional a las 52 circunscripciones (swing proporcional sobre el 23J) y D'Hondt con umbral del 3 %. Reproduce exactamente los escaños de 2023 (test). |
+| `motor/exportar.py` | Reúne fichas, tendencias, sesgos, descomposición de la incertidumbre e histogramas para la página. |
 | `motor/pronostico.py` | Simulación hasta el día de la elección. Suma la incertidumbre de la estimación actual, el movimiento hasta el 29N, el error de industria y el error provincial. Tres variantes de referencia y un promedio simple como comparación. |
 
 ## Decisiones de método (todas modificables)

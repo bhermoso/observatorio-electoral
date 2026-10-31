@@ -65,10 +65,12 @@ def main():
     dias = (ELECCION - hoy).days
     resumen = {}
     ajustes = {}
+    sims = {}
     for var in PR.VARIANTES:
         aj = PR.estimar(actuales, inicio, hoy, var, errores_23j=err)
         ajustes[var] = aj
-        resumen[var] = PR.resumir(PR.simular(aj, dias, n=a.n))
+        sims[var] = PR.simular(aj, dias, n=a.n)
+        resumen[var] = PR.resumir(sims[var])
     simple, casas_simple = PR.promedio_simple(actuales, hoy)
 
     w("## 1. Pronóstico 29N\n")
@@ -209,6 +211,18 @@ def main():
                    industria_23j=ind, retroprueba_23j=bt, umbral_placebo=umbrales),
               open(os.path.join(SALIDA, "pronostico.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=1, default=str)
+    from .motor import exportar
+    datos = exportar.datos(enc=enc, actuales=actuales, inicio=inicio, hoy=hoy, dias=dias, ajustes=ajustes,
+                           sims=sims, resumen=resumen, simple=simple, casas_simple=casas_simple, err=err,
+                           ind=ind, simple23=simple23, bt=bt, res23=res23, est=est, ses_prev=ses_prev,
+                           umbrales=umbrales, prev_all=prev_all, casado=CASADO, urda=URDA, eleccion=ELECCION)
+    json.dump(datos, open(os.path.join(SALIDA, "datos_pagina.json"), "w", encoding="utf-8"),
+              ensure_ascii=False, default=str, separators=(",", ":"))
+    plantilla = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pagina", "plantilla.html")
+    if os.path.exists(plantilla):
+        html = open(plantilla, encoding="utf-8").read().replace(
+            "/*DATOS*/null", json.dumps(datos, ensure_ascii=False, default=str, separators=(",", ":")))
+        open(os.path.join(SALIDA, "pagina.html"), "w", encoding="utf-8").write(html)
     print("\n".join(L))
 
 

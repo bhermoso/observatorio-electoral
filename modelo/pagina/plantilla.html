@@ -1,0 +1,476 @@
+<title>Motor 29N</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Maqueta: columna de lectura de 72ch con tablas y gráficos a ancho completo; índice fijo arriba. */
+:root{
+  --bg:#f6f7f9; --panel:#ffffff; --fg:#161a21; --fg2:#4a5260; --fg3:#737b89; --line:#dde1e7; --line2:#eef0f3;
+  --accent:#34507a; --accent-bg:#e8edf5; --ok:#2f7a4a; --warn:#9a6a00; --bad:#a3313a;
+  --pp:#2A6FD0; --psoe:#B81F2C; --vox:#93C03F; --sumar:#C2408A; --podemos:#6A45B0;
+  --f-body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#13161b; --panel:#1b1f26; --fg:#e8ebf0; --fg2:#b3bac6; --fg3:#8a93a1; --line:#2c323c; --line2:#22272f;
+  --accent:#9db6dc; --accent-bg:#232c3a; --ok:#6cc08a; --warn:#d9a640; --bad:#e2737b;
+  --pp:#4F8BE6; --psoe:#C23A44; --vox:#7AA52F; --sumar:#D24E96; --podemos:#8466D4; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#13161b; --panel:#1b1f26; --fg:#e8ebf0; --fg2:#b3bac6; --fg3:#8a93a1; --line:#2c323c; --line2:#22272f;
+  --accent:#9db6dc; --accent-bg:#232c3a; --ok:#6cc08a; --warn:#d9a640; --bad:#e2737b;
+  --pp:#4F8BE6; --psoe:#C23A44; --vox:#7AA52F; --sumar:#D24E96; --podemos:#8466D4; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:15px/1.55 var(--f-body);margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--panel)}
+.wrap{max-width:1080px;margin:0 auto;padding-block:0 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{padding-block:28px 18px;border-bottom:1px solid var(--line)}
+h1{font-size:28px;line-height:1.15;margin:0 0 6px;letter-spacing:-.01em;text-wrap:balance}
+h2{font-size:22px;margin:0 0 10px;text-wrap:balance;letter-spacing:-.005em}
+h3{font-size:16px;margin:22px 0 6px}
+p,li{max-width:72ch}
+.sub{color:var(--fg2);margin:0}
+.meta{font:12px/1.4 var(--f-mono);color:var(--fg3);display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px}
+nav.idx{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--panel);border-bottom:1px solid var(--line);margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:0 max(16px,env(safe-area-inset-left,0px));overflow-x:auto;white-space:nowrap}
+nav.idx a{display:inline-block;padding:11px 12px;color:var(--fg2);text-decoration:none;font-weight:500;font-size:14px;border-bottom:2px solid transparent}
+nav.idx a:hover,nav.idx a:focus-visible{color:var(--fg);border-bottom-color:var(--accent);outline:none}
+section{padding-block:34px 8px;border-bottom:1px solid var(--line2);scroll-margin-top:48px}
+.lead{font-size:16px;color:var(--fg2)}
+a{color:var(--accent)}
+.tbl{overflow-x:auto;margin:12px 0;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:7px 10px;border-bottom:1px solid var(--line2);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--fg2);font-size:12px;letter-spacing:.02em;background:var(--panel);position:sticky;top:0}
+td.n,th.n{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.row{cursor:pointer}
+tr.row:hover td{background:var(--line2)}
+tr.row:focus-visible td{outline:2px solid var(--accent);outline-offset:-2px}
+tr.det td{background:var(--bg);padding:14px 16px}
+.badge{display:inline-block;font:11px/1 var(--f-mono);padding:3px 6px;border-radius:3px;border:1px solid var(--line);color:var(--fg2);white-space:nowrap}
+.badge.v{border-color:var(--ok);color:var(--ok)}
+.badge.t{border-color:var(--warn);color:var(--warn)}
+.status{font:11px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--fg3)}
+.tag{font:11px/1.2 var(--f-mono);padding:2px 6px;border-radius:3px;background:var(--accent-bg);color:var(--accent);margin-right:6px;text-transform:uppercase;letter-spacing:.04em}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.grid2>*{min-width:0}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px 16px}
+.kv{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;font-size:13.5px}
+.kv dt{color:var(--fg3)}.kv dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.step{display:grid;grid-template-columns:36px 1fr;gap:4px 14px;margin:26px 0}
+.step>.num{font:600 15px/1 var(--f-mono);color:var(--accent);border:1.5px solid var(--accent);border-radius:50%;width:30px;height:30px;display:grid;place-items:center}
+.step>div{min-width:0}
+.step h3{margin:4px 0 6px}
+.formula{font:13.5px/1.6 var(--f-mono);background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);padding:10px 14px;border-radius:4px;overflow-x:auto;white-space:pre;margin:10px 0}
+.controls{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:10px 0;font-size:13.5px}
+.controls label{color:var(--fg3)}
+select,input[type=number]{font:inherit;font-size:13.5px;padding:5px 8px;border:1px solid var(--line);border-radius:4px;background:var(--panel);color:var(--fg)}
+input[type=number]{width:96px;font-family:var(--f-mono)}
+select:focus-visible,input:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.seg button{font:inherit;font-size:13px;padding:5px 10px;border:0;background:var(--panel);color:var(--fg2);cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--accent-bg);color:var(--accent);font-weight:600}
+.chart{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px 6px 4px;overflow-x:auto}
+.chart svg{display:block;width:100%;height:auto;min-width:520px}
+.chart svg text{fill:var(--fg3);font:11px var(--f-mono)}
+.chart svg .lbl{fill:var(--fg);font:600 11.5px var(--f-body)}
+.axis{stroke:var(--line)}.grid{stroke:var(--line2)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--fg2);margin:6px 2px}
+.legend i{display:inline-block;width:12px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+.tip{position:absolute;pointer-events:none;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:6px 9px;font:12px/1.45 var(--f-mono);color:var(--fg);box-shadow:0 2px 10px rgba(0,0,0,.12);white-space:nowrap;z-index:3}
+.note{font-size:13px;color:var(--fg3);max-width:80ch}
+.pos{color:var(--ok)}.neg{color:var(--bad)}
+.callout{border-left:3px solid var(--warn);padding:8px 14px;background:var(--panel);border-radius:0 4px 4px 0;margin:14px 0;max-width:80ch}
+ul.tight{padding-left:20px;margin:6px 0}ul.tight li{margin:3px 0}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+@media (max-width:560px){h1{font-size:23px}.step{grid-template-columns:1fr}.step>.num{margin-bottom:2px}}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <div class="status">Observatorio Electoral · motor de pronóstico</div>
+  <h1>Generales del 29 de noviembre de 2026</h1>
+  <p class="sub" id="hdr-sub"></p>
+  <div class="meta" id="hdr-meta"></div>
+</header>
+<nav class="idx" aria-label="Secciones">
+  <a href="#pronostico">Pronóstico</a><a href="#encuestas">Encuestas</a><a href="#modelo">Cómo funciona</a><a href="#evaluacion">Evaluación</a><a href="#eventos">Urda y otros sucesos</a><a href="#limites">Límites</a>
+</nav>
+
+<section id="pronostico">
+  <h2>Pronóstico</h2>
+  <p class="lead" id="pron-lead"></p>
+  <div class="tbl"><table id="t-pron"></table></div>
+  <div class="tbl"><table id="t-bloques"></table></div>
+  <p class="note">Cada celda: mediana de las simulaciones y, entre paréntesis, el intervalo que contiene el 90 % de ellas. Las tres variantes son el mismo modelo con tres definiciones distintas de «sesgo cero»; se explican en <a href="#modelo">Cómo funciona</a>, paso 3.</p>
+  <h3>Escaños de PP + Vox en las simulaciones</h3>
+  <div class="controls"><span class="seg" id="seg-hist" role="group" aria-label="Variante"></span></div>
+  <div class="chart" id="c-hist"></div>
+</section>
+
+<section id="encuestas">
+  <h2>Encuestas</h2>
+  <p class="lead">Todas las encuestas nacionales del ciclo 2023-2026 que usa el motor, con su ficha. Pulse una fila para ver la ficha completa, los valores publicados y el valor que resulta tras corregir el sesgo de la casa.</p>
+  <p class="note"><span class="badge v">verificada</span> registro primario del observatorio, contrastado con el documento original. <span class="badge t">terceros</span> recopilación externa con enlace a la publicación, no contrastada todavía.</p>
+  <div class="tbl"><table id="t-enc"></table></div>
+  <h3>Últimas encuestas antes del 23J de 2023</h3>
+  <p class="note">Base de la evaluación de la sección <a href="#evaluacion">Evaluación</a>.</p>
+  <div class="tbl"><table id="t-enc23"></table></div>
+</section>
+
+<section id="modelo">
+  <h2>Cómo funciona</h2>
+  <p class="lead">El motor convierte un conjunto de encuestas heterogéneas en una estimación de voto y escaños con su incertidumbre. Lo hace en siete pasos encadenados. Cada paso indica qué es dato, qué es supuesto y qué es resultado del modelo.</p>
+
+  <div class="step"><div class="num">1</div><div>
+    <h3>Reunir y normalizar</h3>
+    <p>Se cargan tres fuentes en un formato común: el registro verificado del observatorio, las tablas de Wikipedia del ciclo 2019-2023 y las encuestas privadas del proyecto 29N. Se unifican los nombres de casas («Imop Insights» e «IMOP» son la misma) y de partidos. Cada encuesta conserva su origen. Si una casa aparece dos veces con fin de campo a dos días o menos, se conserva el registro verificado.</p>
+    <p>La fecha que cuenta es la del trabajo de campo, no la de publicación: se toma el día central del campo. Cuando la fuente no da el inicio, se usa el día anterior al fin.</p>
+    <p class="note"><span class="tag">dato</span>votos, muestras y fechas publicadas. <span class="tag">supuesto</span>día central del campo como fecha de la medida.</p>
+  </div></div>
+
+  <div class="step"><div class="num">2</div><div>
+    <h3>Cada encuesta es una medida con error</h3>
+    <p>Una encuesta de 1.000 entrevistas que da al PP un 31 % no dice que el PP tenga un 31 %; dice que, si el método fuera perfecto, el valor real estaría cerca. El error se compone de dos partes:</p>
+    <div class="formula">varianza = error muestral² + error no muestral²
+
+error muestral = √( p·(1−p) / (n / 1,5) ) × 100
+error no muestral = 1,0 pp × √(p / 25)</div>
+    <p>El factor 1,5 (efecto de diseño) reconoce que ninguna encuesta es una muestra aleatoria simple: la ponderación y las cuotas reducen la muestra efectiva. El error no muestral recoge lo que el tamaño no explica (redacción, momento, imputación del indeciso) y se reduce para los partidos pequeños. Las casas que publican trackings diarios no deben pesar más por publicar más: la varianza se multiplica por el número de encuestas propias en los siete días alrededor.</p>
+    <p>La tabla muestra las encuestas de los últimos 30 días para el PP. El peso es la proporción de la inversa de la varianza; indica cuánto pesa cada encuesta frente a las demás antes de que entre la tendencia.</p>
+    <div class="tbl"><table id="t-pesos"></table></div>
+    <p class="note"><span class="tag">supuesto</span>efecto de diseño 1,5 y error no muestral 1,0 pp. Son valores convencionales en la literatura de agregación; aquí no se han estimado con datos propios.</p>
+  </div></div>
+
+  <div class="step"><div class="num">3</div><div>
+    <h3>El sesgo de cada casa</h3>
+    <p>Cada casa tiene su «cocina»: cómo pondera por recuerdo de voto, cómo asigna a los indecisos, si entrevista por teléfono o por internet. El resultado es una desviación estable respecto a las demás. El modelo la estima como un número fijo por casa y partido: el sesgo de casa. Después la resta de cada encuesta.</p>
+    <p>Una casa solo puede compararse con otras casas o con un resultado electoral. Por eso hay que decidir qué es «sesgo cero», y esa decisión mueve el resultado. El motor publica tres variantes:</p>
+    <ul class="tight" id="ul-var"></ul>
+    <div class="controls"><label for="sel-ses-p">Partido</label><select id="sel-ses-p"></select><span class="seg" id="seg-ses" role="group" aria-label="Variante"></span></div>
+    <div class="chart" id="c-ses"></div>
+    <p class="note">Puntos: sesgo estimado (pp) respecto a la referencia de la variante. Barras: ± un error típico. Una casa con una sola encuesta tiene un sesgo poco determinado: la previa lo atrae hacia cero.</p>
+    <p class="note"><span class="tag">resultado del modelo</span>sesgos y errores típicos. <span class="tag">decisión</span>qué casas definen el cero.</p>
+  </div></div>
+
+  <div class="step"><div class="num">4</div><div>
+    <h3>La tendencia día a día</h3>
+    <p>La intención de voto real no se observa: es una serie diaria que se mueve poco a poco. El modelo supone que cada día puede variar de forma aleatoria con una desviación de 0,15 pp para un partido del 25 % (paseo aleatorio). Con esa regla y las encuestas corregidas, calcula la serie más coherente con todas las observaciones a la vez:</p>
+    <div class="formula">encuesta(i)  = intención(día de i) + sesgo(casa de i) + error(i)
+intención(t) = intención(t−1) + variación(t),   variación ~ N(0; 0,15 pp)</div>
+    <p>Ambas ecuaciones se resuelven juntas, de forma exacta (son lineales y gaussianas), y dan para cada día una estimación y su error típico. Una encuesta aislada que se sale de la tendencia pesa poco; muchas que se desplazan en la misma dirección la mueven.</p>
+    <div class="controls"><label for="sel-ten-p">Partido</label><select id="sel-ten-p"></select><span class="seg" id="seg-ten" role="group" aria-label="Variante"></span></div>
+    <div class="chart" id="c-ten"></div>
+    <div class="legend"><span><i style="background:var(--fg3)"></i>publicado</span><span><i style="background:var(--accent)"></i>corregido por sesgo de casa</span><span><i style="background:var(--accent);opacity:.25;height:8px"></i>tendencia ± 2 errores típicos</span></div>
+  </div></div>
+
+  <div class="step"><div class="num">5</div><div>
+    <h3>De hoy al 29 de noviembre</h3>
+    <p>La estimación de hoy no es la del día de la elección. El pronóstico suma tres fuentes de incertidumbre independientes:</p>
+    <ul class="tight">
+      <li><b>Estimación de hoy</b>: el error típico de la tendencia en la fecha de corte.</li>
+      <li><b>Movimiento hasta el 29N</b>: lo que puede moverse la intención en los días que faltan, según la misma regla del paseo aleatorio.</li>
+      <li><b>Error de industria</b>: lo que fallan todas las casas a la vez en la misma dirección. Ninguna corrección de sesgos lo elimina, porque se calcula comparando unas casas con otras. Se fija en 1,5 pp para un partido del 25 %, a partir del 23J: allí la media de las casas falló al PSOE en 2,5 pp, y la raíz cuadrática media de ese error en los cuatro grandes partidos fue de 1,4 pp.</li>
+    </ul>
+    <div class="formula">error total = √( hoy² + movimiento² + industria² )</div>
+    <div class="controls"><span class="seg" id="seg-inc" role="group" aria-label="Variante"></span></div>
+    <div class="tbl"><table id="t-inc"></table></div>
+    <p class="note">El error de industria domina. Cuanto más cerca esté la elección, menor será el movimiento, pero el error de industria no baja: es el límite de lo que pueden decir las encuestas.</p>
+  </div></div>
+
+  <div class="step"><div class="num">6</div><div>
+    <h3>De votos a escaños</h3>
+    <p>Los escaños se reparten en 52 circunscripciones, no en el conjunto de España. El motor traslada el voto nacional de cada partido a cada provincia en proporción a lo que obtuvo allí el 23J (swing proporcional): si el PP pasa del 33,1 % nacional al 31 %, su voto en cada provincia se multiplica por 31/33,1. Después se reajusta para que la suma nacional cuadre. Sumar de 2023 se reparte entre Sumar y Podemos según el peso que les dan hoy las encuestas. SALF, sin base en 2023, recibe el mismo porcentaje en todas las provincias. En cada provincia se aplica D'Hondt con un umbral del 3 % sobre los votos válidos, blancos incluidos. Ceuta y Melilla eligen un escaño por mayoría simple.</p>
+    <p><b>Comprobación</b>: con los votos oficiales del 23J, el motor reproduce exactamente los 350 escaños de 2023. Esto valida el cálculo del reparto, no el supuesto de que la geografía del voto se mantenga.</p>
+    <h3>Calculadora D'Hondt</h3>
+    <p class="note">Para ver cómo se reparte una provincia. Valores iniciales: votos oficiales del 23J en Toledo (BOE), cuatro primeras candidaturas, 6 escaños. El resto de candidaturas no se incluye, por lo que el umbral es aproximado.</p>
+    <div class="controls" id="dh-in"></div>
+    <div class="tbl"><table id="t-dh"></table></div>
+    <p class="note"><span class="tag">supuesto</span>la geografía relativa del voto del 23J se mantiene. <span class="tag">supuesto</span>reparto Sumar/Podemos 2023 según las encuestas actuales.</p>
+  </div></div>
+
+  <div class="step"><div class="num">7</div><div>
+    <h3>Simulación</h3>
+    <p>Se generan miles de elecciones posibles. En cada una se sortea el voto nacional de cada partido con el error total del paso 5. A cada provincia se le añade un error propio (±8 % del voto del partido en esa provincia), se reparte con D'Hondt y se suman los escaños. Las medianas, los intervalos y las probabilidades del <a href="#pronostico">pronóstico</a> son recuentos sobre esas simulaciones. «98 %» significa que la condición se cumple en 98 de cada 100 simulaciones, dados los supuestos.</p>
+  </div></div>
+</section>
+
+<section id="evaluacion">
+  <h2>Evaluación de las encuestas</h2>
+  <h3>Error frente al resultado del 23J</h3>
+  <p>Última encuesta de cada casa en las tres semanas anteriores a la elección. Error = encuesta − resultado, en puntos.</p>
+  <div class="tbl"><table id="t-err"></table></div>
+  <p id="p-ind"></p>
+  <h3>Retroprueba: ¿mejora el modelo al promedio simple?</h3>
+  <p>Se ejecuta el modelo con las encuestas disponibles hasta el 22 de julio de 2023 y se compara con el resultado.</p>
+  <div class="tbl"><table id="t-bt"></table></div>
+  <div class="callout" id="bt-lectura"></div>
+  <h3>Comparabilidad entre ciclos</h3>
+  <p>Sesgo de cada casa respecto al consenso de las privadas en 2019-2023 (noviembre de 2019 a enero de 2023) y en 2023-2026. IZQ es el espacio a la izquierda del PSOE: Unidas Podemos + Más País en el primer ciclo, Sumar + Podemos en el segundo, solo cuando la casa publica ambos.</p>
+  <div class="tbl"><table id="t-est"></table></div>
+  <p class="note">La correlación mide si las casas que se desviaban hacia un lado siguen haciéndolo. Con nueve casas comunes es orientativa. La correlación negativa en IZQ indica que las candidaturas de ese espacio no son comparables entre ciclos.</p>
+</section>
+
+<section id="eventos">
+  <h2>Urda y otros sucesos</h2>
+  <div class="callout" id="urda-estado"></div>
+  <p>Para medir el efecto de un suceso el motor usa tres medidas, de menos a más supuestos:</p>
+  <ul class="tight">
+    <li><b>Pares por casa</b>: última encuesta de cada instituto antes del suceso frente a la primera con todo el campo posterior. El sesgo de la casa se cancela.</li>
+    <li><b>Salto en la tendencia</b>: el modelo deja libre el cambio del día del suceso y lo estima con su error. También mide el cambio acumulado a 7 y 14 días, porque el efecto puede tardar.</li>
+    <li><b>Umbral de detección</b>: la misma medida aplicada a fechas sin suceso elegido, cada 14 días del ciclo 2019-2023. Si un cambio no supera lo que ocurre en esas fechas en el 95 % de los casos, no se distingue del ruido.</li>
+  </ul>
+  <p>Se excluyen las encuestas cuyo campo incluye el día del suceso, porque mezclan entrevistas de antes y de después.</p>
+  <div class="tbl"><table id="t-umb"></table></div>
+  <h3>Validación con un caso conocido: crisis Casado–Ayuso, 17 de febrero de 2022</h3>
+  <div class="controls"><label for="sel-cas-p">Partido</label><select id="sel-cas-p"></select></div>
+  <div class="chart" id="c-cas"></div>
+  <div class="tbl"><table id="t-cas"></table></div>
+  <p class="note" id="cas-lectura"></p>
+</section>
+
+<section id="limites">
+  <h2>Límites</h2>
+  <ul class="tight">
+    <li>Solo hay un precedente evaluado con encuestas privadas (23J). Para evaluar 2015, 2016 y 2019 hacen falta las tablas históricas completas.</li>
+    <li>Las encuestas finales de 2023 y las del ciclo 2019-2023 proceden de recopilaciones de terceros sin contrastar con el original. Dos de las finales de 2023 están incompletas.</li>
+    <li>Antes de octubre de 2026 hay pocas encuestas en el sistema: la tendencia previa aporta poca información.</li>
+    <li>El voto de los partidos regionales lo publican pocas casas; sus sesgos están poco determinados.</li>
+    <li>Los valores de efecto de diseño, error no muestral, variación diaria y error de industria son supuestos declarados, no estimaciones propias.</li>
+    <li>El pronóstico no incorpora ningún efecto de Urda mientras no haya encuestas posteriores.</li>
+  </ul>
+  <p class="note">Código, datos y procedencia: <a href="https://github.com/bhermoso/observatorio-electoral/tree/main/modelo">github.com/bhermoso/observatorio-electoral/modelo</a>. Datos de terceros: <a href="https://github.com/endikasatu/encuestas_esp">endikasatu/encuestas_esp</a> (tablas de Wikipedia) y <a href="https://github.com/elCanosail/29N">elCanosail/29N</a>, licencia MIT.</p>
+</section>
+</div>
+
+<script>
+const D = /*DATOS*/null;
+const $ = s => document.querySelector(s);
+const P5 = ["PP","PSOE","VOX","SUMAR","PODEMOS"];
+const NOM = {PP:"PP",PSOE:"PSOE",VOX:"Vox",SUMAR:"Sumar",PODEMOS:"Podemos",SALF:"SALF",ERC:"ERC",JUNTS:"Junts",BILDU:"EH Bildu",PNV:"PNV",BNG:"BNG",CC:"CC",UPN:"UPN",IZQ:"IZQ"};
+const COL = p => ({PP:"var(--pp)",PSOE:"var(--psoe)",VOX:"var(--vox)",SUMAR:"var(--sumar)",PODEMOS:"var(--podemos)"}[p]||"var(--fg2)");
+const VARS = Object.keys(D.variantes);
+const VNOM = {consenso_privadas:"Consenso privadas",consenso_todas:"Consenso con CIS",calibrada_23j:"Calibrada 23J"};
+const fmt = (x,d=1) => x==null?"—":Number(x).toLocaleString("es-ES",{minimumFractionDigits:d,maximumFractionDigits:d});
+const sg = (x,d=1) => x==null?"—":(x>0?"+":x<0?"−":"")+fmt(Math.abs(x),d);
+const fecha = s => { if(!s) return "—"; const [y,m,d]=String(s).slice(0,10).split("-"); return `${+d}/${+m}/${y}`; };
+const esc = s => String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const NS="http://www.w3.org/2000/svg";
+function el(tag,attrs={},parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+function addDays(s,n){const d=new Date(String(s).slice(0,10)+"T00:00:00Z");d.setUTCDate(d.getUTCDate()+n);return d}
+function dayIdx(s,ini){return Math.round((new Date(String(s).slice(0,10)+"T00:00:00Z")-new Date(String(ini).slice(0,10)+"T00:00:00Z"))/864e5)}
+function seg(id,opts,cur,on){const c=$(id);c.innerHTML="";opts.forEach(o=>{const b=document.createElement("button");b.type="button";b.textContent=VNOM[o]||o;b.setAttribute("aria-pressed",o===cur);b.onclick=()=>{[...c.children].forEach(x=>x.setAttribute("aria-pressed",x===b));on(o)};c.appendChild(b)})}
+function fillSel(id,opts,cur){const s=$(id);s.innerHTML=opts.map(o=>`<option value="${o}"${o===cur?" selected":""}>${NOM[o]||o}</option>`).join("")}
+function tip(container){let t=container.querySelector(".tip");if(!t){t=document.createElement("div");t.className="tip";t.hidden=true;container.appendChild(t)}return {show(html,x,y){t.innerHTML=html;t.hidden=false;const w=container.clientWidth;t.style.left=Math.min(Math.max(4,x+12),w-t.offsetWidth-4)+"px";t.style.top=Math.max(4,y-10)+"px"},hide(){t.hidden=true}}}
+
+/* ---------- Cabecera ---------- */
+const dTot = Object.values(D.conteo).reduce((a,b)=>a+b,0);
+$("#hdr-sub").textContent = `Corte de datos: ${fecha(D.corte)}. Faltan ${D.dias} días para la elección.`;
+$("#hdr-meta").innerHTML = `<span>${dTot} encuestas en el sistema</span>` + Object.entries(D.conteo).map(([k,v])=>`<span>${esc(k)}: ${v}</span>`).join("") + `<span>${D.encuestas.length} del ciclo actual</span>`;
+
+/* ---------- Pronóstico ---------- */
+{
+  const R = D.resumen, PS = Object.keys(R.consenso_privadas.partidos);
+  const r0 = R.consenso_privadas, r2 = R.calibrada_23j;
+  $("#pron-lead").textContent = `Las tres variantes coinciden en que PP y Vox superan los 176 escaños en al menos el ${Math.round(Math.min(...VARS.map(v=>R[v].bloques["PP+VOX"].p_mayoria))*100)} % de las simulaciones. Discrepan en la distancia entre PP y PSOE: la probabilidad de que el PP sea primera fuerza va del ${Math.round(r2.partidos.PP.primero*100)} % al ${Math.round(r0.partidos.PP.primero*100)} %, según qué casas se tomen como referencia. El pronóstico no incorpora el accidente de Urda porque aún no hay encuestas posteriores.`;
+  let h = `<thead><tr><th>Partido</th><th class="n">Promedio simple</th>${VARS.map(v=>`<th class="n">${VNOM[v]}<br>voto %</th><th class="n">escaños</th>`).join("")}</tr></thead><tbody>`;
+  PS.forEach(p=>{h+=`<tr><td><b>${NOM[p]}</b></td><td class="n">${fmt(D.promedio_simple[p])}</td>`+VARS.map(v=>{const x=R[v].partidos[p];return `<td class="n">${fmt(x.voto[0])} <span style="color:var(--fg3)">(${fmt(x.voto[1])}–${fmt(x.voto[2])})</span></td><td class="n"><b>${fmt(x.escanos[0],0)}</b> <span style="color:var(--fg3)">(${fmt(x.escanos[1],0)}–${fmt(x.escanos[2],0)})</span></td>`}).join("")+`</tr>`});
+  $("#t-pron").innerHTML = h+"</tbody>";
+  const BN = {"PP+VOX":"PP + Vox","PP+VOX+UPN":"PP + Vox + UPN","PSOE+SUMAR+PODEMOS":"PSOE + Sumar + Podemos","PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC":"PSOE + Sumar + Podemos + ERC + Junts + Bildu + PNV + BNG + CC"};
+  h = `<thead><tr><th>Bloque</th>${VARS.map(v=>`<th class="n">${VNOM[v]}<br>escaños</th><th class="n">P(≥176)</th>`).join("")}</tr></thead><tbody>`;
+  Object.keys(BN).forEach(b=>{h+=`<tr><td>${BN[b]}</td>`+VARS.map(v=>{const x=R[v].bloques[b];return `<td class="n">${fmt(x.mediana,0)} <span style="color:var(--fg3)">(${fmt(x.p5,0)}–${fmt(x.p95,0)})</span></td><td class="n"><b>${Math.round(x.p_mayoria*100)} %</b></td>`}).join("")+"</tr>"});
+  h += `<tr><td>PP primera fuerza</td>`+VARS.map(v=>`<td></td><td class="n"><b>${Math.round(R[v].partidos.PP.primero*100)} %</b></td>`).join("")+"</tr>";
+  $("#t-bloques").innerHTML = h+"</tbody>";
+  $("#t-bloques").insertAdjacentHTML("afterend","");
+  const ps = $("#t-pron").closest(".tbl"); ps.insertAdjacentHTML("afterend",`<p class="note">Promedio simple: última encuesta de cada casa en los últimos 30 días, mismo peso, sin correcciones (${D.casas_simple.join(", ")}). Se muestra como referencia.</p>`);
+}
+function drawHist(v){
+  const c=$("#c-hist"); c.innerHTML=""; const H=D.histogramas[v], arr=H.hist["PP+VOX"], n=H.n;
+  let lo=arr.findIndex(x=>x>0), hi=arr.length-1; while(hi>0&&arr[hi]===0)hi--; lo=Math.min(lo,160); hi=Math.max(hi,190);
+  const W=900,Hh=240,m={l:44,r:16,t:16,b:34}, iw=W-m.l-m.r, ih=Hh-m.t-m.b;
+  const mx=Math.max(...arr.slice(lo,hi+1))/n;
+  const svg=el("svg",{viewBox:`0 0 ${W} ${Hh}`,role:"img","aria-label":"Distribución de escaños de PP más Vox"},c);
+  const x=s=>m.l+(s-lo)/(hi-lo+1)*iw, y=f=>m.t+ih-f/mx*ih, bw=iw/(hi-lo+1);
+  for(let k=0;k<=4;k++){const f=mx*k/4;el("line",{x1:m.l,x2:W-m.r,y1:y(f),y2:y(f),class:"grid"},svg);el("text",{x:m.l-6,y:y(f)+4,"text-anchor":"end"},svg).textContent=fmt(f*100,1)+"%"}
+  const t=tip(c);
+  for(let s=lo;s<=hi;s++){const f=(arr[s]||0)/n; if(!f) continue; const r=el("rect",{x:x(s)+1,y:y(f),width:Math.max(bw-2,1),height:Math.max(m.t+ih-y(f),0),rx:Math.min(2,bw/3),fill:s>=176?"var(--pp)":"var(--fg3)"},svg);
+    const hit=el("rect",{x:x(s),y:m.t,width:bw,height:ih,fill:"transparent"},svg);
+    hit.addEventListener("mousemove",ev=>{const b=c.getBoundingClientRect();t.show(`${s} escaños: ${fmt(f*100,1)} % de simulaciones`,ev.clientX-b.left,ev.clientY-b.top)});hit.addEventListener("mouseleave",t.hide)}
+  el("line",{x1:x(176),x2:x(176),y1:m.t,y2:m.t+ih,stroke:"var(--fg)","stroke-dasharray":"3 3"},svg);
+  el("text",{x:x(176)+4,y:m.t+10,class:"lbl"},svg).textContent="mayoría absoluta: 176";
+  for(let s=Math.ceil(lo/10)*10;s<=hi;s+=10){el("text",{x:x(s)+bw/2,y:Hh-12,"text-anchor":"middle"},svg).textContent=s}
+  el("line",{x1:m.l,x2:W-m.r,y1:m.t+ih,y2:m.t+ih,class:"axis"},svg);
+}
+seg("#seg-hist",VARS,VARS[0],drawHist); drawHist(VARS[0]);
+
+/* ---------- Encuestas ---------- */
+function badge(o){return o==="verificada"?'<span class="badge v">verificada</span>':'<span class="badge t">terceros</span>'}
+function ficha(e){
+  const kv=(k,v)=>v==null||v===""?"":`<dt>${k}</dt><dd>${v}</dd>`;
+  const link=(u,t)=>u?`<a href="${esc(u)}" target="_blank" rel="noopener">${t||esc(u)}</a>`:null;
+  const vals=Object.entries(e.voto).map(([p,v])=>`<tr><td>${NOM[p]||p}</td><td class="n">${fmt(v)}</td><td class="n">${e.corregido&&e.corregido[p]!=null?fmt(e.corregido[p]):"—"}</td><td class="n">${e.escanos_publicados&&e.escanos_publicados[Object.keys(e.escanos_publicados).find(k=>k.toUpperCase().startsWith(p.slice(0,3)))]?(()=>{const s=e.escanos_publicados[Object.keys(e.escanos_publicados).find(k=>k.toUpperCase().startsWith(p.slice(0,3)))];return s.point!=null?s.point:`${s.min}–${s.max}`})():"—"}</td></tr>`).join("");
+  return `<div class="grid2"><dl class="kv">${kv("Casa",esc(e.casa))}${kv("Cliente",esc(e.cliente))}${kv("Estudio",esc(e.titulo||e.estudio))}${kv("Campo",`${fecha(e.campo_ini)} – ${fecha(e.campo_fin)}`)}${kv("Publicación",fecha(e.publicacion))}${kv("Muestra",e.n?e.n.toLocaleString("es-ES"):null)}${kv("Modo",esc(e.modo))}${kv("Ámbito",esc(e.ambito))}${kv("Universo",esc(e.universo))}${kv("Escenario",esc(e.escenario))}${kv("Denominador",esc(e.denominador))}${kv("Ponderación",esc(e.ponderacion))}${kv("Origen",badge(e.origen))}${kv("Verificación",esc(e.verificacion))}${kv("Verificado",fecha(e.verificado))}${kv("Fuente",link(e.url,"documento publicado"))}${kv("Ficha técnica",link(e.ficha_url,"ficha técnica"))}${kv("Microdatos",link(e.microdatos,"microdatos"))}${kv("Cuestionario",link(e.cuestionario,"cuestionario"))}</dl>
+  <div><table><thead><tr><th>Partido</th><th class="n">Publicado %</th><th class="n">Corregido %</th><th class="n">Escaños publicados</th></tr></thead><tbody>${vals}</tbody></table>${e.notas?`<p class="note">${esc(e.notas)}</p>`:""}</div></div>`;
+}
+function tablaEnc(id,lista,cols){
+  const t=$(id); let h=`<thead><tr><th>Casa</th><th>Campo</th><th class="n">Muestra</th><th>Modo</th><th>Origen</th>${cols.map(p=>`<th class="n">${NOM[p]}</th>`).join("")}</tr></thead><tbody>`;
+  lista.slice().sort((a,b)=>String(b.campo_fin).localeCompare(String(a.campo_fin))).forEach((e,i)=>{
+    h+=`<tr class="row" tabindex="0" aria-expanded="false" data-i="${i}"><td><b>${esc(e.casa)}</b>${e.cliente?`<br><span style="color:var(--fg3);font-size:12px">${esc(e.cliente)}</span>`:""}</td><td class="n">${fecha(e.campo_ini)}<br>${fecha(e.campo_fin)}</td><td class="n">${e.n.toLocaleString("es-ES")}</td><td style="max-width:200px;font-size:12.5px">${esc((e.modo||"—").slice(0,60))}</td><td>${badge(e.origen)}</td>${cols.map(p=>`<td class="n">${fmt(e.voto[p])}</td>`).join("")}</tr><tr class="det" hidden><td colspan="${5+cols.length}">${ficha(e)}</td></tr>`});
+  t.innerHTML=h+"</tbody>";
+  t.querySelectorAll("tr.row").forEach(r=>{const tog=()=>{const d=r.nextElementSibling;d.hidden=!d.hidden;r.setAttribute("aria-expanded",!d.hidden)};r.onclick=tog;r.onkeydown=ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();tog()}}});
+}
+tablaEnc("#t-enc",D.encuestas,P5);
+tablaEnc("#t-enc23",D.finales_23j,["PP","PSOE","VOX","SUMAR"]);
+
+/* ---------- Paso 2: pesos ---------- */
+{
+  let h=`<thead><tr><th>Casa</th><th>Fin campo</th><th class="n">Muestra</th><th class="n">PP publicado</th><th class="n">Error muestral</th><th class="n">Error total</th><th class="n">Encuestas propias ±7 días</th><th class="n">Peso</th><th class="n">Sesgo de casa</th><th class="n">PP corregido</th></tr></thead><tbody>`;
+  D.ejemplo_pp.forEach(f=>{h+=`<tr><td>${esc(f.casa)}</td><td class="n">${fecha(f.campo_fin)}</td><td class="n">${f.n.toLocaleString("es-ES")}</td><td class="n">${fmt(f.valor)}</td><td class="n">±${fmt(f.sd_muestral,2)}</td><td class="n">±${fmt(f.sd_total,2)}</td><td class="n">${f.vecinas}</td><td class="n"><b>${fmt(f.peso)} %</b></td><td class="n">${sg(f.sesgo,2)}</td><td class="n">${fmt(f.corregido,2)}</td></tr>`});
+  $("#t-pesos").innerHTML=h+"</tbody>";
+}
+$("#ul-var").innerHTML = VARS.map(v=>`<li><b>${VNOM[v]}</b>: ${esc(D.variantes[v])}</li>`).join("");
+
+/* ---------- Paso 3: sesgos ---------- */
+let sesP="PP", sesV=VARS[0];
+function drawSes(){
+  const c=$("#c-ses"); c.innerHTML=""; const T=D.tendencias[sesV][sesP]; if(!T){c.textContent="Sin datos";return}
+  const rows=Object.entries(T.sesgos).sort((a,b)=>a[1][0]-b[1][0]);
+  const W=900,rh=26,m={l:170,r:30,t:24,b:30},H=m.t+m.b+rows.length*rh;
+  const ext=Math.max(3,...rows.map(([,s])=>Math.abs(s[0])+s[1]+0.5));
+  const svg=el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":"Sesgo de casa por instituto"},c);
+  const x=v=>m.l+(v+ext)/(2*ext)*(W-m.l-m.r);
+  for(let k=-Math.floor(ext);k<=Math.floor(ext);k+=(ext>6?2:1)){el("line",{x1:x(k),x2:x(k),y1:m.t-6,y2:H-m.b,class:k===0?"axis":"grid"},svg);el("text",{x:x(k),y:H-m.b+16,"text-anchor":"middle"},svg).textContent=(k>0?"+":"")+k}
+  el("text",{x:x(0),y:12,"text-anchor":"middle"},svg).textContent="sesgo (pp) · 0 = referencia de la variante";
+  const t=tip(c);
+  rows.forEach(([casa,[mu,sd,n]],i)=>{const y=m.t+i*rh+rh/2; const anc=T.anclas.includes(casa);
+    el("text",{x:m.l-10,y:y+4,"text-anchor":"end",class:"lbl"},svg).textContent=casa+(anc?" ·":"");
+    el("line",{x1:x(mu-sd),x2:x(mu+sd),y1:y,y2:y,stroke:COL(sesP),"stroke-width":2},svg);
+    el("circle",{cx:x(mu),cy:y,r:5,fill:COL(sesP),stroke:"var(--panel)","stroke-width":2},svg);
+    const hit=el("rect",{x:0,y:y-rh/2,width:W,height:rh,fill:"transparent"},svg);
+    hit.addEventListener("mousemove",ev=>{const b=c.getBoundingClientRect();t.show(`${esc(casa)}: ${sg(mu,2)} ± ${fmt(sd,2)} pp · ${n} encuesta${n>1?"s":""}${anc?" · en la referencia":""}`,ev.clientX-b.left,ev.clientY-b.top)});hit.addEventListener("mouseleave",t.hide)});
+  c.insertAdjacentHTML("beforeend",`<p class="note" style="margin:4px 8px">Casas marcadas con «·»: forman la referencia (su media es cero). En la variante calibrada no hay referencia de consenso: las casas con historial en el 23J reciben una previa igual al 50 % de su error de entonces.</p>`);
+}
+fillSel("#sel-ses-p",P5,sesP); $("#sel-ses-p").onchange=e=>{sesP=e.target.value;drawSes()};
+seg("#seg-ses",VARS,sesV,v=>{sesV=v;drawSes()}); drawSes();
+
+/* ---------- Paso 4: tendencia ---------- */
+let tenP="PP", tenV=VARS[0];
+function drawTen(){
+  const c=$("#c-ten"); c.innerHTML=""; const T=D.tendencias[tenV][tenP]; if(!T){c.textContent="Sin datos";return}
+  const ini=D.inicio_ciclo, N=T.media.length; const start=Math.max(0,N-150);
+  const enc=D.encuestas.filter(e=>e.voto[tenP]!=null&&dayIdx(e.dia_central,ini)>=start);
+  const W=900,H=320,m={l:44,r:70,t:16,b:30},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const vals=[...enc.map(e=>e.voto[tenP]),...T.media.slice(start).map((v,i)=>v+2*T.sd[start+i]),...T.media.slice(start).map((v,i)=>v-2*T.sd[start+i])];
+  let lo=Math.floor(Math.min(...vals)-0.5), hi=Math.ceil(Math.max(...vals)+0.5);
+  const x=i=>m.l+(i-start)/(N-1-start)*iw, y=v=>m.t+ih-(v-lo)/(hi-lo)*ih;
+  const svg=el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":"Tendencia de voto con encuestas publicadas y corregidas"},c);
+  const stp=Math.max(1,Math.round((hi-lo)/6));
+  for(let v=lo;v<=hi;v+=stp){el("line",{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),class:"grid"},svg);el("text",{x:m.l-6,y:y(v)+4,"text-anchor":"end"},svg).textContent=v+"%"}
+  for(let i=start;i<N;i++){const d=addDays(ini,i);if(d.getUTCDate()===1){el("line",{x1:x(i),x2:x(i),y1:m.t+ih,y2:m.t+ih+4,class:"axis"},svg);el("text",{x:x(i),y:H-10,"text-anchor":"middle"},svg).textContent=d.toLocaleDateString("es-ES",{month:"short",timeZone:"UTC"})+" "+String(d.getUTCFullYear()).slice(2)}}
+  let band="";for(let i=start;i<N;i++)band+=(i===start?"M":"L")+x(i)+","+y(T.media[i]+2*T.sd[i]);for(let i=N-1;i>=start;i--)band+="L"+x(i)+","+y(T.media[i]-2*T.sd[i]);
+  el("path",{d:band+"Z",fill:"var(--accent)",opacity:.16},svg);
+  let ln="";for(let i=start;i<N;i++)ln+=(i===start?"M":"L")+x(i)+","+y(T.media[i]);
+  el("path",{d:ln,fill:"none",stroke:"var(--accent)","stroke-width":2},svg);
+  enc.forEach(e=>{const i=dayIdx(e.dia_central,ini),v=e.voto[tenP],cv=e.corregido[tenP];
+    if(cv!=null&&Math.abs(cv-v)>0.05)el("line",{x1:x(i),x2:x(i),y1:y(v),y2:y(cv),stroke:"var(--fg3)","stroke-width":1,"stroke-dasharray":"2 2"},svg);
+    el("circle",{cx:x(i),cy:y(v),r:4,fill:"var(--panel)",stroke:"var(--fg3)","stroke-width":1.5},svg);
+    if(cv!=null)el("circle",{cx:x(i),cy:y(cv),r:4,fill:"var(--accent)",stroke:"var(--panel)","stroke-width":1.5},svg)});
+  el("text",{x:x(N-1)+6,y:y(T.media[N-1])+4,class:"lbl"},svg).textContent=fmt(T.media[N-1])+" %";
+  el("line",{x1:m.l,x2:W-m.r,y1:m.t+ih,y2:m.t+ih,class:"axis"},svg);
+  const cross=el("line",{y1:m.t,y2:m.t+ih,stroke:"var(--fg3)","stroke-width":1,visibility:"hidden"},svg);
+  const t=tip(c);
+  const hit=el("rect",{x:m.l,y:m.t,width:iw,height:ih,fill:"transparent"},svg);
+  hit.addEventListener("mousemove",ev=>{const b=svg.getBoundingClientRect(),sx=(ev.clientX-b.left)/b.width*W;const i=Math.max(start,Math.min(N-1,Math.round(start+(sx-m.l)/iw*(N-1-start))));cross.setAttribute("x1",x(i));cross.setAttribute("x2",x(i));cross.setAttribute("visibility","visible");
+    const near=enc.filter(e=>Math.abs(dayIdx(e.dia_central,ini)-i)<=2).map(e=>`<br>${esc(e.casa)}: ${fmt(e.voto[tenP])} → ${fmt(e.corregido[tenP])}`).join("");
+    const cb=c.getBoundingClientRect();t.show(`${addDays(ini,i).toLocaleDateString("es-ES",{timeZone:"UTC"})}<br>tendencia ${fmt(T.media[i])} ± ${fmt(2*T.sd[i])}${near}`,ev.clientX-cb.left,ev.clientY-cb.top)});
+  hit.addEventListener("mouseleave",()=>{t.hide();cross.setAttribute("visibility","hidden")});
+}
+fillSel("#sel-ten-p",P5,tenP); $("#sel-ten-p").onchange=e=>{tenP=e.target.value;drawTen()};
+seg("#seg-ten",VARS,tenV,v=>{tenV=v;drawTen()}); drawTen();
+
+/* ---------- Paso 5: incertidumbre ---------- */
+function drawInc(v){
+  const I=D.incertidumbre[v]; const PS=Object.keys(I);
+  const mx=Math.max(...PS.map(p=>I[p].total));
+  let h=`<thead><tr><th>Partido</th><th class="n">Hoy %</th><th class="n">Estimación hoy</th><th class="n">Movimiento hasta 29N</th><th class="n">Industria</th><th class="n">Total (±1 error típico)</th><th style="width:30%">Composición de la varianza</th></tr></thead><tbody>`;
+  PS.forEach(p=>{const r=I[p],v2=r.total**2,a=r.hoy**2/v2*100,b=r.deriva**2/v2*100,c2=r.industria**2/v2*100;
+    h+=`<tr><td>${NOM[p]}</td><td class="n">${fmt(r.media)}</td><td class="n">±${fmt(r.hoy,2)}</td><td class="n">±${fmt(r.deriva,2)}</td><td class="n">±${fmt(r.industria,2)}</td><td class="n"><b>±${fmt(r.total,2)}</b></td><td><div style="display:flex;height:10px;border-radius:2px;overflow:hidden;gap:2px;background:var(--panel)" title="hoy ${fmt(a,0)} % · movimiento ${fmt(b,0)} % · industria ${fmt(c2,0)} %"><span style="width:${a}%;background:var(--fg3)"></span><span style="width:${b}%;background:var(--accent);opacity:.55"></span><span style="width:${c2}%;background:var(--accent)"></span></div></td></tr>`});
+  $("#t-inc").innerHTML=h+`</tbody><tfoot><tr><td colspan="7" class="note"><span class="legend" style="margin:0"><span><i style="background:var(--fg3);height:8px"></i>estimación hoy</span><span><i style="background:var(--accent);opacity:.55;height:8px"></i>movimiento</span><span><i style="background:var(--accent);height:8px"></i>industria</span></span></td></tr></tfoot>`;
+}
+seg("#seg-inc",VARS,VARS[0],drawInc); drawInc(VARS[0]);
+
+/* ---------- Paso 6: D'Hondt ---------- */
+const DH=D.dhondt_ejemplo;
+function dhondt(){
+  const ins=[...document.querySelectorAll("#dh-in input[data-k]")]; const v=ins.map(i=>Math.max(0,+i.value||0)); const S=Math.max(1,Math.min(20,+$("#dh-s").value||1));
+  const tot=v.reduce((a,b)=>a+b,0); const ok=v.map(x=>x>=0.03*tot);
+  const q=[];v.forEach((x,i)=>{if(ok[i])for(let d=1;d<=S;d++)q.push({i,d,q:x/d})});q.sort((a,b)=>b.q-a.q);const win=new Set(q.slice(0,S).map(o=>o.i+"-"+o.d));
+  const seats=v.map((_,i)=>[...win].filter(k=>+k.split("-")[0]===i).length);
+  let h=`<thead><tr><th>Candidatura</th><th class="n">Votos</th>${Array.from({length:S},(_,d)=>`<th class="n">÷${d+1}</th>`).join("")}<th class="n">Escaños</th></tr></thead><tbody>`;
+  DH.p.forEach(([p],i)=>{h+=`<tr><td>${NOM[p]}${ok[i]?"":' <span class="note">(bajo el 3 %)</span>'}</td><td class="n">${v[i].toLocaleString("es-ES")}</td>${Array.from({length:S},(_,d)=>{const w=win.has(i+"-"+(d+1));return `<td class="n" style="${w?"background:var(--accent-bg);color:var(--accent);font-weight:600":"color:var(--fg3)"}">${ok[i]?Math.round(v[i]/(d+1)).toLocaleString("es-ES"):"—"}</td>`}).join("")}<td class="n"><b>${seats[i]}</b></td></tr>`});
+  $("#t-dh").innerHTML=h+`</tbody><tfoot><tr><td colspan="${S+3}" class="note">Los ${S} cocientes más altos (resaltados) obtienen escaño. Umbral calculado sobre los votos introducidos; la ley lo calcula sobre los válidos, blancos incluidos.</td></tr></tfoot>`;
+}
+$("#dh-in").innerHTML=DH.p.map(([p,v],i)=>`<label for="dh-${i}">${NOM[p]}</label><input type="number" id="dh-${i}" data-k="${i}" value="${v}" min="0" step="1000">`).join("")+`<label for="dh-s">Escaños</label><input type="number" id="dh-s" value="${DH.esc}" min="1" max="20">`;
+$("#dh-in").addEventListener("input",dhondt); dhondt();
+
+/* ---------- Evaluación ---------- */
+{
+  const P4=["PP","PSOE","VOX","SUMAR"], E=D.error_23j, R=D.resultado_23j;
+  const cel=x=>`<td class="n ${x==null?"":x>0?"pos":"neg"}">${sg(x)}</td>`;
+  let h=`<thead><tr><th>Casa</th><th>Fin campo</th><th>Origen</th>${P4.map(p=>`<th class="n">${NOM[p]}</th>`).join("")}<th class="n">Error medio absoluto</th></tr></thead><tbody>`;
+  h+=`<tr><td colspan="3"><b>Resultado oficial</b></td>${P4.map(p=>`<td class="n"><b>${fmt(R[p],2)}</b></td>`).join("")}<td></td></tr>`;
+  Object.entries(E).sort((a,b)=>(!a[1].completa)-(!b[1].completa)||a[1].mae-b[1].mae).forEach(([c,r])=>{h+=`<tr><td>${esc(c)}</td><td class="n">${fecha(r.campo_fin)}</td><td>${badge(r.origen)}</td>${P4.map(p=>cel(r.error[p])).join("")}<td class="n">${fmt(r.mae,2)}${r.completa?"":' <span class="note">incompleta</span>'}</td></tr>`});
+  $("#t-err").innerHTML=h+"</tbody>";
+  const I=D.industria_23j;
+  $("#p-ind").innerHTML=`<b>Error de industria</b> (media de las casas): ${P4.map(p=>`${NOM[p]} ${sg(I[p][0])} pp`).join(" · ")}. Todas las privadas infravaloraron al PSOE, entre 2,4 y 3,4 puntos. El CIS fue la única casa que se acercó al PSOE (+0,5), pero se alejó en PP (−2,3) y Sumar (+2,6).`;
+  const mae=d=>{const v=Object.values(d).filter(x=>x!=null);return v.reduce((a,b)=>a+Math.abs(b),0)/v.length};
+  h=`<thead><tr><th>Método</th>${P4.map(p=>`<th class="n">${NOM[p]}</th>`).join("")}<th class="n">Error medio absoluto</th></tr></thead><tbody>`;
+  h+=`<tr><td>Promedio simple de las últimas</td>${P4.map(p=>cel(D.simple_23j[p])).join("")}<td class="n"><b>${fmt(mae(D.simple_23j),2)}</b></td></tr>`;
+  Object.entries(D.retroprueba_23j).forEach(([v,d])=>{h+=`<tr><td>Modelo · ${VNOM[v]}</td>${P4.map(p=>cel(d[p])).join("")}<td class="n"><b>${fmt(mae(d),2)}</b></td></tr>`});
+  $("#t-bt").innerHTML=h+"</tbody>";
+  $("#bt-lectura").innerHTML=`<b>Lectura.</b> En 2023 el modelo no mejora al promedio simple. La diferencia procede del PSOE: el promedio simple da al CIS el mismo peso que a cualquier otra casa, y en 2023 el CIS fue la única casa que acertó con el PSOE. El modelo detecta el sesgo del CIS respecto al resto y lo corrige, con lo que lo acerca a las privadas, que fallaron. Con una sola elección no se puede saber si esto se repetirá. La variante calibrada no puede retroprobarse en 2023, porque usaría el resultado que pretende predecir.`;
+  const PE=["PP","PSOE","VOX","IZQ"], S=D.estabilidad, casas=[...new Set(PE.flatMap(p=>Object.keys((S[p]||{}).casas||{})))].sort();
+  h=`<thead><tr><th>Casa</th>${PE.map(p=>`<th class="n">${NOM[p]}<br>2019-23 → 2023-26</th>`).join("")}</tr></thead><tbody>`;
+  casas.forEach(c=>{h+=`<tr><td>${esc(c)}</td>${PE.map(p=>{const x=((S[p]||{}).casas||{})[c];return `<td class="n">${x?`${sg(x[0])} → ${sg(x[1])}`:"—"}</td>`}).join("")}</tr>`});
+  h+=`<tr><td><b>Correlación</b></td>${PE.map(p=>`<td class="n"><b>${S[p]?fmt(S[p].correlacion,2):"—"}</b></td>`).join("")}</tr>`;
+  $("#t-est").innerHTML=h+"</tbody>";
+}
+
+/* ---------- Eventos ---------- */
+{
+  const n=D.encuestas.filter(e=>(e.campo_ini||e.campo_fin)>=D.urda).length;
+  $("#urda-estado").innerHTML = n===0
+    ? `<b>Accidente de Urda (28 de octubre de 2026): todavía no medible.</b> Ninguna encuesta del sistema tiene entrevistas posteriores al suceso. Cuando entren, el motor calculará automáticamente las tres medidas descritas abajo. Hasta entonces el pronóstico no incorpora ningún efecto, ni positivo ni negativo.`
+    : `<b>Accidente de Urda:</b> ${n} encuesta(s) con campo posterior. Ver el informe del motor para los pares y el salto estimado.`;
+  const U=D.umbrales;
+  $("#t-umb").innerHTML=`<thead><tr><th>Partido</th><th class="n">Umbral de detección a 14 días</th></tr></thead><tbody>${Object.entries(U).map(([p,u])=>`<tr><td>${NOM[p]}</td><td class="n">±${fmt(u)} pp</td></tr>`).join("")}</tbody><tfoot><tr><td colspan="2" class="note">Un efecto de Urda menor que este umbral no se distinguirá del ruido, aunque exista. El umbral del PP es mayor porque el PP osciló mucho en el ciclo 2019-2023.</td></tr></tfoot>`;
+  const C=D.casado;
+  let h=`<thead><tr><th>Partido</th><th class="n">Pares por casa</th><th class="n">Salto inmediato</th><th class="n">Cambio a 7 días</th><th class="n">Cambio a 14 días</th><th class="n">Umbral</th><th>¿Distinguible?</th></tr></thead><tbody>`;
+  ["PP","PSOE","VOX"].forEach(p=>{const e=C.efectos[p],pa=C.pares[p],d14=e["14"];const dist=d14&&Math.abs(d14[0])>U[p];
+    h+=`<tr><td>${NOM[p]}</td><td class="n">${sg(pa[0])} (${pa[2]} casas)</td>${["0","7","14"].map(k=>`<td class="n">${e[k]?`${sg(e[k][0])} ± ${fmt(e[k][1])}`:"—"}</td>`).join("")}<td class="n">±${fmt(U[p])}</td><td>${dist?"sí":"no"}</td></tr>`});
+  $("#t-cas").innerHTML=h+"</tbody>";
+  $("#cas-lectura").textContent="El método detecta la subida de Vox y la del PSOE. La caída del PP fue real (de 2 a 4 puntos según la casa: Metroscopia pasó del 23 % al 19 % y ElectoPanel del 21,5 % al 17,4 %), pero no supera el umbral del PP: las casas discreparon en su magnitud y el PP tuvo grandes oscilaciones en todo el ciclo. El caso muestra qué puede esperarse con Urda: solo efectos claros y compartidos por varias casas serán distinguibles.";
+}
+let casP="PP";
+function drawCas(){
+  const c=$("#c-cas"); c.innerHTML=""; const S=D.casado.serie, T=S.tendencia[casP], N=T.media.length, ini=S.inicio;
+  const W=900,H=300,m={l:44,r:20,t:16,b:30},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const pts=S.encuestas.filter(e=>e.v[casP]!=null);
+  const vals=[...pts.map(e=>e.v[casP]),...T.media];let lo=Math.floor(Math.min(...vals)-0.5),hi=Math.ceil(Math.max(...vals)+0.5);
+  const x=i=>m.l+i/(N-1)*iw,y=v=>m.t+ih-(v-lo)/(hi-lo)*ih;
+  const svg=el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":"Tendencia alrededor de la crisis de febrero de 2022"},c);
+  for(let v=lo;v<=hi;v+=Math.max(1,Math.round((hi-lo)/6))){el("line",{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),class:"grid"},svg);el("text",{x:m.l-6,y:y(v)+4,"text-anchor":"end"},svg).textContent=v+"%"}
+  for(let i=0;i<N;i++){const d=addDays(ini,i);if(d.getUTCDate()===1)el("text",{x:x(i),y:H-10,"text-anchor":"middle"},svg).textContent=d.toLocaleDateString("es-ES",{month:"short",timeZone:"UTC"})+" "+String(d.getUTCFullYear()).slice(2)}
+  const ev=dayIdx(S.fecha,ini);
+  el("line",{x1:x(ev),x2:x(ev),y1:m.t,y2:m.t+ih,stroke:"var(--fg)","stroke-dasharray":"3 3"},svg);
+  el("text",{x:x(ev)+4,y:m.t+10,class:"lbl"},svg).textContent="17 feb 2022";
+  let band="";for(let i=0;i<N;i++)band+=(i?"L":"M")+x(i)+","+y(T.media[i]+2*T.sd[i]);for(let i=N-1;i>=0;i--)band+="L"+x(i)+","+y(T.media[i]-2*T.sd[i]);
+  el("path",{d:band+"Z",fill:COL(casP),opacity:.15},svg);
+  const t=tip(c);
+  pts.forEach(e=>{const i=dayIdx(e.f,ini);const ci=el("circle",{cx:x(i),cy:y(e.v[casP]),r:3.5,fill:"var(--panel)",stroke:"var(--fg3)","stroke-width":1.2},svg);
+    ci.addEventListener("mousemove",evt=>{const b=c.getBoundingClientRect();t.show(`${esc(e.casa)} · ${fecha(e.f)}: ${fmt(e.v[casP])} %`,evt.clientX-b.left,evt.clientY-b.top)});ci.addEventListener("mouseleave",t.hide)});
+  let ln="";for(let i=0;i<N;i++)ln+=(i?"L":"M")+x(i)+","+y(T.media[i]);
+  el("path",{d:ln,fill:"none",stroke:COL(casP),"stroke-width":2},svg);
+  el("line",{x1:m.l,x2:W-m.r,y1:m.t+ih,y2:m.t+ih,class:"axis"},svg);
+  c.insertAdjacentHTML("beforeend",`<div class="legend"><span><i style="background:${COL(casP)}"></i>tendencia de ${NOM[casP]} con salto libre el 17 de febrero (± 2 errores típicos)</span><span><i style="background:var(--fg3)"></i>encuestas publicadas (tablas de Wikipedia)</span></div>`);
+}
+fillSel("#sel-cas-p",["PP","PSOE","VOX"],casP); $("#sel-cas-p").onchange=e=>{casP=e.target.value;drawCas()}; drawCas();
+</script>
