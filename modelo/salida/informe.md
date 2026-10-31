@@ -8,33 +8,43 @@ Faltan 29 días. Mediana e intervalo del 90 % de 3000 simulaciones por variante.
 
 | Partido | Promedio simple % | consenso_privadas: voto % · escaños | consenso_todas: voto % · escaños | calibrada_23j: voto % · escaños |
 |---|---|---|---|---|
-| PP | 30.7 | 31.7 (28.2–34.8) · **133** (119–148) | 30.8 (27.3–33.9) · **130** (115–143) | 30.1 (26.5–33.3) · **126** (111–140) |
-| PSOE | 27.6 | 26.7 (23.6–29.7) · **110** (97–123) | 27.4 (24.3–30.4) · **113** (101–127) | 28.3 (25.0–31.5) · **118** (104–132) |
-| VOX | 18.8 | 18.7 (16.0–21.3) · **67** (55–79) | 18.6 (15.9–21.1) · **67** (55–79) | 18.6 (15.7–21.3) · **67** (54–79) |
-| SUMAR | 6.0 | 6.1 (4.4–7.6) · **8** (5–13) | 6.1 (4.4–7.6) · **8** (5–13) | 6.1 (4.4–7.6) · **8** (5–13) |
-| PODEMOS | 2.7 | 2.6 (1.6–3.7) · **2** (0–3) | 2.7 (1.6–3.7) · **2** (0–3) | 2.6 (1.6–3.7) · **2** (0–3) |
-| SALF | 1.8 | 1.8 (0.6–2.9) · **0** (0–1) | 1.8 (0.7–2.8) · **0** (0–0) | 1.8 (0.6–2.9) · **0** (0–1) |
+| PP | 30.7 | 31.7 (28.2–35.1) · **133** (119–148) | 30.8 (27.3–34.2) · **129** (115–144) | 30.2 (26.6–33.6) · **126** (111–141) |
+| PSOE | 27.6 | 26.8 (23.7–30.0) · **110** (95–125) | 27.5 (24.4–30.7) · **113** (98–129) | 28.5 (25.1–31.8) · **118** (102–134) |
+| VOX | 18.8 | 18.7 (16.2–21.4) · **67** (56–79) | 18.6 (16.1–21.2) · **67** (55–79) | 18.6 (15.9–21.4) · **67** (55–79) |
+| SUMAR | 6.0 | 6.0 (4.4–7.6) · **8** (5–13) | 6.1 (4.5–7.6) · **8** (5–13) | 6.0 (4.4–7.6) · **8** (5–13) |
+| PODEMOS | 2.7 | 2.7 (1.6–3.7) · **2** (0–3) | 2.7 (1.7–3.8) · **2** (0–3) | 2.7 (1.6–3.7) · **2** (0–3) |
+| SALF | 1.8 | 1.8 (0.5–3.0) · **0** (0–1) | 1.8 (0.7–2.8) · **0** (0–0) | 1.8 (0.5–3.0) · **0** (0–1) |
 | ERC | 2.8 | 2.4 (1.3–3.4) · **10** (6–14) | 2.5 (1.5–3.6) · **11** (7–15) | 2.4 (1.3–3.4) · **10** (6–14) |
-| JUNTS | 1.1 | 1.2 (0.4–2.0) · **4** (0–8) | 1.2 (0.4–1.9) · **4** (0–8) | 1.2 (0.4–2.0) · **4** (0–8) |
-| BILDU | 1.4 | 1.3 (0.4–2.1) · **7** (2–11) | 1.4 (0.6–2.2) · **8** (2–12) | 1.3 (0.4–2.1) · **7** (2–11) |
+| JUNTS | 1.1 | 1.2 (0.4–2.0) · **4** (0–8) | 1.1 (0.4–1.9) · **4** (0–8) | 1.2 (0.4–2.0) · **4** (0–8) |
+| BILDU | 1.4 | 1.3 (0.4–2.1) · **7** (1–11) | 1.4 (0.6–2.2) · **7** (2–11) | 1.3 (0.4–2.1) · **7** (1–11) |
 | PNV | 0.8 | 0.9 (0.2–1.6) · **4** (0–8) | 0.8 (0.2–1.5) · **3** (0–7) | 0.9 (0.2–1.6) · **4** (0–8) |
-| BNG | 0.9 | 0.9 (0.2–1.6) · **2** (0–6) | 0.9 (0.3–1.6) · **2** (0–6) | 0.9 (0.2–1.6) · **2** (0–6) |
-| CC | 0.3 | 0.4 (0.0–1.1) · **1** (0–4) | 0.4 (0.0–1.0) · **1** (0–4) | 0.4 (0.0–1.1) · **1** (0–4) |
+| BNG | 0.9 | 0.9 (0.3–1.7) · **2** (0–6) | 0.9 (0.3–1.6) · **2** (0–6) | 0.9 (0.3–1.7) · **2** (0–6) |
+| CC | 0.3 | 0.4 (0.0–1.0) · **1** (0–4) | 0.4 (0.0–1.0) · **1** (0–4) | 0.4 (0.0–1.0) · **1** (0–4) |
 | UPN | 0.1 | 0.1 (0.0–0.7) · **0** (0–3) | 0.1 (0.0–0.7) · **0** (0–3) | 0.1 (0.0–0.7) · **0** (0–3) |
 
 | Bloque | consenso_privadas | consenso_todas | calibrada_23j |
 |---|---|---|---|
-| PP+VOX | 200 (187–213) · P(≥176) 100% | 196 (183–209) · P(≥176) 99% | 193 (179–206) · P(≥176) 98% |
-| PP+VOX+UPN | 201 (188–214) · P(≥176) 100% | 197 (184–210) · P(≥176) 100% | 193 (179–207) · P(≥176) 98% |
-| PSOE+SUMAR+PODEMOS | 119 (106–133) · P(≥176) 0% | 123 (110–136) · P(≥176) 0% | 127 (113–142) · P(≥176) 0% |
-| PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC | 149 (136–162) · P(≥176) 0% | 153 (140–166) · P(≥176) 0% | 156 (143–171) · P(≥176) 1% |
-| PP primera fuerza | 95% | 87% | 72% |
+| PP+VOX | 200 (183–217) · P(≥176) 99% | 196 (179–213) · P(≥176) 98% | 193 (174–209) · P(≥176) 94% |
+| PP+VOX+UPN | 201 (183–218) · P(≥176) 99% | 197 (179–215) · P(≥176) 98% | 194 (175–211) · P(≥176) 94% |
+| PSOE+SUMAR+PODEMOS | 119 (102–137) · P(≥176) 0% | 123 (105–142) · P(≥176) 0% | 127 (109–147) · P(≥176) 0% |
+| PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC | 149 (132–167) · P(≥176) 1% | 153 (135–171) · P(≥176) 2% | 156 (139–175) · P(≥176) 5% |
+| PP primera fuerza | 92% | 85% | 68% |
 
 Variantes:
 - `consenso_privadas`: Sesgo cero = media de las casas privadas (CIS fuera del ancla).
 - `consenso_todas`: Sesgo cero = media de todas las casas, CIS incluido.
 - `calibrada_23j`: Sesgo previo de cada casa = 50 % de su error en el 23J (PP, PSOE, Vox); sin ancla de consenso.
 - Promedio simple: última encuesta de cada casa en 30 días, mismo peso (40dB., Ateneo del Dato, CIS, DYM, GAD3, IMOP, NC Report, Sigma Dos, SocioMétrica).
+
+### Sensibilidad: error común entre bloques
+
+Fracción de la varianza del error de industria que desplaza voto entre bloques (PP, Vox, UPN frente a PSOE, Sumar, Podemos). No se puede estimar con una sola elección evaluada; el pronóstico usa 0.5. Variante `consenso_privadas`.
+
+| Correlación entre bloques | PP − PSOE (pp, 90 %) | PP + Vox escaños (90 %) | P(PP+Vox ≥ 176) | P(PP primero) |
+|---|---|---|---|---|
+| 0.0 | +4.9 (+0.1 a +9.8) | 200 (188–213) | 100% | 95% |
+| 0.5 (pronóstico) | +4.9 (-0.6 a +10.3) | 200 (183–217) | 99% | 92% |
+| 0.8 | +4.9 (-1.0 a +10.8) | 200 (181–219) | 98% | 92% |
 
 ## 2. Evaluación de las encuestas frente al 23J
 
@@ -125,10 +135,10 @@ Para comparar en igualdad de condiciones, el motor se ejecuta con los datos que 
 
 | Partido | Referencia voto % | Motor voto % | Referencia escaños | Motor escaños (90 %) |
 |---|---|---|---|---|
-| PP | 33.0 | 33.5 | 137 | 143 (126–160) |
-| PSOE | 26.0 | 25.7 | 107 | 105 (90–121) |
-| VOX | 18.0 | 18.1 | 62 | 63 (50–78) |
-| SUMAR | 6.0 | 5.9 | 9 | 8 (4–14) |
+| PP | 33.0 | 33.4 | 137 | 143 (126–159) |
+| PSOE | 26.0 | 25.7 | 107 | 106 (89–122) |
+| VOX | 18.0 | 18.2 | 62 | 64 (51–77) |
+| SUMAR | 6.0 | 5.9 | 9 | 8 (5–14) |
 | PODEMOS | 3.0 | — | 3 | — |
 
 Encuestas disponibles para el motor en esa fecha: 5 de 5 casas. Fuente: https://elpais.com/actualidad/newsletter-kiko-llaneras/2026-10-03/que-dicen-las-encuestas-si-hay-elecciones-la-ventaja-pp-vox-y-las-opciones-de-sanchez.html. Referencia del 3 de octubre, no una cifra actualizada a hoy. Los porcentajes están redondeados en el texto original. Los escaños son resultados centrales del modelo de EL PAÍS. No es una encuesta independiente y queda fuera del archivo de entrevistas y de cualquier cómputo de institutos.

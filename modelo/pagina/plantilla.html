@@ -101,6 +101,9 @@ ul.tight{padding-left:20px;margin:6px 0}ul.tight li{margin:3px 0}
   <div class="tbl"><table id="t-pron"></table></div>
   <div class="tbl"><table id="t-bloques"></table></div>
   <p class="note">Cada celda: mediana de las simulaciones y, entre paréntesis, el intervalo que contiene el 90 % de ellas. Las tres variantes son el mismo modelo con tres definiciones distintas de «sesgo cero»; se explican en <a href="#modelo">Cómo funciona</a>, paso 3.</p>
+  <h3>Sensibilidad al error común entre bloques</h3>
+  <p class="note">Cuando las encuestas fallan, suelen fallar en bloque: si sobrestiman a la derecha, subestiman a la izquierda. El modelo supone que la mitad del error de industria es común a cada bloque y de signo contrario entre ellos. Con una sola elección evaluada este valor no se puede estimar; la tabla muestra cuánto cambia el resultado según el supuesto (variante consenso privadas).</p>
+  <div class="tbl"><table id="t-sens"></table></div>
   <h3>Escaños de PP + Vox en las simulaciones</h3>
   <div class="controls"><span class="seg" id="seg-hist" role="group" aria-label="Variante"></span></div>
   <div class="chart" id="c-hist"></div>
@@ -170,7 +173,10 @@ intención(t) = intención(t−1) + variación(t),   variación ~ N(0; 0,15 pp)<
       <li><b>Movimiento hasta el 29N</b>: lo que puede moverse la intención en los días que faltan, según la misma regla del paseo aleatorio.</li>
       <li><b>Error de industria</b>: lo que fallan todas las casas a la vez en la misma dirección. Ninguna corrección de sesgos lo elimina, porque se calcula comparando unas casas con otras. Se fija en 1,5 pp para un partido del 25 %, a partir del 23J: allí la media de las casas falló al PSOE en 2,5 pp, y la raíz cuadrática media de ese error en los cuatro grandes partidos fue de 1,4 pp.</li>
     </ul>
-    <div class="formula">error total = √( hoy² + movimiento² + industria² )</div>
+    <div class="formula">error total = √( hoy² + movimiento² + industria² )
+
+industria = 1,5 pp × √(p/25) × ( √0,5 · factor de bloque ± √0,5 · error propio )</div>
+    <p>El error de industria se divide en dos mitades. Una es propia de cada partido. La otra es un factor común que, en cada simulación, mueve en un sentido a PP, Vox y UPN y en el contrario a PSOE, Sumar y Podemos. Así se representa que las casas comparten el mismo tipo de fallo (todas ponderan por recuerdo de voto). En el 23J la diferencia entre bloques se infló 2,3 puntos. El reparto a medias es un supuesto; su efecto se muestra en el <a href="#pronostico">pronóstico</a>.</p>
     <div class="controls"><span class="seg" id="seg-inc" role="group" aria-label="Variante"></span></div>
     <div class="tbl"><table id="t-inc"></table></div>
     <p class="note">El error de industria domina. Cuanto más cerca esté la elección, menor será el movimiento, pero el error de industria no baja: es el límite de lo que pueden decir las encuestas.</p>
@@ -284,6 +290,12 @@ $("#hdr-meta").innerHTML = `<span>${dTot} encuestas en el sistema</span>` + Obje
   $("#t-bloques").innerHTML = h+"</tbody>";
   $("#t-bloques").insertAdjacentHTML("afterend","");
   const ps = $("#t-pron").closest(".tbl"); ps.insertAdjacentHTML("afterend",`<p class="note">Promedio simple: última encuesta de cada casa en los últimos 30 días, mismo peso, sin correcciones (${D.casas_simple.join(", ")}). Se muestra como referencia.</p>`);
+}
+{
+  const S=D.sensibilidad||[];
+  let h=`<thead><tr><th>Error común entre bloques</th><th class="n">PP − PSOE (pp)</th><th class="n">PP + Vox escaños</th><th class="n">P(PP+Vox ≥ 176)</th><th class="n">P(PP primero)</th></tr></thead><tbody>`;
+  S.forEach(x=>{h+=`<tr><td>${fmt(x.rho*100,0)} %${x.rho===D.rho_bloque?" <b>(usado en el pronóstico)</b>":""}</td><td class="n">${sg(x.dif[0])} <span style="color:var(--fg3)">(${sg(x.dif[1])} a ${sg(x.dif[2])})</span></td><td class="n">${fmt(x.ppvox[0],0)} <span style="color:var(--fg3)">(${fmt(x.ppvox[1],0)}–${fmt(x.ppvox[2],0)})</span></td><td class="n"><b>${Math.round(x.p_mayoria*100)} %</b></td><td class="n"><b>${Math.round(x.pp_primero*100)} %</b></td></tr>`});
+  $("#t-sens").innerHTML=h+"</tbody>";
 }
 function drawHist(v){
   const c=$("#c-hist"); c.innerHTML=""; const H=D.histogramas[v], arr=H.hist["PP+VOX"], n=H.n;
