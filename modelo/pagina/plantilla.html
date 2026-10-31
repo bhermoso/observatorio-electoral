@@ -207,6 +207,9 @@ intención(t) = intención(t−1) + variación(t),   variación ~ N(0; 0,15 pp)<
   <p>Sesgo de cada casa respecto al consenso de las privadas en 2019-2023 (noviembre de 2019 a enero de 2023) y en 2023-2026. IZQ es el espacio a la izquierda del PSOE: Unidas Podemos + Más País en el primer ciclo, Sumar + Podemos en el segundo, solo cuando la casa publica ambos.</p>
   <div class="tbl"><table id="t-est"></table></div>
   <p class="note">La correlación mide si las casas que se desviaban hacia un lado siguen haciéndolo. Con nueve casas comunes es orientativa. La correlación negativa en IZQ indica que las candidaturas de ese espacio no son comparables entre ciclos.</p>
+  <h3>Contraste con el promedio de EL PAÍS (Kiko Llaneras)</h3>
+  <p>El promedio y el modelo de Llaneras son la referencia pública más rigurosa en España. Para compararlos en igualdad de condiciones, el motor se ejecuta solo con las encuestas que existían en la fecha de cada publicación de EL PAÍS registrada en el observatorio.</p>
+  <div id="contraste"></div>
 </section>
 
 <section id="eventos">
@@ -432,6 +435,21 @@ $("#dh-in").addEventListener("input",dhondt); dhondt();
   casas.forEach(c=>{h+=`<tr><td>${esc(c)}</td>${PE.map(p=>{const x=((S[p]||{}).casas||{})[c];return `<td class="n">${x?`${sg(x[0])} → ${sg(x[1])}`:"—"}</td>`}).join("")}</tr>`});
   h+=`<tr><td><b>Correlación</b></td>${PE.map(p=>`<td class="n"><b>${S[p]?fmt(S[p].correlacion,2):"—"}</b></td>`).join("")}</tr>`;
   $("#t-est").innerHTML=h+"</tbody>";
+}
+
+/* ---------- Contraste ---------- */
+{
+  const C=D.contraste||[]; const box=$("#contraste");
+  if(!C.length){box.innerHTML='<p class="note">No hay referencias externas registradas anteriores a la fecha de corte.</p>'}
+  C.forEach(r=>{
+    const PS=["PP","PSOE","VOX","SUMAR","PODEMOS"];
+    let h=`<div class="tbl"><table><thead><tr><th>Partido</th><th class="n">EL PAÍS voto %</th><th class="n">Motor voto %</th><th class="n">EL PAÍS escaños</th><th class="n">Motor escaños</th><th class="n">Diferencia</th></tr></thead><tbody>`;
+    PS.forEach(p=>{const m=r.motor[p],rv=r.ref_voto[p],re=r.ref_escanos[p];
+      h+=`<tr><td>${NOM[p]}</td><td class="n">${fmt(rv,0)}</td><td class="n">${m?fmt(m.voto[0]):"—"}</td><td class="n">${re??"—"}</td><td class="n">${m?`<b>${fmt(m.escanos[0],0)}</b> <span style="color:var(--fg3)">(${fmt(m.escanos[1],0)}–${fmt(m.escanos[2],0)})</span>`:"—"}</td><td class="n">${m&&re!=null?sg(m.escanos[0]-re,0):"—"}</td></tr>`});
+    h+=`</tbody></table></div>`;
+    box.insertAdjacentHTML("beforeend",`<p><b>${esc(r.nombre)}</b>, ${fecha(r.fecha)}. <a href="${esc(r.url)}" target="_blank" rel="noopener">Publicación original</a>. Encuestas disponibles para el motor ese día: ${r.n_encuestas} (${r.casas.map(esc).join(", ")}).</p>${h}
+    <p class="note"><span class="tag">dato</span>${esc(r.notas)} <span class="tag">método de EL PAÍS</span>${esc(r.metodo)}</p>
+    <div class="callout"><b>Lectura.</b> ${(()=>{const dv=Math.max(...PS.filter(p=>r.motor[p]&&r.ref_voto[p]!=null).map(p=>Math.abs(r.motor[p].voto[0]-r.ref_voto[p])));const dPP=r.motor.PP.escanos[0]-r.ref_escanos.PP;const sinPod=!r.motor.PODEMOS;return `En voto, la mayor diferencia entre el motor y EL PAÍS es de ${fmt(dv)} puntos; las cifras de EL PAÍS están redondeadas a enteros en el texto original. En escaños, el motor da al PP ${sg(dPP,0)} respecto a EL PAÍS.${sinPod?" En esa fecha ninguna encuesta del sistema publicaba el voto de Podemos, por lo que su voto no entra en el reparto del motor y favorece a los partidos mayores.":""} Con ${r.n_encuestas} encuestas en el motor ese día, la diferencia no permite decir qué estimación era mejor.`})()}</div>`)});
 }
 
 /* ---------- Eventos ---------- */

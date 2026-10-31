@@ -197,7 +197,35 @@ def main():
       "límite porque el PP tuvo grandes oscilaciones en ese ciclo, lo que eleva su umbral.\n")
 
     # ---------- Limitaciones ----------
-    w("## 5. Límites conocidos\n")
+    # ---------- Contraste con agregadores externos ----------
+    contraste = []
+    refs = [r for r in F.referencias_agregadores() if r["fecha"] <= hoy]
+    if refs:
+        w("## 5. Contraste con promedios externos\n")
+        w("Para comparar en igualdad de condiciones, el motor se ejecuta con los datos que existían en la fecha "
+          "de cada referencia (encuestas con campo terminado hasta ese día), variante `consenso_privadas`.\n")
+    for ref in refs:
+        enc_d = [e for e in actuales if e["campo_fin"] <= ref["fecha"]]
+        if len({e["casa"] for e in enc_d}) < 2:
+            continue
+        aj_d = PR.estimar(enc_d, inicio, ref["fecha"], "consenso_privadas", errores_23j=err)
+        r_d = PR.resumir(PR.simular(aj_d, (ELECCION - ref["fecha"]).days, n=min(a.n, 2000)))
+        filas = []
+        for p in ("PP", "PSOE", "VOX", "SUMAR", "PODEMOS"):
+            m = r_d["partidos"].get(p)
+            filas.append([p, f1(ref["voto"].get(p)), f1(m["voto"][0]) if m else "—",
+                          ref["escanos"].get(p, "—"), f"{m['escanos'][0]:.0f} ({m['escanos'][1]:.0f}–{m['escanos'][2]:.0f})" if m else "—"])
+        w(f"### {ref['nombre']} — {ref['fecha'].isoformat()}\n")
+        w(tabla(["Partido", "Referencia voto %", "Motor voto %", "Referencia escaños", "Motor escaños (90 %)"], filas))
+        w(f"\nEncuestas disponibles para el motor en esa fecha: {len(enc_d)} de {len({e['casa'] for e in enc_d})} casas. "
+          f"Fuente: {ref['url']}. {ref['notas']}\n")
+        contraste.append(dict(id=ref["id"], nombre=ref["nombre"], fecha=ref["fecha"], url=ref["url"], notas=ref["notas"],
+                              metodo=ref["metodo"], verificado=ref["verificado"], ref_voto=ref["voto"],
+                              ref_escanos=ref["escanos"], n_encuestas=len(enc_d),
+                              casas=sorted({e["casa"] for e in enc_d}),
+                              motor={p: dict(voto=v["voto"], escanos=v["escanos"]) for p, v in r_d["partidos"].items()}))
+
+    w("## 6. Límites conocidos\n")
     w("- Un solo precedente evaluado (23J). Faltan 2015, 2016 y 2019 (requieren acceso a Wikipedia o a las fuentes originales).\n"
       "- Ciclo 2023-26 con pocas encuestas antes de octubre de 2026: la tendencia previa es poco informativa.\n"
       "- Algunas encuestas finales de 2023 están incompletas en la fuente de terceros (marcadas).\n"
@@ -215,7 +243,8 @@ def main():
     datos = exportar.datos(enc=enc, actuales=actuales, inicio=inicio, hoy=hoy, dias=dias, ajustes=ajustes,
                            sims=sims, resumen=resumen, simple=simple, casas_simple=casas_simple, err=err,
                            ind=ind, simple23=simple23, bt=bt, res23=res23, est=est, ses_prev=ses_prev,
-                           umbrales=umbrales, prev_all=prev_all, casado=CASADO, urda=URDA, eleccion=ELECCION)
+                           umbrales=umbrales, prev_all=prev_all, casado=CASADO, urda=URDA, eleccion=ELECCION,
+                           contraste=contraste)
     json.dump(datos, open(os.path.join(SALIDA, "datos_pagina.json"), "w", encoding="utf-8"),
               ensure_ascii=False, default=str, separators=(",", ":"))
     plantilla = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pagina", "plantilla.html")
