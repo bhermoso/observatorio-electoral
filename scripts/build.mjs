@@ -7,7 +7,7 @@ console.log(`Contexto: ${eventCount} acontecimientos documentados.`);
 const coverage=validatePolls(JSON.parse(fs.readFileSync('data/polls.json')),JSON.parse(fs.readFileSync('data/references.json')));
 console.log(`Validación: ${coverage.polls} encuestas, ${coverage.institutes} institutos y ${coverage.references} referencias.`);
 fs.mkdirSync('dist',{recursive:true});
-for(const f of ['index.html','sala-mandos.html','styles.css','app.mjs','engine.mjs','map.mjs','polls.mjs','events.mjs','analysis.mjs','integracion.mjs']) fs.copyFileSync(f,`dist/${f}`);
+for(const f of ['index.html','sala-mandos.html','styles.css','app.mjs','engine.mjs','map.mjs','polls.mjs','events.mjs','analysis.mjs','integracion.mjs','cocina.mjs']) fs.copyFileSync(f,`dist/${f}`);
 fs.cpSync('data','dist/data',{recursive:true});
 fs.cpSync('docs','dist/docs',{recursive:true});
 // Publicar el pronóstico agregado y su historial para la pantalla de bloques.
