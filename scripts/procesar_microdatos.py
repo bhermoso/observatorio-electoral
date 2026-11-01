@@ -21,6 +21,11 @@ def classify(value, mapping):
 def process(study, spec):
     file=SOURCE/"entrada"/(study+".csv")
     if not file.exists():
+        aggregated=OUTPUT/(study+".json")
+        if aggregated.exists():
+            result=json.loads(aggregated.read_text(encoding="utf-8"))
+            if result.get("status")=="procesado" and result.get("n",0)>0:
+                return {"status":"procesado","n":result["n"],"effective_n":result.get("effective_n"),"processed":f"data/microdatos/procesados/{study}.json","mode":"agregados_verificados"}
         return {"status":"pendiente","reason":"No se ha incorporado el fichero de entrevistas"}
     fields=spec.get("variables",{})
     for key in ("intencion","recuerdo"):
@@ -72,7 +77,7 @@ def main():
         id=str(poll["id"])
         spec=config.get(id)
         try:
-            result=process(id,spec) if spec else {"status":"sin_configuracion","reason":"Variables originales aún sin mapear"}
+            result=process(id,spec or {})
         except Exception as exc:
             result={"status":"error","reason":str(exc)}
         records.append({"id":id,"institute":poll.get("institute"),"title":poll.get("title"),
