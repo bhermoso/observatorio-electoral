@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import {enVeda, AVISO_VEDA} from './veda.mjs';
 import {validatePolls} from '../schema.mjs';
 import {validateEvents} from '../events.mjs';
 const eventCount=validateEvents(JSON.parse(fs.readFileSync('data/events.json')));
@@ -12,7 +13,10 @@ fs.cpSync('docs','dist/docs',{recursive:true});
 // Plataforma de pronóstico (modelo/): la página generada por `python3 -m modelo` es un
 // fragmento HTML; se envuelve en un documento completo y se publica como pronostico.html.
 const pronostico='modelo/salida/pagina.html';
-if(fs.existsSync(pronostico)){
+if(enVeda()){
+  fs.writeFileSync('dist/pronostico.html',AVISO_VEDA);
+  console.log('Veda electoral (LOREG 69.7): pronostico.html sustituido por el aviso.');
+}else if(fs.existsSync(pronostico)){
   const fragmento=fs.readFileSync(pronostico,'utf8');
   const corte=fragmento.indexOf('<div class="wrap">');
   const cabeza=corte>0?fragmento.slice(0,corte):'';

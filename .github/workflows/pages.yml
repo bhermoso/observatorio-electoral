@@ -4,6 +4,10 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  # Publicación diaria: actualiza el pronóstico y aplica la veda electoral a su hora
+  # (23:05 UTC = 00:05 en Madrid), aunque ese día no haya cambios en main.
+  schedule:
+    - cron: '5 23 * * *'
 permissions:
   contents: read
 concurrency:
