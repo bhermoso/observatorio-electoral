@@ -1,0 +1,192 @@
+{
+  "title": "Validación histórica exploratoria: CIS 3411 y 3415 frente al 23J de 2023",
+  "election": "2023-07-23",
+  "official_results_source": "data/election.json · BOE-A-2023-18907",
+  "official_vote_valid_percent": {
+    "PSOE": 31.682155,
+    "PP": 33.055769,
+    "VOX": 12.38249,
+    "SUMAR": 12.333868
+  },
+  "weight": "PESO",
+  "party_order": [
+    "PSOE",
+    "PP",
+    "VOX",
+    "SUMAR"
+  ],
+  "study_files": [
+    "MD3411.zip",
+    "MD3415.zip"
+  ],
+  "methodology": {
+    "direct_all": "Porcentaje ponderado de intención directa sobre todas las entrevistas.",
+    "decided": "Porcentaje ponderado entre quienes declaran una candidatura: códigos 1..8994, excluyendo abstención, blancos y no respuesta.",
+    "sympathy_decided": "Voto más simpatía entre quienes mencionan una candidatura; en el estudio 3415 se usa VOTOSIMG, sin el componente de voto emitido por correo.",
+    "turnout_decided": "Reponderación exploratoria entre decididos por PROBVOTO/10; puntuaciones no válidas toman factor 1.",
+    "published_cis": "Estimación oficial archivada en data/polls.json.",
+    "mae": "Promedio de diferencias absolutas, en pp, de cuatro partidos frente al resultado oficial."
+  },
+  "warnings": [
+    "Solo cuatro partidos y dos estudios; no es una validación predictiva general.",
+    "Las encuestas se realizaron antes de la elección; el voto puede cambiar entre el trabajo de campo y la jornada electoral.",
+    "El recuerdo de voto de ambos microdatos de 2023 pregunta por las elecciones de noviembre de 2019, NO por las de julio de 2023. No se ha calibrado por recuerdo.",
+    "Para 3415, el agregado voto+simpatía utilizado no incorpora la variable específica de voto por correo.",
+    "El tratamiento de códigos de candidaturas es exploratorio; debe contrastarse con el libro de códigos oficial.",
+    "Un menor error observado en estos dos estudios no demuestra que el método tenga mejor desempeño fuera de muestra."
+  ],
+  "studies": {
+    "3411": {
+      "sample_size": 29201,
+      "effective_n": 23672.5,
+      "recall_election": "2019-11-10",
+      "scenarios": {
+        "direct_all": {
+          "PSOE": 24.644,
+          "PP": 25.371,
+          "VOX": 8.808,
+          "SUMAR": 12.661
+        },
+        "decided": {
+          "PSOE": 31.643,
+          "PP": 32.577,
+          "VOX": 11.31,
+          "SUMAR": 16.256
+        },
+        "sympathy_decided": {
+          "PSOE": 31.711,
+          "PP": 31.311,
+          "VOX": 10.766,
+          "SUMAR": 17.258
+        },
+        "turnout_decided": {
+          "PSOE": 31.798,
+          "PP": 32.881,
+          "VOX": 11.294,
+          "SUMAR": 16.231
+        },
+        "published_cis": {
+          "PSOE": 31.2,
+          "PP": 31.4,
+          "VOX": 10.6,
+          "SUMAR": 16.4
+        }
+      },
+      "errors_pp": {
+        "direct_all": {
+          "PSOE": -7.038,
+          "PP": -7.685,
+          "VOX": -3.574,
+          "SUMAR": 0.327
+        },
+        "decided": {
+          "PSOE": -0.039,
+          "PP": -0.479,
+          "VOX": -1.072,
+          "SUMAR": 3.922
+        },
+        "sympathy_decided": {
+          "PSOE": 0.029,
+          "PP": -1.745,
+          "VOX": -1.616,
+          "SUMAR": 4.924
+        },
+        "turnout_decided": {
+          "PSOE": 0.116,
+          "PP": -0.175,
+          "VOX": -1.088,
+          "SUMAR": 3.897
+        },
+        "published_cis": {
+          "PSOE": -0.482,
+          "PP": -1.656,
+          "VOX": -1.782,
+          "SUMAR": 4.066
+        }
+      },
+      "mae_four_parties": {
+        "direct_all": 4.656,
+        "decided": 1.378,
+        "sympathy_decided": 2.079,
+        "turnout_decided": 1.319,
+        "published_cis": 1.997
+      }
+    },
+    "3415": {
+      "sample_size": 8798,
+      "effective_n": 8076.3,
+      "recall_election": "2019-11-10",
+      "scenarios": {
+        "direct_all": {
+          "PSOE": 25.388,
+          "PP": 23.723,
+          "VOX": 8.498,
+          "SUMAR": 11.14
+        },
+        "decided": {
+          "PSOE": 34.166,
+          "PP": 31.925,
+          "VOX": 11.437,
+          "SUMAR": 14.991
+        },
+        "sympathy_decided": {
+          "PSOE": 34.417,
+          "PP": 31.119,
+          "VOX": 11.085,
+          "SUMAR": 15.402
+        },
+        "turnout_decided": {
+          "PSOE": 34.203,
+          "PP": 31.944,
+          "VOX": 11.444,
+          "SUMAR": 15.107
+        },
+        "published_cis": {
+          "PSOE": 32.2,
+          "PP": 30.8,
+          "VOX": 11.8,
+          "SUMAR": 14.9
+        }
+      },
+      "errors_pp": {
+        "direct_all": {
+          "PSOE": -6.294,
+          "PP": -9.333,
+          "VOX": -3.884,
+          "SUMAR": -1.194
+        },
+        "decided": {
+          "PSOE": 2.484,
+          "PP": -1.131,
+          "VOX": -0.945,
+          "SUMAR": 2.657
+        },
+        "sympathy_decided": {
+          "PSOE": 2.735,
+          "PP": -1.937,
+          "VOX": -1.297,
+          "SUMAR": 3.068
+        },
+        "turnout_decided": {
+          "PSOE": 2.521,
+          "PP": -1.112,
+          "VOX": -0.938,
+          "SUMAR": 2.773
+        },
+        "published_cis": {
+          "PSOE": 0.518,
+          "PP": -2.256,
+          "VOX": -0.582,
+          "SUMAR": 2.566
+        }
+      },
+      "mae_four_parties": {
+        "direct_all": 5.176,
+        "decided": 1.804,
+        "sympathy_decided": 2.259,
+        "turnout_decided": 1.836,
+        "published_cis": 1.481
+      }
+    }
+  }
+}
