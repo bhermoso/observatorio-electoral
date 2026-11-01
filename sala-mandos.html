@@ -62,7 +62,31 @@ header{padding:21px clamp(16px,4vw,45px)}header h1{font-size:1.48rem}
 .advanced-body{padding:3px 18px 18px;border-top:1px solid #e0e8ef}
 .door-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 .door{min-height:170px}
-@media(max-width:650px){.door-grid{grid-template-columns:1fr}.advanced-controls>summary{align-items:flex-start}}</style></head><body>
+@media(max-width:650px){.door-grid{grid-template-columns:1fr}.advanced-controls>summary{align-items:flex-start}}
+.govt-board{margin:18px 0 16px;padding:24px;border:1px solid #b8cad9}
+.govt-heading{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}
+.govt-heading h2{font-size:clamp(1.2rem,2.5vw,1.65rem);margin:5px 0 7px}
+.govt-heading p{font-size:.91rem;color:#506779;line-height:1.5;margin:0 0 14px;max-width:680px}
+.govt-eyebrow{font-size:.68rem;letter-spacing:.13em;font-weight:800;color:#276489}
+.govt-selector{min-width:215px}.govt-selector select{width:100%}.govt-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:16px 0}
+.govt-group{border:1px solid #d9e3eb;border-radius:13px;padding:16px;background:#fbfcfe}
+.govt-group .head{display:flex;justify-content:space-between;gap:6px;margin-bottom:5px}
+.govt-group h3{font-size:1rem;margin:0}.govt-group .composition{font-size:.78rem;color:#657b8e;margin:5px 0 12px;line-height:1.45}
+.govt-metrics{display:flex;align-items:flex-end;gap:13px;flex-wrap:wrap}.govt-seats{font-size:2rem;line-height:1;font-weight:800;color:#173c58}
+.govt-percent{font-size:1.12rem;font-weight:750}.govt-metrics small{font-size:.72rem;color:#60798a}
+.govt-meter{height:12px;border-radius:7px;background:#e7edf4;position:relative;margin:14px 0 9px;overflow:hidden}
+.govt-meter .fill{display:block;height:100%;background:#3983a7;border-radius:7px}
+.govt-meter:after{content:'';position:absolute;left:50.285714%;width:2px;background:#263f53;top:0;height:100%}
+.govt-rowline{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:.79rem;color:#536c80}
+.govt-comparison{font-size:.78rem;margin-top:8px;color:#425b71}.govt-legend{font-size:.8rem;line-height:1.55;color:#536c80;border-top:1px solid #e2eaf0;padding-top:13px}
+.govt-picks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:13px 0}
+.govt-pick{display:flex;flex-direction:row;align-items:center;gap:7px;font-weight:600;font-size:.85rem}
+.govt-result{padding:14px;border-radius:10px;background:#eaf3f8;margin-top:12px;line-height:1.5}
+.govt-status{font-size:.73rem;padding:4px 8px;border-radius:15px;background:#e6edf5;color:#375872;white-space:nowrap}
+.govt-status.majority{background:#e2f0e8;color:#216342}
+@media(max-width:750px){.govt-heading{flex-direction:column}.govt-selector{width:100%}.govt-grid{grid-template-columns:1fr}.govt-picks{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:420px){.govt-board{padding:16px}.govt-picks{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style></head><body>
 <header><div class="masthead"><div><h1>Observatorio Electoral</h1><p>Sala de mandos y análisis</p></div><button class="top-home" data-open="inicio" aria-label="Volver al menú principal">⌂ Menú principal</button></div></header>
 <div class="wrap">
 <div class="warning" id="status">Cargando datos del repositorio público…</div>
@@ -71,6 +95,13 @@ header{padding:21px clamp(16px,4vw,45px)}header h1{font-size:1.48rem}
 <div class="menu-intro"><h2>Situación demoscópica</h2><p>Resumen de encuestas publicadas en el período elegido. Los promedios describen los sondeos archivados, no predicen resultados electorales.</p></div>
 <div class="card home-controls"><div class="tools"><label>Desde · publicación<input id="homeFrom" type="date"></label><label>Hasta · publicación<input id="homeTo" type="date"></label><label>Institutos<select id="homeCis"><option value="yes">Todos, incluido CIS</option><option value="no">Sin CIS</option></select></label><button class="action" id="homeApply" type="button">Actualizar</button></div><div class="muted compact" id="homePeriod"></div></div>
 <div id="homeKpis" class="home-stats"></div>
+<section class="card govt-board" aria-label="Escenarios de gobierno">
+<div class="govt-heading"><div><span class="govt-eyebrow">ESCENARIOS DE GOBIERNO</span><h2>¿Cuántos diputados sumarían los bloques?</h2><p>Si estos partidos acordaran votar juntos, esta sería su fuerza parlamentaria estimada. <strong>Mayoría absoluta: 176 de 350 escaños.</strong></p></div><div class="govt-selector"><label>Modelo de referencia<select id="govtModel"><option value="consenso_privadas">Consenso de encuestas privadas</option><option value="consenso_todas">Consenso con CIS</option><option value="calibrada_23j">Calibración histórica 23J</option></select></label></div></div>
+<div id="govtMeta" class="muted compact">Cargando estimaciones del modelo...</div>
+<div id="govtPresets" class="govt-grid"></div>
+<details class="advanced-controls gov-custom"><summary><span>Simular otro pacto entre partidos</span><small>Selecciona qué fuerzas sumarías</small></summary><div class="advanced-body"><p class="muted compact">La selección suma el voto y los escaños centrales de los partidos por separado. Para combinaciones no simuladas conjuntamente por el motor, la suma de escaños es orientativa y no permite calcular probabilidades de mayoría.</p><div id="govtParties" class="govt-picks"></div><div id="govtCustomResult"></div></div></details>
+<div class="govt-legend"><b>Cómo se lee:</b> los escaños son la mediana de simulaciones conjuntas del modelo territorial, no la suma de las medianas individuales. El rango mostrado corresponde a los percentiles 5–95. La probabilidad de superar 175 escaños depende de los supuestos del modelo, no indica que exista un pacto político. <a href="pronostico.html">Ver pronóstico completo</a>.</div>
+</section>
 <div class="home-content">
 <div class="card"><div class="home-section-head"><h2>Promedios del período</h2><button class="home-textlink" type="button" data-open="promedios">Ver laboratorio →</button></div><p class="muted compact">Último sondeo de cada instituto, con igual peso por instituto. Cada partido se promedia solo entre encuestas que publicaron su estimación.</p><div id="homeAverage"></div></div>
 <div class="card"><div class="home-section-head"><h2>Encuestas recientes</h2><button class="home-textlink" type="button" data-open="sondeos">Ver todas →</button></div><div id="homeRecent"></div><div class="home-detail" id="homeDetail"></div></div>
@@ -195,6 +226,56 @@ function evolution(eligible){
  $('evoBlocks').hidden=view==='parties';$('evoParties').hidden=view==='blocks';
 }
 $('evoView').addEventListener('change',homeDashboard);
+
+const GOVERNMENT_BLOCKS=[
+ {key:'PP+VOX',label:'PP + Vox',members:['PP','VOX']},
+ {key:'PP+VOX+UPN',label:'PP + Vox + UPN',members:['PP','VOX','UPN']},
+ {key:'PSOE+SUMAR+PODEMOS',label:'PSOE + Sumar + Podemos',members:['PSOE','SUMAR','PODEMOS']},
+ {key:'PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC',label:'PSOE + Sumar + Podemos + apoyos territoriales',members:['PSOE','SUMAR','PODEMOS','ERC','JUNTS','BILDU','PNV','BNG','CC']}
+];
+let govForecast=null,govHistory=[];
+function govVoteSum(parties,model){const nums=parties.map(p=>model.partidos?.[p]?.voto?.[0]);return nums.every(Number.isFinite)?nums.reduce((a,b)=>a+b,0):null}
+function govFmt(n,d=1){return Number.isFinite(n)?n.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d}):'—'}
+function govBadge(block){return block.mediana>=176?'<span class="govt-status majority">Mayoría central</span>':'<span class="govt-status">Sin mayoría central</span>'}
+function govCard(entry,model,history){
+ const b=model.bloques?.[entry.key];if(!b)return '';
+ const vote=govVoteSum(entry.members,model);
+ const prev=history?.bloques?.[entry.key];
+ const change=prev?b.mediana-prev.mediana:null;
+ const diff=b.mediana-176;
+ return '<article class="govt-group"><div class="head"><h3>'+safe(entry.label)+'</h3>'+govBadge(b)+'</div>'
+ +'<div class="composition">'+safe(entry.members.join(' · '))+'</div>'
+ +'<div class="govt-metrics"><div><span class="govt-seats">'+govFmt(b.mediana,0)+'</span> <small>escaños</small></div><div><span class="govt-percent">'+(vote===null?'—':govFmt(vote)+' %')+'</span><br><small>voto conjunto estimado</small></div></div>'
+ +'<div class="govt-meter" aria-label="'+govFmt(b.mediana,0)+' de 350 diputados; mayoría en 176"><span class="fill" style="width:'+Math.min(100,b.mediana/350*100)+'%"></span></div>'
+ +'<div class="govt-rowline"><span>'+(diff>=0?'+'+govFmt(diff,0)+' sobre 176':govFmt(-diff,0)+' para llegar a 176')+'</span><span>Intervalo 5–95 %: '+govFmt(b.p5,0)+'–'+govFmt(b.p95,0)+'</span></div>'
+ +'<div class="govt-comparison"><b>Probabilidad simulada de mayoría:</b> '+govFmt(b.p_mayoria*100)+' %'+(change===null?'':' · <b>Desde '+safe(history.fecha)+':</b> '+(change>0?'+':'')+govFmt(change,0)+' escaños')+'</div></article>';
+}
+function renderGovernment(){
+ if(!govForecast){$('govtMeta').textContent='El último pronóstico no está disponible en la publicación.';return}
+ const key=$('govtModel').value,model=govForecast.variantes?.[key];
+ if(!model){$('govtMeta').textContent='Modelo no disponible';return}
+ const comparison=govHistory.filter(h=>h.fecha<govForecast.corte).at(-1);
+ $('govtMeta').textContent='Pronóstico con corte '+govForecast.corte+' · Elecciones de referencia '+govForecast.eleccion+' · Umbral de mayoría: 176 diputados.';
+ $('govtPresets').innerHTML=GOVERNMENT_BLOCKS.map(x=>govCard(x,model,comparison)).join('');
+ $('govtParties').innerHTML=Object.keys(model.partidos||{}).map(p=>'<label class="govt-pick"><input type="checkbox" class="govt-checkbox" value="'+safe(p)+'" '+(['PP','VOX'].includes(p)?'checked':'')+'><span>'+safe(p)+'</span></label>').join('');
+ renderCustomGovernment();
+}
+function renderCustomGovernment(){
+ if(!govForecast)return;
+ const model=govForecast.variantes[$('govtModel').value],parties=[...document.querySelectorAll('.govt-checkbox:checked')].map(x=>x.value);
+ const exact=GOVERNMENT_BLOCKS.find(b=>b.members.length===parties.length&&b.members.every(p=>parties.includes(p)));
+ if(exact){const b=model.bloques?.[exact.key];$('govtCustomResult').innerHTML=b?'<div class="govt-result"><b>Bloque simulado conjuntamente:</b> '+govFmt(b.mediana,0)+' escaños · '+govFmt(govVoteSum(parties,model))+' % de voto · '+govFmt(b.p_mayoria*100)+' % de probabilidad simulada de mayoría.</div>':'';return}
+ const shares=govVoteSum(parties,model);
+ const missing=parties.filter(p=>!model.partidos?.[p]?.escanos);
+ const seats=parties.reduce((a,p)=>a+(model.partidos?.[p]?.escanos?.[0]||0),0);
+ $('govtCustomResult').innerHTML=parties.length?'<div class="govt-result"><b>Pacto hipotético:</b> '+(shares===null?'Voto incompleto':govFmt(shares)+' % del voto')+' · '+govFmt(seats,0)+' escaños <b>aproximados</b> (suma de medianas individuales). '+(seats>=176?'Supera el umbral en esta suma orientativa.':'Por debajo de 176 en esta suma orientativa.')+' <small>Esta combinación no tiene simulación conjunta; no puede atribuirse una probabilidad válida de mayoría.'+(missing.length?' Faltan datos: '+safe(missing.join(', '))+'.':'')+'</small></div>':'<p class="muted compact">Selecciona al menos un partido.</p>';
+}
+async function loadGovernment(){
+ try{const [a,b]=await Promise.all(['data/modelo/pronostico.json','data/modelo/historial.json'].map(async url=>{const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status+' en '+url);return r.json()}));govForecast=a;govHistory=b;renderGovernment()}
+ catch(err){$('govtMeta').textContent='No ha sido posible cargar el pronóstico territorial: '+err.message}
+}
+$('govtModel').addEventListener('change',renderGovernment);
+$('govtParties').addEventListener('change',renderCustomGovernment);
 function homeDashboard(){
  if(!state.polls.length)return;
  const from=$('homeFrom').value,to=$('homeTo').value,includeCis=$('homeCis').value==='yes';
@@ -266,7 +347,7 @@ async function showProcessed(id){
   }catch(e){alert(e.message)}
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-processed-id]');if(b)showProcessed(b.dataset.processedId)});
-async function load(){try{const [polls,events,refs]=await Promise.all(['data/polls.json','data/events.json','data/references.json'].map(async u=>{const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status+' '+u);return r.json()}));state.polls=polls.filter(p=>p.kind==='poll-estimate');state.events=events;state.refs=refs;let last='2026-11-01';$('pollCut').value=last;$('avgCut').value=last;$('house').innerHTML='<option value="">Todos</option>'+[...new Set(state.polls.map(p=>p.institute))].sort().map(x=>'<option>'+safe(x)+'</option>').join('');$('party').innerHTML=allParties().map(x=>'<option>'+safe(x)+'</option>').join('');$('party').value='PP';$('status').textContent='Datos cargados: '+state.polls.length+' encuestas del repositorio. Actualiza la página para refrescarlos.';$('status').style.borderLeftColor='#328367';summary();setHomeDefaults();renderSaved();pollList();average();renderEvents();loadAutomaticMicro()}catch(e){$('status').textContent='No se han podido cargar los archivos: '+e.message+'. Abre esta página desde GitHub Pages, no como archivo local.'}}
+async function load(){try{const [polls,events,refs]=await Promise.all(['data/polls.json','data/events.json','data/references.json'].map(async u=>{const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status+' '+u);return r.json()}));state.polls=polls.filter(p=>p.kind==='poll-estimate');state.events=events;state.refs=refs;let last='2026-11-01';$('pollCut').value=last;$('avgCut').value=last;$('house').innerHTML='<option value="">Todos</option>'+[...new Set(state.polls.map(p=>p.institute))].sort().map(x=>'<option>'+safe(x)+'</option>').join('');$('party').innerHTML=allParties().map(x=>'<option>'+safe(x)+'</option>').join('');$('party').value='PP';$('status').textContent='Datos cargados: '+state.polls.length+' encuestas del repositorio. Actualiza la página para refrescarlos.';$('status').style.borderLeftColor='#328367';summary();setHomeDefaults();renderSaved();pollList();average();renderEvents();loadAutomaticMicro();loadGovernment()}catch(e){$('status').textContent='No se han podido cargar los archivos: '+e.message+'. Abre esta página desde GitHub Pages, no como archivo local.'}}
 const sectionNames={inicio:'Menú principal',resumen:'Panorama electoral',sondeos:'Encuestas',promedios:'Promedios y tendencias',eventos:'Acontecimientos',microdatos:'Cocina y microdatos'};
 function navigate(section){if(!Object.hasOwn(sectionNames,section))section='inicio';document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===section));$('inicio').classList.toggle('active',section==='inicio');$('contextbar').classList.toggle('visible',section!=='inicio');$('sectionTitle').textContent=sectionNames[section];$('quicknav').hidden=section==='inicio';document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===section));history.replaceState(null,'','#'+section);window.scrollTo({top:0,behavior:'instant'})}
 document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.open)));document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.tab)));window.addEventListener('hashchange',()=>navigate(location.hash.slice(1)));navigate(location.hash.slice(1)||'inicio');['pollCut','house','party','microFilter'].forEach(id=>$(id).addEventListener('change',pollList));document.addEventListener('click',e=>{const b=e.target.closest('[data-save-id]');if(b)storeRef(b.dataset.saveId)});$('exportSaved').onclick=()=>download('referencias_microdatos_observatorio.json',{exportedAt:new Date().toISOString(),references:savedRefs});['avgCut','days','half','recency','cis','one'].forEach(id=>$(id).addEventListener('change',average));$('exportAvg').onclick=()=>state.lastAvg&&download('promedio_observatorio.json',state.lastAvg);$('exportMicro').onclick=()=>state.lastMicro&&download('auditoria_microdatos.json',state.lastMicro);
