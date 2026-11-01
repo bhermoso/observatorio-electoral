@@ -262,6 +262,24 @@ Todavía no se puede medir: ninguna encuesta del sistema tiene entrevistas poste
 
 PP ±3.1 pp, PSOE ±1.2 pp, VOX ±1.8 pp. Un efecto de Urda menor que esto no se distinguirá del ruido aunque exista.
 
+### Señales sobre Urda (no entran en el pronóstico)
+
+- **2026-10-31 · Narciso Michavila** (X (conocido por prensa; publicación original no consultada)): Detecta un «cambio abrupto de voto» desde el accidente de Urda; el PSOE «ya no aguanta» y ve imposible que Sánchez sea el candidato más votado el 29N. Aporta datos: no. Falta: Cifras por partido, número de entrevistas antes y después del accidente, fechas de campo y margen de error. Error de su casa en el 23J: PP +3.9, PSOE -3.3, VOX -0.5, SUMAR -0.8.
+- **2026-11-01 · SocioMétrica para El Español** (prensa (El Español)): El 73,6 % cree que Óscar Puente debe dimitir o ser cesado, incluido un 59 % de votantes del PSOE; un 16,3 % quiere que siga. Aporta datos: sí. Falta: Es opinión sobre el ministro, no intención de voto. Comprobar si el estudio incluye estimación de voto con campo posterior al 28-oct. Error de su casa en el 23J: PP +0.4, PSOE -3.4, VOX +1.3, SUMAR +0.9.
+- **2026-10-29 · Demócrata (análisis)** (prensa (Demócrata)): Todavía no hay datos que permitan medir cuánto voto puede mover la tragedia. Aporta datos: no. Falta: —
+
+### Escenarios de Urda (hipótesis explícitas, no pronóstico)
+
+| Escenario | PP | PSOE | Vox | PP+Vox | P(PP+Vox ≥ 176) | P(PP 1º) | ¿Se notaría en las encuestas? |
+|---|---|---|---|---|---|---|---|
+| Sin efecto (pronóstico actual) | 129 | 113 | 66 | 196 | 90% | 75% | — |
+| PSOE −1 → PP +1 | 134 | 109 | 66 | 201 | 95% | 88% | no, dentro del ruido |
+| PSOE −2 → PP +2 | 139 | 104 | 66 | 205 | 97% | 94% | sí |
+| PSOE −3 → PP +3 | 144 | 100 | 65 | 209 | 98% | 97% | sí |
+| PSOE −2 → Vox +1, PP +1 | 134 | 104 | 70 | 205 | 96% | 91% | sí |
+
+«Se notaría» compara el cambio del PSOE con su umbral de detección (1.2 pp).
+
 **Validación del método** con un suceso conocido — crisis Casado–Ayuso (17-feb-2022):
 
 | Partido | Pares por casa | Salto inmediato | Cambio a 14 días | Umbral placebo | Distinguible |
