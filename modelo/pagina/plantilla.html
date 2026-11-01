@@ -153,6 +153,7 @@ ul.tight{padding-left:20px;margin:6px 0}ul.tight li{margin:3px 0}
 <section id="modelo">
   <h2>Cómo funciona</h2>
   <p class="lead">El motor convierte un conjunto de encuestas heterogéneas en una estimación de voto y escaños con su incertidumbre. Lo hace en siete pasos encadenados. Cada paso indica qué es dato, qué es supuesto y qué es resultado del modelo.</p>
+  <div class="chart" id="c-flujo" style="padding:10px"></div>
 
   <div class="step"><div class="num">1</div><div>
     <h3>Reunir y normalizar</h3>
@@ -179,6 +180,11 @@ error no muestral = 1,0 pp × √(p / 25)</div>
     <p>Cada casa tiene su «cocina»: cómo pondera por recuerdo de voto, cómo asigna a los indecisos, si entrevista por teléfono o por internet. El resultado es una desviación estable respecto a las demás. El modelo la estima como un número fijo por casa y partido: el sesgo de casa. Después la resta de cada encuesta.</p>
     <p>Una casa solo puede compararse con otras casas o con un resultado electoral. Por eso hay que decidir qué es «sesgo cero», y esa decisión mueve el resultado. El motor publica tres variantes:</p>
     <ul class="tight" id="ul-var"></ul>
+    <h3>La cocina, encuesta a encuesta</h3>
+    <p>Cada fila es una encuesta reciente. El círculo vacío es lo que publicó la casa; el relleno, lo que queda tras restar su sesgo. Si la cocina de las casas fuera igual, todos los círculos rellenos coincidirían; lo que queda de dispersión es error de muestra y cambio real en el tiempo.</p>
+    <div class="controls"><label for="sel-coc-p">Partido</label><select id="sel-coc-p"></select></div>
+    <div class="chart" id="c-coc"></div>
+    <h3>Sesgo estimado de cada casa</h3>
     <div class="controls"><label for="sel-ses-p">Partido</label><select id="sel-ses-p"></select><span class="seg" id="seg-ses" role="group" aria-label="Variante"></span></div>
     <div class="chart" id="c-ses"></div>
     <p class="note">Puntos: sesgo estimado (pp) respecto a la referencia de la variante. Barras: ± un error típico. Una casa con una sola encuesta tiene un sesgo poco determinado: la previa lo atrae hacia cero.</p>
@@ -214,14 +220,26 @@ industria = 1,5 pp × √(p/25) × ( √0,5 · factor de bloque ± √0,5 · err
   </div></div>
 
   <div class="step"><div class="num">6</div><div>
-    <h3>De votos a escaños</h3>
-    <p>Los escaños se reparten en 52 circunscripciones, no en el conjunto de España. El motor traslada el voto nacional de cada partido a cada provincia en proporción a lo que obtuvo allí el 23J (swing proporcional): si el PP pasa del 33,1 % nacional al 31 %, su voto en cada provincia se multiplica por 31/33,1. Después se reajusta para que la suma nacional cuadre. Sumar de 2023 se reparte entre Sumar y Podemos según el peso que les dan hoy las encuestas. SALF, sin base en 2023, recibe el mismo porcentaje en todas las provincias. En cada provincia se aplica D'Hondt con un umbral del 3 % sobre los votos válidos, blancos incluidos. Ceuta y Melilla eligen un escaño por mayoría simple.</p>
+    <h3>De votos a escaños: cómo pesa 2023 y cómo reparte D'Hondt</h3>
+    <p>Los escaños se reparten en 52 circunscripciones. Las encuestas dan el voto nacional; para saber cuánto vota cada partido en cada provincia, el motor usa el mapa del 23 de julio de 2023 y lo ajusta al voto actual. Elija una provincia para ver el cálculo completo con el pronóstico central.</p>
+    <div class="controls"><label for="sel-geo">Circunscripción</label><select id="sel-geo"></select></div>
+    <div class="grid2">
+      <div><h3 style="margin-top:0">1. Del mapa de 2023 al voto de 2026</h3>
+        <div class="chart" id="c-geo"></div>
+        <div class="legend"><span><i style="background:var(--fg3);height:8px"></i>voto en la provincia, 23-jul-2023</span><span><i style="background:var(--accent);height:8px"></i>proyección 2026</span></div>
+        <p class="note" id="geo-expl"></p></div>
+      <div><h3 style="margin-top:0">2. Reparto D'Hondt</h3>
+        <div class="chart" id="c-dh"></div>
+        <p class="note" id="dh-expl"></p></div>
+    </div>
+    <div class="formula" id="geo-formula"></div>
+    <div class="tbl"><table id="t-geo"></table></div>
     <p><b>Comprobación</b>: con los votos oficiales del 23J, el motor reproduce exactamente los 350 escaños de 2023. Esto valida el cálculo del reparto, no el supuesto de que la geografía del voto se mantenga.</p>
-    <h3>Calculadora D'Hondt</h3>
-    <p class="note">Para ver cómo se reparte una provincia. Valores iniciales: votos oficiales del 23J en Toledo (BOE), cuatro primeras candidaturas, 6 escaños. El resto de candidaturas no se incluye, por lo que el umbral es aproximado.</p>
+    <p class="note"><span class="tag">dato</span>votos provinciales oficiales del 23J (BOE). <span class="tag">supuesto</span>cada partido conserva su geografía relativa de 2023. <span class="tag">supuesto</span>el voto de Sumar en 2023 se reparte entre Sumar y Podemos según el peso que les dan hoy las encuestas. <span class="tag">supuesto</span>SALF, sin base en 2023, recibe el mismo porcentaje en todas las provincias.</p>
+    <h3>Pruébelo: calculadora D'Hondt</h3>
+    <p class="note">Valores iniciales: votos oficiales del 23J en Toledo (BOE), cuatro primeras candidaturas, 6 escaños.</p>
     <div class="controls" id="dh-in"></div>
     <div class="tbl"><table id="t-dh"></table></div>
-    <p class="note"><span class="tag">supuesto</span>la geografía relativa del voto del 23J se mantiene. <span class="tag">supuesto</span>reparto Sumar/Podemos 2023 según las encuestas actuales.</p>
   </div></div>
 
   <div class="step"><div class="num">7</div><div>
@@ -444,6 +462,93 @@ function tablaEnc(id,lista,cols){
 }
 tablaEnc("#t-enc",D.encuestas,P5);
 tablaEnc("#t-enc23",D.finales_23j,["PP","PSOE","VOX","SUMAR"]);
+
+
+/* ---------- Diagrama del proceso ---------- */
+{
+  const c=$("#c-flujo"); const pasos=[["1","Encuestas","fichas, fechas de campo"],["2","Error de cada encuesta","muestra + no muestral"],["3","Sesgo de casa","la «cocina» de cada instituto"],["4","Tendencia diaria","todas las encuestas a la vez"],["5","Incertidumbre al 29N","hoy + campaña + industria"],["6","Reparto provincial","mapa 2023 + D'Hondt"],["7","Simulaciones","miles de elecciones posibles"]];
+  const W=980,H=120,bw=124,gap=(W-pasos.length*bw)/(pasos.length-1);
+  const svg=el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":"Esquema de los siete pasos del modelo"},c);
+  pasos.forEach(([n,t,sub],i)=>{const x=i*(bw+gap);
+    el("rect",{x,y:20,width:bw,height:80,rx:6,fill:"var(--panel)",stroke:"var(--accent)","stroke-width":1.5},svg);
+    el("text",{x:x+10,y:40,class:"lbl"},svg).textContent=n+". "+t.split(" ").slice(0,2).join(" ");
+    if(t.split(" ").length>2)el("text",{x:x+10,y:56,class:"lbl"},svg).textContent=t.split(" ").slice(2).join(" ");
+    const w=sub.split(" "),half=Math.ceil(w.length/2);
+    el("text",{x:x+10,y:76},svg).textContent=w.slice(0,half).join(" ");el("text",{x:x+10,y:90},svg).textContent=w.slice(half).join(" ");
+    if(i<pasos.length-1){el("line",{x1:x+bw+3,x2:x+bw+gap-5,y1:60,y2:60,stroke:"var(--accent)","stroke-width":1.5},svg);el("path",{d:`M${x+bw+gap-5},60 l-6,-4 v8 z`,fill:"var(--accent)"},svg)}});
+  c.querySelector("svg").style.minWidth="760px";
+}
+
+/* ---------- Cocina encuesta a encuesta ---------- */
+let cocP="PP";
+function drawCoc(){
+  const c=$("#c-coc"); c.innerHTML="";
+  const L=D.encuestas.filter(e=>e.voto[cocP]!=null&&e.corregido[cocP]!=null&&e.campo_fin>=String(addDays(D.corte,-45).toISOString()).slice(0,10)).sort((a,b)=>String(a.campo_fin).localeCompare(String(b.campo_fin)));
+  if(!L.length){c.textContent="Sin encuestas recientes";return}
+  const W=900,rh=24,m={l:210,r:40,t:26,b:30},H=m.t+m.b+L.length*rh;
+  const vals=L.flatMap(e=>[e.voto[cocP],e.corregido[cocP]]);const lo=Math.floor(Math.min(...vals)-1),hi=Math.ceil(Math.max(...vals)+1);
+  const x=v=>m.l+(v-lo)/(hi-lo)*(W-m.l-m.r);
+  const svg=el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":"Encuestas publicadas y corregidas"},c);
+  for(let v=lo;v<=hi;v++){el("line",{x1:x(v),x2:x(v),y1:m.t-6,y2:H-m.b,class:"grid"},svg);if((v-lo)%(hi-lo>12?2:1)===0)el("text",{x:x(v),y:H-m.b+16,"text-anchor":"middle"},svg).textContent=v+"%"}
+  const avg=L.reduce((a,e)=>a+e.corregido[cocP],0)/L.length;
+  el("line",{x1:x(avg),x2:x(avg),y1:m.t-6,y2:H-m.b,stroke:"var(--accent)","stroke-dasharray":"3 3"},svg);
+  el("text",{x:x(avg),y:14,"text-anchor":"middle",class:"lbl"},svg).textContent=`media corregida ${fmt(avg)} %`;
+  const t=tip(c);
+  L.forEach((e,i)=>{const y=m.t+i*rh+rh/2,a=e.voto[cocP],b=e.corregido[cocP];
+    el("text",{x:m.l-10,y:y+4,"text-anchor":"end",class:"lbl"},svg).textContent=`${e.casa} · ${fecha(e.campo_fin)}`;
+    el("line",{x1:x(a),x2:x(b),y1:y,y2:y,stroke:COL(cocP),"stroke-width":2},svg);
+    el("circle",{cx:x(a),cy:y,r:5,fill:"var(--panel)",stroke:COL(cocP),"stroke-width":2},svg);
+    el("circle",{cx:x(b),cy:y,r:5,fill:COL(cocP),stroke:"var(--panel)","stroke-width":1.5},svg);
+    const hit=el("rect",{x:0,y:y-rh/2,width:W,height:rh,fill:"transparent"},svg);
+    hit.addEventListener("mousemove",ev=>{const r=c.getBoundingClientRect();t.show(`${esc(e.casa)} (${fecha(e.campo_fin)}): publicado ${fmt(a)} % → corregido ${fmt(b)} % (sesgo ${sg(a-b)})`,ev.clientX-r.left,ev.clientY-r.top)});hit.addEventListener("mouseleave",t.hide)});
+}
+fillSel("#sel-coc-p",P5,cocP);$("#sel-coc-p").onchange=e=>{cocP=e.target.value;drawCoc()};drawCoc();
+
+/* ---------- Geografía y D'Hondt por provincia ---------- */
+function drawGeo(nombre){
+  const G=D.geografia; if(!G) return; const P=G.partidos, pr=G.provincias.find(p=>p.nombre===nombre);
+  const idx=P.map((p,i)=>i).filter(i=>P[i]!=="OTROS"&&(pr.cuota23[i]>=0.4||pr.cuota26[i]>=0.4)).sort((a,b)=>pr.cuota26[b]-pr.cuota26[a]);
+  // 1) barras 2023 vs 2026
+  const c=$("#c-geo"); c.innerHTML="";
+  const W=520,rh=34,m={l:80,r:50,t:10,b:24},H=m.t+m.b+idx.length*rh, mx=Math.max(...idx.map(i=>Math.max(pr.cuota23[i],pr.cuota26[i])));
+  const x=v=>m.l+v/mx*(W-m.l-m.r);
+  const svg=el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":"Voto provincial 2023 y proyección 2026"},c); svg.style.minWidth="360px";
+  const umbral=3;
+  el("line",{x1:x(umbral),x2:x(umbral),y1:m.t,y2:H-m.b,stroke:"var(--bad)","stroke-dasharray":"3 3"},svg);
+  el("text",{x:x(umbral)+3,y:H-m.b+14},svg).textContent="umbral 3 %";
+  idx.forEach((i,k)=>{const y=m.t+k*rh;
+    el("text",{x:m.l-8,y:y+rh/2+4,"text-anchor":"end",class:"lbl"},svg).textContent=NOM[P[i]]||P[i];
+    el("rect",{x:m.l,y:y+5,width:Math.max(x(pr.cuota23[i])-m.l,1),height:10,rx:2,fill:"var(--fg3)"},svg);
+    el("rect",{x:m.l,y:y+17,width:Math.max(x(pr.cuota26[i])-m.l,1),height:10,rx:2,fill:COL(P[i])==="var(--fg2)"?"var(--accent)":COL(P[i])},svg);
+    el("text",{x:x(Math.max(pr.cuota23[i],pr.cuota26[i]))+4,y:y+20},svg).textContent=`${fmt(pr.cuota23[i])} → ${fmt(pr.cuota26[i])}`});
+  // fórmula con el partido mayor
+  const j=idx[0],r=G.nacional26[j]/G.nacional23[j];
+  $("#geo-formula").textContent=`${NOM[P[j]]} en ${pr.nombre}:  ${fmt(pr.cuota23[j])} % (2023)  ×  ${fmt(G.nacional26[j])} / ${fmt(G.nacional23[j])}  (voto nacional 2026 / 2023 = ${fmt(r,3)})  ≈  ${fmt(pr.cuota23[j]*r)} %  →  ${fmt(pr.cuota26[j])} % tras reajustar para que la suma nacional cuadre`;
+  $("#geo-expl").textContent=`Cada partido conserva su fuerza relativa en ${pr.nombre} respecto a su media nacional de 2023, y esa media se sustituye por la del pronóstico. Un partido que hoy pierde un 10 % de su voto nacional lo pierde también, en proporción, en esta provincia.`;
+  // 2) D'Hondt
+  const S=pr.escanos, tot=idx.reduce((a,i)=>a+pr.cuota26[i],0)+pr.blanco, votos=i=>pr.cuota26[i]/100*pr.validos;
+  const ok=idx.filter(i=>pr.cuota26[i]>=umbral/100*tot*1);
+  const q=[];ok.forEach(i=>{for(let d=1;d<=S+1;d++)q.push({i,d,q:votos(i)/d})});q.sort((a,b)=>b.q-a.q);
+  const top=q.slice(0,Math.min(q.length,S+4));
+  const c2=$("#c-dh"); c2.innerHTML="";
+  const W2=520,bh=Math.max(12,Math.min(22,300/top.length)),m2={l:120,r:70,t:10,b:10},H2=m2.t+m2.b+top.length*(bh+4);
+  const mq=top[0].q, x2=v=>m2.l+v/mq*(W2-m2.l-m2.r);
+  const s2=el("svg",{viewBox:`0 0 ${W2} ${H2}`,role:"img","aria-label":"Cocientes D'Hondt ordenados"},c2); s2.style.minWidth="360px";
+  top.forEach((o,k)=>{const y=m2.t+k*(bh+4),gana=k<S;
+    el("text",{x:m2.l-8,y:y+bh/2+4,"text-anchor":"end",class:gana?"lbl":""},s2).textContent=`${gana?"escaño "+(k+1)+" · ":""}${NOM[P[o.i]]} ÷${o.d}`;
+    el("rect",{x:m2.l,y,width:x2(o.q)-m2.l,height:bh,rx:2,fill:COL(P[o.i])==="var(--fg2)"?"var(--accent)":COL(P[o.i]),opacity:gana?1:.3},s2);
+    el("text",{x:x2(o.q)+4,y:y+bh/2+4},s2).textContent=Math.round(o.q).toLocaleString("es-ES")});
+  if(S<top.length){const y=m2.t+S*(bh+4)-2;el("line",{x1:0,x2:W2,y1:y,y2:y,stroke:"var(--fg)","stroke-dasharray":"4 3"},s2);el("text",{x:W2-4,y:y-3,"text-anchor":"end",class:"lbl"},s2).textContent="último escaño"}
+  const ult=top[S-1],sig=top[S];
+  $("#dh-expl").innerHTML=`Se divide el voto estimado de cada candidatura que supera el 3 % entre 1, 2, 3…, y los ${S} cocientes más altos obtienen escaño. ${sig?`El último escaño lo obtiene ${NOM[P[ult.i]]} con ${Math.round(ult.q).toLocaleString("es-ES")}; ${NOM[P[sig.i]]} se queda a ${Math.round(ult.q-sig.q).toLocaleString("es-ES")} votos estimados de quitárselo. Por eso los escaños de esta provincia ${ult.q-sig.q<0.03*ult.q*S?"están en disputa":"son relativamente estables"}.`:""} Votos estimados = cuota proyectada × votos válidos de 2023 (${pr.validos.toLocaleString("es-ES")}).`;
+  // tabla
+  const seats={};q.slice(0,S).forEach(o=>seats[o.i]=(seats[o.i]||0)+1);
+  const media=(D.principal.provincias.find(p=>p.provincia===pr.nombre)||{reparto:{}}).reparto;
+  let h=`<thead><tr><th>Candidatura</th><th class="n">Voto 2023 %</th><th class="n">Proyección 2026 %</th><th class="n">Escaños con el pronóstico central</th><th class="n">Escaños medios en las simulaciones</th></tr></thead><tbody>`;
+  idx.forEach(i=>{h+=`<tr><td>${NOM[P[i]]||P[i]}</td><td class="n">${fmt(pr.cuota23[i])}</td><td class="n">${fmt(pr.cuota26[i])}</td><td class="n"><b>${seats[i]||0}</b></td><td class="n">${media[P[i]]!=null?fmt(media[P[i]]):"0"}</td></tr>`});
+  $("#t-geo").innerHTML=h+`</tbody><tfoot><tr><td colspan="5" class="note">Los escaños con el pronóstico central salen de un único reparto con los valores medianos; los medios, de miles de simulaciones con incertidumbre. La diferencia indica cuánto dependen de pequeñas variaciones del voto.</td></tr></tfoot>`;
+}
+if(D.geografia){const G=D.geografia;const o=G.provincias.map(p=>p.nombre).sort((a,b)=>a.localeCompare(b,"es"));$("#sel-geo").innerHTML=o.map(n=>`<option${n==="Toledo"?" selected":""}>${esc(n)}</option>`).join("");$("#sel-geo").onchange=e=>drawGeo(e.target.value);drawGeo("Toledo")}
 
 /* ---------- Paso 2: pesos ---------- */
 {
