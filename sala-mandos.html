@@ -42,6 +42,16 @@ header{padding:21px clamp(16px,4vw,45px)}header h1{font-size:1.48rem}
 .method-note{padding:13px 16px;background:#f0f5fa;border-left:3px solid #297caa;border-radius:5px;margin:13px 0;line-height:1.5;font-size:.9rem}
 @media(max-width:850px){.home-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.home-content{grid-template-columns:1fr}}
 @media(max-width:480px){.home-controls{padding:13px}.home-average-row{grid-template-columns:75px 1fr 62px;gap:6px}.home-section-head{align-items:flex-start}.home-section-head h2{font-size:1.08rem}}
+
+.evolution-card{margin-top:16px}.evo-tilegrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:13px 0}
+.evo-tile{border:1px solid #dae3eb;border-radius:12px;padding:15px;background:#f8fafc}
+.evo-tile h3{margin:0 0 6px;font-size:.98rem}.evo-tile small{color:#64788b;display:block;margin:5px 0}
+.evo-values{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}.evo-values .current{font-size:1.42rem;font-weight:780}
+.evo-delta{font-weight:800;border-radius:7px;padding:5px 8px;font-size:.88rem;display:inline-block}
+.evo-up{background:#deefe8;color:#175d43}.evo-down{background:#f9e8e7;color:#9b3f36}.evo-flat{background:#e7edf4;color:#4c6479}
+.evo-row{display:grid;grid-template-columns:minmax(90px,1fr) 90px 90px 90px;gap:12px;align-items:center;padding:12px 2px;border-bottom:1px solid #e7edf3;font-size:.86rem}
+.evo-row.head{font-size:.76rem;color:#667b90;font-weight:720}.evo-row .n{color:#718399;font-size:.76rem}
+@media(max-width:620px){.evo-tilegrid{grid-template-columns:1fr}.evo-row{grid-template-columns:minmax(70px,1fr) 68px 68px 76px;gap:4px;font-size:.78rem}}
 </style></head><body>
 <header><div class="masthead"><div><h1>Observatorio Electoral</h1><p>Sala de mandos y análisis</p></div><button class="top-home" data-open="inicio" aria-label="Volver al menú principal">⌂ Menú principal</button></div></header>
 <div class="wrap">
@@ -54,6 +64,14 @@ header{padding:21px clamp(16px,4vw,45px)}header h1{font-size:1.48rem}
 <div class="home-content">
 <div class="card"><div class="home-section-head"><h2>Promedios del período</h2><button class="home-textlink" type="button" data-open="promedios">Ver laboratorio →</button></div><p class="muted compact">Último sondeo de cada instituto, con igual peso por instituto. Cada partido se promedia solo entre encuestas que publicaron su estimación.</p><div id="homeAverage"></div></div>
 <div class="card"><div class="home-section-head"><h2>Encuestas recientes</h2><button class="home-textlink" type="button" data-open="sondeos">Ver todas →</button></div><div id="homeRecent"></div><div class="home-detail" id="homeDetail"></div></div>
+</div>
+<div class="card evolution-card">
+<div class="home-section-head"><h2>¿Quién sube y quién baja?</h2><span class="pill">Cambio en puntos porcentuales</span></div>
+<p class="muted compact">Comparación de las dos últimas encuestas disponibles de cada instituto dentro del período elegido. Solo se comparan institutos con dos mediciones; el cambio medio se calcula con el mismo conjunto de institutos en ambos cortes.</p>
+<div class="tools"><label>Vista<select id="evoView"><option value="all">Partidos y bloques</option><option value="parties">Solo partidos</option><option value="blocks">Solo bloques</option></select></label></div>
+<div id="evoMeta" class="muted compact"></div><div id="evoWarning"></div>
+<div id="evoBlocks"></div><div id="evoParties"></div>
+<div class="method-note"><b>Bloques ≠ gobiernos.</b> Se presentan agrupaciones de voto para comparar su evolución, no pactos acreditados. La mayoría de gobierno depende del reparto de escaños por circunscripción, candidaturas y acuerdos posteriores. No se infiere de una suma de porcentajes nacionales. <a href="pronostico.html">Consultar metodología territorial</a>.</div>
 </div>
 <div class="home-section-head" style="margin:22px 0 13px"><h2>Áreas de análisis</h2><span class="muted compact">Selecciona una puerta para entrar en sus herramientas</span></div>
 <div class="door-grid">
@@ -110,6 +128,51 @@ return '<tr><td>'+safe(p.published)+'</td><td>'+safe(p.institute)+'</td><td>'+sa
 function average(){const cut=$('avgCut').value,days=+$('days').value,half=Math.max(1,+$('half').value),keepCis=$('cis').value==='yes';let rows=state.polls.filter(p=>available(p,cut)&&ago(cut,p.published)>=0&&ago(cut,p.published)<=days&&(keepCis||p.institute!=='CIS')&&p.kind==='poll-estimate');if($('one').value==='yes'){const by=new Map;for(let p of rows.sort((a,b)=>a.published.localeCompare(b.published)))by.set(p.institute,p);rows=[...by.values()]}const groups={};for(const p of rows){let w=$('recency').value==='exp'?Math.pow(.5,ago(cut,p.published)/half):1;for(const [key,value] of Object.entries(p.values||{})){let party=canon(key);if(['Otros','Blanco','Otros + blanco'].includes(party)||!Number.isFinite(+value))continue;(groups[party]??=[]).push({v:+value,w,house:p.institute})}}const summary=Object.entries(groups).map(([party,arr])=>({party,avg:arr.reduce((s,a)=>s+a.v*a.w,0)/arr.reduce((s,a)=>s+a.w,0),n:arr.length,houses:new Set(arr.map(a=>a.house)).size,min:Math.min(...arr.map(a=>a.v)),max:Math.max(...arr.map(a=>a.v))})).sort((a,b)=>b.avg-a.avg);state.lastAvg={cut,days,half,keepCis,studies:rows.map(p=>p.id),summary,method:$('recency').value};$('avgMeta').textContent=rows.length+' estudios, '+new Set(rows.map(p=>p.institute)).size+' institutos. Cada partido se promedia solo entre estudios que publicaron ese dato.';$('avgRows').innerHTML=summary.map(x=>'<tr><td>'+safe(x.party)+'</td><td class="num"><b>'+fmt(x.avg)+' %</b></td><td class="num">'+x.n+'</td><td class="num">'+x.houses+'</td><td class="num">'+fmt(x.min)+'–'+fmt(x.max)+' %</td></tr>').join('')||'<tr><td colspan="5">No hay estudios.</td></tr>';$('avgChart').innerHTML=summary.slice(0,9).map(x=>'<div class="column"><b>'+fmt(x.avg)+'</b><div class="stem" style="height:'+Math.max(2,x.avg/40*160)+'px"></div><span>'+safe(x.party)+'</span></div>').join('')}
 function renderEvents(){let polls=state.polls;$('eventItems').innerHTML=state.events.map(e=>{let before=polls.filter(p=>p.published&&p.published<e.date),after=polls.filter(p=>p.published&&p.published>=e.date);let overlapping=polls.filter(p=>p.fieldStart&&p.fieldEnd&&p.fieldStart<=e.date&&p.fieldEnd>=e.date);return '<div class="event"><h3>'+safe(e.title)+' · '+safe(e.date)+'</h3><p>'+safe(e.summary||'')+'</p><p><b>'+before.length+'</b> encuestas archivadas publicadas antes · <b>'+after.length+'</b> publicadas desde el acontecimiento · <b>'+overlapping.length+'</b> con campo que abarca la fecha</p><p><small>Estas cifras no miden el impacto electoral: incluyen estudios de distintas fechas y escenarios. Se necesita controlar la comparabilidad y el trabajo de campo.</small></p>'+((e.sources||[]).map(s=>'<a href="'+safe(s.url)+'" target="_blank" rel="noopener">'+safe(s.publisher)+'</a>').join(' · '))+'</div>'}).join('')||'<p>No hay eventos registrados.</p>'}
 
+
+const BLOQUES_EXPLORATORIOS=[
+ {label:'PP + Vox + UPN',parties:['PP','VOX','UPN']},
+ {label:'PSOE + Sumar + Podemos',parties:['PSOE','SUMAR','PODEMOS']},
+ {label:'PP + Vox',parties:['PP','VOX']},
+ {label:'PSOE + Sumar',parties:['PSOE','SUMAR']}
+];
+function pollValue(p,party){
+ const items=Object.entries(p.values||{}).filter(([k])=>canon(k)===party);
+ return items.length===1&&Number.isFinite(Number(items[0][1]))?Number(items[0][1]):null;
+}
+function deltaBadge(d){return '<span class="evo-delta '+(d>.05?'evo-up':d<-.05?'evo-down':'evo-flat')+'">'+(d>0?'+':'')+fmt(d)+' pp</span>'}
+function evolution(eligible){
+ const byHouse=new Map;
+ // Pairs use publication ordering; do not combine different electoral scenarios.
+ for(const p of [...eligible].sort((a,b)=>b.published.localeCompare(a.published)||String(b.fieldEnd||'').localeCompare(a.fieldEnd||''))){
+  if(!byHouse.has(p.institute))byHouse.set(p.institute,[]);
+  byHouse.get(p.institute).push(p);
+ }
+ const pairs=[...byHouse.entries()].filter(([house,arr])=>arr.length>=2)
+   .map(([house,arr])=>({house,old:arr[1],fresh:arr[0]}));
+ const matching=pairs.filter(x=>x.old.published!==x.fresh.published);
+ $('evoMeta').textContent=matching.length+' institutos comparables (de '+byHouse.size+'). Fechas y tamaños de las parejas pueden variar entre institutos.';
+ const ambiguous=matching.filter(x=>x.old.scenario&&x.fresh.scenario&&x.old.scenario!==x.fresh.scenario);
+ $('evoWarning').innerHTML=ambiguous.length?'<p class="muted compact">Se excluyen las parejas cuyos escenarios declarados no coinciden: '+safe(ambiguous.map(x=>x.house).join(', '))+'.</p>':'';
+ const usable=matching.filter(x=>!x.old.scenario||!x.fresh.scenario||x.old.scenario===x.fresh.scenario);
+ function compute(parties){
+   const complete=usable.filter(pair=>parties.every(p=>pollValue(pair.old,p)!==null&&pollValue(pair.fresh,p)!==null));
+   if(!complete.length)return null;
+   const sum=(row)=>parties.reduce((a,p)=>a+pollValue(row,p),0);
+   const old=complete.reduce((a,x)=>a+sum(x.old),0)/complete.length;
+   const current=complete.reduce((a,x)=>a+sum(x.fresh),0)/complete.length;
+   return {old,current,delta:current-old,n:complete.length,
+     houses:complete.map(x=>x.house),early:complete.map(x=>x.old.published).sort()[0],
+     late:complete.map(x=>x.fresh.published).sort().at(-1)};
+ }
+ const formatGroup=(x)=>{const v=compute(x.parties);return '<div class="evo-tile"><h3>'+safe(x.label)+'</h3>'+(v?'<div class="evo-values"><span class="current">'+fmt(v.current)+' %</span>'+deltaBadge(v.delta)+'</div><small>Anterior: '+fmt(v.old)+' % · '+v.n+' institutos</small>':'<span class="muted compact">Sin encuestas completas y comparables</span>')+'</div>'};
+ $('evoBlocks').innerHTML='<h3>Evolución por agrupaciones</h3><div class="evo-tilegrid">'+BLOQUES_EXPLORATORIOS.map(formatGroup).join('')+'</div><p class="muted compact">Cada agrupación se calcula solo con institutos que publican todas sus candidaturas en ambas mediciones. Por ello, las agrupaciones pueden usar conjuntos de estudios diferentes.</p>';
+ const partyNames=['PP','PSOE','VOX','SUMAR','PODEMOS','SALF','ERC','JUNTS','BILDU','PNV','BNG','CC','UPN'];
+ const measured=partyNames.map(p=>({p,v:compute([p])})).filter(x=>x.v).sort((a,b)=>Math.abs(b.v.delta)-Math.abs(a.v.delta));
+ $('evoParties').innerHTML='<h3>Evolución por partido</h3><div class="evo-row head"><span>Partido</span><span>Anterior</span><span>Última</span><span>Variación</span></div>'+ (measured.length?measured.map(({p,v})=>'<div class="evo-row"><span><b>'+safe(p)+'</b><div class="n">'+v.n+' institutos</div></span><span>'+fmt(v.old)+' %</span><span><b>'+fmt(v.current)+' %</b></span>'+deltaBadge(v.delta)+'</div>').join(''):'<p class="muted">No hay dos encuestas comparables por instituto para calcular cambios.</p>');
+ let view=$('evoView').value;
+ $('evoBlocks').hidden=view==='parties';$('evoParties').hidden=view==='blocks';
+}
+$('evoView').addEventListener('change',homeDashboard);
 function homeDashboard(){
  if(!state.polls.length)return;
  const from=$('homeFrom').value,to=$('homeTo').value,includeCis=$('homeCis').value==='yes';
@@ -136,6 +199,7 @@ function homeDashboard(){
  const summary=Object.entries(groups).map(([name,arr])=>({name,mean:arr.reduce((a,b)=>a+b,0)/arr.length,n:arr.length})).sort((a,b)=>b.mean-a.mean);
  $('homeAverage').innerHTML=summary.length?summary.slice(0,9).map(x=>'<div class="home-average-row"><span><b>'+safe(x.name)+'</b> <small class="muted">('+x.n+')</small></span><div class="home-average-track"><div class="home-average-fill" style="width:'+Math.min(100,x.mean/40*100)+'%"></div></div><strong>'+fmt(x.mean)+' %</strong></div>').join(''):'<p class="muted">No hay encuestas para el período seleccionado.</p>';
  $('homeRecent').innerHTML=ordered.slice(0,5).map(p=>'<div class="home-poll"><b>'+safe(p.institute)+'</b> · '+safe(p.published)+'<small>'+safe(p.title||p.id)+' · n='+safe(p.sample||'no consta')+' · '+(p.microdata?'Microdatos enlazados':'Sin enlace a microdatos')+'</small></div>').join('')||'<p class="muted">No hay estudios recientes.</p>';
+ evolution(eligible);
  $('homeDetail').innerHTML='<b>Cómo leer este resumen</b><p>El promedio usa una sola encuesta por instituto para evitar que las casas que publican con más frecuencia dominen la media. No aplica correcciones por sesgo, recuerdo de voto ni participación.</p><p>El número entre paréntesis en cada partido indica cuántos institutos aportan un porcentaje. Las estimaciones de distintas candidaturas o escenarios pueden no ser plenamente comparables.</p>';
 }
 function setHomeDefaults(){
