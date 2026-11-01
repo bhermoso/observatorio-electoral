@@ -67,6 +67,21 @@ class TestEvaluacion(unittest.TestCase):
         self.assertAlmostEqual(e["X"]["error"]["PP"], 2.0)
 
 
+class TestDisponibilidadTemporal(unittest.TestCase):
+    def test_no_utilizar_encuesta_antes_de_publicarse(self):
+        encuesta = {
+            "campo_fin": date(2026, 10, 25),
+            "publicacion": date(2026, 10, 29),
+        }
+        self.assertFalse(F.publicada_antes(encuesta, date(2026, 10, 28)))
+        self.assertTrue(F.publicada_antes(encuesta, date(2026, 10, 29)))
+
+    def test_fecha_desconocida_aplica_retraso_explicito(self):
+        encuesta = {"campo_fin": date(2026, 10, 25)}
+        self.assertFalse(F.publicada_antes(encuesta, date(2026, 10, 26)))
+        self.assertTrue(F.publicada_antes(encuesta, date(2026, 10, 27)))
+
+
 class TestDatosReales(unittest.TestCase):
     def test_reproduce_escanos_23j(self):
         b = Base(["PP", "PSOE", "VOX", "SUMAR", "ERC", "JUNTS", "BILDU", "PNV", "BNG", "CC", "UPN", "OTROS"],

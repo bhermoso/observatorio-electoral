@@ -36,7 +36,7 @@ def main():
     ap.add_argument("--desde", type=date.fromisoformat, default=date(2026, 10, 1), help="inicio del historial")
     a = ap.parse_args()
     hoy = a.hoy
-    enc = [e for e in F.todas() if e["campo_fin"] <= hoy]
+    enc = [e for e in F.todas() if e["campo_fin"] <= hoy and F.publicada_antes(e, hoy)]
     res23 = F.resultado_23j()
     L = []
     w = L.append
@@ -315,9 +315,9 @@ def main():
     if refs:
         w("## 5. Contraste con promedios externos\n")
         w("Para comparar en igualdad de condiciones, el motor se ejecuta con los datos que existían en la fecha "
-          "de cada referencia (encuestas con campo terminado hasta ese día), variante `consenso_privadas`.\n")
+          "de cada referencia (encuestas publicadas y con campo terminado hasta ese día), variante `consenso_privadas`.\n")
     for ref in refs:
-        enc_d = [e for e in actuales if e["campo_fin"] <= ref["fecha"]]
+        enc_d = [e for e in actuales if e["campo_fin"] <= ref["fecha"] and F.publicada_antes(e, ref["fecha"])]
         if len({e["casa"] for e in enc_d}) < 2:
             continue
         aj_d = PR.estimar(enc_d, inicio, ref["fecha"], "consenso_privadas", errores_23j=err)
