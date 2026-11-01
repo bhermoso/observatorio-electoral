@@ -25,6 +25,11 @@ Salidas en `modelo/salida/`: `informe.md` (tablas), `pronostico.json` (cifras), 
 | `motor/registro.py` | Registro de encuestas consultadas y evolución diaria del pronóstico principal. |
 | `motor/pronostico.py` | Simulación hasta el día de la elección. Suma la incertidumbre de la estimación actual, el movimiento hasta el 29N, el error de industria y el error provincial. Tres variantes de referencia y un promedio simple como comparación. |
 
+## Libro de recetas y microdatos
+
+- `recetario/recetas.json`: lo que cada instituto explica de su método (entrevista, muestra, ponderación, recuerdo de voto, indecisos, estimación, microdatos), cada afirmación con su fuente. Solo textos de documentos del instituto; lo que no consta queda vacío.
+- `microdatos/`: cocina propia sobre respuestas individuales (voto directo ponderado, transferencias recuerdo × intención, reponderación por recuerdo de voto de 2023). `estudios.json` declara variables y códigos copiados del cuestionario; los ficheros descargados van a `microdatos/crudos/` (no se versionan). Leer `.sav` requiere `pip install pyreadstat`.
+
 ## Pronóstico principal
 
 Une a partes iguales las tres variantes de referencia y usa un error de industria de 2,2 pp para un partido del 25 % (`INDUSTRIA_PRINCIPAL`), intermedio entre el supuesto inicial y el que habría cubierto 2023. Incluye el reparto medio por provincia. Las encuestas citadas solo en prensa (`externos/prensa_2026.csv`) entran de forma provisional con `origen` = `prensa-sin-verificar`.

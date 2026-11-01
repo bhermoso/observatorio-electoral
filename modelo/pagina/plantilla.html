@@ -93,7 +93,7 @@ ul.tight{padding-left:20px;margin:6px 0}ul.tight li{margin:3px 0}
   <div class="meta" id="hdr-meta"></div>
 </header>
 <nav class="idx" aria-label="Secciones">
-  <a href="#pronostico">Pronóstico</a><a href="#evolucion">Evolución</a><a href="#provincias">Provincias</a><a href="#encuestas">Encuestas</a><a href="#modelo">Cómo funciona</a><a href="#evaluacion">Evaluación</a><a href="#eventos">Urda y otros sucesos</a><a href="#limites">Límites</a>
+  <a href="#pronostico">Pronóstico</a><a href="#evolucion">Evolución</a><a href="#provincias">Provincias</a><a href="#encuestas">Encuestas</a><a href="#modelo">Cómo funciona</a><a href="#recetario">Recetario</a><a href="#evaluacion">Evaluación</a><a href="#eventos">Urda y otros sucesos</a><a href="#limites">Límites</a>
 </nav>
 
 <section id="pronostico">
@@ -146,7 +146,7 @@ ul.tight{padding-left:20px;margin:6px 0}ul.tight li{margin:3px 0}
   <p class="note"><span class="badge v">verificada</span> registro primario del observatorio, contrastado con el documento original. <span class="badge t">terceros</span> recopilación externa con enlace a la publicación, no contrastada todavía. <span class="badge p">prensa</span> cifras conocidas solo por resúmenes de prensa; entran en el pronóstico de forma provisional hasta consultar el original.</p>
   <div class="tbl"><table id="t-enc"></table></div>
   <h3>Últimas encuestas antes del 23J de 2023</h3>
-  <p class="note">Base de la evaluación de la sección <a href="#evaluacion">Evaluación</a>.</p>
+  <p class="note">Base de la evaluación de la sección <a href="#recetario">Recetario</a><a href="#evaluacion">Evaluación</a>.</p>
   <div class="tbl"><table id="t-enc23"></table></div>
 </section>
 
@@ -246,6 +246,18 @@ industria = 1,5 pp × √(p/25) × ( √0,5 · factor de bloque ± √0,5 · err
     <h3>Simulación</h3>
     <p>Se generan miles de elecciones posibles. En cada una se sortea el voto nacional de cada partido con el error total del paso 5. A cada provincia se le añade un error propio (±8 % del voto del partido en esa provincia), se reparte con D'Hondt y se suman los escaños. Las medianas, los intervalos y las probabilidades del <a href="#pronostico">pronóstico</a> son recuentos sobre esas simulaciones. «98 %» significa que la condición se cumple en 98 de cada 100 simulaciones, dados los supuestos.</p>
   </div></div>
+</section>
+
+<section id="recetario">
+  <h2>Libro de recetas de cocina electoral</h2>
+  <p class="lead">Lo que cada instituto explica de su propio método, con la fuente de cada afirmación. Solo se recoge lo que el instituto publica; un apartado vacío significa que no consta en los documentos consultados, no que el instituto no lo haga.</p>
+  <div class="tbl"><table id="t-recetas"></table></div>
+  <p class="note">Pulse un instituto para ver cada receta con su fuente y los documentos enlazados (fichas técnicas, cuestionarios, páginas de metodología).</p>
+  <h3>La receta de este observatorio</h3>
+  <div class="tbl"><table id="t-receta-propia"></table></div>
+  <h3>Microdatos</h3>
+  <p>Cuando un instituto publica las respuestas individuales, el motor puede cocinarlas con su propia receta: calcular el voto directo, ver de dónde viene cada voto (recuerdo de 2023 frente a intención actual) y reponderar por recuerdo de voto para compararlo con la estimación publicada.</p>
+  <div class="tbl"><table id="t-micro"></table></div>
 </section>
 
 <section id="evaluacion">
@@ -549,6 +561,21 @@ function drawGeo(nombre){
   $("#t-geo").innerHTML=h+`</tbody><tfoot><tr><td colspan="5" class="note">Los escaños con el pronóstico central salen de un único reparto con los valores medianos; los medios, de miles de simulaciones con incertidumbre. La diferencia indica cuánto dependen de pequeñas variaciones del voto.</td></tr></tfoot>`;
 }
 if(D.geografia){const G=D.geografia;const o=G.provincias.map(p=>p.nombre).sort((a,b)=>a.localeCompare(b,"es"));$("#sel-geo").innerHTML=o.map(n=>`<option${n==="Toledo"?" selected":""}>${esc(n)}</option>`).join("");$("#sel-geo").onchange=e=>drawGeo(e.target.value);drawGeo("Toledo")}
+
+/* ---------- Recetario ---------- */
+if(D.recetario){
+  const R=D.recetario, A=R.apartados, K=Object.keys(A);
+  const corto={modo_entrevista:"Entrevista",muestreo_y_cuotas:"Muestra y cuotas",ponderacion:"Ponderación",recuerdo_de_voto:"Recuerdo de voto",indecisos_y_abstencion:"Indecisos",modelo_de_estimacion:"Estimación",microdatos:"Microdatos"};
+  let h=`<thead><tr><th>Instituto</th>${K.map(k=>`<th title="${esc(A[k])}">${corto[k]||k}</th>`).join("")}<th class="n">Documentos</th></tr></thead><tbody>`;
+  R.institutos.forEach((c,i)=>{
+    h+=`<tr class="row" tabindex="0" aria-expanded="false"><td><b>${esc(c.instituto)}</b></td>${K.map(k=>{const v=c.recetas[k]||[];return v.length?`<td style="font-size:12.5px">${esc(v[0].texto.slice(0,60))}${v[0].texto.length>60?"…":""}${v.length>1?` <span class="note">(+${v.length-1})</span>`:""}</td>`:'<td style="color:var(--fg3)">no consta</td>'}).join("")}<td class="n">${c.documentos.length}</td></tr>`;
+    h+=`<tr class="det" hidden><td colspan="${K.length+2}"><div class="grid2"><div>${K.map(k=>{const v=c.recetas[k]||[];return `<p style="margin:6px 0"><b>${esc(A[k])}</b><br>${v.length?v.map(x=>`${esc(x.texto)} <a href="${esc(x.fuente||"#")}" target="_blank" rel="noopener">fuente</a>${x.estudio?` <span class="note">(${esc(x.estudio)})</span>`:""}`).join("<br>"):'<span class="note">No consta en los documentos consultados.</span>'}</p>`}).join("")}</div><div><b>Documentos</b><ul class="tight">${c.documentos.map(d=>`<li><a href="${esc(d.url)}" target="_blank" rel="noopener">${esc(d.tipo)}</a>${d.estudio?` <span class="note">${esc(d.estudio)}</span>`:""}</li>`).join("")}</ul></div></div></td></tr>`});
+  $("#t-recetas").innerHTML=h+`</tbody><tfoot><tr><td colspan="${K.length+2}" class="note">${esc(R.pendiente)}</td></tr></tfoot>`;
+  $("#t-recetas").querySelectorAll("tr.row").forEach(r=>{const tog=()=>{const d=r.nextElementSibling;d.hidden=!d.hidden;r.setAttribute("aria-expanded",!d.hidden)};r.onclick=tog;r.onkeydown=ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();tog()}}});
+  const propia={modo_entrevista:"No entrevista: agrega encuestas publicadas por otros institutos.",muestreo_y_cuotas:"Usa todas las encuestas nacionales del registro; las que publican a diario pesan como una sola en cada semana.",ponderacion:"Cada encuesta pesa según su tamaño efectivo (muestra ÷ 1,5) y un error no muestral de 1 punto para un partido del 25 %.",recuerdo_de_voto:"No corrige respuestas. Corrige el sesgo de cada casa respecto a las demás o respecto a su error en 2023 (tres variantes).",indecisos_y_abstencion:"Usa la estimación publicada por cada casa, con su propio tratamiento de indecisos.",modelo_de_estimacion:"Tendencia diaria con sesgo fijo por casa, incertidumbre hasta el día de la elección y reparto provincial D'Hondt sobre el mapa de 2023, en miles de simulaciones.",microdatos:"Preparado para cocinar microdatos del CIS (voto directo, transferencias, reponderación por recuerdo) cuando se descarguen."};
+  $("#t-receta-propia").innerHTML=`<tbody>${K.map(k=>`<tr><td style="width:30%"><b>${esc(A[k])}</b></td><td>${esc(propia[k])}</td></tr>`).join("")}</tbody>`;
+  $("#t-micro").innerHTML=`<thead><tr><th>Estudio</th><th>Estado</th><th>Página de descarga</th></tr></thead><tbody>${(R.microdatos||[]).map(m=>`<tr><td>${esc(m.estudio)}</td><td>${esc(m.estado)}</td><td>${m.pagina?`<a href="${esc(m.pagina)}" target="_blank" rel="noopener">microdatos</a>`:"—"}</td></tr>`).join("")}</tbody>`;
+}
 
 /* ---------- Paso 2: pesos ---------- */
 {

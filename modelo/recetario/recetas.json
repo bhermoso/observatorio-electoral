@@ -1,0 +1,488 @@
+{
+ "descripcion": "Libro de recetas de cocina electoral: lo que cada instituto explica de su propio método, con la fuente de cada afirmación. Solo se recoge lo que el instituto publica; lo que no consta queda vacío.",
+ "apartados": {
+  "modo_entrevista": "Cómo entrevista (teléfono, internet, mixto)",
+  "muestreo_y_cuotas": "Cómo selecciona la muestra y qué cuotas aplica",
+  "ponderacion": "Cómo pondera las respuestas",
+  "recuerdo_de_voto": "Si corrige por recuerdo de voto y cómo",
+  "indecisos_y_abstencion": "Qué hace con indecisos, abstención y voto oculto",
+  "modelo_de_estimacion": "Cómo pasa de las respuestas a la estimación de voto",
+  "microdatos": "Si publica los datos individuales"
+ },
+ "institutos": [
+  {
+   "instituto": "CIS",
+   "estudios": [
+    "3411",
+    "3415",
+    "cis-3582"
+   ],
+   "recetas": {
+    "modo_entrevista": [
+     {
+      "texto": "CATI",
+      "fuente": "https://www.cis.es/documents/20117/1557956/FT3411.pdf",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "3411"
+     }
+    ],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [
+     {
+      "texto": "Variables de ponderación del fichero: PESO (nacional), PESOPROV (provincia), PESOCCAA (comunidad).",
+      "fuente": "https://www.cis.es/documents/20117/1557956/FT3411.pdf",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "3411"
+     },
+     {
+      "texto": "Variables de ponderación del fichero: PESO (nacional).",
+      "fuente": "https://www.cis.es/documents/20117/1557966/FT3415pdf.pdf",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "3415"
+     },
+     {
+      "texto": "Variables de ponderación del fichero: PESO (nacional), PESOCCAA (comunidad).",
+      "fuente": "https://www.cis.es/documents/d/guest/es3582mar_A-pdf",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "cis-3582"
+     }
+    ],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [
+     {
+      "texto": "Publica por separado la estimación de voto y el voto directo: son medidas distintas.",
+      "fuente": "https://www.cis.es/documents/d/guest/es3582mar_A-pdf",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "cis-3582"
+     },
+     {
+      "texto": "El informe indica imputaciones en la estimación (por ejemplo, UPN al 0,1 %).",
+      "fuente": "https://www.cis.es/documents/d/guest/es3582mar_A-pdf",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "cis-3582"
+     }
+    ],
+    "microdatos": [
+     {
+      "texto": "Publica microdatos del estudio 3411 para descarga.",
+      "fuente": "https://www.cis.es/es/estudios/preelectoral-elecciones-generales-2023?showModal=true",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "3411"
+     },
+     {
+      "texto": "Publica microdatos del estudio 3415 para descarga.",
+      "fuente": "https://www.cis.es/es/estudios/encuesta-flash-elecciones-generales-2023?showModal=true",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "3415"
+     },
+     {
+      "texto": "Publica microdatos del estudio cis-3582 para descarga.",
+      "fuente": "https://www.cis.es/es/estudios/barometro-de-octubre-2026",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "cis-3582"
+     }
+    ]
+   },
+   "documentos": [
+    {
+     "url": "https://www.cis.es/documents/20117/1557956/FT3411.pdf",
+     "tipo": "ficha técnica",
+     "estudio": "3411"
+    },
+    {
+     "url": "https://www.cis.es/documents/20117/1557956/cues3411.pdf",
+     "tipo": "cuestionario",
+     "estudio": "3411"
+    },
+    {
+     "url": "https://www.cis.es/documents/d/cis/3411_estimacion",
+     "tipo": "publicación",
+     "estudio": "3411"
+    },
+    {
+     "url": "https://www.cis.es/documents/20117/1557966/FT3415pdf.pdf",
+     "tipo": "ficha técnica",
+     "estudio": "3415"
+    },
+    {
+     "url": "https://datos.gob.es/es/catalogo/ea0040772-encuesta-flash-elecciones-generales-2023",
+     "tipo": "cuestionario",
+     "estudio": "3415"
+    },
+    {
+     "url": "https://www.cis.es/documents/d/cis/es3415marMT_a",
+     "tipo": "publicación",
+     "estudio": "3415"
+    },
+    {
+     "url": "https://www.cis.es/documents/d/guest/es3582mar_A-pdf",
+     "tipo": "ficha técnica",
+     "estudio": "cis-3582"
+    },
+    {
+     "url": "https://www.cis.es/documents/d/guest/3582_estimacion-pdf",
+     "tipo": "publicación",
+     "estudio": "cis-3582"
+    }
+   ]
+  },
+  {
+   "instituto": "40dB.",
+   "estudios": [
+    "40db-2026-10-flash"
+   ],
+   "recetas": {
+    "modo_entrevista": [
+     {
+      "texto": "CAWI",
+      "fuente": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_informe_voto_barometro_flash.pdf",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "40db-2026-10-flash"
+     }
+    ],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_informe_voto_barometro_flash.pdf",
+     "tipo": "ficha técnica",
+     "estudio": "40db-2026-10-flash"
+    }
+   ]
+  },
+  {
+   "instituto": "GAD3",
+   "estudios": [
+    "gad3-2026-10"
+   ],
+   "recetas": {
+    "modo_entrevista": [
+     {
+      "texto": "CATI",
+      "fuente": "https://www.gad3.com/barometro-abc-estimacion-de-voto-nacional-octubre-2026/",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "gad3-2026-10"
+     }
+    ],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://www.gad3.com/barometro-abc-estimacion-de-voto-nacional-octubre-2026/",
+     "tipo": "ficha técnica",
+     "estudio": "gad3-2026-10"
+    }
+   ]
+  },
+  {
+   "instituto": "IMOP Insights",
+   "estudios": [
+    "imop-2026-10-ola2"
+   ],
+   "recetas": {
+    "modo_entrevista": [
+     {
+      "texto": "CATI + CAWI",
+      "fuente": "https://www.imop.es/encuesta-pre-electoral-el-confidencial-ola-2/",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "imop-2026-10-ola2"
+     }
+    ],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://www.imop.es/encuesta-pre-electoral-el-confidencial-ola-2/",
+     "tipo": "ficha técnica",
+     "estudio": "imop-2026-10-ola2"
+    }
+   ]
+  },
+  {
+   "instituto": "DYM",
+   "estudios": [
+    "dym-2026-10"
+   ],
+   "recetas": {
+    "modo_entrevista": [
+     {
+      "texto": "CAWI",
+      "fuente": "https://www.20minutos.es/nacional/psoe-absorbe-intencion-votos-sumar-podemos-mientras-pp-vox-consolidan-su-mayoria_7046598_0.html",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "dym-2026-10"
+     }
+    ],
+    "muestreo_y_cuotas": [
+     {
+      "texto": "Cuotas por sexo, edad y ocupación según la ficha publicada.",
+      "fuente": "https://www.20minutos.es/nacional/psoe-absorbe-intencion-votos-sumar-podemos-mientras-pp-vox-consolidan-su-mayoria_7046598_0.html",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "dym-2026-10"
+     }
+    ],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://www.20minutos.es/nacional/psoe-absorbe-intencion-votos-sumar-podemos-mientras-pp-vox-consolidan-su-mayoria_7046598_0.html",
+     "tipo": "ficha técnica",
+     "estudio": "dym-2026-10"
+    }
+   ]
+  },
+  {
+   "instituto": "Ateneo del Dato",
+   "estudios": [
+    "ateneo-2026-10-25"
+   ],
+   "recetas": {
+    "modo_entrevista": [
+     {
+      "texto": "CAWI",
+      "fuente": "https://www.eldiario.es/politica/bloque-izquierdas-recorta-distancias-pp-vox-mantienen-mayoria-absoluta_1_13611052.html",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "ateneo-2026-10-25"
+     }
+    ],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://www.eldiario.es/politica/bloque-izquierdas-recorta-distancias-pp-vox-mantienen-mayoria-absoluta_1_13611052.html",
+     "tipo": "ficha técnica",
+     "estudio": "ateneo-2026-10-25"
+    }
+   ]
+  },
+  {
+   "instituto": "Sigma Dos",
+   "estudios": [
+    "sigma-dos-2026-10-26"
+   ],
+   "recetas": {
+    "modo_entrevista": [
+     {
+      "texto": "CATI + CAWI",
+      "fuente": "https://www.sigmados.com/noticia?id=OUze2FxEIVfARtu3",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "sigma-dos-2026-10-26"
+     }
+    ],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://www.sigmados.com/noticia?id=OUze2FxEIVfARtu3",
+     "tipo": "ficha técnica",
+     "estudio": "sigma-dos-2026-10-26"
+    }
+   ]
+  },
+  {
+   "instituto": "Metroscopia",
+   "estudios": [],
+   "recetas": {
+    "modo_entrevista": [],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://metroscopia.org/como-medimos/",
+     "tipo": "página de metodología del instituto (sin transcribir)",
+     "estudio": null
+    },
+    {
+     "url": "https://metroscopia.org/lo-que-medimos/",
+     "tipo": "página institucional",
+     "estudio": null
+    }
+   ]
+  },
+  {
+   "instituto": "IESA-CSIC · Córdoba",
+   "estudios": [],
+   "recetas": {
+    "modo_entrevista": [],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://www.ciencia.gob.es/Noticias/2022/Junio/Diana-Morant-visita-el-Instituto-de-Estudios-Sociales-Avanzados-en-Cordoba.html",
+     "tipo": "página de metodología del instituto (sin transcribir)",
+     "estudio": null
+    },
+    {
+     "url": "https://www.iesa.csic.es/",
+     "tipo": "página institucional",
+     "estudio": null
+    }
+   ]
+  },
+  {
+   "instituto": "CADPEA / Laboratorio CATI · UGR",
+   "estudios": [],
+   "recetas": {
+    "modo_entrevista": [],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://cpolitica.ugr.es/docencia/grados/grado-ciencias-politicas-y-la-administracion/politica-gobierno-y-admon-andalucia/guia-docente",
+     "tipo": "página de metodología del instituto (sin transcribir)",
+     "estudio": null
+    },
+    {
+     "url": "https://secretariageneral.ugr.es/sites/webugr/secretariageneral/public/inline-files/FICHA%20T%C3%89CNICA.pdf",
+     "tipo": "página institucional",
+     "estudio": null
+    }
+   ]
+  },
+  {
+   "instituto": "GESOP · Gabinet d’Estudis Socials i Opinió Pública",
+   "estudios": [],
+   "recetas": {
+    "modo_entrevista": [],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://gesop.net/",
+     "tipo": "página de metodología del instituto (sin transcribir)",
+     "estudio": null
+    },
+    {
+     "url": "https://www.icps.cat/recerca/sondeigs-i-dades/sondeigs/sondeigs-d-opinio-catalunya",
+     "tipo": "página institucional",
+     "estudio": null
+    }
+   ]
+  },
+  {
+   "instituto": "ICPS · Institut de Ciències Polítiques i Socials",
+   "estudios": [],
+   "recetas": {
+    "modo_entrevista": [],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://www.icps.cat/recerca/sondeigs-i-dades/basedadesintegrada",
+     "tipo": "página de metodología del instituto (sin transcribir)",
+     "estudio": null
+    },
+    {
+     "url": "https://www.icps.cat/recerca/sondeigs-i-dades/sondeigs/sondeigs-d-opinio-catalunya",
+     "tipo": "página institucional",
+     "estudio": null
+    }
+   ]
+  },
+  {
+   "instituto": "Fundación CENTRA · Barómetro Andaluz",
+   "estudios": [],
+   "recetas": {
+    "modo_entrevista": [],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://www.fundacioncentra.eu/encuestas/estudio-preelectoral-elecciones-autonomicas-2026",
+     "tipo": "página de metodología del instituto (sin transcribir)",
+     "estudio": null
+    },
+    {
+     "url": "https://www.centrodeestudiosandaluces.es/barometro",
+     "tipo": "página institucional",
+     "estudio": null
+    }
+   ]
+  },
+  {
+   "instituto": "Gabinete de Prospección Sociológica · Gobierno Vasco",
+   "estudios": [],
+   "recetas": {
+    "modo_entrevista": [],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://www.euskadi.eus/gobierno-vasco/-/todos-los-estudios-por-orden-cronologico/",
+     "tipo": "página de metodología del instituto (sin transcribir)",
+     "estudio": null
+    },
+    {
+     "url": "https://www.euskadi.eus/estudios-sociologicos/",
+     "tipo": "página institucional",
+     "estudio": null
+    }
+   ]
+  }
+ ],
+ "pendiente": "Transcribir de las fichas técnicas y páginas de metodología enlazadas los apartados vacíos (recuerdo de voto, indecisos, modelo de estimación). Requiere acceso a las webs de los institutos."
+}
