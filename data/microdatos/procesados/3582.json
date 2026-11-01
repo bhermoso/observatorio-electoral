@@ -1,0 +1,60 @@
+{
+  "study": "3582",
+  "status": "procesado",
+  "n": 5024,
+  "effective_n": 2410.93,
+  "source": "CIS · Barómetro de octubre de 2026",
+  "weight_used": "PESO",
+  "variables": {
+    "intencion": "INTENCIONGR",
+    "recuerdo": "RECUERDO",
+    "peso": "PESO",
+    "probabilidad_voto": "PROBVOTO",
+    "simpatia": "VOTOSIMG"
+  },
+  "comparison": [
+    {
+      "party": "PSOE",
+      "direct_census": 25.3,
+      "direct_decided": 36.23,
+      "vote_sympathy_decided": 35.35,
+      "official_estimate": 34
+    },
+    {
+      "party": "PP",
+      "direct_census": 14.69,
+      "direct_decided": 21.03,
+      "vote_sympathy_decided": 20.93,
+      "official_estimate": 22.2
+    },
+    {
+      "party": "VOX",
+      "direct_census": 11.61,
+      "direct_decided": 16.63,
+      "vote_sympathy_decided": 15.1,
+      "official_estimate": 17.1
+    },
+    {
+      "party": "SUMAR",
+      "direct_census": 4.54,
+      "direct_decided": 6.5,
+      "vote_sympathy_decided": 7.42,
+      "official_estimate": 6.1
+    },
+    {
+      "party": "PODEMOS",
+      "direct_census": 2.17,
+      "direct_decided": 3.1,
+      "vote_sympathy_decided": 2.97,
+      "official_estimate": 3.1
+    },
+    {
+      "party": "ERC",
+      "direct_census": 1.83,
+      "direct_decided": 2.62,
+      "vote_sympathy_decided": 2.76,
+      "official_estimate": 3
+    }
+  ],
+  "note": "Resultado agregado calculado con 5024 registros de MD3582.zip, PESO; valores redondeados. No identifica la metodología exacta."
+}
