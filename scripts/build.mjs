@@ -10,6 +10,10 @@ fs.mkdirSync('dist',{recursive:true});
 for(const f of ['index.html','sala-mandos.html','styles.css','app.mjs','engine.mjs','map.mjs','polls.mjs','events.mjs','analysis.mjs']) fs.copyFileSync(f,`dist/${f}`);
 fs.cpSync('data','dist/data',{recursive:true});
 fs.cpSync('docs','dist/docs',{recursive:true});
+// Publicar el pronóstico agregado y su historial para la pantalla de bloques.
+fs.mkdirSync('dist/data/modelo',{recursive:true});
+for(const [src,dest] of [['modelo/salida/pronostico.json','dist/data/modelo/pronostico.json'],['modelo/registro/historial.json','dist/data/modelo/historial.json']]) { if(fs.existsSync(src))fs.copyFileSync(src,dest); }
+
 // Plataforma de pronóstico (modelo/): la página generada por `python3 -m modelo` es un
 // fragmento HTML; se envuelve en un documento completo y se publica como pronostico.html.
 const pronostico='modelo/salida/pagina.html';
