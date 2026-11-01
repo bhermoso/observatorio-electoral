@@ -17,3 +17,23 @@
 .event-summary-grid span,.event-summary-grid small{display:block;color:var(--muted);font-size:12px}
 .event-summary-grid strong{display:block;font-family:Manrope,system-ui;font-size:24px;margin:5px 0}
 @media(max-width:670px){.event-summary-grid{grid-template-columns:1fr}.event-charts{padding:15px}}
+
+/* Panorama único: proyecciones del motor en el lenguaje visual del Observatorio principal */
+.integrated{margin:28px 0 35px}
+.integrated-intro{max-width:800px;color:var(--muted);line-height:1.65;margin:4px 0 16px}
+.integrated-blocks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:16px 0}
+.integrated-block{min-width:0;background:#fff;border:1px solid var(--line);border-radius:11px;padding:23px}
+.integrated-block h3{font-size:16px;line-height:1.4;margin:0 0 17px;min-height:42px}
+.integrated-block-main{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.integrated-block-main strong{font-family:Manrope,system-ui;font-size:38px;line-height:1.2;letter-spacing:-1px;color:var(--ink)}
+.integrated-block-main strong small{font-family:'DM Sans',system-ui;font-weight:500;font-size:13px;letter-spacing:0}
+.integrated-block-main span{font-size:14px;font-weight:700;color:var(--green)}
+.integrated-track{position:relative;height:12px;border-radius:6px;background:#edf1ea;overflow:hidden;margin:15px 0 9px}
+.integrated-track>div{height:100%;background:#387b69;border-radius:6px}
+.integrated-track i{position:absolute;top:0;bottom:0;left:50.2857%;border-left:2px solid #a65b27}
+.integrated-distance{font-size:13px;font-weight:700;margin:0 0 10px}
+.integrated-interval{font-size:12px;color:var(--muted);line-height:1.5;border-top:1px solid var(--line);padding-top:10px}
+.integrated-actions{display:flex;gap:11px 23px;flex-wrap:wrap;padding:15px 0}
+.integrated-actions a{font-size:13px;color:var(--green);font-weight:700}
+.integrated-foot{max-width:950px;line-height:1.6}
+@media(max-width:720px){.integrated-blocks{grid-template-columns:1fr}.integrated-block h3{min-height:0}}
