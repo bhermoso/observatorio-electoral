@@ -1,0 +1,65 @@
+{
+ "descripcion": "Registro de señales: afirmaciones de analistas y encuestadores influyentes sobre la evolución del voto. No son datos: no entran en el pronóstico. Sirven para plantear escenarios explícitos y contrastarlos cuando lleguen las encuestas.",
+ "fuentes_seguidas": [
+  {"nombre": "Kiko Llaneras", "organizacion": "EL PAÍS", "rol": "periodista de datos; promedio y modelo de encuestas", "casa_evaluada": null},
+  {"nombre": "Narciso Michavila", "organizacion": "GAD3", "rol": "presidente de GAD3", "casa_evaluada": "GAD3"},
+  {"nombre": "Belén Barreiro", "organizacion": "40dB.", "rol": "directora de 40dB.", "casa_evaluada": "40dB."},
+  {"nombre": "José Pablo Ferrándiz", "organizacion": "Ipsos", "rol": "analista de opinión pública", "casa_evaluada": null},
+  {"nombre": "Electomanía", "organizacion": "Electomanía", "rol": "agregador y panel ElectoPanel", "casa_evaluada": null},
+  {"nombre": "Sigma Dos", "organizacion": "Sigma Dos", "rol": "instituto (El Mundo)", "casa_evaluada": "Sigma Dos"},
+  {"nombre": "SocioMétrica", "organizacion": "SocioMétrica", "rol": "instituto (El Español)", "casa_evaluada": "SocioMétrica"}
+ ],
+ "senales": [
+  {
+   "id": "michavila-2026-10-31",
+   "fecha": "2026-10-31",
+   "autor": "Narciso Michavila",
+   "organizacion": "GAD3",
+   "casa_evaluada": "GAD3",
+   "plataforma": "X (conocido por prensa; publicación original no consultada)",
+   "tema": "Urda",
+   "afirmacion": "Detecta un «cambio abrupto de voto» desde el accidente de Urda; el PSOE «ya no aguanta» y ve imposible que Sánchez sea el candidato más votado el 29N.",
+   "direccion": {"PSOE": "baja", "PP": "sube"},
+   "magnitud": null,
+   "aporta_datos": false,
+   "que_falta": "Cifras por partido, número de entrevistas antes y después del accidente, fechas de campo y margen de error.",
+   "fuentes": [
+    "https://theobjective.com/espana/politica/2026-10-31/gad3-cambio-intencion-voto-accidente-ferroviario-urda/",
+    "https://www.elliberal.cat/2026/10/31/narciso-michavila-gad3-advierte-de-un-cambio-abrupto-de-voto-tras-el-accidente-de-urda/",
+    "https://electomania.es/michavila-gad3-detecta-un-cambio-abrupto-de-voto-y-ve-imposible-que-sanchez-sea-el-mas-votado-el-29n/",
+    "https://www.libertaddigital.com/espana/politica/2026-10-31/michavila-vaticina-un-vuelco-a-la-derecha-sanchez-ya-no-aguanta-tras-la-catastrofe-de-urda-7485167/",
+    "https://www.101tv.es/espana/vuelve-michavila-el-demoscopo-de-los-150-escanos-de-2023-da-por-imposible-la-victoria-de-sanchez-tras-urda-sin-ensenar-la-encuesta"
+   ]
+  },
+  {
+   "id": "sociometrica-puente-2026-11-01",
+   "fecha": "2026-11-01",
+   "autor": "SocioMétrica para El Español",
+   "organizacion": "SocioMétrica",
+   "casa_evaluada": "SocioMétrica",
+   "plataforma": "prensa (El Español)",
+   "tema": "Urda",
+   "afirmacion": "El 73,6 % cree que Óscar Puente debe dimitir o ser cesado, incluido un 59 % de votantes del PSOE; un 16,3 % quiere que siga.",
+   "direccion": {},
+   "magnitud": null,
+   "aporta_datos": true,
+   "que_falta": "Es opinión sobre el ministro, no intención de voto. Comprobar si el estudio incluye estimación de voto con campo posterior al 28-oct.",
+   "fuentes": ["https://www.elespanol.com/espana/politica/20261101/espanoles-incluido-votantes-psoe-piden-oscar-puente-dimita-sanchez-cese/1003744442400_0.html"]
+  },
+  {
+   "id": "democrata-analisis-2026-10-29",
+   "fecha": "2026-10-29",
+   "autor": "Demócrata (análisis)",
+   "organizacion": "Demócrata",
+   "casa_evaluada": null,
+   "plataforma": "prensa (Demócrata)",
+   "tema": "Urda",
+   "afirmacion": "Todavía no hay datos que permitan medir cuánto voto puede mover la tragedia.",
+   "direccion": {},
+   "magnitud": null,
+   "aporta_datos": false,
+   "que_falta": "—",
+   "fuentes": ["https://www.democrata.es/elecciones-generales-espana/29n-accidente-urda-psoe-campana/"]
+  }
+ ]
+}

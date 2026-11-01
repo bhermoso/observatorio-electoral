@@ -184,7 +184,7 @@ def recetario():
 
 def datos(enc, actuales, inicio, hoy, dias, ajustes, sims, resumen, simple, casas_simple, err, ind, simple23,
           bt, res23, est, ses_prev, umbrales, prev_all, casado, urda, eleccion, contraste=(), sensibilidad=(), retro_cortes=(), sens_industria=(), industria_23j=None,
-          principal=None, historial=()):
+          principal=None, historial=(), senales=None, escenarios_urda=()):
     ref = ajustes["consenso_privadas"]
     finales23 = [e for e in enc if e["ciclo"] == "2019-23" and e["campo_fin"] >= eleccion.replace(year=2023, month=5, day=1)
                  and e["origen"] != "terceros-wikipedia"]
@@ -213,7 +213,7 @@ def datos(enc, actuales, inicio, hoy, dias, ajustes, sims, resumen, simple, casa
         sensibilidad=list(sensibilidad), rho_bloque=PR.RHO_BLOQUE,
         retro_cortes=list(retro_cortes), principal=principal, historial=list(historial),
         geografia=geografia(principal) if principal else None,
-        recetario=recetario(), sens_industria=list(sens_industria), industria_cubre_23j=industria_23j,
+        recetario=recetario(), senales=senales, escenarios_urda=list(escenarios_urda), sens_industria=list(sens_industria), industria_cubre_23j=industria_23j,
         casado=dict(serie=serie_evento(prev_all, casado),
                     pares={p: [_r(m), _r(s), n] for p, (m, s, n) in m_c.items()},
                     efectos={p: {str(k): ([_r(v[0]), _r(v[1])] if v else None) for k, v in r.items()

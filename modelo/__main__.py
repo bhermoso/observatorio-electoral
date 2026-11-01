@@ -7,7 +7,7 @@ import json
 import os
 from datetime import date, timedelta
 import numpy as np
-from .motor import fuentes as F, evaluacion as V, eventos as EV, pronostico as PR, registro as RG
+from .motor import fuentes as F, evaluacion as V, eventos as EV, pronostico as PR, registro as RG, senales as SG
 from .motor.tendencia import ajustar
 
 ELECCION = date(2026, 11, 29)
@@ -280,6 +280,21 @@ def main():
         umbrales[p] = float(np.percentile(np.abs(v), 95))
     w(", ".join(f"{p} ±{u:.1f} pp" for p, u in umbrales.items()) +
       ". Un efecto de Urda menor que esto no se distinguirá del ruido aunque exista.\n")
+    reg_senales = SG.cargar(err)
+    esc_urda = SG.escenarios(actuales, inicio, hoy, ELECCION, err, umbrales, n_por_variante=max(a.n // 5, 300))
+    w("### Señales sobre Urda (no entran en el pronóstico)\n")
+    for sn in [x for x in reg_senales["senales"] if x["tema"] == "Urda"]:
+        h23 = sn.get("historial_23j")
+        w(f"- **{sn['fecha']} · {sn['autor']}** ({sn['plataforma']}): {sn['afirmacion']} "
+          f"Aporta datos: {'sí' if sn['aporta_datos'] else 'no'}. Falta: {sn['que_falta']}"
+          + (f" Error de su casa en el 23J: " + ", ".join(f"{p} {v:+.1f}" for p, v in h23.items()) + "." if h23 else ""))
+    w("\n### Escenarios de Urda (hipótesis explícitas, no pronóstico)\n")
+    w(tabla(["Escenario", "PP", "PSOE", "Vox", "PP+Vox", "P(PP+Vox ≥ 176)", "P(PP 1º)", "¿Se notaría en las encuestas?"],
+            [[x["nombre"]] + [f"{x['escanos'][p][0]:.0f}" for p in ("PP", "PSOE", "VOX")] +
+             [f"{x['ppvox']:.0f}", f"{x['p_mayoria']:.0%}", f"{x['pp_primero']:.0%}",
+              "—" if x["distinguible"] is None else ("sí" if x["distinguible"] else "no, dentro del ruido")]
+             for x in esc_urda]))
+    w(f"\n«Se notaría» compara el cambio del PSOE con su umbral de detección ({umbrales.get('PSOE', 0):.1f} pp).\n")
     w("**Validación del método** con un suceso conocido — crisis Casado–Ayuso (17-feb-2022):\n")
     m_c, det_c = EV.pares(prev_all, CASADO, ["PP", "PSOE", "VOX"])
     filas = []
@@ -342,7 +357,7 @@ def main():
                            ind=ind, simple23=simple23, bt=bt, res23=res23, est=est, ses_prev=ses_prev,
                            umbrales=umbrales, prev_all=prev_all, casado=CASADO, urda=URDA, eleccion=ELECCION,
                            contraste=contraste, sensibilidad=sens, retro_cortes=rp,
-                           principal=princ, historial=hist,
+                           principal=princ, historial=hist, senales=reg_senales, escenarios_urda=esc_urda,
                            sens_industria=sens_ind, industria_23j=dict(valor=b23, caso=caso23))
     json.dump(datos, open(os.path.join(SALIDA, "datos_pagina.json"), "w", encoding="utf-8"),
               ensure_ascii=False, default=str, separators=(",", ":"))

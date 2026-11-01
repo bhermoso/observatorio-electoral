@@ -286,6 +286,14 @@ industria = 1,5 pp × √(p/25) × ( √0,5 · factor de bloque ± √0,5 · err
 <section id="eventos">
   <h2>Urda y otros sucesos</h2>
   <div class="callout" id="urda-estado"></div>
+  <h3>Señales: lo que dicen analistas y encuestadores</h3>
+  <p class="note">Afirmaciones de analistas y encuestadores influyentes. No son datos y no entran en el pronóstico: sirven para plantear escenarios y contrastarlos cuando lleguen las encuestas. Junto a cada una, el error que tuvo su casa en el 23J, cuando se conoce.</p>
+  <div id="senales"></div>
+  <h3>Escenarios: qué pasaría si las señales fueran ciertas</h3>
+  <p>El pronóstico principal recalculado con un traslado de voto declarado. No es una predicción del efecto de Urda: es lo que implicaría cada hipótesis. La última columna dice si un cambio de ese tamaño sería distinguible del ruido normal de las encuestas.</p>
+  <div class="tbl"><table id="t-escenarios"></table></div>
+  <p class="note">Fuentes seguidas: <span id="fuentes-seguidas"></span>. Hoy solo se conocen sus afirmaciones a través de la prensa; sus publicaciones originales en redes no se han podido consultar desde el sistema.</p>
+  <h3>Cómo se medirá cuando haya encuestas</h3>
   <p>Para medir el efecto de un suceso el motor usa tres medidas, de menos a más supuestos:</p>
   <ul class="tight">
     <li><b>Pares por casa</b>: última encuesta de cada instituto antes del suceso frente a la primera con todo el campo posterior. El sesgo de la casa se cancela.</li>
@@ -698,6 +706,17 @@ $("#dh-in").addEventListener("input",dhondt); dhondt();
   casas.forEach(c=>{h+=`<tr><td>${esc(c)}</td>${PE.map(p=>{const x=((S[p]||{}).casas||{})[c];return `<td class="n">${x?`${sg(x[0])} → ${sg(x[1])}`:"—"}</td>`}).join("")}</tr>`});
   h+=`<tr><td><b>Correlación</b></td>${PE.map(p=>`<td class="n"><b>${S[p]?fmt(S[p].correlacion,2):"—"}</b></td>`).join("")}</tr>`;
   $("#t-est").innerHTML=h+"</tbody>";
+}
+
+/* ---------- Señales y escenarios ---------- */
+if(D.senales){
+  const S=D.senales.senales.filter(x=>x.tema==="Urda").sort((a,b)=>b.fecha.localeCompare(a.fecha));
+  $("#senales").innerHTML=S.map(x=>`<div class="panel" style="margin:10px 0"><div class="kv"><dt>${fecha(x.fecha)}</dt><dd><b>${esc(x.autor)}</b> · ${esc(x.plataforma)}</dd><dt>Dice</dt><dd>${esc(x.afirmacion)}</dd>${Object.keys(x.direccion||{}).length?`<dt>Dirección</dt><dd>${Object.entries(x.direccion).map(([p,d])=>`${NOM[p]||p} ${d}`).join(" · ")}</dd>`:""}<dt>¿Aporta datos?</dt><dd>${x.aporta_datos?'<span class="badge v">sí</span>':'<span class="badge p">no</span>'} ${esc(x.que_falta)}</dd>${x.historial_23j?`<dt>Su casa en el 23J</dt><dd>${Object.entries(x.historial_23j).map(([p,v])=>`${NOM[p]||p} ${sg(v)}`).join(" · ")} <span class="note">(error de su última encuesta, en puntos)</span></dd>`:""}<dt>Fuentes</dt><dd>${x.fuentes.map((u,i)=>`<a href="${esc(u)}" target="_blank" rel="noopener">${i+1}</a>`).join(" · ")}</dd></div></div>`).join("");
+  $("#fuentes-seguidas").textContent=D.senales.fuentes_seguidas.map(f=>`${f.nombre} (${f.organizacion})`).join(", ");
+  const E=D.escenarios_urda||[];
+  let h=`<thead><tr><th>Escenario</th><th class="n">PP</th><th class="n">PSOE</th><th class="n">Vox</th><th class="n">PP + Vox</th><th class="n">P(PP+Vox ≥ 176)</th><th class="n">P(PP 1º)</th><th>¿Se notaría?</th></tr></thead><tbody>`;
+  E.forEach(x=>{h+=`<tr${Object.keys(x.desplazamiento).length?"":' style="font-weight:600"'}><td>${esc(x.nombre)}</td>${["PP","PSOE","VOX"].map(p=>`<td class="n">${fmt(x.escanos[p][0],0)}</td>`).join("")}<td class="n">${fmt(x.ppvox,0)}</td><td class="n">${Math.round(x.p_mayoria*100)} %</td><td class="n">${Math.round(x.pp_primero*100)} %</td><td>${x.distinguible===null?"—":x.distinguible?"sí":"no, dentro del ruido"}</td></tr>`});
+  $("#t-escenarios").innerHTML=h+`</tbody><tfoot><tr><td colspan="8" class="note">Medianas de escaños del pronóstico principal con el traslado indicado. «¿Se notaría?» compara el cambio del PSOE con su umbral de detección (${fmt(D.umbrales.PSOE)} puntos).</td></tr></tfoot>`;
 }
 
 /* ---------- Contraste ---------- */

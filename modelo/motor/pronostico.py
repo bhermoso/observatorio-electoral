@@ -59,7 +59,7 @@ REGIONALES = ["ERC", "JUNTS", "BILDU", "PNV", "BNG", "CC", "UPN"]
 
 
 def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29, rho_bloque=RHO_BLOQUE,
-            industria=1.5):
+            industria=1.5, desplazamiento=None):
     """Simula el 29N. Los partidos regionales sin estimación en las encuestas del corte
     conservan su voto nacional del 23J como hipótesis (marcados en `sin_encuestas`),
     con la misma incertidumbre que tendría un partido de su tamaño sin datos."""
@@ -75,6 +75,9 @@ def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29,
     base = Base(partidos + ["OTROS"], rep)
     nac23 = dict(zip(base.partidos, 100 * base.nacional))
     mu = np.array([mu_e[p] if p in mu_e else nac23[p] for p in partidos])
+    if desplazamiento:   # escenario explícito: puntos que se suman o restan a la media
+        mu = mu + np.array([desplazamiento.get(p, 0.0) for p in partidos])
+        mu = np.clip(mu, 0.05, None)
     esc = np.array([ajustes[p]["escala"] if p in ajustes else np.sqrt(max(mu[i], 0.5) / 25)
                     for i, p in enumerate(partidos)])
     sd_hoy = np.array([ajustes[p]["sd"][-1] if p in ajustes else 3.0 * esc[i] for i, p in enumerate(partidos)])
@@ -134,7 +137,8 @@ def promedio_simple(encuestas, hoy, dias=30):
 INDUSTRIA_PRINCIPAL = 2.2
 
 
-def principal(encuestas, inicio, hoy, eleccion, errores_23j, n_por_variante=2000, industria=INDUSTRIA_PRINCIPAL):
+def principal(encuestas, inicio, hoy, eleccion, errores_23j, n_por_variante=2000, industria=INDUSTRIA_PRINCIPAL,
+              desplazamiento=None):
     """Pronóstico principal: une las simulaciones de las tres variantes de referencia, a
     partes iguales, con un error de industria intermedio entre el supuesto inicial (1,5)
     y el que habría cubierto 2023 (~2,9). Así la incertidumbre de método (qué casas
@@ -144,7 +148,7 @@ def principal(encuestas, inicio, hoy, eleccion, errores_23j, n_por_variante=2000
     for var in VARIANTES:
         aj = estimar(encuestas, inicio, hoy, var, errores_23j=errores_23j)
         sims.append(simular(aj, dias, n=n_por_variante, industria=industria,
-                            semilla=sum(map(ord, var)) + hoy.toordinal()))
+                            semilla=sum(map(ord, var)) + hoy.toordinal(), desplazamiento=desplazamiento))
     P = sims[0]["partidos"]
     assert all(s["partidos"] == P for s in sims)
     V = np.vstack([s["votos"] for s in sims])

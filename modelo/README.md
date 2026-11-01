@@ -30,6 +30,10 @@ Salidas en `modelo/salida/`: `informe.md` (tablas), `pronostico.json` (cifras), 
 - `recetario/recetas.json`: lo que cada instituto explica de su método (entrevista, muestra, ponderación, recuerdo de voto, indecisos, estimación, microdatos), cada afirmación con su fuente. Solo textos de documentos del instituto; lo que no consta queda vacío.
 - `microdatos/`: cocina propia sobre respuestas individuales (voto directo ponderado, transferencias recuerdo × intención, reponderación por recuerdo de voto de 2023). `estudios.json` declara variables y códigos copiados del cuestionario; los ficheros descargados van a `microdatos/crudos/` (no se versionan). Leer `.sav` requiere `pip install pyreadstat`.
 
+## Señales y escenarios
+
+`senales/senales.json` registra afirmaciones de analistas y encuestadores influyentes (quién, cuándo, dónde, qué dicen, dirección, si aportan datos y qué falta), con el error de su casa en el 23J cuando se conoce. No entran en el pronóstico. `motor/senales.py` calcula escenarios explícitos (traslados de voto declarados) con el pronóstico principal e indica si un cambio de ese tamaño superaría el umbral de detección.
+
 ## Pronóstico principal
 
 Une a partes iguales las tres variantes de referencia y usa un error de industria de 2,2 pp para un partido del 25 % (`INDUSTRIA_PRINCIPAL`), intermedio entre el supuesto inicial y el que habría cubierto 2023. Incluye el reparto medio por provincia. Las encuestas citadas solo en prensa (`externos/prensa_2026.csv`) entran de forma provisional con `origen` = `prensa-sin-verificar`.
