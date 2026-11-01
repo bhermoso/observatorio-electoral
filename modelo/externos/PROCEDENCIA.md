@@ -10,3 +10,7 @@ No se mezclan con `data/polls.json` (registro verificado del observatorio).
 
 Cada encuesta derivada de estos ficheros lleva `origen` = `terceros-wikipedia` o `terceros-29n` en todas las salidas.
 SHA-256 en `modelo/externos/sha256.txt`.
+
+## Encuestas citadas en prensa (`prensa_2026.csv`)
+
+Encuestas recientes cuyas cifras se conocen por resúmenes de prensa, sin haber podido consultar el original del instituto o del medio. Entran en el modelo con `origen` = `prensa-sin-verificar`, se señalan en todas las salidas y se sustituyen en cuanto el registro verificado (`data/polls.json`) incorpore el original. Sin fecha de campo publicada, se supone que terminó tres días antes de la publicación.

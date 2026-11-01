@@ -48,6 +48,7 @@ tr.det td{background:var(--bg);padding:14px 16px}
 .badge{display:inline-block;font:11px/1 var(--f-mono);padding:3px 6px;border-radius:3px;border:1px solid var(--line);color:var(--fg2);white-space:nowrap}
 .badge.v{border-color:var(--ok);color:var(--ok)}
 .badge.t{border-color:var(--warn);color:var(--warn)}
+.badge.p{border-color:var(--bad);color:var(--bad)}
 .status{font:11px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--fg3)}
 .tag{font:11px/1.2 var(--f-mono);padding:2px 6px;border-radius:3px;background:var(--accent-bg);color:var(--accent);margin-right:6px;text-transform:uppercase;letter-spacing:.04em}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
@@ -92,12 +93,19 @@ ul.tight{padding-left:20px;margin:6px 0}ul.tight li{margin:3px 0}
   <div class="meta" id="hdr-meta"></div>
 </header>
 <nav class="idx" aria-label="Secciones">
-  <a href="#pronostico">Pronóstico</a><a href="#encuestas">Encuestas</a><a href="#modelo">Cómo funciona</a><a href="#evaluacion">Evaluación</a><a href="#eventos">Urda y otros sucesos</a><a href="#limites">Límites</a>
+  <a href="#pronostico">Pronóstico</a><a href="#evolucion">Evolución</a><a href="#provincias">Provincias</a><a href="#encuestas">Encuestas</a><a href="#modelo">Cómo funciona</a><a href="#evaluacion">Evaluación</a><a href="#eventos">Urda y otros sucesos</a><a href="#limites">Límites</a>
 </nav>
 
 <section id="pronostico">
   <h2>Pronóstico</h2>
-  <p class="lead" id="pron-lead"></p>
+  <p class="lead" id="princ-lead"></p>
+  <div class="grid2">
+    <div class="tbl" style="margin:0"><table id="t-princ"></table></div>
+    <div class="tbl" style="margin:0"><table id="t-princ-b"></table></div>
+  </div>
+  <p class="note" id="princ-nota"></p>
+  <h3>Variantes del modelo</h3>
+  <p class="note" id="pron-lead"></p>
   <div class="tbl"><table id="t-pron"></table></div>
   <div class="tbl"><table id="t-bloques"></table></div>
   <p class="note">Cada celda: mediana de las simulaciones y, entre paréntesis, el intervalo que contiene el 90 % de ellas. Las tres variantes son el mismo modelo con tres definiciones distintas de «sesgo cero»; se explican en <a href="#modelo">Cómo funciona</a>, paso 3.</p>
@@ -112,10 +120,30 @@ ul.tight{padding-left:20px;margin:6px 0}ul.tight li{margin:3px 0}
   <div class="chart" id="c-hist"></div>
 </section>
 
+<section id="evolucion">
+  <h2>Evolución del pronóstico</h2>
+  <p class="lead">Cada punto es el pronóstico principal que el motor habría dado ese día con las encuestas ya publicadas. Así se ve cuándo y por qué cambia: cada encuesta nueva aparece marcada en su fecha.</p>
+  <h3>Escaños previstos</h3>
+  <div class="chart" id="c-evo"></div>
+  <div class="legend" id="l-evo"></div>
+  <h3>Probabilidades</h3>
+  <div class="chart" id="c-evo-p"></div>
+  <div class="legend"><span><i style="background:var(--pp)"></i>PP + Vox llegan a 176</span><span><i style="background:var(--psoe)"></i>PSOE primera fuerza</span></div>
+  <div class="tbl"><table id="t-evo"></table></div>
+  <p class="note">Las diferencias de uno o dos puntos de probabilidad entre días sin encuestas nuevas son ruido de la simulación, no cambios reales.</p>
+</section>
+
+<section id="provincias">
+  <h2>Escaños por provincia</h2>
+  <p class="lead">Media de escaños de cada partido en cada circunscripción en las simulaciones del pronóstico principal. Un valor como 2,4 significa que el partido obtiene unas veces 2 y otras 3; las cifras con decimales señalan los escaños en disputa.</p>
+  <div class="controls"><label for="sel-prov">Ordenar por</label><select id="sel-prov"><option value="nombre">nombre</option><option value="esc">escaños</option><option value="disputa">escaños en disputa</option></select></div>
+  <div class="tbl"><table id="t-prov"></table></div>
+</section>
+
 <section id="encuestas">
   <h2>Encuestas</h2>
   <p class="lead">Todas las encuestas nacionales del ciclo 2023-2026 que usa el motor, con su ficha. Pulse una fila para ver la ficha completa, los valores publicados y el valor que resulta tras corregir el sesgo de la casa.</p>
-  <p class="note"><span class="badge v">verificada</span> registro primario del observatorio, contrastado con el documento original. <span class="badge t">terceros</span> recopilación externa con enlace a la publicación, no contrastada todavía.</p>
+  <p class="note"><span class="badge v">verificada</span> registro primario del observatorio, contrastado con el documento original. <span class="badge t">terceros</span> recopilación externa con enlace a la publicación, no contrastada todavía. <span class="badge p">prensa</span> cifras conocidas solo por resúmenes de prensa; entran en el pronóstico de forma provisional hasta consultar el original.</p>
   <div class="tbl"><table id="t-enc"></table></div>
   <h3>Últimas encuestas antes del 23J de 2023</h3>
   <p class="note">Base de la evaluación de la sección <a href="#evaluacion">Evaluación</a>.</p>
@@ -282,11 +310,78 @@ const dTot = Object.values(D.conteo).reduce((a,b)=>a+b,0);
 $("#hdr-sub").textContent = `Corte de datos: ${fecha(D.corte)}. Faltan ${D.dias} días para la elección.`;
 $("#hdr-meta").innerHTML = `<span>${dTot} encuestas en el sistema</span>` + Object.entries(D.conteo).map(([k,v])=>`<span>${esc(k)}: ${v}</span>`).join("") + `<span>${D.encuestas.length} del ciclo actual</span>`;
 
-/* ---------- Pronóstico ---------- */
+/* ---------- Pronóstico principal ---------- */
+{
+  const R=D.principal, PS=Object.keys(R.partidos).sort((a,b)=>R.partidos[b].escanos[0]-R.partidos[a].escanos[0]);
+  const pv=R.bloques["PP+VOX"], izq=R.bloques["PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC"];
+  $("#princ-lead").innerHTML=`Con las encuestas disponibles el ${fecha(D.corte)}, PP y Vox sumarían <b>${fmt(pv.mediana,0)} escaños</b> y superarían la mayoría absoluta en el <b>${Math.round(pv.p_mayoria*100)} %</b> de las simulaciones. El PP sería primera fuerza en el ${Math.round(R.partidos.PP.primero*100)} %; el PSOE, en el ${Math.round(R.partidos.PSOE.primero*100)} %.`;
+  let h=`<thead><tr><th>Partido</th><th class="n">Voto %</th><th class="n">Escaños</th></tr></thead><tbody>`;
+  PS.forEach(p=>{const x=R.partidos[p];h+=`<tr><td><b>${NOM[p]}</b></td><td class="n">${fmt(x.voto[0])} <span style="color:var(--fg3)">(${fmt(x.voto[1])}–${fmt(x.voto[2])})</span></td><td class="n"><b>${fmt(x.escanos[0],0)}</b> <span style="color:var(--fg3)">(${fmt(x.escanos[1],0)}–${fmt(x.escanos[2],0)})</span></td></tr>`});
+  $("#t-princ").innerHTML=h+"</tbody>";
+  const BN={"PP+VOX":"PP + Vox","PSOE+SUMAR+PODEMOS":"PSOE + Sumar + Podemos","PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC":"PSOE, Sumar, Podemos y socios de 2023"};
+  h=`<thead><tr><th>Bloque</th><th class="n">Escaños</th><th class="n">P(≥176)</th></tr></thead><tbody>`;
+  Object.keys(BN).forEach(b=>{const x=R.bloques[b];h+=`<tr><td>${BN[b]}</td><td class="n">${fmt(x.mediana,0)} <span style="color:var(--fg3)">(${fmt(x.p5,0)}–${fmt(x.p95,0)})</span></td><td class="n"><b>${Math.round(x.p_mayoria*100)} %</b></td></tr>`});
+  h+=`<tr><td>PP primera fuerza</td><td></td><td class="n"><b>${Math.round(R.partidos.PP.primero*100)} %</b></td></tr>`;
+  $("#t-princ-b").innerHTML=h+"</tbody>";
+  $("#princ-nota").innerHTML=`Mediana e intervalo del 90 % de ${R.n.toLocaleString("es-ES")} simulaciones. Une a partes iguales las tres variantes del modelo y usa un error común de las encuestas de ${fmt(R.industria)} puntos para un partido del 25 %, intermedio entre el supuesto inicial (1,5) y el que habría cubierto el fallo de 2023. No incorpora ningún efecto del accidente de Urda mientras no haya encuestas posteriores.`;
+}
+
+/* ---------- Evolución ---------- */
+function drawEvo(){
+  const H=D.historial; if(!H.length) return;
+  const c=$("#c-evo"); c.innerHTML=""; const PS=["PP","PSOE","VOX"];
+  const W=900,Hh=300,m={l:44,r:56,t:14,b:30},iw=W-m.l-m.r,ih=Hh-m.t-m.b,N=H.length;
+  const vals=H.flatMap(h=>PS.flatMap(p=>[h.escanos[p][1],h.escanos[p][2]]));
+  const lo=Math.floor(Math.min(...vals)/10)*10, hi=Math.ceil(Math.max(...vals)/10)*10;
+  const x=i=>m.l+(N===1?iw/2:i/(N-1)*iw), y=v=>m.t+ih-(v-lo)/(hi-lo)*ih;
+  const svg=el("svg",{viewBox:`0 0 ${W} ${Hh}`,role:"img","aria-label":"Evolución de los escaños previstos"},c);
+  for(let v=lo;v<=hi;v+=20){el("line",{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v),class:"grid"},svg);el("text",{x:m.l-6,y:y(v)+4,"text-anchor":"end"},svg).textContent=v}
+  H.forEach((h,i)=>{const d=new Date(h.fecha+"T00:00:00Z");if(d.getUTCDay()===1||i===0||i===N-1)el("text",{x:x(i),y:Hh-10,"text-anchor":"middle"},svg).textContent=`${d.getUTCDate()}/${d.getUTCMonth()+1}`;
+    if((h.nuevas||[]).length)el("line",{x1:x(i),x2:x(i),y1:m.t,y2:m.t+ih,stroke:"var(--line)","stroke-dasharray":"2 3"},svg)});
+  const iu=H.findIndex(h=>h.fecha>=String(D.urda).slice(0,10));
+  if(iu>=0){el("line",{x1:x(iu),x2:x(iu),y1:m.t,y2:m.t+ih,stroke:"var(--fg)","stroke-dasharray":"4 3"},svg);el("text",{x:x(iu)+4,y:m.t+10,class:"lbl"},svg).textContent="Urda"}
+  PS.forEach(p=>{let band="";H.forEach((h,i)=>band+=(i?"L":"M")+x(i)+","+y(h.escanos[p][2]));for(let i=N-1;i>=0;i--)band+="L"+x(i)+","+y(H[i].escanos[p][1]);
+    el("path",{d:band+"Z",fill:COL(p),opacity:.12},svg);
+    let ln="";H.forEach((h,i)=>ln+=(i?"L":"M")+x(i)+","+y(h.escanos[p][0]));el("path",{d:ln,fill:"none",stroke:COL(p),"stroke-width":2},svg);
+    el("text",{x:x(N-1)+6,y:y(H[N-1].escanos[p][0])+4,class:"lbl"},svg).textContent=`${NOM[p]} ${fmt(H[N-1].escanos[p][0],0)}`});
+  el("line",{x1:m.l,x2:W-m.r,y1:m.t+ih,y2:m.t+ih,class:"axis"},svg);
+  const t=tip(c),cross=el("line",{y1:m.t,y2:m.t+ih,stroke:"var(--fg3)",visibility:"hidden"},svg);
+  const hit=el("rect",{x:m.l,y:m.t,width:iw,height:ih,fill:"transparent"},svg);
+  hit.addEventListener("mousemove",ev=>{const b=svg.getBoundingClientRect(),sx=(ev.clientX-b.left)/b.width*W;const i=Math.max(0,Math.min(N-1,Math.round((sx-m.l)/iw*(N-1))));const h=H[i];cross.setAttribute("x1",x(i));cross.setAttribute("x2",x(i));cross.setAttribute("visibility","visible");
+    const cb=c.getBoundingClientRect();t.show(`${fecha(h.fecha)} · ${h.n_encuestas} encuestas<br>${PS.map(p=>`${NOM[p]} ${fmt(h.escanos[p][0],0)} (${fmt(h.escanos[p][1],0)}–${fmt(h.escanos[p][2],0)})`).join("<br>")}${(h.nuevas||[]).length?`<br>nuevas: ${h.nuevas.map(esc).join(", ")}`:""}`,ev.clientX-cb.left,ev.clientY-cb.top)});
+  hit.addEventListener("mouseleave",()=>{t.hide();cross.setAttribute("visibility","hidden")});
+  $("#l-evo").innerHTML=PS.map(p=>`<span><i style="background:${COL(p)}"></i>${NOM[p]} (mediana y 90 %)</span>`).join("")+`<span><i style="background:var(--line)"></i>día con encuestas nuevas</span>`;
+  // probabilidades
+  const c2=$("#c-evo-p"); c2.innerHTML=""; const H2=200;
+  const y2=v=>m.t+(H2-m.t-m.b)-(v)*(H2-m.t-m.b);
+  const s2=el("svg",{viewBox:`0 0 ${W} ${H2}`,role:"img","aria-label":"Evolución de las probabilidades"},c2);
+  [0,.25,.5,.75,1].forEach(v=>{el("line",{x1:m.l,x2:W-m.r,y1:y2(v),y2:y2(v),class:"grid"},s2);el("text",{x:m.l-6,y:y2(v)+4,"text-anchor":"end"},s2).textContent=Math.round(v*100)+"%"});
+  [["PP+VOX",h=>h.bloques["PP+VOX"].p_mayoria,"var(--pp)"],["PSOE 1º",h=>h.primero.PSOE||0,"var(--psoe)"]].forEach(([n,f,col])=>{let ln="";H.forEach((h,i)=>ln+=(i?"L":"M")+x(i)+","+y2(f(h)));el("path",{d:ln,fill:"none",stroke:col,"stroke-width":2},s2);el("text",{x:x(N-1)+6,y:y2(f(H[N-1]))+4,class:"lbl"},s2).textContent=Math.round(f(H[N-1])*100)+"%"});
+  if(iu>=0)el("line",{x1:x(iu),x2:x(iu),y1:m.t,y2:H2-m.b,stroke:"var(--fg)","stroke-dasharray":"4 3"},s2);
+  // tabla
+  let tb=`<thead><tr><th>Día</th><th class="n">Encuestas</th><th class="n">PP</th><th class="n">PSOE</th><th class="n">Vox</th><th class="n">P(PP+Vox ≥176)</th><th class="n">P(PP 1º)</th><th>Encuestas nuevas</th></tr></thead><tbody>`;
+  H.slice().reverse().forEach(h=>{tb+=`<tr><td class="n">${fecha(h.fecha)}</td><td class="n">${h.n_encuestas}</td>${["PP","PSOE","VOX"].map(p=>`<td class="n">${fmt(h.escanos[p][0],0)}</td>`).join("")}<td class="n">${Math.round(h.bloques["PP+VOX"].p_mayoria*100)} %</td><td class="n">${Math.round((h.primero.PP||0)*100)} %</td><td style="font-size:12px">${(h.nuevas||[]).map(esc).join(", ")}</td></tr>`});
+  $("#t-evo").innerHTML=tb+"</tbody>";
+}
+drawEvo();
+
+/* ---------- Provincias ---------- */
+function drawProv(orden){
+  const PR=D.principal.provincias.slice(), PS=["PP","PSOE","VOX","SUMAR","PODEMOS","ERC","JUNTS","BILDU","PNV","BNG","CC","UPN"];
+  const disputa=pr=>Object.values(pr.reparto).reduce((a,v)=>a+Math.min(v-Math.floor(v),Math.ceil(v)-v),0);
+  if(orden==="esc")PR.sort((a,b)=>b.escanos-a.escanos);else if(orden==="disputa")PR.sort((a,b)=>disputa(b)-disputa(a));else PR.sort((a,b)=>a.provincia.localeCompare(b.provincia,"es"));
+  const usados=PS.filter(p=>PR.some(pr=>(pr.reparto[p]||0)>=0.05));
+  let h=`<thead><tr><th>Circunscripción</th><th class="n">Escaños</th>${usados.map(p=>`<th class="n">${NOM[p]}</th>`).join("")}</tr></thead><tbody>`;
+  PR.forEach(pr=>{h+=`<tr><td>${esc(pr.provincia)}</td><td class="n">${pr.escanos}</td>${usados.map(p=>{const v=pr.reparto[p];if(v==null)return '<td class="n" style="color:var(--fg3)">—</td>';const dud=Math.min(v-Math.floor(v),Math.ceil(v)-v)>0.2;return `<td class="n" style="${dud?"background:var(--accent-bg);color:var(--accent);font-weight:600":""}">${fmt(v)}</td>`}).join("")}</tr>`});
+  $("#t-prov").innerHTML=h+`</tbody><tfoot><tr><td colspan="${2+usados.length}" class="note">Resaltado: el partido gana o pierde un escaño en una parte importante de las simulaciones (decimal entre 0,2 y 0,8). Reparto calculado con swing proporcional sobre los resultados provinciales del 23 de julio de 2023 y D'Hondt.</td></tr></tfoot>`;
+}
+$("#sel-prov").onchange=e=>drawProv(e.target.value); drawProv("nombre");
+
+/* ---------- Pronóstico (variantes) ---------- */
 {
   const R = D.resumen, PS = Object.keys(R.consenso_privadas.partidos);
   const r0 = R.consenso_privadas, r2 = R.calibrada_23j;
-  $("#pron-lead").textContent = `Las tres variantes coinciden en que PP y Vox superan los 176 escaños en al menos el ${Math.round(Math.min(...VARS.map(v=>R[v].bloques["PP+VOX"].p_mayoria))*100)} % de las simulaciones. Discrepan en la distancia entre PP y PSOE: la probabilidad de que el PP sea primera fuerza va del ${Math.round(r2.partidos.PP.primero*100)} % al ${Math.round(r0.partidos.PP.primero*100)} %, según qué casas se tomen como referencia. El pronóstico no incorpora el accidente de Urda porque aún no hay encuestas posteriores.`;
+  $("#pron-lead").textContent = `Las tres variantes coinciden en que PP y Vox superan los 176 escaños en al menos el ${Math.round(Math.min(...VARS.map(v=>R[v].bloques["PP+VOX"].p_mayoria))*100)} % de las simulaciones. Discrepan en la distancia entre PP y PSOE: la probabilidad de que el PP sea primera fuerza va del ${Math.round(r2.partidos.PP.primero*100)} % al ${Math.round(r0.partidos.PP.primero*100)} %, según qué casas se tomen como referencia. Esta tabla usa el error común inicial (1,5 puntos); el pronóstico principal de arriba usa uno más amplio y une las tres variantes.`;
   let h = `<thead><tr><th>Partido</th><th class="n">Promedio simple</th>${VARS.map(v=>`<th class="n">${VNOM[v]}<br>voto %</th><th class="n">escaños</th>`).join("")}</tr></thead><tbody>`;
   PS.forEach(p=>{h+=`<tr><td><b>${NOM[p]}</b></td><td class="n">${fmt(D.promedio_simple[p])}</td>`+VARS.map(v=>{const x=R[v].partidos[p];return `<td class="n">${fmt(x.voto[0])} <span style="color:var(--fg3)">(${fmt(x.voto[1])}–${fmt(x.voto[2])})</span></td><td class="n"><b>${fmt(x.escanos[0],0)}</b> <span style="color:var(--fg3)">(${fmt(x.escanos[1],0)}–${fmt(x.escanos[2],0)})</span></td>`}).join("")+`</tr>`});
   $("#t-pron").innerHTML = h+"</tbody>";
@@ -332,12 +427,12 @@ function drawHist(v){
 seg("#seg-hist",VARS,VARS[0],drawHist); drawHist(VARS[0]);
 
 /* ---------- Encuestas ---------- */
-function badge(o){return o==="verificada"?'<span class="badge v">verificada</span>':'<span class="badge t">terceros</span>'}
+function badge(o){return o==="verificada"?'<span class="badge v">verificada</span>':o==="prensa-sin-verificar"?'<span class="badge p">prensa</span>':'<span class="badge t">terceros</span>'}
 function ficha(e){
   const kv=(k,v)=>v==null||v===""?"":`<dt>${k}</dt><dd>${v}</dd>`;
   const link=(u,t)=>u?`<a href="${esc(u)}" target="_blank" rel="noopener">${t||esc(u)}</a>`:null;
   const vals=Object.entries(e.voto).map(([p,v])=>`<tr><td>${NOM[p]||p}</td><td class="n">${fmt(v)}</td><td class="n">${e.corregido&&e.corregido[p]!=null?fmt(e.corregido[p]):"—"}</td><td class="n">${e.escanos_publicados&&e.escanos_publicados[Object.keys(e.escanos_publicados).find(k=>k.toUpperCase().startsWith(p.slice(0,3)))]?(()=>{const s=e.escanos_publicados[Object.keys(e.escanos_publicados).find(k=>k.toUpperCase().startsWith(p.slice(0,3)))];return s.point!=null?s.point:`${s.min}–${s.max}`})():"—"}</td></tr>`).join("");
-  return `<div class="grid2"><dl class="kv">${kv("Casa",esc(e.casa))}${kv("Cliente",esc(e.cliente))}${kv("Estudio",esc(e.titulo||e.estudio))}${kv("Campo",`${fecha(e.campo_ini)} – ${fecha(e.campo_fin)}`)}${kv("Publicación",fecha(e.publicacion))}${kv("Muestra",e.n?e.n.toLocaleString("es-ES"):null)}${kv("Modo",esc(e.modo))}${kv("Ámbito",esc(e.ambito))}${kv("Universo",esc(e.universo))}${kv("Escenario",esc(e.escenario))}${kv("Denominador",esc(e.denominador))}${kv("Ponderación",esc(e.ponderacion))}${kv("Origen",badge(e.origen))}${kv("Verificación",esc(e.verificacion))}${kv("Verificado",fecha(e.verificado))}${kv("Fuente",link(e.url,"documento publicado"))}${kv("Ficha técnica",link(e.ficha_url,"ficha técnica"))}${kv("Microdatos",link(e.microdatos,"microdatos"))}${kv("Cuestionario",link(e.cuestionario,"cuestionario"))}</dl>
+  return `<div class="grid2"><dl class="kv">${kv("Casa",esc(e.casa))}${kv("Cliente",esc(e.cliente))}${kv("Estudio",esc(e.titulo||e.estudio))}${kv("Campo",`${fecha(e.campo_ini)} – ${fecha(e.campo_fin)}`)}${kv("Publicación",fecha(e.publicacion))}${kv("Muestra",e.n?e.n.toLocaleString("es-ES"):null)}${kv("Modo",esc(e.modo))}${kv("Ámbito",esc(e.ambito))}${kv("Universo",esc(e.universo))}${kv("Escenario",esc(e.escenario))}${kv("Denominador",esc(e.denominador))}${kv("Ponderación",esc(e.ponderacion))}${kv("Origen",badge(e.origen))}${kv("Verificación",esc(e.verificacion))}${kv("Verificado",fecha(e.verificado))}${kv("Fuente",link(e.url,"documento publicado"))}${kv("Ficha técnica",link(e.ficha_url,"ficha técnica"))}${kv("Microdatos",link(e.microdatos,"microdatos"))}${kv("Cuestionario",link(e.cuestionario,"cuestionario"))}${kv("Nota",esc(e.nota_registro))}</dl>
   <div><table><thead><tr><th>Partido</th><th class="n">Publicado %</th><th class="n">Corregido %</th><th class="n">Escaños publicados</th></tr></thead><tbody>${vals}</tbody></table>${e.notas?`<p class="note">${esc(e.notas)}</p>`:""}</div></div>`;
 }
 function tablaEnc(id,lista,cols){

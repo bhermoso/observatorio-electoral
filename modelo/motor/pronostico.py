@@ -88,6 +88,7 @@ def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29,
     votos = np.zeros((n, len(partidos)))
     escanos = np.zeros((n, len(partidos)), dtype=int)
     R = len(base.provincias)
+    por_prov = np.zeros((R, len(partidos)))
     for k in range(n):
         z = rng.normal()
         ind = sd_ind * (comun * signo * z + propio * rng.normal(0, 1, len(mu)))
@@ -99,8 +100,11 @@ def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29,
         nac = np.append(v, otros * (100 - BLANCO) / tot) / 100
         e = base.repartir(base.proyectar(nac, rng.normal(0, sd_prov, (R, len(nac)))))
         escanos[k] = e.sum(0)[:-1]
+        por_prov += e[:, :-1]
     return dict(partidos=partidos, votos=votos, escanos=escanos, sd_total=dict(zip(partidos, sd_tot)),
-                sin_encuestas=sin, rho_bloque=rho_bloque, industria=industria)
+                sin_encuestas=sin, rho_bloque=rho_bloque, industria=industria,
+                provincias=list(base.provincias), escanos_prov=base.escanos.tolist(),
+                por_provincia=por_prov / n)
 
 
 def resumir(sim):
@@ -125,3 +129,33 @@ def promedio_simple(encuestas, hoy, dias=30):
             ult[e["casa"]] = e
     return {p: float(np.mean([e["voto"][p] for e in ult.values() if p in e["voto"]]))
             for p in PARTIDOS if any(p in e["voto"] for e in ult.values())}, sorted(ult)
+
+
+INDUSTRIA_PRINCIPAL = 2.2
+
+
+def principal(encuestas, inicio, hoy, eleccion, errores_23j, n_por_variante=2000, industria=INDUSTRIA_PRINCIPAL):
+    """Pronóstico principal: une las simulaciones de las tres variantes de referencia, a
+    partes iguales, con un error de industria intermedio entre el supuesto inicial (1,5)
+    y el que habría cubierto 2023 (~2,9). Así la incertidumbre de método (qué casas
+    definen el sesgo cero) y la de calibración entran en una sola distribución."""
+    dias = (eleccion - hoy).days
+    sims = []
+    for var in VARIANTES:
+        aj = estimar(encuestas, inicio, hoy, var, errores_23j=errores_23j)
+        sims.append(simular(aj, dias, n=n_por_variante, industria=industria,
+                            semilla=sum(map(ord, var)) + hoy.toordinal()))
+    P = sims[0]["partidos"]
+    assert all(s["partidos"] == P for s in sims)
+    V = np.vstack([s["votos"] for s in sims])
+    E = np.vstack([s["escanos"] for s in sims])
+    pp = np.mean([s["por_provincia"] for s in sims], axis=0)
+    r = resumir(dict(partidos=P, votos=V, escanos=E))
+    r["provincias"] = [dict(provincia=pr, escanos=sims[0]["escanos_prov"][i],
+                            reparto={p: round(float(pp[i, j]), 2) for j, p in enumerate(P) if pp[i, j] >= 0.05})
+                       for i, pr in enumerate(sims[0]["provincias"])]
+    r["n"] = int(E.shape[0])
+    r["industria"] = industria
+    r["dias"] = dias
+    r["sin_encuestas"] = sims[0]["sin_encuestas"]
+    return r

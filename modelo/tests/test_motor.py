@@ -82,7 +82,7 @@ class TestDatosReales(unittest.TestCase):
 
     def test_fuentes_con_origen(self):
         enc = F.todas()
-        self.assertTrue(all(e["origen"] in ("verificada", "terceros-wikipedia", "terceros-29n") for e in enc))
+        self.assertTrue(all(e["origen"] in ("verificada", "terceros-wikipedia", "terceros-29n", "prensa-sin-verificar") for e in enc))
 
 
 if __name__ == "__main__":
