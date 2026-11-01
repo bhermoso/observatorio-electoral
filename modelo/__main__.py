@@ -7,7 +7,7 @@ import json
 import os
 from datetime import date, timedelta
 import numpy as np
-from .motor import fuentes as F, evaluacion as V, eventos as EV, pronostico as PR
+from .motor import fuentes as F, evaluacion as V, eventos as EV, pronostico as PR, registro as RG
 from .motor.tendencia import ajustar
 
 ELECCION = date(2026, 11, 29)
@@ -32,6 +32,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--hoy", type=date.fromisoformat, default=date.today())
     ap.add_argument("--n", type=int, default=4000)
+    ap.add_argument("--n-hist", type=int, default=500, help="simulaciones por variante y día en el historial")
+    ap.add_argument("--desde", type=date.fromisoformat, default=date(2026, 10, 1), help="inicio del historial")
     a = ap.parse_args()
     hoy = a.hoy
     enc = [e for e in F.todas() if e["campo_fin"] <= hoy]
@@ -73,7 +75,41 @@ def main():
         resumen[var] = PR.resumir(sims[var])
     simple, casas_simple = PR.promedio_simple(actuales, hoy)
 
-    w("## 1. Pronóstico 29N\n")
+    # ---------- Pronóstico principal, evolución y provincias ----------
+    princ = PR.principal(actuales, inicio, hoy, ELECCION, err, n_por_variante=max(a.n // 2, 500))
+    hist = RG.historial(actuales, inicio, a.desde, hoy, ELECCION, err, n_por_variante=a.n_hist)
+    n_reg = RG.escribir_encuestas([e for e in enc if e["ciclo"] == "2023-26" or
+                                   (e["origen"] != "terceros-wikipedia" and e["campo_fin"] >= date(2023, 5, 1))])
+    w("## 0. Pronóstico principal\n")
+    w(f"Une a partes iguales las tres variantes de la sección 1, con un error de industria de "
+      f"{PR.INDUSTRIA_PRINCIPAL} pp para un partido del 25 % (intermedio entre el supuesto inicial y el que habría "
+      f"cubierto 2023). {princ['n']} simulaciones. Intervalo del 90 %.\n")
+    filas = [[p, f"{r['voto'][0]:.1f} ({r['voto'][1]:.1f}–{r['voto'][2]:.1f})",
+              f"**{r['escanos'][0]:.0f}** ({r['escanos'][1]:.0f}–{r['escanos'][2]:.0f})"]
+             for p, r in sorted(princ["partidos"].items(), key=lambda x: -x[1]["escanos"][0])]
+    w(tabla(["Partido", "Voto %", "Escaños"], filas))
+    w("")
+    w(tabla(["Bloque", "Escaños", "P(≥176)"],
+            [[b, f"{v['mediana']:.0f} ({v['p5']:.0f}–{v['p95']:.0f})", f"{v['p_mayoria']:.0%}"]
+             for b, v in princ["bloques"].items()] +
+            [["PP primera fuerza", "", f"{princ['partidos']['PP']['primero']:.0%}"]]))
+    w(f"\n### Evolución (pronóstico de cada día con las encuestas publicadas hasta ese día)\n")
+    filas = []
+    for h in hist:
+        filas.append([h["fecha"], h["n_encuestas"],
+                      " · ".join(f"{p} {h['escanos'][p][0]:.0f}" for p in ("PP", "PSOE", "VOX") if p in h["escanos"]),
+                      f"{h['bloques']['PP+VOX']['p_mayoria']:.0%}", f"{h['primero'].get('PP', 0):.0%}",
+                      ", ".join(h.get("nuevas", [])) or ""])
+    w(tabla(["Día", "Encuestas", "Escaños (mediana)", "P(PP+Vox ≥ 176)", "P(PP 1º)", "Encuestas nuevas ese día"], filas))
+    w(f"\n### Escaños por provincia (media de las simulaciones)\n")
+    w(tabla(["Provincia", "Escaños", "Reparto medio"],
+            [[pr["provincia"], pr["escanos"], " · ".join(f"{p} {v:.1f}" for p, v in
+                                                       sorted(pr["reparto"].items(), key=lambda x: -x[1]))]
+             for pr in princ["provincias"]]))
+    w(f"\nRegistro de encuestas consultadas: `modelo/registro/encuestas.csv` ({n_reg} filas). "
+      "Evolución: `modelo/registro/historial.json`.\n")
+
+    w("## 1. Variantes del pronóstico\n")
     w(f"Faltan {dias} días. Mediana e intervalo del 90 % de {a.n} simulaciones por variante. "
       "La diferencia entre variantes es la incertidumbre de método: depende de qué casas se toman como referencia.\n")
     filas = []
@@ -151,6 +187,28 @@ def main():
     w(f"\nCobertura del intervalo del 90 %: {dentro} de {total} casos. El PSOE quedó fuera en todos los cortes: "
       "las encuestas lo infravaloraron más de lo que el modelo considera posible. Con una sola elección no se puede "
       "saber si fue excepcional o si el error de industria supuesto (1,5 pp para un partido del 25 %) es demasiado bajo.\n")
+    b23, caso23 = V.industria_que_cubre(rp)
+    sens_ind = []
+    for b in (1.5, round((1.5 + b23) / 2, 2), round(b23, 2)):
+        for var in PR.VARIANTES:
+            sm = PR.simular(ajustes[var], dias, n=min(a.n, 2000), industria=b)
+            P_, E_ = sm["partidos"], sm["escanos"]
+            pv = E_[:, P_.index("PP")] + E_[:, P_.index("VOX")]
+            sens_ind.append(dict(industria=b, variante=var, p_mayoria=float(np.mean(pv >= 176)),
+                                 pp_primero=float(np.mean(E_.argmax(1) == P_.index("PP"))),
+                                 ppvox=(float(np.median(pv)), float(np.percentile(pv, 5)), float(np.percentile(pv, 95)))))
+    w(f"\n**Sensibilidad al tamaño del error de industria.** Para que el intervalo del 90 % hubiera contenido los 16 casos "
+      f"de la retroprueba, el error de industria tendría que haber sido de {b23:.1f} pp para un partido del 25 % "
+      f"(lo determina {caso23[1]} a {caso23[0]} días, error {caso23[2]:+.1f}); el pronóstico usa 1,5.\n")
+    filas = []
+    for b in sorted({x["industria"] for x in sens_ind}):
+        fila = [f"{b:.2f}" + (" (pronóstico)" if b == 1.5 else " (cubre 2023)" if b == round(b23, 2) else "")]
+        for var in PR.VARIANTES:
+            x = next(y for y in sens_ind if y["industria"] == b and y["variante"] == var)
+            fila.append(f"{x['ppvox'][0]:.0f} ({x['ppvox'][1]:.0f}–{x['ppvox'][2]:.0f}) · P(≥176) {x['p_mayoria']:.0%} · PP 1º {x['pp_primero']:.0%}")
+        filas.append(fila)
+    w(tabla(["Error de industria (pp al 25 %)"] + list(PR.VARIANTES), filas))
+    w("")
     w("\nLa variante calibrada no se puede retroprobar en el 23J (usaría el propio resultado). "
       "Con una sola elección evaluada, ninguna diferencia entre métodos es concluyente.\n")
 
@@ -283,7 +341,9 @@ def main():
                            sims=sims, resumen=resumen, simple=simple, casas_simple=casas_simple, err=err,
                            ind=ind, simple23=simple23, bt=bt, res23=res23, est=est, ses_prev=ses_prev,
                            umbrales=umbrales, prev_all=prev_all, casado=CASADO, urda=URDA, eleccion=ELECCION,
-                           contraste=contraste, sensibilidad=sens, retro_cortes=rp)
+                           contraste=contraste, sensibilidad=sens, retro_cortes=rp,
+                           principal=princ, historial=hist,
+                           sens_industria=sens_ind, industria_23j=dict(valor=b23, caso=caso23))
     json.dump(datos, open(os.path.join(SALIDA, "datos_pagina.json"), "w", encoding="utf-8"),
               ensure_ascii=False, default=str, separators=(",", ":"))
     plantilla = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pagina", "plantilla.html")

@@ -58,7 +58,8 @@ def estimar(encuestas, inicio, hoy, variante, errores_23j=None, eventos=(), tau=
 REGIONALES = ["ERC", "JUNTS", "BILDU", "PNV", "BNG", "CC", "UPN"]
 
 
-def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29, rho_bloque=RHO_BLOQUE):
+def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29, rho_bloque=RHO_BLOQUE,
+            industria=1.5):
     """Simula el 29N. Los partidos regionales sin estimación en las encuestas del corte
     conservan su voto nacional del 23J como hipótesis (marcados en `sin_encuestas`),
     con la misma incertidumbre que tendría un partido de su tamaño sin datos."""
@@ -77,7 +78,7 @@ def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29,
     esc = np.array([ajustes[p]["escala"] if p in ajustes else np.sqrt(max(mu[i], 0.5) / 25)
                     for i, p in enumerate(partidos)])
     sd_hoy = np.array([ajustes[p]["sd"][-1] if p in ajustes else 3.0 * esc[i] for i, p in enumerate(partidos)])
-    sd_ind = np.maximum(1.5 * np.sqrt(np.clip(mu, 0, None) / 25), 0.3)
+    sd_ind = np.maximum(industria * np.sqrt(np.clip(mu, 0, None) / 25), 0.3 * industria / 1.5)
     sd_resto = np.sqrt(sd_hoy ** 2 + (tau * esc) ** 2 * dias_restantes)
     sd_tot = np.sqrt(sd_resto ** 2 + sd_ind ** 2)
     signo = np.array([SIGNO_BLOQUE.get(p, 0) for p in partidos], dtype=float)
@@ -87,6 +88,7 @@ def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29,
     votos = np.zeros((n, len(partidos)))
     escanos = np.zeros((n, len(partidos)), dtype=int)
     R = len(base.provincias)
+    por_prov = np.zeros((R, len(partidos)))
     for k in range(n):
         z = rng.normal()
         ind = sd_ind * (comun * signo * z + propio * rng.normal(0, 1, len(mu)))
@@ -98,8 +100,11 @@ def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29,
         nac = np.append(v, otros * (100 - BLANCO) / tot) / 100
         e = base.repartir(base.proyectar(nac, rng.normal(0, sd_prov, (R, len(nac)))))
         escanos[k] = e.sum(0)[:-1]
+        por_prov += e[:, :-1]
     return dict(partidos=partidos, votos=votos, escanos=escanos, sd_total=dict(zip(partidos, sd_tot)),
-                sin_encuestas=sin, rho_bloque=rho_bloque)
+                sin_encuestas=sin, rho_bloque=rho_bloque, industria=industria,
+                provincias=list(base.provincias), escanos_prov=base.escanos.tolist(),
+                por_provincia=por_prov / n)
 
 
 def resumir(sim):
@@ -124,3 +129,33 @@ def promedio_simple(encuestas, hoy, dias=30):
             ult[e["casa"]] = e
     return {p: float(np.mean([e["voto"][p] for e in ult.values() if p in e["voto"]]))
             for p in PARTIDOS if any(p in e["voto"] for e in ult.values())}, sorted(ult)
+
+
+INDUSTRIA_PRINCIPAL = 2.2
+
+
+def principal(encuestas, inicio, hoy, eleccion, errores_23j, n_por_variante=2000, industria=INDUSTRIA_PRINCIPAL):
+    """Pronóstico principal: une las simulaciones de las tres variantes de referencia, a
+    partes iguales, con un error de industria intermedio entre el supuesto inicial (1,5)
+    y el que habría cubierto 2023 (~2,9). Así la incertidumbre de método (qué casas
+    definen el sesgo cero) y la de calibración entran en una sola distribución."""
+    dias = (eleccion - hoy).days
+    sims = []
+    for var in VARIANTES:
+        aj = estimar(encuestas, inicio, hoy, var, errores_23j=errores_23j)
+        sims.append(simular(aj, dias, n=n_por_variante, industria=industria,
+                            semilla=sum(map(ord, var)) + hoy.toordinal()))
+    P = sims[0]["partidos"]
+    assert all(s["partidos"] == P for s in sims)
+    V = np.vstack([s["votos"] for s in sims])
+    E = np.vstack([s["escanos"] for s in sims])
+    pp = np.mean([s["por_provincia"] for s in sims], axis=0)
+    r = resumir(dict(partidos=P, votos=V, escanos=E))
+    r["provincias"] = [dict(provincia=pr, escanos=sims[0]["escanos_prov"][i],
+                            reparto={p: round(float(pp[i, j]), 2) for j, p in enumerate(P) if pp[i, j] >= 0.05})
+                       for i, pr in enumerate(sims[0]["provincias"])]
+    r["n"] = int(E.shape[0])
+    r["industria"] = industria
+    r["dias"] = dias
+    r["sin_encuestas"] = sims[0]["sin_encuestas"]
+    return r

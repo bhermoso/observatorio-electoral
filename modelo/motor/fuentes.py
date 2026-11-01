@@ -121,10 +121,29 @@ def cargar_29n():
     return list(por_id.values())
 
 
+def cargar_prensa():
+    """Encuestas citadas en prensa sin original consultado (modelo/externos/prensa_2026.csv).
+    Sin fin de campo publicado se supone publicación - 3 días (supuesto declarado)."""
+    out = []
+    ruta = os.path.join(EXT, "prensa_2026.csv")
+    if not os.path.exists(ruta):
+        return out
+    for r in csv.DictReader(open(ruta, encoding="utf-8")):
+        pub = _fecha(r["publicacion"])
+        fin = _fecha(r["campo_fin"]) if r["campo_fin"] else pub - timedelta(days=3)
+        voto = {p: float(r[p]) for p in ("PP", "PSOE", "VOX", "SUMAR", "PODEMOS") if r.get(p)}
+        out.append(dict(casa=casa_canonica(r["casa"]), estudio=r["estudio"], campo_fin=fin,
+                        campo_ini=_fecha(r["campo_ini"]) if r["campo_ini"] else None,
+                        n=int(r["n"]) if r["n"] else 1000, modo=r["modo"], voto=voto,
+                        origen="prensa-sin-verificar", url=r["fuente_url"], ciclo=ciclo_de(fin),
+                        ambito="España", publicacion=pub, nota=r["nota"]))
+    return out
+
+
 def todas(deduplicar=True):
     """Todas las fuentes. Si una misma casa tiene dos registros con fin de campo a
     <= 2 días, se conserva el verificado (o el primero cargado)."""
-    enc = cargar_verificadas() + cargar_29n() + cargar_wikipedia()
+    enc = cargar_verificadas() + cargar_29n() + cargar_prensa() + cargar_wikipedia()
     if not deduplicar:
         return enc
     out = []

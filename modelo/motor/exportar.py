@@ -51,7 +51,8 @@ def encuestas(lista, ajustes_ref):
                 corr[p] = _r(v - a["sesgos"][e["casa"]][0])
         out.append(dict(casa=e["casa"], estudio=e["estudio"], campo_ini=e.get("campo_ini"), campo_fin=e["campo_fin"],
                         dia_central=dia_central(e), n=e["n"], modo=e.get("modo"), ambito=e.get("ambito"),
-                        origen=e["origen"], url=e["url"], ciclo=e["ciclo"], voto=e["voto"], corregido=corr, **f))
+                        origen=e["origen"], url=e["url"], ciclo=e["ciclo"], voto=e["voto"], corregido=corr,
+                        publicacion_registro=e.get("publicacion"), nota_registro=e.get("nota"), **f))
     return out
 
 
@@ -146,7 +147,8 @@ def ejemplo_dhondt(provincia="Toledo"):
 
 
 def datos(enc, actuales, inicio, hoy, dias, ajustes, sims, resumen, simple, casas_simple, err, ind, simple23,
-          bt, res23, est, ses_prev, umbrales, prev_all, casado, urda, eleccion, contraste=(), sensibilidad=(), retro_cortes=()):
+          bt, res23, est, ses_prev, umbrales, prev_all, casado, urda, eleccion, contraste=(), sensibilidad=(), retro_cortes=(), sens_industria=(), industria_23j=None,
+          principal=None, historial=()):
     ref = ajustes["consenso_privadas"]
     finales23 = [e for e in enc if e["ciclo"] == "2019-23" and e["campo_fin"] >= eleccion.replace(year=2023, month=5, day=1)
                  and e["origen"] != "terceros-wikipedia"]
@@ -156,7 +158,8 @@ def datos(enc, actuales, inicio, hoy, dias, ajustes, sims, resumen, simple, casa
         corte=hoy, eleccion=eleccion, dias=dias, inicio_ciclo=inicio, urda=urda,
         conteo={o: sum(1 for e in enc if e["origen"] == o) for o in {e["origen"] for e in enc}},
         variantes=PR.VARIANTES,
-        encuestas=encuestas(actuales, ref), finales_23j=encuestas(finales23, {}),
+        encuestas=encuestas(actuales, ref),
+        industria_principal=PR.INDUSTRIA_PRINCIPAL, finales_23j=encuestas(finales23, {}),
         tendencias=tendencias(ajustes), incertidumbre=incertidumbre(ajustes, dias),
         resumen=resumen, histogramas=histogramas(sims), promedio_simple=simple, casas_simple=casas_simple,
         ejemplo_pp=ejemplo_pesos(actuales, "PP", hoy, ref["PP"]),
@@ -172,7 +175,7 @@ def datos(enc, actuales, inicio, hoy, dias, ajustes, sims, resumen, simple, casa
         dhondt_ejemplo=ejemplo_dhondt(),
         contraste=list(contraste),
         sensibilidad=list(sensibilidad), rho_bloque=PR.RHO_BLOQUE,
-        retro_cortes=list(retro_cortes),
+        retro_cortes=list(retro_cortes), principal=principal, historial=list(historial), sens_industria=list(sens_industria), industria_cubre_23j=industria_23j,
         casado=dict(serie=serie_evento(prev_all, casado),
                     pares={p: [_r(m), _r(s), n] for p, (m, s, n) in m_c.items()},
                     efectos={p: {str(k): ([_r(v[0]), _r(v[1])] if v else None) for k, v in r.items()

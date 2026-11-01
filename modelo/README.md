@@ -8,6 +8,8 @@ python3 -m modelo --hoy 2026-11-05    # otro corte
 python3 -m unittest discover -s modelo/tests -t .
 ```
 
+Registro en `modelo/registro/`: `encuestas.csv` (todas las encuestas consultadas, con su estado de verificación) e `historial.json` (el pronóstico principal de cada día desde el 1 de octubre, calculado solo con las encuestas ya publicadas ese día; se reutiliza si no cambian las encuestas ni los parámetros).
+
 Salidas en `modelo/salida/`: `informe.md` (tablas), `pronostico.json` (cifras), `datos_pagina.json` y `pagina.html`. La página explica las encuestas con su ficha técnica y el modelo paso a paso, con los datos del corte; se genera desde `modelo/pagina/plantilla.html`.
 
 ## Qué hace cada parte
@@ -20,7 +22,12 @@ Salidas en `modelo/salida/`: `informe.md` (tablas), `pronostico.json` (cifras), 
 | `motor/eventos.py` | Efecto de un acontecimiento: pares antes/después por casa, salto y cambio acumulado según el modelo, umbral de detección calibrado con placebos. Excluye las encuestas cuyo campo coincide con el suceso. |
 | `motor/escanos.py`, `motor/dhondt.py` | Traslado del voto nacional a las 52 circunscripciones (swing proporcional sobre el 23J) y D'Hondt con umbral del 3 %. Reproduce exactamente los escaños de 2023 (test). |
 | `motor/exportar.py` | Reúne fichas, tendencias, sesgos, descomposición de la incertidumbre e histogramas para la página. |
+| `motor/registro.py` | Registro de encuestas consultadas y evolución diaria del pronóstico principal. |
 | `motor/pronostico.py` | Simulación hasta el día de la elección. Suma la incertidumbre de la estimación actual, el movimiento hasta el 29N, el error de industria y el error provincial. Tres variantes de referencia y un promedio simple como comparación. |
+
+## Pronóstico principal
+
+Une a partes iguales las tres variantes de referencia y usa un error de industria de 2,2 pp para un partido del 25 % (`INDUSTRIA_PRINCIPAL`), intermedio entre el supuesto inicial y el que habría cubierto 2023. Incluye el reparto medio por provincia. Las encuestas citadas solo en prensa (`externos/prensa_2026.csv`) entran de forma provisional con `origen` = `prensa-sin-verificar`.
 
 ## Decisiones de método (todas modificables)
 
@@ -29,6 +36,7 @@ Salidas en `modelo/salida/`: `informe.md` (tablas), `pronostico.json` (cifras), 
 - **Tolerancias proporcionales al tamaño del partido.** La deriva diaria, el sesgo de casa y el error no muestral escalan con √(p/25).
 - **Error de industria.** 1,5 pp para un partido del 25 %, a partir del 23J, donde el error medio de las casas fue de −2,5 en el PSOE y su raíz cuadrática media de 1,4 pp en los cuatro grandes partidos.
 - **Error común entre bloques.** La mitad de la varianza del error de industria (`RHO_BLOQUE = 0.5`) es un factor que mueve en sentidos opuestos a PP, Vox y UPN frente a PSOE, Sumar y Podemos. Es un supuesto: con una sola elección no se puede estimar. El informe muestra la sensibilidad con 0, 0,5 y 0,8.
+- **Tamaño del error de industria.** La retroprueba del 23J indica que 1,5 pp fue insuficiente: habría hecho falta unos 2,9 pp para cubrir todos los casos. El pronóstico mantiene 1,5 y el informe muestra también 2,2 y el valor que cubre 2023, calculado cada vez con `evaluacion.industria_que_cubre`.
 - **Urda.** No se aplica ningún efecto supuesto. En cuanto entren encuestas con campo posterior al 28-oct, el informe calcula los pares y el salto, y los compara con el umbral de detección.
 
 ## Añadir encuestas
