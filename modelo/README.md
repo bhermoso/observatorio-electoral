@@ -36,7 +36,7 @@ Salidas en `modelo/salida/`: `informe.md` (tablas), `pronostico.json` (cifras), 
 
 ## Pronóstico principal
 
-Une a partes iguales las tres variantes de referencia y usa un error de industria de 2,2 pp para un partido del 25 % (`INDUSTRIA_PRINCIPAL`), intermedio entre el supuesto inicial y el que habría cubierto 2023. Incluye el reparto medio por provincia. Las encuestas citadas solo en prensa (`externos/prensa_2026.csv`) entran de forma provisional con `origen` = `prensa-sin-verificar`.
+Une a partes iguales las tres variantes de referencia y usa un error de industria de 2,2 pp para un partido del 25 % (`INDUSTRIA_PRINCIPAL`), intermedio entre el supuesto inicial y el que habría cubierto 2023. Incluye el reparto medio por provincia. Otros agregadores (`externos/agregadores.csv`) se comparan con el pronóstico del motor en su misma fecha. Las encuestas citadas solo en prensa (`externos/prensa_2026.csv`) entran de forma provisional con `origen` = `prensa-sin-verificar`.
 
 ## Decisiones de método (todas modificables)
 
@@ -46,6 +46,7 @@ Une a partes iguales las tres variantes de referencia y usa un error de industri
 - **Error de industria.** 1,5 pp para un partido del 25 %, a partir del 23J, donde el error medio de las casas fue de −2,5 en el PSOE y su raíz cuadrática media de 1,4 pp en los cuatro grandes partidos.
 - **Error común entre bloques.** La mitad de la varianza del error de industria (`RHO_BLOQUE = 0.5`) es un factor que mueve en sentidos opuestos a PP, Vox y UPN frente a PSOE, Sumar y Podemos. Es un supuesto: con una sola elección no se puede estimar. El informe muestra la sensibilidad con 0, 0,5 y 0,8.
 - **Tamaño del error de industria.** La retroprueba del 23J indica que 1,5 pp fue insuficiente: habría hecho falta unos 2,9 pp para cubrir todos los casos. El pronóstico mantiene 1,5 y el informe muestra también 2,2 y el valor que cubre 2023, calculado cada vez con `evaluacion.industria_que_cubre`.
+- **Traslado geográfico.** El pronóstico usa el proporcional; el informe lo compara con el uniforme (mismos puntos donde el partido se presentó en 2023).
 - **Urda.** No se aplica ningún efecto supuesto. En cuanto entren encuestas con campo posterior al 28-oct, el informe calcula los pares y el salto, y los compara con el umbral de detección.
 
 ## Añadir encuestas
