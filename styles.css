@@ -8,3 +8,12 @@
 .event-method{margin-top:22px}.event-method p{font-size:13px;color:var(--muted)}.timeline-axis{display:flex;justify-content:space-between;font-size:10px;margin:24px 0 14px;padding-left:145px;gap:10px}.timeline-axis b{font-weight:600;text-align:center}.timeline-row{display:grid;grid-template-columns:135px 1fr;gap:10px;align-items:center;margin:10px 0;font-size:12px}.timeline-row small{display:block;font-size:10px;color:var(--muted)}.timeline-track{height:32px;background:#f1f4ee;position:relative;border-radius:4px}.event-marker{position:absolute;left:50%;top:-8px;bottom:-8px;border-left:2px dashed #9e5f23}.field-interval{position:absolute;top:11px;height:10px;background:#3c7870;border-radius:3px}.field-interval.overlap{background:#9e5f23}.field-interval.after{background:#536bb0}@media(max-width:650px){.timeline-row{grid-template-columns:95px 1fr;font-size:11px}.timeline-axis{padding-left:105px;font-size:9px}.event-timeline{min-width:0}#event-context .table-wrap table{min-width:680px}}
 #analysis-studies table{min-width:590px}#analysis-studies input{width:95px}#analysis-output table{min-width:450px}@media(max-width:1300px){header{flex-wrap:wrap;gap:15px}nav{order:3;width:100%;justify-content:flex-start;overflow:auto}.repo{margin-left:auto}}
 #analysis-studies label{position:relative}
+
+/* Comparación temporal de estimaciones por acontecimiento */
+.event-chart-wrap{width:100%;overflow-x:auto;margin:8px 0 20px}
+.event-values-svg{display:block;width:100%;min-width:570px;height:auto;background:#fcfdfc;border:1px solid var(--line);border-radius:10px}
+.event-summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:14px 0 21px}
+.event-summary-grid>div{border:1px solid var(--line);border-radius:9px;padding:15px;background:#f8faf6}
+.event-summary-grid span,.event-summary-grid small{display:block;color:var(--muted);font-size:12px}
+.event-summary-grid strong{display:block;font-family:Manrope,system-ui;font-size:24px;margin:5px 0}
+@media(max-width:670px){.event-summary-grid{grid-template-columns:1fr}.event-charts{padding:15px}}
