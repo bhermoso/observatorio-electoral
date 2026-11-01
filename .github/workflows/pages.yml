@@ -18,6 +18,12 @@ jobs:
         with:
           node-version: '22'
       - run: npm test
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install numpy
+      # Regenera el pronóstico con las encuestas de main y la fecha del día antes de publicar.
+      - run: python -m modelo --n 1500
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         if: github.event_name != 'pull_request'
