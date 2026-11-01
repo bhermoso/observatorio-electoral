@@ -126,6 +126,34 @@ Une a partes iguales las tres variantes de la sección 1, con un error de indust
 
 Registro de encuestas consultadas: `modelo/registro/encuestas.csv` (34 filas). Evolución: `modelo/registro/historial.json`.
 
+### Sensibilidad al uso del mapa de 2023
+
+Escaños medianos con el traslado proporcional (el del pronóstico: cada partido pierde o gana en proporción a su fuerza en cada provincia) frente al uniforme (los mismos puntos en todas las provincias donde se presentó).
+
+| Partido | Proporcional | Uniforme | Diferencia |
+|---|---|---|---|
+| PP | 129 | 129 | +0 |
+| PSOE | 113 | 112 | -1 |
+| VOX | 67 | 68 | +1 |
+| SUMAR | 8 | 9 | +1 |
+| PODEMOS | 2 | 2 | +0 |
+| ERC | 10 | 9 | -1 |
+| JUNTS | 4 | 4 | +0 |
+| BILDU | 7 | 7 | +0 |
+| PNV | 4 | 3 | -1 |
+
+P(PP+Vox ≥ 176): proporcional 91%, uniforme 90%. Circunscripciones donde el método mueve al menos 0,3 escaños medios: 10.
+
+### Otros agregadores (contraste; no entran en el pronóstico)
+
+| Agregador | Fecha | PP | PSOE | Vox | Motor ese día (PP · PSOE · Vox) |
+|---|---|---|---|---|---|
+| ElectoPromedio (Electomanía) | 2026-10-26 (actualización) | 31.3 | 26.7 | 19.1 | 30.9 (129) · 27.5 (113) · 18.8 (67) |
+| eleccionesEspaña.com | 2026-10-25 (fin del periodo de campo incluido) | 30.9 · 128 | 27.1 | 19.0 | 31.0 (129) · 27.4 (113) · 18.4 (66) |
+| El Debate (media sin CIS) | 2026-10-25 (publicación) | 32.0 | 26.4 | 18.8 | 31.0 (129) · 27.4 (113) · 18.4 (66) |
+| Demócrata (16 institutos) | 2026-11-01 (consulta (fecha del promedio no consta)) | 31.7 | 26.8 | 18.7 | 30.8 (129) · 27.6 (113) · 18.6 (67) |
+| Promedio RTVE (vía elecciones29noviembre.com) | 2026-11-01 (consulta (fecha del promedio no consta)) | 31.5 · 136 | 26.8 · 106 | 18.7 · 66 | 30.8 (129) · 27.6 (113) · 18.6 (67) |
+
 ## 1. Variantes del pronóstico
 
 Faltan 28 días. Mediana e intervalo del 90 % de 1500 simulaciones por variante. La diferencia entre variantes es la incertidumbre de método: depende de qué casas se toman como referencia.
@@ -292,19 +320,19 @@ El método detecta la subida de Vox; la caída del PP (real, de 2 a 4 puntos seg
 
 ## 5. Contraste con promedios externos
 
-Para comparar en igualdad de condiciones, el motor se ejecuta con los datos que existían en la fecha de cada referencia (encuestas con campo terminado hasta ese día), variante `consenso_privadas`.
+Para comparar en igualdad de condiciones, el motor se ejecuta con los datos que existían en la fecha de cada referencia (encuestas publicadas y con campo terminado hasta ese día), variante `consenso_privadas`.
 
 ### Promedio de EL PAÍS · Kiko Llaneras — 2026-10-03
 
 | Partido | Referencia voto % | Motor voto % | Referencia escaños | Motor escaños (90 %) |
 |---|---|---|---|---|
-| PP | 33.0 | 33.3 | 137 | 143 (126–159) |
-| PSOE | 26.0 | 25.7 | 107 | 106 (89–122) |
-| VOX | 18.0 | 18.2 | 62 | 64 (51–78) |
-| SUMAR | 6.0 | 5.9 | 9 | 8 (5–14) |
+| PP | 33.0 | 33.4 | 137 | 143 (125–161) |
+| PSOE | 26.0 | 25.4 | 107 | 105 (87–121) |
+| VOX | 18.0 | 18.2 | 62 | 64 (51–79) |
+| SUMAR | 6.0 | 6.2 | 9 | 8 (5–16) |
 | PODEMOS | 3.0 | — | 3 | — |
 
-Encuestas disponibles para el motor en esa fecha: 5 de 5 casas. Fuente: https://elpais.com/actualidad/newsletter-kiko-llaneras/2026-10-03/que-dicen-las-encuestas-si-hay-elecciones-la-ventaja-pp-vox-y-las-opciones-de-sanchez.html. Referencia del 3 de octubre, no una cifra actualizada a hoy. Los porcentajes están redondeados en el texto original. Los escaños son resultados centrales del modelo de EL PAÍS. No es una encuesta independiente y queda fuera del archivo de entrevistas y de cualquier cómputo de institutos.
+Encuestas disponibles para el motor en esa fecha: 4 de 4 casas. Fuente: https://elpais.com/actualidad/newsletter-kiko-llaneras/2026-10-03/que-dicen-las-encuestas-si-hay-elecciones-la-ventaja-pp-vox-y-las-opciones-de-sanchez.html. Referencia del 3 de octubre, no una cifra actualizada a hoy. Los porcentajes están redondeados en el texto original. Los escaños son resultados centrales del modelo de EL PAÍS. No es una encuesta independiente y queda fuera del archivo de entrevistas y de cualquier cómputo de institutos.
 
 ## 6. Límites conocidos
 

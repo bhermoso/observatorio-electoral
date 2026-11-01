@@ -199,3 +199,18 @@ def publicada_antes(e, fecha, retraso=2):
     supone que se publicó `retraso` días después del fin de campo (supuesto declarado)."""
     pub = e.get("publicacion") or (e["campo_fin"] + timedelta(days=retraso))
     return pub <= fecha
+
+
+def otros_agregadores():
+    """Promedios de otros agregadores vistos en prensa o en el buscador (externos/agregadores.csv).
+    Solo para contraste; no entran en el pronóstico."""
+    ruta = os.path.join(EXT, "agregadores.csv")
+    out = []
+    if not os.path.exists(ruta):
+        return out
+    for r in csv.DictReader(open(ruta, encoding="utf-8")):
+        out.append(dict(nombre=r["nombre"], fecha=_fecha(r["fecha"]), fecha_tipo=r["fecha_tipo"],
+                        voto={p: float(r[p]) for p in ("PP", "PSOE", "VOX", "SUMAR", "PODEMOS") if r.get(p)},
+                        escanos={p: int(r["escanos_" + p]) for p in ("PP", "PSOE", "VOX") if r.get("escanos_" + p)},
+                        metodo=r["metodo"], url=r["fuente_url"], nota=r["nota"]))
+    return out

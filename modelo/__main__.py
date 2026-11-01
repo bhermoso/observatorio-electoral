@@ -109,6 +109,43 @@ def main():
     w(f"\nRegistro de encuestas consultadas: `modelo/registro/encuestas.csv` ({n_reg} filas). "
       "Evolución: `modelo/registro/historial.json`.\n")
 
+    # ---------- Sensibilidad geográfica y otros agregadores ----------
+    princ_u = PR.principal(actuales, inicio, hoy, ELECCION, err, n_por_variante=max(a.n // 4, 400), metodo_geo="uniforme")
+    geo_sens = dict(proporcional={p: v["escanos"] for p, v in princ["partidos"].items()},
+                    uniforme={p: v["escanos"] for p, v in princ_u["partidos"].items()},
+                    p_mayoria={"proporcional": princ["bloques"]["PP+VOX"]["p_mayoria"],
+                               "uniforme": princ_u["bloques"]["PP+VOX"]["p_mayoria"]},
+                    provincias=[])
+    for a_, b_ in zip(princ["provincias"], princ_u["provincias"]):
+        dif = {p: round(b_["reparto"].get(p, 0) - a_["reparto"].get(p, 0), 2) for p in set(a_["reparto"]) | set(b_["reparto"])}
+        mayor = max(dif.items(), key=lambda x: abs(x[1])) if dif else (None, 0)
+        if abs(mayor[1]) >= 0.3:
+            geo_sens["provincias"].append(dict(provincia=a_["provincia"], escanos=a_["escanos"],
+                                               proporcional=a_["reparto"], uniforme=b_["reparto"], diferencia=dif))
+    w("### Sensibilidad al uso del mapa de 2023\n")
+    w("Escaños medianos con el traslado proporcional (el del pronóstico: cada partido pierde o gana en proporción a "
+      "su fuerza en cada provincia) frente al uniforme (los mismos puntos en todas las provincias donde se presentó).\n")
+    w(tabla(["Partido", "Proporcional", "Uniforme", "Diferencia"],
+            [[p, f"{geo_sens['proporcional'][p][0]:.0f}", f"{geo_sens['uniforme'][p][0]:.0f}",
+              f"{geo_sens['uniforme'][p][0] - geo_sens['proporcional'][p][0]:+.0f}"]
+             for p in ("PP", "PSOE", "VOX", "SUMAR", "PODEMOS", "ERC", "JUNTS", "BILDU", "PNV") if p in geo_sens["uniforme"]]))
+    w(f"\nP(PP+Vox ≥ 176): proporcional {geo_sens['p_mayoria']['proporcional']:.0%}, uniforme {geo_sens['p_mayoria']['uniforme']:.0%}. "
+      f"Circunscripciones donde el método mueve al menos 0,3 escaños medios: {len(geo_sens['provincias'])}.\n")
+    otros = []
+    por_fecha = {h["fecha"]: h for h in hist}
+    for ag in F.otros_agregadores():
+        h = por_fecha.get(str(ag["fecha"])) or (hist[-1] if hist else None)
+        otros.append(dict(ag, motor=dict(fecha=h["fecha"], voto={p: h["voto"][p][0] for p in h["voto"]},
+                                          escanos={p: h["escanos"][p][0] for p in ("PP", "PSOE", "VOX")}) if h else None))
+    if otros:
+        w("### Otros agregadores (contraste; no entran en el pronóstico)\n")
+        w(tabla(["Agregador", "Fecha", "PP", "PSOE", "Vox", "Motor ese día (PP · PSOE · Vox)"],
+                [[o["nombre"], f"{o['fecha']} ({o['fecha_tipo']})"] +
+                 [f1(o["voto"].get(p)) + (f" · {o['escanos'][p]}" if p in o["escanos"] else "") for p in ("PP", "PSOE", "VOX")] +
+                 [" · ".join(f"{o['motor']['voto'][p]:.1f} ({o['motor']['escanos'][p]:.0f})" for p in ("PP", "PSOE", "VOX")) if o["motor"] else "—"]
+                 for o in otros]))
+        w("")
+
     w("## 1. Variantes del pronóstico\n")
     w(f"Faltan {dias} días. Mediana e intervalo del 90 % de {a.n} simulaciones por variante. "
       "La diferencia entre variantes es la incertidumbre de método: depende de qué casas se toman como referencia.\n")
@@ -358,6 +395,7 @@ def main():
                            umbrales=umbrales, prev_all=prev_all, casado=CASADO, urda=URDA, eleccion=ELECCION,
                            contraste=contraste, sensibilidad=sens, retro_cortes=rp,
                            principal=princ, historial=hist, senales=reg_senales, escenarios_urda=esc_urda,
+                           geo_sens=geo_sens, otros_agregadores=otros,
                            sens_industria=sens_ind, industria_23j=dict(valor=b23, caso=caso23))
     json.dump(datos, open(os.path.join(SALIDA, "datos_pagina.json"), "w", encoding="utf-8"),
               ensure_ascii=False, default=str, separators=(",", ":"))

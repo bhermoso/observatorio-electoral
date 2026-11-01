@@ -234,6 +234,10 @@ industria = 1,5 pp × √(p/25) × ( √0,5 · factor de bloque ± √0,5 · err
     </div>
     <div class="formula" id="geo-formula"></div>
     <div class="tbl"><table id="t-geo"></table></div>
+    <h3>¿Cuánto depende de cómo se usa 2023?</h3>
+    <p>El pronóstico traslada el voto en proporción: un partido que pierde un 10 % de su voto lo pierde en esa proporción en cada provincia, más donde es más fuerte. La alternativa es el traslado uniforme: los mismos puntos en todas las provincias donde se presentó. La tabla compara los dos.</p>
+    <div class="tbl"><table id="t-geo-sens"></table></div>
+    <p class="note" id="geo-sens-nota"></p>
     <p><b>Comprobación</b>: con los votos oficiales del 23J, el motor reproduce exactamente los 350 escaños de 2023. Esto valida el cálculo del reparto, no el supuesto de que la geografía del voto se mantenga.</p>
     <p class="note"><span class="tag">dato</span>votos provinciales oficiales del 23J (BOE). <span class="tag">supuesto</span>cada partido conserva su geografía relativa de 2023. <span class="tag">supuesto</span>el voto de Sumar en 2023 se reparte entre Sumar y Podemos según el peso que les dan hoy las encuestas. <span class="tag">supuesto</span>SALF, sin base en 2023, recibe el mismo porcentaje en todas las provincias.</p>
     <h3>Pruébelo: calculadora D'Hondt</h3>
@@ -281,6 +285,9 @@ industria = 1,5 pp × √(p/25) × ( √0,5 · factor de bloque ± √0,5 · err
   <h3>Contraste con el promedio de EL PAÍS (Kiko Llaneras)</h3>
   <p>El promedio y el modelo de Llaneras son la referencia pública más rigurosa en España. Para compararlos en igualdad de condiciones, el motor se ejecuta solo con las encuestas que existían en la fecha de cada publicación de EL PAÍS registrada en el observatorio.</p>
   <div id="contraste"></div>
+  <h3>Otros agregadores</h3>
+  <p>Promedios de encuestas publicados por otros medios y agregadores, junto al pronóstico que este motor daba ese mismo día. Sus cifras proceden de resúmenes del buscador, sin consultar el original.</p>
+  <div class="tbl"><table id="t-otros"></table></div>
 </section>
 
 <section id="eventos">
@@ -706,6 +713,22 @@ $("#dh-in").addEventListener("input",dhondt); dhondt();
   casas.forEach(c=>{h+=`<tr><td>${esc(c)}</td>${PE.map(p=>{const x=((S[p]||{}).casas||{})[c];return `<td class="n">${x?`${sg(x[0])} → ${sg(x[1])}`:"—"}</td>`}).join("")}</tr>`});
   h+=`<tr><td><b>Correlación</b></td>${PE.map(p=>`<td class="n"><b>${S[p]?fmt(S[p].correlacion,2):"—"}</b></td>`).join("")}</tr>`;
   $("#t-est").innerHTML=h+"</tbody>";
+}
+
+/* ---------- Sensibilidad geográfica ---------- */
+if(D.geo_sens){
+  const G=D.geo_sens, PS=["PP","PSOE","VOX","SUMAR","PODEMOS","ERC","JUNTS","BILDU","PNV"].filter(p=>G.uniforme[p]);
+  let h=`<thead><tr><th>Partido</th><th class="n">Proporcional (pronóstico)</th><th class="n">Uniforme</th><th class="n">Diferencia</th></tr></thead><tbody>`;
+  PS.forEach(p=>{const a=G.proporcional[p][0],b=G.uniforme[p][0];h+=`<tr><td>${NOM[p]}</td><td class="n">${fmt(a,0)}</td><td class="n">${fmt(b,0)}</td><td class="n">${sg(b-a,0)}</td></tr>`});
+  h+=`<tr><td>P(PP+Vox ≥ 176)</td><td class="n">${Math.round(G.p_mayoria.proporcional*100)} %</td><td class="n">${Math.round(G.p_mayoria.uniforme*100)} %</td><td></td></tr>`;
+  $("#t-geo-sens").innerHTML=h+"</tbody>";
+  const top=G.provincias.slice().sort((a,b)=>Math.max(...Object.values(b.diferencia).map(Math.abs))-Math.max(...Object.values(a.diferencia).map(Math.abs))).slice(0,6);
+  $("#geo-sens-nota").innerHTML=`El método mueve como mucho uno o dos escaños por partido en el total. Las circunscripciones donde más cambia son: ${top.map(pr=>{const [p,v]=Object.entries(pr.diferencia).sort((a,b)=>Math.abs(b[1])-Math.abs(a[1]))[0];return `${esc(pr.provincia)} (${NOM[p]||p} ${sg(v)})`}).join(", ")}. Escaños medios en las simulaciones.`;
+}
+if(D.otros_agregadores&&D.otros_agregadores.length){
+  let h=`<thead><tr><th>Agregador</th><th>Fecha</th><th class="n">PP</th><th class="n">PSOE</th><th class="n">Vox</th><th class="n">Este motor ese día</th></tr></thead><tbody>`;
+  D.otros_agregadores.forEach(o=>{h+=`<tr><td><a href="${esc(o.url)}" target="_blank" rel="noopener">${esc(o.nombre)}</a><br><span class="note">${esc(o.metodo)}</span></td><td class="n">${fecha(o.fecha)}<br><span class="note">${esc(o.fecha_tipo)}</span></td>${["PP","PSOE","VOX"].map(p=>`<td class="n">${fmt(o.voto[p])}${o.escanos[p]!=null?`<br><span class="note">${o.escanos[p]} esc.</span>`:""}</td>`).join("")}<td class="n">${o.motor?["PP","PSOE","VOX"].map(p=>`${NOM[p]} ${fmt(o.motor.voto[p])} (${fmt(o.motor.escanos[p],0)})`).join("<br>"):"—"}</td></tr>`});
+  $("#t-otros").innerHTML=h+`</tbody><tfoot><tr><td colspan="6" class="note">Este motor da al PP algo menos y al PSOE algo más que la mayoría de agregadores. La explicación más probable es que corrige el sesgo de cada casa y que dos de sus tres variantes dan cierto peso al CIS; no se ha comprobado con el método de cada agregador.</td></tr></tfoot>`;
 }
 
 /* ---------- Señales y escenarios ---------- */

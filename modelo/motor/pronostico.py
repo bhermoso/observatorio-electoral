@@ -59,7 +59,7 @@ REGIONALES = ["ERC", "JUNTS", "BILDU", "PNV", "BNG", "CC", "UPN"]
 
 
 def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29, rho_bloque=RHO_BLOQUE,
-            industria=1.5, desplazamiento=None):
+            industria=1.5, desplazamiento=None, metodo_geo="proporcional"):
     """Simula el 29N. Los partidos regionales sin estimación en las encuestas del corte
     conservan su voto nacional del 23J como hipótesis (marcados en `sin_encuestas`),
     con la misma incertidumbre que tendría un partido de su tamaño sin datos."""
@@ -101,7 +101,7 @@ def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29,
         v = v * (100 - BLANCO) / tot
         votos[k] = v
         nac = np.append(v, otros * (100 - BLANCO) / tot) / 100
-        e = base.repartir(base.proyectar(nac, rng.normal(0, sd_prov, (R, len(nac)))))
+        e = base.repartir(base.proyectar(nac, rng.normal(0, sd_prov, (R, len(nac))), metodo=metodo_geo))
         escanos[k] = e.sum(0)[:-1]
         por_prov += e[:, :-1]
     return dict(partidos=partidos, votos=votos, escanos=escanos, sd_total=dict(zip(partidos, sd_tot)),
@@ -138,7 +138,7 @@ INDUSTRIA_PRINCIPAL = 2.2
 
 
 def principal(encuestas, inicio, hoy, eleccion, errores_23j, n_por_variante=2000, industria=INDUSTRIA_PRINCIPAL,
-              desplazamiento=None):
+              desplazamiento=None, metodo_geo="proporcional"):
     """Pronóstico principal: une las simulaciones de las tres variantes de referencia, a
     partes iguales, con un error de industria intermedio entre el supuesto inicial (1,5)
     y el que habría cubierto 2023 (~2,9). Así la incertidumbre de método (qué casas
@@ -148,7 +148,8 @@ def principal(encuestas, inicio, hoy, eleccion, errores_23j, n_por_variante=2000
     for var in VARIANTES:
         aj = estimar(encuestas, inicio, hoy, var, errores_23j=errores_23j)
         sims.append(simular(aj, dias, n=n_por_variante, industria=industria,
-                            semilla=sum(map(ord, var)) + hoy.toordinal(), desplazamiento=desplazamiento))
+                            semilla=sum(map(ord, var)) + hoy.toordinal(), desplazamiento=desplazamiento,
+                            metodo_geo=metodo_geo))
     P = sims[0]["partidos"]
     assert all(s["partidos"] == P for s in sims)
     V = np.vstack([s["votos"] for s in sims])

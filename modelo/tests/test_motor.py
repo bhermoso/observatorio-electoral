@@ -136,3 +136,16 @@ class TestCocinaMicrodatos(unittest.TestCase):
         self.assertGreater(r["voto_directo"]["A"], 60)
         self.assertAlmostEqual(r["reponderado"]["A"], 50, delta=2)
         self.assertAlmostEqual(r["transferencias"]["A"]["A"], 90, delta=3)
+
+
+class TestTrasladoUniforme(unittest.TestCase):
+    def test_reproduce_2023_y_respeta_territorio(self):
+        P = ["PP", "PSOE", "VOX", "SUMAR", "ERC", "JUNTS", "BILDU", "PNV", "BNG", "CC", "UPN", "OTROS"]
+        b = Base(P, {"SUMAR": 1.0})
+        self.assertEqual(b.repartir(b.proyectar(b.nacional, metodo="uniforme")).sum(0).tolist(),
+                         b.repartir(b.cuota).sum(0).tolist())
+        nuevo = b.nacional.copy(); j = P.index("ERC"); nuevo[j] += 0.01; nuevo[P.index("OTROS")] -= 0.01
+        c = b.proyectar(nuevo, metodo="uniforme")
+        fuera = [i for i, pr in enumerate(b.provincias) if b.cuota[i, j] == 0]
+        self.assertTrue(all(c[i, j] == 0 for i in fuera))
+        np.testing.assert_allclose(b.peso @ c, nuevo, atol=1e-9)

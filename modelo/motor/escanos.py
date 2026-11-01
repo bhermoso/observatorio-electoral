@@ -41,8 +41,25 @@ class Base:
         self.peso = self.validos / self.validos.sum()
         self.nacional = self.peso @ self.cuota
 
-    def proyectar(self, nuevo, ruido=None):
+    def proyectar(self, nuevo, ruido=None, metodo="proporcional"):
+        """metodo='proporcional': cada partido multiplica su cuota provincial por su cambio
+        nacional (pierde más donde era más fuerte). metodo='uniforme': suma a cada provincia
+        el mismo cambio en puntos (sin bajar de cero)."""
         nuevo = np.asarray(nuevo, float)
+        if metodo == "uniforme":
+            # El cambio se reparte en puntos iguales solo donde el partido se presentó en 2023,
+            # escalado para que la media nacional cuadre (un regionalista no aparece fuera de su territorio).
+            pres = self.cuota > 0
+            w_pres = self.peso @ pres
+            with np.errstate(divide="ignore", invalid="ignore"):
+                d = np.where(w_pres > 0, (nuevo - self.nacional) / w_pres, 0.0)
+            c = np.where(pres, np.clip(self.cuota + d, 0.0, None), 0.0)
+            c[:, self.nacional == 0] = nuevo[self.nacional == 0]
+            if ruido is not None:
+                c = c * np.exp(ruido)
+            actual = self.peso @ c
+            with np.errstate(divide="ignore", invalid="ignore"):
+                return c * np.where(actual > 0, nuevo / actual, 0.0)
         with np.errstate(divide="ignore", invalid="ignore"):
             c = self.cuota * np.where(self.nacional > 0, nuevo / self.nacional, 0.0)
         sin = self.nacional == 0
