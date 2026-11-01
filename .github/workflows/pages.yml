@@ -4,6 +4,10 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  # Publicación diaria: actualiza el pronóstico y aplica la veda electoral a su hora
+  # (23:05 UTC = 00:05 en Madrid), aunque ese día no haya cambios en main.
+  schedule:
+    - cron: '5 23 * * *'
 permissions:
   contents: read
 concurrency:
@@ -18,6 +22,12 @@ jobs:
         with:
           node-version: '22'
       - run: npm test
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install numpy
+      # Regenera el pronóstico con las encuestas de main y la fecha del día antes de publicar.
+      - run: python -m modelo --n 1500
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         if: github.event_name != 'pull_request'
