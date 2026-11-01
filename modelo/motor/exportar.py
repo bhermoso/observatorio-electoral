@@ -146,6 +146,31 @@ def ejemplo_dhondt(provincia="Toledo"):
     return dict(provincia=provincia, esc=esc, p=[[c, v] for c, v in filas[:4]])
 
 
+def geografia(principal):
+    """Datos para explicar el reparto: cuotas de 2023 por provincia (ya en partidos
+    actuales), voto nacional 2023 y 2026, y cuota provincial proyectada con el voto
+    nacional central del pronóstico."""
+    from .escanos import Base
+    P = [p for p in PR.PARTIDOS if p in principal["partidos"]]
+    mu = {p: principal["partidos"][p]["voto"][0] for p in P}
+    rep = {"SUMAR": 1.0}
+    if "SUMAR" in mu and "PODEMOS" in mu:
+        rep = {"SUMAR": mu["SUMAR"] / (mu["SUMAR"] + mu["PODEMOS"]), "PODEMOS": mu["PODEMOS"] / (mu["SUMAR"] + mu["PODEMOS"])}
+    base = Base(P + ["OTROS"], rep)
+    nac26 = np.array([mu[p] for p in P])
+    otros = max(100 - PR.BLANCO - nac26.sum(), 0.5)
+    tot = nac26.sum() + otros
+    nac26 = np.append(nac26, otros) * (100 - PR.BLANCO) / tot / 100
+    proy = base.proyectar(nac26)
+    return dict(partidos=base.partidos, reparto_sumar=rep,
+                nacional23=[_r(100 * x) for x in base.nacional], nacional26=[_r(100 * x) for x in nac26],
+                provincias=[dict(nombre=base.provincias[i], escanos=int(base.escanos[i]),
+                                 validos=int(base.validos[i]), blanco=_r(100 * base.blancos[i] / base.validos[i], 3),
+                                 cuota23=[_r(100 * x, 3) for x in base.cuota[i]],
+                                 cuota26=[_r(100 * x, 3) for x in proy[i]])
+                            for i in range(len(base.provincias))])
+
+
 def datos(enc, actuales, inicio, hoy, dias, ajustes, sims, resumen, simple, casas_simple, err, ind, simple23,
           bt, res23, est, ses_prev, umbrales, prev_all, casado, urda, eleccion, contraste=(), sensibilidad=(), retro_cortes=(), sens_industria=(), industria_23j=None,
           principal=None, historial=()):
@@ -175,7 +200,8 @@ def datos(enc, actuales, inicio, hoy, dias, ajustes, sims, resumen, simple, casa
         dhondt_ejemplo=ejemplo_dhondt(),
         contraste=list(contraste),
         sensibilidad=list(sensibilidad), rho_bloque=PR.RHO_BLOQUE,
-        retro_cortes=list(retro_cortes), principal=principal, historial=list(historial), sens_industria=list(sens_industria), industria_cubre_23j=industria_23j,
+        retro_cortes=list(retro_cortes), principal=principal, historial=list(historial),
+        geografia=geografia(principal) if principal else None, sens_industria=list(sens_industria), industria_cubre_23j=industria_23j,
         casado=dict(serie=serie_evento(prev_all, casado),
                     pares={p: [_r(m), _r(s), n] for p, (m, s, n) in m_c.items()},
                     efectos={p: {str(k): ([_r(v[0]), _r(v[1])] if v else None) for k, v in r.items()
