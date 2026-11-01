@@ -28,6 +28,7 @@ jobs:
       - run: pip install numpy
       # Regenera el pronóstico con las encuestas de main y la fecha del día antes de publicar.
       - run: python -m modelo --n 1500
+      - run: python scripts/procesar_microdatos.py
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         if: github.event_name != 'pull_request'
