@@ -1,0 +1,675 @@
+{
+ "descripcion": "Libro de recetas de cocina electoral: lo que cada instituto explica de su propio método, con la fuente de cada afirmación. Solo se recoge lo que el instituto publica; lo que no consta queda vacío.",
+ "apartados": {
+  "modo_entrevista": "Cómo entrevista (teléfono, internet, mixto)",
+  "muestreo_y_cuotas": "Cómo selecciona la muestra y qué cuotas aplica",
+  "ponderacion": "Cómo pondera las respuestas",
+  "recuerdo_de_voto": "Si corrige por recuerdo de voto y cómo",
+  "indecisos_y_abstencion": "Qué hace con indecisos, abstención y voto oculto",
+  "modelo_de_estimacion": "Cómo pasa de las respuestas a la estimación de voto",
+  "microdatos": "Si publica los datos individuales"
+ },
+ "institutos": [
+  {
+   "instituto": "CIS",
+   "estudios": [
+    "3411",
+    "3415",
+    "cis-3582"
+   ],
+   "recetas": {
+    "modo_entrevista": [
+     {
+      "texto": "CATI",
+      "fuente": "https://www.cis.es/documents/20117/1557956/FT3411.pdf",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "3411"
+     }
+    ],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [
+     {
+      "texto": "Variables de ponderación del fichero: PESO (nacional), PESOPROV (provincia), PESOCCAA (comunidad).",
+      "fuente": "https://www.cis.es/documents/20117/1557956/FT3411.pdf",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "3411"
+     },
+     {
+      "texto": "Variables de ponderación del fichero: PESO (nacional).",
+      "fuente": "https://www.cis.es/documents/20117/1557966/FT3415pdf.pdf",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "3415"
+     },
+     {
+      "texto": "Variables de ponderación del fichero: PESO (nacional), PESOCCAA (comunidad).",
+      "fuente": "https://www.cis.es/documents/d/guest/es3582mar_A-pdf",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "cis-3582"
+     }
+    ],
+    "recuerdo_de_voto": [
+     {
+      "texto": "En el preelectoral europeo de 2019 ponderó por el resultado de las generales celebradas semanas antes, en lugar de por recuerdo de voto, por el contexto excepcional.",
+      "fuente": "https://www.cis.es/documents/d/guest/3245_estimacionepe",
+      "origen": "extracto vía buscador (31-oct/1-nov-2026); documento completo pendiente de lectura",
+      "estudio": "3245"
+     }
+    ],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [
+     {
+      "texto": "Publica por separado la estimación de voto y el voto directo: son medidas distintas.",
+      "fuente": "https://www.cis.es/documents/d/guest/es3582mar_A-pdf",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "cis-3582"
+     },
+     {
+      "texto": "El informe indica imputaciones en la estimación (por ejemplo, UPN al 0,1 %).",
+      "fuente": "https://www.cis.es/documents/d/guest/es3582mar_A-pdf",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "cis-3582"
+     },
+     {
+      "texto": "Aplica desde hace años un método de estimación del apoyo electoral basado en la especificación de escenarios.",
+      "fuente": "https://www.cis.es/documents/d/guest/3557_estimacion-pdf",
+      "origen": "extracto vía buscador (31-oct/1-nov-2026); documento completo pendiente de lectura",
+      "estudio": "3557"
+     },
+     {
+      "texto": "Identifica como modelo de referencia el modelo bidimensional «inercia-incertidumbre» de Alaminos-Tezanos.",
+      "fuente": "https://www.cis.es/documents/d/guest/3528_estimacion",
+      "origen": "extracto vía buscador (31-oct/1-nov-2026); documento completo pendiente de lectura",
+      "estudio": "3528"
+     },
+     {
+      "texto": "Valida los escenarios por convergencia con Matrices de Probabilidad de Transición Ajustadas (MPTA).",
+      "fuente": "https://www.cis.es/documents/d/guest/3557_estimacion-pdf",
+      "origen": "extracto vía buscador (31-oct/1-nov-2026); documento completo pendiente de lectura",
+      "estudio": "3557"
+     }
+    ],
+    "microdatos": [
+     {
+      "texto": "Publica microdatos del estudio 3411 para descarga.",
+      "fuente": "https://www.cis.es/es/estudios/preelectoral-elecciones-generales-2023?showModal=true",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "3411"
+     },
+     {
+      "texto": "Publica microdatos del estudio 3415 para descarga.",
+      "fuente": "https://www.cis.es/es/estudios/encuesta-flash-elecciones-generales-2023?showModal=true",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "3415"
+     },
+     {
+      "texto": "Publica microdatos del estudio cis-3582 para descarga.",
+      "fuente": "https://www.cis.es/es/estudios/barometro-de-octubre-2026",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "cis-3582"
+     }
+    ]
+   },
+   "documentos": [
+    {
+     "url": "https://www.cis.es/documents/20117/1557956/FT3411.pdf",
+     "tipo": "ficha técnica",
+     "estudio": "3411"
+    },
+    {
+     "url": "https://www.cis.es/documents/20117/1557956/cues3411.pdf",
+     "tipo": "cuestionario",
+     "estudio": "3411"
+    },
+    {
+     "url": "https://www.cis.es/documents/d/cis/3411_estimacion",
+     "tipo": "publicación",
+     "estudio": "3411"
+    },
+    {
+     "url": "https://www.cis.es/documents/20117/1557966/FT3415pdf.pdf",
+     "tipo": "ficha técnica",
+     "estudio": "3415"
+    },
+    {
+     "url": "https://datos.gob.es/es/catalogo/ea0040772-encuesta-flash-elecciones-generales-2023",
+     "tipo": "cuestionario",
+     "estudio": "3415"
+    },
+    {
+     "url": "https://www.cis.es/documents/d/cis/es3415marMT_a",
+     "tipo": "publicación",
+     "estudio": "3415"
+    },
+    {
+     "url": "https://www.cis.es/documents/d/guest/es3582mar_A-pdf",
+     "tipo": "ficha técnica",
+     "estudio": "cis-3582"
+    },
+    {
+     "url": "https://www.cis.es/documents/d/guest/3582_estimacion-pdf",
+     "tipo": "publicación",
+     "estudio": "cis-3582"
+    },
+    {
+     "url": "https://www.cis.es/documents/d/guest/3557_estimacion-pdf",
+     "tipo": "documento citado en la receta",
+     "estudio": "3557"
+    },
+    {
+     "url": "https://www.cis.es/documents/d/guest/3528_estimacion",
+     "tipo": "documento citado en la receta",
+     "estudio": "3528"
+    },
+    {
+     "url": "https://www.cis.es/documents/d/guest/3245_estimacionepe",
+     "tipo": "documento citado en la receta",
+     "estudio": "3245"
+    }
+   ]
+  },
+  {
+   "instituto": "40dB.",
+   "estudios": [
+    "40db-2026-10-flash"
+   ],
+   "recetas": {
+    "modo_entrevista": [
+     {
+      "texto": "CAWI",
+      "fuente": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_informe_voto_barometro_flash.pdf",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "40db-2026-10-flash"
+     },
+     {
+      "texto": "Entrevista online (CAWI) a residentes de 18 años o más con derecho a voto.",
+      "fuente": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-barometro/2026_10_informe_voto.pdf",
+      "origen": "extracto vía buscador (31-oct/1-nov-2026); documento completo pendiente de lectura",
+      "estudio": "barómetro octubre 2026"
+     }
+    ],
+    "muestreo_y_cuotas": [
+     {
+      "texto": "Construye la clase social con la metodología de la Encuesta General de Medios (EGM) y la usa para preestratificar y ponderar.",
+      "fuente": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-barometro/2026_10_informe_voto.pdf",
+      "origen": "extracto vía buscador (31-oct/1-nov-2026); documento completo pendiente de lectura",
+      "estudio": "barómetro octubre 2026"
+     }
+    ],
+    "ponderacion": [
+     {
+      "texto": "Usa el recuerdo de voto en las generales de julio de 2023 como variable de segmentación y ponderación.",
+      "fuente": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-barometro/2026_10_informe_voto.pdf",
+      "origen": "extracto vía buscador (31-oct/1-nov-2026); documento completo pendiente de lectura",
+      "estudio": "barómetro octubre 2026"
+     }
+    ],
+    "recuerdo_de_voto": [
+     {
+      "texto": "Pondera por recuerdo de voto de las generales de julio de 2023.",
+      "fuente": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-barometro/2026_10_informe_voto.pdf",
+      "origen": "extracto vía buscador (31-oct/1-nov-2026); documento completo pendiente de lectura",
+      "estudio": "barómetro octubre 2026"
+     }
+    ],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_informe_voto_barometro_flash.pdf",
+     "tipo": "ficha técnica",
+     "estudio": "40db-2026-10-flash"
+    },
+    {
+     "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-barometro/2026_10_informe_voto.pdf",
+     "tipo": "documento citado en la receta",
+     "estudio": "barómetro octubre 2026"
+    }
+   ]
+  },
+  {
+   "instituto": "GAD3",
+   "estudios": [
+    "gad3-2026-10"
+   ],
+   "recetas": {
+    "modo_entrevista": [
+     {
+      "texto": "CATI",
+      "fuente": "https://www.gad3.com/barometro-abc-estimacion-de-voto-nacional-octubre-2026/",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "gad3-2026-10"
+     },
+     {
+      "texto": "Encuesta telefónica (CATI) y online (CAWI).",
+      "fuente": "https://www.gad3.com/barometro-abc-estimacion-de-voto-nacional-mayo-2026/",
+      "origen": "extracto vía buscador (31-oct/1-nov-2026); documento completo pendiente de lectura",
+      "estudio": "barómetro ABC mayo 2026"
+     }
+    ],
+    "muestreo_y_cuotas": [
+     {
+      "texto": "Cuotas por sexo, edad y ámbito geográfico en función del censo electoral (INE).",
+      "fuente": "https://www.gad3.com/barometro-abc-estimacion-de-voto-nacional-mayo-2026/",
+      "origen": "extracto vía buscador (31-oct/1-nov-2026); documento completo pendiente de lectura",
+      "estudio": "barómetro ABC mayo 2026"
+     }
+    ],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://www.gad3.com/barometro-abc-estimacion-de-voto-nacional-octubre-2026/",
+     "tipo": "ficha técnica",
+     "estudio": "gad3-2026-10"
+    },
+    {
+     "url": "https://www.gad3.com/barometro-abc-estimacion-de-voto-nacional-mayo-2026/",
+     "tipo": "documento citado en la receta",
+     "estudio": "barómetro ABC mayo 2026"
+    }
+   ]
+  },
+  {
+   "instituto": "IMOP Insights",
+   "estudios": [
+    "imop-2026-10-ola2"
+   ],
+   "recetas": {
+    "modo_entrevista": [
+     {
+      "texto": "CATI + CAWI",
+      "fuente": "https://www.imop.es/encuesta-pre-electoral-el-confidencial-ola-2/",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "imop-2026-10-ola2"
+     },
+     {
+      "texto": "Híbrida: telefónica (CATI) y online (CAWI) a través de EMOP, panel propio de IMOP.",
+      "fuente": "https://www.imop.es/encuesta-pre-electoral-para-el-confidencial-2026/",
+      "origen": "extracto vía buscador (31-oct/1-nov-2026); documento completo pendiente de lectura",
+      "estudio": "oleada 5-7 oct 2026"
+     }
+    ],
+    "muestreo_y_cuotas": [
+     {
+      "texto": "Diseño aleatorio estratificado proporcional por comunidad autónoma y tamaño de municipio, con cuotas de sexo-edad y nivel de estudios.",
+      "fuente": "https://www.imop.es/encuesta-pre-electoral-para-el-confidencial-2026/",
+      "origen": "extracto vía buscador (31-oct/1-nov-2026); documento completo pendiente de lectura",
+      "estudio": "oleada 5-7 oct 2026"
+     }
+    ],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [
+     {
+      "texto": "Advierte de que, al no ser probabilística la parte online, no procede calcular un margen de error en sentido estricto; da ±3,3 puntos como orientación.",
+      "fuente": "https://www.imop.es/encuesta-pre-electoral-para-el-confidencial-2026/",
+      "origen": "extracto vía buscador (31-oct/1-nov-2026); documento completo pendiente de lectura",
+      "estudio": "oleada 5-7 oct 2026"
+     }
+    ],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://www.imop.es/encuesta-pre-electoral-el-confidencial-ola-2/",
+     "tipo": "ficha técnica",
+     "estudio": "imop-2026-10-ola2"
+    },
+    {
+     "url": "https://www.imop.es/encuesta-pre-electoral-para-el-confidencial-2026/",
+     "tipo": "documento citado en la receta",
+     "estudio": "oleada 5-7 oct 2026"
+    }
+   ]
+  },
+  {
+   "instituto": "DYM",
+   "estudios": [
+    "dym-2026-10"
+   ],
+   "recetas": {
+    "modo_entrevista": [
+     {
+      "texto": "CAWI",
+      "fuente": "https://www.20minutos.es/nacional/psoe-absorbe-intencion-votos-sumar-podemos-mientras-pp-vox-consolidan-su-mayoria_7046598_0.html",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "dym-2026-10"
+     }
+    ],
+    "muestreo_y_cuotas": [
+     {
+      "texto": "Cuotas por sexo, edad y ocupación según la ficha publicada.",
+      "fuente": "https://www.20minutos.es/nacional/psoe-absorbe-intencion-votos-sumar-podemos-mientras-pp-vox-consolidan-su-mayoria_7046598_0.html",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "dym-2026-10"
+     }
+    ],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://www.20minutos.es/nacional/psoe-absorbe-intencion-votos-sumar-podemos-mientras-pp-vox-consolidan-su-mayoria_7046598_0.html",
+     "tipo": "ficha técnica",
+     "estudio": "dym-2026-10"
+    }
+   ]
+  },
+  {
+   "instituto": "Ateneo del Dato",
+   "estudios": [
+    "ateneo-2026-10-25"
+   ],
+   "recetas": {
+    "modo_entrevista": [
+     {
+      "texto": "CAWI",
+      "fuente": "https://www.eldiario.es/politica/bloque-izquierdas-recorta-distancias-pp-vox-mantienen-mayoria-absoluta_1_13611052.html",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "ateneo-2026-10-25"
+     }
+    ],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://www.eldiario.es/politica/bloque-izquierdas-recorta-distancias-pp-vox-mantienen-mayoria-absoluta_1_13611052.html",
+     "tipo": "ficha técnica",
+     "estudio": "ateneo-2026-10-25"
+    }
+   ]
+  },
+  {
+   "instituto": "Sigma Dos",
+   "estudios": [
+    "sigma-dos-2026-10-26"
+   ],
+   "recetas": {
+    "modo_entrevista": [
+     {
+      "texto": "CATI + CAWI",
+      "fuente": "https://www.sigmados.com/noticia?id=OUze2FxEIVfARtu3",
+      "origen": "registro verificado del observatorio (data/polls.json)",
+      "estudio": "sigma-dos-2026-10-26"
+     },
+     {
+      "texto": "Metodología mixta: telefónica (CATI) y online (CAWI) a través del Panel Sigma Dos by Trust Survey.",
+      "fuente": "https://www.sigmados.com/noticia?id=OUze2FxEIVfARtu3",
+      "origen": "extracto vía buscador (31-oct/1-nov-2026); documento completo pendiente de lectura",
+      "estudio": "sigma-dos-2026-10-26"
+     }
+    ],
+    "muestreo_y_cuotas": [
+     {
+      "texto": "Teléfono: selección aleatoria de hogar y cuotas de sexo y edad para la persona entrevistada. Panel: asignación proporcional por sexo y grupo de edad. Distribución proporcional por comunidad autónoma en ambas muestras.",
+      "fuente": "https://www.sigmados.com/noticia?id=OUze2FxEIVfARtu3",
+      "origen": "extracto vía buscador (31-oct/1-nov-2026); documento completo pendiente de lectura",
+      "estudio": "sigma-dos-2026-10-26"
+     }
+    ],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://www.sigmados.com/noticia?id=OUze2FxEIVfARtu3",
+     "tipo": "ficha técnica",
+     "estudio": "sigma-dos-2026-10-26"
+    }
+   ]
+  },
+  {
+   "instituto": "Metroscopia",
+   "estudios": [],
+   "recetas": {
+    "modo_entrevista": [],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://metroscopia.org/como-medimos/",
+     "tipo": "página de metodología del instituto (sin transcribir)",
+     "estudio": null
+    },
+    {
+     "url": "https://metroscopia.org/lo-que-medimos/",
+     "tipo": "página institucional",
+     "estudio": null
+    }
+   ]
+  },
+  {
+   "instituto": "IESA-CSIC · Córdoba",
+   "estudios": [],
+   "recetas": {
+    "modo_entrevista": [],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://www.ciencia.gob.es/Noticias/2022/Junio/Diana-Morant-visita-el-Instituto-de-Estudios-Sociales-Avanzados-en-Cordoba.html",
+     "tipo": "página de metodología del instituto (sin transcribir)",
+     "estudio": null
+    },
+    {
+     "url": "https://www.iesa.csic.es/",
+     "tipo": "página institucional",
+     "estudio": null
+    }
+   ]
+  },
+  {
+   "instituto": "CADPEA / Laboratorio CATI · UGR",
+   "estudios": [],
+   "recetas": {
+    "modo_entrevista": [],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://cpolitica.ugr.es/docencia/grados/grado-ciencias-politicas-y-la-administracion/politica-gobierno-y-admon-andalucia/guia-docente",
+     "tipo": "página de metodología del instituto (sin transcribir)",
+     "estudio": null
+    },
+    {
+     "url": "https://secretariageneral.ugr.es/sites/webugr/secretariageneral/public/inline-files/FICHA%20T%C3%89CNICA.pdf",
+     "tipo": "página institucional",
+     "estudio": null
+    }
+   ]
+  },
+  {
+   "instituto": "GESOP · Gabinet d’Estudis Socials i Opinió Pública",
+   "estudios": [],
+   "recetas": {
+    "modo_entrevista": [],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://gesop.net/",
+     "tipo": "página de metodología del instituto (sin transcribir)",
+     "estudio": null
+    },
+    {
+     "url": "https://www.icps.cat/recerca/sondeigs-i-dades/sondeigs/sondeigs-d-opinio-catalunya",
+     "tipo": "página institucional",
+     "estudio": null
+    }
+   ]
+  },
+  {
+   "instituto": "ICPS · Institut de Ciències Polítiques i Socials",
+   "estudios": [],
+   "recetas": {
+    "modo_entrevista": [],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://www.icps.cat/recerca/sondeigs-i-dades/basedadesintegrada",
+     "tipo": "página de metodología del instituto (sin transcribir)",
+     "estudio": null
+    },
+    {
+     "url": "https://www.icps.cat/recerca/sondeigs-i-dades/sondeigs/sondeigs-d-opinio-catalunya",
+     "tipo": "página institucional",
+     "estudio": null
+    }
+   ]
+  },
+  {
+   "instituto": "Fundación CENTRA · Barómetro Andaluz",
+   "estudios": [],
+   "recetas": {
+    "modo_entrevista": [],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://www.fundacioncentra.eu/encuestas/estudio-preelectoral-elecciones-autonomicas-2026",
+     "tipo": "página de metodología del instituto (sin transcribir)",
+     "estudio": null
+    },
+    {
+     "url": "https://www.centrodeestudiosandaluces.es/barometro",
+     "tipo": "página institucional",
+     "estudio": null
+    }
+   ]
+  },
+  {
+   "instituto": "Gabinete de Prospección Sociológica · Gobierno Vasco",
+   "estudios": [],
+   "recetas": {
+    "modo_entrevista": [],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://www.euskadi.eus/gobierno-vasco/-/todos-los-estudios-por-orden-cronologico/",
+     "tipo": "página de metodología del instituto (sin transcribir)",
+     "estudio": null
+    },
+    {
+     "url": "https://www.euskadi.eus/estudios-sociologicos/",
+     "tipo": "página institucional",
+     "estudio": null
+    }
+   ]
+  },
+  {
+   "instituto": "NC Report",
+   "estudios": [],
+   "recetas": {
+    "modo_entrevista": [
+     {
+      "texto": "Telefónico y online, 1.000 entrevistas (según las fichas recogidas por un agregador).",
+      "fuente": "https://www.electografica.com/2026/10/encuesta-nc-report-261008.html",
+      "origen": "recopilación de terceros; pendiente de contrastar con el instituto",
+      "estudio": "8-oct-2026"
+     }
+    ],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": []
+   },
+   "documentos": [
+    {
+     "url": "https://www.electografica.com/2026/10/encuesta-nc-report-261008.html",
+     "tipo": "documento citado en la receta",
+     "estudio": "8-oct-2026"
+    }
+   ]
+  },
+  {
+   "instituto": "SocioMétrica",
+   "estudios": [],
+   "recetas": {
+    "modo_entrevista": [],
+    "muestreo_y_cuotas": [],
+    "ponderacion": [],
+    "recuerdo_de_voto": [],
+    "indecisos_y_abstencion": [],
+    "modelo_de_estimacion": [],
+    "microdatos": [
+     {
+      "texto": "Según un análisis de terceros, publicó los microdatos de una encuesta para El Español en noviembre de 2024.",
+      "fuente": "https://colmenadedatos.com/analisis-de-la-estimacion-de-el-espanol-basado-en-los-microdatos-de-sociometrica/",
+      "origen": "recopilación de terceros; pendiente de contrastar con el instituto",
+      "estudio": null
+     }
+    ]
+   },
+   "documentos": [
+    {
+     "url": "https://colmenadedatos.com/analisis-de-la-estimacion-de-el-espanol-basado-en-los-microdatos-de-sociometrica/",
+     "tipo": "documento citado en la receta",
+     "estudio": null
+    }
+   ]
+  }
+ ],
+ "pendiente": "Transcribir de las fichas técnicas y páginas de metodología enlazadas los apartados vacíos (recuerdo de voto, indecisos, modelo de estimación). Requiere acceso a las webs de los institutos.",
+ "leyenda_origen": {
+  "registro verificado del observatorio (data/polls.json)": "contrastado con el documento original",
+  "extracto vía buscador (31-oct/1-nov-2026); documento completo pendiente de lectura": "texto del instituto obtenido del buscador; falta leer el documento completo",
+  "recopilación de terceros; pendiente de contrastar con el instituto": "recopilación de terceros"
+ }
+}

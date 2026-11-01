@@ -105,3 +105,19 @@ class TestErrorCorrelacionado(unittest.TestCase):
         dif = lambda s: np.std(s["votos"][:, i] - s["votos"][:, j])
         self.assertGreater(dif(b), dif(a) * 1.15)
         self.assertAlmostEqual(np.std(b["votos"][:, i]), np.std(a["votos"][:, i]), delta=0.35)
+
+
+class TestCocinaMicrodatos(unittest.TestCase):
+    def test_reponderar_corrige_sobrerrepresentacion(self):
+        from modelo.microdatos.cocina import estimacion_propia
+        rng = np.random.default_rng(3)
+        # Población: 50 % recuerda A, 50 % B; cada grupo vota sobre todo lo mismo que recuerda.
+        # Muestra sesgada: el grupo A está sobrerrepresentado (70 %).
+        n = 4000
+        rec = np.where(rng.random(n) < 0.7, 1, 2)
+        intn = np.where(rng.random(n) < 0.9, rec, 3 - rec)
+        w = np.ones(n)
+        r = estimacion_propia(intn, rec, w, {1: "A", 2: "B"}, {1: "A", 2: "B"}, {"A": 50, "B": 50}, ["A", "B"])
+        self.assertGreater(r["voto_directo"]["A"], 60)
+        self.assertAlmostEqual(r["reponderado"]["A"], 50, delta=2)
+        self.assertAlmostEqual(r["transferencias"]["A"]["A"], 90, delta=3)

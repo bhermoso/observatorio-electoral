@@ -1,0 +1,27 @@
+{
+  "_instrucciones": "Una entrada por estudio. Variables y códigos copiados del cuestionario y del libro de códigos del instituto; no se adivinan. Mientras un estudio no tenga su fichero en crudos/ ni sus códigos verificados, queda con estado 'pendiente'.",
+  "cis-3582": {
+    "estado": "pendiente: fichero no descargado y códigos no verificados",
+    "pagina_microdatos": "https://www.cis.es/es/estudios/barometro-de-octubre-2026",
+    "intencion": null,
+    "recuerdo": null,
+    "peso": "PESO",
+    "codigos_intencion": {},
+    "codigos_recuerdo": {},
+    "partidos_validos": ["PP", "PSOE", "VOX", "SUMAR", "PODEMOS", "SALF", "ERC", "JUNTS", "BILDU", "PNV", "BNG", "CC", "UPN", "OTROS", "BLANCO"]
+  },
+  "3411": {
+    "estado": "pendiente: fichero no descargado y códigos no verificados",
+    "pagina_microdatos": "https://www.cis.es/es/estudios/preelectoral-elecciones-generales-2023?showModal=true",
+    "intencion": null, "recuerdo": null, "peso": "PESO",
+    "codigos_intencion": {}, "codigos_recuerdo": {},
+    "partidos_validos": ["PP", "PSOE", "VOX", "SUMAR", "ERC", "JUNTS", "BILDU", "PNV", "BNG", "CC", "UPN", "OTROS", "BLANCO"]
+  },
+  "3415": {
+    "estado": "pendiente: fichero no descargado y códigos no verificados",
+    "pagina_microdatos": "https://www.cis.es/es/estudios/encuesta-flash-elecciones-generales-2023?showModal=true",
+    "intencion": null, "recuerdo": null, "peso": "PESO",
+    "codigos_intencion": {}, "codigos_recuerdo": {},
+    "partidos_validos": ["PP", "PSOE", "VOX", "SUMAR", "ERC", "JUNTS", "BILDU", "PNV", "BNG", "CC", "UPN", "OTROS", "BLANCO"]
+  }
+}
