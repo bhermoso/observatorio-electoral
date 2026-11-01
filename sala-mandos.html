@@ -67,7 +67,7 @@ header{padding:21px clamp(16px,4vw,45px)}header h1{font-size:1.48rem}
 </div>
 <div class="card evolution-card">
 <div class="home-section-head"><h2>¿Quién sube y quién baja?</h2><span class="pill">Cambio en puntos porcentuales</span></div>
-<p class="muted compact">Comparación de las dos últimas encuestas disponibles de cada instituto dentro del período elegido. Solo se comparan institutos con dos mediciones; el cambio medio se calcula con el mismo conjunto de institutos en ambos cortes.</p>
+<p class="muted compact">Compara la primera y la segunda mitad del período seleccionado. Si existen dos oleadas comparables de un mismo instituto se usa la diferencia emparejada; en caso contrario se muestran promedios de dos períodos y se advierte que la composición de institutos puede variar.</p>
 <div class="tools"><label>Vista<select id="evoView"><option value="all">Partidos y bloques</option><option value="parties">Solo partidos</option><option value="blocks">Solo bloques</option></select></label></div>
 <div id="evoMeta" class="muted compact"></div><div id="evoWarning"></div>
 <div id="evoBlocks"></div><div id="evoParties"></div>
@@ -141,34 +141,46 @@ function pollValue(p,party){
 }
 function deltaBadge(d){return '<span class="evo-delta '+(d>.05?'evo-up':d<-.05?'evo-down':'evo-flat')+'">'+(d>0?'+':'')+fmt(d)+' pp</span>'}
 function evolution(eligible){
- const byHouse=new Map;
- // Pairs use publication ordering; do not combine different electoral scenarios.
- for(const p of [...eligible].sort((a,b)=>b.published.localeCompare(a.published)||String(b.fieldEnd||'').localeCompare(a.fieldEnd||''))){
-  if(!byHouse.has(p.institute))byHouse.set(p.institute,[]);
-  byHouse.get(p.institute).push(p);
+ const from=$('homeFrom').value,to=$('homeTo').value;
+ const fromDate=utc(from).getTime(),toDate=utc(to).getTime();
+ const midpoint=new Date((fromDate+toDate)/2).toISOString().slice(0,10);
+ const first=eligible.filter(p=>p.published<=midpoint),second=eligible.filter(p=>p.published>midpoint);
+ function byHouseLatest(rows){
+  const map=new Map;
+  for(const p of [...rows].sort((a,b)=>b.published.localeCompare(a.published)||String(b.fieldEnd||'').localeCompare(a.fieldEnd||''))){
+   if(!map.has(p.institute))map.set(p.institute,p);
+  }
+  return map;
  }
- const pairs=[...byHouse.entries()].filter(([house,arr])=>arr.length>=2)
-   .map(([house,arr])=>({house,old:arr[1],fresh:arr[0]}));
- const matching=pairs.filter(x=>x.old.published!==x.fresh.published);
- $('evoMeta').textContent=matching.length+' institutos comparables (de '+byHouse.size+'). Fechas y tamaños de las parejas pueden variar entre institutos.';
- const ambiguous=matching.filter(x=>x.old.scenario&&x.fresh.scenario&&x.old.scenario!==x.fresh.scenario);
- $('evoWarning').innerHTML=ambiguous.length?'<p class="muted compact">Se excluyen las parejas cuyos escenarios declarados no coinciden: '+safe(ambiguous.map(x=>x.house).join(', '))+'.</p>':'';
- const usable=matching.filter(x=>!x.old.scenario||!x.fresh.scenario||x.old.scenario===x.fresh.scenario);
+ const left=byHouseLatest(first),right=byHouseLatest(second);
+ const common=[...right.keys()].filter(h=>left.has(h));
+ const paired=common.length>0;
+ const pairs=paired?common.map(h=>({old:left.get(h),fresh:right.get(h)})):
+   [...new Set([...left.keys(),...right.keys()])].map(h=>({old:left.get(h),fresh:right.get(h)}));
+ const usable=pairs.filter(x=>!x.old||!x.fresh||!x.old.scenario||!x.fresh.scenario||x.old.scenario===x.fresh.scenario);
+ $('evoMeta').textContent='Primer período: '+from+' a '+midpoint+' ('+left.size+' institutos). Segundo: '+new Date(utc(midpoint).getTime()+86400000).toISOString().slice(0,10)+' a '+to+' ('+right.size+' institutos). '+(paired?'Comparación emparejada: '+common.length+' institutos presentes en ambos.':'No hay institutos presentes en ambos períodos.');
+ $('evoWarning').innerHTML=!paired?'<div class="warning"><b>Comparación orientativa:</b> se comparan promedios de institutos diferentes, por lo que las variaciones pueden deberse a diferencias entre casas y no a cambios reales de intención de voto.</div>':'';
  function compute(parties){
-   const complete=usable.filter(pair=>parties.every(p=>pollValue(pair.old,p)!==null&&pollValue(pair.fresh,p)!==null));
-   if(!complete.length)return null;
-   const sum=(row)=>parties.reduce((a,p)=>a+pollValue(row,p),0);
-   const old=complete.reduce((a,x)=>a+sum(x.old),0)/complete.length;
-   const current=complete.reduce((a,x)=>a+sum(x.fresh),0)/complete.length;
-   return {old,current,delta:current-old,n:complete.length,
-     houses:complete.map(x=>x.house),early:complete.map(x=>x.old.published).sort()[0],
-     late:complete.map(x=>x.fresh.published).sort().at(-1)};
+   function sum(row){if(!row||!parties.every(p=>pollValue(row,p)!==null))return null;return parties.reduce((acc,p)=>acc+pollValue(row,p),0)}
+   if(paired){
+     const complete=usable.filter(x=>sum(x.old)!==null&&sum(x.fresh)!==null);
+     if(!complete.length)return null;
+     const old=complete.reduce((a,x)=>a+sum(x.old),0)/complete.length;
+     const current=complete.reduce((a,x)=>a+sum(x.fresh),0)/complete.length;
+     return {old,current,delta:current-old,n:complete.length,paired:true};
+   }
+   const older=[...left.values()].map(sum).filter(v=>v!==null);
+   const newer=[...right.values()].map(sum).filter(v=>v!==null);
+   if(!older.length||!newer.length)return null;
+   const old=older.reduce((a,b)=>a+b,0)/older.length;
+   const current=newer.reduce((a,b)=>a+b,0)/newer.length;
+   return {old,current,delta:current-old,n:newer.length,olderN:older.length,paired:false};
  }
- const formatGroup=(x)=>{const v=compute(x.parties);return '<div class="evo-tile"><h3>'+safe(x.label)+'</h3>'+(v?'<div class="evo-values"><span class="current">'+fmt(v.current)+' %</span>'+deltaBadge(v.delta)+'</div><small>Anterior: '+fmt(v.old)+' % · '+v.n+' institutos</small>':'<span class="muted compact">Sin encuestas completas y comparables</span>')+'</div>'};
- $('evoBlocks').innerHTML='<h3>Evolución por agrupaciones</h3><div class="evo-tilegrid">'+BLOQUES_EXPLORATORIOS.map(formatGroup).join('')+'</div><p class="muted compact">Cada agrupación se calcula solo con institutos que publican todas sus candidaturas en ambas mediciones. Por ello, las agrupaciones pueden usar conjuntos de estudios diferentes.</p>';
+ const formatGroup=(x)=>{const v=compute(x.parties);return '<div class="evo-tile"><h3>'+safe(x.label)+'</h3>'+(v?'<div class="evo-values"><span class="current">'+fmt(v.current)+' %</span>'+deltaBadge(v.delta)+'</div><small>Anterior: '+fmt(v.old)+' % · '+(v.paired?v.n+' casas emparejadas':v.olderN+' anteriores / '+v.n+' recientes')+'</small>':'<span class="muted compact">Sin encuestas completas y comparables</span>')+'</div>'};
+ $('evoBlocks').innerHTML='<h3>Evolución por agrupaciones</h3><div class="evo-tilegrid">'+BLOQUES_EXPLORATORIOS.map(formatGroup).join('')+'</div><p class="muted compact">Cada agrupación se calcula solo con estudios que publican todos sus componentes. La cobertura puede ser distinta entre agrupaciones; no se interpretan ausencias como cero.</p>';
  const partyNames=['PP','PSOE','VOX','SUMAR','PODEMOS','SALF','ERC','JUNTS','BILDU','PNV','BNG','CC','UPN'];
  const measured=partyNames.map(p=>({p,v:compute([p])})).filter(x=>x.v).sort((a,b)=>Math.abs(b.v.delta)-Math.abs(a.v.delta));
- $('evoParties').innerHTML='<h3>Evolución por partido</h3><div class="evo-row head"><span>Partido</span><span>Anterior</span><span>Última</span><span>Variación</span></div>'+ (measured.length?measured.map(({p,v})=>'<div class="evo-row"><span><b>'+safe(p)+'</b><div class="n">'+v.n+' institutos</div></span><span>'+fmt(v.old)+' %</span><span><b>'+fmt(v.current)+' %</b></span>'+deltaBadge(v.delta)+'</div>').join(''):'<p class="muted">No hay dos encuestas comparables por instituto para calcular cambios.</p>');
+ $('evoParties').innerHTML='<h3>Evolución por partido</h3><div class="evo-row head"><span>Partido</span><span>Anterior</span><span>Última</span><span>Variación</span></div>'+ (measured.length?measured.map(({p,v})=>'<div class="evo-row"><span><b>'+safe(p)+'</b><div class="n">'+(v.paired?v.n+' emparejados':v.olderN+' antes / '+v.n+' después')+'</div></span><span>'+fmt(v.old)+' %</span><span><b>'+fmt(v.current)+' %</b></span>'+deltaBadge(v.delta)+'</div>').join(''):'<p class="muted">No hay dos encuestas comparables por instituto para calcular cambios.</p>');
  let view=$('evoView').value;
  $('evoBlocks').hidden=view==='parties';$('evoParties').hidden=view==='blocks';
 }
