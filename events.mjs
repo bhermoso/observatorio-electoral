@@ -112,7 +112,7 @@ function eventTrend(records,event,party,windowDays){
 
 /** Baseline desagregada por instituto: solo campo completamente anterior al suceso.
  *  No inventamos movimiento después de un acontecimiento si no hay encuestas. */
-function eventEvidence(records,event){
+function eventEvidence(records,event,party){
  const before=records.filter(p=>p.relation==='before'),after=records.filter(p=>p.relation==='after');
  const prior=new Map;
  for(const p of [...before].sort((a,b)=>b.fieldEnd.localeCompare(a.fieldEnd)||b.published.localeCompare(a.published)))
@@ -133,13 +133,16 @@ function eventEvidence(records,event){
     +(r.pre===null?'<span class="event-no-data">Sin dato anterior</span>':'<span class="event-evidence-bar" style="width:'+Math.max(0,Math.min(100,r.pre/max*100))+'%"><i></i></span>')
     +(r.post===null?'':'<span class="event-after-bar" style="width:'+Math.min(100,r.post/max*100)+'%"></span>')
     +'</div><span>'+ (r.pre===null?'—':f(r.pre)+' %')+'<small>'+r.nPre+' casas</small></span><span>'+(r.post===null?'—':f(r.post)+' %')+'<small>'+r.nPost+' casas</small></span><strong>'+(r.pre!==null&&r.post!==null?(r.post-r.pre>0?'+':'')+f(r.post-r.pre)+' pp':'—')+'</strong></div>').join('');
- const detail=[...prior].sort((a,b)=>a[0].localeCompare(b[0])).map(([name,p])=>{
-   const posterior=subsequent.get(name),same=posterior&&['scope','universe','mode','scenario'].every(k=>p[k]&&posterior[k]&&p[k]===posterior[k]);
-   const items=names.map(party=>{
-    const a=eventMeasure(p,party),b=same?eventMeasure(posterior,party):null;
-    return '<td>'+(a===null?'—':f(a)+' %')+'</td>';
-   }).join('');
-   return '<tr><td><b>'+esc(name)+'</b><small>'+esc(p.fieldStart)+'–'+esc(p.fieldEnd)+'</small></td>'+items+'<td>'+(same?'Par comparable':'Sin oleada posterior comparable')+'</td></tr>';
+ const detail=[...new Set([...prior.keys(),...subsequent.keys()])].sort((a,b)=>a.localeCompare(b)).map(name=>{
+   const p=prior.get(name),posterior=subsequent.get(name);
+   const same=p&&posterior&&['scope','universe','mode','scenario'].every(k=>p[k]&&posterior[k]&&p[k]===posterior[k]);
+   const first=p?eventMeasure(p,party):null,last=posterior?eventMeasure(posterior,party):null;
+   const delta=same&&first!==null&&last!==null?last-first:null;
+   return '<tr><td><b>'+esc(name)+'</b><small>'+(p?esc(p.fieldStart)+'–'+esc(p.fieldEnd):'Sin campo anterior')+'</small></td>'
+     +'<td>'+(first===null?'—':f(first)+' %')+'</td>'
+     +'<td>'+(last===null?'—':f(last)+' %')+'</td>'
+     +'<td>'+(delta===null?'—':(delta>0?'+':'')+f(delta)+' pp')+'</td>'
+     +'<td>'+(same?'Escenario y modo coincidentes':posterior?'No comparable o sin encuesta anterior':'Sin oleada posterior')+'</td></tr>';
  }).join('');
  const common=[...prior.keys()].filter(h=>subsequent.has(h));
  const status=!after.length?'<div class="notice"><b>Resultado principal: todavía no es posible medir cambios posteriores.</b> No hay entrevistas con campo completamente posterior al '+esc(format(event.date))+'. Las cifras siguientes describen la situación <b>antes</b> del acontecimiento. No se infiere ni un ganador ni un perdedor.</div>':
@@ -150,7 +153,7 @@ function eventEvidence(records,event){
  +'<div class="event-evidence-head"><b>Partido</b><b>Media sobre escala común</b><b>Antes</b><b>Después</b><b>Cambio</b></div>'
  +'<div class="event-evidence-rows">'+bars+'</div>'
  +'<p class="muted">Cada valor es la media simple de una encuesta por instituto entre quienes publicaron ese partido. No se imputan candidaturas ausentes. «Sumar» agrupa etiquetas de coaliciones diferentes: orientativo, no plenamente homogéneo. Los promedios no forman una distribución electoral completa.</p>'
- +'<details class="event-evidence-details"><summary>Ver el desglose por instituto y sus porcentajes</summary><div class="table-wrap"><table><thead><tr><th>Instituto / campo anterior</th>'+names.map(k=>'<th>'+esc(k)+'</th>').join('')+'<th>Comparación posterior</th></tr></thead><tbody>'+detail+'</tbody></table></div></details>'
+ +'<details class="event-evidence-details" open><summary>Por encuestadora: '+esc(party)+' antes y después</summary><div class="table-wrap"><table><thead><tr><th>Instituto / campo anterior</th><th>Antes</th><th>Después</th><th>Variación</th><th>Comparabilidad</th></tr></thead><tbody>'+detail+'</tbody></table></div><p class="muted">La comparación dentro de un instituto requiere igual ámbito, universo, modo y escenario. Aunque coincidan, pueden variar muestra y cuestionario.</p></details>'
  +'</section>';
  return {html:overview,summary:{housesBefore:prior.size,housesAfter:subsequent.size,housesBoth:common.length,parties:aggregate}};
 }
@@ -165,7 +168,7 @@ export function bindEvents(events,polls){
  function update(){
   const event=events.find(e=>e.id===select.value),windowDays=Number(windowSelect.value),records=contextPolls(polls,event.date,windowDays),pairs=descriptivePairs(polls,event.date,windowDays);
   const count=relation=>records.filter(p=>p.relation===relation).length;
-  const evidence=eventEvidence(records,event);
+  const evidence=eventEvidence(records,event,activeParty);
   analysis={schemaVersion:1,kind:'event-context-analysis',event,windowDays,datePrecision:'day',causalEffectEstimated:false,counts:{before:count('before'),overlap:count('overlap'),after:count('after')},polls:records,descriptivePairs:pairs,evidence:evidence.summary};
   document.querySelector('#event-context').innerHTML=`<section class="panel"><span class="badge">${esc(event.category)}</span><h2>${esc(event.title)}</h2><p class="muted">${format(event.date)} · ${esc(event.location)} · Seguimiento: ${esc(event.scope)} · Revisado: ${format(event.verified)}</p><p>${esc(event.summary)}</p><p>${event.sources.map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.publisher)} · ${format(s.published)} ↗</a>`).join(' · ')}</p><details><summary>Notas de verificación</summary><p>${esc(event.notes)}</p></details></section><div class="stats"><div class="stat"><span>Campo completamente anterior</span><strong>${count('before')}</strong></div><div class="stat"><span>Campo coincidente con ese día</span><strong>${count('overlap')}</strong></div><div class="stat"><span>Campo completamente posterior</span><strong>${count('after')}</strong></div><div class="stat"><span>Ventana seleccionada</span><strong>±${windowDays}</strong><small>días naturales</small></div></div>${!count('after')?'<div class="notice">No hay estudios con campo completamente posterior dentro de la ventana y el archivo cargado. Estos datos todavía no permiten observar una reacción posterior al acontecimiento.</div>':''}${evidence.html}${eventTrend(records,event,activeParty,windowDays)}<section class="panel"><h2>Cuándo se hicieron las entrevistas</h2><p class="muted">Cada barra representa el intervalo de campo, recortado a la ventana. La línea vertical marca el día del acontecimiento. No representa una evolución de intención de voto.</p>${records.length?timeline(records,event.date,windowDays):'<p class="empty">No hay estudios en esta ventana.</p>'}<div class="table-wrap"><table><caption>Estudios del archivo cuyo trabajo de campo solapa la ventana. La selección temporal incluye los ámbitos publicados; no equipara sus electorados.</caption><thead><tr><th>Instituto</th><th>Campo</th><th>Publicación</th><th>Relación temporal</th><th>Ámbito</th></tr></thead><tbody>${records.map(p=>`<tr><td><a href="${esc(p.source)}" target="_blank" rel="noopener">${esc(p.institute)} ↗</a><small>${esc(p.id)}</small></td><td>${format(p.fieldStart)}–${format(p.fieldEnd)}</td><td>${format(p.published)}</td><td>${labels[p.relation]}</td><td>${esc(p.scope)}</td></tr>`).join('')}</tbody></table></div></section><section class="panel event-method"><h2>Comparación descriptiva antes y después</h2><p class="muted">Último estudio anterior y primero posterior de cada grupo comparable. Los estudios que tocan el día del suceso no se usan en esta comparación.</p>${comparison(pairs)}</section>`;
  }
