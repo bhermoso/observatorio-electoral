@@ -1,0 +1,3 @@
+{
+  "_instrucciones": "Para procesar un CSV situado en data/microdatos/entrada/<id>.csv, definir para ese id las columnas originales en variables: intencion, recuerdo y peso (opcional). Declarar las equivalencias entre códigos y partidos en codigos_intencion y codigos_recuerdo. No inferir códigos ni usar estas salidas como estimación de voto sin validación."
+}
