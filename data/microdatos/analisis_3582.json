@@ -1,0 +1,134 @@
+{
+  "study": "3582",
+  "n": 5024,
+  "effective_n": 2410.9,
+  "weighted": "PESO",
+  "data": "Resultados agregados calculados del CSV etiquetado MD3582.zip, no incluye datos individuales",
+  "comparison": [
+    {
+      "party": "PSOE",
+      "direct": 25.298,
+      "decided": 36.231,
+      "turnout": 36.605,
+      "recall": 28.243,
+      "sympathy": 35.352,
+      "official": 34
+    },
+    {
+      "party": "PP",
+      "direct": 14.685,
+      "decided": 21.032,
+      "turnout": 21.4,
+      "recall": 27.699,
+      "sympathy": 20.935,
+      "official": 22.2
+    },
+    {
+      "party": "VOX",
+      "direct": 11.611,
+      "decided": 16.629,
+      "turnout": 16.39,
+      "recall": 19.018,
+      "sympathy": 15.101,
+      "official": 17.1
+    },
+    {
+      "party": "SUMAR",
+      "direct": 4.536,
+      "decided": 6.496,
+      "turnout": 6.588,
+      "recall": 5.989,
+      "sympathy": 7.416,
+      "official": 6.1
+    },
+    {
+      "party": "PODEMOS",
+      "direct": 2.167,
+      "decided": 3.104,
+      "turnout": 3.172,
+      "recall": 2.926,
+      "sympathy": 2.966,
+      "official": 3.1
+    },
+    {
+      "party": "ERC",
+      "direct": 1.826,
+      "decided": 2.615,
+      "turnout": 2.589,
+      "recall": 2.557,
+      "sympathy": 2.756,
+      "official": 3
+    }
+  ],
+  "transfers": {
+    "PSOE": {
+      "n": 1572,
+      "weighted_n": 1611.15,
+      "PSOE": 63.63,
+      "PP": 4.7,
+      "VOX": 2.02,
+      "SUMAR": 3.18,
+      "PODEMOS": 0.99,
+      "indecision": 14.49,
+      "abstention": 1.69
+    },
+    "PP": {
+      "n": 918,
+      "weighted_n": 822.76,
+      "PSOE": 0.26,
+      "PP": 62.71,
+      "VOX": 13.4,
+      "SUMAR": 0.07,
+      "PODEMOS": 0.08,
+      "indecision": 15.62,
+      "abstention": 1.1
+    },
+    "VOX": {
+      "n": 366,
+      "weighted_n": 404.46,
+      "PSOE": 0.63,
+      "PP": 8.02,
+      "VOX": 73.18,
+      "SUMAR": 0,
+      "PODEMOS": 0,
+      "indecision": 8.95,
+      "abstention": 1.48
+    },
+    "SUMAR": {
+      "n": 562,
+      "weighted_n": 468.64,
+      "PSOE": 12.55,
+      "PP": 0.52,
+      "VOX": 0.08,
+      "SUMAR": 30.29,
+      "PODEMOS": 16.31,
+      "indecision": 21.81,
+      "abstention": 0.45
+    }
+  },
+  "recall_factors": {
+    "PSOE": 0.727,
+    "PP": 1.485,
+    "VOX": 1.133,
+    "SUMAR": 0.971
+  },
+  "likelihood_distribution": {
+    "score_0_6": 13.38,
+    "score_7_9": 8.46,
+    "score_10": 78.17
+  },
+  "methods": {
+    "direct": "Intención sobre las 5.024 entrevistas, ponderada por PESO",
+    "decided": "Intención entre las respuestas que declaran una candidatura",
+    "turnout": "Entre decididos, peso PESO multiplicado por PROBVOTO/10 (hipótesis; sin calibración de participación real)",
+    "recall": "Ajuste dentro de los 4 partidos PSOE, PP, Vox, Sumar mediante cuotas relativas del voto nacional 2023; resto sin calibrar (hipótesis parcial)",
+    "sympathy": "VOTOSIMG entre quienes mencionan partido",
+    "official": "Estimación publicada por CIS"
+  },
+  "caveats": [
+    "No reconstruye ni identifica el algoritmo oficial del CIS",
+    "La comparación mezcla tratamientos con denominadores distintos: consultar las definiciones",
+    "Ajuste de recuerdo parcial no validado fuera de muestra",
+    "La matriz descriptiva no es una estimación de voto"
+  ]
+}
