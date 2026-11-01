@@ -65,3 +65,28 @@
 .kitchen-error-track i{display:block;height:100%;background:#307b6d;border-radius:8px}
 .kitchen-history-table{min-width:600px}
 @media(max-width:650px){.kitchen-error-row{grid-template-columns:minmax(110px,1.4fr) minmax(65px,1fr) 58px;gap:7px;font-size:11px}}
+
+/* Panel de evidencia cuantitativa de acontecimientos */
+.event-evidence{margin:22px 0}
+.event-evidence-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}
+.event-evidence-kpis>div{background:#f0f5ee;border:1px solid var(--line);border-radius:10px;padding:17px}
+.event-evidence-kpis span{display:block;font-size:12px;color:var(--muted)}
+.event-evidence-kpis strong{display:block;font-family:Manrope,system-ui;font-size:26px}
+.event-evidence-legend{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--muted);margin:15px 0}
+.event-evidence-legend i{display:inline-block;background:#2a7860;width:15px;height:9px;border-radius:3px}
+.event-evidence-legend i.after{background:#b18a3b;margin-left:12px}
+.event-evidence-head,.event-evidence-row{display:grid;grid-template-columns:75px minmax(110px,2fr) 90px 90px 90px;gap:13px;align-items:center}
+.event-evidence-head{font-size:11px;color:var(--muted);padding:10px 0;border-bottom:1px solid var(--line)}
+.event-evidence-row{padding:13px 0;border-bottom:1px solid var(--line);font-size:13px}
+.event-evidence-row>span,.event-evidence-row>strong{font-variant-numeric:tabular-nums}
+.event-evidence-row small{display:block;color:var(--muted);font-size:10px}
+.event-evidence-graph{height:17px;position:relative}
+.event-evidence-bar,.event-after-bar{display:block;height:8px;border-radius:4px;background:#2a7860;margin-bottom:2px}
+.event-after-bar{background:#b18a3b;height:5px}
+.event-no-data{font-size:11px;color:var(--muted)}
+.event-evidence-details{margin:19px 0;border:1px solid var(--line);border-radius:8px;padding:15px}
+.event-evidence-details summary{font-weight:700;color:var(--green);cursor:pointer}
+.event-evidence-details .table-wrap{margin-top:15px}
+.event-evidence-details table{min-width:680px}
+.event-evidence-details td small{display:block;color:var(--muted);font-size:10px}
+@media(max-width:680px){.event-evidence-kpis{grid-template-columns:1fr}.event-evidence-head,.event-evidence-row{grid-template-columns:60px minmax(70px,1fr) 62px 62px 56px;gap:5px;font-size:11px}.event-evidence-head{font-size:10px}.event-evidence-row small{font-size:9px}}
