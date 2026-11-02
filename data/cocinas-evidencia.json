@@ -9,7 +9,9 @@
       "observed": [
         "El CIS publica fichas, cuestionarios, microdatos y estimaciones de voto por estudio.",
         "Existe un repositorio de informes técnicos de estimación por estudio; no se ha localizado allí un informe individual del 3582 en esta revisión.",
-        "Una ficha oficial de estimación electoral del CIS de 2026 describe el método de escenarios y el modelo bifactorial inercia-incertidumbre."
+        "Una ficha oficial de estimación electoral del CIS de 2026 describe el método de escenarios y el modelo bifactorial inercia-incertidumbre.",
+        "El CIS documenta que PESO es un ajuste de postestratificación con variables demográficas y territoriales. Este ajuste de muestra no equivale a la fórmula de estimación de voto.",
+        "El método de escenarios Inercia–Incertidumbre cuenta con una nota metodológica académica publicada; no es una fórmula única trasladable sin más a todos los estudios."
       ],
       "notVerified": [
         "No consta una implementación íntegra y comprobada del algoritmo aplicada al estudio 3582.",
@@ -30,6 +32,16 @@
           "label": "Guía del barómetro y preguntas habituales",
           "url": "https://www.cis.es/es/estudios/metodologia/metodologias-y-preguntas-fijas-del-barometro",
           "type": "variables y diseño, no receta completa"
+        },
+        {
+          "label": "CIS: Muestra y ponderación (PESO, no fórmula de voto)",
+          "url": "https://www.cis.es/es/estudios/metodologia/muestra-y-ponderacion",
+          "type": "ponderación muestral"
+        },
+        {
+          "label": "Artículo metodológico sobre el método de escenarios, REIS",
+          "url": "https://reis.cis.es/index.php/reis/article/view/228",
+          "type": "método de estimación, ámbito y caso distinto"
         }
       ]
     },
