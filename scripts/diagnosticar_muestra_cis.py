@@ -29,14 +29,21 @@ def turnout(code):
 def rows(path,sid):
  with zipfile.ZipFile(path) as z:
   if sid=='3411':
-   with zipfile.ZipFile(io.BytesIO(z.read('3411csv.zip'))) as inner:raw=inner.read('3411_num.csv')
-  else:raw=z.read(sid+'_num.csv')
+   with zipfile.ZipFile(io.BytesIO(z.read('3411csv.zip'))) as inner:
+    raw=inner.read('3411_num.csv');label_raw=inner.read('3411_etiq.csv')
+  else:
+   raw=z.read(sid+'_num.csv');label_raw=z.read(sid+'_etiq.csv')
  reader=csv.reader(io.StringIO(raw.decode('utf-8-sig')),delimiter=';')
+ labels=csv.reader(io.StringIO(label_raw.decode('utf-8-sig')),delimiter=';')
  header=[x.split(':',1)[0] for x in next(reader)]
+ next(labels)
  idx={k:header.index(k) for k in COLUMNS}
- for row in reader:yield {k:row[i] for k,i in idx.items()}
+ for row,labelrow in zip(reader,labels):
+  values={k:row[i] for k,i in idx.items()}
+  values['RECUVOTOGR_LABEL']=labelrow[idx['RECUVOTOGR']]
+  yield values
 def diagnose(path,sid):
- direct=collections.defaultdict(lambda:[0,0.]);turn=collections.Counter();rec=collections.Counter();ind_turn=collections.Counter();ind_rec=collections.Counter();weights=[]
+ direct=collections.defaultdict(lambda:[0,0.]);turn=collections.Counter();rec=collections.Counter();ind_turn=collections.Counter();ind_rec=collections.Counter();ind_party=collections.Counter();ind_party_labels={};weights=[]
  for r in rows(path,sid):
   w=float(r['PESO'].replace(',','.'));weights.append(w)
   dc=category(r['INTENCIONGR']);tg=turnout(r['PROBVOTO'])
@@ -44,12 +51,17 @@ def diagnose(path,sid):
   turn[tg]+=1
   if dc=='INDECISION':
    ind_turn[tg]+=1;ind_rec[recall(r['RECUVOTOGR'])]+=1
+   key=r['RECUVOTOGR'];ind_party[key]+=1;ind_party_labels[key]=r['RECUVOTOGR_LABEL']
  n=len(weights);total=sum(weights)
+ party_rows=[{'label':ind_party_labels[k],'n':v,'weight':None} for k,v in ind_party.most_common() if v>=20]
+ rest=sum(v for k,v in ind_party.items() if v<20)
+ if rest:party_rows.append({'label':'Resto de categorías agrupadas (sin mostrar celdas pequeñas)','n':rest,'weight':None})
  # Suprimimos recuentos pequeños en cruces publicados.
  safe=lambda groups:{k:v if v>=20 else None for k,v in groups.items()}
  return {'n':n,'effective_n':round(total**2/sum(w*w for w in weights),1),'total_weight':round(total,4),
  'direct':{k:{'n':v[0],'w':round(v[1],1)} for k,v in direct.items()},
- 'turnout':dict(turn),'indecision_recall':safe(ind_rec),'indecision_turnout':safe(ind_turn)}
+ 'turnout':dict(turn),'indecision_recall':safe(ind_rec),'indecision_turnout':safe(ind_turn),
+ 'indecision_recall_party':party_rows,'recall_election':'2023-07-23' if sid=='3582' else '2019-11-10'}
 def main():
  if len(sys.argv)!=4:raise SystemExit(__doc__)
  data={'version':1,'studies':{sid:diagnose(path,sid) for sid,path in zip(SIDS,sys.argv[1:])},
