@@ -8,7 +8,7 @@ test('flujograma se publica, se enlaza y tiene ocho fases',()=>{
  assert.match(build,/flujograma.html/);
  assert.match(build,/flujograma.mjs/);
  assert.match(fs.readFileSync('index.html','utf8'),/href="flujograma.html"/);
- assert.match(html,/src="flujograma.mjs"/);
+ assert.match(html,/src="flujograma.mjs(?:\\?[^"]+)?"/);
  const names=['Fuentes y control','Normalización','Tres anclajes','Tendencia de voto','Simulación electoral','Traslado provincial','D’Hondt y diputados','Pronóstico y bloques'];
  for(const name of names)assert.ok(source.includes(name),name);
 });
@@ -23,4 +23,11 @@ test('cada etapa permite auditar operaciones y se usa selección dinámica de pa
  assert.match(source,/party.addEventListener\('change'/);
  assert.match(source,/item.code.map/);
  assert.match(html,/aria-live="polite"/);
+});
+
+test('La carga principal no depende del simulador territorial opcional',()=>{
+ assert.doesNotMatch(source,/^import .*algoritmo-escanos/m);
+ assert.match(source,/import\('\.\/algoritmo-escanos\.mjs\?/);
+ assert.match(source,/loadOptionalSimulator/);
+ assert.match(source,/Las ocho fases del algoritmo siguen funcionando/);
 });
