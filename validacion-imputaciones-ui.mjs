@@ -20,6 +20,25 @@ function draw(){
  EVALUATED_PARTIES.map(k=>'<div class="vh-line"><span>'+esc(k)+'</span><div class="vh-track"><i style="width:'+Math.min(100,a.absolute[k]/9*100)+'%"></i></div><b>'+sg(a.errors[k])+fmt(a.errors[k])+' pp</b></div>').join('')+
  '<p>Los errores llevan signo (estimado − oficial). La barra representa su valor absoluto.</p></div>';
 }
+async function render2019(){
+ const root=$('vh-2019-diagnostics');if(!root)return;
+ try{
+  const response=await fetch('data/microdatos/diagnostico_2019_original.json');
+  if(!response.ok)throw Error('HTTP '+response.status);
+  const data=await response.json();
+  root.innerHTML=Object.entries(data.studies).map(([sid,s])=>{
+   const statuses=[['INDECISION','Indecisión explícita (94)'],['NO_SABE','No sabe (98)'],['NO_CONTESTA','No contesta (99)']];
+   const cells=statuses.map(([key,label])=>{
+    const c=s.intention[key];
+    return '<tr><td>'+label+'</td><td>'+fmt(c.n,0)+'</td><td>'+fmt(100*c.n/s.n)+' %</td><td>'+fmt(c.w,2)+'</td></tr>'
+   }).join('');
+   return '<article class="vh-detail"><small>CIS '+sid+' · '+(sid==='3242'?'28-A':'10-N')+' de 2019</small>'+
+    '<h3>'+fmt(s.n,0)+' entrevistas</h3><p>Tamaño efectivo Kish: <b>'+fmt(s.kish_n,1)+'</b> · Σ PESO: <b>'+fmt(s.weighted_n,2)+'</b></p>'+
+    '<div class="vh-table"><table><thead><tr><th>Respuesta</th><th>Casos</th><th>% N</th><th>Σ PESO</th></tr></thead><tbody>'+cells+'</tbody></table></div>'+
+    '<p>Los tres grupos son mutuamente excluyentes y su codificación está tomada del libro oficial del estudio. Las reglas de imputación aún no han sido comparadas con esta elección.</p></article>';
+  }).join('');
+ }catch(e){root.textContent='No pudo cargarse el diagnóstico 2019: '+e.message}
+}
 async function renderCoverage(){
  const root=$('vh-coverage'),list=$('vh-election-registry');
  if(!root||!list)return;
@@ -41,6 +60,7 @@ async function renderCoverage(){
 }
 async function start(){
  void renderCoverage();
+ void render2019();
  try{
   const [ledger,validation]=await Promise.all(['data/microdatos/ledger_imputacion_cis.json','data/microdatos/validacion_23j.json'].map(async p=>{const r=await fetch(p);if(!r.ok)throw Error(p+' '+r.status);return r.json()}));
   report=auditImputations(ledger,validation);
