@@ -66,8 +66,7 @@ def main():
     # en la estimación principal; se conservan en el registro documental.
     provisionals = [e for e in enc if e["ciclo"] == "2023-26"
                     and e["origen"] == "prensa-sin-verificar"]
-    actuales = [e for e in enc if e["ciclo"] == "2023-26"
-                and e["origen"] != "prensa-sin-verificar"]
+    actuales = F.aptas_para_pronostico(enc)
     w(f"Puerta de calidad: {len(provisionals)} registros de prensa sin verificar "
       "excluidos del pronóstico principal (no eliminados del archivo).\\n")
     inicio = min(F.dia_central(e) for e in actuales) - timedelta(days=7)
