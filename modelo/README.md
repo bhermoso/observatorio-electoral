@@ -66,6 +66,14 @@ Las encuestas nuevas se incorporan al registro verificado del observatorio (`dat
 
 Sobre cuatro partidos, la simpatía presenta mayor error medio en los dos estudios (diferencias de aproximadamente +0,70 y +0,46 pp respecto a decididos), mientras que la participación lo reduce ligeramente en uno y lo eleva en otro (−0,06 y +0,03 pp). Dos estudios de una misma elección no autorizan generalización ni cambios al pronóstico principal. Recuerdo, transferencia, eventos, peso demográfico aislado y escaños **no disponen aquí de una ablación**.
 
+## Laboratorio de ablaciones del Motor 29N
+
+El módulo `modelo/motor/ablaciones.py` compara el algoritmo principal con siete cambios controlados: sin error común de industria; sin correlación de bloques; sin dispersión provincial; traslado provincial uniforme; ancla solo privada; ancla con CIS; y exclusión de la variante histórica calibrada con el 23J. `modelo/__main__.py` exporta `sensibilidad_cocina` a `modelo/salida/pronostico.json` para visualizarla por partido y bloque en el Observatorio.
+
+Todos los escenarios usan semillas fijas por variante y el mismo tamaño muestral de Monte Carlo. Son **pruebas de sensibilidad contemporáneas**, no pruebas de exactitud predictiva ni de causalidad. Las variantes de anclaje pueden modificar también las casas empleadas. El número reducido de simulaciones del laboratorio (`n_por_variante=80`) limita especialmente la precisión de percentiles y frecuencias cercanas a umbrales. No se incorporan a la estimación principal por elección automática del experimento con resultado «mejor»: no existe resultado futuro conocido contra el que validar.
+
+**No son ablaciones de microdatos**: intención directa, recuerdo, simpatía, transferencias y propensión a votar no son parámetros independientes del motor, que consume estimaciones publicadas por institutos. El contraste histórico exploratorio con CIS 3411 y 3415 se mantiene separado; no identifica efectos causales ni valida fuera de la elección del 23J. Una validación predictiva real requiere microdatos comparables y resultados de varios procesos electorales y cortes temporalmente anteriores.
+
 ## Límites
 
 Un solo precedente con encuestas privadas evaluadas (23J). Para evaluar 2015, 2016 y 2019 hacen falta las tablas históricas (Wikipedia u originales). La retroprueba en el 23J muestra que corregir sesgos de casa no supera automáticamente al promedio simple: en 2023 el CIS fue la única casa que acertó con el PSOE.
