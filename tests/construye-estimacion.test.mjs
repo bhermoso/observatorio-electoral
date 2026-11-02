@@ -26,7 +26,7 @@ test('Errores históricos no se usan como resultado de 2026',()=>{
 });
 test('Operaciones, código documental y exportación interactiva',()=>{
  assert.match(html,/id="craft-steps"/);assert.match(html,/id="craft-stage"/);
- assert.match(js,/descripción/i);
+ assert.match(js,/function description\(/);
  assert.match(js,/JSON.stringify\(file,null,2\)/);
  assert.match(js,/aria-current="step"/);
 });
