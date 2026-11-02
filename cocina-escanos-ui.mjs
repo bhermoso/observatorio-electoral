@@ -3,7 +3,7 @@ const $=id=>document.getElementById(id);
 const fmt=(v,dec=2)=>Number(v).toLocaleString('es-ES',{minimumFractionDigits:dec,maximumFractionDigits:dec});
 const h=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const groups=['PSOE','PP','VOX','SUMAR'];
-let election,history,current,aggregate,manual=null,activeRecipe='direct_all';
+let election,history,current,aggregate,manual=null,activeRecipe='direct_all',lastProjection=null;
 function source(){return $('craft-seat-source').value}
 function getRecipe(){
  const study=$('craft-study').value;
@@ -53,7 +53,7 @@ function renderSeats(){
  if(!values){result.textContent='Escenario sin datos suficientes';return}
  renderInputs(values);
  let out;
- try{out=projection(election,values);error.hidden=true}
+ try{out=projection(election,values);lastProjection={study:$('craft-study').value,source:source(),recipe:activeRecipe,inputs:values,projection:out,notes:[currentExplanation(),'Escenario provincial condicionado a la geografía de 2023; NO pronóstico probabilístico Motor 29N.']};error.hidden=true;const download=$('craft-seat-download');if(download)download.disabled=false}
  catch(e){error.hidden=false;error.textContent=e.message;result.textContent='No se puede repartir este escenario.';return}
  const summary=[...groups,'OTROS'];
  const rows=summary.map(p=>{
@@ -79,6 +79,7 @@ $('craft-seat-source')?.addEventListener('change',()=>{
  sync();
 });
 $('craft-seat-reset')?.addEventListener('click',()=>{manual={...getRecipe()};sync()});
+$('craft-seat-download')?.addEventListener('click',()=>{if(!lastProjection)return;const blob=new Blob([JSON.stringify(lastProjection,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='escenario-cocina-escanos-'+$('craft-study').value+'.json';a.click();URL.revokeObjectURL(url)});
 $('craft-seat-inputs')?.addEventListener('input',event=>{
  if(source()!=='manual'||!event.target.matches('[data-party]'))return;
  manual={...(manual||getRecipe()),[event.target.dataset.party]:Number(event.target.value)};
