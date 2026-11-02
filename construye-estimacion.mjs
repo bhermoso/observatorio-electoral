@@ -126,3 +126,35 @@ try{
  const [h,c]=await Promise.all(['data/microdatos/validacion_23j.json','data/microdatos/analisis_3582.json'].map(async url=>{let r=await fetch(url);if(!r.ok)throw Error('No se pudo cargar '+url);return r.json()}));
  historical=h;current=c;updateMeta();draw();
 }catch(e){meta.textContent='Error cargando fuentes';root.textContent='No se pudieron cargar los datos reales: '+e.message}
+
+
+let rawAggregates=null;
+function updateRawReweight(){
+ const root=document.querySelector('#raw-reweight-output');
+ if(!root)return;
+ const id=studySel.value,question=document.querySelector('#raw-reweight-question')?.value||'directa';
+ const alpha=Number(document.querySelector('#raw-reweight-slider')?.value||0)/100;
+ const chosen=document.querySelector('#raw-reweight-alpha');if(chosen)chosen.textContent=Math.round(alpha*100)+' %';
+ const d=rawAggregates?.study?.[id]?.methods?.[question];
+ if(!d){root.textContent='Agregados originales no disponibles';return}
+ const candidates=d.slice(0,5);
+ const denominator=candidates.reduce((a,row)=>a+(1-alpha)*row[1]+alpha*row[5],0);
+ if(!(denominator>0)){root.textContent='Denominador no válido';return}
+ const rows=rawAggregates.groups.slice(0,5).map((p,i)=>{
+  const numerator=(1-alpha)*d[i][1]+alpha*d[i][5];
+  const base=100*d[i][1]/candidates.reduce((a,row)=>a+row[1],0);
+  const adjusted=100*numerator/denominator;
+  const delta=adjusted-base;
+  return [p,fmt(base)+' %',fmt(adjusted)+' %',(delta>=0?'+':'')+fmt(delta)+' pp'];
+ });
+ root.innerHTML='<div class="craft-figures"><div><small>Estudio CIS</small><strong>'+esc(id)+'</strong><em>Respuestas originales agregadas</em></div><div><small>Base nacional</small><strong>'+fmt(denominator,0)+'</strong><em>Suma de pesos de candidaturas; no personas</em></div><div><small>Intensidad</small><strong>'+Math.round(alpha*100)+' %</strong><em>Supuesto experimental</em></div></div>'
+   +htmlTable(['Candidatura','Sin ajuste','Con ajuste','Variación'],rows)
+   +'<p class="craft-mini">Fuente: <a href="data/microdatos/agregados_originales_cis.json">sumas obtenidas de INTENCIONGR / VOTOSIMG, PROBVOTO y PESO de los ZIP originales ↗</a>. Los pesos son magnitudes agregadas, no registros personales. No es una reproducción de la estimación oficial del CIS.</p>';
+}
+document.querySelector('#raw-reweight-slider')?.addEventListener('input',updateRawReweight);
+document.querySelector('#raw-reweight-question')?.addEventListener('change',updateRawReweight);
+studySel.addEventListener('change',updateRawReweight);
+fetch('data/microdatos/agregados_originales_cis.json',{cache:'no-store'})
+ .then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()})
+ .then(x=>{rawAggregates=x;updateRawReweight()})
+ .catch(e=>{const target=document.querySelector('#raw-reweight-output');if(target)target.textContent='No se pudo abrir el agregado original: '+e.message});
