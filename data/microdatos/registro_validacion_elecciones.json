@@ -6,48 +6,48 @@
     {
       "id": "es-congreso-2019-04",
       "date": "2019-04-28",
-      "status": "candidate",
+      "status": "microdata_descriptive_processed",
       "cis": [
         {
           "study": "3242",
           "name": "Macrobarómetro de marzo 2019. Preelectoral elecciones generales",
           "official_study": "https://www.cis.es/documents/d/guest/ft3242-2019",
           "estimate": "https://www.cis.es/documents/d/cis/es3242marpdf",
-          "microdata_status": "catalogued_not_processed"
+          "microdata_status": "DA_ES_aggregated"
         }
       ],
       "requires": [
-        "ZIP original y diccionario de códigos",
-        "identificar población, universo, PESO y categorías voto y recuerdo",
-        "resultado oficial por partido y provincia",
-        "equivalencia explícita de candidaturas 2019",
-        "ejecutar recetas congeladas sin ajuste con esta elección"
+        "Homologar candidatura y voto válido con resultados oficiales por convocatoria",
+        "Verificar receta equivalente y variables de 2019 para cada tratamiento",
+        "Calcular errores retrospectivos preespecificados sin ajuste al resultado",
+        "Publicar incertidumbre y protocolo de evaluación de elección reservada"
       ],
       "comparable": false,
-      "independent_election_test": false
+      "independent_election_test": false,
+      "processed_aggregates": "data/microdatos/diagnostico_2019_original.json"
     },
     {
       "id": "es-congreso-2019-11",
       "date": "2019-11-10",
-      "status": "candidate",
+      "status": "microdata_descriptive_processed",
       "cis": [
         {
           "study": "3263",
           "name": "Macrobarómetro de octubre 2019. Preelectoral elecciones generales",
           "official_study": "https://www.cis.es/en/surveys/macrobarometro-de-octubre-2019.-preelectoral-elecciones-generales-2019",
           "estimate": "https://www.cis.es/documents/d/cis/es3263marmt_a-mod-",
-          "microdata_status": "catalogued_not_processed"
+          "microdata_status": "DA_ES_aggregated"
         }
       ],
       "requires": [
-        "ZIP original y diccionario de códigos",
-        "identificar población, universo, PESO y categorías voto y recuerdo",
-        "resultado oficial por partido y provincia",
-        "equivalencia explícita de candidaturas 2019",
-        "ejecutar recetas congeladas sin ajuste con esta elección"
+        "Homologar candidatura y voto válido con resultados oficiales por convocatoria",
+        "Verificar receta equivalente y variables de 2019 para cada tratamiento",
+        "Calcular errores retrospectivos preespecificados sin ajuste al resultado",
+        "Publicar incertidumbre y protocolo de evaluación de elección reservada"
       ],
       "comparable": false,
-      "independent_election_test": false
+      "independent_election_test": false,
+      "processed_aggregates": "data/microdatos/diagnostico_2019_original.json"
     },
     {
       "id": "es-congreso-2023-07",
