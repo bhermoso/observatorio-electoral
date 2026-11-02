@@ -12,6 +12,8 @@ test('Diagnóstico por estudio suma exactamente las entrevistas originales',()=>
   const ind=study.direct.INDECISION.n;
   assert.equal(Object.values(study.indecision_recall).reduce((a,c)=>a+(c??0),0),ind);
   assert.ok(study.effective_n>0&&study.effective_n<=n);
+  assert.equal(study.indecision_recall_party.reduce((a,r)=>a+r.n,0),ind);
+  assert.ok(study.indecision_recall_party.every(r=>r.n>=20));
  }
 });
 test('La incertidumbre se identifica como Kish y no un pronóstico',()=>{
@@ -21,6 +23,8 @@ test('La incertidumbre se identifica como Kish y no un pronóstico',()=>{
  assert.match(html,/antes de diseñar reglas de imputación/);
  assert.match(html,/sin imputar ningún voto/i);
  assert.match(html,/no puede deducirse/i);
+ assert.match(html,/dx-recall-parties/);
+ assert.match(js,/indecision_recall_party/);
  assert.match(js,/1\.96\*Math\.sqrt/);
  assert.match(js,/no es un intervalo oficial/i);
  assert.match(build,/diagnostico-cis.html/);
