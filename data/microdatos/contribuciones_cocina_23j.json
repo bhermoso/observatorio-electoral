@@ -267,7 +267,7 @@
     "recuerdo": "Sin contraste válido: RECUERDO en 3411/3415 corresponde a 2019, no a 2023. No se ha creado un procedimiento alternativo comparable.",
     "transferencias": "Los cruces de recuerdo e intención son descriptivos y no existe aquí una regla de transferencia estimada y probada en ambos estudios.",
     "eventos": "No se puede atribuir una variación a un acontecimiento con estas dos encuestas del 23J.",
-    "escanos": "No se ha construido una distribución provincial de voto por receta; no se atribuyen cambios de escaños a estas diferencias nacionales.",
+    "escanos": "No hay validación provincial observada para atribuir cambios de escaños a la cocina. La proyección IPF del laboratorio es ilustrativa; no se atribuyen efectos causales.",
     "ponderacion_demografica": "Los escenarios agregados usan PESO y no contienen una variante sin postestratificación con idéntico denominador."
   },
   "advertencias": [
