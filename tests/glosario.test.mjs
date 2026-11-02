@@ -23,7 +23,7 @@ test('No confunde intención, recuerdo, simpatía o abstenciones',()=>{
  assert.match(terms.get('abstención'),/no se añade/);
 });
 test('Portal, páginas técnicas y pronóstico generado cargan el mismo glosario',()=>{
- for(const page of ['index.html','como-estimamos.html','guia-cocina.html','metodologia-analisis.html']){
+ for(const page of ['index.html','como-estimamos.html','guia-cocina.html','metodologia-analisis.html','sala-mandos.html']){
   assert.match(fs.readFileSync(new URL('../'+page,import.meta.url),'utf8'),/src="glosario.mjs"/,page);
  }
  const build=fs.readFileSync(new URL('../scripts/build.mjs',import.meta.url),'utf8');
