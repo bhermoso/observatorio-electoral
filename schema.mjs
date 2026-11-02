@@ -24,7 +24,7 @@ export function validatePolls(polls,references){
  const rids=new Set();
  for(const r of references){
   if(!r.id||rids.has(r.id)||ids.has(r.id))throw Error('Referencia duplicada o confundida con encuesta');rids.add(r.id);
-  if(!['institute-reference','aggregate-model'].includes(r.kind))throw Error('Tipo de referencia inválido');
+  if(!['institute-reference','aggregate-model','editorial-analysis'].includes(r.kind))throw Error('Tipo de referencia inválido');
   if(!r.name||!r.notes||!r.status||!r.verified||new URL(r.source).protocol!=='https:')throw Error('Referencia sin documentación suficiente');
  }
  return {polls:polls.length,institutes:new Set(polls.map(p=>p.institute)).size,references:references.length};
