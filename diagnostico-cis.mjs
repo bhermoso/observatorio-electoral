@@ -15,7 +15,7 @@ function render(study){
   ['No contesta',fmt(nc)+' · '+fmt(100*nc/n,1)+' %','Código 9999; distinto de indecisión'],
   ['n efectivo de Kish',fmt(study.effective_n,1),'Aproximación por dispersión de PESO']
  ].map(([head,value,foot])=>'<article class="dx-card"><small>'+head+'</small><strong>'+value+'</strong><span>'+foot+'</span></article>').join('');
- $('dx-responses').innerHTML=rows(study.direct,n);
+ $('dx-responses').innerHTML='<div class="dx-table"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left">Respuesta</th><th>Numerador sin ponderar</th><th>% sobre N</th><th>Suma PESO</th><th>% ponderado</th></tr></thead><tbody>'+Object.entries(study.direct).map(([key,v])=>'<tr><th scope="row" style="text-align:left">'+escape(labels[key]||key)+'</th><td>'+fmt(v.n)+'</td><td>'+fmt(100*v.n/n,2)+' %</td><td>'+fmt(v.w,1)+'</td><td>'+fmt(100*v.w/study.total_weight,2)+' %</td></tr>').join('')+'</tbody></table></div><p class="dx-foot">Denominador sin ponderar = '+fmt(n)+' entrevistas. Denominador ponderado = Σ PESO = '+fmt(study.total_weight,2)+'. Cada numerador corresponde exclusivamente a su categoría de respuesta.</p>';
  const decided=['PSOE','PP','VOX','SUMAR','OTRAS_CANDIDATURAS','OTRO_PARTIDO'].reduce((s,key)=>s+(study.direct[key]?.n||0),0);
  $('dx-direct-story').textContent='De '+fmt(n)+' entrevistas, '+fmt(decided)+' declaran alguna candidatura y '+fmt(und)+' no saben todavía. Otras '+fmt(nc)+' no contestan. No es correcto tratar automáticamente esos dos últimos grupos como si tuvieran el mismo comportamiento electoral.';
  const recall=study.indecision_recall;
