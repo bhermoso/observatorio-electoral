@@ -24,7 +24,7 @@ export async function bindIntegratedForecast(){
   if(!root.isConnected)return;
   function update(){
    const model=forecast.variantes?.[modelSelect.value];if(!model){meta.textContent='Esta variante no está disponible';return}
-   meta.textContent='Corte del modelo: '+forecast.corte+' · Escenario electoral: '+forecast.eleccion+' · 176 escaños para mayoría';
+   meta.textContent='Corte del modelo: '+forecast.corte+' · Escenario electoral: '+forecast.eleccion+' · 176 escaños para mayoría'+(forecast.auditoria_fuentes?' · Fuentes en el modelo: '+forecast.auditoria_fuentes.incluidas_2023_26+' · Prensa sin verificar excluida: '+forecast.auditoria_fuentes.excluidas_prensa_sin_verificar:'');
    root.innerHTML=blocks.map(([key,label,parties])=>{
     const b=model.bloques?.[key];if(!b)return '';
     const votes=parties.map(p=>model.partidos?.[p]?.voto?.[0]);const vote=votes.every(Number.isFinite)?num(votes.reduce((a,v)=>a+v,0),1)+' %':'No disponible';
