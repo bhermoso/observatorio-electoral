@@ -22,6 +22,9 @@ function render(study){
  $('dx-recall').innerHTML=rows(recall,und);
  const know=recall.RECUERDA_CANDIDATURA||0,without=recall.SIN_CANDIDATURA_RECORDADA||0,unknown=recall.SIN_RECUERDO_DECLARADO||0;
  $('dx-recall-story').textContent='Entre los '+fmt(und)+' indecisos, '+fmt(know)+' recuerdan alguna candidatura ('+fmt(100*know/und,1)+' %), '+fmt(without)+' no recuerdan una candidatura y '+fmt(unknown)+' no aportan recuerdo declarado. Estos grupos son observables, pero todavía no hemos decidido imputarles partido alguno.';
+ const election=study.recall_election||'No documentada';
+ $('dx-recall-parties').innerHTML='<table><thead><tr><th>Recuerdo electoral ('+escape(election)+')</th><th>Personas</th><th>% de indecisos</th></tr></thead><tbody>'+(study.indecision_recall_party||[]).map(x=>'<tr><td>'+escape(x.label)+'</td><td>'+fmt(x.n)+'</td><td>'+fmt(100*x.n/und,1)+' %</td></tr>').join('')+'</tbody></table>';
+
  $('dx-turnout').innerHTML=rows(study.turnout,n);
  $('dx-indecision-turnout').innerHTML=rows(study.indecision_turnout,und);
  const neff=study.effective_n,phat=und/n,naive=1.96*Math.sqrt(phat*(1-phat)/neff)*100;
