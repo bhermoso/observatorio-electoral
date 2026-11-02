@@ -29,9 +29,9 @@ def process(sid,path):
   vals={k:v for k,v in c.items() if v[0]>=20}
   small=[v for v in c.values() if v[0]<20]
   if small:vals['CELDAS_PEQUENAS']=[sum(v[0] for v in small),sum(v[1] for v in small)]
-  return {k:[v[0],round(v[1],4)] for k,v in sorted(vals.items())}
- return {'n':len(lines),'total_weight':round(sum(weights),4),'n_kish':round(sum(weights)**2/sum(w*w for w in weights),1),
-  'intention':output(totals),'groups':{k:output(v) for k,v in groups.items()},
+  return {k:{'n':v[0],'w':round(v[1],4)} for k,v in sorted(vals.items())}
+ return {'n':len(lines),'weighted_n':round(sum(weights),4),'kish_n':round(sum(weights)**2/sum(w*w for w in weights),1),
+  'intention':output(totals),'groups':{k:{'n':sum(x[0] for x in v.values()),'w':round(sum(x[1] for x in v.values()),4),'votosimg':output(v)} for k,v in groups.items()},
   'variables':{k:v for k,v in zip(('intention','turnout'),F[sid])},'sha256':hashlib.sha256(Path(path).read_bytes()).hexdigest()}
 if __name__=='__main__':
  if len(sys.argv)!=3:raise SystemExit(__doc__)
