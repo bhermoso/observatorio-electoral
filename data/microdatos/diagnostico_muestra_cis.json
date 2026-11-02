@@ -67,7 +67,90 @@
         "7_9": 823,
         "0_6": 601,
         "NO_VALIDO": 28
-      }
+      },
+      "indecision_recall_party": [
+        {
+          "label": "PSOE",
+          "n": 1054,
+          "weight": 1016.39
+        },
+        {
+          "label": "No participó (N.P.)",
+          "n": 546,
+          "weight": 607.61
+        },
+        {
+          "label": "No recuerda",
+          "n": 452,
+          "weight": 477.15
+        },
+        {
+          "label": "Ciudadanos",
+          "n": 377,
+          "weight": 347.48
+        },
+        {
+          "label": "PP",
+          "n": 351,
+          "weight": 336.58
+        },
+        {
+          "label": "Unidas Podemos",
+          "n": 293,
+          "weight": 296.13
+        },
+        {
+          "label": "No contesta",
+          "n": 221,
+          "weight": 228.88
+        },
+        {
+          "label": "VOX",
+          "n": 119,
+          "weight": 104.88
+        },
+        {
+          "label": "ERC",
+          "n": 118,
+          "weight": 141.32
+        },
+        {
+          "label": "En blanco",
+          "n": 91,
+          "weight": 82.94
+        },
+        {
+          "label": "Otros partidos",
+          "n": 72,
+          "weight": 64.42
+        },
+        {
+          "label": "En Comú Podem",
+          "n": 51,
+          "weight": 70.24
+        },
+        {
+          "label": "EAJ-PNV",
+          "n": 49,
+          "weight": 51.36
+        },
+        {
+          "label": "JxCat",
+          "n": 46,
+          "weight": 47.91
+        },
+        {
+          "label": "Voto nulo",
+          "n": 34,
+          "weight": 33.67
+        },
+        {
+          "label": "Resto de categorías agrupadas (sin mostrar celdas pequeñas)",
+          "n": 210,
+          "weight": null
+        }
+      ],
+      "recall_election": "2019-11-10"
     },
     "3415": {
       "n": 8798,
@@ -139,7 +222,70 @@
         "7_9": 217,
         "0_6": 169,
         "NO_VALIDO": null
-      }
+      },
+      "indecision_recall_party": [
+        {
+          "label": "PSOE",
+          "n": 231,
+          "weight": 225.58
+        },
+        {
+          "label": "No participó / código 0",
+          "n": 186,
+          "weight": 220.84
+        },
+        {
+          "label": "No recuerda",
+          "n": 93,
+          "weight": 99.17
+        },
+        {
+          "label": "Ciudadanos",
+          "n": 88,
+          "weight": 83.34
+        },
+        {
+          "label": "Unidas Podemos",
+          "n": 82,
+          "weight": 75.76
+        },
+        {
+          "label": "PP",
+          "n": 81,
+          "weight": 80.45
+        },
+        {
+          "label": "No contesta",
+          "n": 41,
+          "weight": 42.34
+        },
+        {
+          "label": "ERC",
+          "n": 32,
+          "weight": 43.37
+        },
+        {
+          "label": "VOX",
+          "n": 30,
+          "weight": 28.35
+        },
+        {
+          "label": "En blanco",
+          "n": 22,
+          "weight": 20.87
+        },
+        {
+          "label": "Otros partidos",
+          "n": 20,
+          "weight": 19.9
+        },
+        {
+          "label": "Resto de categorías agrupadas (sin mostrar celdas pequeñas)",
+          "n": 108,
+          "weight": null
+        }
+      ],
+      "recall_election": "2019-11-10"
     },
     "3582": {
       "n": 5024,
@@ -207,7 +353,65 @@
         "7_9": 128,
         "0_6": 120,
         "NO_VALIDO": null
-      }
+      },
+      "indecision_recall_party": [
+        {
+          "label": "PSOE",
+          "n": 245,
+          "weight": 233.41
+        },
+        {
+          "label": "PP",
+          "n": 123,
+          "weight": 128.53
+        },
+        {
+          "label": "Sumar",
+          "n": 114,
+          "weight": 102.23
+        },
+        {
+          "label": "No participó (N.P.)",
+          "n": 114,
+          "weight": 119.88
+        },
+        {
+          "label": "No contesta",
+          "n": 87,
+          "weight": 80.35
+        },
+        {
+          "label": "No recuerda (N.R.)",
+          "n": 75,
+          "weight": 69.77
+        },
+        {
+          "label": "Otro partido",
+          "n": 25,
+          "weight": 21.89
+        },
+        {
+          "label": "En blanco",
+          "n": 24,
+          "weight": 19.69
+        },
+        {
+          "label": "VOX",
+          "n": 21,
+          "weight": 36.2
+        },
+        {
+          "label": "ERC",
+          "n": 21,
+          "weight": 14.4
+        },
+        {
+          "label": "Resto de categorías agrupadas (sin mostrar celdas pequeñas)",
+          "n": 49,
+          "weight": null
+        }
+      ],
+      "recall_election": "2023-07-23"
     }
   },
   "metadata": {
@@ -227,7 +431,8 @@
       "Un intervalo basado en n de Kish no incluye conglomeración/estratificación ni sesgos de no respuesta.",
       "Los cruces publicados son marginales de indecisión con recuerdo y participación, no un cruce tridimensional.",
       "Las celdas con menos de 20 entrevistados no se detallan.",
-      "No se han imputado votos ni elegido recetas de estimación."
+      "No se han imputado votos ni elegido recetas de estimación.",
+      "Los grupos de recuerdo con menos de 20 entrevistas se fusionan en un residual, sin exhibir los códigos individuales."
     ]
   }
 }
