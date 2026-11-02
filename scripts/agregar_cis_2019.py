@@ -12,7 +12,7 @@ def process(sid,path):
  with zipfile.ZipFile(path) as z:
   es=z.read('ES'+sid).decode('latin1');lines=z.read('DA'+sid).decode('latin1').splitlines()
  def column(name):
-  m=re.search(r'\\b'+name+r'\\s+(\\d+)-(\\d+)',es)
+  m=re.search(r'\b'+name+r'\s+(\d+)-(\d+)',es)
   if not m:raise ValueError('Variable no documentada: '+name)
   a,b=map(int,m.groups());return a-1,b
  index={k:column(v) for k,v in {'vote':F[sid][0],'sym':'VOTOSIMG','rec':'RECUERDO','peso':'PESO','part':F[sid][1]}.items()}
@@ -37,5 +37,5 @@ if __name__=='__main__':
  if len(sys.argv)!=3:raise SystemExit(__doc__)
  result={'schema_version':1,'source':'CIS DA y ES 3242,3263; libro de códigos','studies':{s:process(s,p) for s,p in zip(('3242','3263'),sys.argv[1:])}}
  dest=Path('data/microdatos/diagnostico_2019_original.json');dest.parent.mkdir(parents=True,exist_ok=True)
- dest.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\\n',encoding='utf-8')
+ dest.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
  print({k:v['n'] for k,v in result['studies'].items()})
