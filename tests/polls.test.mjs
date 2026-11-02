@@ -39,9 +39,9 @@ test('Escenarios y límites originales permanecen visibles',()=>{
  assert.ok(polls.find(p=>p.institute==='GAD3').notes.includes('no suma 100'));
 });
 test('Metroscopia y el promedio externo no se cuentan como sondeos adicionales',()=>{
- assert.equal(refs.find(r=>r.id==='metroscopia').status,'pending-electoral-record');
+ assert.ok(!refs.some(r=>r.id==='metroscopia')); // referencias genéricas archivadas fuera del directorio electoral
  const aggregate=refs.find(r=>r.kind==='aggregate-model');assert.equal(aggregate.published,'2026-10-03');assert.equal(Object.values(aggregate.modelSeats).reduce((a,b)=>a+b,0),350);assert.ok(!polls.some(p=>p.id===aggregate.id));
- assert.ok(renderReferenceDirectory(refs).includes('Agregador externo'));assert.ok(renderPollArchive(polls).includes(`${polls.length} estudios / ${new Set(polls.map(p=>p.institute)).size} institutos`));
+ assert.ok(renderReferenceDirectory(refs).includes('Modelo externo'));assert.ok(renderPollArchive(polls).includes(`${polls.length} estudios / ${new Set(polls.map(p=>p.institute)).size} institutos`));
 });
 test('La validación de publicación bloquea duplicados, fechas y horquillas inválidas',()=>{
  assert.equal(validatePolls(polls,refs).polls,polls.length);
