@@ -6,11 +6,11 @@ const cocina=fs.readFileSync('cocina.mjs','utf8');
 const nav=fs.readFileSync('index.html','utf8');
 const method=fs.readFileSync('como-estimamos.html','utf8');
 test('La portada distingue cálculo real y cocina experimental con accesos separados',()=>{
- assert.match(app,/¿Cómo calculamos los escaños\?/);
- assert.match(app,/¿Cómo podemos mejorar la estimación\?/);
+ assert.match(app,/Cómo se calcula/);
+ assert.match(app,/Cocina electoral/);
  assert.match(app,/href="flujograma.html"/);
- assert.match(app,/href="#cocina"/);
- assert.match(app,/no cambian automáticamente el pronóstico/);
+ assert.match(app,/href="construye-estimacion.html#cocina-secuencia"/);
+ assert.match(app,/Método y validación/);
 });
 test('Cocina identifica su alcance experimental',()=>{
  assert.match(cocina,/laboratorio de experimentación/);
