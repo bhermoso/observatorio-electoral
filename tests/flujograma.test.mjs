@@ -16,7 +16,7 @@ test('cifras reales solo del pronóstico y sin valores inferidos de recetas ocul
  assert.match(source,/fetch\('data\/modelo\/pronostico.json'/);
  assert.match(source,/model\?\.trazabilidad/);
  assert.match(source,/No disponible/);
- assert.match(source,/estimaciones publicadas/);
+ assert.match(source,/estimaciones publicadas/i);
 });
 test('cada etapa permite auditar operaciones y se usa selección dinámica de partido',()=>{
  assert.match(source,/data-step/);
