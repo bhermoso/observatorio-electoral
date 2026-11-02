@@ -43,7 +43,7 @@ def rows(path,sid):
   values['RECUVOTOGR_LABEL']=labelrow[idx['RECUVOTOGR']]
   yield values
 def diagnose(path,sid):
- direct=collections.defaultdict(lambda:[0,0.]);turn=collections.Counter();rec=collections.Counter();ind_turn=collections.Counter();ind_rec=collections.Counter();ind_party=collections.Counter();ind_party_labels={};weights=[]
+ direct=collections.defaultdict(lambda:[0,0.]);turn=collections.Counter();rec=collections.Counter();ind_turn=collections.Counter();ind_rec=collections.Counter();ind_party=collections.Counter();ind_party_weight=collections.Counter();ind_party_labels={};weights=[]
  for r in rows(path,sid):
   w=float(r['PESO'].replace(',','.'));weights.append(w)
   dc=category(r['INTENCIONGR']);tg=turnout(r['PROBVOTO'])
@@ -51,9 +51,9 @@ def diagnose(path,sid):
   turn[tg]+=1
   if dc=='INDECISION':
    ind_turn[tg]+=1;ind_rec[recall(r['RECUVOTOGR'])]+=1
-   key=r['RECUVOTOGR'];ind_party[key]+=1;ind_party_labels[key]=r['RECUVOTOGR_LABEL']
+   key=r['RECUVOTOGR'];ind_party[key]+=1;ind_party_weight[key]+=w;ind_party_labels[key]=r['RECUVOTOGR_LABEL']
  n=len(weights);total=sum(weights)
- party_rows=[{'label':ind_party_labels[k],'n':v,'weight':None} for k,v in ind_party.most_common() if v>=20]
+ party_rows=[{'label':ind_party_labels[k],'n':v,'weight':round(ind_party_weight[k],2)} for k,v in ind_party.most_common() if v>=20]
  rest=sum(v for k,v in ind_party.items() if v<20)
  if rest:party_rows.append({'label':'Resto de categorías agrupadas (sin mostrar celdas pequeñas)','n':rest,'weight':None})
  # Suprimimos recuentos pequeños en cruces publicados.
