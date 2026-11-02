@@ -93,20 +93,15 @@
               62.5644,
               58.3641
             ],
-            "VOX": [
-              17,
-              17.6165,
-              16.0693
-            ],
             "SUMAR": [
               34,
               32.9711,
               29.9349
             ],
             "OTROS": [
-              76,
-              83.4881,
-              72.407
+              93,
+              101.1046,
+              88.4763
             ],
             "SIN_CANDIDATURA": [
               511,
@@ -204,20 +199,10 @@
               41.3569,
               38.5411
             ],
-            "VOX": [
-              16,
-              15.9876,
-              12.3225
-            ],
-            "SUMAR": [
-              11,
-              9.903,
-              8.7757
-            ],
             "OTROS": [
-              16,
-              17.7906,
-              15.8691
+              43,
+              43.6812,
+              36.9673
             ],
             "SIN_CANDIDATURA": [
               309,
@@ -305,30 +290,10 @@
           "n": 102,
           "w": 130.0257,
           "sympathy": {
-            "PSOE": [
-              1,
-              2.1411,
-              2.1411
-            ],
-            "PP": [
-              3,
-              8.8198,
-              8.8198
-            ],
-            "VOX": [
-              2,
-              1.4437,
-              1.2618
-            ],
-            "SUMAR": [
-              3,
-              4.2115,
-              4.0066
-            ],
             "OTROS": [
-              12,
-              18.7967,
-              18.1033
+              21,
+              35.4128,
+              34.3326
             ],
             "SIN_CANDIDATURA": [
               81,
@@ -348,6 +313,7 @@
   "limitations": [
     "VOTOSIMG es una variable construida, no equivale necesariamente a respuesta separada de simpatía.",
     "Esta tabla no contiene intersecciones detalladas entre recuerdo por candidatura y VOTOSIMG: no permite imputación combinada por recuerdo y simpatía.",
-    "Los pesos efectivos de probabilidad PROBVOTO se muestran como diagnóstico, no se utilizan como predicción calibrada."
+    "Los pesos efectivos de probabilidad PROBVOTO se muestran como diagnóstico, no se utilizan como predicción calibrada.",
+    "En NO_CONTESTA, celdas de VOTOSIMG con menos de 20 entrevistas se fusionan en OTROS; por tanto OTROS no conserva siempre el significado original de partido residual. Usarlo como categoría imputada es solo análisis de sensibilidad."
   ]
 }
