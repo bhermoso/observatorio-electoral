@@ -1,3 +1,4 @@
+import {renderSimulador,bindSimulador} from './algoritmo-escanos.mjs';
 // Descripción trazable de las operaciones efectivamente presentes en Motor 29N.
 // Nunca presenta porcentajes de ingredientes no identificables.
 const REPO='https://github.com/bhermoso/observatorio-electoral/blob/main/';
@@ -44,7 +45,9 @@ function draw(){
   +'<h3>4. Cómo comprobarlo en el código</h3><div class="alg-source">'+item.code.map(path=>'<a href="'+REPO+encodeURI(path)+'" target="_blank" rel="noopener">'+escapeHTML(path.split('/').pop())+' ↗</a>').join('')+'</div>'
   +(step===0&&model?.trazabilidad?.partidos?.[p]?.observaciones?.length?'<h3>Encuestas utilizadas para '+escapeHTML(p)+'</h3><details><summary>Ver '+model.trazabilidad.partidos[p].observaciones.length+' observaciones y sus fuentes</summary><div class="table-wrap"><table><thead><tr><th>Casa</th><th>Fin de campo</th><th>Estimación</th><th>Origen</th><th>Documento</th></tr></thead><tbody>'+model.trazabilidad.partidos[p].observaciones.map(e=>'<tr><td>'+escapeHTML(e.casa)+'</td><td>'+escapeHTML(e.campo_fin)+'</td><td>'+f(e.voto_publicado)+' %</td><td>'+escapeHTML(e.origen)+'</td><td>'+(typeof e.url==='string'&&/^https:\/\//.test(e.url)?'<a href="'+escapeHTML(e.url)+'" target="_blank" rel="noopener">Original ↗</a>':'Sin enlace')+'</td></tr>').join('')+'</tbody></table></div></details>':'')
   +'<div class="alg-caution"><b>Alcance del dato mostrado:</b> '+escapeHTML(step===3?'La tendencia al corte no es el voto proyectado al día electoral.':step===5?'La cifra nacional no determina por sí sola el reparto provincial.':step===7?'Una mayoría de escaños es aritmética, no una predicción de pacto.':step===2?'Las variantes no son pasos secuenciales: son modelos alternativos mezclados en la distribución final.':'Las métricas visibles proceden del fichero de pronóstico cuando están exportadas; el esquema no inventa resultados intermedios.')+'</div>'
+  +(step===5||step===6?renderSimulador():'')
   +'<div class="alg-nav"><button id="alg-prev" type="button" '+(step===0?'disabled':'')+'>← Anterior</button><button id="alg-next" type="button" '+(step===7?'disabled':'')+'>Siguiente →</button></div>';
+ if(step===5||step===6)bindSimulador();
  detail.querySelector('#alg-prev').addEventListener('click',()=>selectStep(step-1));
  detail.querySelector('#alg-next').addEventListener('click',()=>selectStep(step+1));
 }
