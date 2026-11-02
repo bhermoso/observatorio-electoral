@@ -24,7 +24,7 @@ test('No confunde intención, recuerdo, simpatía o abstenciones',()=>{
 });
 test('Las definiciones aportan ejemplos de cálculo y distinguen supuestos del motor',()=>{
  assert.match(terms.get('media ponderada'),/30×2/);
- assert.match(terms.get('MAE'),/\(1\+2\+3\)\/3/);
+ assert.match(terms.get('mae'),/\(1\+2\+3\)\/3/);
  assert.match(terms.get('mayoría simple'),/170 a favor/);
  assert.match(terms.get('error de industria'),/2,2 puntos/);
  assert.match(terms.get('calibración histórica'),/circular/);
