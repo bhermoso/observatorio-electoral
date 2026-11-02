@@ -184,3 +184,9 @@
 .cocina-contributions .table-wrap{overflow-x:auto;margin:16px 0}
 .cocina-contributions table{min-width:680px}
 @media(max-width:680px){.kitchen-contribution-summary{grid-template-columns:1fr}}
+
+.term-help{cursor:help;border-bottom:1px dotted #39866a}
+.term-help:focus-visible{outline:2px solid #1f7159}
+.glossary-tooltip{position:fixed;z-index:99999;background:#163e35;color:white;border-radius:10px;padding:14px;max-width:320px;box-shadow:0 12px 24px #0004;pointer-events:none}
+.glossary-tooltip[hidden]{display:none!important}
+.glossary-tooltip p{color:white;font-size:13px;line-height:1.5;margin:8px 0 0}
