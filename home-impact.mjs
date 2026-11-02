@@ -28,15 +28,16 @@ export function renderHomeImpact(){
 export async function bindHomeImpact(polls){
  const root=document.querySelector('#impact');if(!root)return;
  void bindValidationDashboard();
- const published=[...polls].filter(p=>p.kind==='poll-estimate');
+ const published=[...polls].filter(p=>p.kind==='poll-estimate'&&p.published?.startsWith('2026'));
  const stat=PARTIES.map(p=>{
   const key=p==='SUMAR'?'Sumar':p;
   const items=published.filter(q=>Number.isFinite(q.values?.[key])).map(q=>({value:q.values[key],institute:q.institute}));
   return {party:p,n:items.length,avg:items.length?items.reduce((a,z)=>a+z.value,0)/items.length:null};
  });
+ const latest=published.map(p=>p.published).sort().at(-1)||'sin fecha';
  const chart=document.querySelector('#impact-average');
  chart.innerHTML=stat.map(x=>`<div class="impact-line"><span><i style="background:${COLORS[x.party]}"></i>${x.party}</span><div class="impact-track"><div style="background:${COLORS[x.party]};width:${x.avg===null?0:Math.min(100,x.avg/42*100)}%"></div></div><b>${x.avg===null?'—':fmt(x.avg)+' %'}</b><small>n=${x.n}</small></div>`).join('');
- document.querySelector('#impact-average-note').textContent='Promedio aritmético por partido según los estudios que publican su cifra. «Sumar» y «Frente Amplio» permanecen separados; n indica cuántos estudios hay en cada barra.';
+ document.querySelector('#impact-average-note').textContent='Última publicación registrada: '+latest+'. '+'Promedio aritmético de encuestas publicadas en 2026 según los estudios que publican cada cifra. «Sumar» y «Frente Amplio» permanecen separados; n indica cuántos estudios hay en cada barra.';
  try{
   const r=await fetch('data/modelo/pronostico.json',{cache:'no-store'});if(!r.ok)throw Error('Pronóstico no disponible');const forecast=await r.json();if(!root.isConnected)return;
   document.querySelector('#impact-cut').textContent='Corte '+(forecast.corte||'no indicado');
