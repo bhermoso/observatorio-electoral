@@ -2,7 +2,7 @@
   "schema_version": 1,
   "fecha_eleccion": "2023-07-23",
   "origen": "data/microdatos/validacion_23j.json",
-  "descripcion": "Cambios en voto y error al comparar recetas ya calculadas, no contribuciones aisladas de un único algoritmo.",
+  "descripcion": "Contrastes descriptivos entre escenarios reconstruidos con códigos CIS revisados (8995 = Otro partido); no son contribuciones causales aisladas ni recetas secuenciales.",
   "comparaciones": [
     {
       "codigo": "simpatia",
@@ -15,74 +15,74 @@
           "partidos": [
             {
               "partido": "PSOE",
-              "base": 31.643,
-              "alternativa": 31.711,
-              "cambio_estimacion_pp": 0.068,
-              "cambio_error_absoluto_pp": -0.01031
+              "base": 31.295,
+              "alternativa": 31.084,
+              "cambio_estimacion_pp": -0.211,
+              "cambio_error_absoluto_pp": 0.211
             },
             {
               "partido": "PP",
-              "base": 32.577,
-              "alternativa": 31.311,
-              "cambio_estimacion_pp": -1.266,
-              "cambio_error_absoluto_pp": 1.266
+              "base": 32.218,
+              "alternativa": 30.692,
+              "cambio_estimacion_pp": -1.526,
+              "cambio_error_absoluto_pp": 1.526
             },
             {
               "partido": "VOX",
-              "base": 11.31,
-              "alternativa": 10.766,
-              "cambio_estimacion_pp": -0.544,
-              "cambio_error_absoluto_pp": 0.544
+              "base": 11.185,
+              "alternativa": 10.553,
+              "cambio_estimacion_pp": -0.632,
+              "cambio_error_absoluto_pp": 0.632
             },
             {
               "partido": "SUMAR",
-              "base": 16.256,
-              "alternativa": 17.258,
-              "cambio_estimacion_pp": 1.002,
-              "cambio_error_absoluto_pp": 1.002
+              "base": 16.077,
+              "alternativa": 16.917,
+              "cambio_estimacion_pp": 0.84,
+              "cambio_error_absoluto_pp": 0.84
             }
           ],
-          "mae_base": 1.378137,
-          "mae_alternativa": 2.078559,
-          "diferencia_mae_pp": 0.700423,
-          "partidos_con_menor_error": 1,
-          "partidos_con_mayor_error": 3
+          "mae_base": 1.541386,
+          "mae_alternativa": 2.343637,
+          "diferencia_mae_pp": 0.80225,
+          "partidos_con_menor_error": 0,
+          "partidos_con_mayor_error": 4
         },
         {
           "estudio": "3415",
           "partidos": [
             {
               "partido": "PSOE",
-              "base": 34.166,
-              "alternativa": 34.417,
-              "cambio_estimacion_pp": 0.251,
-              "cambio_error_absoluto_pp": 0.251
+              "base": 33.673,
+              "alternativa": 33.759,
+              "cambio_estimacion_pp": 0.086,
+              "cambio_error_absoluto_pp": 0.086
             },
             {
               "partido": "PP",
-              "base": 31.925,
-              "alternativa": 31.119,
-              "cambio_estimacion_pp": -0.806,
-              "cambio_error_absoluto_pp": 0.806
+              "base": 31.464,
+              "alternativa": 30.523,
+              "cambio_estimacion_pp": -0.941,
+              "cambio_error_absoluto_pp": 0.941
             },
             {
               "partido": "VOX",
-              "base": 11.437,
-              "alternativa": 11.085,
-              "cambio_estimacion_pp": -0.352,
-              "cambio_error_absoluto_pp": 0.352
+              "base": 11.271,
+              "alternativa": 10.872,
+              "cambio_estimacion_pp": -0.399,
+              "cambio_error_absoluto_pp": 0.399
             },
             {
               "partido": "SUMAR",
-              "base": 14.991,
-              "alternativa": 15.402,
-              "cambio_estimacion_pp": 0.411,
-              "cambio_error_absoluto_pp": 0.411
+              "base": 14.775,
+              "alternativa": 15.108,
+              "cambio_estimacion_pp": 0.333,
+              "cambio_error_absoluto_pp": 0.333
             }
           ],
-          "mae_base": 1.804309,
-          "mae_alternativa": 2.259309,
-          "diferencia_mae_pp": 0.455,
+          "mae_base": 1.783809,
+          "mae_alternativa": 2.223559,
+          "diferencia_mae_pp": 0.43975,
           "partidos_con_menor_error": 0,
           "partidos_con_mayor_error": 4
         }
@@ -101,74 +101,74 @@
           "partidos": [
             {
               "partido": "PSOE",
-              "base": 31.643,
-              "alternativa": 31.798,
-              "cambio_estimacion_pp": 0.155,
-              "cambio_error_absoluto_pp": 0.07669
+              "base": 31.295,
+              "alternativa": 31.465,
+              "cambio_estimacion_pp": 0.17,
+              "cambio_error_absoluto_pp": -0.17
             },
             {
               "partido": "PP",
-              "base": 32.577,
-              "alternativa": 32.881,
-              "cambio_estimacion_pp": 0.304,
-              "cambio_error_absoluto_pp": -0.304
+              "base": 32.218,
+              "alternativa": 32.53,
+              "cambio_estimacion_pp": 0.312,
+              "cambio_error_absoluto_pp": -0.312
             },
             {
               "partido": "VOX",
-              "base": 11.31,
-              "alternativa": 11.294,
-              "cambio_estimacion_pp": -0.016,
-              "cambio_error_absoluto_pp": 0.016
+              "base": 11.185,
+              "alternativa": 11.197,
+              "cambio_estimacion_pp": 0.012,
+              "cambio_error_absoluto_pp": -0.012
             },
             {
               "partido": "SUMAR",
-              "base": 16.256,
-              "alternativa": 16.231,
-              "cambio_estimacion_pp": -0.025,
-              "cambio_error_absoluto_pp": -0.025
+              "base": 16.077,
+              "alternativa": 16.093,
+              "cambio_estimacion_pp": 0.016,
+              "cambio_error_absoluto_pp": 0.016
             }
           ],
-          "mae_base": 1.378137,
-          "mae_alternativa": 1.319059,
-          "diferencia_mae_pp": -0.059077,
-          "partidos_con_menor_error": 2,
-          "partidos_con_mayor_error": 2
+          "mae_base": 1.541386,
+          "mae_alternativa": 1.421886,
+          "diferencia_mae_pp": -0.1195,
+          "partidos_con_menor_error": 3,
+          "partidos_con_mayor_error": 1
         },
         {
           "estudio": "3415",
           "partidos": [
             {
               "partido": "PSOE",
-              "base": 34.166,
-              "alternativa": 34.203,
-              "cambio_estimacion_pp": 0.037,
-              "cambio_error_absoluto_pp": 0.037
+              "base": 33.673,
+              "alternativa": 33.683,
+              "cambio_estimacion_pp": 0.01,
+              "cambio_error_absoluto_pp": 0.01
             },
             {
               "partido": "PP",
-              "base": 31.925,
-              "alternativa": 31.944,
-              "cambio_estimacion_pp": 0.019,
-              "cambio_error_absoluto_pp": -0.019
+              "base": 31.464,
+              "alternativa": 31.498,
+              "cambio_estimacion_pp": 0.034,
+              "cambio_error_absoluto_pp": -0.034
             },
             {
               "partido": "VOX",
-              "base": 11.437,
-              "alternativa": 11.444,
-              "cambio_estimacion_pp": 0.007,
-              "cambio_error_absoluto_pp": -0.007
+              "base": 11.271,
+              "alternativa": 11.315,
+              "cambio_estimacion_pp": 0.044,
+              "cambio_error_absoluto_pp": -0.044
             },
             {
               "partido": "SUMAR",
-              "base": 14.991,
-              "alternativa": 15.107,
-              "cambio_estimacion_pp": 0.116,
-              "cambio_error_absoluto_pp": 0.116
+              "base": 14.775,
+              "alternativa": 14.923,
+              "cambio_estimacion_pp": 0.148,
+              "cambio_error_absoluto_pp": 0.148
             }
           ],
-          "mae_base": 1.804309,
-          "mae_alternativa": 1.836059,
-          "diferencia_mae_pp": 0.03175,
+          "mae_base": 1.783809,
+          "mae_alternativa": 1.803809,
+          "diferencia_mae_pp": 0.02,
           "partidos_con_menor_error": 2,
           "partidos_con_mayor_error": 2
         }
@@ -187,36 +187,36 @@
           "partidos": [
             {
               "partido": "PSOE",
-              "base": 31.643,
+              "base": 31.295,
               "alternativa": 31.2,
-              "cambio_estimacion_pp": -0.443,
-              "cambio_error_absoluto_pp": 0.443
+              "cambio_estimacion_pp": -0.095,
+              "cambio_error_absoluto_pp": 0.095
             },
             {
               "partido": "PP",
-              "base": 32.577,
+              "base": 32.218,
               "alternativa": 31.4,
-              "cambio_estimacion_pp": -1.177,
-              "cambio_error_absoluto_pp": 1.177
+              "cambio_estimacion_pp": -0.818,
+              "cambio_error_absoluto_pp": 0.818
             },
             {
               "partido": "VOX",
-              "base": 11.31,
+              "base": 11.185,
               "alternativa": 10.6,
-              "cambio_estimacion_pp": -0.71,
-              "cambio_error_absoluto_pp": 0.71
+              "cambio_estimacion_pp": -0.585,
+              "cambio_error_absoluto_pp": 0.585
             },
             {
               "partido": "SUMAR",
-              "base": 16.256,
+              "base": 16.077,
               "alternativa": 16.4,
-              "cambio_estimacion_pp": 0.144,
-              "cambio_error_absoluto_pp": 0.144
+              "cambio_estimacion_pp": 0.323,
+              "cambio_error_absoluto_pp": 0.323
             }
           ],
-          "mae_base": 1.378137,
+          "mae_base": 1.541386,
           "mae_alternativa": 1.996637,
-          "diferencia_mae_pp": 0.6185,
+          "diferencia_mae_pp": 0.45525,
           "partidos_con_menor_error": 0,
           "partidos_con_mayor_error": 4
         },
@@ -225,38 +225,38 @@
           "partidos": [
             {
               "partido": "PSOE",
-              "base": 34.166,
+              "base": 33.673,
               "alternativa": 32.2,
-              "cambio_estimacion_pp": -1.966,
-              "cambio_error_absoluto_pp": -1.966
+              "cambio_estimacion_pp": -1.473,
+              "cambio_error_absoluto_pp": -1.473
             },
             {
               "partido": "PP",
-              "base": 31.925,
+              "base": 31.464,
               "alternativa": 30.8,
-              "cambio_estimacion_pp": -1.125,
-              "cambio_error_absoluto_pp": 1.125
+              "cambio_estimacion_pp": -0.664,
+              "cambio_error_absoluto_pp": 0.664
             },
             {
               "partido": "VOX",
-              "base": 11.437,
+              "base": 11.271,
               "alternativa": 11.8,
-              "cambio_estimacion_pp": 0.363,
-              "cambio_error_absoluto_pp": -0.363
+              "cambio_estimacion_pp": 0.529,
+              "cambio_error_absoluto_pp": -0.529
             },
             {
               "partido": "SUMAR",
-              "base": 14.991,
+              "base": 14.775,
               "alternativa": 14.9,
-              "cambio_estimacion_pp": -0.091,
-              "cambio_error_absoluto_pp": -0.091
+              "cambio_estimacion_pp": 0.125,
+              "cambio_error_absoluto_pp": 0.125
             }
           ],
-          "mae_base": 1.804309,
+          "mae_base": 1.783809,
           "mae_alternativa": 1.480559,
-          "diferencia_mae_pp": -0.32375,
-          "partidos_con_menor_error": 3,
-          "partidos_con_mayor_error": 1
+          "diferencia_mae_pp": -0.30325,
+          "partidos_con_menor_error": 2,
+          "partidos_con_mayor_error": 2
         }
       ],
       "consistencia_mae": "signo_discrepante_o_igual",
@@ -277,7 +277,8 @@
     "El resultado electoral solo se emplea para evaluar el error; no para reconstruir una receta que desconocemos.",
     "La variable VOTOSIMG de 3415 no incorpora por sí sola el componente de voto por correo.",
     "Los cambios se expresan en puntos porcentuales, no en porcentajes atribuibles de la estimación final.",
-    "No deben sumarse las diferencias entre comparaciones ni extrapolarse al Motor 29N."
+    "No deben sumarse las diferencias entre comparaciones ni extrapolarse al Motor 29N.",
+    "Se ha corregido el código CIS 8995 como Otro partido: las cifras y los MAE históricos se recalcularon con el universo de candidaturas 1..8995."
   ],
   "decision": "No introducir automáticamente ninguna corrección por simpatía o participación ni asignar pesos ficticios. Ampliar a nuevas elecciones y microdatos comparables."
 }
