@@ -19,8 +19,8 @@ test('La incertidumbre se identifica como Kish y no un pronóstico',()=>{
  const js=fs.readFileSync('diagnostico-cis.mjs','utf8');
  const build=fs.readFileSync('scripts/build.mjs','utf8');
  assert.match(html,/antes de diseñar reglas de imputación/);
- assert.match(html,/No se han imputado votos/);
- assert.match(html,/no puede deducirse/);
+ assert.match(html,/sin imputar ningún voto/i);
+ assert.match(html,/no puede deducirse/i);
  assert.match(js,/1\.96\*Math\.sqrt/);
  assert.match(js,/no es un intervalo oficial/i);
  assert.match(build,/diagnostico-cis.html/);
