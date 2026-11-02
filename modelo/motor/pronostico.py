@@ -124,6 +124,55 @@ def resumir(sim):
     return dict(partidos=partidos, bloques=bloques)
 
 
+
+# Hipótesis aritméticas, no pronósticos de comportamiento parlamentario.
+# Los diputados no incluidos en afirmativos ni abstenciones se cuentan como no.
+ESCENARIOS_INVESTIDURA = {
+    "pp_vox_primera": dict(nombre="PP + Vox: mayoría absoluta", si=("PP", "VOX"), abstienen=()),
+    "pp_vox_upn_primera": dict(nombre="PP + Vox + UPN: mayoría absoluta", si=("PP", "VOX", "UPN"), abstienen=()),
+    "pp_vox_segunda_abst_otros": dict(nombre="PP + Vox: segunda votación si UPN y CC se abstienen",
+        si=("PP", "VOX"), abstienen=("UPN", "CC")),
+    "psoe_sumar_podemos_primera": dict(nombre="PSOE + Sumar + Podemos: mayoría absoluta",
+        si=("PSOE", "SUMAR", "PODEMOS"), abstienen=()),
+    "psoe_sumar_segunda_abst_territoriales": dict(nombre="PSOE + Sumar + Podemos: segunda votación con abstención de ERC, Junts, Bildu, PNV, BNG y CC",
+        si=("PSOE", "SUMAR", "PODEMOS"), abstienen=("ERC", "JUNTS", "BILDU", "PNV", "BNG", "CC")),
+    "psoe_apoyos_territoriales_primera": dict(nombre="PSOE + Sumar + Podemos + ERC + Junts + Bildu + PNV + BNG + CC: mayoría absoluta",
+        si=("PSOE", "SUMAR", "PODEMOS", "ERC", "JUNTS", "BILDU", "PNV", "BNG", "CC"), abstienen=()),
+}
+
+
+def evaluar_investidura(partidos, escanos, escenarios=ESCENARIOS_INVESTIDURA):
+    """Evaluación CONDICIONAL de reglas de votación, usando cada simulación conjunta.
+    Art. 99 CE: primera votación >=176; segunda, sí > no (no se suman abstenciones a sí).
+    No atribuye probabilidad a pactos ni a que un partido decida abstenerse.
+    """
+    E = np.asarray(escanos, dtype=int)
+    if E.ndim != 2 or E.shape[1] != len(partidos):
+        raise ValueError("Dimensiones de escaños y partidos incompatibles")
+    if np.any(E < 0) or np.any(E.sum(axis=1) > 350):
+        raise ValueError("Reparto parlamentario inválido")
+    ids = {p: i for i, p in enumerate(partidos)}
+    out = {}
+    for clave, rule in escenarios.items():
+        si, abst = tuple(rule["si"]), tuple(rule["abstienen"])
+        if set(si) & set(abst):
+            raise ValueError("Un partido no puede votar sí y abstenerse")
+        if any(p not in ids for p in (*si, *abst)):
+            out[clave] = dict(disponible=False, motivo="Una formación del escenario no está modelizada")
+            continue
+        yes = E[:, [ids[p] for p in si]].sum(axis=1)
+        abstain = E[:, [ids[p] for p in abst]].sum(axis=1) if abst else np.zeros(len(E), dtype=int)
+        no = 350 - yes - abstain
+        out[clave] = dict(
+            disponible=True, nombre=rule["nombre"], si=list(si), abstienen=list(abst),
+            resto="no", n=int(len(E)), mediana_si=float(np.median(yes)),
+            mediana_abstenciones=float(np.median(abstain)), mediana_no=float(np.median(no)),
+            p5_si=float(np.percentile(yes, 5)), p95_si=float(np.percentile(yes, 95)),
+            frecuencia_primera=float(np.mean(yes >= 176)),
+            frecuencia_segunda=float(np.mean(yes > no))
+        )
+    return out
+
 def promedio_simple(encuestas, hoy, dias=30):
     """Referencia: última encuesta de cada casa en `dias`, mismo peso, sin correcciones."""
     ult = {}
@@ -156,6 +205,7 @@ def principal(encuestas, inicio, hoy, eleccion, errores_23j, n_por_variante=2000
     E = np.vstack([s["escanos"] for s in sims])
     pp = np.mean([s["por_provincia"] for s in sims], axis=0)
     r = resumir(dict(partidos=P, votos=V, escanos=E))
+    r["investidura"] = evaluar_investidura(P, E)
     r["provincias"] = [dict(provincia=pr, escanos=sims[0]["escanos_prov"][i],
                             reparto={p: round(float(pp[i, j]), 2) for j, p in enumerate(P) if pp[i, j] >= 0.05})
                        for i, pr in enumerate(sims[0]["provincias"])]
