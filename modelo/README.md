@@ -53,6 +53,13 @@ Une a partes iguales las tres variantes de referencia y usa un error de industri
 
 Las encuestas nuevas se incorporan al registro verificado del observatorio (`data/polls.json`, siguiendo `docs/poll-archive.md`); el motor las lee de ahí. Los datos de terceros de `externos/` solo se usan para la evaluación histórica y el contexto; ver `externos/PROCEDENCIA.md`.
 
+## Puerta de calidad y contraste de recetas (2026-11-02)
+
+- Los registros etiquetados `prensa-sin-verificar` se conservan en el registro documental pero **quedan excluidos del pronóstico principal**, porque el original y los campos de entrevista no se han verificado. El archivo sigue conteniendo otras fuentes secundarias cuya validación tampoco es exhaustiva.
+- `scripts/auditar_cocina_23j.py` calcula errores por partido y una prueba de selección de procedimiento entre estudios CIS 3411/3415, guardada en `data/microdatos/auditoria_cocina_23j.json` y mostrada en la pestaña Cocina. La selección del procedimiento usa solo un estudio, la medición de prueba el otro.
+- Los estudios pertenecen a la misma convocatoria 23J, por lo que **no** existe aún una validación fuera de elección. No aplicar al pronóstico principal correcciones inferidas por simpatía, participación o recuerdo hasta obtener ciclos comparables.
+- `PESO` en los estudios es una ponderación publicada, no evidencia de los ajustes internos usados por cada instituto para producir su estimación final.
+
 ## Límites
 
 Un solo precedente con encuestas privadas evaluadas (23J). Para evaluar 2015, 2016 y 2019 hacen falta las tablas históricas (Wikipedia u originales). La retroprueba en el 23J muestra que corregir sesgos de casa no supera automáticamente al promedio simple: en 2023 el CIS fue la única casa que acertó con el PSOE.
