@@ -156,3 +156,21 @@
 
 /* Investidura · mismo verde del observatorio */
 .investidura{margin:25px 0}.invest-rules{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}.invest-rules>div{background:#eef5ea;border:1px solid var(--line);border-radius:10px;padding:16px}.invest-rules b,.invest-rules span{display:block}.invest-rules span{color:var(--muted);font-size:13px;margin-top:5px}.invest-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:17px 0}.invest-kpis>div{background:#f6faf4;border:1px solid var(--line);border-radius:10px;padding:16px}.invest-kpis span,.invest-kpis small{font-size:12px;color:var(--muted);display:block}.invest-kpis strong{font:800 30px Manrope,system-ui;display:block;color:var(--green);margin:5px 0}.invest-trace{padding:13px 17px;border-radius:9px;border:1px solid var(--line);background:white}.invest-trace p{font-size:13px;line-height:1.6}.invest-frequencies{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}.invest-frequencies>div{padding:16px;border-radius:10px;background:#eef5ea}.invest-frequencies span,.invest-frequencies small{display:block;color:#556b5d;font-size:12px}.invest-frequencies strong{font:800 24px Manrope,system-ui;color:#1d6656;display:block;margin:7px 0}.invest-foot{font-size:12px;line-height:1.65}@media(max-width:750px){.invest-kpis{grid-template-columns:1fr}.invest-frequencies,.invest-rules{grid-template-columns:1fr}}
+
+/* Auditoría reproducible del propio algoritmo, tema verde */
+.trace-cocina{margin:24px 0}
+.trace-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:15px 0 22px}
+.trace-kpis>div{padding:17px;background:#edf5ea;border:1px solid var(--line);border-radius:10px}
+.trace-kpis span,.trace-kpis small{display:block;color:var(--muted);font-size:12px}
+.trace-kpis strong{display:block;font-family:Manrope,system-ui;color:var(--green);font-size:25px;margin:6px 0}
+.trace-columns{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.trace-columns h3{font-size:16px}
+.trace-ingredients details{border:1px solid var(--line);border-radius:8px;margin:7px 0;background:#fff}
+.trace-ingredients summary{cursor:pointer;display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px 12px;font-size:13px}
+.trace-ingredients summary small{color:var(--green);font-size:11px;text-align:right}
+.trace-ingredients details p{padding:0 12px 12px;margin:0;color:var(--muted);font-size:12px;line-height:1.6}
+.trace-columns table{min-width:400px}
+.trace-columns table td{font-size:12px}
+.trace-columns p{color:var(--muted);font-size:12px;line-height:1.6}
+.trace-audit{font-size:12px;line-height:1.8;background:#f1f6ed;padding:17px;border-radius:9px;margin-top:19px}
+@media(max-width:790px){.trace-columns{grid-template-columns:1fr}.trace-kpis{grid-template-columns:1fr}}
