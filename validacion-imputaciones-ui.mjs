@@ -1,3 +1,4 @@
+import {auditCoverage} from './validacion-cobertura.mjs';
 import {auditImputations,POLICY_LABELS,EVALUATED_PARTIES} from './validacion-imputaciones.mjs';
 const $=id=>document.getElementById(id);
 const fmt=(n,d=2)=>Number(n).toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d});
@@ -19,7 +20,27 @@ function draw(){
  EVALUATED_PARTIES.map(k=>'<div class="vh-line"><span>'+esc(k)+'</span><div class="vh-track"><i style="width:'+Math.min(100,a.absolute[k]/9*100)+'%"></i></div><b>'+sg(a.errors[k])+fmt(a.errors[k])+' pp</b></div>').join('')+
  '<p>Los errores llevan signo (estimado − oficial). La barra representa su valor absoluto.</p></div>';
 }
+async function renderCoverage(){
+ const root=$('vh-coverage'),list=$('vh-election-registry');
+ if(!root||!list)return;
+ try{
+  const res=await fetch('data/microdatos/registro_validacion_elecciones.json',{cache:'no-store'});
+  if(!res.ok)throw Error('HTTP '+res.status);
+  const coverage=auditCoverage(await res.json());
+  root.innerHTML=metric('Elecciones independientes verificadas',coverage.independent,'Necesarias al menos dos')+
+   metric('Candidatas de 2019',coverage.elections.filter(e=>e.status==='candidate').length,'Datos y codificaciones pendientes')+
+   metric('Reconstrucciones exploratorias',coverage.exploratory,'23J de 2023')+
+   metric('Receta seleccionable',coverage.eligibleForMethodSelection?'Sí':'No','No se simula rendimiento futuro');
+  list.innerHTML=coverage.elections.map(e=>{
+   const when=e.date||'Sin fecha electoral';
+   const status=e.status==='candidate'?'Candidata · no procesada':e.status==='exploratory_retrofit'?'Retrospectiva · no independiente':'Sin resultado electoral';
+   const studies=e.studies.map(s=>'CIS '+esc(s.id)+' ('+esc(s.status||'pendiente')+')').join(' · ');
+   return '<article class="vh-detail"><small>'+esc(e.id)+' · '+esc(when)+'</small><h3>'+esc(status)+'</h3><p>'+studies+'</p><p>Prueba independiente aceptada: <b>'+(e.independent?'sí':'no')+'</b></p>'+(e.missing.length?'<details><summary>Condiciones pendientes</summary><ul>'+e.missing.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></details>':'')+'</article>'
+  }).join('');
+ }catch(e){root.innerHTML='<div class="vh-warning">No pudo verificarse la cobertura histórica: '+esc(e.message)+'</div>';list.innerHTML=''}
+}
 async function start(){
+ void renderCoverage();
  try{
   const [ledger,validation]=await Promise.all(['data/microdatos/ledger_imputacion_cis.json','data/microdatos/validacion_23j.json'].map(async p=>{const r=await fetch(p);if(!r.ok)throw Error(p+' '+r.status);return r.json()}));
   report=auditImputations(ledger,validation);
