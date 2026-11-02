@@ -1,0 +1,233 @@
+{
+  "version": 1,
+  "studies": {
+    "3411": {
+      "n": 29201,
+      "effective_n": 23672.5,
+      "total_weight": 29201.0043,
+      "direct": {
+        "PP": {
+          "n": 7592,
+          "w": 7408.7
+        },
+        "PSOE": {
+          "n": 7200,
+          "w": 7196.4
+        },
+        "INDECISION": {
+          "n": 4084,
+          "w": 4124.2
+        },
+        "SUMAR": {
+          "n": 3522,
+          "w": 3697.1
+        },
+        "VOX": {
+          "n": 2652,
+          "w": 2572.1
+        },
+        "OTRAS_CANDIDATURAS": {
+          "n": 1821,
+          "w": 1868.2
+        },
+        "NO_CONTESTA": {
+          "n": 762,
+          "w": 811.8
+        },
+        "NO_VOTARIA": {
+          "n": 700,
+          "w": 679
+        },
+        "BLANCO": {
+          "n": 376,
+          "w": 365
+        },
+        "OTRO_PARTIDO": {
+          "n": 266,
+          "w": 253
+        },
+        "NULO": {
+          "n": 226,
+          "w": 225.7
+        }
+      },
+      "turnout": {
+        "10": 22683,
+        "7_9": 3711,
+        "0_6": 2733,
+        "NO_VALIDO": 74
+      },
+      "indecision_recall": {
+        "RECUERDA_CANDIDATURA": 2740,
+        "SIN_RECUERDO_DECLARADO": 673,
+        "SIN_CANDIDATURA_RECORDADA": 671
+      },
+      "indecision_turnout": {
+        "10": 2632,
+        "7_9": 823,
+        "0_6": 601,
+        "NO_VALIDO": 28
+      }
+    },
+    "3415": {
+      "n": 8798,
+      "effective_n": 8076.3,
+      "total_weight": 8797.9969,
+      "direct": {
+        "PSOE": {
+          "n": 2232,
+          "w": 2233.7
+        },
+        "PP": {
+          "n": 2174,
+          "w": 2087.2
+        },
+        "INDECISION": {
+          "n": 1014,
+          "w": 1060.5
+        },
+        "SUMAR": {
+          "n": 960,
+          "w": 980.1
+        },
+        "VOX": {
+          "n": 778,
+          "w": 747.7
+        },
+        "NO_CONTESTA": {
+          "n": 431,
+          "w": 447.4
+        },
+        "OTRAS_CANDIDATURAS": {
+          "n": 424,
+          "w": 489.1
+        },
+        "OTRAS_SITUACIONES": {
+          "n": 368,
+          "w": 338.4
+        },
+        "NO_VOTARIA": {
+          "n": 198,
+          "w": 201.7
+        },
+        "OTRO_PARTIDO": {
+          "n": 99,
+          "w": 95.7
+        },
+        "BLANCO": {
+          "n": 75,
+          "w": 67.9
+        },
+        "NULO": {
+          "n": 45,
+          "w": 48.6
+        }
+      },
+      "turnout": {
+        "10": 7145,
+        "7_9": 994,
+        "0_6": 628,
+        "NO_VALIDO": 31
+      },
+      "indecision_recall": {
+        "RECUERDA_CANDIDATURA": 661,
+        "SIN_CANDIDATURA_RECORDADA": 219,
+        "SIN_RECUERDO_DECLARADO": 134
+      },
+      "indecision_turnout": {
+        "10": 621,
+        "7_9": 217,
+        "0_6": 169,
+        "NO_VALIDO": null
+      }
+    },
+    "3582": {
+      "n": 5024,
+      "effective_n": 2410.9,
+      "total_weight": 5023.9985,
+      "direct": {
+        "PSOE": {
+          "n": 1158,
+          "w": 1270.9
+        },
+        "INDECISION": {
+          "n": 898,
+          "w": 870.8
+        },
+        "PP": {
+          "n": 835,
+          "w": 737.8
+        },
+        "OTRAS_CANDIDATURAS": {
+          "n": 548,
+          "w": 499.2
+        },
+        "VOX": {
+          "n": 526,
+          "w": 583.3
+        },
+        "SUMAR": {
+          "n": 294,
+          "w": 227.9
+        },
+        "NO_VOTARIA": {
+          "n": 219,
+          "w": 258.5
+        },
+        "OTRO_PARTIDO": {
+          "n": 203,
+          "w": 188.7
+        },
+        "BLANCO": {
+          "n": 161,
+          "w": 162
+        },
+        "NO_CONTESTA": {
+          "n": 102,
+          "w": 130
+        },
+        "NULO": {
+          "n": 80,
+          "w": 94.8
+        }
+      },
+      "turnout": {
+        "10": 4043,
+        "0_6": 548,
+        "7_9": 421,
+        "NO_VALIDO": 12
+      },
+      "indecision_recall": {
+        "RECUERDA_CANDIDATURA": 590,
+        "SIN_RECUERDO_DECLARADO": 162,
+        "SIN_CANDIDATURA_RECORDADA": 146
+      },
+      "indecision_turnout": {
+        "10": 647,
+        "7_9": 128,
+        "0_6": 120,
+        "NO_VALIDO": null
+      }
+    }
+  },
+  "metadata": {
+    "source": "Microdatos CIS CSV numéricos y etiquetados de los estudios 3411, 3415, 3582",
+    "method": "Recuento de casos por código original; peso PESO para suma ponderada; participación PROBVOTO; recuerdo RECUVOTOGR",
+    "codes": {
+      "0": "Otras situaciones según estudio",
+      "8995": "Otro partido",
+      "8996": "Voto en blanco",
+      "9977": "Voto nulo",
+      "9997": "No votaría",
+      "9998": "No sabe todavía",
+      "9999": "No contesta"
+    },
+    "recall": "Recuerda alguna candidatura, no identifica aquí cuál. Los estudios 3411 y 3415 preguntan por 2019.",
+    "limits": [
+      "Un intervalo basado en n de Kish no incluye conglomeración/estratificación ni sesgos de no respuesta.",
+      "Los cruces publicados son marginales de indecisión con recuerdo y participación, no un cruce tridimensional.",
+      "Las celdas con menos de 20 entrevistados no se detallan.",
+      "No se han imputado votos ni elegido recetas de estimación."
+    ]
+  }
+}
