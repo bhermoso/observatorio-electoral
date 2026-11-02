@@ -106,6 +106,7 @@ function description(id,code){
 function draw(){
  const id=studySel.value;
  if(!choices(id).includes(recipe))recipe='direct_all';
+ window.dispatchEvent(new CustomEvent('cocina:estado',{detail:{study:id,recipe}}));
  renderNav();root.innerHTML=stageContent()+'<div class="craft-controls"><button id="craft-prev" '+(step===0?'disabled':'')+'>← Anterior</button><button id="craft-next" '+(step===STAGES.length-1?'disabled':'')+'>Siguiente →</button></div>';
  root.querySelector('#craft-prev').addEventListener('click',()=>{step--;draw()});
  root.querySelector('#craft-next').addEventListener('click',()=>{step++;draw()});
