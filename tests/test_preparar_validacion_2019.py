@@ -6,6 +6,7 @@ import unittest
 import zipfile
 from pathlib import Path
 from scripts.preparar_validacion_2019 import inspect,headers
+from scripts.verificar_homologacion_2019 import validate
 
 class TestCIS2019Preflight(unittest.TestCase):
  def test_csv_y_nested_zip(self):
@@ -36,6 +37,11 @@ class TestCIS2019Preflight(unittest.TestCase):
    self.assertEqual(report["detected_formats"]["spss_sav"],1)
    self.assertEqual(report["csv_candidates"],[])
    self.assertEqual(report["status"],"VARIABLE_REVIEW_REQUIRED")
+ def test_homologacion_pendiente_bloquea_2019(self):
+  import json
+  registry=json.loads(Path("data/microdatos/homologacion_2019_pendiente.json").read_text(encoding="utf-8"))
+  for sid in ("3242","3263"):
+   with self.assertRaisesRegex(ValueError,"Homologación incompleta"):validate(registry,sid)
  def test_codificaciones(self):
   self.assertIsNotNone(headers(b"PESO;INTENCIONGR;VOTOSIMG;RECUVOTOGR;PROBVOTO;VAR1;VAR2;VAR3;VAR4;VAR5\n"))
   self.assertRaises(ValueError,inspect,"3411","fake.zip")
