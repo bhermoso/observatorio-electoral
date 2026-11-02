@@ -7,7 +7,7 @@ console.log(`Contexto: ${eventCount} acontecimientos documentados.`);
 const coverage=validatePolls(JSON.parse(fs.readFileSync('data/polls.json')),JSON.parse(fs.readFileSync('data/references.json')));
 console.log(`Validación: ${coverage.polls} encuestas, ${coverage.institutes} institutos y ${coverage.references} referencias.`);
 fs.mkdirSync('dist',{recursive:true});
-for(const f of ['index.html','metodologia-analisis.html','como-estimamos.html','guia-cocina.html','sala-mandos.html','styles.css','app.mjs','engine.mjs','map.mjs','polls.mjs','events.mjs','analysis.mjs','integracion.mjs','cocina.mjs','tendencias.mjs','investidura.mjs','trazabilidad.mjs']) fs.copyFileSync(f,`dist/${f}`);
+for(const f of ['index.html','metodologia-analisis.html','como-estimamos.html','guia-cocina.html','sala-mandos.html','styles.css','app.mjs','engine.mjs','map.mjs','polls.mjs','events.mjs','analysis.mjs','integracion.mjs','cocina.mjs','tendencias.mjs','investidura.mjs','trazabilidad.mjs','glosario.mjs']) fs.copyFileSync(f,`dist/${f}`);
 fs.cpSync('data','dist/data',{recursive:true});
 fs.cpSync('docs','dist/docs',{recursive:true});
 // Publicar el pronóstico agregado y su historial para la pantalla de bloques.
@@ -25,7 +25,7 @@ if(enVeda()){
   const corte=fragmento.indexOf('<div class="wrap">');
   const cabeza=corte>0?fragmento.slice(0,corte):'';
   const cuerpo=corte>0?fragmento.slice(corte):fragmento;
-  fs.writeFileSync('dist/pronostico.html',`<!doctype html>\n<html lang="es">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>\n${cabeza}</head>\n<body>\n${cuerpo}\n</body>\n</html>\n`);
+  fs.writeFileSync('dist/pronostico.html',`<!doctype html>\n<html lang="es">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>\n${cabeza}<link rel="stylesheet" href="styles.css"><script type="module" src="glosario.mjs"></script></head>\n<body>\n${cuerpo}\n</body>\n</html>\n`);
   console.log('Pronóstico publicado en dist/pronostico.html');
 }
 fs.writeFileSync('dist/.nojekyll','');
