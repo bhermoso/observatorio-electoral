@@ -1,3 +1,4 @@
+import {renderValidationDashboard,bindValidationDashboard} from './dashboard-validacion.mjs';
 import {calculate} from './cocina-secuencial.mjs';
 import {projection} from './cocina-escanos.mjs';
 const PARTIES=['PP','PSOE','VOX','SUMAR'];
@@ -22,10 +23,11 @@ export function renderHomeImpact(){
  <div class="impact-chart"><div class="impact-section-title"><div><small>01 / OBSERVACIÓN</small><h2>De las encuestas al consenso</h2></div><a href="#encuestas">Fuentes ↗</a></div><p>Media aritmética de los estudios que publican cada partido, sin confundirla con la estimación modelizada.</p><div id="impact-average" class="impact-visual"><span>Cargando encuestas…</span></div><p class="impact-footnote" id="impact-average-note"></p></div>
  <div class="impact-chart"><div class="impact-section-title"><div><small>02 / COCINA PROPIA</small><h2>Una decisión cambia la estimación</h2></div><a href="construye-estimacion.html">Laboratorio ↗</a></div><p>Prueba dos recetas nacionales calculadas de microdatos del CIS. La proyección de escaños es ilustrativa, no el Motor 29N.</p><div class="impact-toggle"><label>Estudio <select id="impact-cis"><option value="3411">CIS 3411 · 2023</option><option value="3415">CIS 3415 · 2023</option><option value="3582" selected>CIS 3582 · 2026</option></select></label><label>Procedimiento <select id="impact-recipe"><option value="decided">PESO + decididos</option><option value="sympathy">PESO + voto/simpatía</option><option value="turnout">PESO + decididos + participación</option></select></label></div><div id="impact-recipe-output" class="impact-visual" aria-live="polite">Recalculando receta…</div></div>
  </div><div class="impact-bottom"><span>03 / VERIFICACIÓN</span><div><b>¿De dónde sale cada número?</b><p>Explora las operaciones, los denominadores y los escaños por provincia. La cocina experimental no modifica automáticamente el pronóstico oficial del Motor 29N.</p></div><a href="flujograma.html">Abrir algoritmo ↗</a></div>
- </section>`;
+ ${renderValidationDashboard()}</section>`;
 }
 export async function bindHomeImpact(polls){
  const root=document.querySelector('#impact');if(!root)return;
+ void bindValidationDashboard();
  const published=[...polls].filter(p=>p.kind==='poll-estimate');
  const stat=PARTIES.map(p=>{
   const key=p==='SUMAR'?'Sumar':p;
