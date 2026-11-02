@@ -25,5 +25,29 @@
     },
     "notes": "Referencia del 3 de octubre, no una cifra actualizada a hoy. Los porcentajes están redondeados en el texto original. Los escaños son resultados centrales del modelo de EL PAÍS. No es una encuesta independiente y queda fuera del archivo de entrevistas y de cualquier cómputo de institutos.",
     "methodology": "Promedio de sondeos y modelo provincial con incertidumbre y 20.000 simulaciones, según la explicación de la publicación. No se reproduce ni se atribuye este modelo al observatorio."
+  },
+  {
+    "id": "elpais-llaneras-coaliciones-2026-10-11",
+    "kind": "editorial-analysis",
+    "name": "Kiko Llaneras y Borja Andrino · simulador de coaliciones",
+    "publisher": "EL PAÍS",
+    "published": "2026-10-11",
+    "verified": "2026-11-02",
+    "status": "referencia-external",
+    "source": "https://elpais.com/espana/elecciones-generales/2026-10-11/juntos-o-separados-calcula-como-se-moverian-los-escanos-con-distintas-coaliciones.html",
+    "notes": "Examina cómo determinadas hipótesis de coalición modifican el reparto de escaños. Las coaliciones se simulan conservando los votos de sus componentes: es un supuesto, no un efecto electoral demostrado.",
+    "methodology": "Promedio de encuestas ponderado por actualidad y precisión histórica, traslado provincial e incertidumbre con 20.000 simulaciones. Modelo y conclusiones propios de EL PAÍS; no se suman al promedio de sondeos del Observatorio."
+  },
+  {
+    "id": "elpais-llaneras-evaluacion-casas-2026-10-18",
+    "kind": "editorial-analysis",
+    "name": "Kiko Llaneras y Borja Andrino · errores y sesgos de las encuestadoras",
+    "publisher": "EL PAÍS",
+    "published": "2026-10-18",
+    "verified": "2026-11-02",
+    "status": "referencia-external",
+    "source": "https://elpais.com/espana/elecciones-generales/2026-10-18/que-encuestas-aciertan-mas-compara-los-errores-y-los-sesgos-de-cada-encuestadora.html",
+    "notes": "Evaluación retrospectiva de 17 encuestadoras en 44 convocatorias desde 2018: precisión, desviación entre bloques y disponibilidad de microdatos. Los resultados dependen de la selección de elecciones, casas y ventanas de campo.",
+    "methodology": "Contraste de las últimas encuestas previas al voto con resultados oficiales. Se usa como literatura de validación, no como nueva estimación de voto ni como corrección automática del Motor 29N."
   }
 ]
