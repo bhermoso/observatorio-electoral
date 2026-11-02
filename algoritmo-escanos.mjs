@@ -33,7 +33,7 @@ export async function bindSimulador(){
  function output(){
   if(!el.isConnected)return;
   try{
-   const v=Object.fromEntries(ids.map(p=>[p:Number(inputs.querySelector('[data-party="'+p+'"]').value)]));
+   const v=Object.fromEntries(ids.map(p=>[p,Number(inputs.querySelector('[data-party="'+p+'"]').value)]));
    const o=projection(electoral,v);
    el.innerHTML='<div class="alg-stat"><div><span>Escaños totales</span><b>350</b><small>52 circunscripciones</small></div><div><span>PP + Vox</span><b>'+(o.seats.PP+o.seats.VOX)+'</b><small>'+(o.seats.PP+o.seats.VOX>=176?'Supera 176 en el escenario':'No llega a 176')+'</small></div></div>'
      +'<div style="overflow-x:auto"><table><thead><tr><th>Partido</th><th>Voto objetivo</th><th>Diputados 2023</th><th>Diputados proyectados</th><th>Variación</th></tr></thead><tbody>'
