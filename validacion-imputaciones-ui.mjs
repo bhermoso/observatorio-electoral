@@ -1,3 +1,4 @@
+import {retrospective2019} from './validacion-2019-retrospectiva.mjs';
 import {auditCoverage} from './validacion-cobertura.mjs';
 import {auditImputations,POLICY_LABELS,EVALUATED_PARTIES} from './validacion-imputaciones.mjs';
 const $=id=>document.getElementById(id);
@@ -37,6 +38,12 @@ async function render2019(){
     '<div class="vh-table"><table><thead><tr><th>Respuesta</th><th>Casos</th><th>% N</th><th>Σ PESO</th></tr></thead><tbody>'+cells+'</tbody></table></div>'+
     '<p>Los tres grupos son mutuamente excluyentes y su codificación está tomada del libro oficial del estudio. Las reglas de imputación aún no han sido comparadas con esta elección.</p></article>';
   }).join('');
+  const retro=retrospective2019(data);
+  const table=$('vh-2019-retro');
+  if(table)table.innerHTML='<h3>Primer contraste histórico de recetas: errores por elección</h3>'+
+   '<table><thead><tr><th>Tratamiento de indecisión 94</th><th>MAE abril 2019</th><th>MAE noviembre 2019</th><th>Media descriptiva</th></tr></thead><tbody>'+
+   retro.rows.map(row=>'<tr><td>'+esc(row.label)+'</td><td>'+fmt(row.studies[0].mae)+' pp</td><td>'+fmt(row.studies[1].mae)+' pp</td><td>'+fmt(row.mae_mean)+' pp</td></tr>').join('')+
+   '</tbody></table><p>El MAE se calcula sobre PSOE, PP, Vox y Ciudadanos, contra el porcentaje de voto válido de cada elección. Se mantienen fuera los casos de 98 y 99. Las coaliciones territoriales se agrupan en el denominador residual. <b>Son ensayos retrospectivos, no resultados de validación prospectiva.</b></p>';
  }catch(e){root.textContent='No pudo cargarse el diagnóstico 2019: '+e.message}
 }
 async function renderCoverage(){
