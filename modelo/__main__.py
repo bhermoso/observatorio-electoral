@@ -62,7 +62,14 @@ def main():
     mae = lambda d: float(np.mean([abs(v) for v in d.values()]))
 
     # ---------- Pronóstico ----------
-    actuales = [e for e in enc if e["ciclo"] == "2023-26"]
+    # Fuentes de prensa sin publicación original ni ficha verificadas NO entran
+    # en la estimación principal; se conservan en el registro documental.
+    provisionals = [e for e in enc if e["ciclo"] == "2023-26"
+                    and e["origen"] == "prensa-sin-verificar"]
+    actuales = [e for e in enc if e["ciclo"] == "2023-26"
+                and e["origen"] != "prensa-sin-verificar"]
+    w(f"Puerta de calidad: {len(provisionals)} registros de prensa sin verificar "
+      "excluidos del pronóstico principal (no eliminados del archivo).\\n")
     inicio = min(F.dia_central(e) for e in actuales) - timedelta(days=7)
     dias = (ELECCION - hoy).days
     resumen = {}
@@ -384,7 +391,7 @@ def main():
     os.makedirs(SALIDA, exist_ok=True)
     open(os.path.join(SALIDA, "informe.md"), "w", encoding="utf-8").write("\n".join(L) + "\n")
     json.dump(dict(corte=hoy.isoformat(), eleccion=ELECCION.isoformat(), principal={k: princ[k] for k in ('partidos', 'bloques', 'investidura', 'n', 'industria', 'dias', 'sin_encuestas')}, variantes=resumen,
-                   promedio_simple=simple, error_23j={c: r["error"] for c, r in err.items()},
+                   auditoria_fuentes=dict(excluidas_prensa_sin_verificar=len(provisionals), incluidas_2023_26=len(actuales), criterio='No usar prensa sin fuente original en el pronóstico principal; se conserva como referencia'), promedio_simple=simple, error_23j={c: r["error"] for c, r in err.items()},
                    industria_23j=ind, retroprueba_23j=bt, umbral_placebo=umbrales),
               open(os.path.join(SALIDA, "pronostico.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=1, default=str)
