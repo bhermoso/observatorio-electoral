@@ -140,6 +140,15 @@ def cargar_prensa():
     return out
 
 
+def aptas_para_pronostico(encuestas, ciclo="2023-26"):
+    """Puerta mínima de calidad: no utilizar como observación de voto
+    una cita de prensa sin original verificado ni ficha técnica.
+    Otras fuentes de terceros siguen requiriendo control y sensibilidad.
+    """
+    return [e for e in encuestas if e["ciclo"] == ciclo
+            and e["origen"] != "prensa-sin-verificar"]
+
+
 def todas(deduplicar=True):
     """Todas las fuentes. Si una misma casa tiene dos registros con fin de campo a
     <= 2 días, se conserva el verificado (o el primero cargado)."""
