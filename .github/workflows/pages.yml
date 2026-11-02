@@ -26,6 +26,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install numpy
+      - run: python -m unittest discover -s tests -p 'test_preparar_validacion_2019.py' -v
       # Regenera el pronóstico con las encuestas de main y la fecha del día antes de publicar.
       - run: python -m modelo --n 1500
       - run: python scripts/procesar_microdatos.py
