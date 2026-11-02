@@ -16,11 +16,19 @@ test('Glosario contiene y explica los conceptos fundamentales',()=>{
  assert.ok(items.length>=35);
 });
 test('No confunde intención, recuerdo, simpatía o abstenciones',()=>{
- assert.match(terms.get('intención de voto'),/declarada/);
- assert.match(terms.get('recuerdo de voto'),/anteriores/);
- assert.match(terms.get('simpatía'),/no garantiza/);
- assert.match(terms.get('error de industria'),/compartida/);
- assert.match(terms.get('abstención'),/no se añade/);
+ assert.match(terms.get('intención de voto'),/persona dice/);
+ assert.match(terms.get('recuerdo de voto'),/elección pasada/);
+ assert.match(terms.get('simpatía'),/No garantiza/);
+ assert.match(terms.get('error de industria'),/mismo sentido/);
+ assert.match(terms.get('abstención'),/170 síes/);
+});
+test('Las definiciones aportan ejemplos de cálculo y distinguen supuestos del motor',()=>{
+ assert.match(terms.get('media ponderada'),/30×2/);
+ assert.match(terms.get('MAE'),/\(1\+2\+3\)\/3/);
+ assert.match(terms.get('mayoría simple'),/170 a favor/);
+ assert.match(terms.get('error de industria'),/2,2 puntos/);
+ assert.match(terms.get('calibración histórica'),/circular/);
+ assert.match(terms.get('voto más simpatía'),/no todo simpatizante/);
 });
 test('Portal, páginas técnicas y pronóstico generado cargan el mismo glosario',()=>{
  for(const page of ['index.html','como-estimamos.html','guia-cocina.html','metodologia-analisis.html','sala-mandos.html']){
