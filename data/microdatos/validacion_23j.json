@@ -21,9 +21,9 @@
   ],
   "methodology": {
     "direct_all": "Porcentaje ponderado de intención directa sobre todas las entrevistas.",
-    "decided": "Porcentaje ponderado entre quienes declaran una candidatura: códigos 1..8994, excluyendo abstención, blancos y no respuesta.",
-    "sympathy_decided": "Voto más simpatía entre quienes mencionan una candidatura; en el estudio 3415 se usa VOTOSIMG, sin el componente de voto emitido por correo.",
-    "turnout_decided": "Reponderación exploratoria entre decididos por PROBVOTO/10; puntuaciones no válidas toman factor 1.",
+    "decided": "Porcentaje sobre quienes declaran candidatura, incluidos los códigos 1..8995 (8995=Otro partido según libro de códigos), excluyendo abstención, blanco, nulos, indecisión y no respuesta.",
+    "sympathy_decided": "Entre quienes mencionan candidatura según VOTOSIMG; 8995=Otro partido incluido. En 3415 la variable VOTOSIMG no incluye el componente específico de voto por correo.",
+    "turnout_decided": "Exploración con PESO × PROBVOTO/10 solo cuando PROBVOTO está entre 0 y 10. Los valores de probabilidad no válidos se excluyen tanto de la base como del escenario ajustado al comparar participación.",
     "published_cis": "Estimación oficial archivada en data/polls.json.",
     "mae": "Promedio de diferencias absolutas, en pp, de cuatro partidos frente al resultado oficial."
   },
@@ -32,8 +32,9 @@
     "Las encuestas se realizaron antes de la elección; el voto puede cambiar entre el trabajo de campo y la jornada electoral.",
     "El recuerdo de voto de ambos microdatos de 2023 pregunta por las elecciones de noviembre de 2019, NO por las de julio de 2023. No se ha calibrado por recuerdo.",
     "Para 3415, el agregado voto+simpatía utilizado no incorpora la variable específica de voto por correo.",
-    "El tratamiento de códigos de candidaturas es exploratorio; debe contrastarse con el libro de códigos oficial.",
-    "Un menor error observado en estos dos estudios no demuestra que el método tenga mejor desempeño fuera de muestra."
+    "Codificación revisada conforme al libro de códigos: 8995=Otro partido se incluye en el universo de decididos. Todas las cifras derivadas de 2023 se recalcularon con este denominador.",
+    "Un menor error observado en estos dos estudios no demuestra que el método tenga mejor desempeño fuera de muestra.",
+    "Los escenarios de participación requieren PROBVOTO válido (0..10); la base sin ajuste sobre el mismo subconjunto no coincide exactamente con la variante decididos de toda la muestra."
   ],
   "studies": {
     "3411": {
@@ -48,22 +49,22 @@
           "SUMAR": 12.661
         },
         "decided": {
-          "PSOE": 31.643,
-          "PP": 32.577,
-          "VOX": 11.31,
-          "SUMAR": 16.256
+          "PSOE": 31.295,
+          "PP": 32.218,
+          "VOX": 11.185,
+          "SUMAR": 16.077
         },
         "sympathy_decided": {
-          "PSOE": 31.711,
-          "PP": 31.311,
-          "VOX": 10.766,
-          "SUMAR": 17.258
+          "PSOE": 31.084,
+          "PP": 30.692,
+          "VOX": 10.553,
+          "SUMAR": 16.917
         },
         "turnout_decided": {
-          "PSOE": 31.798,
-          "PP": 32.881,
-          "VOX": 11.294,
-          "SUMAR": 16.231
+          "PSOE": 31.465,
+          "PP": 32.53,
+          "VOX": 11.197,
+          "SUMAR": 16.093
         },
         "published_cis": {
           "PSOE": 31.2,
@@ -74,42 +75,42 @@
       },
       "errors_pp": {
         "direct_all": {
-          "PSOE": -7.038,
-          "PP": -7.685,
-          "VOX": -3.574,
-          "SUMAR": 0.327
+          "PSOE": -7.038155,
+          "PP": -7.684769,
+          "VOX": -3.57449,
+          "SUMAR": 0.327132
         },
         "decided": {
-          "PSOE": -0.039,
-          "PP": -0.479,
-          "VOX": -1.072,
-          "SUMAR": 3.922
+          "PSOE": -0.387155,
+          "PP": -0.837769,
+          "VOX": -1.19749,
+          "SUMAR": 3.743132
         },
         "sympathy_decided": {
-          "PSOE": 0.029,
-          "PP": -1.745,
-          "VOX": -1.616,
-          "SUMAR": 4.924
+          "PSOE": -0.598155,
+          "PP": -2.363769,
+          "VOX": -1.82949,
+          "SUMAR": 4.583132
         },
         "turnout_decided": {
-          "PSOE": 0.116,
-          "PP": -0.175,
-          "VOX": -1.088,
-          "SUMAR": 3.897
+          "PSOE": -0.217155,
+          "PP": -0.525769,
+          "VOX": -1.18549,
+          "SUMAR": 3.759132
         },
         "published_cis": {
-          "PSOE": -0.482,
-          "PP": -1.656,
-          "VOX": -1.782,
-          "SUMAR": 4.066
+          "PSOE": -0.482155,
+          "PP": -1.655769,
+          "VOX": -1.78249,
+          "SUMAR": 4.066132
         }
       },
       "mae_four_parties": {
-        "direct_all": 4.656,
-        "decided": 1.378,
-        "sympathy_decided": 2.079,
-        "turnout_decided": 1.319,
-        "published_cis": 1.997
+        "direct_all": 4.656137,
+        "decided": 1.541387,
+        "sympathy_decided": 2.343636,
+        "turnout_decided": 1.421887,
+        "published_cis": 1.996637
       }
     },
     "3415": {
@@ -124,22 +125,22 @@
           "SUMAR": 11.14
         },
         "decided": {
-          "PSOE": 34.166,
-          "PP": 31.925,
-          "VOX": 11.437,
-          "SUMAR": 14.991
+          "PSOE": 33.673,
+          "PP": 31.464,
+          "VOX": 11.271,
+          "SUMAR": 14.775
         },
         "sympathy_decided": {
-          "PSOE": 34.417,
-          "PP": 31.119,
-          "VOX": 11.085,
-          "SUMAR": 15.402
+          "PSOE": 33.759,
+          "PP": 30.523,
+          "VOX": 10.872,
+          "SUMAR": 15.108
         },
         "turnout_decided": {
-          "PSOE": 34.203,
-          "PP": 31.944,
-          "VOX": 11.444,
-          "SUMAR": 15.107
+          "PSOE": 33.683,
+          "PP": 31.498,
+          "VOX": 11.315,
+          "SUMAR": 14.923
         },
         "published_cis": {
           "PSOE": 32.2,
@@ -150,42 +151,42 @@
       },
       "errors_pp": {
         "direct_all": {
-          "PSOE": -6.294,
-          "PP": -9.333,
-          "VOX": -3.884,
-          "SUMAR": -1.194
+          "PSOE": -6.294155,
+          "PP": -9.332769,
+          "VOX": -3.88449,
+          "SUMAR": -1.193868
         },
         "decided": {
-          "PSOE": 2.484,
-          "PP": -1.131,
-          "VOX": -0.945,
-          "SUMAR": 2.657
+          "PSOE": 1.990845,
+          "PP": -1.591769,
+          "VOX": -1.11149,
+          "SUMAR": 2.441132
         },
         "sympathy_decided": {
-          "PSOE": 2.735,
-          "PP": -1.937,
-          "VOX": -1.297,
-          "SUMAR": 3.068
+          "PSOE": 2.076845,
+          "PP": -2.532769,
+          "VOX": -1.51049,
+          "SUMAR": 2.774132
         },
         "turnout_decided": {
-          "PSOE": 2.521,
-          "PP": -1.112,
-          "VOX": -0.938,
-          "SUMAR": 2.773
+          "PSOE": 2.000845,
+          "PP": -1.557769,
+          "VOX": -1.06749,
+          "SUMAR": 2.589132
         },
         "published_cis": {
-          "PSOE": 0.518,
-          "PP": -2.256,
-          "VOX": -0.582,
-          "SUMAR": 2.566
+          "PSOE": 0.517845,
+          "PP": -2.255769,
+          "VOX": -0.58249,
+          "SUMAR": 2.566132
         }
       },
       "mae_four_parties": {
-        "direct_all": 5.176,
-        "decided": 1.804,
-        "sympathy_decided": 2.259,
-        "turnout_decided": 1.836,
-        "published_cis": 1.481
+        "direct_all": 5.176321,
+        "decided": 1.783809,
+        "sympathy_decided": 2.223559,
+        "turnout_decided": 1.803809,
+        "published_cis": 1.480559
       }
     }
   }
