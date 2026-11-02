@@ -3,11 +3,11 @@ const $=id=>document.getElementById(id);
 const fmt=(v,dec=2)=>Number(v).toLocaleString('es-ES',{minimumFractionDigits:dec,maximumFractionDigits:dec});
 const h=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const groups=['PSOE','PP','VOX','SUMAR'];
-let election,history,current,aggregate,manual=null;
+let election,history,current,aggregate,manual=null,activeRecipe='direct_all';
 function source(){return $('craft-seat-source').value}
 function getRecipe(){
  const study=$('craft-study').value;
- const selected=document.querySelector('input[name="craft-recipe"]:checked')?.value||'direct_all';
+ const selected=activeRecipe;
  const recipe=selected==='recall_experiment'?'recall':selected;
  const key=study==='3582'?{direct_all:'direct',decided:'decided',turnout_decided:'turnout',sympathy_decided:'sympathy',published_cis:'official',recall_experiment:'recall'}[selected]:selected;
  if(study==='3582')return Object.fromEntries(groups.map(p=>[p,current.comparison.find(x=>x.party===p)?.[key]??null]));
@@ -28,7 +28,7 @@ function getValues(){
  if(source()==='raw')return getRaw();
  const vals=getRecipe();
  // Intención directa sobre todos no tiene denominador de votos válidos.
- const selected=document.querySelector('input[name="craft-recipe"]:checked')?.value||'direct_all';
+ const selected=activeRecipe;
  if(selected==='direct_all'){
   const study=$('craft-study').value;
   const dec=study==='3582'?Object.fromEntries(groups.map(p=>[p,current.comparison.find(x=>x.party===p)?.decided])):history.studies[study].scenarios.decided;
@@ -37,7 +37,7 @@ function getValues(){
  return vals;
 }
 function currentExplanation(){
- const selected=document.querySelector('input[name="craft-recipe"]:checked')?.value||'direct_all';
+ const selected=activeRecipe;
  if(source()==='manual')return 'Porcentajes introducidos manualmente: el resto se atribuye a otras candidaturas conservando su geografía 2023.';
  if(source()==='raw')return 'Escenario recalculado desde sumas de microdatos originales para la pregunta y el peso de participación seleccionados.';
  if(selected==='direct_all')return 'La intención directa usa todas las entrevistas. Para proyectar diputados se utiliza automáticamente la versión entre decididos, con denominador más comparable a votos válidos.';
@@ -90,6 +90,10 @@ $('craft-seat-inputs')?.addEventListener('change',()=>renderSeats());
   if(id==='craft-study'){manual=null}
   if(source()!=='manual')sync();
  });
+});
+window.addEventListener('cocina:estado',e=>{
+ if(e.detail?.recipe)activeRecipe=e.detail.recipe;
+ if(source()!=='manual')sync();
 });
 document.addEventListener('change',e=>{if(e.target?.name==='craft-recipe'&&source()!=='manual')sync()});
 Promise.all(['data/election.json','data/microdatos/validacion_23j.json','data/microdatos/analisis_3582.json','data/microdatos/agregados_originales_cis.json'].map(async url=>{const r=await fetch(url);if(!r.ok)throw Error(url+': '+r.status);return r.json()}))
