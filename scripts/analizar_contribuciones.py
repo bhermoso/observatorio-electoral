@@ -58,13 +58,13 @@ def calculate(data):
         "schema_version":1,
         "fecha_eleccion":"2023-07-23",
         "origen":str(SOURCE),
-        "descripcion":"Cambios en voto y error al comparar recetas ya calculadas, no contribuciones aisladas de un único algoritmo.",
+        "descripcion":"Contrastes descriptivos entre escenarios reconstruidos con códigos CIS revisados (8995 = Otro partido); no son contribuciones causales aisladas ni recetas secuenciales.",
         "comparaciones":cases,
         "ausencias":{
             "recuerdo":"Sin contraste válido: RECUERDO en 3411/3415 corresponde a 2019, no a 2023. No se ha creado un procedimiento alternativo comparable.",
             "transferencias":"Los cruces de recuerdo e intención son descriptivos y no existe aquí una regla de transferencia estimada y probada en ambos estudios.",
             "eventos":"No se puede atribuir una variación a un acontecimiento con estas dos encuestas del 23J.",
-            "escanos":"No se ha construido una distribución provincial de voto por receta; no se atribuyen cambios de escaños a estas diferencias nacionales.",
+            "escanos":"No hay validación provincial observada para atribuir cambios de escaños a la cocina. La proyección IPF del laboratorio es ilustrativa; no se atribuyen efectos causales.",
             "ponderacion_demografica":"Los escenarios agregados usan PESO y no contienen una variante sin postestratificación con idéntico denominador.",
         },
         "advertencias":[
@@ -75,6 +75,7 @@ def calculate(data):
             "La variable VOTOSIMG de 3415 no incorpora por sí sola el componente de voto por correo.",
             "Los cambios se expresan en puntos porcentuales, no en porcentajes atribuibles de la estimación final.",
             "No deben sumarse las diferencias entre comparaciones ni extrapolarse al Motor 29N.",
+            "Se ha corregido el código CIS 8995 como Otro partido: las cifras y los MAE históricos se recalcularon con el universo de candidaturas 1..8995.",
         ],
         "decision":"No introducir automáticamente ninguna corrección por simpatía o participación ni asignar pesos ficticios. Ampliar a nuevas elecciones y microdatos comparables.",
     }
