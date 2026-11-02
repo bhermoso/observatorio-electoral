@@ -187,18 +187,22 @@ INDUSTRIA_PRINCIPAL = 2.2
 
 
 def principal(encuestas, inicio, hoy, eleccion, errores_23j, n_por_variante=2000, industria=INDUSTRIA_PRINCIPAL,
-              desplazamiento=None, metodo_geo="proporcional"):
+              desplazamiento=None, metodo_geo="proporcional", rho_bloque=RHO_BLOQUE,
+              sd_prov=0.08, variantes=None):
     """Pronóstico principal: une las simulaciones de las tres variantes de referencia, a
     partes iguales, con un error de industria intermedio entre el supuesto inicial (1,5)
     y el que habría cubierto 2023 (~2,9). Así la incertidumbre de método (qué casas
     definen el sesgo cero) y la de calibración entran en una sola distribución."""
     dias = (eleccion - hoy).days
     sims = []
-    for var in VARIANTES:
+    nombres = tuple(variantes) if variantes is not None else tuple(VARIANTES)
+    if not nombres or any(v not in VARIANTES for v in nombres):
+        raise ValueError("Variantes desconocidas o lista vacía")
+    for var in nombres:
         aj = estimar(encuestas, inicio, hoy, var, errores_23j=errores_23j)
         sims.append(simular(aj, dias, n=n_por_variante, industria=industria,
                             semilla=sum(map(ord, var)) + hoy.toordinal(), desplazamiento=desplazamiento,
-                            metodo_geo=metodo_geo))
+                            metodo_geo=metodo_geo, rho_bloque=rho_bloque, sd_prov=sd_prov))
     P = sims[0]["partidos"]
     assert all(s["partidos"] == P for s in sims)
     V = np.vstack([s["votos"] for s in sims])
