@@ -1,4 +1,4 @@
-# Motor de pronóstico 29N — corte 2026-11-01
+# Motor de pronóstico 29N — corte 2026-11-02
 
 Encuestas cargadas: 677 (prensa-sin-verificar: 2, terceros-29n: 23, terceros-wikipedia: 643, verificada: 9). `verificada` = registro primario del observatorio; `terceros-*` = ver `modelo/externos/PROCEDENCIA.md`.
 
@@ -8,26 +8,26 @@ Une a partes iguales las tres variantes de la sección 1, con un error de indust
 
 | Partido | Voto % | Escaños |
 |---|---|---|
-| PP | 30.8 (26.4–35.2) | **129** (111–148) |
-| PSOE | 27.6 (23.4–31.8) | **113** (93–136) |
-| VOX | 18.7 (15.0–21.9) | **67** (51–82) |
+| PP | 30.9 (26.2–35.3) | **129** (109–148) |
+| PSOE | 27.6 (23.2–31.9) | **114** (92–136) |
+| VOX | 18.6 (15.1–22.1) | **66** (51–82) |
 | ERC | 2.4 (1.1–3.8) | **10** (4–15) |
-| SUMAR | 6.0 (4.0–8.1) | **8** (4–15) |
-| BILDU | 1.3 (0.3–2.4) | **7** (1–12) |
+| SUMAR | 6.0 (4.0–8.0) | **8** (4–15) |
+| BILDU | 1.3 (0.3–2.3) | **7** (0–12) |
 | JUNTS | 1.2 (0.2–2.1) | **4** (0–9) |
 | PNV | 0.8 (0.0–1.7) | **4** (0–8) |
-| PODEMOS | 2.7 (1.3–4.0) | **2** (0–4) |
+| PODEMOS | 2.6 (1.2–4.1) | **2** (0–4) |
 | BNG | 0.9 (0.1–1.8) | **2** (0–6) |
 | CC | 0.4 (0.0–1.2) | **1** (0–4) |
-| SALF | 1.8 (0.5–3.1) | **0** (0–1) |
+| SALF | 1.8 (0.4–3.1) | **0** (0–2) |
 | UPN | 0.1 (0.0–0.9) | **0** (0–3) |
 
 | Bloque | Escaños | P(≥176) |
 |---|---|---|
-| PP+VOX | 196 (171–218) | 91% |
-| PP+VOX+UPN | 197 (172–220) | 91% |
-| PSOE+SUMAR+PODEMOS | 123 (99–150) | 0% |
-| PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC | 153 (129–178) | 7% |
+| PP+VOX | 196 (172–220) | 91% |
+| PP+VOX+UPN | 197 (172–222) | 92% |
+| PSOE+SUMAR+PODEMOS | 123 (98–151) | 0% |
+| PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC | 153 (128–178) | 7% |
 | PP primera fuerza |  | 77% |
 
 ### Evolución (pronóstico de cada día con las encuestas publicadas hasta ese día)
@@ -66,6 +66,7 @@ Une a partes iguales las tres variantes de la sección 1, con un error de indust
 | 2026-10-30 | 18 | PP 129 · PSOE 114 · VOX 67 | 91% | 76% |  |
 | 2026-10-31 | 18 | PP 129 · PSOE 113 · VOX 67 | 92% | 78% |  |
 | 2026-11-01 | 18 | PP 129 · PSOE 113 · VOX 67 | 91% | 77% |  |
+| 2026-11-02 | 18 | PP 130 · PSOE 113 · VOX 67 | 92% | 78% |  |
 
 ### Escaños por provincia (media de las simulaciones)
 
@@ -74,26 +75,26 @@ Une a partes iguales las tres variantes de la sección 1, con un error de indust
 | Albacete | 4 | PP 1.9 · PSOE 1.1 · VOX 1.0 |
 | Alicante/Alacant | 12 | PP 4.7 · PSOE 3.7 · VOX 3.2 · SUMAR 0.4 |
 | Almería | 6 | PP 2.5 · VOX 2.0 · PSOE 1.5 |
-| Araba/Álava | 4 | PSOE 1.5 · BILDU 1.0 · PP 1.0 · PNV 0.5 |
-| Asturias | 7 | PP 3.0 · PSOE 2.6 · VOX 1.4 · SUMAR 0.1 |
-| Ávila | 3 | PP 1.4 · VOX 0.8 · PSOE 0.8 |
+| Araba/Álava | 4 | PSOE 1.5 · PP 1.0 · BILDU 1.0 · PNV 0.5 |
+| Asturias | 7 | PP 2.9 · PSOE 2.6 · VOX 1.4 · SUMAR 0.1 |
+| Ávila | 3 | PP 1.4 · PSOE 0.8 · VOX 0.8 |
 | Badajoz | 5 | PP 2.0 · PSOE 2.0 · VOX 1.0 |
 | Balears (Illes) | 8 | PP 3.2 · PSOE 2.4 · VOX 2.1 · SUMAR 0.3 |
-| Barcelona | 32 | PSOE 12.0 · ERC 5.7 · PP 4.7 · VOX 4.1 · SUMAR 2.5 · JUNTS 2.3 · PODEMOS 0.7 · SALF 0.1 |
-| Bizkaia | 8 | PSOE 2.6 · BILDU 2.1 · PNV 2.1 · PP 1.0 · SUMAR 0.1 |
+| Barcelona | 32 | PSOE 11.9 · ERC 5.8 · PP 4.7 · VOX 4.1 · SUMAR 2.5 · JUNTS 2.3 · PODEMOS 0.7 · SALF 0.1 |
+| Bizkaia | 8 | PSOE 2.6 · BILDU 2.1 · PNV 2.1 · PP 1.1 · SUMAR 0.1 |
 | Burgos | 4 | PP 1.9 · PSOE 1.2 · VOX 0.9 |
-| Cáceres | 4 | PP 1.6 · PSOE 1.4 · VOX 0.9 |
+| Cáceres | 4 | PP 1.6 · PSOE 1.5 · VOX 0.9 |
 | Cádiz | 9 | PP 3.5 · PSOE 3.1 · VOX 2.3 · SUMAR 0.1 |
 | Cantabria | 5 | PP 2.3 · PSOE 1.7 · VOX 1.0 |
 | Castellón/Castelló | 5 | PP 2.0 · PSOE 1.8 · VOX 1.2 |
 | Ciudad Real | 5 | PP 2.1 · PSOE 1.8 · VOX 1.1 |
 | Córdoba | 6 | PP 2.7 · PSOE 2.0 · VOX 1.2 |
 | Coruña (A) | 8 | PP 4.2 · PSOE 2.4 · BNG 1.2 · VOX 0.2 |
-| Cuenca | 3 | PP 1.1 · PSOE 1.1 · VOX 0.9 |
+| Cuenca | 3 | PP 1.1 · PSOE 1.0 · VOX 0.9 |
 | Gipuzkoa | 6 | BILDU 2.6 · PSOE 1.8 · PNV 1.3 · PP 0.3 |
 | Girona | 6 | PSOE 2.2 · ERC 1.5 · JUNTS 1.0 · VOX 0.8 · PP 0.4 |
 | Granada | 7 | PP 2.9 · PSOE 2.2 · VOX 1.9 |
-| Guadalajara | 3 | PP 1.0 · PSOE 1.0 · VOX 1.0 |
+| Guadalajara | 3 | PP 1.0 · VOX 1.0 · PSOE 1.0 |
 | Huelva | 5 | PP 2.0 · PSOE 1.9 · VOX 1.0 |
 | Huesca | 3 | PP 1.3 · PSOE 1.1 · VOX 0.6 |
 | Jaén | 5 | PP 2.0 · PSOE 1.9 · VOX 1.0 |
@@ -102,19 +103,19 @@ Une a partes iguales las tres variantes de la sección 1, con un error de indust
 | Lugo | 4 | PP 2.5 · PSOE 1.1 · BNG 0.3 |
 | Madrid | 37 | PP 15.4 · PSOE 9.7 · VOX 8.4 · SUMAR 2.7 · PODEMOS 0.7 · SALF 0.1 |
 | Málaga | 11 | PP 4.6 · PSOE 3.2 · VOX 3.0 · SUMAR 0.2 |
-| Murcia | 10 | PP 4.2 · VOX 3.6 · PSOE 2.2 |
-| Navarra | 5 | PSOE 1.8 · BILDU 1.1 · UPN 1.0 · PP 0.9 · VOX 0.2 |
-| Ourense | 4 | PP 2.6 · PSOE 1.1 · BNG 0.3 |
+| Murcia | 10 | PP 4.2 · VOX 3.5 · PSOE 2.2 |
+| Navarra | 5 | PSOE 1.8 · BILDU 1.0 · UPN 1.0 · PP 1.0 · VOX 0.2 |
+| Ourense | 4 | PP 2.5 · PSOE 1.1 · BNG 0.3 |
 | Palencia | 3 | PP 1.5 · PSOE 1.0 · VOX 0.5 |
-| Palmas (Las) | 8 | PSOE 3.0 · PP 2.4 · VOX 2.2 · CC 0.4 |
+| Palmas (Las) | 8 | PSOE 3.0 · PP 2.4 · VOX 2.1 · CC 0.4 |
 | Pontevedra | 7 | PP 3.5 · PSOE 2.4 · BNG 1.0 |
 | Rioja (La) | 4 | PP 2.2 · PSOE 1.5 · VOX 0.3 |
 | Salamanca | 4 | PP 2.0 · PSOE 1.0 · VOX 1.0 |
 | Santa Cruz de Tenerife | 7 | PP 3.1 · PSOE 2.7 · CC 1.2 |
-| Segovia | 3 | PP 1.5 · PSOE 0.9 · VOX 0.6 |
-| Sevilla | 12 | PSOE 4.5 · PP 4.3 · VOX 2.6 · SUMAR 0.6 |
+| Segovia | 3 | PP 1.5 · PSOE 0.9 · VOX 0.5 |
+| Sevilla | 12 | PSOE 4.4 · PP 4.3 · VOX 2.6 · SUMAR 0.6 |
 | Soria | 2 | PP 1.0 · PSOE 1.0 |
-| Tarragona | 6 | PSOE 2.3 · ERC 1.4 · VOX 1.0 · PP 0.9 · JUNTS 0.3 |
+| Tarragona | 6 | PSOE 2.3 · ERC 1.4 · VOX 1.1 · PP 0.9 · JUNTS 0.3 |
 | Teruel | 3 | PP 1.1 · PSOE 1.0 · VOX 0.9 |
 | Toledo | 6 | PP 2.2 · VOX 1.9 · PSOE 1.9 |
 | Valencia/València | 16 | PP 5.7 · PSOE 5.0 · VOX 4.0 · SUMAR 1.1 · PODEMOS 0.1 |
@@ -132,17 +133,17 @@ Escaños medianos con el traslado proporcional (el del pronóstico: cada partido
 
 | Partido | Proporcional | Uniforme | Diferencia |
 |---|---|---|---|
-| PP | 129 | 129 | +0 |
-| PSOE | 113 | 112 | -1 |
-| VOX | 67 | 68 | +1 |
+| PP | 129 | 130 | +1 |
+| PSOE | 114 | 112 | -2 |
+| VOX | 66 | 68 | +2 |
 | SUMAR | 8 | 9 | +1 |
 | PODEMOS | 2 | 2 | +0 |
-| ERC | 10 | 9 | -1 |
+| ERC | 10 | 10 | +0 |
 | JUNTS | 4 | 4 | +0 |
 | BILDU | 7 | 7 | +0 |
 | PNV | 4 | 3 | -1 |
 
-P(PP+Vox ≥ 176): proporcional 91%, uniforme 90%. Circunscripciones donde el método mueve al menos 0,3 escaños medios: 10.
+P(PP+Vox ≥ 176): proporcional 91%, uniforme 91%. Circunscripciones donde el método mueve al menos 0,3 escaños medios: 10.
 
 ### Otros agregadores (contraste; no entran en el pronóstico)
 
@@ -156,7 +157,7 @@ P(PP+Vox ≥ 176): proporcional 91%, uniforme 90%. Circunscripciones donde el m�
 
 ## 1. Variantes del pronóstico
 
-Faltan 28 días. Mediana e intervalo del 90 % de 1500 simulaciones por variante. La diferencia entre variantes es la incertidumbre de método: depende de qué casas se toman como referencia.
+Faltan 27 días. Mediana e intervalo del 90 % de 1500 simulaciones por variante. La diferencia entre variantes es la incertidumbre de método: depende de qué casas se toman como referencia.
 
 | Partido | Promedio simple % | consenso_privadas: voto % · escaños | consenso_todas: voto % · escaños | calibrada_23j: voto % · escaños |
 |---|---|---|---|---|
@@ -300,11 +301,11 @@ PP ±3.1 pp, PSOE ±1.2 pp, VOX ±1.8 pp. Un efecto de Urda menor que esto no se
 
 | Escenario | PP | PSOE | Vox | PP+Vox | P(PP+Vox ≥ 176) | P(PP 1º) | ¿Se notaría en las encuestas? |
 |---|---|---|---|---|---|---|---|
-| Sin efecto (pronóstico actual) | 129 | 113 | 66 | 196 | 90% | 75% | — |
-| PSOE −1 → PP +1 | 134 | 109 | 66 | 201 | 95% | 88% | no, dentro del ruido |
-| PSOE −2 → PP +2 | 139 | 104 | 66 | 205 | 97% | 94% | sí |
-| PSOE −3 → PP +3 | 144 | 100 | 65 | 209 | 98% | 97% | sí |
-| PSOE −2 → Vox +1, PP +1 | 134 | 104 | 70 | 205 | 96% | 91% | sí |
+| Sin efecto (pronóstico actual) | 130 | 114 | 66 | 196 | 92% | 78% | — |
+| PSOE −1 → PP +1 | 135 | 109 | 66 | 200 | 96% | 88% | no, dentro del ruido |
+| PSOE −2 → PP +2 | 140 | 105 | 66 | 205 | 98% | 95% | sí |
+| PSOE −3 → PP +3 | 145 | 100 | 65 | 209 | 99% | 97% | sí |
+| PSOE −2 → Vox +1, PP +1 | 134 | 105 | 70 | 204 | 98% | 91% | sí |
 
 «Se notaría» compara el cambio del PSOE con su umbral de detección (1.2 pp).
 

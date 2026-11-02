@@ -372,6 +372,9 @@ $("#hdr-meta").innerHTML = `<span>${dTot} encuestas en el sistema</span>` + Obje
 }
 
 /* ---------- Evolución ---------- */
+const POR_ESTUDIO=Object.fromEntries(D.encuestas.map(e=>[e.estudio,e]));
+function nombreEnc(id){const e=POR_ESTUDIO[id];if(!e)return esc(id);return `${esc(e.casa)}${e.cliente?` <span class="note">(${esc(e.cliente)})</span>`:""} ${e.origen==="verificada"?"":e.origen==="prensa-sin-verificar"?'<span class="badge p">prensa</span>':'<span class="badge t">terceros</span>'}`}
+function nombreEncTxt(id){const e=POR_ESTUDIO[id];return e?`${e.casa}${e.cliente?" ("+e.cliente+")":""}`:id}
 function drawEvo(){
   const H=D.historial; if(!H.length) return;
   const c=$("#c-evo"); c.innerHTML=""; const PS=["PP","PSOE","VOX"];
@@ -393,7 +396,7 @@ function drawEvo(){
   const t=tip(c),cross=el("line",{y1:m.t,y2:m.t+ih,stroke:"var(--fg3)",visibility:"hidden"},svg);
   const hit=el("rect",{x:m.l,y:m.t,width:iw,height:ih,fill:"transparent"},svg);
   hit.addEventListener("mousemove",ev=>{const b=svg.getBoundingClientRect(),sx=(ev.clientX-b.left)/b.width*W;const i=Math.max(0,Math.min(N-1,Math.round((sx-m.l)/iw*(N-1))));const h=H[i];cross.setAttribute("x1",x(i));cross.setAttribute("x2",x(i));cross.setAttribute("visibility","visible");
-    const cb=c.getBoundingClientRect();t.show(`${fecha(h.fecha)} · ${h.n_encuestas} encuestas<br>${PS.map(p=>`${NOM[p]} ${fmt(h.escanos[p][0],0)} (${fmt(h.escanos[p][1],0)}–${fmt(h.escanos[p][2],0)})`).join("<br>")}${(h.nuevas||[]).length?`<br>nuevas: ${h.nuevas.map(esc).join(", ")}`:""}`,ev.clientX-cb.left,ev.clientY-cb.top)});
+    const cb=c.getBoundingClientRect();t.show(`${fecha(h.fecha)} · ${h.n_encuestas} encuestas<br>${PS.map(p=>`${NOM[p]} ${fmt(h.escanos[p][0],0)} (${fmt(h.escanos[p][1],0)}–${fmt(h.escanos[p][2],0)})`).join("<br>")}${(h.nuevas||[]).length?`<br>nuevas: ${h.nuevas.map(id=>esc(nombreEncTxt(id))).join(", ")}`:""}`,ev.clientX-cb.left,ev.clientY-cb.top)});
   hit.addEventListener("mouseleave",()=>{t.hide();cross.setAttribute("visibility","hidden")});
   $("#l-evo").innerHTML=PS.map(p=>`<span><i style="background:${COL(p)}"></i>${NOM[p]} (mediana y 90 %)</span>`).join("")+`<span><i style="background:var(--line)"></i>día con encuestas nuevas</span>`;
   // probabilidades
@@ -404,9 +407,9 @@ function drawEvo(){
   [["PP+VOX",h=>h.bloques["PP+VOX"].p_mayoria,"var(--pp)"],["PSOE 1º",h=>h.primero.PSOE||0,"var(--psoe)"]].forEach(([n,f,col])=>{let ln="";H.forEach((h,i)=>ln+=(i?"L":"M")+x(i)+","+y2(f(h)));el("path",{d:ln,fill:"none",stroke:col,"stroke-width":2},s2);el("text",{x:x(N-1)+6,y:y2(f(H[N-1]))+4,class:"lbl"},s2).textContent=Math.round(f(H[N-1])*100)+"%"});
   if(iu>=0)el("line",{x1:x(iu),x2:x(iu),y1:m.t,y2:H2-m.b,stroke:"var(--fg)","stroke-dasharray":"4 3"},s2);
   // tabla
-  let tb=`<thead><tr><th>Día</th><th class="n">Encuestas</th><th class="n">PP</th><th class="n">PSOE</th><th class="n">Vox</th><th class="n">P(PP+Vox ≥176)</th><th class="n">P(PP 1º)</th><th>Encuestas nuevas</th></tr></thead><tbody>`;
-  H.slice().reverse().forEach(h=>{tb+=`<tr><td class="n">${fecha(h.fecha)}</td><td class="n">${h.n_encuestas}</td>${["PP","PSOE","VOX"].map(p=>`<td class="n">${fmt(h.escanos[p][0],0)}</td>`).join("")}<td class="n">${Math.round(h.bloques["PP+VOX"].p_mayoria*100)} %</td><td class="n">${Math.round((h.primero.PP||0)*100)} %</td><td style="font-size:12px">${(h.nuevas||[]).map(esc).join(", ")}</td></tr>`});
-  $("#t-evo").innerHTML=tb+"</tbody>";
+  let tb=`<thead><tr><th>Día</th><th>Encuestadoras en el cálculo</th><th class="n">PP</th><th class="n">PSOE</th><th class="n">Vox</th><th class="n">P(PP+Vox ≥176)</th><th class="n">P(PP 1º)</th><th>Encuestas publicadas ese día</th></tr></thead><tbody>`;
+  H.slice().reverse().forEach(h=>{tb+=`<tr><td class="n">${fecha(h.fecha)}</td><td style="font-size:12px;max-width:260px"><b>${h.n_encuestas} encuestas</b> de ${h.casas.length} casas: ${h.casas.map(esc).join(", ")}</td>${["PP","PSOE","VOX"].map(p=>`<td class="n">${fmt(h.escanos[p][0],0)}</td>`).join("")}<td class="n">${Math.round(h.bloques["PP+VOX"].p_mayoria*100)} %</td><td class="n">${Math.round((h.primero.PP||0)*100)} %</td><td style="font-size:12px">${(h.nuevas||[]).map(nombreEnc).join("<br>")}</td></tr>`});
+  $("#t-evo").innerHTML=tb+`</tbody><tfoot><tr><td colspan="8" class="note">Cada día entran las encuestas ya publicadas cuyo trabajo de campo es anterior. Una casa puede aportar varias encuestas (por ejemplo, oleadas sucesivas). Pulse «Encuestas» en el menú para ver la ficha completa de cada una.</td></tr></tfoot>`;
 }
 drawEvo();
 
