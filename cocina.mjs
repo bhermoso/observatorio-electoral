@@ -26,7 +26,10 @@ export function renderCocina(){
  </div>
  <div class="kitchen-levels"><div><b>Publicado</b><p>Encuesta, pregunta, respuestas, ponderación disponible y cifra oficial de la casa.</p></div><div><b>Reproducible</b><p>Tabulación sobre microdatos, porcentaje entre decididos y cruces por recuerdo, con denominadores explícitos.</p></div><div><b>Inferido o supuesto</b><p>Redistribución de indecisos, calibración por recuerdo, efecto de acontecimientos y escenarios de incertidumbre.</p></div></div>
  </section>
- <section class="panel cocina-main"><div class="panel-head"><div><h2>¿Cómo cambia la cifra que vemos?</h2><p class="muted">Comparamos distintas medidas para el mismo partido, no etapas sucesivas de un algoritmo.</p></div><label>Partido<select id="kitchen-party"><option value="PSOE">PSOE</option><option value="PP">PP</option><option value="VOX">Vox</option><option value="SUMAR">Sumar</option><option value="PODEMOS">Podemos</option><option value="ERC">ERC</option></select></label></div><div id="kitchen-study" role="status">Cargando estudio y resultados agregados…</div></section>
+ <section class="panel cocina-audit"><div class="panel-head"><div><span class="eyebrow">Auditoría documental · Encuestadoras</span><h2>Qué sabemos realmente de su cocina</h2><p class="muted">Una ficha técnica describe cómo se pregunta y pondera la muestra. Eso no basta para afirmar cómo se calcula la estimación electoral final.</p></div></div>
+<div class="toolbar"><label>Instituto<select id="kitchen-evidence-house"><option value="cis">CIS</option><option value="metroscopia">Metroscopia</option><option value="40db-">40dB.</option><option value="gad3">GAD3</option><option value="imop-insights">IMOP Insights</option><option value="dym">DYM</option><option value="ateneo-del-dato">Ateneo del Dato</option><option value="sigma-dos">Sigma Dos</option></select></label></div>
+<div id="kitchen-evidence" role="status">Comprobando fuentes electorales publicadas…</div></section>
+<section class="panel cocina-main"><div class="panel-head"><div><h2>¿Cómo cambia la cifra que vemos?</h2><p class="muted">Comparamos distintas medidas para el mismo partido, no etapas sucesivas de un algoritmo.</p></div><label>Partido<select id="kitchen-party"><option value="PSOE">PSOE</option><option value="PP">PP</option><option value="VOX">Vox</option><option value="SUMAR">Sumar</option><option value="PODEMOS">Podemos</option><option value="ERC">ERC</option></select></label></div><div id="kitchen-study" role="status">Cargando estudio y resultados agregados…</div></section>
  <section class="panel cocina-main"><h2>¿Qué revela el recuerdo de voto?</h2><p>Entre quienes <b>dicen</b> que votaron a un partido en 2023, ¿qué declaran que harían ahora? Las transferencias reflejan respuestas de la muestra, no cambios de voto efectivamente ocurridos.</p><div id="kitchen-transfers"></div></section>
  <section class="panel cocina-main" id="kitchen-history"><div class="panel-head"><div><h2>¿Funcionó mejor algún método en las elecciones de 2023?</h2><p class="muted">Dos estudios anteriores al 23J comparados con los votos que finalmente se contaron.</p></div><label>Encuesta<select id="kitchen-historic-study"><option value="3411">CIS 3411 · junio de 2023</option><option value="3415">CIS 3415 · julio de 2023</option></select></label></div><div id="kitchen-historic-results" role="status">Cargando validación de 2023…</div></section>
  <section class="panel cocina-main"><h2>¿De dónde salen los datos?</h2><p>El análisis utiliza resultados <b>agregados</b> reconstruidos de 5.024 registros utilizables del fichero CIS 3582 y los contrasta con su estimación oficial. No publicamos aquí entrevistas individuales. Se utiliza el peso nacional <code>PESO</code>; el fichero agregado incluye hipótesis parciales que no sustituyen una validación externa.</p><p><a href="data/microdatos/analisis_3582.json" download>Descargar las cifras y los supuestos (JSON) ↓</a> · <a href="https://www.cis.es/es/estudios/barometro-de-octubre-2026" target="_blank" rel="noopener">Estudio original del CIS ↗</a></p><details><summary>¿Qué se puede y qué no se puede concluir?</summary><p>Se pueden reproducir medidas descriptivas y probar el efecto de algunas decisiones de cálculo. No se puede afirmar que una coincidencia numérica descubra el algoritmo interno del CIS, ni atribuir a una sola corrección toda la diferencia con la estimación publicada.</p></details><p><a href="guia-cocina.html">Leer guía de cocina, documentación y supuestos →</a> · <a href="sala-mandos.html#microdatos">Abrir laboratorio técnico opcional →</a></p></section>`;
@@ -34,6 +37,7 @@ export function renderCocina(){
 export async function bindCocina(){
  const box=document.querySelector('#kitchen-study'),trans=document.querySelector('#kitchen-transfers'),selector=document.querySelector('#kitchen-party');
  bindHistoricCis();
+ bindEvidenceAudit();
  if(!box||!trans||!selector)return;
  try{
   const response=await fetch('data/microdatos/analisis_3582.json',{cache:'no-store'});
@@ -87,4 +91,23 @@ async function bindHistoricCis(){
   }
   picker.addEventListener('change',update);update();
  }catch(e){if(target.isConnected)target.textContent='No se ha podido cargar la validación histórica: '+e.message}
+}
+
+async function bindEvidenceAudit(){
+ const output=document.querySelector('#kitchen-evidence'),select=document.querySelector('#kitchen-evidence-house');if(!output||!select)return;
+ try{
+  const r=await fetch('data/cocinas-evidencia.json',{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);
+  const data=await r.json();if(!output.isConnected)return;
+  function draw(){
+   const entry=data.entries.find(x=>x.id===select.value);
+   if(!entry){output.textContent='Sin ficha de evidencia';return}
+   const status=entry.evidence==='metodo_publicado_general'?'Modelo de estimación descrito en documentos públicos (sin reconstrucción exacta del estudio)':entry.evidence==='sin_formula_electoral_verificada'?'No consta una fórmula electoral específica verificada':'Estimaciones archivadas; fórmula electoral no documentada suficientemente';
+   output.innerHTML='<div class="kitchen-audit-status"><strong>'+esc(entry.name)+'</strong><span>'+esc(status)+'</span></div>'
+    +'<div class="kitchen-audit-columns"><div><h3>Comprobado en las fuentes</h3><ul>'+entry.observed.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div>'
+    +'<div><h3>No acreditado / pendiente</h3><ul>'+entry.notVerified.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div></div>'
+    +(entry.sources.length?'<p class="kitchen-audit-sources"><b>Documentos pertinentes:</b> '+entry.sources.filter(x=>entry.id!=='metroscopia').map(x=>'<a target="_blank" rel="noopener" href="'+esc(x.url)+'">'+esc(x.label)+' ↗</a>').join(' · ')+'</p>':'')
+    +'<p class="muted">Criterio de admisión: '+esc(data.criterion)+'</p>';
+  }
+  select.addEventListener('change',draw);draw();
+ }catch(e){if(output.isConnected)output.textContent='No se ha podido cargar la evidencia: '+e.message}
 }
