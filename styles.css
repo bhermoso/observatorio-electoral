@@ -142,3 +142,14 @@
 .kitchen-audit-columns li{font-size:13px;line-height:1.65;margin:8px 0}
 .kitchen-audit-sources{font-size:13px;line-height:1.8}
 @media(max-width:670px){.kitchen-audit-columns{grid-template-columns:1fr}}
+
+/* Portada editorial: metodología propia y alcance del motor central */
+.observatory-method-lead{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(220px,1fr);gap:24px;background:#eaf2e6;border:1px solid #cddcc9;border-radius:15px;padding:clamp(22px,3vw,33px);margin:17px 0 27px}
+.observatory-method-lead h2{font-family:Manrope,system-ui;font-size:clamp(21px,2.5vw,29px);margin:9px 0 10px;line-height:1.26}
+.observatory-method-lead p{font-size:14px;color:#435f52;line-height:1.7;max-width:760px}
+.observatory-method-steps{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px}
+.observatory-method-steps span{font-size:11px;line-height:1.4;background:#fff;border:1px solid #d4e3d0;border-radius:5px;padding:8px 10px}
+.observatory-method-links{display:flex;flex-direction:column;gap:11px;justify-content:center}
+.observatory-method-links a{display:block;padding:12px 14px;border:1px solid #b3cbb8;border-radius:9px;background:#fff;color:#205c49;font-size:13px;font-weight:700;line-height:1.4;text-decoration:none}
+.observatory-method-links a:first-child{background:#1d6656;color:white;border-color:#1d6656}
+@media(max-width:810px){.observatory-method-lead{grid-template-columns:1fr}}
