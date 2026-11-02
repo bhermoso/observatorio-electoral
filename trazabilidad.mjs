@@ -22,7 +22,7 @@ const ESTADOS={
 export function renderTrazabilidad(){
  return `<section class="panel trace-cocina" aria-labelledby="trace-title"><div class="panel-head"><div><span class="eyebrow">Transparencia del algoritmo · Motor 29N</span><h2 id="trace-title">¿De qué está hecho nuestro pronóstico?</h2><p class="muted">Consulta, para cada partido, qué datos recibe el modelo y qué procedimientos aplica. La proporción atribuible a recuerdo, simpatía o participación dentro de la estimación de cada encuestadora no es observable sin su receta.</p></div><a href="como-estimamos.html">Método completo →</a></div>
  <div class="toolbar"><label>Partido<select id="trace-party"><option value="PP">PP</option><option value="PSOE">PSOE</option><option value="VOX">Vox</option><option value="SUMAR">Sumar / Frente Amplio</option><option value="PODEMOS">Podemos</option><option value="SALF">SALF</option></select></label></div>
- <div id="trace-cocina-data" role="status">Cargando trazabilidad del corte publicado…</div>
+ <div id="trace-cocina-data" role="status">Cargando trazabilidad del corte publicado…</div><div class="trace-ablation"><h3>Laboratorio de sensibilidad del pronóstico</h3><p class="muted">Comparación con los mismos parámetros restantes. No son impactos causales ni pesos de ingredientes de encuestadoras.</p><label>Desactivar o cambiar un componente<select id="trace-ablation-choice"></select></label><div id="trace-ablation-result" role="status">Cargando comparaciones…</div></div>
  <p class="muted">La tabla de ingredientes es una <b>auditoría de presencia y ausencia de información</b>, no un gráfico de pesos que sumen 100 %. Si una encuesta ya publica una estimación cocinada, los ingredientes utilizados por esa casa no pueden deducirse de su cifra final.</p></section>`;
 }
 export async function bindTrazabilidad(){
@@ -32,6 +32,7 @@ export async function bindTrazabilidad(){
   const r=await fetch('data/modelo/pronostico.json',{cache:'no-store'});if(!r.ok)throw Error('No hay pronóstico publicado');
   const data=await r.json();if(!root.isConnected)return;
   const trace=data.trazabilidad;
+  bindAblaciones(data);
   if(!trace){
    root.innerHTML='<div class="notice">Este corte todavía no contiene una descomposición auditada de entradas. La estimación publicada de cada encuestadora es el dato de entrada; no se puede imputar cuánto corresponde a simpatía, recuerdo o participación sin una receta demostrada.</div>';
    return;
@@ -46,4 +47,20 @@ export async function bindTrazabilidad(){
   }
   selector.addEventListener('change',update);update();
  }catch(err){if(root.isConnected)root.textContent='No se pudo cargar la trazabilidad: '+err.message}
+}
+
+function bindAblaciones(data){
+ const choice=document.querySelector('#trace-ablation-choice'),target=document.querySelector('#trace-ablation-result');
+ if(!choice||!target)return;
+ const report=data.sensibilidad_cocina;
+ if(!report?.experimentos?.length){target.innerHTML='<p class="muted">La publicación todavía no incluye resultados de sensibilidad del modelo. No se imputan cambios de escaños.</p>';choice.disabled=true;return}
+ choice.innerHTML=report.experimentos.map(x=>'<option value="'+e(x.id)+'">'+e(x.nombre)+'</option>').join('');
+ function update(){
+  const x=report.experimentos.find(q=>q.id===choice.value);if(!x)return;
+  const cmp=x.comparacion,fmt=v=>(v>0?'+':'')+pct(v);
+  const parties=Object.keys(cmp.cambio_voto_pp).map(k=>'<tr><td>'+e(k)+'</td><td>'+fmt(cmp.cambio_voto_pp[k])+' pp</td><td>'+fmt(cmp.cambio_mediana_escanos[k])+'</td></tr>').join('');
+  const blocs=Object.entries(cmp.bloques).map(([k,v])=>'<tr><td>'+e(k.replaceAll('+',' + '))+'</td><td>'+fmt(v.cambio_mediana_escanos)+'</td><td>'+fmt(v.cambio_frecuencia_umbral_puntos)+' pp</td></tr>').join('');
+  target.innerHTML='<p><b>'+e(x.nombre)+'</b> · '+report.n_por_variante+' simulaciones por anclaje; comparaciones aproximadas, con variabilidad de Monte Carlo.</p><div class="table-wrap"><table><thead><tr><th>Partido</th><th>Cambio voto</th><th>Cambio mediana de escaños</th></tr></thead><tbody>'+parties+'</tbody></table></div><div class="table-wrap"><table><thead><tr><th>Bloque aritmético</th><th>Cambio escaños</th><th>Cambio frecuencia de ≥176</th></tr></thead><tbody>'+blocs+'</tbody></table></div><p class="muted">Signos relativos al modelo de referencia con igual número de simulaciones. No es estimación de acuerdos parlamentarios.</p>';
+ }
+ choice.addEventListener('change',update);update();
 }
