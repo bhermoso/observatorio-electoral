@@ -7,7 +7,7 @@ import json
 import os
 from datetime import date, timedelta
 import numpy as np
-from .motor import fuentes as F, evaluacion as V, eventos as EV, pronostico as PR, registro as RG, senales as SG, trazabilidad as TZ
+from .motor import fuentes as F, evaluacion as V, eventos as EV, pronostico as PR, registro as RG, senales as SG, trazabilidad as TZ, ablaciones as AB
 from .motor.tendencia import ajustar
 
 ELECCION = date(2026, 11, 29)
@@ -84,6 +84,7 @@ def main():
     # ---------- Pronóstico principal, evolución y provincias ----------
     princ = PR.principal(actuales, inicio, hoy, ELECCION, err, n_por_variante=max(a.n // 2, 500))
     auditoria_cocina = TZ.elaborar(actuales, ajustes, resumen, princ, hoy, excluidas_prensa=len(provisionals), industria=PR.INDUSTRIA_PRINCIPAL)
+    sensibilidad_cocina = AB.generar(actuales, inicio, hoy, ELECCION, err, n_por_variante=80)
     hist = RG.historial(actuales, inicio, a.desde, hoy, ELECCION, err, n_por_variante=a.n_hist)
     n_reg = RG.escribir_encuestas([e for e in enc if e["ciclo"] == "2023-26" or
                                    (e["origen"] != "terceros-wikipedia" and e["campo_fin"] >= date(2023, 5, 1))])
@@ -390,7 +391,7 @@ def main():
 
     os.makedirs(SALIDA, exist_ok=True)
     open(os.path.join(SALIDA, "informe.md"), "w", encoding="utf-8").write("\n".join(L) + "\n")
-    json.dump(dict(corte=hoy.isoformat(), eleccion=ELECCION.isoformat(), trazabilidad=auditoria_cocina, principal={k: princ[k] for k in ('partidos', 'bloques', 'investidura', 'n', 'industria', 'dias', 'sin_encuestas')}, variantes=resumen,
+    json.dump(dict(corte=hoy.isoformat(), eleccion=ELECCION.isoformat(), trazabilidad=auditoria_cocina, sensibilidad_cocina=sensibilidad_cocina, principal={k: princ[k] for k in ('partidos', 'bloques', 'investidura', 'n', 'industria', 'dias', 'sin_encuestas')}, variantes=resumen,
                    auditoria_fuentes=dict(excluidas_prensa_sin_verificar=len(provisionals), incluidas_2023_26=len(actuales), criterio='No usar prensa sin fuente original en el pronóstico principal; se conserva como referencia'), promedio_simple=simple, error_23j={c: r["error"] for c, r in err.items()},
                    industria_23j=ind, retroprueba_23j=bt, umbral_placebo=umbrales),
               open(os.path.join(SALIDA, "pronostico.json"), "w", encoding="utf-8"),
