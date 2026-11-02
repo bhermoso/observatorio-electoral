@@ -22,7 +22,7 @@ test('Errores históricos no se usan como resultado de 2026',()=>{
  assert.match(js,/id==='3582'\?null/);
  assert.match(js,/Error predictivo/);
  assert.match(js,/No calculable/);
- assert.match(js,/receta==='direct_all'/);
+ assert.match(js,/recipe==='direct_all'/);
 });
 test('Operaciones, código documental y exportación interactiva',()=>{
  assert.match(html,/id="craft-steps"/);assert.match(html,/id="craft-stage"/);
