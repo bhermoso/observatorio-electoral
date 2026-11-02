@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "titulo": "Auditoría exploratoria de procedimientos CIS frente al resultado del 23J",
+  "eleccion": "2023-07-23",
+  "fuente": "data/microdatos/validacion_23j.json",
+  "resultado_oficial": "data/election.json · BOE-A-2023-18907",
+  "partidos": [
+    "PSOE",
+    "PP",
+    "VOX",
+    "SUMAR"
+  ],
+  "metodos": {
+    "decided": "Voto entre respuestas con candidatura",
+    "sympathy_decided": "Voto + simpatía entre respuestas con candidatura",
+    "turnout_decided": "Hipótesis de participación autodeclarada",
+    "published_cis": "Estimación CIS publicada (referencia, no receta propia)"
+  },
+  "excluido_como_estimacion": {
+    "metodo": "direct_all",
+    "razon": "La intención directa sobre todos los entrevistados tiene un denominador distinto del voto válido y no es una estimación con el mismo objetivo."
+  },
+  "resultados_por_estudio": {
+    "3411": {
+      "decided": {
+        "mae_pp": 1.378137,
+        "error_firmado_pp": {
+          "PSOE": -0.039155,
+          "PP": -0.478769,
+          "VOX": -1.07249,
+          "SUMAR": 3.922132
+        },
+        "error_absoluto_pp": {
+          "PSOE": 0.039155,
+          "PP": 0.478769,
+          "VOX": 1.07249,
+          "SUMAR": 3.922132
+        },
+        "max_error_pp": 3.922132
+      },
+      "sympathy_decided": {
+        "mae_pp": 2.078559,
+        "error_firmado_pp": {
+          "PSOE": 0.028845,
+          "PP": -1.744769,
+          "VOX": -1.61649,
+          "SUMAR": 4.924132
+        },
+        "error_absoluto_pp": {
+          "PSOE": 0.028845,
+          "PP": 1.744769,
+          "VOX": 1.61649,
+          "SUMAR": 4.924132
+        },
+        "max_error_pp": 4.924132
+      },
+      "turnout_decided": {
+        "mae_pp": 1.319059,
+        "error_firmado_pp": {
+          "PSOE": 0.115845,
+          "PP": -0.174769,
+          "VOX": -1.08849,
+          "SUMAR": 3.897132
+        },
+        "error_absoluto_pp": {
+          "PSOE": 0.115845,
+          "PP": 0.174769,
+          "VOX": 1.08849,
+          "SUMAR": 3.897132
+        },
+        "max_error_pp": 3.897132
+      },
+      "published_cis": {
+        "mae_pp": 1.996636,
+        "error_firmado_pp": {
+          "PSOE": -0.482155,
+          "PP": -1.655769,
+          "VOX": -1.78249,
+          "SUMAR": 4.066132
+        },
+        "error_absoluto_pp": {
+          "PSOE": 0.482155,
+          "PP": 1.655769,
+          "VOX": 1.78249,
+          "SUMAR": 4.066132
+        },
+        "max_error_pp": 4.066132
+      }
+    },
+    "3415": {
+      "decided": {
+        "mae_pp": 1.804309,
+        "error_firmado_pp": {
+          "PSOE": 2.483845,
+          "PP": -1.130769,
+          "VOX": -0.94549,
+          "SUMAR": 2.657132
+        },
+        "error_absoluto_pp": {
+          "PSOE": 2.483845,
+          "PP": 1.130769,
+          "VOX": 0.94549,
+          "SUMAR": 2.657132
+        },
+        "max_error_pp": 2.657132
+      },
+      "sympathy_decided": {
+        "mae_pp": 2.259309,
+        "error_firmado_pp": {
+          "PSOE": 2.734845,
+          "PP": -1.936769,
+          "VOX": -1.29749,
+          "SUMAR": 3.068132
+        },
+        "error_absoluto_pp": {
+          "PSOE": 2.734845,
+          "PP": 1.936769,
+          "VOX": 1.29749,
+          "SUMAR": 3.068132
+        },
+        "max_error_pp": 3.068132
+      },
+      "turnout_decided": {
+        "mae_pp": 1.836059,
+        "error_firmado_pp": {
+          "PSOE": 2.520845,
+          "PP": -1.111769,
+          "VOX": -0.93849,
+          "SUMAR": 2.773132
+        },
+        "error_absoluto_pp": {
+          "PSOE": 2.520845,
+          "PP": 1.111769,
+          "VOX": 0.93849,
+          "SUMAR": 2.773132
+        },
+        "max_error_pp": 2.773132
+      },
+      "published_cis": {
+        "mae_pp": 1.480559,
+        "error_firmado_pp": {
+          "PSOE": 0.517845,
+          "PP": -2.255769,
+          "VOX": -0.58249,
+          "SUMAR": 2.566132
+        },
+        "error_absoluto_pp": {
+          "PSOE": 0.517845,
+          "PP": 2.255769,
+          "VOX": 0.58249,
+          "SUMAR": 2.566132
+        },
+        "max_error_pp": 2.566132
+      }
+    }
+  },
+  "pruebas_seleccion_y_traslado": [
+    {
+      "seleccion_estudio": "3411",
+      "evaluacion_estudio": "3415",
+      "metodo_seleccionado": "turnout_decided",
+      "error_entrenamiento_mae_pp": 1.319059,
+      "error_prueba_mae_pp": 1.836059,
+      "referencia_cis_mae_pp": 1.480559,
+      "referencia_decididos_mae_pp": 1.804309,
+      "cambio_frente_publicado_pp": 0.3555,
+      "cambio_frente_decididos_pp": 0.03175,
+      "mejora_frente_publicado": false,
+      "nota": "La elección del método utiliza exclusivamente el estudio de selección. Ambos estudios fueron realizados antes de la misma elección de 2023."
+    },
+    {
+      "seleccion_estudio": "3415",
+      "evaluacion_estudio": "3411",
+      "metodo_seleccionado": "published_cis",
+      "error_entrenamiento_mae_pp": 1.480559,
+      "error_prueba_mae_pp": 1.996636,
+      "referencia_cis_mae_pp": 1.996636,
+      "referencia_decididos_mae_pp": 1.378137,
+      "cambio_frente_publicado_pp": 0,
+      "cambio_frente_decididos_pp": 0.618499,
+      "mejora_frente_publicado": false,
+      "nota": "La elección del método utiliza exclusivamente el estudio de selección. Ambos estudios fueron realizados antes de la misma elección de 2023."
+    }
+  ],
+  "limitaciones": [
+    "Dos encuestas de un mismo instituto y una sola elección: NO es validación fuera de muestra electoral independiente.",
+    "La elección final se usa para medir el error, nunca para seleccionar el método en el estudio de evaluación.",
+    "Sumar de 2023 no equivale necesariamente a todas las etiquetas y coaliciones de otros ciclos.",
+    "En el CIS 3415 la variable VOTOSIMG usada no incorpora el componente especial de voto por correo.",
+    "La variable RECUERDO de los estudios 3411 y 3415 se refiere al 10N de 2019, no al 23J. No se ha realizado calibración por recuerdo.",
+    "La probabilidad declarada de votar no es una probabilidad calibrada de participación real.",
+    "La fecha de entrevistas varía entre estudios; las diferencias no se atribuyen solo a la cocina.",
+    "La cercanía puntual al resultado final no demuestra que este método reproduzca la fórmula interna del CIS.",
+    "No se autorizan ajustes automáticos de la estimación del Motor 29N con esta evidencia."
+  ],
+  "decision_operativa": "No adoptar automáticamente correcciones de simpatía, recuerdo o participación en el pronóstico principal. Mantenerlas como experimentos hasta validarlas en otras elecciones y con definiciones homogéneas."
+}
