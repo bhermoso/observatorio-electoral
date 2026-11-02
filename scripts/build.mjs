@@ -7,7 +7,7 @@ console.log(`Contexto: ${eventCount} acontecimientos documentados.`);
 const coverage=validatePolls(JSON.parse(fs.readFileSync('data/polls.json')),JSON.parse(fs.readFileSync('data/references.json')));
 console.log(`Validación: ${coverage.polls} encuestas, ${coverage.institutes} institutos y ${coverage.references} referencias.`);
 fs.mkdirSync('dist',{recursive:true});
-for(const f of ['index.html','flujograma.html','flujograma.mjs','construye-estimacion.html','construye-estimacion.mjs','cocina-escanos.mjs','cocina-escanos-ui.mjs','metodologia-analisis.html','como-estimamos.html','guia-cocina.html','sala-mandos.html','styles.css','app.mjs','engine.mjs','map.mjs','polls.mjs','events.mjs','analysis.mjs','integracion.mjs','cocina.mjs','tendencias.mjs','investidura.mjs','trazabilidad.mjs','glosario.mjs']) fs.copyFileSync(f,`dist/${f}`);
+for(const f of ['index.html','flujograma.html','flujograma.mjs','construye-estimacion.html','construye-estimacion.mjs','cocina-escanos.mjs','cocina-escanos-ui.mjs','algoritmo-escanos.mjs','metodologia-analisis.html','como-estimamos.html','guia-cocina.html','sala-mandos.html','styles.css','app.mjs','engine.mjs','map.mjs','polls.mjs','events.mjs','analysis.mjs','integracion.mjs','cocina.mjs','tendencias.mjs','investidura.mjs','trazabilidad.mjs','glosario.mjs']) fs.copyFileSync(f,`dist/${f}`);
 fs.cpSync('data','dist/data',{recursive:true});
 fs.cpSync('docs','dist/docs',{recursive:true});
 // Publicar el pronóstico agregado y su historial para la pantalla de bloques.
