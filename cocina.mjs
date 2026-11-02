@@ -33,6 +33,7 @@ export function renderCocina(){
  <section class="panel cocina-main"><h2>¿Qué revela el recuerdo de voto?</h2><p>Entre quienes <b>dicen</b> que votaron a un partido en 2023, ¿qué declaran que harían ahora? Las transferencias reflejan respuestas de la muestra, no cambios de voto efectivamente ocurridos.</p><div id="kitchen-transfers"></div></section>
  <section class="panel cocina-main" id="kitchen-history"><div class="panel-head"><div><h2>¿Funcionó mejor algún método en las elecciones de 2023?</h2><p class="muted">Dos estudios anteriores al 23J comparados con los votos que finalmente se contaron.</p></div><label>Encuesta<select id="kitchen-historic-study"><option value="3411">CIS 3411 · junio de 2023</option><option value="3415">CIS 3415 · julio de 2023</option></select></label></div><div id="kitchen-historic-results" role="status">Cargando validación de 2023…</div></section>
  <section class="panel cocina-main cocina-validation"><div class="panel-head"><div><span class="eyebrow">Verificación de la alta cocina</span><h2>¿Mejora realmente una corrección fuera del estudio donde se eligió?</h2><p class="muted">Elegimos un procedimiento con el CIS 3411 y lo evaluamos sin retocarlo en el CIS 3415; repetimos a la inversa. Los dos pertenecen al mismo 23J, así que esta prueba es limitada.</p></div></div><div id="kitchen-validation" role="status">Cargando contraste reproducible…</div><p class="muted">No se ha utilizado el resultado de 2023 para entrenar un coeficiente aplicado al estudio de evaluación. No se incluyen comparaciones engañosas de intención directa sobre todas las personas entrevistadas frente a voto válido.</p><a href="data/microdatos/auditoria_cocina_23j.json" download>Descargar auditoría y errores por partido (JSON) ↓</a> · <a href="https://github.com/bhermoso/observatorio-electoral/blob/main/scripts/auditar_cocina_23j.py" target="_blank" rel="noopener">Código reproducible ↗</a></section>
+<section class="panel cocina-main cocina-contributions"><div class="panel-head"><div><span class="eyebrow">Pruebas de sensibilidad · Cocina reproducible</span><h2>¿Qué cambia al utilizar otra receta?</h2><p class="muted">Comparación por partido y por estudio. La cifra muestra cuánto varía la estimación y cuánto aumenta o disminuye su error respecto a los resultados del 23J; no es una atribución causal de ingredientes.</p></div></div><div class="toolbar"><label>Comparar procedimiento<select id="kitchen-contribution-method"><option value="simpatia">Voto + simpatía frente a decididos</option><option value="participacion">Participación frente a decididos</option><option value="estimacion_publicada">Estimación publicada frente a decididos</option></select></label><label>Estudio<select id="kitchen-contribution-study"><option value="3411">CIS 3411</option><option value="3415">CIS 3415</option></select></label></div><div id="kitchen-contribution-data" role="status">Cargando contribuciones observables…</div><div class="notice"><b>Sobre recuerdo, transferencias, eventos y efecto en escaños:</b> todavía no existe una comparación equivalente y reproducible para estos dos estudios. No se imputan coeficientes ni cambios de diputados.</div><p><a href="data/microdatos/contribuciones_cocina_23j.json" download>Datos completos de contribuciones (JSON) ↓</a> · <a href="https://github.com/bhermoso/observatorio-electoral/blob/main/scripts/analizar_contribuciones.py" target="_blank" rel="noopener">Reproducir el cálculo ↗</a></p></section>
 <section class="panel cocina-main"><h2>¿De dónde salen los datos?</h2><p>El análisis utiliza resultados <b>agregados</b> reconstruidos de 5.024 registros utilizables del fichero CIS 3582 y los contrasta con su estimación oficial. No publicamos aquí entrevistas individuales. Se utiliza el peso nacional <code>PESO</code>; el fichero agregado incluye hipótesis parciales que no sustituyen una validación externa.</p><p><a href="data/microdatos/analisis_3582.json" download>Descargar las cifras y los supuestos (JSON) ↓</a> · <a href="https://www.cis.es/es/estudios/barometro-de-octubre-2026" target="_blank" rel="noopener">Estudio original del CIS ↗</a></p><details><summary>¿Qué se puede y qué no se puede concluir?</summary><p>Se pueden reproducir medidas descriptivas y probar el efecto de algunas decisiones de cálculo. No se puede afirmar que una coincidencia numérica descubra el algoritmo interno del CIS, ni atribuir a una sola corrección toda la diferencia con la estimación publicada.</p></details><p><a href="guia-cocina.html">Leer guía de cocina, documentación y supuestos →</a> · <a href="sala-mandos.html#microdatos">Abrir laboratorio técnico opcional →</a></p></section>`;
 }
 export async function bindCocina(){
@@ -40,6 +41,7 @@ export async function bindCocina(){
  bindHistoricCis();
  bindEvidenceAudit();
  bindKitchenValidation();
+ bindKitchenContributions();
  if(!box||!trans||!selector)return;
  try{
   const response=await fetch('data/microdatos/analisis_3582.json',{cache:'no-store'});
@@ -128,4 +130,27 @@ async function bindKitchenValidation(){
    +'<div class="notice"><b>Resultado:</b> una mejora puntual en un estudio no basta para aprobar un método. Ninguna de estas pruebas justifica aplicar una corrección automática al pronóstico operativo del Motor 29N.</div>'
    +'<details><summary>Ver errores, avisos y límites del contraste</summary><ul>'+data.limitaciones.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></details>';
  }catch(err){if(root.isConnected)root.textContent='No disponible: '+err.message}
+}
+
+async function bindKitchenContributions(){
+ const root=document.querySelector('#kitchen-contribution-data'),method=document.querySelector('#kitchen-contribution-method'),study=document.querySelector('#kitchen-contribution-study');
+ if(!root||!method||!study)return;
+ try{
+  const r=await fetch('data/microdatos/contribuciones_cocina_23j.json',{cache:'no-store'});
+  if(!r.ok)throw Error('HTTP '+r.status);
+  const report=await r.json();if(!root.isConnected)return;
+  const n=v=>Number(v).toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const signed=v=>(v>0?'+':'')+n(v);
+  function show(){
+   const scenario=report.comparaciones.find(x=>x.codigo===method.value);
+   const current=scenario?.estudios.find(x=>x.estudio===study.value);
+   if(!current){root.textContent='Datos no disponibles';return}
+   const rows=current.partidos.map(p=>'<tr><td><b>'+esc(p.partido)+'</b></td><td>'+n(p.base)+' %</td><td>'+n(p.alternativa)+' %</td><td>'+signed(p.cambio_estimacion_pp)+' pp</td><td>'+signed(p.cambio_error_absoluto_pp)+' pp</td></tr>').join('');
+   root.innerHTML='<div class="kitchen-contribution-summary"><div><span>MAE entre decididos</span><strong>'+n(current.mae_base)+' pp</strong></div><div><span>MAE con la alternativa</span><strong>'+n(current.mae_alternativa)+' pp</strong></div><div><span>Variación del error medio</span><strong>'+signed(current.diferencia_mae_pp)+' pp</strong><small>'+(current.diferencia_mae_pp>0?'Mayor error':current.diferencia_mae_pp<0?'Menor error':'Sin variación')+'</small></div></div>'
+   +'<div class="table-wrap"><table><caption>Variación del error absoluto: valor negativo = menor error; positivo = mayor error. Una diferencia de voto no es un porcentaje de influencia.</caption><thead><tr><th>Partido</th><th>Decididos</th><th>Alternativa</th><th>Cambio en voto</th><th>Cambio en error absoluto</th></tr></thead><tbody>'+rows+'</tbody></table></div>'
+   +'<p class="muted">En este estudio: '+current.partidos_con_menor_error+' partidos con menor error y '+current.partidos_con_mayor_error+' con mayor error. Consistencia del MAE en los dos estudios: '+(scenario.consistencia_mae==='mejora_ambos'?'menor error en ambos':scenario.consistencia_mae==='empeora_ambos'?'mayor error en ambos':'resultado no consistente')+'.</p>'
+   +'<p class="muted"><b>Interpretación:</b> '+esc(report.descripcion)+' Las operaciones no deben sumarse ni atribuirse como porcentajes del pronóstico principal.</p>';
+  }
+  method.addEventListener('change',show);study.addEventListener('change',show);show();
+ }catch(err){if(root.isConnected)root.textContent='No se pudo cargar la comparación: '+err.message}
 }
