@@ -61,7 +61,7 @@ def elaborar(encuestas, ajustes, variantes, principal, hoy, excluidas_prensa=0,
                     "url": e.get("url"),
                     "muestra": e.get("n"),
                 }
-                for e in sorted(aportan, key=lambda x: x["campo_fin"], reverse=True)
+                for e in sorted(aportan, key=lambda x: x.get("campo_fin") or date.min, reverse=True)
             ],
             "variantes_tendencia": variantes_entrada,
             "pronostico_principal_voto_mediana": float(voto[0]) if voto else None,
