@@ -60,6 +60,12 @@ Las encuestas nuevas se incorporan al registro verificado del observatorio (`dat
 - Los estudios pertenecen a la misma convocatoria 23J, por lo que **no** existe aún una validación fuera de elección. No aplicar al pronóstico principal correcciones inferidas por simpatía, participación o recuerdo hasta obtener ciclos comparables.
 - `PESO` en los estudios es una ponderación publicada, no evidencia de los ajustes internos usados por cada instituto para producir su estimación final.
 
+## Sensibilidad de procedimientos de microdatos
+
+`scripts/analizar_contribuciones.py` reconstruye a partir de `data/microdatos/validacion_23j.json` las diferencias de estimación y error entre voto entre decididos y tres salidas alternativas (simpatía, participación y estimación publicada). Exporta `data/microdatos/contribuciones_cocina_23j.json`, que aparece en Cocina electoral. **No son ablaciones causales**: los denominadores, preguntas o tratamientos pueden diferir, y una comparación con la estimación publicada engloba operaciones no documentadas. No se puede sumar cada diferencia como una proporción de la «receta».
+
+Sobre cuatro partidos, la simpatía presenta mayor error medio en los dos estudios (diferencias de aproximadamente +0,70 y +0,46 pp respecto a decididos), mientras que la participación lo reduce ligeramente en uno y lo eleva en otro (−0,06 y +0,03 pp). Dos estudios de una misma elección no autorizan generalización ni cambios al pronóstico principal. Recuerdo, transferencia, eventos, peso demográfico aislado y escaños **no disponen aquí de una ablación**.
+
 ## Límites
 
 Un solo precedente con encuestas privadas evaluadas (23J). Para evaluar 2015, 2016 y 2019 hacen falta las tablas históricas (Wikipedia u originales). La retroprueba en el 23J muestra que corregir sesgos de casa no supera automáticamente al promedio simple: en 2023 el CIS fue la única casa que acertó con el PSOE.
