@@ -28,12 +28,13 @@ export async function bindHomeImpact(polls){
  const root=document.querySelector('#impact');if(!root)return;
  const published=[...polls].filter(p=>p.kind==='poll-estimate');
  const stat=PARTIES.map(p=>{
-  const items=published.filter(q=>Number.isFinite(q.values?.[p==='SUMAR'?'Sumar':p]??q.values?.[p==='SUMAR'?'Frente Amplio':p])).map(q=>({value:q.values[p==='SUMAR'?(Number.isFinite(q.values.Sumar)?'Sumar':'Frente Amplio'):p],institute:q.institute}));
+  const key=p==='SUMAR'?'Sumar':p;
+  const items=published.filter(q=>Number.isFinite(q.values?.[key])).map(q=>({value:q.values[key],institute:q.institute}));
   return {party:p,n:items.length,avg:items.length?items.reduce((a,z)=>a+z.value,0)/items.length:null};
  });
  const chart=document.querySelector('#impact-average');
  chart.innerHTML=stat.map(x=>`<div class="impact-line"><span><i style="background:${COLORS[x.party]}"></i>${x.party}</span><div class="impact-track"><div style="background:${COLORS[x.party]};width:${x.avg===null?0:Math.min(100,x.avg/42*100)}%"></div></div><b>${x.avg===null?'—':fmt(x.avg)+' %'}</b><small>n=${x.n}</small></div>`).join('');
- document.querySelector('#impact-average-note').textContent='Promedio descriptivo recalculado de '+published.length+' encuestas catalogadas. Las categorías «Sumar» y «Frente Amplio» no son homogéneas: se muestran solo a título descriptivo, sin sumar coaliciones distintas.';
+ document.querySelector('#impact-average-note').textContent='Promedio aritmético por partido según los estudios que publican su cifra. «Sumar» y «Frente Amplio» permanecen separados; n indica cuántos estudios hay en cada barra.';
  try{
   const r=await fetch('data/modelo/pronostico.json',{cache:'no-store'});if(!r.ok)throw Error('Pronóstico no disponible');const forecast=await r.json();if(!root.isConnected)return;
   document.querySelector('#impact-cut').textContent='Corte '+(forecast.corte||'no indicado');
