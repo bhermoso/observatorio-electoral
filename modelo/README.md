@@ -64,7 +64,7 @@ Las encuestas nuevas se incorporan al registro verificado del observatorio (`dat
 
 `scripts/analizar_contribuciones.py` reconstruye a partir de `data/microdatos/validacion_23j.json` las diferencias de estimación y error entre voto entre decididos y tres salidas alternativas (simpatía, participación y estimación publicada). Exporta `data/microdatos/contribuciones_cocina_23j.json`, que aparece en Cocina electoral. **No son ablaciones causales**: los denominadores, preguntas o tratamientos pueden diferir, y una comparación con la estimación publicada engloba operaciones no documentadas. No se puede sumar cada diferencia como una proporción de la «receta».
 
-Sobre cuatro partidos, la simpatía presenta mayor error medio en los dos estudios (diferencias de aproximadamente +0,70 y +0,46 pp respecto a decididos), mientras que la participación lo reduce ligeramente en uno y lo eleva en otro (−0,06 y +0,03 pp). Dos estudios de una misma elección no autorizan generalización ni cambios al pronóstico principal. Recuerdo, transferencia, eventos, peso demográfico aislado y escaños **no disponen aquí de una ablación**.
+Sobre cuatro partidos, la simpatía presenta mayor error medio en los dos estudios (diferencias de aproximadamente +0,80 y +0,44 pp respecto a decididos), mientras que la participación lo reduce ligeramente en uno y lo eleva en otro (−0,12 y +0,02 pp). Dos estudios de una misma elección no autorizan generalización ni cambios al pronóstico principal. Recuerdo, transferencia, eventos, peso demográfico aislado y escaños **no disponen aquí de una ablación**.
 
 ## Laboratorio de ablaciones del Motor 29N
 
