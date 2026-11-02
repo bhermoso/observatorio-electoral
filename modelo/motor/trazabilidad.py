@@ -53,8 +53,8 @@ def elaborar(encuestas, ajustes, variantes, principal, hoy, excluidas_prensa=0,
             "observaciones": [
                 {
                     "casa": e["casa"],
-                    "estudio": e["estudio"],
-                    "campo_fin": e["campo_fin"].isoformat(),
+                    "estudio": e.get("estudio", "sin-identificador"),
+                    "campo_fin": e["campo_fin"].isoformat() if e.get("campo_fin") else None,
                     "publicacion": e["publicacion"].isoformat() if e.get("publicacion") else None,
                     "voto_publicado": float(e["voto"][p]),
                     "origen": e["origen"],
