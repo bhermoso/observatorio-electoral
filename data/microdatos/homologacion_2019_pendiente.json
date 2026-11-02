@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "rule": "Las listas de códigos y variables se rellenarán exclusivamente tras examinar los cuestionarios y libros de códigos originales de cada estudio. Un campo nulo BLOQUEA el procesamiento de estimaciones.",
+  "studies": {
+    "3242": {
+      "election": "2019-04-28",
+      "weight": null,
+      "intention": null,
+      "combined_vote_sympathy": null,
+      "recall": null,
+      "participation": null,
+      "universe_filter": null,
+      "codes": {
+        "PSOE": null,
+        "PP": null,
+        "VOX": null,
+        "UNIDAS_PODEMOS": null,
+        "CIUDADANOS": null,
+        "OTRAS_CANDIDATURAS": null,
+        "INDECISION": null,
+        "NO_CONTESTA": null,
+        "ABSTENCION": null,
+        "BLANCO": null,
+        "NULO": null
+      },
+      "result_vote_denominator": null,
+      "reviewed_by": null,
+      "review_date": null
+    },
+    "3263": {
+      "election": "2019-11-10",
+      "weight": null,
+      "intention": null,
+      "combined_vote_sympathy": null,
+      "recall": null,
+      "participation": null,
+      "universe_filter": null,
+      "codes": {
+        "PSOE": null,
+        "PP": null,
+        "VOX": null,
+        "UNIDAS_PODEMOS": null,
+        "CIUDADANOS": null,
+        "MAS_PAIS": null,
+        "OTRAS_CANDIDATURAS": null,
+        "INDECISION": null,
+        "NO_CONTESTA": null,
+        "ABSTENCION": null,
+        "BLANCO": null,
+        "NULO": null
+      },
+      "result_vote_denominator": null,
+      "reviewed_by": null,
+      "review_date": null
+    }
+  },
+  "constraints": [
+    "No utilizar códigos de 2023 para un estudio de 2019",
+    "No fusionar Unidas Podemos, Más País y Sumar sin elección y criterios documentados",
+    "No inferir equivalencia de variables por coincidencia de nombre",
+    "No estimar errores hasta registrar recuentos, pesos, base de voto válido y resultados oficiales"
+  ]
+}
