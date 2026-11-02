@@ -1,4 +1,3 @@
-import {renderSimulador,bindSimulador} from './algoritmo-escanos.mjs';
 // Descripción trazable de las operaciones efectivamente presentes en Motor 29N.
 // Nunca presenta porcentajes de ingredientes no identificables.
 const REPO='https://github.com/bhermoso/observatorio-electoral/blob/main/';
@@ -35,6 +34,21 @@ function metrics(i,p){
  if(i===6)return [{name:'Congreso',value:'350 escaños',note:'Resultado de la suma de los 52 repartos'},{name:p+' · escaños medianos',value:principal?.escanos?.[0]!=null?f(principal.escanos[0],0):'No disponible',note:principal?.escanos?.length?'Percentiles 5–95: '+f(principal.escanos[1],0)+'–'+f(principal.escanos[2],0):'Sin distribución publicada'}];
  return [{name:p+' · voto mediano',value:principal?.voto?.[0]!=null?f(principal.voto[0])+' %':'No disponible',note:principal?.voto?.length?'Intervalo percentiles 5–95: '+f(principal.voto[1])+'–'+f(principal.voto[2])+' %':'No se exportó la distribución'}, {name:p+' · escaños medianos',value:principal?.escanos?.[0]!=null?f(principal.escanos[0],0):'No disponible',note:principal?.escanos?.length?'Percentiles 5–95: '+f(principal.escanos[1],0)+'–'+f(principal.escanos[2],0):''}, {name:'PP + Vox · mediana conjunta',value:model.principal?.bloques?.['PP+VOX']?.mediana!=null?f(model.principal.bloques['PP+VOX'].mediana,0):'No disponible',note:'No se suman las medianas individuales'}];
 }
+let simulatorLoad=null;
+async function loadOptionalSimulator(){
+ const mount=document.querySelector('#alg-extra-simulator');
+ if(!mount)return;
+ const requestedStep=step;
+ try{
+  if(!simulatorLoad)simulatorLoad=import('./algoritmo-escanos.mjs?v=20261102fix2');
+  const simulator=await simulatorLoad;
+  if(step!==requestedStep||!mount.isConnected)return;
+  mount.innerHTML=simulator.renderSimulador();
+  await simulator.bindSimulador();
+ }catch(error){
+  if(mount.isConnected)mount.innerHTML='<p class="alg-caution">El simulador territorial no está disponible: '+escapeHTML(error?.message||String(error))+'. Las ocho fases del algoritmo siguen funcionando. <a href="construye-estimacion.html#craft-seats">Abrir el laboratorio independiente →</a></p>';
+ }
+}
 function draw(){
  flow.innerHTML=ITEMS.map((s,i)=>'<button class="alg-step" type="button" aria-selected="'+(i===step)+'" data-step="'+i+'"><span>'+String(i+1).padStart(2,'0')+'</span><span><strong>'+escapeHTML(s.name)+'</strong><small>'+escapeHTML(s.short)+'</small></span></button>'+(i<ITEMS.length-1?'<div class="alg-arrow" aria-hidden="true">↓</div>':'')).join('');
  const item=ITEMS[step],p=party.value,stats=metrics(step,p);
@@ -45,9 +59,9 @@ function draw(){
   +'<h3>4. Cómo comprobarlo en el código</h3><div class="alg-source">'+item.code.map(path=>'<a href="'+REPO+encodeURI(path)+'" target="_blank" rel="noopener">'+escapeHTML(path.split('/').pop())+' ↗</a>').join('')+'</div>'
   +(step===0&&model?.trazabilidad?.partidos?.[p]?.observaciones?.length?'<h3>Encuestas utilizadas para '+escapeHTML(p)+'</h3><details><summary>Ver '+model.trazabilidad.partidos[p].observaciones.length+' observaciones y sus fuentes</summary><div class="table-wrap"><table><thead><tr><th>Casa</th><th>Fin de campo</th><th>Estimación</th><th>Origen</th><th>Documento</th></tr></thead><tbody>'+model.trazabilidad.partidos[p].observaciones.map(e=>'<tr><td>'+escapeHTML(e.casa)+'</td><td>'+escapeHTML(e.campo_fin)+'</td><td>'+f(e.voto_publicado)+' %</td><td>'+escapeHTML(e.origen)+'</td><td>'+(typeof e.url==='string'&&/^https:\/\//.test(e.url)?'<a href="'+escapeHTML(e.url)+'" target="_blank" rel="noopener">Original ↗</a>':'Sin enlace')+'</td></tr>').join('')+'</tbody></table></div></details>':'')
   +'<div class="alg-caution"><b>Alcance del dato mostrado:</b> '+escapeHTML(step===3?'La tendencia al corte no es el voto proyectado al día electoral.':step===5?'La cifra nacional no determina por sí sola el reparto provincial.':step===7?'Una mayoría de escaños es aritmética, no una predicción de pacto.':step===2?'Las variantes no son pasos secuenciales: son modelos alternativos mezclados en la distribución final.':'Las métricas visibles proceden del fichero de pronóstico cuando están exportadas; el esquema no inventa resultados intermedios.')+'</div>'
-  +(step===5||step===6?renderSimulador():'')
+  +(step===5||step===6?'<div id="alg-extra-simulator"><p>Preparando simulador territorial…</p></div>':'')
   +'<div class="alg-nav"><button id="alg-prev" type="button" '+(step===0?'disabled':'')+'>← Anterior</button><button id="alg-next" type="button" '+(step===7?'disabled':'')+'>Siguiente →</button></div>';
- if(step===5||step===6)bindSimulador();
+ if(step===5||step===6)void loadOptionalSimulator();
  detail.querySelector('#alg-prev').addEventListener('click',()=>selectStep(step-1));
  detail.querySelector('#alg-next').addEventListener('click',()=>selectStep(step+1));
 }
