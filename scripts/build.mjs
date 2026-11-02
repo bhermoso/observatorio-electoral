@@ -25,7 +25,7 @@ if(enVeda()){
   const corte=fragmento.indexOf('<div class="wrap">');
   const cabeza=corte>0?fragmento.slice(0,corte):'';
   const cuerpo=corte>0?fragmento.slice(corte):fragmento;
-  fs.writeFileSync('dist/pronostico.html',`<!doctype html>\n<html lang="es">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>\n${cabeza}<link rel="stylesheet" href="styles.css"><script type="module" src="glosario.mjs"></script></head>\n<body>\n${cuerpo}\n</body>\n</html>\n`);
+  fs.writeFileSync('dist/pronostico.html',`<!doctype html>\n<html lang="es">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>\n${cabeza}<style>.term-help{border-bottom:1px dotted #43816c;cursor:help}.term-help:focus-visible{outline:2px solid #43816c}.glossary-tooltip{position:fixed;z-index:99999;background:#163e35;color:#fff;border-radius:10px;padding:14px;max-width:320px;box-shadow:0 12px 24px #0004;pointer-events:none}.glossary-tooltip[hidden]{display:none!important}.glossary-tooltip p{font-size:13px;line-height:1.5;color:#fff;margin:8px 0 0}</style><script type="module" src="glosario.mjs"></script></head>\n<body>\n${cuerpo}\n</body>\n</html>\n`);
   console.log('Pronóstico publicado en dist/pronostico.html');
 }
 fs.writeFileSync('dist/.nojekyll','');
