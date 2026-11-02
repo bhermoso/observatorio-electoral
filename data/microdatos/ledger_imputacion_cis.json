@@ -1,0 +1,353 @@
+{
+  "version": 1,
+  "source": "CIS ZIP originales; agrupación nacional sin datos de personas",
+  "groups": [
+    "PSOE",
+    "PP",
+    "VOX",
+    "SUMAR",
+    "OTROS",
+    "SIN_CANDIDATURA"
+  ],
+  "studies": {
+    "3411": {
+      "n": 29201,
+      "direct": {
+        "PSOE": [
+          7200,
+          7196.3728
+        ],
+        "PP": [
+          7592,
+          7408.7194
+        ],
+        "VOX": [
+          2652,
+          2572.0758
+        ],
+        "SUMAR": [
+          3522,
+          3697.0614
+        ],
+        "OTROS": [
+          2087,
+          2121.1413
+        ],
+        "SIN_CANDIDATURA": [
+          6148,
+          6205.6336
+        ]
+      },
+      "groups": {
+        "INDECISION": {
+          "n": 4084,
+          "w": 4124.1672,
+          "sympathy": {
+            "PSOE": [
+              739,
+              722.727,
+              637.8036
+            ],
+            "PP": [
+              456,
+              452.5261,
+              399.57
+            ],
+            "VOX": [
+              135,
+              128.4628,
+              116.6393
+            ],
+            "SUMAR": [
+              598,
+              610.8072,
+              555.5445
+            ],
+            "OTROS": [
+              495,
+              511.3616,
+              447.5425
+            ],
+            "SIN_CANDIDATURA": [
+              1661,
+              1698.2825,
+              1419.7438
+            ]
+          },
+          "recall": {
+            "CON_RECUERDO": 2740,
+            "SIN_RECUERDO": 1344
+          }
+        },
+        "NO_CONTESTA": {
+          "n": 762,
+          "w": 811.7734,
+          "sympathy": {
+            "PSOE": [
+              65,
+              66.2653,
+              57.5198
+            ],
+            "PP": [
+              59,
+              62.5644,
+              58.3641
+            ],
+            "VOX": [
+              17,
+              17.6165,
+              16.0693
+            ],
+            "SUMAR": [
+              34,
+              32.9711,
+              29.9349
+            ],
+            "OTROS": [
+              76,
+              83.4881,
+              72.407
+            ],
+            "SIN_CANDIDATURA": [
+              511,
+              548.8679,
+              477.8498
+            ]
+          },
+          "recall": {
+            "CON_RECUERDO": 236,
+            "SIN_RECUERDO": 526
+          }
+        }
+      }
+    },
+    "3415": {
+      "n": 8798,
+      "direct": {
+        "PSOE": [
+          2232,
+          2233.6761
+        ],
+        "PP": [
+          2174,
+          2087.1601
+        ],
+        "VOX": [
+          778,
+          747.6854
+        ],
+        "SUMAR": [
+          960,
+          980.0913
+        ],
+        "OTROS": [
+          523,
+          584.8101
+        ],
+        "SIN_CANDIDATURA": [
+          2131,
+          2164.574
+        ]
+      },
+      "groups": {
+        "INDECISION": {
+          "n": 1014,
+          "w": 1060.516,
+          "sympathy": {
+            "PSOE": [
+              208,
+              212.425,
+              178.0185
+            ],
+            "PP": [
+              137,
+              138.6677,
+              121.1277
+            ],
+            "VOX": [
+              34,
+              35.2415,
+              29.8157
+            ],
+            "SUMAR": [
+              127,
+              126.6717,
+              116.7761
+            ],
+            "OTROS": [
+              78,
+              94.415,
+              83.8649
+            ],
+            "SIN_CANDIDATURA": [
+              430,
+              453.0951,
+              379.0573
+            ]
+          },
+          "recall": {
+            "CON_RECUERDO": 661,
+            "SIN_RECUERDO": 353
+          }
+        },
+        "NO_CONTESTA": {
+          "n": 431,
+          "w": 447.4286,
+          "sympathy": {
+            "PSOE": [
+              38,
+              45.8022,
+              41.3215
+            ],
+            "PP": [
+              41,
+              41.3569,
+              38.5411
+            ],
+            "VOX": [
+              16,
+              15.9876,
+              12.3225
+            ],
+            "SUMAR": [
+              11,
+              9.903,
+              8.7757
+            ],
+            "OTROS": [
+              16,
+              17.7906,
+              15.8691
+            ],
+            "SIN_CANDIDATURA": [
+              309,
+              316.5883,
+              293.2563
+            ]
+          },
+          "recall": {
+            "CON_RECUERDO": 163,
+            "SIN_RECUERDO": 268
+          }
+        }
+      }
+    },
+    "3582": {
+      "n": 5024,
+      "direct": {
+        "PSOE": [
+          1158,
+          1270.9472
+        ],
+        "PP": [
+          835,
+          737.7967
+        ],
+        "VOX": [
+          526,
+          583.3163
+        ],
+        "SUMAR": [
+          294,
+          227.8912
+        ],
+        "OTROS": [
+          751,
+          687.9563
+        ],
+        "SIN_CANDIDATURA": [
+          1460,
+          1516.0908
+        ]
+      },
+      "groups": {
+        "INDECISION": {
+          "n": 898,
+          "w": 870.7841,
+          "sympathy": {
+            "PSOE": [
+              135,
+              140.3695,
+              124.6482
+            ],
+            "PP": [
+              77,
+              99.0102,
+              93.7749
+            ],
+            "VOX": [
+              20,
+              17.974,
+              17.1685
+            ],
+            "SUMAR": [
+              76,
+              58.1722,
+              54.9942
+            ],
+            "OTROS": [
+              167,
+              124.7576,
+              111.2605
+            ],
+            "SIN_CANDIDATURA": [
+              423,
+              430.5006,
+              357.6456
+            ]
+          },
+          "recall": {
+            "CON_RECUERDO": 590,
+            "SIN_RECUERDO": 308
+          }
+        },
+        "NO_CONTESTA": {
+          "n": 102,
+          "w": 130.0257,
+          "sympathy": {
+            "PSOE": [
+              1,
+              2.1411,
+              2.1411
+            ],
+            "PP": [
+              3,
+              8.8198,
+              8.8198
+            ],
+            "VOX": [
+              2,
+              1.4437,
+              1.2618
+            ],
+            "SUMAR": [
+              3,
+              4.2115,
+              4.0066
+            ],
+            "OTROS": [
+              12,
+              18.7967,
+              18.1033
+            ],
+            "SIN_CANDIDATURA": [
+              81,
+              94.6128,
+              80.8751
+            ]
+          },
+          "recall": {
+            "CON_RECUERDO": 14,
+            "SIN_RECUERDO": 88
+          }
+        }
+      }
+    }
+  },
+  "rule": "INTENCIONGR 9998 indecisión, 9999 no contesta; VOTOSIMG como candidatura observada; recuerdo solo como descriptivo; PESO original",
+  "limitations": [
+    "VOTOSIMG es una variable construida, no equivale necesariamente a respuesta separada de simpatía.",
+    "Esta tabla no contiene intersecciones detalladas entre recuerdo por candidatura y VOTOSIMG: no permite imputación combinada por recuerdo y simpatía.",
+    "Los pesos efectivos de probabilidad PROBVOTO se muestran como diagnóstico, no se utilizan como predicción calibrada."
+  ]
+}
