@@ -174,3 +174,13 @@
 .trace-columns p{color:var(--muted);font-size:12px;line-height:1.6}
 .trace-audit{font-size:12px;line-height:1.8;background:#f1f6ed;padding:17px;border-radius:9px;margin-top:19px}
 @media(max-width:790px){.trace-columns{grid-template-columns:1fr}.trace-kpis{grid-template-columns:1fr}}
+
+/* Evaluación de recetas históricas con cambios porcentuales y error */
+.cocina-contributions{margin:20px 0}
+.kitchen-contribution-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}
+.kitchen-contribution-summary>div{border:1px solid var(--line);background:#f1f7ef;border-radius:10px;padding:15px}
+.kitchen-contribution-summary span,.kitchen-contribution-summary small{display:block;font-size:12px;color:var(--muted)}
+.kitchen-contribution-summary strong{display:block;font:800 24px Manrope,system-ui;color:var(--green);margin:7px 0}
+.cocina-contributions .table-wrap{overflow-x:auto;margin:16px 0}
+.cocina-contributions table{min-width:680px}
+@media(max-width:680px){.kitchen-contribution-summary{grid-template-columns:1fr}}
