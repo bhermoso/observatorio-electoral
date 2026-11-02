@@ -20,6 +20,16 @@ test('La intención directa sobre todos reproduce los valores históricos observ
   for(const [party,target] of Object.entries(targets))assert.ok(Math.abs(round(100*rows[data.groups.indexOf(party)][0]/all)-target)<0.002);
  }
 });
+test('El código 8995 se incluye como Otro partido en los tres estudios',()=>{
+ assert.equal(data.schema_version,2);
+ assert.match(data.recipe_note,/8995/);
+ const expect={3411:31.295,3415:33.673,3582:36.231};
+ for(const [id,target] of Object.entries(expect)){
+  const rows=data.study[id].methods.directa,den=rows.slice(0,5).reduce((a,r)=>a+r[0],0);
+  assert.ok(Math.abs(100*rows[0][0]/den-target)<0.001,id);
+  assert.ok(rows[4][0]>0,id);
+ }
+});
 test('La función de participación es una interpolación verificable con denominador conservado',()=>{
  for(const s of Object.values(data.study))for(const rows of Object.values(s.methods)){
   const candidates=rows.slice(0,5);
