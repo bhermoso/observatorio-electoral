@@ -10,8 +10,8 @@ const terms=new Map(items.map(([name,definition])=>[name.toLowerCase(),definitio
 
 test('Glosario contiene y explica los conceptos fundamentales',()=>{
  for(const term of ['intención de voto','intención directa ponderada','recuerdo de voto','error muestral','error no muestral','probabilidad de votar','probabilidad de voto','error de industria','simpatía','transferencias de voto','efecto de encuestadora','mayoría simple','d’Hondt']){
-  assert.ok(terms.has(term),term);
-  assert.ok(terms.get(term).length>55,term);
+  assert.ok(terms.has(term.toLowerCase()),term);
+  assert.ok(terms.get(term.toLowerCase()).length>55,term);
  }
  assert.ok(items.length>=35);
 });
