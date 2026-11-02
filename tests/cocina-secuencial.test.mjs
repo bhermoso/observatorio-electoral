@@ -14,7 +14,7 @@ test('El cubo procede de 3 encuestas con clasificación incluida de Otro partido
   const study=cube.studies[id];
   assert.equal(study.cube.length,2);
   for(const method of study.cube)assert.equal(method.length,6);
-  const n=study.cube[0].flat(2).reduce((sum,cell)=>sum+cell[0],0);
+  const n=study.cube[0].flat(1).reduce((sum,cell)=>sum+cell[0],0);
   assert.equal(n,study.n);
  }
 });
