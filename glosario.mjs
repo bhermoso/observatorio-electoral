@@ -5,7 +5,7 @@ export const TERMINOS = [
  ["intención de voto","Preferencia electoral declarada en la encuesta. Puede referirse a respuesta directa o a una estimación modelizada: conviene comprobar cuál se está mostrando."],
  ["recuerdo de voto","Declaración sobre a quién se votó en unas elecciones anteriores. Puede contener errores de memoria o respuesta; su distribución no equivale necesariamente al resultado real."],
  ["voto más simpatía","Variable que combina intención directa y afinidad partidista según reglas definidas en el estudio. La simpatía no garantiza un voto futuro."],
- ["simpatía","Afinidad o proximidad subjetiva hacia un partido, preguntada de forma diferente a la intención de voto. Puede explorarse para estudiar indecisión."],
+ ["simpatía","Afinidad o proximidad subjetiva hacia un partido, preguntada de forma diferente a la intención de voto. Puede explorarse para estudiar indecisión, pero no garantiza que se emita ese voto."],
  ["transferencias de voto","Cruce entre el voto recordado de una elección anterior y la intención declarada actual. Describe respuestas de personas encuestadas, no flujos de votos ya observados."],
  ["probabilidad de votar","Disposición declarada a acudir a las urnas, a menudo en una escala. No es una probabilidad real calibrada salvo que se haya comprobado empíricamente."],
  ["probabilidad de voto","Expresión ambigua: puede referirse a la probabilidad declarada de participar o a una predicción probabilística del voto a un partido. Hay que identificar la variable."],
