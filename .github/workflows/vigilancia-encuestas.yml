@@ -1,0 +1,39 @@
+name: Vigilancia documental de encuestas
+on:
+  schedule:
+    - cron: '40 7 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Descubrir noticias y fuentes candidatas
+        run: python scripts/vigilar_encuestas.py monitor-output
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vigilancia-documental
+          path: monitor-output/
+      - name: Crear o actualizar cola de revisión en Issues
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path("monitor-output/report.md")
+          note="\n\n**Control editorial obligatorio:** corroborar fuente original, fecha de campo y de publicación, muestra, variable objetivo, categorías y escenario. No se realiza incorporación automática al promedio o al Motor 29N."
+          p.write_text(p.read_text(encoding="utf-8")+note+"\n",encoding="utf-8")
+          PY
+          TITLE="[Vigilancia] Encuestas y análisis pendientes de revisión"
+          EXISTING=$(gh issue list --state open --search "in:title [Vigilancia] Encuestas y análisis pendientes de revisión" --json number --jq '.[0].number // empty')
+          if [ -n "$EXISTING" ]; then
+            gh issue edit "$EXISTING" --body-file monitor-output/report.md
+          else
+            gh issue create --title "$TITLE" --body-file monitor-output/report.md
+          fi
