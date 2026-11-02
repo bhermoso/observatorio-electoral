@@ -50,6 +50,19 @@ def elaborar(encuestas, ajustes, variantes, principal, hoy, excluidas_prensa=0,
             "encuestadoras_distintas": len(casas),
             "casas": casas,
             "origenes": dict(Counter(e["origen"] for e in aportan)),
+            "observaciones": [
+                {
+                    "casa": e["casa"],
+                    "estudio": e["estudio"],
+                    "campo_fin": e["campo_fin"].isoformat(),
+                    "publicacion": e["publicacion"].isoformat() if e.get("publicacion") else None,
+                    "voto_publicado": float(e["voto"][p]),
+                    "origen": e["origen"],
+                    "url": e.get("url"),
+                    "muestra": e.get("n"),
+                }
+                for e in sorted(aportan, key=lambda x: x["campo_fin"], reverse=True)
+            ],
             "variantes_tendencia": variantes_entrada,
             "pronostico_principal_voto_mediana": float(voto[0]) if voto else None,
             "pronostico_principal_voto_p5_p95": [float(voto[1]), float(voto[2])] if voto else None,
