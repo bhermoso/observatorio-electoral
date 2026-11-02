@@ -4413,5 +4413,148 @@
   },
   "firma": "52c5cfe682e81577",
   "nuevas": []
+ },
+ {
+  "fecha": "2026-11-02",
+  "n_encuestas": 18,
+  "casas": [
+   "40dB.",
+   "Ateneo del Dato",
+   "CIS",
+   "DYM",
+   "Demoscopia y Servicios",
+   "GAD3",
+   "IMOP",
+   "NC Report",
+   "Sigma Dos",
+   "SocioMétrica"
+  ],
+  "ultima_encuesta": "2026-10-23",
+  "voto": {
+   "PP": [
+    30.95,
+    26.36,
+    35.27
+   ],
+   "PSOE": [
+    27.6,
+    23.1,
+    31.78
+   ],
+   "VOX": [
+    18.7,
+    15.11,
+    22.11
+   ],
+   "SUMAR": [
+    6.05,
+    3.96,
+    8.0
+   ],
+   "PODEMOS": [
+    2.65,
+    1.24,
+    4.16
+   ]
+  },
+  "escanos": {
+   "PP": [
+    130.0,
+    110.0,
+    148.0
+   ],
+   "PSOE": [
+    113.0,
+    92.0,
+    136.0
+   ],
+   "VOX": [
+    67.0,
+    51.0,
+    82.0
+   ],
+   "SUMAR": [
+    8.0,
+    4.0,
+    15.0
+   ],
+   "PODEMOS": [
+    2.0,
+    0.0,
+    4.0
+   ],
+   "SALF": [
+    0.0,
+    0.0,
+    2.0
+   ],
+   "ERC": [
+    10.0,
+    4.0,
+    15.0
+   ],
+   "JUNTS": [
+    4.0,
+    0.0,
+    9.0
+   ],
+   "BILDU": [
+    7.0,
+    0.0,
+    12.0
+   ],
+   "PNV": [
+    4.0,
+    0.0,
+    8.0
+   ],
+   "BNG": [
+    2.0,
+    0.0,
+    7.0
+   ],
+   "CC": [
+    1.0,
+    0.0,
+    4.0
+   ],
+   "UPN": [
+    0.0,
+    0.0,
+    3.0
+   ]
+  },
+  "primero": {
+   "PP": 0.779,
+   "PSOE": 0.221
+  },
+  "bloques": {
+   "PP+VOX": {
+    "mediana": 196.0,
+    "p5": 172.0,
+    "p95": 220.0,
+    "p_mayoria": 0.917
+   },
+   "PP+VOX+UPN": {
+    "mediana": 197.0,
+    "p5": 172.95,
+    "p95": 222.0,
+    "p_mayoria": 0.919
+   },
+   "PSOE+SUMAR+PODEMOS": {
+    "mediana": 123.0,
+    "p5": 98.0,
+    "p95": 149.0,
+    "p_mayoria": 0.001
+   },
+   "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
+    "mediana": 152.0,
+    "p5": 128.0,
+    "p95": 177.0,
+    "p_mayoria": 0.067
+   }
+  },
+  "firma": "46f9cc546530af0e",
+  "nuevas": []
  }
 ]
