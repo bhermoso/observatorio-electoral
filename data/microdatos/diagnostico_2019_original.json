@@ -1,0 +1,323 @@
+{
+  "schema_version": 1,
+  "source": "MD3242.zip y MD3263.zip aportados por usuario; DA/ES/Código original",
+  "studies": {
+    "3242": {
+      "n": 16194,
+      "kish_n": 11435.6,
+      "weighted_n": 16193.9455,
+      "sha256": "24cbdbccf119d1174fb6ed5cd3fc7a23aa8303d8244ca5cdf717d27399f08bbc",
+      "intention": {
+        "BLANCO": {
+          "n": 356,
+          "w": 357.601
+        },
+        "CIUDADANOS": {
+          "n": 1104,
+          "w": 1144.497
+        },
+        "INDECISION": {
+          "n": 4202,
+          "w": 4101.477
+        },
+        "NO_CONTESTA": {
+          "n": 1296,
+          "w": 1329.82
+        },
+        "NO_SABE": {
+          "n": 724,
+          "w": 726.905
+        },
+        "NO_VOTARIA": {
+          "n": 1186,
+          "w": 1129.512
+        },
+        "NULO": {
+          "n": 125,
+          "w": 123.772
+        },
+        "OTRAS_CANDIDATURAS": {
+          "n": 1221,
+          "w": 1345.653
+        },
+        "PP": {
+          "n": 1498,
+          "w": 1373.832
+        },
+        "PSOE": {
+          "n": 3003,
+          "w": 3057.55
+        },
+        "UNIDAS_PODEMOS": {
+          "n": 855,
+          "w": 889.776
+        },
+        "VOX": {
+          "n": 624,
+          "w": 613.552
+        }
+      },
+      "groups": {
+        "INDECISION": {
+          "n": 4202,
+          "w": 4101.477,
+          "votosimg": {
+            "CIUDADANOS": {
+              "n": 403,
+              "w": 422.723
+            },
+            "OTRAS_CANDIDATURAS": {
+              "n": 278,
+              "w": 310.426
+            },
+            "PP": {
+              "n": 386,
+              "w": 356.888
+            },
+            "PSOE": {
+              "n": 689,
+              "w": 678.995
+            },
+            "UNIDAS_PODEMOS": {
+              "n": 228,
+              "w": 251.327
+            },
+            "VOX": {
+              "n": 72,
+              "w": 70.087
+            }
+          },
+          "not_candidate_weight": 2011.031,
+          "observable_candidate_weight": 2090.446
+        },
+        "NO_SABE": {
+          "n": 724,
+          "w": 726.905,
+          "votosimg": {
+            "CIUDADANOS": {
+              "n": 43,
+              "w": 55.147
+            },
+            "OTRAS_CANDIDATURAS": {
+              "n": 54,
+              "w": 43.103
+            },
+            "PP": {
+              "n": 51,
+              "w": 44.238
+            },
+            "PSOE": {
+              "n": 93,
+              "w": 100.151
+            },
+            "UNIDAS_PODEMOS": {
+              "n": 31,
+              "w": 32.814
+            }
+          },
+          "not_candidate_weight": 451.452,
+          "observable_candidate_weight": 275.453,
+          "privacy_merged_into_other": true
+        },
+        "NO_CONTESTA": {
+          "n": 1296,
+          "w": 1329.82,
+          "votosimg": {
+            "CIUDADANOS": {
+              "n": 54,
+              "w": 50.423
+            },
+            "OTRAS_CANDIDATURAS": {
+              "n": 86,
+              "w": 89.325
+            },
+            "PP": {
+              "n": 75,
+              "w": 71.69
+            },
+            "PSOE": {
+              "n": 99,
+              "w": 107.482
+            },
+            "UNIDAS_PODEMOS": {
+              "n": 35,
+              "w": 34.054
+            }
+          },
+          "not_candidate_weight": 976.846,
+          "observable_candidate_weight": 352.974,
+          "privacy_merged_into_other": true
+        }
+      }
+    },
+    "3263": {
+      "n": 17650,
+      "kish_n": 11747.6,
+      "weighted_n": 17649.99822,
+      "sha256": "efe93eeb74047a677d2cd4c39be0fa5e340c5f7db4ec651fc4e4a6f3bcc3532c",
+      "intention": {
+        "BLANCO": {
+          "n": 266,
+          "w": 247.461
+        },
+        "CIUDADANOS": {
+          "n": 710,
+          "w": 740.203
+        },
+        "INDECISION": {
+          "n": 3620,
+          "w": 3583.606
+        },
+        "NO_CONTESTA": {
+          "n": 1590,
+          "w": 1628.474
+        },
+        "NO_SABE": {
+          "n": 542,
+          "w": 568.813
+        },
+        "NO_VOTARIA": {
+          "n": 2223,
+          "w": 2074.947
+        },
+        "NULO": {
+          "n": 113,
+          "w": 112.857
+        },
+        "OTRAS_CANDIDATURAS": {
+          "n": 1478,
+          "w": 1862.886
+        },
+        "PP": {
+          "n": 1823,
+          "w": 1606.123
+        },
+        "PSOE": {
+          "n": 3574,
+          "w": 3508.8
+        },
+        "UNIDAS_PODEMOS": {
+          "n": 985,
+          "w": 1012.597
+        },
+        "VOX": {
+          "n": 726,
+          "w": 703.232
+        }
+      },
+      "groups": {
+        "INDECISION": {
+          "n": 3620,
+          "w": 3583.606,
+          "votosimg": {
+            "CIUDADANOS": {
+              "n": 271,
+              "w": 263.322
+            },
+            "OTRAS_CANDIDATURAS": {
+              "n": 252,
+              "w": 321.307
+            },
+            "PP": {
+              "n": 319,
+              "w": 282.617
+            },
+            "PSOE": {
+              "n": 624,
+              "w": 585.861
+            },
+            "UNIDAS_PODEMOS": {
+              "n": 160,
+              "w": 181.565
+            },
+            "VOX": {
+              "n": 64,
+              "w": 57.126
+            }
+          },
+          "not_candidate_weight": 1891.808,
+          "observable_candidate_weight": 1691.798
+        },
+        "NO_SABE": {
+          "n": 542,
+          "w": 568.813,
+          "votosimg": {
+            "CIUDADANOS": {
+              "n": 22,
+              "w": 16.154
+            },
+            "OTRAS_CANDIDATURAS": {
+              "n": 50,
+              "w": 68.93
+            },
+            "PP": {
+              "n": 24,
+              "w": 23.286
+            },
+            "PSOE": {
+              "n": 61,
+              "w": 55.743
+            }
+          },
+          "not_candidate_weight": 404.7,
+          "observable_candidate_weight": 164.113,
+          "privacy_merged_into_other": true
+        },
+        "NO_CONTESTA": {
+          "n": 1590,
+          "w": 1628.474,
+          "votosimg": {
+            "CIUDADANOS": {
+              "n": 28,
+              "w": 27.304
+            },
+            "OTRAS_CANDIDATURAS": {
+              "n": 57,
+              "w": 62.766
+            },
+            "PP": {
+              "n": 76,
+              "w": 67.759
+            },
+            "PSOE": {
+              "n": 100,
+              "w": 110.6
+            },
+            "UNIDAS_PODEMOS": {
+              "n": 21,
+              "w": 17.407
+            }
+          },
+          "not_candidate_weight": 1342.638,
+          "observable_candidate_weight": 285.836,
+          "privacy_merged_into_other": true
+        }
+      }
+    }
+  },
+  "variables": {
+    "3242": {
+      "intention": "P10R",
+      "votosimg": "VOTOSIMG",
+      "weight": "PESO",
+      "recall": "RECUERDO",
+      "turnout": "P12"
+    },
+    "3263": {
+      "intention": "P9R",
+      "votosimg": "VOTOSIMG",
+      "weight": "PESO",
+      "recall": "RECUERDO",
+      "turnout": "P11"
+    }
+  },
+  "limits": [
+    "2019 código 94 indecisión explícita, 98 no sabe y 99 no contesta: no fusionar.",
+    "Candidatura 21 en 3263 corresponde a Unidas Podemos; no homologar como Sumar.",
+    "Otras candidaturas agrupa partidos distintos; no se infieren escaños.",
+    "VOTOSIMG contiene voto más simpatía, no una medición de simpatía independiente.",
+    "Celdas inferiores a 20 se agregan al residual publicado; en esos grupos OTROS no es categoría estricta de partido.",
+    "Las cifras de peso redondeadas a tres decimales; no inferir exactitud superior.",
+    "No constituye validación fuera de muestra."
+  ]
+}
