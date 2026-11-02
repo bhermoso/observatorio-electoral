@@ -1,0 +1,165 @@
+{
+  "updated": "2026-11-02",
+  "criterion": "Solo documentos que describen operaciones concretas de estimación electoral acreditan cocina. CATI, CAWI, muestras, paneles, pesos demográficos y servicios no demuestran por sí solos el cálculo de voto estimado.",
+  "entries": [
+    {
+      "id": "cis",
+      "name": "CIS",
+      "evidence": "metodo_publicado_general",
+      "observed": [
+        "El CIS publica fichas, cuestionarios, microdatos y estimaciones de voto por estudio.",
+        "Existe un repositorio de informes técnicos de estimación por estudio; no se ha localizado allí un informe individual del 3582 en esta revisión.",
+        "Una ficha oficial de estimación electoral del CIS de 2026 describe el método de escenarios y el modelo bifactorial inercia-incertidumbre."
+      ],
+      "notVerified": [
+        "No consta una implementación íntegra y comprobada del algoritmo aplicada al estudio 3582.",
+        "No se pueden descomponer los ajustes oficiales entre recuerdo, simpatía y otras variables a partir de la cifra publicada."
+      ],
+      "sources": [
+        {
+          "label": "Informes técnicos de estimación del CIS",
+          "url": "https://www.cis.es/es/estudios/preguntas-frecuentes/informes-tecnicos",
+          "type": "documentación metodológica por estudio"
+        },
+        {
+          "label": "Nota metodológica oficial de una estimación del CIS en 2026, estudio 3558",
+          "url": "https://www.cis.es/documents/d/guest/3558_estimacion-pdf",
+          "type": "método declarado para otro estudio"
+        },
+        {
+          "label": "Guía del barómetro y preguntas habituales",
+          "url": "https://www.cis.es/es/estudios/metodologia/metodologias-y-preguntas-fijas-del-barometro",
+          "type": "variables y diseño, no receta completa"
+        }
+      ]
+    },
+    {
+      "id": "metroscopia",
+      "name": "Metroscopia",
+      "evidence": "sin_formula_electoral_verificada",
+      "observed": [
+        "La página «Cómo medimos» identifica técnicas de recogida y principios de análisis, no la fórmula que transforma intención directa en voto estimado."
+      ],
+      "notVerified": [
+        "Sin una publicación electoral específica auditada no pueden atribuirse pesos de recuerdo, reglas de simpatía, redistribución de indecisos ni un modelo de estimación determinado."
+      ],
+      "sources": [
+        {
+          "label": "Cómo medimos (solo metodología general; no acredita cocina)",
+          "url": "https://metroscopia.org/como-medimos/",
+          "type": "referencia general, no prueba de cocina"
+        }
+      ]
+    },
+    {
+      "id": "40db-",
+      "name": "40dB.",
+      "evidence": "ficha_sondeo_sin_formula_completa",
+      "observed": [
+        "Hay estimaciones publicadas, escenarios o fichas técnicas archivadas en el Observatorio."
+      ],
+      "notVerified": [
+        "No se ha incorporado una fórmula electoral original, específica y suficientemente detallada de este instituto para reconstruirla.",
+        "El método de entrevista y la ponderación de muestra no demuestran cómo se redistribuyen indecisos o se corrige la intención directa."
+      ],
+      "sources": []
+    },
+    {
+      "id": "gad3",
+      "name": "GAD3",
+      "evidence": "ficha_sondeo_sin_formula_completa",
+      "observed": [
+        "Hay estimaciones publicadas, escenarios o fichas técnicas archivadas en el Observatorio."
+      ],
+      "notVerified": [
+        "No se ha incorporado una fórmula electoral original, específica y suficientemente detallada de este instituto para reconstruirla.",
+        "El método de entrevista y la ponderación de muestra no demuestran cómo se redistribuyen indecisos o se corrige la intención directa."
+      ],
+      "sources": []
+    },
+    {
+      "id": "imop-insights",
+      "name": "IMOP Insights",
+      "evidence": "ficha_sondeo_sin_formula_completa",
+      "observed": [
+        "Hay estimaciones publicadas, escenarios o fichas técnicas archivadas en el Observatorio."
+      ],
+      "notVerified": [
+        "No se ha incorporado una fórmula electoral original, específica y suficientemente detallada de este instituto para reconstruirla.",
+        "El método de entrevista y la ponderación de muestra no demuestran cómo se redistribuyen indecisos o se corrige la intención directa."
+      ],
+      "sources": []
+    },
+    {
+      "id": "dym",
+      "name": "DYM",
+      "evidence": "ficha_sondeo_sin_formula_completa",
+      "observed": [
+        "Hay estimaciones publicadas, escenarios o fichas técnicas archivadas en el Observatorio."
+      ],
+      "notVerified": [
+        "No se ha incorporado una fórmula electoral original, específica y suficientemente detallada de este instituto para reconstruirla.",
+        "El método de entrevista y la ponderación de muestra no demuestran cómo se redistribuyen indecisos o se corrige la intención directa."
+      ],
+      "sources": []
+    },
+    {
+      "id": "ateneo-del-dato",
+      "name": "Ateneo del Dato",
+      "evidence": "ficha_sondeo_sin_formula_completa",
+      "observed": [
+        "Hay estimaciones publicadas, escenarios o fichas técnicas archivadas en el Observatorio."
+      ],
+      "notVerified": [
+        "No se ha incorporado una fórmula electoral original, específica y suficientemente detallada de este instituto para reconstruirla.",
+        "El método de entrevista y la ponderación de muestra no demuestran cómo se redistribuyen indecisos o se corrige la intención directa."
+      ],
+      "sources": []
+    },
+    {
+      "id": "sigma-dos",
+      "name": "Sigma Dos",
+      "evidence": "ficha_sondeo_sin_formula_completa",
+      "observed": [
+        "Hay estimaciones publicadas, escenarios o fichas técnicas archivadas en el Observatorio."
+      ],
+      "notVerified": [
+        "No se ha incorporado una fórmula electoral original, específica y suficientemente detallada de este instituto para reconstruirla.",
+        "El método de entrevista y la ponderación de muestra no demuestran cómo se redistribuyen indecisos o se corrige la intención directa."
+      ],
+      "sources": []
+    }
+  ],
+  "operations": [
+    {
+      "name": "Intención directa",
+      "source": "Microdatos y cuestionario del estudio",
+      "inference": "Tabulación ponderada con denominador explícito; no es resultado electoral."
+    },
+    {
+      "name": "Voto más simpatía",
+      "source": "Variable declarada o recodificada del estudio",
+      "inference": "Se puede tabular; el uso de simpatía para distribuir indecisos adicionales requiere regla demostrada."
+    },
+    {
+      "name": "Recuerdo de voto",
+      "source": "Pregunta de recuerdo y escrutinio oficial correspondiente",
+      "inference": "Cruces y contrastes reproducibles; cualquier factor corrector es hipótesis salvo fórmula documentada."
+    },
+    {
+      "name": "Participación",
+      "source": "Probabilidad autodeclarada, si existe",
+      "inference": "Escenarios estimables; transformar intención declarada en voto efectivo requiere calibración."
+    },
+    {
+      "name": "Acontecimientos",
+      "source": "Fecha y entrevistas antes y después",
+      "inference": "Se puede medir variación descriptiva; el efecto causal no se identifica solo con la fecha."
+    },
+    {
+      "name": "Sesgo de casa",
+      "source": "Series y resultados históricos",
+      "inference": "Depende del modelo de anclaje, periodo y errores; no es observable directamente en una sola encuesta."
+    }
+  ]
+}
