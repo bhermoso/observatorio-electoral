@@ -90,3 +90,25 @@
 .event-evidence-details table{min-width:680px}
 .event-evidence-details td small{display:block;color:var(--muted);font-size:10px}
 @media(max-width:680px){.event-evidence-kpis{grid-template-columns:1fr}.event-evidence-head,.event-evidence-row{grid-template-columns:60px minmax(70px,1fr) 62px 62px 56px;gap:5px;font-size:11px}.event-evidence-head{font-size:10px}.event-evidence-row small{font-size:9px}}
+
+/* Seguimiento longitudinal de casas, agrupaciones y promedio publicado */
+.series-panel{margin:24px 0}
+.series-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
+.series-stats>div{padding:16px;background:#f1f6ed;border:1px solid var(--line);border-radius:10px}
+.series-stats span,.series-stats small{display:block;color:var(--muted);font-size:12px}
+.series-stats b{display:block;font-family:Manrope,system-ui;font-size:24px}
+.series-key{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:12px;color:var(--muted);margin:19px 0}
+.series-key span{display:inline-flex;gap:7px;align-items:center}
+.series-key i{display:inline-block;width:14px;height:10px;border-radius:3px;background:#2f8263}
+.series-key .series-key-point{border-radius:50%;width:10px;height:10px}
+.series-key .series-key-mean{height:4px;background:repeating-linear-gradient(90deg,#173b2d 0 6px,transparent 6px 10px)}
+.series-key .series-key-event{width:4px;height:13px;background:#b77b3c}
+.series-scroll{overflow-x:auto}
+.series-chart{display:block;min-width:610px;width:100%;border:1px solid var(--line);border-radius:10px;background:#fcfefc}
+.series-panel .notice{font-size:13px}
+.series-tables{margin:20px 0}
+.series-tables details{border:1px solid var(--line);padding:14px 16px;border-radius:9px;margin-bottom:10px}
+.series-tables summary{cursor:pointer;color:var(--green);font-weight:700}
+.series-tables .table-wrap{margin-top:13px}
+.series-tables table{min-width:680px}
+@media(max-width:680px){.series-stats{grid-template-columns:1fr}.series-panel .panel-head{display:block}}
