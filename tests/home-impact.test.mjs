@@ -1,0 +1,37 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {calculate} from '../cocina-secuencial.mjs';
+import {projection} from '../cocina-escanos.mjs';
+const cube=JSON.parse(fs.readFileSync('data/microdatos/cubo_decisiones_cis.json','utf8'));
+const election=JSON.parse(fs.readFileSync('data/election.json','utf8'));
+test('Portada publica síntesis visual con cifras reales y dos fuentes separadas',()=>{
+ const app=fs.readFileSync('app.mjs','utf8');
+ const homepage=fs.readFileSync('home-impact.mjs','utf8');
+ const css=fs.readFileSync('styles.css','utf8');
+ const build=fs.readFileSync('scripts/build.mjs','utf8');
+ assert.match(app,/renderHomeImpact\(\)/);
+ assert.match(app,/bindHomeImpact\(polls\)/);
+ assert.match(build,/home-impact.mjs/);
+ assert.match(homepage,/data\/modelo\/pronostico.json/);
+ assert.match(homepage,/data\/microdatos\/cubo_decisiones_cis.json/);
+ assert.match(homepage,/data\/election.json/);
+ assert.match(homepage,/const key=p==='SUMAR'\?'Sumar':p/);
+ assert.match(homepage,/consenso_privadas/);
+ assert.match(css,/prefers-reduced-motion/);
+});
+test('La comparación de recetas utiliza mismo estudio y el mismo traslado territorial',()=>{
+ const js=fs.readFileSync('comparador-cocina.mjs','utf8');
+ const html=fs.readFileSync('construye-estimacion.html','utf8');
+ assert.match(html,/id="comparador-recetas"/);
+ assert.match(js,/calculate\(cube/);
+ assert.match(js,/projection\(election/);
+ assert.match(js,/experimentos-cocina-oee.json/);
+ const a=calculate(cube,{study:'3415',weighted:true,decided:true});
+ const b=calculate(cube,{study:'3415',weighted:true,decided:true,sympathy:true});
+ assert.notEqual(a.shares.PP,b.shares.PP);
+ const sa=projection(election,{PP:a.shares.PP,PSOE:a.shares.PSOE,VOX:a.shares.VOX,SUMAR:a.shares.SUMAR});
+ const sb=projection(election,{PP:b.shares.PP,PSOE:b.shares.PSOE,VOX:b.shares.VOX,SUMAR:b.shares.SUMAR});
+ assert.equal(sa.diagnostics.totalSeats,350);
+ assert.equal(sb.diagnostics.totalSeats,350);
+});
