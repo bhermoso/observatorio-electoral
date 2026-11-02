@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "updated": "2026-11-02",
+  "definition": "Cada unidad de validación independiente es una elección con resultado oficial y microdatos procesados con la misma receta predefinida. Estudios de una misma elección no equivalen a elecciones independientes.",
+  "elections": [
+    {
+      "id": "es-congreso-2019-04",
+      "date": "2019-04-28",
+      "status": "candidate",
+      "cis": [
+        {
+          "study": "3242",
+          "name": "Macrobarómetro de marzo 2019. Preelectoral elecciones generales",
+          "official_study": "https://www.cis.es/documents/d/guest/ft3242-2019",
+          "estimate": "https://www.cis.es/documents/d/cis/es3242marpdf",
+          "microdata_status": "catalogued_not_processed"
+        }
+      ],
+      "requires": [
+        "ZIP original y diccionario de códigos",
+        "identificar población, universo, PESO y categorías voto y recuerdo",
+        "resultado oficial por partido y provincia",
+        "equivalencia explícita de candidaturas 2019",
+        "ejecutar recetas congeladas sin ajuste con esta elección"
+      ],
+      "comparable": false,
+      "independent_election_test": false
+    },
+    {
+      "id": "es-congreso-2019-11",
+      "date": "2019-11-10",
+      "status": "candidate",
+      "cis": [
+        {
+          "study": "3263",
+          "name": "Macrobarómetro de octubre 2019. Preelectoral elecciones generales",
+          "official_study": "https://www.cis.es/en/surveys/macrobarometro-de-octubre-2019.-preelectoral-elecciones-generales-2019",
+          "estimate": "https://www.cis.es/documents/d/cis/es3263marmt_a-mod-",
+          "microdata_status": "catalogued_not_processed"
+        }
+      ],
+      "requires": [
+        "ZIP original y diccionario de códigos",
+        "identificar población, universo, PESO y categorías voto y recuerdo",
+        "resultado oficial por partido y provincia",
+        "equivalencia explícita de candidaturas 2019",
+        "ejecutar recetas congeladas sin ajuste con esta elección"
+      ],
+      "comparable": false,
+      "independent_election_test": false
+    },
+    {
+      "id": "es-congreso-2023-07",
+      "date": "2023-07-23",
+      "status": "exploratory_retrofit",
+      "cis": [
+        {
+          "study": "3411",
+          "microdata_status": "aggregated"
+        },
+        {
+          "study": "3415",
+          "microdata_status": "aggregated"
+        }
+      ],
+      "results": "data/microdatos/validacion_23j.json",
+      "comparable": true,
+      "independent_election_test": false,
+      "leakage_risk": "Las 16 recetas se han explorado usando el escrutinio del 23J ya conocido; no se usa como evaluación independiente para seleccionar una receta."
+    },
+    {
+      "id": "es-congreso-2026-unheld",
+      "date": null,
+      "status": "future_unknown",
+      "cis": [
+        {
+          "study": "3582",
+          "microdata_status": "aggregated"
+        }
+      ],
+      "comparable": false,
+      "independent_election_test": false,
+      "note": "No hay elección general celebrada vinculada con este estudio ni resultado final para evaluar."
+    }
+  ],
+  "acceptance_rules": [
+    "Prohibido mezclar denominadores de voto válido con intención directa sobre toda la muestra.",
+    "No emparejar etiquetas SUMAR/Podemos/Unidas Podemos o alianzas sin mapa electoral y año explícitos.",
+    "No emplear el resultado de la elección reservada para elegir reglas, reponderaciones o parámetros.",
+    "No mostrar una receta ganadora sin dos o más elecciones independientes preparadas y pruebas históricas preespecificadas.",
+    "Guardar código, versiones, conjunto de entrenamiento, partición por elección y resultado por partido; distinguir exploración de prueba."
+  ],
+  "independent_elections_available": 0
+}
