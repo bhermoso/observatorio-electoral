@@ -1,0 +1,35 @@
+import {auditImputations,POLICY_LABELS,EVALUATED_PARTIES} from './validacion-imputaciones.mjs';
+const $=id=>document.getElementById(id);
+const fmt=(n,d=2)=>Number(n).toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d});
+const sg=n=>n>0?'+':'';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let report,selected='exclude__exclude';
+const method=x=>POLICY_LABELS[x.indecision]+' / '+POLICY_LABELS[x.nonresponse];
+const metric=(heading,value,note)=>'<div class="vh-metric"><small>'+heading+'</small><strong>'+value+'</strong><span>'+note+'</span></div>';
+function draw(){
+ const order=$('vh-order').value,study=$('vh-study').value,party=$('vh-party').value;
+ const rows=[...report.rows].sort((a,b)=>order==='mae'?a.mae23j-b.mae23j:order==='shift'?a.withinElectionShift-b.withinElectionShift:a.id.localeCompare(b.id));
+ $('vh-table').innerHTML='<table><thead><tr><th>Tratamiento indecisos / no respuesta</th><th>MAE 3411</th><th>MAE 3415</th><th>Media 23J</th><th>Diferencia entre estudios</th><th>Máximo error</th></tr></thead><tbody>'+rows.map(r=>'<tr aria-selected="'+(r.id===selected)+'"><td><button type="button" data-recipe="'+r.id+'">'+esc(method(r))+'</button></td><td>'+fmt(r.studies[0].mae)+' pp</td><td>'+fmt(r.studies[1].mae)+' pp</td><td>'+fmt(r.mae23j)+' pp</td><td>'+fmt(r.withinElectionShift)+' pp</td><td>'+fmt(r.maxObservedError)+' pp</td></tr>').join('')+'</tbody></table>';
+ $('vh-table').querySelectorAll('button[data-recipe]').forEach(b=>b.onclick=()=>{selected=b.dataset.recipe;draw()});
+ const recipe=report.rows.find(x=>x.id===selected),a=recipe.studies.find(x=>x.study===study);
+ const partySigned=a.errors[party],p=a.vote[party],observed=report.official[party];
+ const explain=partySigned>0?'por encima':partySigned<0?'por debajo':'igual al';
+ $('vh-detail').innerHTML='<div class="vh-detail"><small>REGLAS ACTUALES · '+study+'</small><h3>'+esc(method(recipe))+'</h3><p>Se conservan las candidaturas declaradas y se aplican estas reglas a los grupos de indecisos y de no respuesta del estudio. <a class="vh-link" href="metodo-evidencia.html">Inspeccionar numeradores y denominadores</a>.</p><p>MAE en los cuatro partidos: <b>'+fmt(a.mae)+' pp</b>.</p><p>Error máximo entre los cuatro: <b>'+fmt(a.max)+' pp</b>. No representa un intervalo de confianza.</p></div>'+
+ '<div class="vh-detail"><small>ERROR OBSERVADO · '+party+'</small><h3>'+fmt(p)+' % estimado / '+fmt(observed)+' % oficial</h3><p>La receta produce '+fmt(p)+' % para '+party+', '+fmt(Math.abs(partySigned))+' puntos '+explain+' resultado oficial del 23J.</p>'+
+ EVALUATED_PARTIES.map(k=>'<div class="vh-line"><span>'+esc(k)+'</span><div class="vh-track"><i style="width:'+Math.min(100,a.absolute[k]/9*100)+'%"></i></div><b>'+sg(a.errors[k])+fmt(a.errors[k])+' pp</b></div>').join('')+
+ '<p>Los errores llevan signo (estimado − oficial). La barra representa su valor absoluto.</p></div>';
+}
+async function start(){
+ try{
+  const [ledger,validation]=await Promise.all(['data/microdatos/ledger_imputacion_cis.json','data/microdatos/validacion_23j.json'].map(async p=>{const r=await fetch(p);if(!r.ok)throw Error(p+' '+r.status);return r.json()}));
+  report=auditImputations(ledger,validation);
+  $('vh-metrics').innerHTML=metric('Elecciones contrastadas',report.coverage.elections,'Solo 23J de 2023')+
+  metric('Estudios CIS utilizados',report.coverage.studies,'3411 y 3415')+
+  metric('Combinaciones de recetas',report.coverage.modelFamilies,'4 tratamientos × 4')+
+  metric('Elecciones independientes',report.coverage.independentElectionTests,'Sin validación externa');
+  $('vh-published').innerHTML=report.published.map(p=>'<div class="vh-detail"><small>CIS '+p.study+' · ESTIMACIÓN PUBLICADA</small><h3>MAE descriptivo: '+fmt(p.mae)+' pp</h3><p>Media de errores absolutos en PP, PSOE, Vox y Sumar. Es una referencia publicada, no una receta replicada.</p></div>').join('');
+  for(const name of ['vh-order','vh-study','vh-party'])$(name).addEventListener('change',draw);
+  draw();
+ }catch(err){$('vh-metrics').innerHTML='<div class="vh-warning">No se pudo cargar la evaluación: '+esc(err.message)+'</div>'}
+}
+start();
