@@ -383,7 +383,7 @@ def main():
 
     os.makedirs(SALIDA, exist_ok=True)
     open(os.path.join(SALIDA, "informe.md"), "w", encoding="utf-8").write("\n".join(L) + "\n")
-    json.dump(dict(corte=hoy.isoformat(), eleccion=ELECCION.isoformat(), variantes=resumen,
+    json.dump(dict(corte=hoy.isoformat(), eleccion=ELECCION.isoformat(), principal={k: princ[k] for k in ('partidos', 'bloques', 'investidura', 'n', 'industria', 'dias', 'sin_encuestas')}, variantes=resumen,
                    promedio_simple=simple, error_23j={c: r["error"] for c, r in err.items()},
                    industria_23j=ind, retroprueba_23j=bt, umbral_placebo=umbrales),
               open(os.path.join(SALIDA, "pronostico.json"), "w", encoding="utf-8"),
