@@ -190,3 +190,26 @@
 .glossary-tooltip{position:fixed;z-index:99999;background:#163e35;color:white;border-radius:10px;padding:14px;max-width:320px;box-shadow:0 12px 24px #0004;pointer-events:none}
 .glossary-tooltip[hidden]{display:none!important}
 .glossary-tooltip p{color:white;font-size:13px;line-height:1.5;margin:8px 0 0}
+
+/* Recorridos principales: pronóstico operativo vs laboratorio de cocina */
+.observatory-choose{margin:20px 0 28px;border:1px solid #d0dfd0;background:#f4f8f1;border-radius:16px;padding:clamp(18px,3vw,30px)}
+.observatory-choose>h2{font-size:clamp(22px,2.8vw,30px);margin:9px 0}.observatory-choose>p{line-height:1.6;color:#4a6856}
+.observatory-choose-grid,.cocina-compare,.methods-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin:20px 0}
+.observatory-choose-card{display:flex;flex-direction:column;gap:10px;text-decoration:none;background:#fff;border:1px solid #bed3c3;border-radius:13px;padding:24px;min-height:255px;color:#163d2f;transition:box-shadow .15s,transform .15s}
+.observatory-choose-card:hover,.observatory-choose-card:focus-visible{box-shadow:0 10px 26px #1d4b2d19;transform:translateY(-2px);outline:2px solid #216849;outline-offset:2px}
+.observatory-choose-card small{font-size:11px;font-weight:800;letter-spacing:1px;color:#236d4e}
+.observatory-choose-card h3{margin:3px 0;font-size:21px;line-height:1.25;color:#133a2c}
+.observatory-choose-card p{color:#506959;font-size:14px;line-height:1.65;flex:1}
+.observatory-choose-card span{font-size:13px;line-height:1.55;border-top:1px solid #e0eae1;padding-top:10px}
+.observatory-choose-card>strong{display:block;color:#115d43;padding-top:7px;font-size:14px}
+.choose-kitchen{background:#fbf9ee;border-color:#e1d8b5}.choose-kitchen small,.choose-kitchen>strong{color:#746019}
+.observatory-choose-foot{font-size:13px!important;line-height:1.65}
+.cocina-lab-intro{background:#eff5e9;border:1px solid #cadbc7;border-radius:13px;padding:23px;margin:18px 0 25px}
+.cocina-lab-intro h2{font-size:clamp(19px,2.5vw,25px);margin:10px 0}
+.cocina-lab-intro>p{color:#4b6857;line-height:1.65}
+.cocina-compare>div,.methods-split>div{background:white;border:1px solid #cadacb;border-radius:10px;padding:17px}
+.cocina-compare b,.methods-split b{font-size:15px}
+.cocina-compare p,.methods-split p{font-size:13px;color:#4f6c59;line-height:1.6}
+.cocina-compare a,.methods-split a{font-size:13px;font-weight:800;color:#17644c}
+.methods-split{margin:18px 0 28px}
+@media(max-width:760px){.observatory-choose-grid,.cocina-compare,.methods-split{grid-template-columns:1fr}.observatory-choose-card{min-height:auto}}
