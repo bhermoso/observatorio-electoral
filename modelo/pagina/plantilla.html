@@ -93,7 +93,7 @@ ul.tight{padding-left:20px;margin:6px 0}ul.tight li{margin:3px 0}
   <div class="meta" id="hdr-meta"></div>
 </header>
 <nav class="idx" aria-label="Secciones">
-  <a href="#pronostico">Pronóstico</a><a href="#evolucion">Evolución</a><a href="#provincias">Provincias</a><a href="#encuestas">Encuestas</a><a href="#modelo">Cómo funciona</a><a href="#recetario">Recetario</a><a href="#evaluacion">Evaluación</a><a href="#eventos">Urda y otros sucesos</a><a href="#limites">Límites</a>
+  <a href="#pronostico">Pronóstico</a><a href="#evolucion">Evolución</a><a href="#provincias">Provincias</a><a href="#encuestas">Encuestas</a><a href="#modelo">Cómo funciona</a><a href="#cocina">La cocina</a><a href="#recetario">Recetario</a><a href="#evaluacion">Evaluación</a><a href="#eventos">Urda y otros sucesos</a><a href="#limites">Límites</a>
 </nav>
 
 <section id="pronostico">
@@ -146,7 +146,7 @@ ul.tight{padding-left:20px;margin:6px 0}ul.tight li{margin:3px 0}
   <p class="note"><span class="badge v">verificada</span> registro primario del observatorio, contrastado con el documento original. <span class="badge t">terceros</span> recopilación externa con enlace a la publicación, no contrastada todavía. <span class="badge p">prensa</span> cifras conocidas solo por resúmenes de prensa; entran en el pronóstico de forma provisional hasta consultar el original.</p>
   <div class="tbl"><table id="t-enc"></table></div>
   <h3>Últimas encuestas antes del 23J de 2023</h3>
-  <p class="note">Base de la evaluación de la sección <a href="#recetario">Recetario</a><a href="#evaluacion">Evaluación</a>.</p>
+  <p class="note">Base de la evaluación de la sección <a href="#evaluacion">Evaluación</a>.</p>
   <div class="tbl"><table id="t-enc23"></table></div>
 </section>
 
@@ -250,6 +250,40 @@ industria = 1,5 pp × √(p/25) × ( √0,5 · factor de bloque ± √0,5 · err
     <h3>Simulación</h3>
     <p>Se generan miles de elecciones posibles. En cada una se sortea el voto nacional de cada partido con el error total del paso 5. A cada provincia se le añade un error propio (±8 % del voto del partido en esa provincia), se reparte con D'Hondt y se suman los escaños. Las medianas, los intervalos y las probabilidades del <a href="#pronostico">pronóstico</a> son recuentos sobre esas simulaciones. «98 %» significa que la condición se cumple en 98 de cada 100 simulaciones, dados los supuestos.</p>
   </div></div>
+</section>
+
+<section id="cocina">
+  <h2>La cocina electoral, explicada</h2>
+  <p class="lead">Ninguna encuesta publica lo que la gente responde tal cual. Entre las respuestas y la «estimación de voto» hay una cocina: correcciones que cada instituto aplica con su propia receta. Esta sección explica por qué hace falta, con qué ingredientes se cocina, qué estrategias existen y cómo cambian el numerador y el denominador de cada porcentaje.</p>
+
+  <h3>Por qué se cocina</h3>
+  <div class="grid2" id="coc-porque"></div>
+
+  <h3>Los ingredientes: qué responde la gente</h3>
+  <p>Una encuesta electoral no pregunta solo «¿a quién votará?». Combina varias preguntas, y cada una aporta un ingrediente distinto.</p>
+  <div class="tbl"><table id="t-ingredientes"></table></div>
+
+  <h3>Numerador y denominador</h3>
+  <p>Todo porcentaje de voto es una fracción. La cocina decide quién entra arriba (los votos de cada partido) y quién entra abajo (el total sobre el que se calcula). El resultado oficial se calcula sobre el voto válido: candidaturas más voto en blanco. Los nulos y la abstención no cuentan. Una estimación comparable con el resultado tiene que usar esa misma base.</p>
+  <div class="formula">% del partido  =  votos estimados del partido  /  (votos estimados a todas las candidaturas + voto en blanco)
+
+Fuera del denominador: abstención declarada · voto nulo · «no sabe» y «no contesta» que no se imputan</div>
+  <div class="chart" id="c-fraccion" style="padding:12px"></div>
+
+  <h3>Las estrategias de cocina</h3>
+  <div class="grid2" id="coc-estrategias"></div>
+
+  <h3>Cocina paso a paso</h3>
+  <p>Una muestra <b>ficticia</b> de 1.000 entrevistas, construida para enseñar el mecanismo; no son datos de ninguna encuesta real. La única cifra real es el resultado del 23J, que se usa como objetivo de la reponderación. Active o desactive cada paso para ver qué entra en el numerador, qué sale del denominador y cómo cambia la estimación.</p>
+  <div class="controls" id="coc-pasos"></div>
+  <div class="chart" id="c-muestra" style="padding:12px"></div>
+  <div class="legend" id="l-muestra"></div>
+  <div class="tbl"><table id="t-cocina"></table></div>
+  <div class="callout" id="coc-lectura"></div>
+  <h3>De dónde salen los votos: recuerdo de 2023 frente a intención actual</h3>
+  <p>La matriz de transferencias de la muestra ficticia. Cada fila es lo que votó la gente en 2023 según su recuerdo; cada columna, lo que responde hoy. La reponderación por recuerdo cambia el peso de cada fila entera, y con ella el de todas sus columnas.</p>
+  <div class="tbl"><table id="t-transfer"></table></div>
+  <p class="note">Qué receta usa cada instituto real está en el <a href="#recetario">libro de recetas</a>. El motor de este observatorio no cocina respuestas: corrige estimaciones ya cocinadas (sesgo de cada casa). Cuando haya microdatos descargados, aplicará esta misma cocina a las respuestas individuales del CIS.</p>
 </section>
 
 <section id="recetario">
@@ -579,6 +613,104 @@ function drawGeo(nombre){
   $("#t-geo").innerHTML=h+`</tbody><tfoot><tr><td colspan="5" class="note">Los escaños con el pronóstico central salen de un único reparto con los valores medianos; los medios, de miles de simulaciones con incertidumbre. La diferencia indica cuánto dependen de pequeñas variaciones del voto.</td></tr></tfoot>`;
 }
 if(D.geografia){const G=D.geografia;const o=G.provincias.map(p=>p.nombre).sort((a,b)=>a.localeCompare(b,"es"));$("#sel-geo").innerHTML=o.map(n=>`<option${n==="Toledo"?" selected":""}>${esc(n)}</option>`).join("");$("#sel-geo").onchange=e=>drawGeo(e.target.value);drawGeo("Toledo")}
+
+
+/* ---------- La cocina, explicada ---------- */
+{
+  const porque=[
+    ["La muestra no es el electorado","Quien acepta responder no se parece del todo a quien no responde. Si los votantes de un partido contestan más (o menos), la muestra bruta lo sobrerrepresenta (o lo oculta). A eso se le llama no respuesta diferencial."],
+    ["Mucha gente no dice su voto","Una parte de la muestra responde «no sé», «no contesta» o «no votaré». Si se ignoran, la estimación queda en manos de los decididos, que no tienen por qué parecerse a los indecisos."],
+    ["El recuerdo de voto se desvía","Al preguntar qué votó en 2023, la suma de la muestra no reproduce el resultado real: se infla al ganador o al partido con mejor imagen y se olvida la abstención. El CIS lo ha documentado para el PSOE en sus notas metodológicas (ver libro de recetas)."],
+    ["No todos irán a votar","Una estimación sobre toda la población no es una estimación sobre votantes. Algunas recetas filtran o ponderan por la probabilidad declarada de votar."],
+  ];
+  $("#coc-porque").innerHTML=porque.map(([t,x])=>`<div class="panel"><b>${t}</b><p style="margin:6px 0 0">${x}</p></div>`).join("");
+  const ing=[
+    ["Intención directa de voto","«Si mañana hubiera elecciones, ¿a qué partido votaría?» Respuesta espontánea.","Es la materia prima. Por sí sola deja fuera a indecisos y a quienes no contestan."],
+    ["Simpatía o cercanía","«¿Por qué partido siente más simpatía?» o «¿cuál le queda más cerca?»","Se usa para asignar a indecisos. «Voto + simpatía» suma la intención directa y la simpatía de quienes no declararon intención."],
+    ["Recuerdo de voto","«¿A qué partido votó en las elecciones de julio de 2023?»","Sirve para comparar la muestra con un resultado conocido y reponderarla, y para imputar a indecisos su voto anterior."],
+    ["Probabilidad de votar","«Del 0 al 10, ¿qué probabilidad hay de que vaya a votar?»","Permite filtrar o ponderar por votantes probables."],
+    ["Valoración de líderes y partidos","Notas a líderes, preferencia como presidente, imagen de partido.","Algunos modelos la usan como información adicional para asignar a indecisos (el CIS cita la imagen de los partidos entre sus factores)."],
+    ["Datos sociodemográficos","Sexo, edad, territorio, estudios, ocupación, clase social.","Base de las cuotas y de la ponderación inicial para que la muestra se parezca a la población."],
+  ];
+  $("#t-ingredientes").innerHTML=`<thead><tr><th>Ingrediente</th><th>Pregunta típica</th><th>Para qué sirve en la cocina</th></tr></thead><tbody>${ing.map(r=>`<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join("")}</tbody>`;
+  const est=[
+    ["1. Cuotas y ponderación sociodemográfica","Antes de mirar el voto, se hace que la muestra se parezca a la población en sexo, edad, territorio, estudios u ocupación. Se hace con cuotas al seleccionar la muestra o con pesos después. Corrige la composición de la muestra, no su sesgo político.","casi todos"],
+    ["2. Reponderación por recuerdo de voto","Se dan pesos a cada grupo de recuerdo (votantes de PP en 2023, de PSOE…) para que la muestra reproduzca el resultado real de 2023. Corrige la sobrerrepresentación política. Es delicada cuando el recuerdo está sesgado o cuando las candidaturas han cambiado (Sumar 2023 frente a Sumar y Podemos en 2026; partidos nuevos sin recuerdo).","40dB. lo declara; el CIS lo documenta en algunas notas"],
+    ["3. Asignación de indecisos","Los indecisos se reparten según su simpatía, su recuerdo de voto, su valoración de líderes o un modelo estadístico que predice su voto a partir del resto de respuestas. Mueve el numerador de los partidos que más indecisos tienen.","varía según la casa; pocas lo detallan"],
+    ["4. Votantes probables","Se descarta o se pondera menos a quien declara baja probabilidad de votar. Cambia el denominador y beneficia a los partidos con votantes más movilizados.","rara vez documentado"],
+    ["5. Escenarios y modelos","El CIS dice estimar por escenarios y validar con matrices de transferencia (modelo «inercia-incertidumbre»). Otros combinan los pasos anteriores con criterio propio. Es la parte menos transparente de la cocina.","CIS (documentado); resto, no publicado"],
+  ];
+  $("#coc-estrategias").innerHTML=est.map(([t,x,q])=>`<div class="panel"><b>${t}</b><p style="margin:6px 0">${x}</p><span class="note">Quién lo declara: ${q}</span></div>`).join("");
+
+  // Muestra ficticia: recuerdo de 2023 × respuesta actual
+  const REC=["PP","PSOE","VOX","SUMAR","OTROS","ABST","NOREC"];
+  const RECN={PP:240,PSOE:300,VOX:90,SUMAR:110,OTROS:60,ABST:150,NOREC:50};
+  const RESP=["PP","PSOE","VOX","SUMAR","OTROS","BLANCO","NOVOTA","INDEC","NC"];
+  const T={PP:[.78,.02,.08,0,.01,.01,.03,.06,.01],PSOE:[.04,.68,.02,.04,.01,.01,.05,.13,.02],VOX:[.10,.01,.76,0,.01,.01,.04,.06,.01],SUMAR:[.01,.14,0,.52,.05,.02,.07,.17,.02],OTROS:[.05,.05,.03,.03,.65,.02,.05,.10,.02],ABST:[.05,.04,.04,.01,.01,.01,.66,.14,.04],NOREC:[.08,.08,.06,.02,.02,.02,.20,.30,.22]};
+  const PART=["PP","PSOE","VOX","SUMAR","OTROS"];
+  const R23=D.resultado_23j, obj={PP:R23.PP,PSOE:R23.PSOE,VOX:R23.VOX,SUMAR:R23.SUMAR}; obj.OTROS=100-obj.PP-obj.PSOE-obj.VOX-obj.SUMAR;
+  const NOMC={PP:"PP",PSOE:"PSOE",VOX:"Vox",SUMAR:"Sumar",OTROS:"Otros",ABST:"Abstención",NOREC:"No recuerda",BLANCO:"Blanco",NOVOTA:"No votará",INDEC:"Indeciso",NC:"No contesta"};
+  const COLC=p=>({PP:"var(--pp)",PSOE:"var(--psoe)",VOX:"var(--vox)",SUMAR:"var(--sumar)",OTROS:"var(--fg2)"}[p]);
+  const pasos=[["simpatia","Sumar la simpatía de los indecisos"],["imputar","Imputar el recuerdo a los indecisos sin simpatía (50 %)"],["reponderar","Reponderar por recuerdo de voto del 23J"]];
+  const on={simpatia:false,imputar:false,reponderar:false};
+  $("#coc-pasos").innerHTML=`<span class="note">Paso 0: intención directa sobre voto válido, siempre activo.</span>`+pasos.map(([k,t])=>`<label style="color:var(--fg)"><input type="checkbox" id="coc-${k}"> ${t}</label>`).join("");
+  function cocinar(o){
+    // pesos por grupo de recuerdo
+    const w={}; REC.forEach(r=>w[r]=1);
+    if(o.reponderar){const tot=PART.reduce((a,p)=>a+RECN[p],0);PART.forEach(p=>{w[p]=(obj[p]/100*tot)/RECN[p]})}
+    const num={},cat={}; PART.forEach(p=>num[p]=0); RESP.forEach(c=>cat[c]=0); let blanco=0,fuera={NOVOTA:0,INDEC:0,NC:0},simp=0,imp=0;
+    REC.forEach(r=>{RESP.forEach((c,j)=>{const n=RECN[r]*T[r][j]*w[r];cat[c]+=n;
+      if(PART.includes(c))num[c]+=n; else if(c==="BLANCO")blanco+=n; else if(c==="INDEC"){
+        // indecisos: simpatía (45 % hacia su partido de 2023 si lo tiene; 20 % repartido si no)
+        let resto=n;
+        if(o.simpatia){if(PART.includes(r)){num[r]+=0.45*n;simp+=0.45*n;resto-=0.45*n}else{["PP","PSOE","VOX","SUMAR"].forEach(p=>{num[p]+=0.05*n});simp+=0.2*n;resto-=0.2*n}}
+        if(o.imputar&&PART.includes(r)){const base=o.simpatia?resto:n*(1);const a=0.5*base;num[r]+=a;imp+=a;resto-=a}
+        fuera.INDEC+=resto;
+      } else fuera[c]+=n})});
+    const den=PART.reduce((a,p)=>a+num[p],0)+blanco;
+    const pct={};PART.forEach(p=>pct[p]=100*num[p]/den);
+    return {num,den,blanco,fuera,pct,simp,imp,w,total:Object.values(cat).reduce((a,b)=>a+b,0)};
+  }
+  function dibujar(){
+    pasos.forEach(([k])=>on[k]=$("#coc-"+k).checked);
+    const r=cocinar(on);
+    // barra de la muestra
+    const c=$("#c-muestra"); c.innerHTML=""; const W=900,H=96;
+    const svg=el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":"Composición de la muestra según su papel en la fracción"},c);
+    const seg=[...PART.map(p=>[NOMC[p],r.num[p],COLC(p),"numerador"]),["Blanco",r.blanco,"var(--fg3)","solo denominador"],["Indecisos sin asignar",r.fuera.INDEC,"var(--line)","fuera"],["No votará",r.fuera.NOVOTA,"var(--line2)","fuera"],["No contesta",r.fuera.NC,"var(--line2)","fuera"]];
+    const tot=seg.reduce((a,s)=>a+s[1],0); let x=0; const t=tip(c);
+    el("text",{x:0,y:12,class:"lbl"},svg).textContent=`Muestra ponderada: ${Math.round(tot)} entrevistas`;
+    el("text",{x:0,y:H-6},svg).textContent=`Denominador (candidaturas + blanco): ${Math.round(r.den)} · Fuera: ${Math.round(r.fuera.INDEC+r.fuera.NOVOTA+r.fuera.NC)}`;
+    seg.forEach(([n,v,col,rol])=>{const w=v/tot*W; if(w<=0)return; const rr=el("rect",{x:x+1,y:22,width:Math.max(w-2,1),height:44,rx:3,fill:col,stroke:rol==="fuera"?"var(--fg3)":"none","stroke-dasharray":rol==="fuera"?"3 2":"0"},svg);
+      if(w>48)el("text",{x:x+6,y:48,class:"lbl"},svg).textContent=`${n} ${Math.round(v)}`;
+      rr.addEventListener("mousemove",ev=>{const b=c.getBoundingClientRect();t.show(`${n}: ${fmt(v,0)} entrevistas (${rol})`,ev.clientX-b.left,ev.clientY-b.top)});rr.addEventListener("mouseleave",t.hide); x+=w});
+    $("#l-muestra").innerHTML=`<span><i style="background:var(--pp);height:8px"></i>en el numerador de un partido</span><span><i style="background:var(--fg3);height:8px"></i>solo en el denominador (blanco)</span><span><i style="background:var(--line);height:8px;outline:1px dashed var(--fg3)"></i>fuera de la fracción</span>`;
+    // tabla comparativa de todos los pasos acumulados
+    const filas=[["0. Intención directa",{}],["+ simpatía",{simpatia:true}],["+ imputación por recuerdo",{simpatia:true,imputar:true}],["+ reponderación por recuerdo",{simpatia:true,imputar:true,reponderar:true}]];
+    let h=`<thead><tr><th>Paso (acumulado)</th>${PART.map(p=>`<th class="n">${NOMC[p]}</th>`).join("")}<th class="n">Denominador</th><th class="n">Fuera</th></tr></thead><tbody>`;
+    filas.forEach(([n,o])=>{const q=cocinar(o);h+=`<tr><td>${n}</td>${PART.map(p=>`<td class="n">${fmt(q.pct[p])}</td>`).join("")}<td class="n">${fmt(q.den,0)}</td><td class="n">${fmt(q.fuera.INDEC+q.fuera.NOVOTA+q.fuera.NC,0)}</td></tr>`});
+    h+=`<tr style="font-weight:600"><td>Su selección</td>${PART.map(p=>`<td class="n">${fmt(r.pct[p])}</td>`).join("")}<td class="n">${fmt(r.den,0)}</td><td class="n">${fmt(r.fuera.INDEC+r.fuera.NOVOTA+r.fuera.NC,0)}</td></tr>`;
+    h+=`<tr><td class="note">Resultado real 23J (objetivo del recuerdo)</td>${PART.map(p=>`<td class="n note">${fmt(obj[p])}</td>`).join("")}<td></td><td></td></tr>`;
+    $("#t-cocina").innerHTML=h+`</tbody><tfoot><tr><td colspan="${PART.length+3}" class="note">Porcentajes sobre el denominador de cada fila (candidaturas + blanco). Muestra ficticia.</td></tr></tfoot>`;
+    const w=r.w;
+    $("#coc-lectura").innerHTML=`<b>Qué está pasando.</b> ${on.simpatia?`La simpatía saca ${fmt(r.simp,0)} indecisos de «fuera» y los mete en el numerador de un partido (y en el denominador). `:"Sin simpatía, todos los indecisos quedan fuera de la fracción. "}${on.imputar?`La imputación por recuerdo asigna ${fmt(r.imp,0)} indecisos más a su partido de 2023. `:""}${on.reponderar?`La reponderación da a quien recuerda haber votado al PSOE un peso de ${fmt(w.PSOE,2)} y a quien recuerda PP ${fmt(w.PP,2)}, porque en esta muestra ficticia hay más recuerdo de PSOE del que hubo en las urnas.`:"Sin reponderar, la muestra ficticia tiene más recuerdo de PSOE (300 de 800 que recuerdan partido) del que correspondería al resultado real."} Cada paso cambia quién entra en la fracción y, con ello, el porcentaje de todos los partidos, también de los que no reciben votos nuevos.`;
+    // matriz de transferencias
+    let tm=`<thead><tr><th>Recuerdo 2023 \\ Hoy</th>${RESP.map(c=>`<th class="n">${NOMC[c]}</th>`).join("")}<th class="n">Entrevistas</th><th class="n">Peso</th></tr></thead><tbody>`;
+    REC.forEach(rr=>{tm+=`<tr><td><b>${NOMC[rr]}</b></td>${T[rr].map((v,j)=>`<td class="n" style="${RESP[j]===rr?"background:var(--accent-bg);color:var(--accent);font-weight:600":""}">${Math.round(v*100)} %</td>`).join("")}<td class="n">${RECN[rr]}</td><td class="n">${fmt(w[rr],2)}</td></tr>`});
+    $("#t-transfer").innerHTML=tm+`</tbody><tfoot><tr><td colspan="${RESP.length+3}" class="note">Porcentajes por fila: de cada 100 personas que recuerdan ese voto, cuántas responden hoy cada opción. En azul, quienes repiten. El peso cambia al activar la reponderación.</td></tr></tfoot>`;
+  }
+  pasos.forEach(([k])=>$("#coc-"+k).addEventListener("change",dibujar)); dibujar();
+  // fracción visual
+  {const c=$("#c-fraccion");const W=900,H=150;const svg=el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":"Qué entra en el numerador y el denominador"},c);
+   const cajas=[["Votos al partido",0,"num. y denom.","var(--pp)"],["Votos a otras candidaturas",1,"denominador","var(--psoe)"],["Voto en blanco",2,"denominador","var(--fg3)"],["Voto nulo",3,"fuera","var(--line)"],["Abstención",4,"fuera","var(--line)"],["Indecisos no asignados",5,"fuera o imputados","var(--line)"]];
+   const bw=138,g=(W-6*bw)/5;
+   cajas.forEach(([t,i,rol,col])=>{const x=i*(bw+g);el("rect",{x,y:30,width:bw,height:56,rx:6,fill:col,opacity:rol==="fuera"||rol.startsWith("fuera")?.5:.9,stroke:"var(--fg3)","stroke-dasharray":rol.startsWith("fuera")?"4 3":"0"},svg);
+     const w=t.split(" ");el("text",{x:x+8,y:52,class:"lbl"},svg).textContent=w.slice(0,2).join(" ");if(w.length>2)el("text",{x:x+8,y:68,class:"lbl"},svg).textContent=w.slice(2).join(" ");
+     el("text",{x:x+bw/2,y:106,"text-anchor":"middle"},svg).textContent=rol});
+   el("line",{x1:0,x2:3*bw+2*g,y1:20,y2:20,stroke:"var(--accent)","stroke-width":2},svg);el("text",{x:0,y:14,class:"lbl"},svg).textContent="denominador: voto válido";
+   el("line",{x1:0,x2:bw,y1:124,y2:124,stroke:"var(--pp)","stroke-width":3},svg);el("text",{x:0,y:142,class:"lbl"},svg).textContent="numerador";
+   c.querySelector("svg").style.minWidth="700px";}
+}
 
 /* ---------- Recetario ---------- */
 if(D.recetario){
