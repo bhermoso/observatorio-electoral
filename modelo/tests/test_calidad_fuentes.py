@@ -90,3 +90,13 @@ class ContrasteTercerosTest(unittest.TestCase):
                 self.assertTrue(e["contraste_url"].startswith("https://"))
             else:
                 self.assertTrue(any(x["estudio"] == e["estudio"] for x in excl))
+
+
+class CorreccionIndustriaTest(unittest.TestCase):
+    def test_corrige_la_mitad_del_error_medio_y_exige_casas_suficientes(self):
+        from modelo.motor.pronostico import correccion_industria
+        err = {f"c{i}": {"error": {"PSOE": -3.0, "PP": 1.0}} for i in range(5)}
+        err["c5"] = {"error": {"VOX": 2.0}}
+        c = correccion_industria(err, 0.5, 5)
+        self.assertEqual(c, {"PSOE": 1.5, "PP": -0.5})
+        self.assertEqual(correccion_industria(err, 0.0, 5), {"PSOE": 0.0, "PP": 0.0})

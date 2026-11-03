@@ -185,10 +185,29 @@ def promedio_simple(encuestas, hoy, dias=30):
 
 INDUSTRIA_PRINCIPAL = 2.2
 
+# Cocina del Observatorio sobre agregados: corrección parcial del sesgo común de la industria.
+# En el 23J la media de las casas se desvió del resultado (encuesta − resultado): PSOE −2,5 pp, etc.
+# Se corrige una fracción de ese sesgo en las variantes de consenso (la variante calibrada ya parte
+# del error de cada casa). Fracción 0,5: con una sola elección de referencia no se supone que el
+# sesgo se repita entero ni que desaparezca. Solo partidos con error medido en al menos MIN_CASAS casas.
+FRACCION_SESGO = 0.5
+MIN_CASAS_SESGO = 5
+VARIANTES_CORREGIDAS = ("consenso_privadas", "consenso_todas")
+
+
+def correccion_industria(errores_23j, fraccion=FRACCION_SESGO, min_casas=MIN_CASAS_SESGO):
+    """Puntos que se suman a la media de cada partido: −fracción × error medio de las casas en el 23J."""
+    out = {}
+    for p in PARTIDOS:
+        v = [r["error"][p] for r in (errores_23j or {}).values() if p in r.get("error", {})]
+        if len(v) >= min_casas:
+            out[p] = round(-fraccion * float(np.mean(v)), 3)
+    return out
+
 
 def principal(encuestas, inicio, hoy, eleccion, errores_23j, n_por_variante=2000, industria=INDUSTRIA_PRINCIPAL,
               desplazamiento=None, metodo_geo="proporcional", rho_bloque=RHO_BLOQUE,
-              sd_prov=0.08, variantes=None):
+              sd_prov=0.08, variantes=None, fraccion_sesgo=FRACCION_SESGO):
     """Pronóstico principal: une las simulaciones de las tres variantes de referencia, a
     partes iguales, con un error de industria intermedio entre el supuesto inicial (1,5)
     y el que habría cubierto 2023 (~2,9). Así la incertidumbre de método (qué casas
@@ -198,10 +217,15 @@ def principal(encuestas, inicio, hoy, eleccion, errores_23j, n_por_variante=2000
     nombres = tuple(variantes) if variantes is not None else tuple(VARIANTES)
     if not nombres or any(v not in VARIANTES for v in nombres):
         raise ValueError("Variantes desconocidas o lista vacía")
+    corr = correccion_industria(errores_23j, fraccion_sesgo) if fraccion_sesgo else {}
     for var in nombres:
         aj = estimar(encuestas, inicio, hoy, var, errores_23j=errores_23j)
+        d = dict(desplazamiento or {})
+        if var in VARIANTES_CORREGIDAS:
+            for k, v in corr.items():
+                d[k] = d.get(k, 0.0) + v
         sims.append(simular(aj, dias, n=n_por_variante, industria=industria,
-                            semilla=sum(map(ord, var)) + hoy.toordinal(), desplazamiento=desplazamiento,
+                            semilla=sum(map(ord, var)) + hoy.toordinal(), desplazamiento=d or None,
                             metodo_geo=metodo_geo, rho_bloque=rho_bloque, sd_prov=sd_prov))
     P = sims[0]["partidos"]
     assert all(s["partidos"] == P for s in sims)
@@ -217,4 +241,5 @@ def principal(encuestas, inicio, hoy, eleccion, errores_23j, n_por_variante=2000
     r["industria"] = industria
     r["dias"] = dias
     r["sin_encuestas"] = sims[0]["sin_encuestas"]
+    r["correccion_industria"] = dict(fraccion=fraccion_sesgo, puntos=corr, variantes=list(VARIANTES_CORREGIDAS))
     return r

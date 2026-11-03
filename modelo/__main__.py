@@ -457,13 +457,17 @@ def main():
                                      "error muestral con efecto de diseño 1,5", "simulación hasta la elección", "traslado provincial y D'Hondt"]),
         con_cocina=dict(capa=3, variante="principal",
                         definicion="Estimación de referencia del Observatorio: mezcla a partes iguales de consenso_privadas, consenso_todas "
-                                   f"y calibrada_23j, con error de industria de {PR.INDUSTRIA_PRINCIPAL} pp y correlación entre bloques {PR.RHO_BLOQUE}.",
-                        tipo_cocina="Reestimación sobre agregados publicados. No aplica cocina a microdatos individuales.",
-                        decisiones=[dict(id="excluir_cis_ancla", variante="consenso_privadas", descripcion=PR.VARIANTES["consenso_privadas"]),
+                                   f"y calibrada_23j; las dos de consenso corrigen el {PR.FRACCION_SESGO:.0%} del sesgo común que tuvieron las casas en el 23J; "
+                                   f"error de industria de {PR.INDUSTRIA_PRINCIPAL} pp y correlación entre bloques {PR.RHO_BLOQUE}.",
+                        tipo_cocina="Reestimación sobre agregados publicados. La cocina sobre microdatos del CIS se probó y no superó el examen del 23J (data/microdatos/validacion_cocina_cis.json).",
+                        decisiones=[dict(id="sesgo_industria", valor=PR.FRACCION_SESGO, puntos=princ.get("correccion_industria", {}).get("puntos"),
+                                         descripcion="Corrección de la mitad del error medio de las casas en el 23J (PSOE infravalorado). "
+                                                     "Una sola elección de referencia: ni se supone que el sesgo se repita entero ni que desaparezca."),
+                                    dict(id="excluir_cis_ancla", variante="consenso_privadas", descripcion=PR.VARIANTES["consenso_privadas"]),
                                     dict(id="calibracion_23j", variante="calibrada_23j", descripcion=PR.VARIANTES["calibrada_23j"]),
                                     dict(id="error_industria", valor=PR.INDUSTRIA_PRINCIPAL, descripcion="Supuesto de error común a las casas, contrastado con el 23J; no es una calibración independiente"),
                                     dict(id="correlacion_bloques", valor=PR.RHO_BLOQUE, descripcion="Supuesto declarado; no estimable con una sola elección")],
-                        no_aplicado=["voto directo", "recuerdo de voto", "simpatía", "transferencias", "indecisión", "probabilidad de votar",
+                        no_aplicado=["recuerdo de voto, simpatía, indecisos y probabilidad de votar sobre microdatos (probados en el CIS: empeoraron el acierto en 2023)",
                                      "efectos de acontecimientos"]),
         externos=dict(capa=4, definicion="Promedios y modelos de otros productores. No entran en el pronóstico ni en los promedios."))
 
@@ -476,7 +480,7 @@ def main():
 
     os.makedirs(SALIDA, exist_ok=True)
     open(os.path.join(SALIDA, "informe.md"), "w", encoding="utf-8").write("\n".join(L) + "\n")
-    json.dump(dict(corte=hoy.isoformat(), eleccion=ELECCION.isoformat(), version_modelo=RG.VERSION, trazabilidad=auditoria_cocina, sensibilidad_cocina=sensibilidad_cocina, principal={k: princ[k] for k in ('partidos', 'bloques', 'investidura', 'n', 'industria', 'dias', 'sin_encuestas', 'provincias')}, variantes=resumen,
+    json.dump(dict(corte=hoy.isoformat(), eleccion=ELECCION.isoformat(), version_modelo=RG.VERSION, trazabilidad=auditoria_cocina, sensibilidad_cocina=sensibilidad_cocina, principal={k: princ[k] for k in ('partidos', 'bloques', 'investidura', 'n', 'industria', 'dias', 'sin_encuestas', 'provincias', 'correccion_industria')}, variantes=resumen,
                    auditoria_fuentes=dict(excluidas_prensa_sin_verificar=len(provisionals), excluidas_total=len(excluidas), incluidas_2023_26=len(actuales),
                                           por_origen={o: sum(1 for e in actuales if e["origen"] == o) for o in sorted({e["origen"] for e in actuales})},
                                           criterio='Puerta de calidad (fuentes.seleccion_pronostico): sin prensa no verificada, sin terceros con campo supuesto, sin terceros solapados con un registro verificado de la misma casa'),
