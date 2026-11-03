@@ -61,3 +61,22 @@ class SolapeAcontecimientoTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ContrasteTercerosTest(unittest.TestCase):
+    def test_correcciones_documentadas_se_aplican_y_se_marcan(self):
+        from modelo.motor.fuentes import cargar_29n, contraste_terceros
+        reg = {e["estudio"]: e for e in cargar_29n()}
+        for k, c in contraste_terceros().items():
+            self.assertIn(c["estado"], ("original_consultado", "corregido_con_original", "solo_secundaria", "discrepancia_secundaria"))
+            self.assertTrue(c["original"].startswith("https://"))
+            self.assertEqual(reg[k]["contraste"], c["estado"])
+            for partido, v in (c.get("correcciones") or {}).items():
+                self.assertEqual(reg[k]["voto"][partido], v["original"])
+
+    def test_registros_sin_entrada_quedan_sin_contrastar(self):
+        from modelo.motor.fuentes import cargar_29n, contraste_terceros
+        conocidos = set(contraste_terceros())
+        otros = [e for e in cargar_29n() if e["estudio"] not in conocidos]
+        self.assertTrue(otros)
+        self.assertTrue(all(e["contraste"] == "sin_contrastar" for e in otros))

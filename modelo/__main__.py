@@ -421,6 +421,8 @@ def main():
     entradas = [dict(estudio=e["estudio"], casa=e["casa"], origen=e["origen"], campo_ini=e.get("campo_ini"),
                      campo_fin=e["campo_fin"], publicacion=e.get("publicacion"), n=e["n"], n_supuesto=bool(e.get("n_supuesto")),
                      modo=e.get("modo", ""), url=e.get("url", ""), voto=e["voto"],
+                     contraste=("original" if e["origen"] == "verificada" else e.get("contraste", "sin_contrastar")),
+                     contraste_url=e.get("contraste_url"),
                      ancla_privadas=e["casa"] in ajustes["consenso_privadas"].get("PP", {}).get("anclas", []))
                 for e in sorted(actuales, key=lambda e: e["campo_fin"])]
     externos = []

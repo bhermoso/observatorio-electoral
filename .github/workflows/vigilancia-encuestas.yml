@@ -39,8 +39,9 @@ jobs:
       - name: Publicar datos incorporados (si hay cambios)
         id: publish
         run: |
-          git add data/polls.json data/polls.csv data/poll-results.csv
-          if git diff --cached --quiet; then
+          # Solo un cambio en polls.json es una incorporación. Los CSV son derivados:
+          # regenerarlos no significa que haya encuestas nuevas ni justifica un recálculo.
+          if git diff --quiet -- data/polls.json; then
             echo 'updated=false' >> "$GITHUB_OUTPUT"
           else
             echo 'updated=true' >> "$GITHUB_OUTPUT"
@@ -58,7 +59,8 @@ jobs:
             git add data/polls.json data/polls.csv data/poll-results.csv
             git commit -m "Datos: incorporar encuestas verificadas y registrar estado de la vigilancia"
           else
-            git diff --cached --quiet || git commit -m "Vigilancia: registrar estado de la ejecución"
+            git add data/polls.csv data/poll-results.csv
+            git diff --cached --quiet || git commit -m "Vigilancia: registrar estado (sin encuestas nuevas; CSV regenerados si estaban desfasados)"
           fi
           # Conservar pushes ajenos; si la rebase entra en conflicto, fallar sin forzar.
           git pull --rebase origin main
