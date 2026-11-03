@@ -2,7 +2,9 @@
 
 ## Programación
 
-La automatización activa de este chat está configurada **cada 60 minutos**, según la programación comprobada el 31 de octubre de 2026. Busca nuevas publicaciones, las contrasta y publica incorporaciones que superen las comprobaciones. La mención anterior a una revisión diaria a las 09:00 quedó desfasada. Es una revisión programada por el agente, no una fuente de datos en tiempo real ni un proceso de extracción garantizado a cada instante. Las ejecuciones dependen de la disponibilidad de la app, permisos, herramientas, fuentes y límites de uso de la cuenta.
+Comprobación del 3 de noviembre de 2026: el repositorio configura `.github/workflows/vigilancia-encuestas.yml` para descubrir publicaciones diariamente a las 07:40 UTC (08:40 en Madrid en invierno; 09:40 en verano). El programa no modifica `data/polls.json`: prepara candidatos para revisión editorial. No se encontraron ejecuciones de vigilancia entre las ejecuciones programadas disponibles consultadas, por lo que la configuración no demuestra que esté funcionando.
+
+La revisión cada 60 minutos mencionada anteriormente pertenecía al chat previo. Su estado actual no se ha podido confirmar; no debe darse por activa. La publicación programada de GitHub Pages reconstruye la web con los datos existentes y tampoco descubre ni incorpora encuestas. La actualización requiere verificar originales, modificar los datos y superar las pruebas antes del despliegue.
 
 No debe notificar si no hay novedades significativas. Debe avisar si se incorporan o corrigen datos relevantes, falla la actualización o se necesita una intervención. No se envían mensajes a institutos, periodistas ni otros terceros.
 
@@ -52,3 +54,4 @@ La vista `#analisis` calcula medias y proyecciones en el navegador desde el arch
 Un accidente, sentencia, crisis o decisión política se registra con fecha y fuente comprobada, sin penalizaciones o bonificaciones electorales automáticas. Distinguir fecha de entrevistas de fecha de publicación. Comparar estudios equivalentes y no afirmar causalidad por proximidad temporal. Un dato ya recogido en una encuesta no debe recibir además una corrección manual por el mismo supuesto efecto.
 
 El registro está en `data/events.json` y la vista pública en `#contexto`. Cada revisión diaria debe leer [criterios de acontecimientos](events.md), incorporar hechos documentados que cumplan esos criterios y revisar si hay encuestas con campo posterior. No utilizar borradores, rumores ni fuentes inaccesibles como si estuvieran verificados. La compilación valida también este registro. Mantener el análisis temporal separado de los pesos del laboratorio.
+

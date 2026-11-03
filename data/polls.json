@@ -506,5 +506,173 @@
     "verification": "Revisión de la publicación original del instituto en navegador: texto, ficha técnica y gráfico ampliado. El enlace indexado con id=6KFRJttWfJrtP8C5 no encontraba la noticia; se localizó el identificador vigente mediante el catálogo del instituto. La descarga directa devolvía 403.",
     "sourcePages": "Noticia Sondeo 26 de octubre, párrafos de resultados; gráfico ampliado Sondeo de intención de voto; bloque FICHA TÉCNICA: 3.122 entrevistas, 8–22 de octubre, CATI y CAWI.",
     "samplingNotes": "Teléfono: selección aleatoria de hogar y cuotas de sexo y edad; panel Trust Survey: asignación proporcional por sexo y edad; distribución por comunidad autónoma. Error general declarado ±2,1 %, confianza 95,5 %, supuesto de dos categorías equiprobables; no es un intervalo de cada estimación electoral."
+  },
+  {
+    "id": "sigma-dos-2026-11-02",
+    "institute": "Sigma Dos",
+    "publisher": "El Mundo",
+    "title": "Sondeo 2 de noviembre · elecciones generales",
+    "fieldStart": "2026-10-29",
+    "fieldEnd": "2026-10-30",
+    "published": "2026-11-02",
+    "sample": 2505,
+    "mode": "CATI + CAWI",
+    "scope": "España",
+    "universe": "Personas de 18 años o más con derecho a voto; España",
+    "scenario": "Frente Amplio, Front Valencià, Adelante Andalucía y Podemos separados",
+    "values": {
+      "PP": 31.1,
+      "PSOE": 24.6,
+      "VOX": 19.3,
+      "Frente Amplio": 7.1,
+      "Podemos": 1.9,
+      "ERC": 3.0,
+      "Adelante Andalucía": 1.4,
+      "EH Bildu": 1.3,
+      "Junts": 1.1,
+      "BNG": 1.0,
+      "PNV": 0.9,
+      "Front Valencià": 0.9,
+      "Coalición Canaria": 0.4
+    },
+    "seats": {
+      "PP": {
+        "min": 133,
+        "max": 139
+      },
+      "PSOE": {
+        "min": 97,
+        "max": 103
+      },
+      "VOX": {
+        "min": 63,
+        "max": 69
+      },
+      "Frente Amplio": {
+        "min": 9,
+        "max": 11
+      },
+      "ERC": {
+        "min": 9,
+        "max": 11
+      },
+      "Adelante Andalucía": {
+        "min": 3,
+        "max": 4
+      },
+      "EH Bildu": {
+        "min": 7,
+        "max": 8
+      },
+      "Junts": {
+        "point": 6
+      },
+      "BNG": {
+        "point": 2
+      },
+      "PNV": {
+        "min": 5,
+        "max": 6
+      },
+      "Front Valencià": {
+        "min": 3,
+        "max": 4
+      }
+    },
+    "source": "https://www.sigmados.com/noticia?id=sa0OT7jgxEjay6E",
+    "technical": "https://www.sigmados.com/noticia?id=sa0OT7jgxEjay6E",
+    "coverage": "partial",
+    "kind": "poll-estimate",
+    "denominator": "votos válidos",
+    "verified": "2026-11-03",
+    "notes": "Fecha de publicación de la fuente original: 2 de noviembre; algunos recopiladores indican el día 1. No se agrupa Front Valencià con Frente Amplio. Los escaños posibles de Podemos y CC no se transcriben como puntos seguros. No se atribuye causalidad al accidente por la fecha del campo.",
+    "seatNotes": "Solo cifras explícitas del texto original; sin completar desde recopiladores ni calcular puntos medios.",
+    "verification": "Texto y ficha técnica de la publicación original consultados el 3 de noviembre de 2026.",
+    "sourcePages": "Párrafos de resultados y apartado Ficha técnica."
+  },
+  {
+    "id": "target-point-2026-11-02",
+    "institute": "Target Point",
+    "publisher": "El Debate",
+    "title": "Encuesta de noviembre · elecciones generales",
+    "fieldStart": "2026-10-28",
+    "fieldEnd": "2026-10-30",
+    "published": "2026-11-02",
+    "sample": 1024,
+    "mode": "CAWI",
+    "scope": "España, excepto Ceuta y Melilla",
+    "universe": "Personas de 18 años o más con derecho a voto; España, excepto Ceuta y Melilla",
+    "scenario": "Frente Amplio y Podemos separados",
+    "values": {
+      "PP": 31.8,
+      "PSOE": 25.5,
+      "VOX": 19.9,
+      "Frente Amplio": 6.6
+    },
+    "seats": {
+      "PP": {
+        "min": 131,
+        "max": 135
+      },
+      "PSOE": {
+        "min": 99,
+        "max": 103
+      },
+      "VOX": {
+        "min": 68,
+        "max": 72
+      },
+      "Frente Amplio": {
+        "min": 9,
+        "max": 11
+      },
+      "Podemos": {
+        "point": 1
+      }
+    },
+    "source": "https://www.eldebate.com/espana/20261102/accidente-frena-psoe-amplia-apoyo-pp-mayoria-absolutisima-derecha_475640.html",
+    "technical": "https://www.eldebate.com/espana/20261102/accidente-frena-psoe-amplia-apoyo-pp-mayoria-absolutisima-derecha_475640.html",
+    "coverage": "partial",
+    "kind": "poll-estimate",
+    "denominator": "votos válidos",
+    "verified": "2026-11-03",
+    "notes": "Campo desde las 18:00 del 28 hasta la mañana del 30 de octubre. Panel online con cuotas y ponderación demográfica y por recuerdo de voto. Solo porcentajes explícitos en el texto; no se calculan porcentajes ausentes por diferencias entre bloques. Los titulares causales no se incorporan como hechos demostrados.",
+    "seatNotes": "Solo cifras explícitas del texto original; sin completar desde recopiladores ni calcular puntos medios.",
+    "verification": "Texto y ficha técnica de la publicación original consultados el 3 de noviembre de 2026.",
+    "sourcePages": "Párrafos de resultados y apartado Ficha técnica."
+  },
+  {
+    "id": "sondaxe-2026-11-01",
+    "institute": "Sondaxe",
+    "publisher": "La Voz de Galicia",
+    "title": "Encuesta nacional · noviembre 2026",
+    "fieldStart": "2026-10-26",
+    "fieldEnd": "2026-10-28",
+    "published": "2026-11-01",
+    "sample": 1200,
+    "mode": "CATI + CAWI",
+    "scope": "España",
+    "universe": "Personas de 18 años o más con derecho a voto; España",
+    "scenario": "Frente Amplio, Podemos y Adelante Andalucía separados",
+    "values": {
+      "PP": 29.2,
+      "PSOE": 26.9,
+      "VOX": 19.2,
+      "Frente Amplio": 7.2,
+      "Podemos": 2.0,
+      "BNG": 0.9,
+      "Adelante Andalucía": 2.0
+    },
+    "seats": null,
+    "source": "https://www.lavozdegalicia.es/noticia/espana/2026/11/01/pp-ganaria-elecciones-23-puntos-ventaja-sobre-psoe/0003_202611G1P26991.htm",
+    "technical": "https://www.lavozdegalicia.es/noticia/espana/2026/11/01/pp-ganaria-elecciones-23-puntos-ventaja-sobre-psoe/0003_202611G1P26991.htm",
+    "coverage": "partial",
+    "kind": "poll-estimate",
+    "denominator": "votos válidos",
+    "verified": "2026-11-03",
+    "notes": "Muestra proporcional por comunidad y provincia, con cuotas de edad y sexo. Solo cifras explícitas del texto; sin reparto de escaños ni completar otras candidaturas. El campo termina el 28 de octubre; no se presenta como encuesta íntegramente posterior al accidente.",
+    "seatNotes": "Solo cifras explícitas del texto original; sin completar desde recopiladores ni calcular puntos medios.",
+    "verification": "Texto y ficha técnica de la publicación original consultados el 3 de noviembre de 2026.",
+    "sourcePages": "Párrafos de resultados y apartado Ficha técnica."
   }
 ]

@@ -62,3 +62,20 @@ El 30 de octubre se localizó una noticia de elDiario.es sobre un Sociómetro pa
 ## Corrección documental del 31 de octubre de 2026
 
 La publicación original de IMOP, https://www.imop.es/encuesta-pre-electoral-el-confidencial-ola-2/, declara en su pie una encuesta CATI/CAWI del 13 al 16 de octubre, con muestra de 1.000. Se completa `mode` de la ola 2, antes `null`, como `CATI + CAWI`. No cambian estimaciones de voto, escaños, fechas de campo ni fecha de publicación. Se conserva la discrepancia entre el encabezado del 21 de octubre y la fuente/metadatos del 23. No es una encuesta nueva ni implica entrevistas posteriores al accidente de Urda.
+
+
+## Revisión del 3 de noviembre de 2026
+
+Se incorporan tres estudios verificados en el texto y la ficha técnica originales; 12 estudios en total, de 9 institutos. Sus enlaces, fechas, categorías y límites figuran en `data/polls.json` y en los CSV regenerados:
+
+- Sigma Dos / El Mundo: publicación original del 2 de noviembre; 2.505 entrevistas del 29–30 de octubre. Se conservan Frente Amplio y Front Valencià separados. No se adopta la fecha del día 1 ni la categoría Sumar agrupada de recopiladores.
+- Target Point / El Debate: 2 de noviembre; 1.024 entrevistas CAWI del 28–30 de octubre; excluye Ceuta y Melilla. Se transcriben solo porcentajes y escaños explícitos del texto.
+- Sondaxe / La Voz de Galicia: 1 de noviembre; 1.200 entrevistas CATI/CAWI del 26–28 de octubre. No se inventan escaños ni se interpreta el campo como íntegramente posterior al accidente.
+
+Pendientes, sin integración en el promedio:
+
+- NC Report / La Razón (2 de noviembre): el texto original difiere de recopiladores en PP y escaños; no se ha verificado una ficha completa con muestra y método. Fuente: https://www.larazon.es/espana/psoe-frena-efecto-remontada-derecha-consolida-mayoria-absoluta_202611026ae783220250123215703bb1.html
+- Hamalgama / Vozpópuli (2 de noviembre): la ficha declara residentes «en la autonomía» en una publicación nacional. Debe aclararse el universo antes de incorporar. Fuente: https://www.vozpopuli.com/espana/politica/pp-y-vox-suman-ya-un-techo-historico-de-127-millones-de-votos-y-lograrian-205-escanos.html
+- SocioMétrica / El Español (1 de noviembre): muestra acumulada de tracking desde septiembre; la ficha consultada no precisa el cierre ni la muestra efectiva de esta estimación. No contar el acumulado como una ola nueva independiente. Fuente: https://www.elespanol.com/espana/politica/20261101/primer-sondeo-tragedia-pp-vox-amplian-ventaja-sanchez-sigue-cayendo-pese-vaciar-frente-amplio/1003744442810_0.html
+
+El catálogo de GAD3 consultado mantiene el barómetro del 12 de octubre. La portada de IMOP devolvió timeout. Esta revisión no certifica cobertura exhaustiva de todas las publicaciones. La vigilancia diaria de GitHub es descubrimiento, no incorporación automática; el estado de la antigua revisión horaria del chat no está confirmado.

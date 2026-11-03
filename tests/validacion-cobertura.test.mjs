@@ -28,9 +28,10 @@ test('La interfaz y el build publican matriz de elegibilidad sin resultados inve
  const build=fs.readFileSync('scripts/build.mjs','utf8');
  assert.match(html,/id="vh-coverage"/);
  assert.match(html,/id="vh-election-registry"/);
- assert.match(html,/candidatas/i);
+ assert.match(html,/ninguna prueba prospectiva independiente/i);
  assert.match(ui,/auditCoverage/);
  assert.match(ui,/registro_validacion_elecciones.json/);
  assert.match(build,/validacion-cobertura.mjs/);
  assert.match(fs.readFileSync('scripts/preparar_validacion_2019.py','utf8'),/VARIABLE_REVIEW_REQUIRED/);
 });
+
