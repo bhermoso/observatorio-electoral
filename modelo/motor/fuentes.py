@@ -96,8 +96,17 @@ def cargar_wikipedia():
     return [e for e in por_id.values() if "(" not in e["casa"]]
 
 
+def contraste_terceros():
+    """Registro de contraste con originales (modelo/externos/contraste_terceros.json)."""
+    ruta = os.path.join(EXT, "contraste_terceros.json")
+    if not os.path.exists(ruta):
+        return {}
+    return json.load(open(ruta, encoding="utf-8")).get("registros", {})
+
+
 def cargar_29n():
-    """Encuestas privadas (2023 y 2025-26) del proyecto 29N, con URL de publicación."""
+    """Encuestas privadas (2023 y 2025-26) del proyecto 29N, con URL de publicación.
+    Aplica las correcciones documentadas en contraste_terceros.json y marca el estado del contraste."""
     por_id = {}
     for l in open(os.path.join(EXT, "29n_encuestadores.jsonl"), encoding="utf-8"):
         r = json.loads(l)
@@ -122,6 +131,13 @@ def cargar_29n():
                                            campo_supuesto=supuesto, n_supuesto=not r.get("n"),
                                            fuente_tipo=r.get("fuente_tipo", ""))
         por_id[r["estudio_id"]]["voto"][p] = float(r["porcentaje"])
+    contraste = contraste_terceros()
+    for k, e in por_id.items():
+        c = contraste.get(k)
+        e["contraste"] = c["estado"] if c else "sin_contrastar"
+        e["contraste_url"] = c.get("original") if c else None
+        for partido, v in ((c or {}).get("correcciones") or {}).items():
+            e["voto"][partido] = float(v["original"])
     return list(por_id.values())
 
 

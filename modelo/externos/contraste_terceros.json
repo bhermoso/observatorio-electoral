@@ -1,0 +1,42 @@
+{
+ "esquema": 1,
+ "descripcion": "Contraste de los registros de terceros que entran en el Motor 29N con su publicación original. No modifica el fichero importado (29n_encuestadores.jsonl, con huella SHA-256): las correcciones se aplican al cargar y quedan trazadas aquí.",
+ "estados": {
+  "original_consultado": "Se ha leído la publicación del medio comitente o del instituto y coinciden los campos indicados.",
+  "corregido_con_original": "El original contradice el registro importado; se usa el valor del original.",
+  "solo_secundaria": "El original no ha podido consultarse (acceso bloqueado o no localizado); solo hay confirmación en recopiladores.",
+  "discrepancia_secundaria": "Dos fuentes secundarias no coinciden y el original no se ha podido consultar."
+ },
+ "registros": {
+  "sociometrica-2026-10-01": {
+   "estado": "original_consultado", "consultado": "2026-11-03",
+   "original": "https://www.elespanol.com/espana/politica/20261004/sondeo-expres-sanchez-disuelve-congreso-pp-hoy-diputados-psoe-vox-sumar/1003744408026_0.html",
+   "confirmado": "Campo 1-3 oct 2026; 1.000 entrevistas CAWI-panel; PP 33,4; PSOE 26,5; Vox 18,1; Frente Amplio 5,3.",
+   "correcciones": {}
+  },
+  "sociometrica-2026-10-10": {
+   "estado": "corregido_con_original", "consultado": "2026-11-03",
+   "original": "https://www.elespanol.com/espana/politica/20261011/sanchez-no-funciona-apropiarse-maricarmen-huelga-oposicion-cae-sondeo-noche/1003744416762_0.html",
+   "confirmado": "Campo 10-11 oct 2026; 1.000 entrevistas CAWI-panel; PP 32,6; PSOE 26,2; Vox 18,8. Cita del original: «Hoy Sumar obtendría sólo 5 escaños (4,9%)»; «mantiene a Podemos con sólo dos escaños (2,8%)».",
+   "correcciones": {"SUMAR": {"importado": 5.8, "original": 4.9}, "PODEMOS": {"importado": null, "original": 2.8}}
+  },
+  "sigmados-2026-10-01": {
+   "estado": "solo_secundaria", "consultado": "2026-11-03",
+   "original": "https://www.elmundo.es/espana/encuestas/2026/10/04/6ac25e4dfc6c83bb588b458d.html",
+   "confirmado": "Colmena de Datos reproduce PP 32,6; PSOE 25,6; Vox 18,3; Sumar 6,6; Podemos 3,3. El Mundo y sigmados.com no se pudieron abrir desde el entorno de trabajo. Campo y muestra solo constan en el registro importado.",
+   "correcciones": {}
+  },
+  "ncreport-2026-09-03": {
+   "estado": "discrepancia_secundaria", "consultado": "2026-11-03",
+   "original": "https://www.larazon.es/espana/sanchez-lleva-psoe-suelo-electoral-vox-podrian-reformar-constitucion_202609076a9d3ff03bfe5d1eff4557b2.html",
+   "confirmado": "Colmena de Datos da PP 34,4 (registro importado: 34,5); PSOE 24,9, Vox 18,3 y Sumar 5,7 coinciden. Sin fechas de campo ni muestra en la secundaria. La Razón no se pudo abrir.",
+   "correcciones": {}
+  },
+  "ncreport-2026-10-06": {
+   "estado": "solo_secundaria", "consultado": "2026-11-03",
+   "original": "https://www.larazon.es/espana/adelanto-electoral-refuerza-bloque-vox-junts_202610086ac69166b0108820e09b13b5.html",
+   "confirmado": "Colmena de Datos reproduce PP 34,1; PSOE 25,0; Vox 18,2; Sumar 5,3; Podemos 3,9, y la fecha la encuesta el 7 de octubre. El campo registrado (1-6 oct) y la muestra no se han podido confirmar. La Razón no se pudo abrir.",
+   "correcciones": {}
+  }
+ }
+}
