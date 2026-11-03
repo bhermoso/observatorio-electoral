@@ -1,4 +1,4 @@
-"study","institute","publisher","kind","published","party_source_label","vote_percent","seat_kind","seat_point","seat_min","seat_max","source"
+﻿"study","institute","publisher","kind","published","party_source_label","vote_percent","seat_kind","seat_point","seat_min","seat_max","source"
 "3411","CIS","CIS","poll-estimate","2023-07-05","PP","31.4","published-range","","122","140","https://www.cis.es/documents/d/cis/3411_estimacion"
 "3411","CIS","CIS","poll-estimate","2023-07-05","PSOE","31.2","published-range","","115","135","https://www.cis.es/documents/d/cis/3411_estimacion"
 "3411","CIS","CIS","poll-estimate","2023-07-05","Sumar","16.4","published-range","","43","50","https://www.cis.es/documents/d/cis/3411_estimacion"
@@ -104,3 +104,7 @@
 "sondaxe-2026-11-01","Sondaxe","La Voz de Galicia","poll-estimate","2026-11-01","Podemos","2","not-transcribed","","","","https://www.lavozdegalicia.es/noticia/espana/2026/11/01/pp-ganaria-elecciones-23-puntos-ventaja-sobre-psoe/0003_202611G1P26991.htm"
 "sondaxe-2026-11-01","Sondaxe","La Voz de Galicia","poll-estimate","2026-11-01","BNG","0.9","not-transcribed","","","","https://www.lavozdegalicia.es/noticia/espana/2026/11/01/pp-ganaria-elecciones-23-puntos-ventaja-sobre-psoe/0003_202611G1P26991.htm"
 "sondaxe-2026-11-01","Sondaxe","La Voz de Galicia","poll-estimate","2026-11-01","Adelante Andalucía","2","not-transcribed","","","","https://www.lavozdegalicia.es/noticia/espana/2026/11/01/pp-ganaria-elecciones-23-puntos-ventaja-sobre-psoe/0003_202611G1P26991.htm"
+"hamalgama-metrica-2026-11-02","Hamalgama Métrica","Vozpópuli","poll-estimate","2026-11-02","PP","32","published-point","135","","","https://www.vozpopuli.com/amp/espana/politica/pp-y-vox-suman-ya-un-techo-historico-de-127-millones-de-votos-y-lograrian-205-escanos.html"
+"hamalgama-metrica-2026-11-02","Hamalgama Métrica","Vozpópuli","poll-estimate","2026-11-02","PSOE","26.4","published-point","106","","","https://www.vozpopuli.com/amp/espana/politica/pp-y-vox-suman-ya-un-techo-historico-de-127-millones-de-votos-y-lograrian-205-escanos.html"
+"hamalgama-metrica-2026-11-02","Hamalgama Métrica","Vozpópuli","poll-estimate","2026-11-02","VOX","19.9","published-point","70","","","https://www.vozpopuli.com/amp/espana/politica/pp-y-vox-suman-ya-un-techo-historico-de-127-millones-de-votos-y-lograrian-205-escanos.html"
+"hamalgama-metrica-2026-11-02","Hamalgama Métrica","Vozpópuli","poll-estimate","2026-11-02","Sumar/FA","5.4","published-point","7","","","https://www.vozpopuli.com/amp/espana/politica/pp-y-vox-suman-ya-un-techo-historico-de-127-millones-de-votos-y-lograrian-205-escanos.html"
