@@ -140,10 +140,10 @@ function drawFacts(ctx){
  const y26=arch.filter(p=>p.fieldEnd>='2026-01-01');
  document.querySelector('#impact-cut').textContent=`CORTE ${fdate(ctx.corte).toUpperCase()}${days!=null?` · ELECCIÓN 29N EN ${days} DÍAS`:''}`;
  document.querySelector('#impact-facts').innerHTML=`
-  <div><dt>Corte temporal</dt><dd>${h(fdate(ctx.corte))}</dd><small>Encuestas publicadas hasta ese día</small></div>
-  <div><dt>Encuestas en el archivo verificado</dt><dd>${y26.length}</dd><small>${new Set(y26.map(p=>p.institute)).size} institutos · 2026 (${arch.length} con 2023)</small></div>
-  <div><dt>Estudios en el Motor 29N</dt><dd>${ctx.entradas??'—'}</dd><small>${Object.entries(ctx.con?.porOrigen||{}).map(([k,v])=>`${v} ${k}`).join(' · ')||'—'}</small></div>
-  <div><dt>Última publicación</dt><dd>${h(fdate(arch.map(p=>p.published).sort().at(-1)))}</dd><small>Archivo verificado</small></div>`;
+  <div><dt>Corte temporal</dt><dd>${h(fdate(ctx.corte))}<small>Encuestas publicadas hasta ese día</small></dd></div>
+  <div><dt>Encuestas en el archivo verificado</dt><dd>${y26.length}<small>${new Set(y26.map(p=>p.institute)).size} institutos · 2026 (${arch.length} con 2023)</small></dd></div>
+  <div><dt>Estudios en el Motor 29N</dt><dd>${ctx.entradas??'—'}<small>${Object.entries(ctx.con?.porOrigen||{}).map(([k,v])=>`${v} ${k}`).join(' · ')||'—'}</small></dd></div>
+  <div><dt>Última publicación</dt><dd>${h(fdate(arch.map(p=>p.published).sort().at(-1)))}<small>Archivo verificado</small></dd></div>`;
 }
 export async function bindHomeImpact(polls){
  const root=document.querySelector('#impact');if(!root)return;

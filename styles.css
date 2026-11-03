@@ -323,3 +323,7 @@ table.variants td.ref,table.variants th.ref{background:#eef8df}
 @media(max-width:600px){.layer-legend,.home-blocks,.pipeline-status{grid-template-columns:1fr}.impact-facts{grid-template-columns:1fr 1fr}.tools-list{columns:1}.defs{grid-template-columns:1fr}.seg label{padding:6px 9px;font-size:13px}}
 .table-wrap,.panel{position:relative}.vh{left:0;top:0}
 .trace-columns{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}.trace-columns>*{min-width:0}
+
+.impact-facts dd small{font-family:'DM Sans',system-ui,sans-serif;font-weight:500}
+.audit-home .impact-kicker{color:#2f5d22}.audit-small{color:#566b59!important}
+#audit-retro p,#audit-retro p b{color:#566b59}

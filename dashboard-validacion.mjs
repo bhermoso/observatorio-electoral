@@ -26,7 +26,7 @@ export async function bindValidationDashboard(){
    const party=q('#audit-party').value,entries=Object.entries(forecast.error_23j||{}).filter(([_,v])=>Number.isFinite(v[party])).sort(([a],[b])=>a.localeCompare(b,'es'));
    q('#audit-houses').innerHTML=entries.length?entries.map(([name,values])=>{
     const value=values[party],abs=Math.abs(value),bar=Math.min(100,abs/6*100);
-    return `<div class="audit-row"><span>${h(name)}</span><div class="audit-track" aria-label="Desviación de ${h(name)}: ${f(value)} puntos"><i style="width:${bar}%;background:${value>=0?'#c69153':'#60a7ae'}"></i></div><b>${value>0?'+':''}${f(value)} pp</b></div>`;
+    return `<div class="audit-row"><span>${h(name)}</span><div class="audit-track" role="img" aria-label="Desviación de ${h(name)}: ${f(value)} puntos"><i style="width:${bar}%;background:${value>=0?'#c69153':'#60a7ae'}"></i></div><b>${value>0?'+':''}${f(value)} pp</b></div>`;
    }).join(''):'<p>Sin datos históricos para este partido.</p>';
   };
   const methods=[['decided','Solo decididos'],['sympathy_decided','Voto + simpatía'],['turnout_decided','Participación declarada'],['published_cis','CIS publicado']];
@@ -34,7 +34,7 @@ export async function bindValidationDashboard(){
    const id=q('#audit-study').value,results=audit.resultados_por_estudio?.[id]||{};
    q('#audit-recipes').innerHTML=methods.map(([key,label])=>{
     const v=results[key]?.mae_pp;
-    return `<div class="audit-row"><span>${h(label)}</span><div class="audit-track"><i style="width:${Number.isFinite(v)?Math.min(100,v/5*100):0}%;background:#528a6f"></i></div><b>${Number.isFinite(v)?f(v)+' pp':'—'}</b></div>`;
+    return `<div class="audit-row"><span>${h(label)}</span><div class="audit-track" aria-hidden="true"><i style="width:${Number.isFinite(v)?Math.min(100,v/5*100):0}%;background:#528a6f"></i></div><b>${Number.isFinite(v)?f(v)+' pp':'—'}</b></div>`;
    }).join('');
   };
   q('#audit-party').addEventListener('change',renderHouse);

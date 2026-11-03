@@ -1,12 +1,11 @@
 # Motor de pronóstico 29N — corte 2026-11-03
 
-Encuestas cargadas: 681 (prensa-sin-verificar: 2, terceros-29n: 23, terceros-wikipedia: 643, verificada: 13). `verificada` = registro primario del observatorio; `terceros-*` = ver `modelo/externos/PROCEDENCIA.md`.
+Encuestas cargadas: 681 (prensa-original-consultado: 1, prensa-sin-verificar: 1, terceros-29n: 23, terceros-wikipedia: 643, verificada: 13). `verificada` = registro primario del observatorio; `terceros-*` = ver `modelo/externos/PROCEDENCIA.md`.
 
-Puerta de calidad: 3 registros excluidos del pronóstico principal (2 de prensa sin verificar; el resto, registros de terceros con fecha de campo supuesta o solapada con un registro verificado de la misma casa). No se eliminan del archivo.
+Puerta de calidad: 2 registros excluidos del pronóstico principal (1 de prensa sin verificar; el resto, registros de terceros con fecha de campo supuesta o solapada con un registro verificado de la misma casa). No se eliminan del archivo.
 
 - Sigma Dos · sigmados-2026-10-12 (terceros-29n): Fecha de campo no publicada (supuesta a partir de la publicación).
 - SocioMétrica · prensa-sociometrica-2026-10-26 (prensa-sin-verificar): Cita de prensa sin original ni ficha técnica verificados.
-- NC Report · prensa-ncreport-2026-10-26 (prensa-sin-verificar): Cita de prensa sin original ni ficha técnica verificados.
 
 ## 0. Pronóstico principal
 
@@ -14,83 +13,83 @@ Une a partes iguales las tres variantes de la sección 1, con un error de indust
 
 | Partido | Voto % | Escaños |
 |---|---|---|
-| PP | 30.8 (26.3–35.2) | **129** (110–147) |
-| PSOE | 27.2 (23.0–31.3) | **112** (91–134) |
+| PP | 30.7 (26.3–35.1) | **129** (109–146) |
+| PSOE | 27.2 (23.1–31.4) | **112** (91–134) |
 | VOX | 18.9 (15.5–22.2) | **68** (54–83) |
 | ERC | 2.6 (1.2–3.9) | **11** (5–16) |
-| SUMAR | 6.1 (4.1–8.1) | **8** (4–15) |
+| SUMAR | 6.2 (4.2–8.2) | **8** (4–16) |
 | BILDU | 1.3 (0.4–2.3) | **7** (1–12) |
 | JUNTS | 1.2 (0.2–2.0) | **4** (0–8) |
 | PNV | 0.8 (0.0–1.7) | **4** (0–8) |
 | BNG | 0.9 (0.1–1.8) | **2** (0–6) |
-| PODEMOS | 2.5 (1.1–3.8) | **1** (0–3) |
+| PODEMOS | 2.6 (1.2–3.9) | **1** (0–4) |
 | CC | 0.4 (0.0–1.2) | **1** (0–4) |
 | SALF | 1.8 (0.5–3.1) | **0** (0–1) |
 | UPN | 0.1 (0.0–0.9) | **0** (0–3) |
 
 | Bloque | Escaños | P(≥176) |
 |---|---|---|
-| PP+VOX | 198 (172–220) | 93% |
-| PP+VOX+UPN | 199 (173–222) | 93% |
-| PSOE+SUMAR+PODEMOS | 121 (97–148) | 0% |
-| PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC | 151 (128–177) | 6% |
-| PP primera fuerza |  | 79% |
+| PP+VOX | 197 (172–220) | 92% |
+| PP+VOX+UPN | 198 (172–222) | 93% |
+| PSOE+SUMAR+PODEMOS | 121 (98–148) | 0% |
+| PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC | 152 (128–178) | 6% |
+| PP primera fuerza |  | 78% |
 
 ### Evolución (pronóstico de cada día con las encuestas publicadas hasta ese día)
 
 | Día | Encuestas | Escaños (mediana) | P(PP+Vox ≥ 176) | P(PP 1º) | Encuestas nuevas ese día |
 |---|---|---|---|---|---|
-| 2026-10-01 | 3 | PP 143 · PSOE 106 · VOX 63 | 96% | 90% |  |
-| 2026-10-02 | 3 | PP 143 · PSOE 106 · VOX 62 | 96% | 91% |  |
-| 2026-10-03 | 4 | PP 140 · PSOE 107 · VOX 64 | 97% | 93% | sigmados-2026-10-01 |
-| 2026-10-04 | 5 | PP 141 · PSOE 108 · VOX 64 | 97% | 90% | sociometrica-2026-10-01 |
-| 2026-10-05 | 5 | PP 141 · PSOE 107 · VOX 63 | 98% | 93% |  |
-| 2026-10-06 | 5 | PP 141 · PSOE 108 · VOX 63 | 97% | 91% |  |
-| 2026-10-07 | 5 | PP 141 · PSOE 108 · VOX 64 | 97% | 92% |  |
-| 2026-10-08 | 6 | PP 141 · PSOE 108 · VOX 64 | 98% | 93% | ncreport-2026-10-06 |
+| 2026-10-01 | 3 | PP 142 · PSOE 106 · VOX 62 | 96% | 92% |  |
+| 2026-10-02 | 3 | PP 142 · PSOE 105 · VOX 63 | 95% | 92% |  |
+| 2026-10-03 | 4 | PP 140 · PSOE 105 · VOX 64 | 96% | 92% | sigmados-2026-10-01 |
+| 2026-10-04 | 5 | PP 139 · PSOE 106 · VOX 63 | 96% | 92% | sociometrica-2026-10-01 |
+| 2026-10-05 | 5 | PP 140 · PSOE 107 · VOX 63 | 96% | 92% |  |
+| 2026-10-06 | 5 | PP 139 · PSOE 107 · VOX 63 | 96% | 92% |  |
+| 2026-10-07 | 5 | PP 140 · PSOE 107 · VOX 64 | 96% | 93% |  |
+| 2026-10-08 | 6 | PP 140 · PSOE 106 · VOX 63 | 96% | 93% | ncreport-2026-10-06 |
 | 2026-10-09 | 9 | PP 136 · PSOE 109 · VOX 64 | 95% | 89% | 40db-2026-10-flash, dym-2026-10, imop-2026-10-05 |
-| 2026-10-10 | 9 | PP 136 · PSOE 109 · VOX 65 | 96% | 90% |  |
-| 2026-10-11 | 10 | PP 136 · PSOE 109 · VOX 64 | 96% | 90% | sociometrica-2026-10-10 |
+| 2026-10-10 | 9 | PP 136 · PSOE 109 · VOX 64 | 96% | 90% |  |
+| 2026-10-11 | 10 | PP 136 · PSOE 108 · VOX 64 | 96% | 90% | sociometrica-2026-10-10 |
 | 2026-10-12 | 11 | PP 135 · PSOE 109 · VOX 64 | 94% | 89% | gad3-2026-10 |
-| 2026-10-13 | 11 | PP 135 · PSOE 109 · VOX 64 | 96% | 89% |  |
-| 2026-10-14 | 12 | PP 131 · PSOE 114 · VOX 65 | 91% | 79% | cis-3582 |
-| 2026-10-15 | 12 | PP 132 · PSOE 114 · VOX 65 | 92% | 77% |  |
+| 2026-10-13 | 11 | PP 135 · PSOE 108 · VOX 64 | 95% | 89% |  |
+| 2026-10-14 | 12 | PP 131 · PSOE 113 · VOX 65 | 91% | 79% | cis-3582 |
+| 2026-10-15 | 12 | PP 132 · PSOE 114 · VOX 65 | 91% | 77% |  |
 | 2026-10-16 | 12 | PP 131 · PSOE 113 · VOX 65 | 92% | 79% |  |
 | 2026-10-17 | 12 | PP 131 · PSOE 113 · VOX 64 | 90% | 78% |  |
-| 2026-10-18 | 12 | PP 131 · PSOE 114 · VOX 65 | 92% | 78% |  |
-| 2026-10-19 | 12 | PP 131 · PSOE 114 · VOX 65 | 91% | 78% |  |
+| 2026-10-18 | 12 | PP 130 · PSOE 114 · VOX 65 | 92% | 78% |  |
+| 2026-10-19 | 12 | PP 130 · PSOE 114 · VOX 65 | 90% | 79% |  |
 | 2026-10-20 | 12 | PP 131 · PSOE 114 · VOX 65 | 90% | 76% |  |
 | 2026-10-21 | 12 | PP 131 · PSOE 114 · VOX 65 | 92% | 78% |  |
-| 2026-10-22 | 12 | PP 131 · PSOE 113 · VOX 65 | 92% | 80% |  |
-| 2026-10-23 | 13 | PP 130 · PSOE 114 · VOX 66 | 91% | 77% | imop-2026-10-ola2 |
+| 2026-10-22 | 12 | PP 131 · PSOE 113 · VOX 65 | 91% | 80% |  |
+| 2026-10-23 | 13 | PP 130 · PSOE 114 · VOX 66 | 90% | 77% | imop-2026-10-ola2 |
 | 2026-10-24 | 13 | PP 130 · PSOE 114 · VOX 65 | 90% | 76% |  |
 | 2026-10-25 | 14 | PP 130 · PSOE 114 · VOX 65 | 90% | 76% | ateneo-2026-10-25 |
-| 2026-10-26 | 15 | PP 129 · PSOE 113 · VOX 67 | 92% | 77% | sigma-dos-2026-10-26 |
-| 2026-10-27 | 15 | PP 130 · PSOE 113 · VOX 67 | 91% | 76% |  |
-| 2026-10-28 | 15 | PP 129 · PSOE 113 · VOX 67 | 92% | 76% |  |
-| 2026-10-29 | 15 | PP 129 · PSOE 114 · VOX 67 | 92% | 76% |  |
-| 2026-10-30 | 15 | PP 128 · PSOE 114 · VOX 67 | 91% | 75% |  |
-| 2026-10-31 | 15 | PP 129 · PSOE 113 · VOX 67 | 92% | 77% |  |
-| 2026-11-01 | 16 | PP 128 · PSOE 113 · VOX 67 | 92% | 76% | sondaxe-2026-11-01 |
-| 2026-11-02 | 19 | PP 130 · PSOE 111 · VOX 68 | 94% | 80% | hamalgama-metrica-2026-11-02, sigma-dos-2026-11-02, target-point-2026-11-02 |
-| 2026-11-03 | 19 | PP 129 · PSOE 112 · VOX 68 | 93% | 80% |  |
+| 2026-10-26 | 16 | PP 129 · PSOE 113 · VOX 67 | 91% | 76% | prensa-ncreport-2026-10-26, sigma-dos-2026-10-26 |
+| 2026-10-27 | 16 | PP 129 · PSOE 113 · VOX 67 | 90% | 76% |  |
+| 2026-10-28 | 16 | PP 128 · PSOE 113 · VOX 68 | 91% | 76% |  |
+| 2026-10-29 | 16 | PP 128 · PSOE 114 · VOX 67 | 92% | 75% |  |
+| 2026-10-30 | 16 | PP 128 · PSOE 114 · VOX 67 | 91% | 75% |  |
+| 2026-10-31 | 16 | PP 129 · PSOE 113 · VOX 67 | 91% | 76% |  |
+| 2026-11-01 | 17 | PP 128 · PSOE 113 · VOX 67 | 91% | 76% | sondaxe-2026-11-01 |
+| 2026-11-02 | 20 | PP 129 · PSOE 111 · VOX 68 | 94% | 80% | hamalgama-metrica-2026-11-02, sigma-dos-2026-11-02, target-point-2026-11-02 |
+| 2026-11-03 | 20 | PP 129 · PSOE 112 · VOX 68 | 92% | 79% |  |
 
 ### Escaños por provincia (media de las simulaciones)
 
 | Provincia | Escaños | Reparto medio |
 |---|---|---|
 | Albacete | 4 | PP 1.9 · PSOE 1.1 · VOX 1.0 |
-| Alicante/Alacant | 12 | PP 4.7 · PSOE 3.7 · VOX 3.3 · SUMAR 0.4 |
+| Alicante/Alacant | 12 | PP 4.7 · PSOE 3.6 · VOX 3.3 · SUMAR 0.4 |
 | Almería | 6 | PP 2.5 · VOX 2.1 · PSOE 1.4 |
 | Araba/Álava | 4 | PSOE 1.4 · BILDU 1.0 · PP 1.0 · PNV 0.5 |
 | Asturias | 7 | PP 2.9 · PSOE 2.5 · VOX 1.4 · SUMAR 0.1 |
 | Ávila | 3 | PP 1.3 · VOX 0.9 · PSOE 0.8 |
 | Badajoz | 5 | PP 2.0 · PSOE 2.0 · VOX 1.0 |
 | Balears (Illes) | 8 | PP 3.2 · PSOE 2.4 · VOX 2.1 · SUMAR 0.3 |
-| Barcelona | 32 | PSOE 11.8 · ERC 6.1 · PP 4.7 · VOX 4.2 · SUMAR 2.5 · JUNTS 2.2 · PODEMOS 0.5 · SALF 0.1 |
-| Bizkaia | 8 | PSOE 2.6 · BILDU 2.2 · PNV 2.1 · PP 1.1 · SUMAR 0.1 |
+| Barcelona | 32 | PSOE 11.7 · ERC 6.1 · PP 4.6 · VOX 4.1 · SUMAR 2.5 · JUNTS 2.2 · PODEMOS 0.6 · SALF 0.1 |
+| Bizkaia | 8 | PSOE 2.6 · BILDU 2.1 · PNV 2.1 · PP 1.1 · SUMAR 0.1 |
 | Burgos | 4 | PP 1.9 · PSOE 1.2 · VOX 0.9 |
-| Cáceres | 4 | PP 1.7 · PSOE 1.4 · VOX 0.9 |
+| Cáceres | 4 | PP 1.6 · PSOE 1.4 · VOX 0.9 |
 | Cádiz | 9 | PP 3.5 · PSOE 3.0 · VOX 2.4 · SUMAR 0.1 |
 | Cantabria | 5 | PP 2.3 · PSOE 1.7 · VOX 1.0 |
 | Castellón/Castelló | 5 | PP 2.0 · PSOE 1.7 · VOX 1.2 |
@@ -108,10 +107,10 @@ Une a partes iguales las tres variantes de la sección 1, con un error de indust
 | León | 4 | PP 1.8 · PSOE 1.2 · VOX 1.0 |
 | Lleida | 4 | PSOE 1.5 · ERC 1.5 · JUNTS 0.5 · PP 0.4 · VOX 0.1 |
 | Lugo | 4 | PP 2.5 · PSOE 1.1 · BNG 0.3 |
-| Madrid | 37 | PP 15.4 · PSOE 9.6 · VOX 8.6 · SUMAR 2.7 · PODEMOS 0.6 · SALF 0.1 |
-| Málaga | 11 | PP 4.5 · PSOE 3.2 · VOX 3.0 · SUMAR 0.2 |
+| Madrid | 37 | PP 15.4 · PSOE 9.6 · VOX 8.6 · SUMAR 2.8 · PODEMOS 0.7 · SALF 0.1 |
+| Málaga | 11 | PP 4.5 · PSOE 3.2 · VOX 3.1 · SUMAR 0.2 |
 | Murcia | 10 | PP 4.2 · VOX 3.6 · PSOE 2.2 |
-| Navarra | 5 | PSOE 1.8 · BILDU 1.1 · UPN 1.0 · PP 1.0 · VOX 0.2 |
+| Navarra | 5 | PSOE 1.8 · BILDU 1.1 · UPN 1.0 · PP 0.9 · VOX 0.2 |
 | Ourense | 4 | PP 2.6 · PSOE 1.1 · BNG 0.3 |
 | Palencia | 3 | PP 1.4 · PSOE 1.0 · VOX 0.5 |
 | Palmas (Las) | 8 | PSOE 3.0 · PP 2.4 · VOX 2.2 · CC 0.4 |
@@ -126,7 +125,7 @@ Une a partes iguales las tres variantes de la sección 1, con un error de indust
 | Teruel | 3 | PP 1.1 · PSOE 1.0 · VOX 0.9 |
 | Toledo | 6 | PP 2.2 · VOX 2.0 · PSOE 1.8 |
 | Valencia/València | 16 | PP 5.7 · PSOE 5.0 · VOX 4.1 · SUMAR 1.1 · PODEMOS 0.1 |
-| Valladolid | 5 | PP 2.3 · PSOE 1.6 · VOX 1.1 |
+| Valladolid | 5 | PP 2.2 · PSOE 1.6 · VOX 1.1 |
 | Zamora | 3 | PP 1.6 · PSOE 1.0 · VOX 0.4 |
 | Zaragoza | 7 | PP 2.9 · PSOE 2.1 · VOX 1.9 |
 | Ceuta | 1 | PP 0.5 · VOX 0.4 · PSOE 0.1 |
@@ -150,17 +149,17 @@ Escaños medianos con el traslado proporcional (el del pronóstico: cada partido
 | BILDU | 7 | 7 | +0 |
 | PNV | 4 | 3 | -1 |
 
-P(PP+Vox ≥ 176): proporcional 93%, uniforme 92%. Circunscripciones donde el método mueve al menos 0,3 escaños medios: 10.
+P(PP+Vox ≥ 176): proporcional 92%, uniforme 92%. Circunscripciones donde el método mueve al menos 0,3 escaños medios: 10.
 
 ### Otros agregadores (contraste; no entran en el pronóstico)
 
 | Agregador | Fecha | PP | PSOE | Vox | Motor ese día (PP · PSOE · Vox) |
 |---|---|---|---|---|---|
-| ElectoPromedio (Electomanía) | 2026-10-26 (actualización) | 31.3 | 26.7 | 19.1 | 30.8 (129) · 27.5 (113) · 18.8 (67) |
+| ElectoPromedio (Electomanía) | 2026-10-26 (actualización) | 31.3 | 26.7 | 19.1 | 30.8 (129) · 27.5 (113) · 18.9 (67) |
 | eleccionesEspaña.com | 2026-10-25 (fin del periodo de campo incluido) | 30.9 · 128 | 27.1 | 19.0 | 31.0 (130) · 27.5 (114) · 18.3 (65) |
 | El Debate (media sin CIS) | 2026-10-25 (publicación) | 32.0 | 26.4 | 18.8 | 31.0 (130) · 27.5 (114) · 18.3 (65) |
-| Demócrata (16 institutos) | 2026-11-01 (consulta (fecha del promedio no consta)) | 31.7 | 26.8 | 18.7 | 30.6 (128) · 27.4 (113) · 18.7 (67) |
-| Promedio RTVE (vía elecciones29noviembre.com) | 2026-11-01 (consulta (fecha del promedio no consta)) | 31.5 · 136 | 26.8 · 106 | 18.7 · 66 | 30.6 (128) · 27.4 (113) · 18.7 (67) |
+| Demócrata (16 institutos) | 2026-11-01 (consulta (fecha del promedio no consta)) | 31.7 | 26.8 | 18.7 | 30.5 (128) · 27.5 (113) · 18.8 (67) |
+| Promedio RTVE (vía elecciones29noviembre.com) | 2026-11-01 (consulta (fecha del promedio no consta)) | 31.5 · 136 | 26.8 · 106 | 18.7 · 66 | 30.5 (128) · 27.5 (113) · 18.8 (67) |
 
 ## 1. Variantes del pronóstico
 
@@ -168,11 +167,11 @@ Faltan 26 días. Mediana e intervalo del 90 % de 1500 simulaciones por variante.
 
 | Partido | Promedio simple % | consenso_privadas: voto % · escaños | consenso_todas: voto % · escaños | calibrada_23j: voto % · escaños |
 |---|---|---|---|---|
-| PP | 30.8 | 31.5 (28.2–34.8) · **132** (118–146) | 30.8 (27.5–34.1) · **129** (116–143) | 30.2 (26.8–33.6) · **126** (112–141) |
-| PSOE | 27.2 | 26.5 (23.7–29.5) · **109** (94–123) | 27.0 (24.1–30.0) · **111** (97–126) | 27.8 (24.8–31.1) · **115** (100–131) |
+| PP | 30.7 | 31.5 (28.2–34.7) · **132** (118–146) | 30.8 (27.5–34.1) · **129** (116–143) | 30.2 (26.8–33.6) · **126** (112–141) |
+| PSOE | 27.2 | 26.5 (23.7–29.5) · **109** (94–123) | 27.1 (24.2–30.1) · **111** (97–126) | 27.9 (24.9–31.1) · **115** (100–131) |
 | VOX | 19.0 | 19.0 (16.6–21.6) · **68** (58–81) | 18.9 (16.5–21.5) · **68** (57–80) | 18.9 (16.3–21.6) · **68** (57–80) |
-| SUMAR | 6.0 | 6.2 (4.5–7.7) · **8** (5–13) | 6.2 (4.5–7.7) · **8** (5–13) | 6.2 (4.5–7.7) · **8** (5–13) |
-| PODEMOS | 2.5 | 2.4 (1.4–3.4) · **1** (0–2) | 2.5 (1.5–3.5) · **1** (0–2) | 2.4 (1.4–3.4) · **1** (0–2) |
+| SUMAR | 6.1 | 6.2 (4.6–7.7) · **8** (5–13) | 6.2 (4.6–7.7) · **8** (5–14) | 6.2 (4.6–7.7) · **8** (5–13) |
+| PODEMOS | 2.5 | 2.5 (1.5–3.5) · **1** (0–3) | 2.6 (1.6–3.6) · **2** (0–3) | 2.5 (1.5–3.5) · **1** (0–3) |
 | SALF | 1.8 | 1.8 (0.5–2.9) · **0** (0–1) | 1.8 (0.7–2.8) · **0** (0–0) | 1.8 (0.5–2.9) · **0** (0–1) |
 | ERC | 3.0 | 2.5 (1.4–3.6) · **11** (6–15) | 2.6 (1.6–3.7) · **12** (7–15) | 2.5 (1.4–3.6) · **11** (6–15) |
 | JUNTS | 1.1 | 1.1 (0.5–1.9) · **4** (0–8) | 1.1 (0.5–1.8) · **4** (0–8) | 1.1 (0.5–1.9) · **4** (0–8) |
@@ -184,10 +183,10 @@ Faltan 26 días. Mediana e intervalo del 90 % de 1500 simulaciones por variante.
 
 | Bloque | consenso_privadas | consenso_todas | calibrada_23j |
 |---|---|---|---|
-| PP+VOX | 201 (185–217) · P(≥176) 99% | 198 (182–214) · P(≥176) 98% | 195 (178–212) · P(≥176) 97% |
-| PP+VOX+UPN | 202 (185–219) · P(≥176) 99% | 199 (182–216) · P(≥176) 99% | 196 (178–213) · P(≥176) 97% |
+| PP+VOX | 201 (184–217) · P(≥176) 99% | 198 (181–214) · P(≥176) 98% | 195 (178–211) · P(≥176) 97% |
+| PP+VOX+UPN | 201 (185–218) · P(≥176) 99% | 199 (182–215) · P(≥176) 98% | 195 (178–213) · P(≥176) 97% |
 | PSOE+SUMAR+PODEMOS | 118 (101–135) · P(≥176) 0% | 121 (104–138) · P(≥176) 0% | 124 (107–143) · P(≥176) 0% |
-| PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC | 148 (131–165) · P(≥176) 1% | 151 (134–168) · P(≥176) 1% | 154 (137–172) · P(≥176) 2% |
+| PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC | 149 (131–165) · P(≥176) 1% | 151 (135–168) · P(≥176) 1% | 154 (137–172) · P(≥176) 3% |
 | PP primera fuerza | 93% | 88% | 76% |
 
 Variantes:
@@ -202,9 +201,9 @@ Fracción de la varianza del error de industria que desplaza voto entre bloques 
 
 | Correlación entre bloques | PP − PSOE (pp, 90 %) | PP + Vox escaños (90 %) | P(PP+Vox ≥ 176) | P(PP primero) |
 |---|---|---|---|---|
-| 0.0 | +5.0 (+0.3 a +9.6) | 201 (188–213) | 100% | 96% |
-| 0.5 (pronóstico) | +5.0 (-0.3 a +10.2) | 201 (185–217) | 99% | 93% |
-| 0.8 | +5.0 (-0.6 a +10.7) | 201 (182–219) | 99% | 93% |
+| 0.0 | +4.9 (+0.2 a +9.5) | 200 (188–213) | 100% | 95% |
+| 0.5 (pronóstico) | +4.9 (-0.4 a +10.1) | 201 (184–217) | 99% | 93% |
+| 0.8 | +4.9 (-0.6 a +10.6) | 201 (182–219) | 98% | 93% |
 
 ## 2. Evaluación de las encuestas frente al 23J
 
@@ -247,9 +246,9 @@ Cobertura del intervalo del 90 %: 12 de 16 casos. El PSOE quedó fuera en todos 
 
 | Error de industria (pp al 25 %) | consenso_privadas | consenso_todas | calibrada_23j |
 |---|---|---|---|
-| 1.50 (pronóstico) | 201 (185–217) · P(≥176) 99% · PP 1º 93% | 198 (182–214) · P(≥176) 98% · PP 1º 88% | 195 (178–212) · P(≥176) 97% · PP 1º 76% |
-| 2.22 | 201 (178–222) · P(≥176) 96% · PP 1º 87% | 198 (174–219) · P(≥176) 94% · PP 1º 81% | 195 (171–216) · P(≥176) 90% · PP 1º 70% |
-| 2.93 (cubre 2023) | 200 (169–229) · P(≥176) 91% · PP 1º 81% | 197 (166–225) · P(≥176) 88% · PP 1º 75% | 194 (163–222) · P(≥176) 84% · PP 1º 67% |
+| 1.50 (pronóstico) | 201 (184–217) · P(≥176) 99% · PP 1º 93% | 198 (181–214) · P(≥176) 98% · PP 1º 88% | 195 (178–211) · P(≥176) 97% · PP 1º 76% |
+| 2.22 | 200 (177–222) · P(≥176) 96% · PP 1º 86% | 198 (174–219) · P(≥176) 94% · PP 1º 80% | 194 (170–216) · P(≥176) 90% · PP 1º 70% |
+| 2.93 (cubre 2023) | 200 (169–229) · P(≥176) 91% · PP 1º 80% | 197 (166–225) · P(≥176) 88% · PP 1º 75% | 194 (163–222) · P(≥176) 84% · PP 1º 66% |
 
 
 La variante calibrada no se puede retroprobar en el 23J (usaría el propio resultado). Con una sola elección evaluada, ninguna diferencia entre métodos es concluyente.
@@ -260,36 +259,36 @@ Sesgo actual = desviación respecto al consenso de las privadas en el ciclo 2023
 
 | Casa | Modo | Muestra | Días campo | Encuestas | PP | PSOE | Vox | IZQ | Error 23J |
 |---|---|---|---|---|---|---|---|---|---|
-| 40dB. | CAWI, CAWI (online) | 800 | 2.0 | 1 | -0.0±1.8 | +1.1±1.7 | -0.1±1.5 | -0.5±0.9 | PP-1.6 PSOE-2.4 |
-| Ateneo del Dato | CAWI | 2000 | 3.0 | 1 | -0.5±1.5 | +0.9±1.4 | +0.5±1.2 | +0.8±0.8 | — |
-| CIS | CATI | 6911 | 6.0 | 1 | -8.2±1.4 | +6.1±1.3 | -1.5±1.1 | +0.7±0.8 | PP-2.3 PSOE+0.5 VOX-0.6 |
-| DYM | CAWI | 1011 | 3.0 | 1 | +1.5±1.7 | +1.2±1.6 | -0.5±1.4 | -1.5±0.9 | — |
-| Demoscopia y Servicios | mixta: panel tabulado + entrevista telefónica asistida por ordenador (CATI) | 3000 | 4.0 | 1 | +1.3±2.4 | -0.1±2.2 | -0.8±1.9 | — | — |
+| 40dB. | CAWI, CAWI (online) | 800 | 2.0 | 1 | -0.0±1.8 | +1.1±1.7 | -0.1±1.5 | -0.6±1.0 | PP-1.6 PSOE-2.4 |
+| Ateneo del Dato | CAWI | 2000 | 3.0 | 1 | -0.4±1.5 | +0.8±1.4 | +0.5±1.2 | +0.8±0.8 | — |
+| CIS | CATI | 6911 | 6.0 | 1 | -8.2±1.4 | +6.1±1.3 | -1.5±1.1 | +0.5±0.8 | PP-2.3 PSOE+0.5 VOX-0.6 |
+| DYM | CAWI | 1011 | 3.0 | 1 | +1.5±1.7 | +1.2±1.6 | -0.5±1.4 | -1.7±0.9 | — |
+| Demoscopia y Servicios | mixta: panel tabulado + entrevista telefónica asistida por ordenador (CATI) | 3000 | 4.0 | 1 | +1.3±2.4 | -0.1±2.2 | -0.8±1.9 | +1.2±1.3 | — |
 | GAD3 | CATI, CATI (telefónica), CATI + CAWI | 1077 | 3.5 | 2 | -0.0±1.4 | -0.1±1.3 | -0.8±1.1 | — | PP+3.9 PSOE-3.3 VOX-0.5 |
-| Hamalgama Métrica | CATI | 1000 | 7.0 | 1 | +0.2±1.7 | +0.0±1.6 | +0.5±1.4 | — | — |
+| Hamalgama Métrica | CATI | 1000 | 7.0 | 1 | +0.2±1.7 | -0.0±1.6 | +0.5±1.4 | — | — |
 | IMOP | CATI (telefónica asistida por ordenador; 60% móvil), CATI (telefónica asistida por ordenador; 61% móvil), CATI + CAWI, Híbrida: CATI + CAWI (distribución aprox. 45%/55%; en el canal telefónico 70% móvil) | 1000 | 4.0 | 2 | -2.1±1.3 | -0.1±1.3 | +0.4±1.1 | — | PP-0.2 |
-| NC Report | no consta en la fuente consultada, telefónica/online, telefónico + online | 1000 | 2.5 | 2 | +1.9±1.4 | -1.4±1.3 | -0.4±1.1 | — | PP+4.1 PSOE-3.4 VOX-1.3 |
-| Sigma Dos | CATI (telefónica), CATI + CAWI, mixta CATI + CAWI (panel), mixta CATI/CAWI (panel), mixta telefónica (CATI) / online (CAWI) / RRSS | 2813 | 10.0 | 3 | -0.3±1.0 | -1.1±0.9 | +0.2±0.8 | +1.1±0.6 | PP+1.1 PSOE-2.8 VOX-1.2 |
+| NC Report | no consta en la fuente consultada, telefónica/online, telefónico + online | 1000 | 3.0 | 3 | +1.8±1.2 | -1.3±1.1 | -0.3±0.9 | +0.5±0.7 | PP+4.1 PSOE-3.4 VOX-1.3 |
+| Sigma Dos | CATI (telefónica), CATI + CAWI, mixta CATI + CAWI (panel), mixta CATI/CAWI (panel), mixta telefónica (CATI) / online (CAWI) / RRSS | 2813 | 10.0 | 3 | -0.2±1.0 | -1.1±0.9 | +0.2±0.8 | +1.0±0.6 | PP+1.1 PSOE-2.8 VOX-1.2 |
 | SocioMétrica | Mixta CATI + CAWI (plataforma Gandia Integra), Online (CAWI panel), telefónica/online | 1000 | 3.0 | 2 | +1.0±1.4 | -0.3±1.3 | -0.4±1.1 | -0.5±0.9 | PP+0.4 PSOE-3.4 VOX+1.3 |
-| Sondaxe | CATI + CAWI | 1200 | 3.0 | 1 | -1.9±1.6 | +0.4±1.5 | +0.0±1.3 | +0.6±0.9 | — |
-| Target Point | CAWI | 1024 | 3.0 | 1 | +0.0±1.7 | -0.6±1.6 | +0.5±1.4 | — | — |
+| Sondaxe | CATI + CAWI | 1200 | 3.0 | 1 | -1.8±1.6 | +0.4±1.5 | +0.0±1.3 | +0.5±0.9 | — |
+| Target Point | CAWI | 1024 | 3.0 | 1 | +0.1±1.7 | -0.6±1.6 | +0.5±1.4 | — | — |
 
 **Comparabilidad entre ciclos**: sesgo de cada casa en 2019-23 (nov-2019 a ene-2023, tablas de Wikipedia) frente a 2023-26. IZQ 2019-23 = UP + Más País.
 
 | Casa | PP | PSOE | Vox | IZQ |
 |---|---|---|---|---|
-| 40dB. | -1.6 → -0.0 | +0.8 → +1.1 | -0.8 → -0.1 | +1.2 → -0.5 |
-| CIS | -2.9 → -8.2 | +3.7 → +6.1 | -3.1 → -1.5 | +0.3 → +0.7 |
-| DYM | +0.2 → +1.5 | -0.5 → +1.2 | +0.0 → -0.5 | +0.1 → -1.5 |
-| Demoscopia y Servicios | +0.6 → +1.3 | -2.1 → -0.1 | +0.4 → -0.8 | — |
+| 40dB. | -1.6 → -0.0 | +0.8 → +1.1 | -0.8 → -0.1 | +1.2 → -0.6 |
+| CIS | -2.9 → -8.2 | +3.7 → +6.1 | -3.1 → -1.5 | +0.3 → +0.5 |
+| DYM | +0.2 → +1.5 | -0.5 → +1.2 | +0.0 → -0.5 | +0.1 → -1.7 |
+| Demoscopia y Servicios | +0.6 → +1.3 | -2.1 → -0.1 | +0.4 → -0.8 | +1.2 → +1.2 |
 | GAD3 | +2.6 → -0.0 | +0.6 → -0.1 | -1.9 → -0.8 | — |
-| Hamalgama Métrica | +0.8 → +0.2 | -0.6 → +0.0 | +0.5 → +0.5 | — |
+| Hamalgama Métrica | +0.8 → +0.2 | -0.6 → -0.0 | +0.5 → +0.5 | — |
 | IMOP | -0.6 → -2.1 | +0.4 → -0.1 | +0.5 → +0.4 | — |
-| NC Report | +1.8 → +1.9 | -0.7 → -1.4 | -0.6 → -0.4 | — |
-| Sigma Dos | +1.2 → -0.3 | +0.4 → -1.1 | -1.1 → +0.2 | -0.1 → +1.1 |
+| NC Report | +1.8 → +1.8 | -0.7 → -1.3 | -0.6 → -0.3 | -0.4 → +0.5 |
+| Sigma Dos | +1.2 → -0.2 | +0.4 → -1.1 | -1.1 → +0.2 | -0.1 → +1.0 |
 | SocioMétrica | -0.5 → +1.0 | -0.5 → -0.3 | +0.4 → -0.4 | +0.1 → -0.5 |
-| Target Point | -0.3 → +0.0 | -0.7 → -0.6 | +0.9 → +0.5 | — |
-| **Correlación** | 0.7 | 0.8 | 0.7 | -0.2 |
+| Target Point | -0.3 → +0.1 | -0.7 → -0.6 | +0.9 → +0.5 | — |
+| **Correlación** | 0.7 | 0.8 | 0.7 | 0.1 |
 
 Una correlación alta indica que la casa conserva su forma de cocinar entre ciclos; baja, que su sesgo pasado no sirve para corregir el actual. Con pocas casas comunes, el coeficiente es orientativo.
 
@@ -303,7 +302,7 @@ Encuestas con campo íntegramente posterior al 28-oct (sin entrevistas ese día)
 - Modelo PP: salto -0.2 ± 2.0
 - Modelo PSOE: salto -1.4 ± 1.9
 - Modelo VOX: salto +0.1 ± 1.6
-- Modelo SUMAR: salto +0.2 ± 1.0
+- Modelo SUMAR: salto +0.1 ± 1.0
 **Umbral de detección** (calibrado con placebos en el ciclo 2019-23: cambio a 14 días en fechas sin suceso elegido, cada 14 días; percentil 95 del valor absoluto):
 
 PP ±3.1 pp, PSOE ±1.2 pp, VOX ±1.8 pp. Un efecto de Urda menor que esto no se distinguirá del ruido aunque exista.
@@ -318,11 +317,11 @@ PP ±3.1 pp, PSOE ±1.2 pp, VOX ±1.8 pp. Un efecto de Urda menor que esto no se
 
 | Escenario | PP | PSOE | Vox | PP+Vox | P(PP+Vox ≥ 176) | P(PP 1º) | ¿Se notaría en las encuestas? |
 |---|---|---|---|---|---|---|---|
-| Sin efecto (pronóstico actual) | 129 | 112 | 68 | 198 | 93% | 79% | — |
-| PSOE −1 → PP +1 | 134 | 107 | 67 | 202 | 96% | 88% | no, dentro del ruido |
-| PSOE −2 → PP +2 | 139 | 103 | 67 | 207 | 98% | 94% | sí |
-| PSOE −3 → PP +3 | 144 | 98 | 67 | 211 | 100% | 98% | sí |
-| PSOE −2 → Vox +1, PP +1 | 133 | 103 | 72 | 206 | 98% | 91% | sí |
+| Sin efecto (pronóstico actual) | 129 | 112 | 68 | 197 | 92% | 79% | — |
+| PSOE −1 → PP +1 | 134 | 107 | 68 | 202 | 96% | 88% | no, dentro del ruido |
+| PSOE −2 → PP +2 | 139 | 103 | 67 | 207 | 98% | 93% | sí |
+| PSOE −3 → PP +3 | 144 | 98 | 67 | 211 | 99% | 98% | sí |
+| PSOE −2 → Vox +1, PP +1 | 133 | 103 | 73 | 206 | 98% | 91% | sí |
 
 «Se notaría» compara el cambio del PSOE con su umbral de detección (1.2 pp).
 
@@ -344,11 +343,11 @@ Para comparar en igualdad de condiciones, el motor se ejecuta con los datos que 
 
 | Partido | Referencia voto % | Motor voto % | Referencia escaños | Motor escaños (90 %) |
 |---|---|---|---|---|
-| PP | 33.0 | 33.4 | 137 | 143 (125–161) |
-| PSOE | 26.0 | 25.4 | 107 | 105 (87–121) |
-| VOX | 18.0 | 18.2 | 62 | 64 (51–79) |
-| SUMAR | 6.0 | 6.2 | 9 | 8 (5–16) |
-| PODEMOS | 3.0 | — | 3 | — |
+| PP | 33.0 | 33.4 | 137 | 142 (125–159) |
+| PSOE | 26.0 | 25.4 | 107 | 103 (87–120) |
+| VOX | 18.0 | 18.0 | 62 | 63 (49–78) |
+| SUMAR | 6.0 | 6.2 | 9 | 8 (5–15) |
+| PODEMOS | 3.0 | 3.7 | 3 | 3 (0–6) |
 
 Encuestas disponibles para el motor en esa fecha: 4 de 4 casas. Fuente: https://elpais.com/actualidad/newsletter-kiko-llaneras/2026-10-03/que-dicen-las-encuestas-si-hay-elecciones-la-ventaja-pp-vox-y-las-opciones-de-sanchez.html. Referencia del 3 de octubre, no una cifra actualizada a hoy. Los porcentajes están redondeados en el texto original. Los escaños son resultados centrales del modelo de EL PAÍS. No es una encuesta independiente y queda fuera del archivo de entrevistas y de cualquier cómputo de institutos.
 

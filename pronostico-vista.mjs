@@ -10,7 +10,7 @@ const fmt=(v,d=1)=>Number.isFinite(Number(v))?Number(v).toLocaleString('es-ES',{
 const signed=(v,d=1)=>Number.isFinite(v)?(v>0?'+':v<0?'−':'±')+fmt(Math.abs(v),d):'—';
 const fdate=s=>s?new Date(String(s).slice(0,10)+'T12:00:00Z').toLocaleDateString('es-ES',{day:'numeric',month:'short',year:'numeric',timeZone:'Europe/Madrid'}):'—';
 const label=id=>PARTIES.find(p=>p.id===id)?.label||id;
-const CONTRASTE={original:['Ficha del archivo verificado','ok'],original_consultado:['Original consultado','ok'],corregido_con_original:['Corregido con el original','ok'],solo_secundaria:['Solo fuente secundaria','warn'],discrepancia_secundaria:['Secundarias discrepantes','warn'],sin_contrastar:['Sin contrastar','warn']};
+const CONTRASTE={original:['Ficha del archivo verificado','ok'],original_consultado:['Original consultado','ok'],corregido_con_original:['Corregido con el original','ok'],solo_secundaria:['Solo fuente secundaria','warn'],discrepancia_secundaria:['Secundarias discrepantes','warn'],cifras_confirmadas_sin_ficha:['Cifras del original; campo o muestra sin publicar','warn'],sin_contrastar:['Sin contrastar','warn']};
 export const VARIANTS=[
  {id:'principal',nombre:'Estimación de referencia (principal)',def:'Mezcla a partes iguales de las tres variantes, con error de industria ampliado. Es la cifra que el Observatorio publica como pronóstico.'},
  {id:'consenso_privadas',nombre:'Consenso de privadas',def:'Sesgo cero = media de las casas privadas activas; el CIS no fija el nivel.'},
