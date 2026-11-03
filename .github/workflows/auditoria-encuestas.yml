@@ -29,6 +29,8 @@ jobs:
           else
             python scripts/auditar_encuestas.py --out audit-output
           fi
+      - name: Probar reglas de auditoría
+        run: python -m unittest discover -s tests -p 'test_auditar_encuestas.py' -v
       - name: Validar esquema, integración y cálculos
         run: npm test
       - name: Guardar informe de auditoría
