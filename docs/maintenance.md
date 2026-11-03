@@ -70,3 +70,11 @@ Para incorporar un estudio, crear una rama, introducir su ficha documentada en `
 Cuando el cambio validado se integra en `main`, el workflow `pages.yml` ejecuta pruebas, recalcula `python -m modelo` (Motor 29N), procesa microdatos agregados y publica el sitio. Un fallo de pruebas impide desplegar. En la sección Encuestas se recargan los registros publicados sin caché, y los resúmenes del dashboard se regeneran al acceder a su vista.
 
 No se crea una encuesta a partir de un titular, no se adivinan datos ausentes y no se incluye un estudio regional en la estimación nacional sin tratamiento territorial explícito. La auditoría no sustituye la revisión de sesgos, microdatos ni recetas del motor.
+
+## Actualización de datos en el mismo workflow de vigilancia
+
+El workflow `vigilancia-encuestas.yml`, programado diariamente o lanzado con **Run workflow**, ahora también procesa `data/ingesta/validadas.json`: documentos con campos ya contrastados por una fuente original. Las nuevas fichas se incorporan a `data/polls.json` si pasan validaciones de integridad, duplicados y fechas; se regeneran CSV, se ejecutan pruebas, se confirma el cambio en `main` y se lanza `pages.yml` para recalcular el Motor 29N.
+
+**Límite importante:** la búsqueda RSS sigue detectando solo candidatos, y NO alimenta por sí misma la bandeja `validadas.json`. El sistema no aprueba noticias no estructuradas; los estudios que no tienen una ficha validada no se importan. Por tanto, «Run workflow» puede terminar correctamente con cero altas. Incorporación real confirmada el 3/11/2026: Hamalgama Métrica/Vozpópuli, 2/11/2026, muestra 1000, campo 22–28/10/2026 (fuente original en el registro).
+
+La ejecución de GitHub utiliza la cuenta ya autenticada, sin necesidad de pegar un token en la web. El formulario de disparo desde el sitio sigue requiriendo autorización personal; no guardar tokens en JavaScript distribuido públicamente.
