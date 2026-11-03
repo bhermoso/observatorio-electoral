@@ -1,12 +1,12 @@
 import unittest
 from scripts.incorporar_encuestas import integrate
 
-def sample(id='a',fieldStart='2026-10-01',fieldEnd='2026-10-02'):
-    return dict(id=id,institute='Ejemplo',publisher='Diario',title='Encuesta',
+def sample(id='a',fieldStart='2026-10-01',fieldEnd='2026-10-02',**changes):
+    item=dict(id=id,institute='Ejemplo',publisher='Diario',title='Encuesta',
     fieldStart=fieldStart,fieldEnd=fieldEnd,published='2026-10-03',verified='2026-10-04',
     sample=1000,scope='España',universe='Mayores',scenario='Separados',denominator='votos válidos',
     source='https://example.org/original',technical='https://example.org/ficha',
-    verification='Revisada',sourcePages='p. 1',kind='poll-estimate',values={'PP':30})
+    verification='Revisada',sourcePages='p. 1',kind='poll-estimate',values={'PP':30})\n    item.update(changes)\n    return item
 
 class TestIncorporacion(unittest.TestCase):
     def test_incorpora_y_no_duplica(self):
