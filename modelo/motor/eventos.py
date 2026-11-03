@@ -8,8 +8,9 @@ Tres medidas, de menos a más supuestos:
 3. Calibración con placebos: la misma medida en fechas sin acontecimiento conocido.
    Un efecto solo se considera distinguible si supera claramente esa distribución nula.
 
-Las encuestas cuyo campo incluye la fecha del suceso se excluyen (mezclan antes y
-después). Si no consta el inicio del campo, se excluyen las que terminan en los
+Las encuestas cuyo campo incluye la fecha del suceso, también cuando empieza ese
+mismo día, se excluyen (mezclan entrevistas anteriores y posteriores). Es la misma
+regla que aplica la web (events.mjs: fieldRelation). Si no consta el inicio del campo, se excluyen las que terminan en los
 `buffer` días siguientes al suceso.
 """
 from datetime import timedelta
@@ -20,7 +21,7 @@ from .fuentes import dia_central
 
 def _solapa(e, fecha, buffer):
     if e.get("campo_ini"):
-        return e["campo_ini"] < fecha <= e["campo_fin"]
+        return e["campo_ini"] <= fecha <= e["campo_fin"]
     return fecha <= e["campo_fin"] < fecha + timedelta(days=buffer)
 
 
@@ -31,7 +32,7 @@ def pares(encuestas, fecha, partidos, buffer=3, max_dias_antes=45):
                          key=lambda e: e["campo_fin"])
         antes = [e for e in propias if e["campo_fin"] < fecha
                  and (fecha - e["campo_fin"]).days <= max_dias_antes]
-        despues = [e for e in propias if (e.get("campo_ini") or e["campo_fin"]) >= fecha]
+        despues = [e for e in propias if (e.get("campo_ini") or e["campo_fin"]) > fecha]
         if antes and despues:
             a, d = antes[-1], despues[0]
             det[c] = dict(antes=a["campo_fin"], despues=d["campo_fin"],

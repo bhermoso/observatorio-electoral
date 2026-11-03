@@ -66,9 +66,13 @@ def main():
     # en la estimación principal; se conservan en el registro documental.
     provisionals = [e for e in enc if e["ciclo"] == "2023-26"
                     and e["origen"] == "prensa-sin-verificar"]
-    actuales = F.aptas_para_pronostico(enc)
-    w(f"Puerta de calidad: {len(provisionals)} registros de prensa sin verificar "
-      "excluidos del pronóstico principal (no eliminados del archivo).\\n")
+    actuales, excluidas = F.seleccion_pronostico(enc)
+    w(f"Puerta de calidad: {len(excluidas)} registros excluidos del pronóstico principal "
+      f"({len(provisionals)} de prensa sin verificar; el resto, registros de terceros con fecha de campo "
+      "supuesta o solapada con un registro verificado de la misma casa). No se eliminan del archivo.\n")
+    for x in excluidas:
+        w(f"- {x['casa']} · {x['estudio']} ({x['origen']}): {x['motivo']}.")
+    w("")
     inicio = min(F.dia_central(e) for e in actuales) - timedelta(days=7)
     dias = (ELECCION - hoy).days
     resumen = {}
@@ -301,8 +305,8 @@ def main():
     # ---------- Eventos ----------
     w("## 4. Acontecimientos: accidente de Urda (28-oct-2026)\n")
     media, det = EV.pares(actuales, URDA, P4)
-    nuevas = [e for e in actuales if (e.get("campo_ini") or e["campo_fin"]) >= URDA]
-    w(f"Encuestas con campo íntegramente posterior al 28-oct: **{len(nuevas)}**. "
+    nuevas = [e for e in actuales if (e.get("campo_ini") or e["campo_fin"]) > URDA]
+    w(f"Encuestas con campo íntegramente posterior al 28-oct (sin entrevistas ese día): **{len(nuevas)}**. "
       f"Pares antes/después por casa: **{len(det)}**.\n")
     if det:
         w(tabla(["Casa", "Antes", "Después"] + P4,
@@ -382,6 +386,82 @@ def main():
                               casas=sorted({e["casa"] for e in enc_d}),
                               motor={p: dict(voto=v["voto"], escanos=v["escanos"]) for p, v in r_d["partidos"].items()}))
 
+    # ---------- Datos estructurados para la web (contrato de capas) ----------
+    efectos_urda = {}
+    for p in P4:
+        r = EV.efecto(actuales, p, URDA, horizontes=(0, 7, 14))
+        if r:
+            efectos_urda[p] = {"encuestas_despues": r.get("encuestas_despues", 0),
+                               **{f"h{k}": (None if r.get(k) is None else dict(cambio=r[k][0], sd=r[k][1])) for k in (0, 7, 14)}}
+    eventos_web = {"urda-2026-10-28": dict(
+        fecha=URDA.isoformat(), regla_solape="Se excluyen las encuestas con entrevistas el mismo día del suceso",
+        posteriores=[dict(casa=e["casa"], estudio=e["estudio"], campo_ini=e.get("campo_ini"), campo_fin=e["campo_fin"], origen=e["origen"]) for e in nuevas],
+        pares=[dict(casa=c, antes=d["antes"], despues=d["despues"], cambio=d["cambio"]) for c, d in det.items()],
+        media_pares={p: dict(cambio=v[0], error_tipico=v[1], n=v[2]) for p, v in media.items()},
+        modelo_salto=efectos_urda, umbral_placebo=umbrales,
+        aplicado_al_pronostico=False,
+        nota="El pronóstico principal no incorpora ningún efecto de Urda. Los cambios son descriptivos; "
+             "un cambio menor que el umbral placebo no se distingue de la oscilación habitual.")}
+    solo_verif = [e for e in actuales if e["origen"] == "verificada"]
+    sens_fuentes = None
+    if len({e["casa"] for e in solo_verif}) >= 3:
+        pv_ = PR.principal(solo_verif, min(F.dia_central(e) for e in solo_verif) - timedelta(days=7), hoy, ELECCION, err,
+                           n_por_variante=max(a.n // 5, 300))
+        sens_fuentes = dict(descripcion="Mismo método que el principal usando solo data/polls.json (registros verificados)",
+                            n_estudios=len(solo_verif), casas=sorted({e["casa"] for e in solo_verif}),
+                            partidos={p: dict(voto=v["voto"], escanos=v["escanos"]) for p, v in pv_["partidos"].items()},
+                            bloques=pv_["bloques"])
+        w("### Sensibilidad a las fuentes de terceros\n")
+        w(f"Pronóstico con el mismo método y solo los {len(solo_verif)} registros verificados: " +
+          ", ".join(f"{p} {pv_['partidos'][p]['voto'][0]:.1f} % ({pv_['partidos'][p]['escanos'][0]:.0f})" for p in ("PP", "PSOE", "VOX") if p in pv_["partidos"]) +
+          f"; P(PP+Vox ≥ 176) {pv_['bloques']['PP+VOX']['p_mayoria']:.0%}.\n")
+    entradas = [dict(estudio=e["estudio"], casa=e["casa"], origen=e["origen"], campo_ini=e.get("campo_ini"),
+                     campo_fin=e["campo_fin"], publicacion=e.get("publicacion"), n=e["n"], n_supuesto=bool(e.get("n_supuesto")),
+                     modo=e.get("modo", ""), url=e.get("url", ""), voto=e["voto"],
+                     ancla_privadas=e["casa"] in ajustes["consenso_privadas"].get("PP", {}).get("anclas", []))
+                for e in sorted(actuales, key=lambda e: e["campo_fin"])]
+    externos = []
+    for ref in F.referencias_agregadores():
+        externos.append(dict(id=ref["id"], nombre=ref["nombre"], fecha=ref["fecha"], fecha_tipo="publicación",
+                             voto=ref["voto"], escanos=ref["escanos"], url=ref["url"], metodo=ref["metodo"],
+                             verificado=bool(ref["verificado"]), aproximado=True, notas=ref["notas"]))
+    for ag in F.otros_agregadores():
+        externos.append(dict(id="agregador-" + "".join(ch for ch in ag["nombre"].lower() if ch.isalnum())[:30] + "-" + str(ag["fecha"]),
+                             nombre=ag["nombre"], fecha=ag["fecha"], fecha_tipo=ag["fecha_tipo"], voto=ag["voto"],
+                             escanos=ag["escanos"], url=ag["url"], metodo=ag["metodo"], verificado=False,
+                             aproximado=False, notas=ag["nota"]))
+    corte_anterior = None
+    if len(hist) >= 2:
+        h0, h1 = hist[-2], hist[-1]
+        corte_anterior = dict(fecha=h0["fecha"], fecha_actual=h1["fecha"], firma_anterior=h0.get("firma"), firma_actual=h1.get("firma"),
+                              version_anterior=h0.get("version", "1"), version_actual=h1.get("version", "1"),
+                              cambio_metodo=h0.get("version", "1") != h1.get("version", "1"),
+                              nuevas=h1.get("nuevas", []),
+                              voto={p: round(h1["voto"][p][0] - h0["voto"][p][0], 2) for p in h1["voto"] if p in h0["voto"]},
+                              escanos={p: h1["escanos"][p][0] - h0["escanos"][p][0] for p in h1["escanos"] if p in h0["escanos"]},
+                              bloques={b: h1["bloques"][b]["mediana"] - h0["bloques"][b]["mediana"] for b in h1["bloques"] if b in h0["bloques"]},
+                              nota="Ambos cortes con el mismo método del historial (menos simulaciones que el principal publicado).")
+    capas = dict(
+        esquema=1,
+        promedio_publicado=dict(capa=1, fuente="data/polls.json", calculo="En el navegador: capas.mjs (promedioPublicado)",
+                                definicion="Agregación de estimaciones publicadas por las encuestadoras, sin correcciones de voto del Observatorio."),
+        sin_cocina=dict(capa=2, variante="consenso_todas",
+                        definicion=PR.VARIANTES["consenso_todas"] + " Modelo de tendencia diaria con efecto de casa y error muestral; "
+                                   "sin calibración histórica ni error de industria ampliado.",
+                        operaciones=["selección por puerta de calidad", "tendencia diaria (paseo aleatorio)", "efecto de casa con ancla de consenso",
+                                     "error muestral con efecto de diseño 1,5", "simulación hasta la elección", "traslado provincial y D'Hondt"]),
+        con_cocina=dict(capa=3, variante="principal",
+                        definicion="Estimación de referencia del Observatorio: mezcla a partes iguales de consenso_privadas, consenso_todas "
+                                   f"y calibrada_23j, con error de industria de {PR.INDUSTRIA_PRINCIPAL} pp y correlación entre bloques {PR.RHO_BLOQUE}.",
+                        tipo_cocina="Reestimación sobre agregados publicados. No aplica cocina a microdatos individuales.",
+                        decisiones=[dict(id="excluir_cis_ancla", variante="consenso_privadas", descripcion=PR.VARIANTES["consenso_privadas"]),
+                                    dict(id="calibracion_23j", variante="calibrada_23j", descripcion=PR.VARIANTES["calibrada_23j"]),
+                                    dict(id="error_industria", valor=PR.INDUSTRIA_PRINCIPAL, descripcion="Error común a todas las casas, calibrado con el 23J"),
+                                    dict(id="correlacion_bloques", valor=PR.RHO_BLOQUE, descripcion="Supuesto declarado; no estimable con una sola elección")],
+                        no_aplicado=["voto directo", "recuerdo de voto", "simpatía", "transferencias", "indecisión", "probabilidad de votar",
+                                     "efectos de acontecimientos"]),
+        externos=dict(capa=4, definicion="Promedios y modelos de otros productores. No entran en el pronóstico ni en los promedios."))
+
     w("## 6. Límites conocidos\n")
     w("- Un solo precedente evaluado (23J). Faltan 2015, 2016 y 2019 (requieren acceso a Wikipedia o a las fuentes originales).\n"
       "- Ciclo 2023-26 con pocas encuestas antes de octubre de 2026: la tendencia previa es poco informativa.\n"
@@ -391,8 +471,12 @@ def main():
 
     os.makedirs(SALIDA, exist_ok=True)
     open(os.path.join(SALIDA, "informe.md"), "w", encoding="utf-8").write("\n".join(L) + "\n")
-    json.dump(dict(corte=hoy.isoformat(), eleccion=ELECCION.isoformat(), trazabilidad=auditoria_cocina, sensibilidad_cocina=sensibilidad_cocina, principal={k: princ[k] for k in ('partidos', 'bloques', 'investidura', 'n', 'industria', 'dias', 'sin_encuestas')}, variantes=resumen,
-                   auditoria_fuentes=dict(excluidas_prensa_sin_verificar=len(provisionals), incluidas_2023_26=len(actuales), criterio='No usar prensa sin fuente original en el pronóstico principal; se conserva como referencia'), promedio_simple=simple, error_23j={c: r["error"] for c, r in err.items()},
+    json.dump(dict(corte=hoy.isoformat(), eleccion=ELECCION.isoformat(), version_modelo=RG.VERSION, trazabilidad=auditoria_cocina, sensibilidad_cocina=sensibilidad_cocina, principal={k: princ[k] for k in ('partidos', 'bloques', 'investidura', 'n', 'industria', 'dias', 'sin_encuestas', 'provincias')}, variantes=resumen,
+                   auditoria_fuentes=dict(excluidas_prensa_sin_verificar=len(provisionals), excluidas_total=len(excluidas), incluidas_2023_26=len(actuales),
+                                          por_origen={o: sum(1 for e in actuales if e["origen"] == o) for o in sorted({e["origen"] for e in actuales})},
+                                          criterio='Puerta de calidad (fuentes.seleccion_pronostico): sin prensa no verificada, sin terceros con campo supuesto, sin terceros solapados con un registro verificado de la misma casa'),
+                   capas=capas, entradas=entradas, excluidas=excluidas, externos=externos, corte_anterior=corte_anterior,
+                   eventos=eventos_web, sensibilidad_fuentes=sens_fuentes, geo_sensibilidad=dict(proporcional=geo_sens["proporcional"], uniforme=geo_sens["uniforme"], p_mayoria=geo_sens["p_mayoria"]), promedio_simple=simple, error_23j={c: r["error"] for c, r in err.items()},
                    industria_23j=ind, retroprueba_23j=bt, umbral_placebo=umbrales),
               open(os.path.join(SALIDA, "pronostico.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=1, default=str)

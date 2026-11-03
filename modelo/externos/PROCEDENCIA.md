@@ -1,6 +1,6 @@
 # Datos de terceros (no verificados contra fuente primaria)
 
-Estos ficheros alimentan **solo** la evaluación histórica y las series de contexto del motor.
+`wikipedia_2019_2023.csv` alimenta solo la evaluación histórica (ciclo 2019-23). `29n_encuestadores.jsonl` aporta además registros del ciclo 2023-26 que **sí entran en el pronóstico principal** cuando superan la puerta de calidad de `modelo/motor/fuentes.py` (`seleccion_pronostico`): fecha de campo publicada y sin solape con un registro verificado de la misma casa. Los que no la superan se listan con su motivo en `pronostico.json` (`excluidas`). El efecto de estas fuentes se publica como sensibilidad (`sensibilidad_fuentes`: mismo método con solo registros verificados).
 No se mezclan con `data/polls.json` (registro verificado del observatorio).
 
 | Fichero | Origen | Commit | Licencia | Fuente declarada |

@@ -1,79 +1,2683 @@
 {
- "corte": "2026-11-02",
+ "corte": "2026-11-03",
  "eleccion": "2026-11-29",
+ "version_modelo": "2",
+ "trazabilidad": {
+  "esquema": 1,
+  "corte": "2026-11-03",
+  "definicion": "Trazabilidad de datos y etapas; NO porcentajes de autoría de cada variable de cocina.",
+  "fuentes": {
+   "estudios_actuales_incluidos": 19,
+   "casas_actuales": 13,
+   "origenes": {
+    "terceros-29n": 8,
+    "verificada": 11
+   },
+   "registros_prensa_sin_verificar_excluidos": 2,
+   "limitacion": "Los registros terceros-29n pueden no contener todos los elementos originales de ficha; el origen no acredita fiabilidad idéntica."
+  },
+  "parametros_de_modelo": {
+   "anclas": [
+    "consenso_privadas",
+    "consenso_todas",
+    "calibrada_23j"
+   ],
+   "combinacion_principal": "Mezcla a partes iguales de las distribuciones simuladas de las tres variantes",
+   "error_industria_referencia_pp": 2.2,
+   "deriva_temporal_diaria_referencia_pp": 0.15,
+   "error_provincial_lognormal_sd": 0.08,
+   "rho_bloque_supuesto": 0.5,
+   "advertencia": "Los errores se combinan en varianza, no en porcentajes de influencia. La incertidumbre territorial actúa sobre escaños, no como peso sobre intención directa."
+  },
+  "variables": {
+   "intencion_directa": {
+    "estado": "no_ingresa_directamente",
+    "detalle": "El motor recibe estimaciones publicadas por las casas, no la respuesta bruta individual."
+   },
+   "intencion_directa_ponderada": {
+    "estado": "no_desagregable",
+    "detalle": "La parte procedente de tabulaciones ponderadas dentro de cada instituto no se identifica con las estimaciones publicadas."
+   },
+   "recuerdo_de_voto": {
+    "estado": "no_desagregable",
+    "detalle": "Puede participar en la cocina de la casa. El motor no recibe un término explícito por recuerdo individual; separadamente ensaya sesgos calibrados con errores reales del 23J, que NO son recuerdo."
+   },
+   "simpatia": {
+    "estado": "no_desagregable",
+    "detalle": "El motor no introduce la simpatía de entrevistados como variable independiente. La estimación que publica cada casa puede haberla utilizado."
+   },
+   "transferencias": {
+    "estado": "no_desagregable",
+    "detalle": "El motor no incorpora matrices de transición voto recordado-voto declarado. Se investigan por separado en microdatos."
+   },
+   "probabilidad_de_votar": {
+    "estado": "no_desagregable",
+    "detalle": "El motor no recibe probabilidades individuales de participación; la eventual cocina de participación de cada casa no es reconstruible desde el porcentaje final."
+   },
+   "acontecimientos": {
+    "estado": "sin_salto_automatico",
+    "detalle": "El motor dispone de mecanismo para saltos temporales, pero el pronóstico principal no aplica cambios atribuidos automáticamente a sucesos."
+   },
+   "estimacion_publicada": {
+    "estado": "entrada_observada",
+    "detalle": "Observación de voto por partido recibida de las encuestadoras; el algoritmo interno de cada casa no se puede descomponer sin su documentación."
+   },
+   "efecto_de_encuestadora": {
+    "estado": "modelizado",
+    "detalle": "Término estadístico de casa relativo a un ancla definida; no es una estimación directa de simpatía o recuerdo."
+   },
+   "tendencia_temporal": {
+    "estado": "modelizado",
+    "detalle": "Estado latente diario de voto con paseo aleatorio y suavizado."
+   },
+   "geografia_2023": {
+    "estado": "modelizado",
+    "detalle": "Patrón provincial para trasladar el voto nacional a circunscripciones."
+   }
+  },
+  "partidos": {
+   "PP": {
+    "encuestas_con_estimacion": 19,
+    "encuestadoras_distintas": 13,
+    "casas": [
+     "40dB.",
+     "Ateneo del Dato",
+     "CIS",
+     "DYM",
+     "Demoscopia y Servicios",
+     "GAD3",
+     "Hamalgama Métrica",
+     "IMOP",
+     "NC Report",
+     "Sigma Dos",
+     "SocioMétrica",
+     "Sondaxe",
+     "Target Point"
+    ],
+    "origenes": {
+     "terceros-29n": 8,
+     "verificada": 11
+    },
+    "observaciones": [
+     {
+      "casa": "Sigma Dos",
+      "estudio": "sigma-dos-2026-11-02",
+      "campo_fin": "2026-10-30",
+      "publicacion": "2026-11-02",
+      "voto_publicado": 31.1,
+      "origen": "verificada",
+      "url": "https://www.sigmados.com/noticia?id=sa0OT7jgxEjay6E",
+      "muestra": 2505
+     },
+     {
+      "casa": "Target Point",
+      "estudio": "target-point-2026-11-02",
+      "campo_fin": "2026-10-30",
+      "publicacion": "2026-11-02",
+      "voto_publicado": 31.8,
+      "origen": "verificada",
+      "url": "https://www.eldebate.com/espana/20261102/accidente-frena-psoe-amplia-apoyo-pp-mayoria-absolutisima-derecha_475640.html",
+      "muestra": 1024
+     },
+     {
+      "casa": "Sondaxe",
+      "estudio": "sondaxe-2026-11-01",
+      "campo_fin": "2026-10-28",
+      "publicacion": "2026-11-01",
+      "voto_publicado": 29.2,
+      "origen": "verificada",
+      "url": "https://www.lavozdegalicia.es/noticia/espana/2026/11/01/pp-ganaria-elecciones-23-puntos-ventaja-sobre-psoe/0003_202611G1P26991.htm",
+      "muestra": 1200
+     },
+     {
+      "casa": "Hamalgama Métrica",
+      "estudio": "hamalgama-metrica-2026-11-02",
+      "campo_fin": "2026-10-28",
+      "publicacion": "2026-11-02",
+      "voto_publicado": 32.0,
+      "origen": "verificada",
+      "url": "https://www.vozpopuli.com/amp/espana/politica/pp-y-vox-suman-ya-un-techo-historico-de-127-millones-de-votos-y-lograrian-205-escanos.html",
+      "muestra": 1000
+     },
+     {
+      "casa": "Ateneo del Dato",
+      "estudio": "ateneo-2026-10-25",
+      "campo_fin": "2026-10-22",
+      "publicacion": "2026-10-25",
+      "voto_publicado": 31.1,
+      "origen": "verificada",
+      "url": "https://www.eldiario.es/politica/bloque-izquierdas-recorta-distancias-pp-vox-mantienen-mayoria-absoluta_1_13611052.html",
+      "muestra": 2000
+     },
+     {
+      "casa": "Sigma Dos",
+      "estudio": "sigma-dos-2026-10-26",
+      "campo_fin": "2026-10-22",
+      "publicacion": "2026-10-26",
+      "voto_publicado": 30.6,
+      "origen": "verificada",
+      "url": "https://www.sigmados.com/noticia?id=OUze2FxEIVfARtu3",
+      "muestra": 3122
+     },
+     {
+      "casa": "IMOP",
+      "estudio": "imop-2026-10-ola2",
+      "campo_fin": "2026-10-16",
+      "publicacion": "2026-10-23",
+      "voto_publicado": 28.5,
+      "origen": "verificada",
+      "url": "https://www.imop.es/encuesta-pre-electoral-el-confidencial-ola-2/",
+      "muestra": 1000
+     },
+     {
+      "casa": "SocioMétrica",
+      "estudio": "sociometrica-2026-10-10",
+      "campo_fin": "2026-10-11",
+      "publicacion": "2026-10-11",
+      "voto_publicado": 32.6,
+      "origen": "terceros-29n",
+      "url": "https://sumomento.com/encuestas/sociometrica-2026-10-11",
+      "muestra": 1000
+     },
+     {
+      "casa": "40dB.",
+      "estudio": "40db-2026-10-flash",
+      "campo_fin": "2026-10-08",
+      "publicacion": "2026-10-09",
+      "voto_publicado": 31.9,
+      "origen": "verificada",
+      "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_informe_voto_barometro_flash.pdf",
+      "muestra": 800
+     },
+     {
+      "casa": "GAD3",
+      "estudio": "gad3-2026-10",
+      "campo_fin": "2026-10-08",
+      "publicacion": "2026-10-12",
+      "voto_publicado": 31.4,
+      "origen": "verificada",
+      "url": "https://www.gad3.com/barometro-abc-estimacion-de-voto-nacional-octubre-2026/",
+      "muestra": 1077
+     },
+     {
+      "casa": "DYM",
+      "estudio": "dym-2026-10",
+      "campo_fin": "2026-10-07",
+      "publicacion": "2026-10-09",
+      "voto_publicado": 34.0,
+      "origen": "verificada",
+      "url": "https://www.20minutos.es/nacional/psoe-absorbe-intencion-votos-sumar-podemos-mientras-pp-vox-consolidan-su-mayoria_7046598_0.html",
+      "muestra": 1011
+     },
+     {
+      "casa": "IMOP",
+      "estudio": "imop-2026-10-05",
+      "campo_fin": "2026-10-07",
+      "publicacion": "2026-10-09",
+      "voto_publicado": 30.0,
+      "origen": "terceros-29n",
+      "url": "https://www.imop.es/encuesta-pre-electoral-para-el-confidencial-2026/",
+      "muestra": 900
+     },
+     {
+      "casa": "CIS",
+      "estudio": "cis-3582",
+      "campo_fin": "2026-10-06",
+      "publicacion": "2026-10-14",
+      "voto_publicado": 22.2,
+      "origen": "verificada",
+      "url": "https://www.cis.es/documents/d/guest/3582_estimacion-pdf",
+      "muestra": 5025
+     },
+     {
+      "casa": "NC Report",
+      "estudio": "ncreport-2026-10-06",
+      "campo_fin": "2026-10-06",
+      "publicacion": "2026-10-08",
+      "voto_publicado": 34.1,
+      "origen": "terceros-29n",
+      "url": "https://www.electografica.com/2026/10/encuesta-nc-report-261008.html",
+      "muestra": 1000
+     },
+     {
+      "casa": "SocioMétrica",
+      "estudio": "sociometrica-2026-10-01",
+      "campo_fin": "2026-10-03",
+      "publicacion": "2026-10-04",
+      "voto_publicado": 33.4,
+      "origen": "terceros-29n",
+      "url": "https://www.electografica.com/2026/10/encuesta-sociometrica-261004.html",
+      "muestra": 1000
+     },
+     {
+      "casa": "Sigma Dos",
+      "estudio": "sigmados-2026-10-01",
+      "campo_fin": "2026-10-01",
+      "publicacion": null,
+      "voto_publicado": 32.6,
+      "origen": "terceros-29n",
+      "url": "https://www.pollingforecast.com/es/polls/1000205?lang=es",
+      "muestra": 2116
+     },
+     {
+      "casa": "NC Report",
+      "estudio": "ncreport-2026-09-03",
+      "campo_fin": "2026-09-03",
+      "publicacion": null,
+      "voto_publicado": 34.5,
+      "origen": "terceros-29n",
+      "url": "https://politpro.eu/es/espana/intencion-de-voto/nc-report-2026-09-03/elecciones-parlamentarias",
+      "muestra": 1000
+     },
+     {
+      "casa": "GAD3",
+      "estudio": "gad3-2026-05-28",
+      "campo_fin": "2026-05-28",
+      "publicacion": "2026-06-01",
+      "voto_publicado": 33.1,
+      "origen": "terceros-29n",
+      "url": "https://www.gad3.com/barometro-abc-estimacion-de-voto-nacional-mayo-2026/",
+      "muestra": 1011
+     },
+     {
+      "casa": "Demoscopia y Servicios",
+      "estudio": "demoscopia-2025-09-08",
+      "campo_fin": "2025-09-05",
+      "publicacion": "2025-09-08",
+      "voto_publicado": 35.1,
+      "origen": "terceros-29n",
+      "url": "https://www.libertaddigital.com/espana/politica/2025-09-08/encuesta-esradio-ld-pp-y-vox-tendrian-205-diputados-y-podemos-se-acerca-peligrosamente-a-sumar-7293066/",
+      "muestra": 3000
+     }
+    ],
+    "variantes_tendencia": {
+     "consenso_privadas": {
+      "estimacion_latente_en_corte": 31.4977,
+      "sd_estimacion_latente": 0.80951,
+      "casas_ancla": [
+       "40dB.",
+       "Ateneo del Dato",
+       "DYM",
+       "GAD3",
+       "Hamalgama Métrica",
+       "IMOP",
+       "NC Report",
+       "Sigma Dos",
+       "SocioMétrica",
+       "Sondaxe",
+       "Target Point"
+      ]
+     },
+     "consenso_todas": {
+      "estimacion_latente_en_corte": 30.81636,
+      "sd_estimacion_latente": 0.80292,
+      "casas_ancla": [
+       "40dB.",
+       "Ateneo del Dato",
+       "CIS",
+       "DYM",
+       "GAD3",
+       "Hamalgama Métrica",
+       "IMOP",
+       "NC Report",
+       "Sigma Dos",
+       "SocioMétrica",
+       "Sondaxe",
+       "Target Point"
+      ]
+     },
+     "calibrada_23j": {
+      "estimacion_latente_en_corte": 30.25297,
+      "sd_estimacion_latente": 0.99596,
+      "casas_ancla": [
+       "40dB.",
+       "CIS",
+       "GAD3",
+       "IMOP",
+       "NC Report",
+       "Sigma Dos",
+       "SocioMétrica"
+      ]
+     }
+    },
+    "pronostico_principal_voto_mediana": 30.771696995524678,
+    "pronostico_principal_voto_p5_p95": [
+     26.287624433673745,
+     35.17788971299986
+    ],
+    "escala_industria_pp": 2.44078
+   },
+   "PSOE": {
+    "encuestas_con_estimacion": 19,
+    "encuestadoras_distintas": 13,
+    "casas": [
+     "40dB.",
+     "Ateneo del Dato",
+     "CIS",
+     "DYM",
+     "Demoscopia y Servicios",
+     "GAD3",
+     "Hamalgama Métrica",
+     "IMOP",
+     "NC Report",
+     "Sigma Dos",
+     "SocioMétrica",
+     "Sondaxe",
+     "Target Point"
+    ],
+    "origenes": {
+     "terceros-29n": 8,
+     "verificada": 11
+    },
+    "observaciones": [
+     {
+      "casa": "Sigma Dos",
+      "estudio": "sigma-dos-2026-11-02",
+      "campo_fin": "2026-10-30",
+      "publicacion": "2026-11-02",
+      "voto_publicado": 24.6,
+      "origen": "verificada",
+      "url": "https://www.sigmados.com/noticia?id=sa0OT7jgxEjay6E",
+      "muestra": 2505
+     },
+     {
+      "casa": "Target Point",
+      "estudio": "target-point-2026-11-02",
+      "campo_fin": "2026-10-30",
+      "publicacion": "2026-11-02",
+      "voto_publicado": 25.5,
+      "origen": "verificada",
+      "url": "https://www.eldebate.com/espana/20261102/accidente-frena-psoe-amplia-apoyo-pp-mayoria-absolutisima-derecha_475640.html",
+      "muestra": 1024
+     },
+     {
+      "casa": "Sondaxe",
+      "estudio": "sondaxe-2026-11-01",
+      "campo_fin": "2026-10-28",
+      "publicacion": "2026-11-01",
+      "voto_publicado": 26.9,
+      "origen": "verificada",
+      "url": "https://www.lavozdegalicia.es/noticia/espana/2026/11/01/pp-ganaria-elecciones-23-puntos-ventaja-sobre-psoe/0003_202611G1P26991.htm",
+      "muestra": 1200
+     },
+     {
+      "casa": "Hamalgama Métrica",
+      "estudio": "hamalgama-metrica-2026-11-02",
+      "campo_fin": "2026-10-28",
+      "publicacion": "2026-11-02",
+      "voto_publicado": 26.4,
+      "origen": "verificada",
+      "url": "https://www.vozpopuli.com/amp/espana/politica/pp-y-vox-suman-ya-un-techo-historico-de-127-millones-de-votos-y-lograrian-205-escanos.html",
+      "muestra": 1000
+     },
+     {
+      "casa": "Ateneo del Dato",
+      "estudio": "ateneo-2026-10-25",
+      "campo_fin": "2026-10-22",
+      "publicacion": "2026-10-25",
+      "voto_publicado": 27.6,
+      "origen": "verificada",
+      "url": "https://www.eldiario.es/politica/bloque-izquierdas-recorta-distancias-pp-vox-mantienen-mayoria-absoluta_1_13611052.html",
+      "muestra": 2000
+     },
+     {
+      "casa": "Sigma Dos",
+      "estudio": "sigma-dos-2026-10-26",
+      "campo_fin": "2026-10-22",
+      "publicacion": "2026-10-26",
+      "voto_publicado": 26.1,
+      "origen": "verificada",
+      "url": "https://www.sigmados.com/noticia?id=OUze2FxEIVfARtu3",
+      "muestra": 3122
+     },
+     {
+      "casa": "IMOP",
+      "estudio": "imop-2026-10-ola2",
+      "campo_fin": "2026-10-16",
+      "publicacion": "2026-10-23",
+      "voto_publicado": 27.1,
+      "origen": "verificada",
+      "url": "https://www.imop.es/encuesta-pre-electoral-el-confidencial-ola-2/",
+      "muestra": 1000
+     },
+     {
+      "casa": "SocioMétrica",
+      "estudio": "sociometrica-2026-10-10",
+      "campo_fin": "2026-10-11",
+      "publicacion": "2026-10-11",
+      "voto_publicado": 26.2,
+      "origen": "terceros-29n",
+      "url": "https://sumomento.com/encuestas/sociometrica-2026-10-11",
+      "muestra": 1000
+     },
+     {
+      "casa": "40dB.",
+      "estudio": "40db-2026-10-flash",
+      "campo_fin": "2026-10-08",
+      "publicacion": "2026-10-09",
+      "voto_publicado": 28.1,
+      "origen": "verificada",
+      "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_informe_voto_barometro_flash.pdf",
+      "muestra": 800
+     },
+     {
+      "casa": "GAD3",
+      "estudio": "gad3-2026-10",
+      "campo_fin": "2026-10-08",
+      "publicacion": "2026-10-12",
+      "voto_publicado": 26.4,
+      "origen": "verificada",
+      "url": "https://www.gad3.com/barometro-abc-estimacion-de-voto-nacional-octubre-2026/",
+      "muestra": 1077
+     },
+     {
+      "casa": "DYM",
+      "estudio": "dym-2026-10",
+      "campo_fin": "2026-10-07",
+      "publicacion": "2026-10-09",
+      "voto_publicado": 28.2,
+      "origen": "verificada",
+      "url": "https://www.20minutos.es/nacional/psoe-absorbe-intencion-votos-sumar-podemos-mientras-pp-vox-consolidan-su-mayoria_7046598_0.html",
+      "muestra": 1011
+     },
+     {
+      "casa": "IMOP",
+      "estudio": "imop-2026-10-05",
+      "campo_fin": "2026-10-07",
+      "publicacion": "2026-10-09",
+      "voto_publicado": 26.0,
+      "origen": "terceros-29n",
+      "url": "https://www.imop.es/encuesta-pre-electoral-para-el-confidencial-2026/",
+      "muestra": 900
+     },
+     {
+      "casa": "CIS",
+      "estudio": "cis-3582",
+      "campo_fin": "2026-10-06",
+      "publicacion": "2026-10-14",
+      "voto_publicado": 34.0,
+      "origen": "verificada",
+      "url": "https://www.cis.es/documents/d/guest/3582_estimacion-pdf",
+      "muestra": 5025
+     },
+     {
+      "casa": "NC Report",
+      "estudio": "ncreport-2026-10-06",
+      "campo_fin": "2026-10-06",
+      "publicacion": "2026-10-08",
+      "voto_publicado": 25.0,
+      "origen": "terceros-29n",
+      "url": "https://www.electografica.com/2026/10/encuesta-nc-report-261008.html",
+      "muestra": 1000
+     },
+     {
+      "casa": "SocioMétrica",
+      "estudio": "sociometrica-2026-10-01",
+      "campo_fin": "2026-10-03",
+      "publicacion": "2026-10-04",
+      "voto_publicado": 26.5,
+      "origen": "terceros-29n",
+      "url": "https://www.electografica.com/2026/10/encuesta-sociometrica-261004.html",
+      "muestra": 1000
+     },
+     {
+      "casa": "Sigma Dos",
+      "estudio": "sigmados-2026-10-01",
+      "campo_fin": "2026-10-01",
+      "publicacion": null,
+      "voto_publicado": 25.6,
+      "origen": "terceros-29n",
+      "url": "https://www.pollingforecast.com/es/polls/1000205?lang=es",
+      "muestra": 2116
+     },
+     {
+      "casa": "NC Report",
+      "estudio": "ncreport-2026-09-03",
+      "campo_fin": "2026-09-03",
+      "publicacion": null,
+      "voto_publicado": 24.9,
+      "origen": "terceros-29n",
+      "url": "https://politpro.eu/es/espana/intencion-de-voto/nc-report-2026-09-03/elecciones-parlamentarias",
+      "muestra": 1000
+     },
+     {
+      "casa": "GAD3",
+      "estudio": "gad3-2026-05-28",
+      "campo_fin": "2026-05-28",
+      "publicacion": "2026-06-01",
+      "voto_publicado": 26.8,
+      "origen": "terceros-29n",
+      "url": "https://www.gad3.com/barometro-abc-estimacion-de-voto-nacional-mayo-2026/",
+      "muestra": 1011
+     },
+     {
+      "casa": "Demoscopia y Servicios",
+      "estudio": "demoscopia-2025-09-08",
+      "campo_fin": "2025-09-05",
+      "publicacion": "2025-09-08",
+      "voto_publicado": 26.6,
+      "origen": "terceros-29n",
+      "url": "https://www.libertaddigital.com/espana/politica/2025-09-08/encuesta-esradio-ld-pp-y-vox-tendrian-205-diputados-y-podemos-se-acerca-peligrosamente-a-sumar-7293066/",
+      "muestra": 3000
+     }
+    ],
+    "variantes_tendencia": {
+     "consenso_privadas": {
+      "estimacion_latente_en_corte": 26.54565,
+      "sd_estimacion_latente": 0.75313,
+      "casas_ancla": [
+       "40dB.",
+       "Ateneo del Dato",
+       "DYM",
+       "GAD3",
+       "Hamalgama Métrica",
+       "IMOP",
+       "NC Report",
+       "Sigma Dos",
+       "SocioMétrica",
+       "Sondaxe",
+       "Target Point"
+      ]
+     },
+     "consenso_todas": {
+      "estimacion_latente_en_corte": 27.05334,
+      "sd_estimacion_latente": 0.74725,
+      "casas_ancla": [
+       "40dB.",
+       "Ateneo del Dato",
+       "CIS",
+       "DYM",
+       "GAD3",
+       "Hamalgama Métrica",
+       "IMOP",
+       "NC Report",
+       "Sigma Dos",
+       "SocioMétrica",
+       "Sondaxe",
+       "Target Point"
+      ]
+     },
+     "calibrada_23j": {
+      "estimacion_latente_en_corte": 27.88697,
+      "sd_estimacion_latente": 0.95783,
+      "casas_ancla": [
+       "40dB.",
+       "CIS",
+       "GAD3",
+       "NC Report",
+       "Sigma Dos",
+       "SocioMétrica"
+      ]
+     }
+    },
+    "pronostico_principal_voto_mediana": 27.15597110172765,
+    "pronostico_principal_voto_p5_p95": [
+     23.014906841692493,
+     31.34835627939018
+    ],
+    "escala_industria_pp": 2.2929
+   },
+   "VOX": {
+    "encuestas_con_estimacion": 19,
+    "encuestadoras_distintas": 13,
+    "casas": [
+     "40dB.",
+     "Ateneo del Dato",
+     "CIS",
+     "DYM",
+     "Demoscopia y Servicios",
+     "GAD3",
+     "Hamalgama Métrica",
+     "IMOP",
+     "NC Report",
+     "Sigma Dos",
+     "SocioMétrica",
+     "Sondaxe",
+     "Target Point"
+    ],
+    "origenes": {
+     "terceros-29n": 8,
+     "verificada": 11
+    },
+    "observaciones": [
+     {
+      "casa": "Sigma Dos",
+      "estudio": "sigma-dos-2026-11-02",
+      "campo_fin": "2026-10-30",
+      "publicacion": "2026-11-02",
+      "voto_publicado": 19.3,
+      "origen": "verificada",
+      "url": "https://www.sigmados.com/noticia?id=sa0OT7jgxEjay6E",
+      "muestra": 2505
+     },
+     {
+      "casa": "Target Point",
+      "estudio": "target-point-2026-11-02",
+      "campo_fin": "2026-10-30",
+      "publicacion": "2026-11-02",
+      "voto_publicado": 19.9,
+      "origen": "verificada",
+      "url": "https://www.eldebate.com/espana/20261102/accidente-frena-psoe-amplia-apoyo-pp-mayoria-absolutisima-derecha_475640.html",
+      "muestra": 1024
+     },
+     {
+      "casa": "Sondaxe",
+      "estudio": "sondaxe-2026-11-01",
+      "campo_fin": "2026-10-28",
+      "publicacion": "2026-11-01",
+      "voto_publicado": 19.2,
+      "origen": "verificada",
+      "url": "https://www.lavozdegalicia.es/noticia/espana/2026/11/01/pp-ganaria-elecciones-23-puntos-ventaja-sobre-psoe/0003_202611G1P26991.htm",
+      "muestra": 1200
+     },
+     {
+      "casa": "Hamalgama Métrica",
+      "estudio": "hamalgama-metrica-2026-11-02",
+      "campo_fin": "2026-10-28",
+      "publicacion": "2026-11-02",
+      "voto_publicado": 19.9,
+      "origen": "verificada",
+      "url": "https://www.vozpopuli.com/amp/espana/politica/pp-y-vox-suman-ya-un-techo-historico-de-127-millones-de-votos-y-lograrian-205-escanos.html",
+      "muestra": 1000
+     },
+     {
+      "casa": "Ateneo del Dato",
+      "estudio": "ateneo-2026-10-25",
+      "campo_fin": "2026-10-22",
+      "publicacion": "2026-10-25",
+      "voto_publicado": 19.8,
+      "origen": "verificada",
+      "url": "https://www.eldiario.es/politica/bloque-izquierdas-recorta-distancias-pp-vox-mantienen-mayoria-absoluta_1_13611052.html",
+      "muestra": 2000
+     },
+     {
+      "casa": "Sigma Dos",
+      "estudio": "sigma-dos-2026-10-26",
+      "campo_fin": "2026-10-22",
+      "publicacion": "2026-10-26",
+      "voto_publicado": 19.9,
+      "origen": "verificada",
+      "url": "https://www.sigmados.com/noticia?id=OUze2FxEIVfARtu3",
+      "muestra": 3122
+     },
+     {
+      "casa": "IMOP",
+      "estudio": "imop-2026-10-ola2",
+      "campo_fin": "2026-10-16",
+      "publicacion": "2026-10-23",
+      "voto_publicado": 20.0,
+      "origen": "verificada",
+      "url": "https://www.imop.es/encuesta-pre-electoral-el-confidencial-ola-2/",
+      "muestra": 1000
+     },
+     {
+      "casa": "SocioMétrica",
+      "estudio": "sociometrica-2026-10-10",
+      "campo_fin": "2026-10-11",
+      "publicacion": "2026-10-11",
+      "voto_publicado": 18.8,
+      "origen": "terceros-29n",
+      "url": "https://sumomento.com/encuestas/sociometrica-2026-10-11",
+      "muestra": 1000
+     },
+     {
+      "casa": "40dB.",
+      "estudio": "40db-2026-10-flash",
+      "campo_fin": "2026-10-08",
+      "publicacion": "2026-10-09",
+      "voto_publicado": 18.9,
+      "origen": "verificada",
+      "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_informe_voto_barometro_flash.pdf",
+      "muestra": 800
+     },
+     {
+      "casa": "GAD3",
+      "estudio": "gad3-2026-10",
+      "campo_fin": "2026-10-08",
+      "publicacion": "2026-10-12",
+      "voto_publicado": 18.2,
+      "origen": "verificada",
+      "url": "https://www.gad3.com/barometro-abc-estimacion-de-voto-nacional-octubre-2026/",
+      "muestra": 1077
+     },
+     {
+      "casa": "DYM",
+      "estudio": "dym-2026-10",
+      "campo_fin": "2026-10-07",
+      "publicacion": "2026-10-09",
+      "voto_publicado": 18.2,
+      "origen": "verificada",
+      "url": "https://www.20minutos.es/nacional/psoe-absorbe-intencion-votos-sumar-podemos-mientras-pp-vox-consolidan-su-mayoria_7046598_0.html",
+      "muestra": 1011
+     },
+     {
+      "casa": "IMOP",
+      "estudio": "imop-2026-10-05",
+      "campo_fin": "2026-10-07",
+      "publicacion": "2026-10-09",
+      "voto_publicado": 19.0,
+      "origen": "terceros-29n",
+      "url": "https://www.imop.es/encuesta-pre-electoral-para-el-confidencial-2026/",
+      "muestra": 900
+     },
+     {
+      "casa": "CIS",
+      "estudio": "cis-3582",
+      "campo_fin": "2026-10-06",
+      "publicacion": "2026-10-14",
+      "voto_publicado": 17.1,
+      "origen": "verificada",
+      "url": "https://www.cis.es/documents/d/guest/3582_estimacion-pdf",
+      "muestra": 5025
+     },
+     {
+      "casa": "NC Report",
+      "estudio": "ncreport-2026-10-06",
+      "campo_fin": "2026-10-06",
+      "publicacion": "2026-10-08",
+      "voto_publicado": 18.2,
+      "origen": "terceros-29n",
+      "url": "https://www.electografica.com/2026/10/encuesta-nc-report-261008.html",
+      "muestra": 1000
+     },
+     {
+      "casa": "SocioMétrica",
+      "estudio": "sociometrica-2026-10-01",
+      "campo_fin": "2026-10-03",
+      "publicacion": "2026-10-04",
+      "voto_publicado": 18.1,
+      "origen": "terceros-29n",
+      "url": "https://www.electografica.com/2026/10/encuesta-sociometrica-261004.html",
+      "muestra": 1000
+     },
+     {
+      "casa": "Sigma Dos",
+      "estudio": "sigmados-2026-10-01",
+      "campo_fin": "2026-10-01",
+      "publicacion": null,
+      "voto_publicado": 18.3,
+      "origen": "terceros-29n",
+      "url": "https://www.pollingforecast.com/es/polls/1000205?lang=es",
+      "muestra": 2116
+     },
+     {
+      "casa": "NC Report",
+      "estudio": "ncreport-2026-09-03",
+      "campo_fin": "2026-09-03",
+      "publicacion": null,
+      "voto_publicado": 18.3,
+      "origen": "terceros-29n",
+      "url": "https://politpro.eu/es/espana/intencion-de-voto/nc-report-2026-09-03/elecciones-parlamentarias",
+      "muestra": 1000
+     },
+     {
+      "casa": "GAD3",
+      "estudio": "gad3-2026-05-28",
+      "campo_fin": "2026-05-28",
+      "publicacion": "2026-06-01",
+      "voto_publicado": 17.1,
+      "origen": "terceros-29n",
+      "url": "https://www.gad3.com/barometro-abc-estimacion-de-voto-nacional-mayo-2026/",
+      "muestra": 1011
+     },
+     {
+      "casa": "Demoscopia y Servicios",
+      "estudio": "demoscopia-2025-09-08",
+      "campo_fin": "2025-09-05",
+      "publicacion": "2025-09-08",
+      "voto_publicado": 16.7,
+      "origen": "terceros-29n",
+      "url": "https://www.libertaddigital.com/espana/politica/2025-09-08/encuesta-esradio-ld-pp-y-vox-tendrian-205-diputados-y-podemos-se-acerca-peligrosamente-a-sumar-7293066/",
+      "muestra": 3000
+     }
+    ],
+    "variantes_tendencia": {
+     "consenso_privadas": {
+      "estimacion_latente_en_corte": 19.07839,
+      "sd_estimacion_latente": 0.64317,
+      "casas_ancla": [
+       "40dB.",
+       "Ateneo del Dato",
+       "DYM",
+       "GAD3",
+       "Hamalgama Métrica",
+       "IMOP",
+       "NC Report",
+       "Sigma Dos",
+       "SocioMétrica",
+       "Sondaxe",
+       "Target Point"
+      ]
+     },
+     "consenso_todas": {
+      "estimacion_latente_en_corte": 18.95675,
+      "sd_estimacion_latente": 0.63664,
+      "casas_ancla": [
+       "40dB.",
+       "Ateneo del Dato",
+       "CIS",
+       "DYM",
+       "GAD3",
+       "Hamalgama Métrica",
+       "IMOP",
+       "NC Report",
+       "Sigma Dos",
+       "SocioMétrica",
+       "Sondaxe",
+       "Target Point"
+      ]
+     },
+     "calibrada_23j": {
+      "estimacion_latente_en_corte": 18.92721,
+      "sd_estimacion_latente": 0.84851,
+      "casas_ancla": [
+       "CIS",
+       "GAD3",
+       "NC Report",
+       "Sigma Dos",
+       "SocioMétrica"
+      ]
+     }
+    },
+    "pronostico_principal_voto_mediana": 18.917522761675002,
+    "pronostico_principal_voto_p5_p95": [
+     15.511687211452127,
+     22.241477727835235
+    ],
+    "escala_industria_pp": 1.91375
+   },
+   "SUMAR": {
+    "encuestas_con_estimacion": 18,
+    "encuestadoras_distintas": 13,
+    "casas": [
+     "40dB.",
+     "Ateneo del Dato",
+     "CIS",
+     "DYM",
+     "Demoscopia y Servicios",
+     "GAD3",
+     "Hamalgama Métrica",
+     "IMOP",
+     "NC Report",
+     "Sigma Dos",
+     "SocioMétrica",
+     "Sondaxe",
+     "Target Point"
+    ],
+    "origenes": {
+     "terceros-29n": 8,
+     "verificada": 10
+    },
+    "observaciones": [
+     {
+      "casa": "Sigma Dos",
+      "estudio": "sigma-dos-2026-11-02",
+      "campo_fin": "2026-10-30",
+      "publicacion": "2026-11-02",
+      "voto_publicado": 7.1,
+      "origen": "verificada",
+      "url": "https://www.sigmados.com/noticia?id=sa0OT7jgxEjay6E",
+      "muestra": 2505
+     },
+     {
+      "casa": "Target Point",
+      "estudio": "target-point-2026-11-02",
+      "campo_fin": "2026-10-30",
+      "publicacion": "2026-11-02",
+      "voto_publicado": 6.6,
+      "origen": "verificada",
+      "url": "https://www.eldebate.com/espana/20261102/accidente-frena-psoe-amplia-apoyo-pp-mayoria-absolutisima-derecha_475640.html",
+      "muestra": 1024
+     },
+     {
+      "casa": "Sondaxe",
+      "estudio": "sondaxe-2026-11-01",
+      "campo_fin": "2026-10-28",
+      "publicacion": "2026-11-01",
+      "voto_publicado": 7.2,
+      "origen": "verificada",
+      "url": "https://www.lavozdegalicia.es/noticia/espana/2026/11/01/pp-ganaria-elecciones-23-puntos-ventaja-sobre-psoe/0003_202611G1P26991.htm",
+      "muestra": 1200
+     },
+     {
+      "casa": "Hamalgama Métrica",
+      "estudio": "hamalgama-metrica-2026-11-02",
+      "campo_fin": "2026-10-28",
+      "publicacion": "2026-11-02",
+      "voto_publicado": 5.4,
+      "origen": "verificada",
+      "url": "https://www.vozpopuli.com/amp/espana/politica/pp-y-vox-suman-ya-un-techo-historico-de-127-millones-de-votos-y-lograrian-205-escanos.html",
+      "muestra": 1000
+     },
+     {
+      "casa": "Ateneo del Dato",
+      "estudio": "ateneo-2026-10-25",
+      "campo_fin": "2026-10-22",
+      "publicacion": "2026-10-25",
+      "voto_publicado": 6.8,
+      "origen": "verificada",
+      "url": "https://www.eldiario.es/politica/bloque-izquierdas-recorta-distancias-pp-vox-mantienen-mayoria-absoluta_1_13611052.html",
+      "muestra": 2000
+     },
+     {
+      "casa": "Sigma Dos",
+      "estudio": "sigma-dos-2026-10-26",
+      "campo_fin": "2026-10-22",
+      "publicacion": "2026-10-26",
+      "voto_publicado": 7.4,
+      "origen": "verificada",
+      "url": "https://www.sigmados.com/noticia?id=OUze2FxEIVfARtu3",
+      "muestra": 3122
+     },
+     {
+      "casa": "SocioMétrica",
+      "estudio": "sociometrica-2026-10-10",
+      "campo_fin": "2026-10-11",
+      "publicacion": "2026-10-11",
+      "voto_publicado": 5.8,
+      "origen": "terceros-29n",
+      "url": "https://sumomento.com/encuestas/sociometrica-2026-10-11",
+      "muestra": 1000
+     },
+     {
+      "casa": "40dB.",
+      "estudio": "40db-2026-10-flash",
+      "campo_fin": "2026-10-08",
+      "publicacion": "2026-10-09",
+      "voto_publicado": 5.3,
+      "origen": "verificada",
+      "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_informe_voto_barometro_flash.pdf",
+      "muestra": 800
+     },
+     {
+      "casa": "GAD3",
+      "estudio": "gad3-2026-10",
+      "campo_fin": "2026-10-08",
+      "publicacion": "2026-10-12",
+      "voto_publicado": 7.4,
+      "origen": "verificada",
+      "url": "https://www.gad3.com/barometro-abc-estimacion-de-voto-nacional-octubre-2026/",
+      "muestra": 1077
+     },
+     {
+      "casa": "DYM",
+      "estudio": "dym-2026-10",
+      "campo_fin": "2026-10-07",
+      "publicacion": "2026-10-09",
+      "voto_publicado": 3.6,
+      "origen": "verificada",
+      "url": "https://www.20minutos.es/nacional/psoe-absorbe-intencion-votos-sumar-podemos-mientras-pp-vox-consolidan-su-mayoria_7046598_0.html",
+      "muestra": 1011
+     },
+     {
+      "casa": "IMOP",
+      "estudio": "imop-2026-10-05",
+      "campo_fin": "2026-10-07",
+      "publicacion": "2026-10-09",
+      "voto_publicado": 7.6,
+      "origen": "terceros-29n",
+      "url": "https://www.imop.es/encuesta-pre-electoral-para-el-confidencial-2026/",
+      "muestra": 900
+     },
+     {
+      "casa": "CIS",
+      "estudio": "cis-3582",
+      "campo_fin": "2026-10-06",
+      "publicacion": "2026-10-14",
+      "voto_publicado": 6.1,
+      "origen": "verificada",
+      "url": "https://www.cis.es/documents/d/guest/3582_estimacion-pdf",
+      "muestra": 5025
+     },
+     {
+      "casa": "NC Report",
+      "estudio": "ncreport-2026-10-06",
+      "campo_fin": "2026-10-06",
+      "publicacion": "2026-10-08",
+      "voto_publicado": 5.3,
+      "origen": "terceros-29n",
+      "url": "https://www.electografica.com/2026/10/encuesta-nc-report-261008.html",
+      "muestra": 1000
+     },
+     {
+      "casa": "SocioMétrica",
+      "estudio": "sociometrica-2026-10-01",
+      "campo_fin": "2026-10-03",
+      "publicacion": "2026-10-04",
+      "voto_publicado": 5.3,
+      "origen": "terceros-29n",
+      "url": "https://www.electografica.com/2026/10/encuesta-sociometrica-261004.html",
+      "muestra": 1000
+     },
+     {
+      "casa": "Sigma Dos",
+      "estudio": "sigmados-2026-10-01",
+      "campo_fin": "2026-10-01",
+      "publicacion": null,
+      "voto_publicado": 6.6,
+      "origen": "terceros-29n",
+      "url": "https://www.pollingforecast.com/es/polls/1000205?lang=es",
+      "muestra": 2116
+     },
+     {
+      "casa": "NC Report",
+      "estudio": "ncreport-2026-09-03",
+      "campo_fin": "2026-09-03",
+      "publicacion": null,
+      "voto_publicado": 5.7,
+      "origen": "terceros-29n",
+      "url": "https://politpro.eu/es/espana/intencion-de-voto/nc-report-2026-09-03/elecciones-parlamentarias",
+      "muestra": 1000
+     },
+     {
+      "casa": "GAD3",
+      "estudio": "gad3-2026-05-28",
+      "campo_fin": "2026-05-28",
+      "publicacion": "2026-06-01",
+      "voto_publicado": 5.9,
+      "origen": "terceros-29n",
+      "url": "https://www.gad3.com/barometro-abc-estimacion-de-voto-nacional-mayo-2026/",
+      "muestra": 1011
+     },
+     {
+      "casa": "Demoscopia y Servicios",
+      "estudio": "demoscopia-2025-09-08",
+      "campo_fin": "2025-09-05",
+      "publicacion": "2025-09-08",
+      "voto_publicado": 6.1,
+      "origen": "terceros-29n",
+      "url": "https://www.libertaddigital.com/espana/politica/2025-09-08/encuesta-esradio-ld-pp-y-vox-tendrian-205-diputados-y-podemos-se-acerca-peligrosamente-a-sumar-7293066/",
+      "muestra": 3000
+     }
+    ],
+    "variantes_tendencia": {
+     "consenso_privadas": {
+      "estimacion_latente_en_corte": 6.18166,
+      "sd_estimacion_latente": 0.38511,
+      "casas_ancla": [
+       "40dB.",
+       "Ateneo del Dato",
+       "DYM",
+       "GAD3",
+       "Hamalgama Métrica",
+       "IMOP",
+       "NC Report",
+       "Sigma Dos",
+       "SocioMétrica",
+       "Sondaxe",
+       "Target Point"
+      ]
+     },
+     "consenso_todas": {
+      "estimacion_latente_en_corte": 6.18408,
+      "sd_estimacion_latente": 0.3803,
+      "casas_ancla": [
+       "40dB.",
+       "Ateneo del Dato",
+       "CIS",
+       "DYM",
+       "GAD3",
+       "Hamalgama Métrica",
+       "IMOP",
+       "NC Report",
+       "Sigma Dos",
+       "SocioMétrica",
+       "Sondaxe",
+       "Target Point"
+      ]
+     },
+     "calibrada_23j": {
+      "estimacion_latente_en_corte": 6.18166,
+      "sd_estimacion_latente": 0.38511,
+      "casas_ancla": [
+       "40dB.",
+       "Ateneo del Dato",
+       "DYM",
+       "GAD3",
+       "Hamalgama Métrica",
+       "IMOP",
+       "NC Report",
+       "Sigma Dos",
+       "SocioMétrica",
+       "Sondaxe",
+       "Target Point"
+      ]
+     }
+    },
+    "pronostico_principal_voto_mediana": 6.160039863301584,
+    "pronostico_principal_voto_p5_p95": [
+     4.152306440493446,
+     8.172161800522275
+    ],
+    "escala_industria_pp": 1.09205
+   },
+   "PODEMOS": {
+    "encuestas_con_estimacion": 7,
+    "encuestadoras_distintas": 6,
+    "casas": [
+     "40dB.",
+     "Ateneo del Dato",
+     "CIS",
+     "DYM",
+     "Sigma Dos",
+     "Sondaxe"
+    ],
+    "origenes": {
+     "verificada": 7
+    },
+    "observaciones": [
+     {
+      "casa": "Sigma Dos",
+      "estudio": "sigma-dos-2026-11-02",
+      "campo_fin": "2026-10-30",
+      "publicacion": "2026-11-02",
+      "voto_publicado": 1.9,
+      "origen": "verificada",
+      "url": "https://www.sigmados.com/noticia?id=sa0OT7jgxEjay6E",
+      "muestra": 2505
+     },
+     {
+      "casa": "Sondaxe",
+      "estudio": "sondaxe-2026-11-01",
+      "campo_fin": "2026-10-28",
+      "publicacion": "2026-11-01",
+      "voto_publicado": 2.0,
+      "origen": "verificada",
+      "url": "https://www.lavozdegalicia.es/noticia/espana/2026/11/01/pp-ganaria-elecciones-23-puntos-ventaja-sobre-psoe/0003_202611G1P26991.htm",
+      "muestra": 1200
+     },
+     {
+      "casa": "Ateneo del Dato",
+      "estudio": "ateneo-2026-10-25",
+      "campo_fin": "2026-10-22",
+      "publicacion": "2026-10-25",
+      "voto_publicado": 2.7,
+      "origen": "verificada",
+      "url": "https://www.eldiario.es/politica/bloque-izquierdas-recorta-distancias-pp-vox-mantienen-mayoria-absoluta_1_13611052.html",
+      "muestra": 2000
+     },
+     {
+      "casa": "Sigma Dos",
+      "estudio": "sigma-dos-2026-10-26",
+      "campo_fin": "2026-10-22",
+      "publicacion": "2026-10-26",
+      "voto_publicado": 2.8,
+      "origen": "verificada",
+      "url": "https://www.sigmados.com/noticia?id=OUze2FxEIVfARtu3",
+      "muestra": 3122
+     },
+     {
+      "casa": "40dB.",
+      "estudio": "40db-2026-10-flash",
+      "campo_fin": "2026-10-08",
+      "publicacion": "2026-10-09",
+      "voto_publicado": 2.3,
+      "origen": "verificada",
+      "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_informe_voto_barometro_flash.pdf",
+      "muestra": 800
+     },
+     {
+      "casa": "DYM",
+      "estudio": "dym-2026-10",
+      "campo_fin": "2026-10-07",
+      "publicacion": "2026-10-09",
+      "voto_publicado": 2.6,
+      "origen": "verificada",
+      "url": "https://www.20minutos.es/nacional/psoe-absorbe-intencion-votos-sumar-podemos-mientras-pp-vox-consolidan-su-mayoria_7046598_0.html",
+      "muestra": 1011
+     },
+     {
+      "casa": "CIS",
+      "estudio": "cis-3582",
+      "campo_fin": "2026-10-06",
+      "publicacion": "2026-10-14",
+      "voto_publicado": 3.1,
+      "origen": "verificada",
+      "url": "https://www.cis.es/documents/d/guest/3582_estimacion-pdf",
+      "muestra": 5025
+     }
+    ],
+    "variantes_tendencia": {
+     "consenso_privadas": {
+      "estimacion_latente_en_corte": 2.377,
+      "sd_estimacion_latente": 0.29747,
+      "casas_ancla": [
+       "40dB.",
+       "Ateneo del Dato",
+       "DYM",
+       "Sigma Dos",
+       "Sondaxe"
+      ]
+     },
+     "consenso_todas": {
+      "estimacion_latente_en_corte": 2.46415,
+      "sd_estimacion_latente": 0.28308,
+      "casas_ancla": [
+       "40dB.",
+       "Ateneo del Dato",
+       "CIS",
+       "DYM",
+       "Sigma Dos",
+       "Sondaxe"
+      ]
+     },
+     "calibrada_23j": {
+      "estimacion_latente_en_corte": 2.377,
+      "sd_estimacion_latente": 0.29747,
+      "casas_ancla": [
+       "40dB.",
+       "Ateneo del Dato",
+       "DYM",
+       "Sigma Dos",
+       "Sondaxe"
+      ]
+     }
+    },
+    "pronostico_principal_voto_mediana": 2.4023314559767677,
+    "pronostico_principal_voto_p5_p95": [
+     1.090757893021077,
+     3.725364173031101
+    ],
+    "escala_industria_pp": 0.68198
+   },
+   "SALF": {
+    "encuestas_con_estimacion": 2,
+    "encuestadoras_distintas": 2,
+    "casas": [
+     "40dB.",
+     "CIS"
+    ],
+    "origenes": {
+     "verificada": 2
+    },
+    "observaciones": [
+     {
+      "casa": "40dB.",
+      "estudio": "40db-2026-10-flash",
+      "campo_fin": "2026-10-08",
+      "publicacion": "2026-10-09",
+      "voto_publicado": 1.8,
+      "origen": "verificada",
+      "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_informe_voto_barometro_flash.pdf",
+      "muestra": 800
+     },
+     {
+      "casa": "CIS",
+      "estudio": "cis-3582",
+      "campo_fin": "2026-10-06",
+      "publicacion": "2026-10-14",
+      "voto_publicado": 1.8,
+      "origen": "verificada",
+      "url": "https://www.cis.es/documents/d/guest/3582_estimacion-pdf",
+      "muestra": 5025
+     }
+    ],
+    "variantes_tendencia": {
+     "consenso_privadas": {
+      "estimacion_latente_en_corte": 1.8,
+      "sd_estimacion_latente": 0.55625,
+      "casas_ancla": [
+       "40dB."
+      ]
+     },
+     "consenso_todas": {
+      "estimacion_latente_en_corte": 1.8,
+      "sd_estimacion_latente": 0.40908,
+      "casas_ancla": [
+       "40dB.",
+       "CIS"
+      ]
+     },
+     "calibrada_23j": {
+      "estimacion_latente_en_corte": 1.8,
+      "sd_estimacion_latente": 0.55625,
+      "casas_ancla": [
+       "40dB."
+      ]
+     }
+    },
+    "pronostico_principal_voto_mediana": 1.8089999785818835,
+    "pronostico_principal_voto_p5_p95": [
+     0.5404208333917164,
+     3.0920883662917062
+    ],
+    "escala_industria_pp": 0.5918
+   }
+  },
+  "medidas_no_identificables": [
+   "No se puede atribuir un porcentaje del pronóstico a recuerdo, simpatía o participación a partir de estimaciones ya cocinadas por institutos.",
+   "Una diferencia entre la intención directa y la estimación final de una casa no identifica qué corrección la produjo.",
+   "Para medir contribuciones de cada ingrediente se requiere acceder a microdatos comparables, replicar una receta explícita y hacer pruebas de ablación y validación fuera de elección."
+  ]
+ },
+ "sensibilidad_cocina": {
+  "corte": "2026-11-03",
+  "eleccion": "2026-11-29",
+  "tipo": "Sensibilidad del modelo, no efecto observado sobre votantes",
+  "metodo": "Semillas fijas y misma muestra de simulaciones por variante; cada escenario altera una decisión explícita.",
+  "n_por_variante": 80,
+  "referencia": {
+   "n": 240,
+   "industria": 2.2
+  },
+  "experimentos": [
+   {
+    "id": "sin_error_industria",
+    "nombre": "Sin error de industria",
+    "configuracion": {
+     "industria": 0.0
+    },
+    "comparacion": {
+     "cambio_voto_pp": {
+      "PP": 0.099,
+      "PSOE": 0.189,
+      "VOX": 0.062,
+      "SUMAR": 0.021,
+      "PODEMOS": -0.013
+     },
+     "cambio_mediana_escanos": {
+      "PP": 0.0,
+      "PSOE": 0.0,
+      "VOX": 1.0,
+      "SUMAR": 0.0,
+      "PODEMOS": 0.0
+     },
+     "bloques": {
+      "PP+VOX": {
+       "cambio_mediana_escanos": 0.0,
+       "cambio_frecuencia_umbral_puntos": 7.5,
+       "intervalo_escanos": [
+        189.0,
+        208.0
+       ]
+      },
+      "PP+VOX+UPN": {
+       "cambio_mediana_escanos": -1.0,
+       "cambio_frecuencia_umbral_puntos": 7.5,
+       "intervalo_escanos": [
+        189.0,
+        209.0
+       ]
+      },
+      "PSOE+SUMAR+PODEMOS": {
+       "cambio_mediana_escanos": 0.0,
+       "cambio_frecuencia_umbral_puntos": 0.0,
+       "intervalo_escanos": [
+        111.0,
+        131.0
+       ]
+      },
+      "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
+       "cambio_mediana_escanos": 1.0,
+       "cambio_frecuencia_umbral_puntos": -7.5,
+       "intervalo_escanos": [
+        141.0,
+        161.0
+       ]
+      }
+     }
+    }
+   },
+   {
+    "id": "sin_correlacion_bloques",
+    "nombre": "Sin componente común entre bloques",
+    "configuracion": {
+     "rho_bloque": 0.0
+    },
+    "comparacion": {
+     "cambio_voto_pp": {
+      "PP": 0.051,
+      "PSOE": 0.003,
+      "VOX": 0.077,
+      "SUMAR": 0.017,
+      "PODEMOS": -0.032
+     },
+     "cambio_mediana_escanos": {
+      "PP": 0.0,
+      "PSOE": -2.0,
+      "VOX": 1.0,
+      "SUMAR": 0.0,
+      "PODEMOS": 0.0
+     },
+     "bloques": {
+      "PP+VOX": {
+       "cambio_mediana_escanos": 0.0,
+       "cambio_frecuencia_umbral_puntos": 6.67,
+       "intervalo_escanos": [
+        182.0,
+        215.04999999999998
+       ]
+      },
+      "PP+VOX+UPN": {
+       "cambio_mediana_escanos": 0.5,
+       "cambio_frecuencia_umbral_puntos": 7.08,
+       "intervalo_escanos": [
+        183.0,
+        217.0
+       ]
+      },
+      "PSOE+SUMAR+PODEMOS": {
+       "cambio_mediana_escanos": -1.0,
+       "cambio_frecuencia_umbral_puntos": 0.0,
+       "intervalo_escanos": [
+        105.95,
+        137.0
+       ]
+      },
+      "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
+       "cambio_mediana_escanos": -0.5,
+       "cambio_frecuencia_umbral_puntos": -7.08,
+       "intervalo_escanos": [
+        133.0,
+        167.0
+       ]
+      }
+     }
+    }
+   },
+   {
+    "id": "sin_variacion_provincial",
+    "nombre": "Sin ruido provincial adicional",
+    "configuracion": {
+     "sd_prov": 0.0
+    },
+    "comparacion": {
+     "cambio_voto_pp": {
+      "PP": 0.0,
+      "PSOE": 0.0,
+      "VOX": 0.0,
+      "SUMAR": 0.0,
+      "PODEMOS": 0.0
+     },
+     "cambio_mediana_escanos": {
+      "PP": 0.0,
+      "PSOE": 0.0,
+      "VOX": 0.0,
+      "SUMAR": 0.0,
+      "PODEMOS": 0.0
+     },
+     "bloques": {
+      "PP+VOX": {
+       "cambio_mediana_escanos": -0.5,
+       "cambio_frecuencia_umbral_puntos": -2.08,
+       "intervalo_escanos": [
+        171.0,
+        220.04999999999998
+       ]
+      },
+      "PP+VOX+UPN": {
+       "cambio_mediana_escanos": -1.0,
+       "cambio_frecuencia_umbral_puntos": -2.08,
+       "intervalo_escanos": [
+        171.0,
+        222.0
+       ]
+      },
+      "PSOE+SUMAR+PODEMOS": {
+       "cambio_mediana_escanos": 0.0,
+       "cambio_frecuencia_umbral_puntos": 0.0,
+       "intervalo_escanos": [
+        99.0,
+        152.04999999999998
+       ]
+      },
+      "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
+       "cambio_mediana_escanos": 1.0,
+       "cambio_frecuencia_umbral_puntos": 0.83,
+       "intervalo_escanos": [
+        128.0,
+        179.0
+       ]
+      }
+     }
+    }
+   },
+   {
+    "id": "traslado_uniforme",
+    "nombre": "Traslado provincial uniforme",
+    "configuracion": {
+     "metodo_geo": "uniforme"
+    },
+    "comparacion": {
+     "cambio_voto_pp": {
+      "PP": 0.0,
+      "PSOE": 0.0,
+      "VOX": 0.0,
+      "SUMAR": 0.0,
+      "PODEMOS": 0.0
+     },
+     "cambio_mediana_escanos": {
+      "PP": 1.0,
+      "PSOE": -1.5,
+      "VOX": 2.0,
+      "SUMAR": 1.0,
+      "PODEMOS": 1.0
+     },
+     "bloques": {
+      "PP+VOX": {
+       "cambio_mediana_escanos": 1.0,
+       "cambio_frecuencia_umbral_puntos": -1.25,
+       "intervalo_escanos": [
+        171.0,
+        223.0
+       ]
+      },
+      "PP+VOX+UPN": {
+       "cambio_mediana_escanos": 1.0,
+       "cambio_frecuencia_umbral_puntos": -1.25,
+       "intervalo_escanos": [
+        171.0,
+        224.0
+       ]
+      },
+      "PSOE+SUMAR+PODEMOS": {
+       "cambio_mediana_escanos": -0.5,
+       "cambio_frecuencia_umbral_puntos": 0.42,
+       "intervalo_escanos": [
+        100.0,
+        150.0
+       ]
+      },
+      "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
+       "cambio_mediana_escanos": -1.0,
+       "cambio_frecuencia_umbral_puntos": -0.42,
+       "intervalo_escanos": [
+        125.95,
+        178.04999999999998
+       ]
+      }
+     }
+    }
+   },
+   {
+    "id": "solo_consenso_privadas",
+    "nombre": "Solo ancla de casas privadas",
+    "configuracion": {
+     "variantes": [
+      "consenso_privadas"
+     ]
+    },
+    "comparacion": {
+     "cambio_voto_pp": {
+      "PP": 0.851,
+      "PSOE": -0.395,
+      "VOX": -0.12,
+      "SUMAR": 0.055,
+      "PODEMOS": 0.034
+     },
+     "cambio_mediana_escanos": {
+      "PP": 3.0,
+      "PSOE": -2.0,
+      "VOX": 0.0,
+      "SUMAR": 1.0,
+      "PODEMOS": 0.0
+     },
+     "bloques": {
+      "PP+VOX": {
+       "cambio_mediana_escanos": 3.5,
+       "cambio_frecuencia_umbral_puntos": 5.0,
+       "intervalo_escanos": [
+        178.9,
+        220.05
+       ]
+      },
+      "PP+VOX+UPN": {
+       "cambio_mediana_escanos": 3.0,
+       "cambio_frecuencia_umbral_puntos": 5.0,
+       "intervalo_escanos": [
+        178.9,
+        224.0
+       ]
+      },
+      "PSOE+SUMAR+PODEMOS": {
+       "cambio_mediana_escanos": -2.0,
+       "cambio_frecuencia_umbral_puntos": 0.0,
+       "intervalo_escanos": [
+        98.65,
+        136.0
+       ]
+      },
+      "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
+       "cambio_mediana_escanos": -3.0,
+       "cambio_frecuencia_umbral_puntos": -5.0,
+       "intervalo_escanos": [
+        126.0,
+        171.1
+       ]
+      }
+     }
+    }
+   },
+   {
+    "id": "solo_consenso_todas",
+    "nombre": "Solo ancla incluyendo CIS",
+    "configuracion": {
+     "variantes": [
+      "consenso_todas"
+     ]
+    },
+    "comparacion": {
+     "cambio_voto_pp": {
+      "PP": -0.165,
+      "PSOE": -0.151,
+      "VOX": 0.462,
+      "SUMAR": -0.138,
+      "PODEMOS": 0.061
+     },
+     "cambio_mediana_escanos": {
+      "PP": -1.0,
+      "PSOE": -1.0,
+      "VOX": 2.0,
+      "SUMAR": 0.0,
+      "PODEMOS": 0.0
+     },
+     "bloques": {
+      "PP+VOX": {
+       "cambio_mediana_escanos": 0.5,
+       "cambio_frecuencia_umbral_puntos": 2.5,
+       "intervalo_escanos": [
+        177.75,
+        221.1
+       ]
+      },
+      "PP+VOX+UPN": {
+       "cambio_mediana_escanos": 0.0,
+       "cambio_frecuencia_umbral_puntos": 2.5,
+       "intervalo_escanos": [
+        177.75,
+        223.1
+       ]
+      },
+      "PSOE+SUMAR+PODEMOS": {
+       "cambio_mediana_escanos": -0.5,
+       "cambio_frecuencia_umbral_puntos": 0.0,
+       "intervalo_escanos": [
+        98.9,
+        143.14999999999998
+       ]
+      },
+      "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
+       "cambio_mediana_escanos": 0.0,
+       "cambio_frecuencia_umbral_puntos": -2.5,
+       "intervalo_escanos": [
+        126.9,
+        172.25
+       ]
+      }
+     }
+    }
+   },
+   {
+    "id": "sin_calibracion_23j",
+    "nombre": "Sin la variante de calibración 23J",
+    "configuracion": {
+     "variantes": [
+      "consenso_privadas",
+      "consenso_todas"
+     ]
+    },
+    "comparacion": {
+     "cambio_voto_pp": {
+      "PP": 0.239,
+      "PSOE": -0.31,
+      "VOX": 0.191,
+      "SUMAR": 0.0,
+      "PODEMOS": 0.048
+     },
+     "cambio_mediana_escanos": {
+      "PP": 2.0,
+      "PSOE": -2.0,
+      "VOX": 1.0,
+      "SUMAR": 0.0,
+      "PODEMOS": 0.0
+     },
+     "bloques": {
+      "PP+VOX": {
+       "cambio_mediana_escanos": 1.5,
+       "cambio_frecuencia_umbral_puntos": 3.75,
+       "intervalo_escanos": [
+        177.95,
+        221.0
+       ]
+      },
+      "PP+VOX+UPN": {
+       "cambio_mediana_escanos": 1.0,
+       "cambio_frecuencia_umbral_puntos": 3.75,
+       "intervalo_escanos": [
+        177.95,
+        224.0
+       ]
+      },
+      "PSOE+SUMAR+PODEMOS": {
+       "cambio_mediana_escanos": -1.5,
+       "cambio_frecuencia_umbral_puntos": 0.0,
+       "intervalo_escanos": [
+        98.9,
+        140.14999999999995
+       ]
+      },
+      "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
+       "cambio_mediana_escanos": -1.0,
+       "cambio_frecuencia_umbral_puntos": -3.75,
+       "intervalo_escanos": [
+        126.0,
+        172.04999999999998
+       ]
+      }
+     }
+    }
+   }
+  ],
+  "no_identificables": [
+   "Recuerdo, simpatía, transferencia e intención directa no son términos separados del Motor 29N: no es posible desactivarlos individualmente.",
+   "Los resultados no constituyen validación en elecciones independientes.",
+   "Un cambio al eliminar la incertidumbre no significa una variación equivalente en intención de voto real.",
+   "Comparar el método territorial o los anclajes mezcla transformación y distribución de estimaciones, no identifica una causa electoral."
+  ]
+ },
+ "principal": {
+  "partidos": {
+   "PP": {
+    "voto": [
+     30.771696995524678,
+     26.287624433673745,
+     35.17788971299986
+    ],
+    "escanos": [
+     129.0,
+     110.0,
+     147.0
+    ],
+    "primero": 0.7897777777777778
+   },
+   "PSOE": {
+    "voto": [
+     27.15597110172765,
+     23.014906841692493,
+     31.34835627939018
+    ],
+    "escanos": [
+     112.0,
+     91.45,
+     134.0
+    ],
+    "primero": 0.21022222222222223
+   },
+   "VOX": {
+    "voto": [
+     18.917522761675002,
+     15.511687211452127,
+     22.241477727835235
+    ],
+    "escanos": [
+     68.0,
+     54.0,
+     83.0
+    ],
+    "primero": 0.0
+   },
+   "SUMAR": {
+    "voto": [
+     6.160039863301584,
+     4.152306440493446,
+     8.172161800522275
+    ],
+    "escanos": [
+     8.0,
+     4.0,
+     16.0
+    ],
+    "primero": 0.0
+   },
+   "PODEMOS": {
+    "voto": [
+     2.4023314559767677,
+     1.090757893021077,
+     3.725364173031101
+    ],
+    "escanos": [
+     1.0,
+     0.0,
+     3.0
+    ],
+    "primero": 0.0
+   },
+   "SALF": {
+    "voto": [
+     1.8089999785818835,
+     0.5404208333917164,
+     3.0920883662917062
+    ],
+    "escanos": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "primero": 0.0
+   },
+   "ERC": {
+    "voto": [
+     2.5713355112769136,
+     1.208775000659987,
+     3.942664586503824
+    ],
+    "escanos": [
+     11.0,
+     5.0,
+     16.0
+    ],
+    "primero": 0.0
+   },
+   "JUNTS": {
+    "voto": [
+     1.1609232042951385,
+     0.2365295935334595,
+     2.020794029690387
+    ],
+    "escanos": [
+     4.0,
+     0.0,
+     8.0
+    ],
+    "primero": 0.0
+   },
+   "BILDU": {
+    "voto": [
+     1.315275193576999,
+     0.35498762819096974,
+     2.3304899920185433
+    ],
+    "escanos": [
+     7.0,
+     1.0,
+     12.0
+    ],
+    "primero": 0.0
+   },
+   "PNV": {
+    "voto": [
+     0.828271990824295,
+     0.01621311781307857,
+     1.6569260146003577
+    ],
+    "escanos": [
+     4.0,
+     0.0,
+     8.0
+    ],
+    "primero": 0.0
+   },
+   "BNG": {
+    "voto": [
+     0.9370206979291249,
+     0.0793264693912813,
+     1.8040936030558337
+    ],
+    "escanos": [
+     2.0,
+     0.0,
+     6.0
+    ],
+    "primero": 0.0
+   },
+   "CC": {
+    "voto": [
+     0.42486275849131405,
+     0.01,
+     1.2039008453147348
+    ],
+    "escanos": [
+     1.0,
+     0.0,
+     4.0
+    ],
+    "primero": 0.0
+   },
+   "UPN": {
+    "voto": [
+     0.08181695586448656,
+     0.009981853284480263,
+     0.9217316257627522
+    ],
+    "escanos": [
+     0.0,
+     0.0,
+     3.0
+    ],
+    "primero": 0.0
+   }
+  },
+  "bloques": {
+   "PP+VOX": {
+    "mediana": 198.0,
+    "p5": 172.0,
+    "p95": 220.0,
+    "p_mayoria": 0.9266666666666666
+   },
+   "PP+VOX+UPN": {
+    "mediana": 199.0,
+    "p5": 172.0,
+    "p95": 222.0,
+    "p_mayoria": 0.9284444444444444
+   },
+   "PSOE+SUMAR+PODEMOS": {
+    "mediana": 121.0,
+    "p5": 97.45,
+    "p95": 148.0,
+    "p_mayoria": 0.0
+   },
+   "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
+    "mediana": 151.0,
+    "p5": 128.0,
+    "p95": 177.54999999999973,
+    "p_mayoria": 0.06133333333333333
+   }
+  },
+  "investidura": {
+   "pp_vox_primera": {
+    "disponible": true,
+    "nombre": "PP + Vox: mayoría absoluta",
+    "si": [
+     "PP",
+     "VOX"
+    ],
+    "abstienen": [],
+    "resto": "no",
+    "n": 2250,
+    "mediana_si": 198.0,
+    "mediana_abstenciones": 0.0,
+    "mediana_no": 152.0,
+    "p5_si": 172.0,
+    "p95_si": 220.0,
+    "frecuencia_primera": 0.9266666666666666,
+    "frecuencia_segunda": 0.9266666666666666
+   },
+   "pp_vox_upn_primera": {
+    "disponible": true,
+    "nombre": "PP + Vox + UPN: mayoría absoluta",
+    "si": [
+     "PP",
+     "VOX",
+     "UPN"
+    ],
+    "abstienen": [],
+    "resto": "no",
+    "n": 2250,
+    "mediana_si": 199.0,
+    "mediana_abstenciones": 0.0,
+    "mediana_no": 151.0,
+    "p5_si": 172.0,
+    "p95_si": 222.0,
+    "frecuencia_primera": 0.9284444444444444,
+    "frecuencia_segunda": 0.9284444444444444
+   },
+   "pp_vox_segunda_abst_otros": {
+    "disponible": true,
+    "nombre": "PP + Vox: segunda votación si UPN y CC se abstienen",
+    "si": [
+     "PP",
+     "VOX"
+    ],
+    "abstienen": [
+     "UPN",
+     "CC"
+    ],
+    "resto": "no",
+    "n": 2250,
+    "mediana_si": 198.0,
+    "mediana_abstenciones": 3.0,
+    "mediana_no": 150.0,
+    "p5_si": 172.0,
+    "p95_si": 220.0,
+    "frecuencia_primera": 0.9266666666666666,
+    "frecuencia_segunda": 0.9373333333333334
+   },
+   "psoe_sumar_podemos_primera": {
+    "disponible": true,
+    "nombre": "PSOE + Sumar + Podemos: mayoría absoluta",
+    "si": [
+     "PSOE",
+     "SUMAR",
+     "PODEMOS"
+    ],
+    "abstienen": [],
+    "resto": "no",
+    "n": 2250,
+    "mediana_si": 121.0,
+    "mediana_abstenciones": 0.0,
+    "mediana_no": 229.0,
+    "p5_si": 97.45,
+    "p95_si": 148.0,
+    "frecuencia_primera": 0.0,
+    "frecuencia_segunda": 0.0
+   },
+   "psoe_sumar_segunda_abst_territoriales": {
+    "disponible": true,
+    "nombre": "PSOE + Sumar + Podemos: segunda votación con abstención de ERC, Junts, Bildu, PNV, BNG y CC",
+    "si": [
+     "PSOE",
+     "SUMAR",
+     "PODEMOS"
+    ],
+    "abstienen": [
+     "ERC",
+     "JUNTS",
+     "BILDU",
+     "PNV",
+     "BNG",
+     "CC"
+    ],
+    "resto": "no",
+    "n": 2250,
+    "mediana_si": 121.0,
+    "mediana_abstenciones": 30.0,
+    "mediana_no": 199.0,
+    "p5_si": 97.45,
+    "p95_si": 148.0,
+    "frecuencia_primera": 0.0,
+    "frecuencia_segunda": 0.007555555555555556
+   },
+   "psoe_apoyos_territoriales_primera": {
+    "disponible": true,
+    "nombre": "PSOE + Sumar + Podemos + ERC + Junts + Bildu + PNV + BNG + CC: mayoría absoluta",
+    "si": [
+     "PSOE",
+     "SUMAR",
+     "PODEMOS",
+     "ERC",
+     "JUNTS",
+     "BILDU",
+     "PNV",
+     "BNG",
+     "CC"
+    ],
+    "abstienen": [],
+    "resto": "no",
+    "n": 2250,
+    "mediana_si": 151.0,
+    "mediana_abstenciones": 0.0,
+    "mediana_no": 199.0,
+    "p5_si": 128.0,
+    "p95_si": 177.54999999999973,
+    "frecuencia_primera": 0.06133333333333333,
+    "frecuencia_segunda": 0.06133333333333333
+   }
+  },
+  "n": 2250,
+  "industria": 2.2,
+  "dias": 26,
+  "sin_encuestas": [],
+  "provincias": [
+   {
+    "provincia": "Albacete",
+    "escanos": 4,
+    "reparto": {
+     "PP": 1.87,
+     "PSOE": 1.13,
+     "VOX": 1.0
+    }
+   },
+   {
+    "provincia": "Alicante/Alacant",
+    "escanos": 12,
+    "reparto": {
+     "PP": 4.66,
+     "PSOE": 3.65,
+     "VOX": 3.26,
+     "SUMAR": 0.43
+    }
+   },
+   {
+    "provincia": "Almería",
+    "escanos": 6,
+    "reparto": {
+     "PP": 2.51,
+     "PSOE": 1.43,
+     "VOX": 2.06
+    }
+   },
+   {
+    "provincia": "Araba/Álava",
+    "escanos": 4,
+    "reparto": {
+     "PP": 0.99,
+     "PSOE": 1.45,
+     "BILDU": 1.02,
+     "PNV": 0.54
+    }
+   },
+   {
+    "provincia": "Asturias",
+    "escanos": 7,
+    "reparto": {
+     "PP": 2.94,
+     "PSOE": 2.54,
+     "VOX": 1.45,
+     "SUMAR": 0.07
+    }
+   },
+   {
+    "provincia": "Ávila",
+    "escanos": 3,
+    "reparto": {
+     "PP": 1.32,
+     "PSOE": 0.82,
+     "VOX": 0.86
+    }
+   },
+   {
+    "provincia": "Badajoz",
+    "escanos": 5,
+    "reparto": {
+     "PP": 2.02,
+     "PSOE": 1.97,
+     "VOX": 1.01
+    }
+   },
+   {
+    "provincia": "Balears (Illes)",
+    "escanos": 8,
+    "reparto": {
+     "PP": 3.22,
+     "PSOE": 2.36,
+     "VOX": 2.07,
+     "SUMAR": 0.35
+    }
+   },
+   {
+    "provincia": "Barcelona",
+    "escanos": 32,
+    "reparto": {
+     "PP": 4.65,
+     "PSOE": 11.75,
+     "VOX": 4.15,
+     "SUMAR": 2.54,
+     "PODEMOS": 0.49,
+     "SALF": 0.08,
+     "ERC": 6.13,
+     "JUNTS": 2.21
+    }
+   },
+   {
+    "provincia": "Bizkaia",
+    "escanos": 8,
+    "reparto": {
+     "PP": 1.05,
+     "PSOE": 2.56,
+     "SUMAR": 0.11,
+     "BILDU": 2.15,
+     "PNV": 2.11
+    }
+   },
+   {
+    "provincia": "Burgos",
+    "escanos": 4,
+    "reparto": {
+     "PP": 1.91,
+     "PSOE": 1.17,
+     "VOX": 0.93
+    }
+   },
+   {
+    "provincia": "Cáceres",
+    "escanos": 4,
+    "reparto": {
+     "PP": 1.66,
+     "PSOE": 1.4,
+     "VOX": 0.94
+    }
+   },
+   {
+    "provincia": "Cádiz",
+    "escanos": 9,
+    "reparto": {
+     "PP": 3.51,
+     "PSOE": 3.02,
+     "VOX": 2.36,
+     "SUMAR": 0.12
+    }
+   },
+   {
+    "provincia": "Cantabria",
+    "escanos": 5,
+    "reparto": {
+     "PP": 2.31,
+     "PSOE": 1.66,
+     "VOX": 1.03
+    }
+   },
+   {
+    "provincia": "Castellón/Castelló",
+    "escanos": 5,
+    "reparto": {
+     "PP": 2.03,
+     "PSOE": 1.73,
+     "VOX": 1.24
+    }
+   },
+   {
+    "provincia": "Ciudad Real",
+    "escanos": 5,
+    "reparto": {
+     "PP": 2.12,
+     "PSOE": 1.76,
+     "VOX": 1.12
+    }
+   },
+   {
+    "provincia": "Córdoba",
+    "escanos": 6,
+    "reparto": {
+     "PP": 2.71,
+     "PSOE": 2.0,
+     "VOX": 1.29
+    }
+   },
+   {
+    "provincia": "Coruña (A)",
+    "escanos": 8,
+    "reparto": {
+     "PP": 4.17,
+     "PSOE": 2.32,
+     "VOX": 0.22,
+     "BNG": 1.24
+    }
+   },
+   {
+    "provincia": "Cuenca",
+    "escanos": 3,
+    "reparto": {
+     "PP": 1.05,
+     "PSOE": 1.02,
+     "VOX": 0.93
+    }
+   },
+   {
+    "provincia": "Gipuzkoa",
+    "escanos": 6,
+    "reparto": {
+     "PP": 0.27,
+     "PSOE": 1.72,
+     "BILDU": 2.66,
+     "PNV": 1.32
+    }
+   },
+   {
+    "provincia": "Girona",
+    "escanos": 6,
+    "reparto": {
+     "PP": 0.4,
+     "PSOE": 2.19,
+     "VOX": 0.82,
+     "ERC": 1.62,
+     "JUNTS": 0.98
+    }
+   },
+   {
+    "provincia": "Granada",
+    "escanos": 7,
+    "reparto": {
+     "PP": 2.87,
+     "PSOE": 2.19,
+     "VOX": 1.94
+    }
+   },
+   {
+    "provincia": "Guadalajara",
+    "escanos": 3,
+    "reparto": {
+     "PP": 1.0,
+     "PSOE": 1.0,
+     "VOX": 1.0
+    }
+   },
+   {
+    "provincia": "Huelva",
+    "escanos": 5,
+    "reparto": {
+     "PP": 2.02,
+     "PSOE": 1.91,
+     "VOX": 1.06
+    }
+   },
+   {
+    "provincia": "Huesca",
+    "escanos": 3,
+    "reparto": {
+     "PP": 1.29,
+     "PSOE": 1.05,
+     "VOX": 0.66
+    }
+   },
+   {
+    "provincia": "Jaén",
+    "escanos": 5,
+    "reparto": {
+     "PP": 2.05,
+     "PSOE": 1.91,
+     "VOX": 1.05
+    }
+   },
+   {
+    "provincia": "León",
+    "escanos": 4,
+    "reparto": {
+     "PP": 1.83,
+     "PSOE": 1.2,
+     "VOX": 0.96
+    }
+   },
+   {
+    "provincia": "Lleida",
+    "escanos": 4,
+    "reparto": {
+     "PP": 0.37,
+     "PSOE": 1.5,
+     "VOX": 0.09,
+     "ERC": 1.5,
+     "JUNTS": 0.54
+    }
+   },
+   {
+    "provincia": "Lugo",
+    "escanos": 4,
+    "reparto": {
+     "PP": 2.55,
+     "PSOE": 1.1,
+     "BNG": 0.35
+    }
+   },
+   {
+    "provincia": "Madrid",
+    "escanos": 37,
+    "reparto": {
+     "PP": 15.41,
+     "PSOE": 9.6,
+     "VOX": 8.59,
+     "SUMAR": 2.76,
+     "PODEMOS": 0.56,
+     "SALF": 0.08
+    }
+   },
+   {
+    "provincia": "Málaga",
+    "escanos": 11,
+    "reparto": {
+     "PP": 4.54,
+     "PSOE": 3.18,
+     "VOX": 3.05,
+     "SUMAR": 0.22
+    }
+   },
+   {
+    "provincia": "Murcia",
+    "escanos": 10,
+    "reparto": {
+     "PP": 4.2,
+     "PSOE": 2.18,
+     "VOX": 3.61
+    }
+   },
+   {
+    "provincia": "Navarra",
+    "escanos": 5,
+    "reparto": {
+     "PP": 0.96,
+     "PSOE": 1.76,
+     "VOX": 0.2,
+     "BILDU": 1.07,
+     "UPN": 0.98
+    }
+   },
+   {
+    "provincia": "Ourense",
+    "escanos": 4,
+    "reparto": {
+     "PP": 2.58,
+     "PSOE": 1.11,
+     "BNG": 0.31
+    }
+   },
+   {
+    "provincia": "Palencia",
+    "escanos": 3,
+    "reparto": {
+     "PP": 1.45,
+     "PSOE": 1.03,
+     "VOX": 0.52
+    }
+   },
+   {
+    "provincia": "Palmas (Las)",
+    "escanos": 8,
+    "reparto": {
+     "PP": 2.44,
+     "PSOE": 2.99,
+     "VOX": 2.19,
+     "CC": 0.37
+    }
+   },
+   {
+    "provincia": "Pontevedra",
+    "escanos": 7,
+    "reparto": {
+     "PP": 3.49,
+     "PSOE": 2.39,
+     "BNG": 1.03
+    }
+   },
+   {
+    "provincia": "Rioja (La)",
+    "escanos": 4,
+    "reparto": {
+     "PP": 2.17,
+     "PSOE": 1.48,
+     "VOX": 0.36
+    }
+   },
+   {
+    "provincia": "Salamanca",
+    "escanos": 4,
+    "reparto": {
+     "PP": 2.0,
+     "PSOE": 1.01,
+     "VOX": 0.99
+    }
+   },
+   {
+    "provincia": "Santa Cruz de Tenerife",
+    "escanos": 7,
+    "reparto": {
+     "PP": 3.14,
+     "PSOE": 2.66,
+     "CC": 1.2
+    }
+   },
+   {
+    "provincia": "Segovia",
+    "escanos": 3,
+    "reparto": {
+     "PP": 1.47,
+     "PSOE": 0.93,
+     "VOX": 0.61
+    }
+   },
+   {
+    "provincia": "Sevilla",
+    "escanos": 12,
+    "reparto": {
+     "PP": 4.32,
+     "PSOE": 4.37,
+     "VOX": 2.66,
+     "SUMAR": 0.64
+    }
+   },
+   {
+    "provincia": "Soria",
+    "escanos": 2,
+    "reparto": {
+     "PP": 1.02,
+     "PSOE": 0.98
+    }
+   },
+   {
+    "provincia": "Tarragona",
+    "escanos": 6,
+    "reparto": {
+     "PP": 0.94,
+     "PSOE": 2.28,
+     "VOX": 1.05,
+     "ERC": 1.49,
+     "JUNTS": 0.24
+    }
+   },
+   {
+    "provincia": "Teruel",
+    "escanos": 3,
+    "reparto": {
+     "PP": 1.11,
+     "PSOE": 1.0,
+     "VOX": 0.9
+    }
+   },
+   {
+    "provincia": "Toledo",
+    "escanos": 6,
+    "reparto": {
+     "PP": 2.22,
+     "PSOE": 1.81,
+     "VOX": 1.97
+    }
+   },
+   {
+    "provincia": "Valencia/València",
+    "escanos": 16,
+    "reparto": {
+     "PP": 5.7,
+     "PSOE": 4.98,
+     "VOX": 4.12,
+     "SUMAR": 1.15,
+     "PODEMOS": 0.06
+    }
+   },
+   {
+    "provincia": "Valladolid",
+    "escanos": 5,
+    "reparto": {
+     "PP": 2.26,
+     "PSOE": 1.65,
+     "VOX": 1.1
+    }
+   },
+   {
+    "provincia": "Zamora",
+    "escanos": 3,
+    "reparto": {
+     "PP": 1.59,
+     "PSOE": 0.98,
+     "VOX": 0.44
+    }
+   },
+   {
+    "provincia": "Zaragoza",
+    "escanos": 7,
+    "reparto": {
+     "PP": 2.92,
+     "PSOE": 2.14,
+     "VOX": 1.92
+    }
+   },
+   {
+    "provincia": "Ceuta",
+    "escanos": 1,
+    "reparto": {
+     "PP": 0.5,
+     "PSOE": 0.07,
+     "VOX": 0.43
+    }
+   },
+   {
+    "provincia": "Melilla",
+    "escanos": 1,
+    "reparto": {
+     "PP": 1.0
+    }
+   }
+  ]
+ },
  "variantes": {
   "consenso_privadas": {
    "partidos": {
     "PP": {
      "voto": [
-      31.732454040991236,
-      28.297234987471512,
-      35.09653100305233
+      31.492653904812386,
+      28.17431870005266,
+      34.822448843695966
      ],
      "escanos": [
-      133.0,
-      119.0,
-      148.0
+      132.0,
+      118.0,
+      147.0
      ],
-     "primero": 0.9233333333333333
+     "primero": 0.9293333333333333
     },
     "PSOE": {
      "voto": [
-      26.868554494028743,
-      23.991731434679604,
-      30.008246404636726
+      26.498095609630106,
+      23.657137531693248,
+      29.511851822945673
      ],
      "escanos": [
-      110.0,
-      95.95,
-      125.0
+      109.0,
+      94.0,
+      123.0
      ],
-     "primero": 0.07666666666666666
+     "primero": 0.07066666666666667
     },
     "VOX": {
      "voto": [
-      18.78661599421645,
-      16.257564625404772,
-      21.349169795629706
+      19.030519370132673,
+      16.555580409458138,
+      21.618564370709894
      ],
      "escanos": [
-      67.0,
-      55.95,
-      79.0
+      68.0,
+      58.0,
+      81.0
      ],
      "primero": 0.0
     },
     "SUMAR": {
      "voto": [
-      6.090189096969644,
-      4.415521674036495,
-      7.668636192525058
+      6.2073520866462,
+      4.57714559200943,
+      7.742998548330996
      ],
      "escanos": [
       8.0,
       5.0,
-      13.0
+      14.0
      ],
      "primero": 0.0
     },
     "PODEMOS": {
      "voto": [
-      2.636662026019749,
-      1.5685716548937683,
-      3.6986499290472317
+      2.3697518543470766,
+      1.391820863292059,
+      3.3482162077396356
      ],
      "escanos": [
-      2.0,
+      1.0,
       0.0,
-      3.0
+      2.0
      ],
      "primero": 0.0
     },
     "SALF": {
      "voto": [
-      1.7794365820846818,
-      0.5374920043412297,
-      2.928150740891389
+      1.780971820165559,
+      0.5374920043412497,
+      2.94173548871043
      ],
      "escanos": [
       0.0,
@@ -84,22 +2688,22 @@
     },
     "ERC": {
      "voto": [
-      2.3744019847217084,
-      1.26284727125182,
-      3.4806113179467144
+      2.5070704539253406,
+      1.4326327308456903,
+      3.579141120974659
      ],
      "escanos": [
-      10.0,
+      11.0,
       6.0,
-      14.0
+      15.0
      ],
      "primero": 0.0
     },
     "JUNTS": {
      "voto": [
-      1.1882272937557383,
-      0.4182961858670845,
-      1.9965082577745665
+      1.1471575348839118,
+      0.46282043268835427,
+      1.8537493121837896
      ],
      "escanos": [
       4.0,
@@ -110,9 +2714,9 @@
     },
     "BILDU": {
      "voto": [
-      1.2427865028738614,
-      0.4448729864371658,
-      2.117239294808265
+      1.2688753818715794,
+      0.534680178040232,
+      2.0382989324020286
      ],
      "escanos": [
       7.0,
@@ -123,9 +2727,9 @@
     },
     "PNV": {
      "voto": [
-      0.8934063693751231,
-      0.1956785787301464,
-      1.6076897479727335
+      0.9022127879930546,
+      0.21341186985019628,
+      1.5899342792014335
      ],
      "escanos": [
       4.0,
@@ -136,9 +2740,9 @@
     },
     "BNG": {
      "voto": [
-      0.9458872034971394,
-      0.27756450432624996,
-      1.6472462576986406
+      0.9527784105691827,
+      0.33508779586649273,
+      1.5972930271228225
      ],
      "escanos": [
       2.0,
@@ -149,9 +2753,9 @@
     },
     "CC": {
      "voto": [
-      0.4346302688712,
+      0.4325694188929757,
       0.01,
-      1.0457377264695504
+      1.0307725722879888
      ],
      "escanos": [
       1.0,
@@ -162,9 +2766,9 @@
     },
     "UPN": {
      "voto": [
-      0.08718242617926866,
-      0.00997109457266082,
-      0.7511934240603484
+      0.08724412688278893,
+      0.01,
+      0.7518282122560462
      ],
      "escanos": [
       0.0,
@@ -176,28 +2780,28 @@
    },
    "bloques": {
     "PP+VOX": {
-     "mediana": 200.0,
-     "p5": 184.0,
-     "p95": 216.04999999999995,
-     "p_mayoria": 0.9906666666666667
+     "mediana": 201.0,
+     "p5": 185.0,
+     "p95": 217.0,
+     "p_mayoria": 0.992
     },
     "PP+VOX+UPN": {
-     "mediana": 201.0,
-     "p5": 184.0,
-     "p95": 218.0,
-     "p_mayoria": 0.9906666666666667
+     "mediana": 202.0,
+     "p5": 185.0,
+     "p95": 219.0,
+     "p_mayoria": 0.992
     },
     "PSOE+SUMAR+PODEMOS": {
-     "mediana": 119.0,
-     "p5": 102.0,
-     "p95": 137.0,
+     "mediana": 118.0,
+     "p5": 101.0,
+     "p95": 135.0,
      "p_mayoria": 0.0
     },
     "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
-     "mediana": 149.0,
-     "p5": 132.0,
-     "p95": 166.0,
-     "p_mayoria": 0.008666666666666666
+     "mediana": 148.0,
+     "p5": 131.0,
+     "p95": 165.0,
+     "p_mayoria": 0.006666666666666667
     }
    }
   },
@@ -205,74 +2809,74 @@
    "partidos": {
     "PP": {
      "voto": [
-      30.803230112708967,
-      27.41300630471011,
-      34.17817487423084
+      30.819357883103514,
+      27.521455093372545,
+      34.12779444074444
      ],
      "escanos": [
       129.0,
-      115.0,
-      144.0
+      116.0,
+      143.0
      ],
-     "primero": 0.8446666666666667
+     "primero": 0.8786666666666667
     },
     "PSOE": {
      "voto": [
-      27.55041548912704,
-      24.673409248047793,
-      30.672298938798
+      27.014553657353485,
+      24.13553609040073,
+      30.04842544126303
      ],
      "escanos": [
-      113.0,
-      98.95,
-      129.0
+      111.0,
+      97.0,
+      126.0
      ],
-     "primero": 0.15533333333333332
+     "primero": 0.12133333333333333
     },
     "VOX": {
      "voto": [
-      18.656288823327873,
-      16.129403000785288,
-      21.219257233005717
+      18.91812607140978,
+      16.450780198252556,
+      21.489781100600563
      ],
      "escanos": [
-      67.0,
-      55.95,
-      79.0
+      68.0,
+      57.0,
+      80.0
      ],
      "primero": 0.0
     },
     "SUMAR": {
      "voto": [
-      6.098754262680038,
-      4.432769813961705,
-      7.671431180299567
+      6.211259013816305,
+      4.582150002617047,
+      7.744481064687502
      ],
      "escanos": [
       8.0,
       5.0,
-      13.0
+      14.0
      ],
      "primero": 0.0
     },
     "PODEMOS": {
      "voto": [
-      2.710922607377024,
-      1.6731655105099317,
-      3.7665079461174265
+      2.463672379364149,
+      1.4766581032441548,
+      3.439915656749073
      ],
      "escanos": [
-      2.0,
+      1.0,
       0.0,
-      3.0
+      2.0
      ],
      "primero": 0.0
     },
     "SALF": {
      "voto": [
-      1.7936104714970025,
-      0.7224693187934982,
-      2.7784607157869337
+      1.7955773042847483,
+      0.7224693187936,
+      2.78593990562382
      ],
      "escanos": [
       0.0,
@@ -283,12 +2887,12 @@
     },
     "ERC": {
      "voto": [
-      2.527967009565506,
-      1.475253866676422,
-      3.5805563857252287
+      2.64384278108512,
+      1.593075679582536,
+      3.689240586852455
      ],
      "escanos": [
-      11.0,
+      12.0,
       7.0,
       15.0
      ],
@@ -296,9 +2900,9 @@
     },
     "JUNTS": {
      "voto": [
-      1.1490622497497096,
-      0.4488158593316641,
-      1.8766072308438817
+      1.1291601944398237,
+      0.4556219950220584,
+      1.8139083599060852
      ],
      "escanos": [
       4.0,
@@ -309,22 +2913,22 @@
     },
     "BILDU": {
      "voto": [
-      1.3851279292893504,
-      0.6098336766139308,
-      2.206086929628623
+      1.4077087985748915,
+      0.6607230919781402,
+      2.187791188037871
      ],
      "escanos": [
       7.0,
-      2.0,
+      3.0,
       11.0
      ],
      "primero": 0.0
     },
     "PNV": {
      "voto": [
-      0.8270152302556972,
-      0.1446340717504086,
-      1.503773413707746
+      0.8284110516333791,
+      0.17167543694630572,
+      1.4866070525069486
      ],
      "escanos": [
       4.0,
@@ -335,9 +2939,9 @@
     },
     "BNG": {
      "voto": [
-      0.9356647770694817,
-      0.30027235710708694,
-      1.5965062051079213
+      0.9410254673318043,
+      0.3384073002787126,
+      1.5768795180777164
      ],
      "escanos": [
       2.0,
@@ -348,9 +2952,9 @@
     },
     "CC": {
      "voto": [
-      0.36195313015648556,
+      0.36232290160532615,
       0.01,
-      0.9582020877550936
+      0.9519162310137522
      ],
      "escanos": [
       1.0,
@@ -361,9 +2965,9 @@
     },
     "UPN": {
      "voto": [
-      0.08718242617926866,
-      0.00999833148050843,
-      0.7518282122560449
+      0.08729828260943656,
+      0.01,
+      0.7518282122560462
      ],
      "escanos": [
       0.0,
@@ -375,28 +2979,28 @@
    },
    "bloques": {
     "PP+VOX": {
-     "mediana": 196.0,
-     "p5": 180.0,
-     "p95": 213.0,
-     "p_mayoria": 0.9766666666666667
+     "mediana": 198.0,
+     "p5": 182.0,
+     "p95": 214.0,
+     "p_mayoria": 0.9846666666666667
     },
     "PP+VOX+UPN": {
-     "mediana": 197.0,
-     "p5": 180.0,
-     "p95": 214.0,
-     "p_mayoria": 0.9773333333333334
+     "mediana": 199.0,
+     "p5": 182.0,
+     "p95": 216.0,
+     "p_mayoria": 0.9853333333333333
     },
     "PSOE+SUMAR+PODEMOS": {
-     "mediana": 123.0,
-     "p5": 106.0,
-     "p95": 141.0,
+     "mediana": 121.0,
+     "p5": 104.0,
+     "p95": 138.0,
      "p_mayoria": 0.0
     },
     "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
-     "mediana": 153.0,
-     "p5": 136.0,
-     "p95": 170.0,
-     "p_mayoria": 0.016666666666666666
+     "mediana": 151.0,
+     "p5": 134.0,
+     "p95": 168.0,
+     "p_mayoria": 0.012
     }
    }
   },
@@ -404,48 +3008,48 @@
    "partidos": {
     "PP": {
      "voto": [
-      30.213383160662488,
-      26.759676967160182,
-      33.713188009707196
+      30.227491092858415,
+      26.828165083765562,
+      33.64535021223323
      ],
      "escanos": [
       126.0,
-      111.0,
-      141.0
+      112.0,
+      142.0
      ],
-     "primero": 0.6886666666666666
+     "primero": 0.76
     },
     "PSOE": {
      "voto": [
-      28.474885127182816,
-      25.373312145464944,
-      31.85331806835886
+      27.843918111501708,
+      24.82568678822668,
+      31.07549966428699
      ],
      "escanos": [
-      118.0,
-      103.0,
-      134.0
+      115.0,
+      100.0,
+      131.0
      ],
-     "primero": 0.31133333333333335
+     "primero": 0.24
     },
     "VOX": {
      "voto": [
-      18.634025446224463,
-      15.98111535084071,
-      21.359118536678334
+      18.899602390223706,
+      16.267121271891686,
+      21.552006905696093
      ],
      "escanos": [
-      67.0,
-      55.0,
-      79.0
+      68.0,
+      57.0,
+      80.0
      ],
      "primero": 0.0
     },
     "SUMAR": {
      "voto": [
-      6.088472000637754,
-      4.415521674036495,
-      7.668636192525058
+      6.206167872661947,
+      4.57714559200943,
+      7.742998548330996
      ],
      "escanos": [
       8.0,
@@ -456,22 +3060,22 @@
     },
     "PODEMOS": {
      "voto": [
-      2.6359168204916217,
-      1.5685716548937683,
-      3.6939356109388974
+      2.3696959471504377,
+      1.391820863292059,
+      3.3379313558536134
      ],
      "escanos": [
-      2.0,
+      1.0,
       0.0,
-      3.0
+      2.0
      ],
      "primero": 0.0
     },
     "SALF": {
      "voto": [
-      1.7787733118518236,
-      0.5374920043412297,
-      2.9278208858682446
+      1.780458753242503,
+      0.5374920043412497,
+      2.9407736129611997
      ],
      "escanos": [
       0.0,
@@ -482,22 +3086,22 @@
     },
     "ERC": {
      "voto": [
-      2.371985936593728,
-      1.2628201037074684,
-      3.4782051279066324
+      2.506960929742138,
+      1.4326327308456903,
+      3.579141120974659
      ],
      "escanos": [
-      10.0,
-      5.950000000000003,
-      14.0
+      11.0,
+      6.0,
+      15.0
      ],
      "primero": 0.0
     },
     "JUNTS": {
      "voto": [
-      1.1886406407064385,
-      0.4182961858670845,
-      1.9975619195909273
+      1.1471575348839118,
+      0.46282043268835427,
+      1.8509153645995942
      ],
      "escanos": [
       4.0,
@@ -508,9 +3112,9 @@
     },
     "BILDU": {
      "voto": [
-      1.24243749235495,
-      0.4446796795341168,
-      2.1167252140036488
+      1.267405221608246,
+      0.534680178040232,
+      2.0382989324020286
      ],
      "escanos": [
       7.0,
@@ -521,9 +3125,9 @@
     },
     "PNV": {
      "voto": [
-      0.8934063693751231,
-      0.1956785787301464,
-      1.6076897479727335
+      0.9017804287426138,
+      0.21341777331822637,
+      1.5899342792014335
      ],
      "escanos": [
       4.0,
@@ -534,9 +3138,9 @@
     },
     "BNG": {
      "voto": [
-      0.9458872034971394,
-      0.27756450432624996,
-      1.6472462576986406
+      0.9527784105691827,
+      0.335058975983781,
+      1.5972930271228225
      ],
      "escanos": [
       2.0,
@@ -547,9 +3151,9 @@
     },
     "CC": {
      "voto": [
-      0.434469416299159,
+      0.4325694188929757,
       0.01,
-      1.0455036022572288
+      1.030088670930181
      ],
      "escanos": [
       1.0,
@@ -560,9 +3164,9 @@
     },
     "UPN": {
      "voto": [
-      0.08718242617926866,
-      0.009965991871502284,
-      0.7515920928708252
+      0.08725784248255322,
+      0.01,
+      0.7518282122560462
      ],
      "escanos": [
       0.0,
@@ -574,44 +3178,1140 @@
    },
    "bloques": {
     "PP+VOX": {
-     "mediana": 193.0,
-     "p5": 175.0,
-     "p95": 209.0,
-     "p_mayoria": 0.9493333333333334
+     "mediana": 195.0,
+     "p5": 178.0,
+     "p95": 212.0,
+     "p_mayoria": 0.968
     },
     "PP+VOX+UPN": {
-     "mediana": 194.0,
-     "p5": 176.0,
-     "p95": 211.0,
-     "p_mayoria": 0.952
+     "mediana": 196.0,
+     "p5": 178.0,
+     "p95": 213.0,
+     "p_mayoria": 0.9693333333333334
     },
     "PSOE+SUMAR+PODEMOS": {
-     "mediana": 127.0,
-     "p5": 109.0,
-     "p95": 146.0,
+     "mediana": 124.0,
+     "p5": 107.0,
+     "p95": 143.0,
      "p_mayoria": 0.0
     },
     "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
-     "mediana": 156.0,
-     "p5": 139.0,
-     "p95": 174.0,
-     "p_mayoria": 0.04066666666666666
+     "mediana": 154.0,
+     "p5": 137.0,
+     "p95": 172.0,
+     "p_mayoria": 0.024
     }
    }
   }
  },
+ "auditoria_fuentes": {
+  "excluidas_prensa_sin_verificar": 2,
+  "excluidas_total": 3,
+  "incluidas_2023_26": 19,
+  "por_origen": {
+   "terceros-29n": 8,
+   "verificada": 11
+  },
+  "criterio": "Puerta de calidad (fuentes.seleccion_pronostico): sin prensa no verificada, sin terceros con campo supuesto, sin terceros solapados con un registro verificado de la misma casa"
+ },
+ "capas": {
+  "esquema": 1,
+  "promedio_publicado": {
+   "capa": 1,
+   "fuente": "data/polls.json",
+   "calculo": "En el navegador: capas.mjs (promedioPublicado)",
+   "definicion": "Agregación de estimaciones publicadas por las encuestadoras, sin correcciones de voto del Observatorio."
+  },
+  "sin_cocina": {
+   "capa": 2,
+   "variante": "consenso_todas",
+   "definicion": "Sesgo cero = media de todas las casas, CIS incluido. Modelo de tendencia diaria con efecto de casa y error muestral; sin calibración histórica ni error de industria ampliado.",
+   "operaciones": [
+    "selección por puerta de calidad",
+    "tendencia diaria (paseo aleatorio)",
+    "efecto de casa con ancla de consenso",
+    "error muestral con efecto de diseño 1,5",
+    "simulación hasta la elección",
+    "traslado provincial y D'Hondt"
+   ]
+  },
+  "con_cocina": {
+   "capa": 3,
+   "variante": "principal",
+   "definicion": "Estimación de referencia del Observatorio: mezcla a partes iguales de consenso_privadas, consenso_todas y calibrada_23j, con error de industria de 2.2 pp y correlación entre bloques 0.5.",
+   "tipo_cocina": "Reestimación sobre agregados publicados. No aplica cocina a microdatos individuales.",
+   "decisiones": [
+    {
+     "id": "excluir_cis_ancla",
+     "variante": "consenso_privadas",
+     "descripcion": "Sesgo cero = media de las casas privadas (CIS fuera del ancla)."
+    },
+    {
+     "id": "calibracion_23j",
+     "variante": "calibrada_23j",
+     "descripcion": "Sesgo previo de cada casa = 50 % de su error en el 23J (PP, PSOE, Vox); sin ancla de consenso."
+    },
+    {
+     "id": "error_industria",
+     "valor": 2.2,
+     "descripcion": "Error común a todas las casas, calibrado con el 23J"
+    },
+    {
+     "id": "correlacion_bloques",
+     "valor": 0.5,
+     "descripcion": "Supuesto declarado; no estimable con una sola elección"
+    }
+   ],
+   "no_aplicado": [
+    "voto directo",
+    "recuerdo de voto",
+    "simpatía",
+    "transferencias",
+    "indecisión",
+    "probabilidad de votar",
+    "efectos de acontecimientos"
+   ]
+  },
+  "externos": {
+   "capa": 4,
+   "definicion": "Promedios y modelos de otros productores. No entran en el pronóstico ni en los promedios."
+  }
+ },
+ "entradas": [
+  {
+   "estudio": "demoscopia-2025-09-08",
+   "casa": "Demoscopia y Servicios",
+   "origen": "terceros-29n",
+   "campo_ini": "2025-09-02",
+   "campo_fin": "2025-09-05",
+   "publicacion": "2025-09-08",
+   "n": 3000,
+   "n_supuesto": false,
+   "modo": "mixta: panel tabulado + entrevista telefónica asistida por ordenador (CATI)",
+   "url": "https://www.libertaddigital.com/espana/politica/2025-09-08/encuesta-esradio-ld-pp-y-vox-tendrian-205-diputados-y-podemos-se-acerca-peligrosamente-a-sumar-7293066/",
+   "voto": {
+    "PP": 35.1,
+    "PSOE": 26.6,
+    "VOX": 16.7,
+    "SUMAR": 6.1,
+    "ERC": 1.6,
+    "PNV": 1.0,
+    "BNG": 0.7
+   },
+   "ancla_privadas": false
+  },
+  {
+   "estudio": "gad3-2026-05-28",
+   "casa": "GAD3",
+   "origen": "terceros-29n",
+   "campo_ini": "2026-05-26",
+   "campo_fin": "2026-05-28",
+   "publicacion": "2026-06-01",
+   "n": 1011,
+   "n_supuesto": false,
+   "modo": "CATI + CAWI",
+   "url": "https://www.gad3.com/barometro-abc-estimacion-de-voto-nacional-mayo-2026/",
+   "voto": {
+    "PP": 33.1,
+    "PSOE": 26.8,
+    "VOX": 17.1,
+    "SUMAR": 5.9
+   },
+   "ancla_privadas": true
+  },
+  {
+   "estudio": "ncreport-2026-09-03",
+   "casa": "NC Report",
+   "origen": "terceros-29n",
+   "campo_ini": "2026-09-01",
+   "campo_fin": "2026-09-03",
+   "publicacion": null,
+   "n": 1000,
+   "n_supuesto": false,
+   "modo": "no consta en la fuente consultada",
+   "url": "https://politpro.eu/es/espana/intencion-de-voto/nc-report-2026-09-03/elecciones-parlamentarias",
+   "voto": {
+    "PP": 34.5,
+    "PSOE": 24.9,
+    "VOX": 18.3,
+    "SUMAR": 5.7
+   },
+   "ancla_privadas": true
+  },
+  {
+   "estudio": "sigmados-2026-10-01",
+   "casa": "Sigma Dos",
+   "origen": "terceros-29n",
+   "campo_ini": "2026-09-22",
+   "campo_fin": "2026-10-01",
+   "publicacion": null,
+   "n": 2116,
+   "n_supuesto": false,
+   "modo": "mixta CATI + CAWI (panel)",
+   "url": "https://www.pollingforecast.com/es/polls/1000205?lang=es",
+   "voto": {
+    "PP": 32.6,
+    "PSOE": 25.6,
+    "VOX": 18.3,
+    "SUMAR": 6.6
+   },
+   "ancla_privadas": true
+  },
+  {
+   "estudio": "sociometrica-2026-10-01",
+   "casa": "SocioMétrica",
+   "origen": "terceros-29n",
+   "campo_ini": "2026-10-01",
+   "campo_fin": "2026-10-03",
+   "publicacion": "2026-10-04",
+   "n": 1000,
+   "n_supuesto": false,
+   "modo": "Online (CAWI panel)",
+   "url": "https://www.electografica.com/2026/10/encuesta-sociometrica-261004.html",
+   "voto": {
+    "PP": 33.4,
+    "PSOE": 26.5,
+    "VOX": 18.1,
+    "SUMAR": 5.3
+   },
+   "ancla_privadas": true
+  },
+  {
+   "estudio": "cis-3582",
+   "casa": "CIS",
+   "origen": "verificada",
+   "campo_ini": "2026-10-01",
+   "campo_fin": "2026-10-06",
+   "publicacion": "2026-10-14",
+   "n": 5025,
+   "n_supuesto": false,
+   "modo": "CATI",
+   "url": "https://www.cis.es/documents/d/guest/3582_estimacion-pdf",
+   "voto": {
+    "PSOE": 34.0,
+    "PP": 22.2,
+    "VOX": 17.1,
+    "SUMAR": 6.1,
+    "PODEMOS": 3.1,
+    "ERC": 3.0,
+    "SALF": 1.8,
+    "BILDU": 1.6,
+    "JUNTS": 1.1,
+    "BNG": 0.9,
+    "PNV": 0.6,
+    "CC": 0.2,
+    "UPN": 0.1
+   },
+   "ancla_privadas": false
+  },
+  {
+   "estudio": "ncreport-2026-10-06",
+   "casa": "NC Report",
+   "origen": "terceros-29n",
+   "campo_ini": "2026-10-01",
+   "campo_fin": "2026-10-06",
+   "publicacion": "2026-10-08",
+   "n": 1000,
+   "n_supuesto": false,
+   "modo": "telefónico + online",
+   "url": "https://www.electografica.com/2026/10/encuesta-nc-report-261008.html",
+   "voto": {
+    "PP": 34.1,
+    "PSOE": 25.0,
+    "VOX": 18.2,
+    "SUMAR": 5.3
+   },
+   "ancla_privadas": true
+  },
+  {
+   "estudio": "dym-2026-10",
+   "casa": "DYM",
+   "origen": "verificada",
+   "campo_ini": "2026-10-05",
+   "campo_fin": "2026-10-07",
+   "publicacion": "2026-10-09",
+   "n": 1011,
+   "n_supuesto": false,
+   "modo": "CAWI",
+   "url": "https://www.20minutos.es/nacional/psoe-absorbe-intencion-votos-sumar-podemos-mientras-pp-vox-consolidan-su-mayoria_7046598_0.html",
+   "voto": {
+    "PP": 34.0,
+    "PSOE": 28.2,
+    "VOX": 18.2,
+    "SUMAR": 3.6,
+    "PODEMOS": 2.6
+   },
+   "ancla_privadas": true
+  },
+  {
+   "estudio": "imop-2026-10-05",
+   "casa": "IMOP",
+   "origen": "terceros-29n",
+   "campo_ini": "2026-10-05",
+   "campo_fin": "2026-10-07",
+   "publicacion": "2026-10-09",
+   "n": 900,
+   "n_supuesto": false,
+   "modo": "Híbrida: CATI + CAWI (distribución aprox. 45%/55%; en el canal telefónico 70% móvil)",
+   "url": "https://www.imop.es/encuesta-pre-electoral-para-el-confidencial-2026/",
+   "voto": {
+    "PP": 30.0,
+    "PSOE": 26.0,
+    "VOX": 19.0,
+    "SUMAR": 7.6,
+    "ERC": 2.2,
+    "PNV": 0.9,
+    "BNG": 1.1,
+    "CC": 0.6
+   },
+   "ancla_privadas": true
+  },
+  {
+   "estudio": "40db-2026-10-flash",
+   "casa": "40dB.",
+   "origen": "verificada",
+   "campo_ini": "2026-10-07",
+   "campo_fin": "2026-10-08",
+   "publicacion": "2026-10-09",
+   "n": 800,
+   "n_supuesto": false,
+   "modo": "CAWI",
+   "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_informe_voto_barometro_flash.pdf",
+   "voto": {
+    "PP": 31.9,
+    "PSOE": 28.1,
+    "VOX": 18.9,
+    "SUMAR": 5.3,
+    "PODEMOS": 2.3,
+    "SALF": 1.8
+   },
+   "ancla_privadas": true
+  },
+  {
+   "estudio": "gad3-2026-10",
+   "casa": "GAD3",
+   "origen": "verificada",
+   "campo_ini": "2026-10-06",
+   "campo_fin": "2026-10-08",
+   "publicacion": "2026-10-12",
+   "n": 1077,
+   "n_supuesto": false,
+   "modo": "CATI",
+   "url": "https://www.gad3.com/barometro-abc-estimacion-de-voto-nacional-octubre-2026/",
+   "voto": {
+    "PP": 31.4,
+    "PSOE": 26.4,
+    "VOX": 18.2,
+    "SUMAR": 7.4
+   },
+   "ancla_privadas": true
+  },
+  {
+   "estudio": "sociometrica-2026-10-10",
+   "casa": "SocioMétrica",
+   "origen": "terceros-29n",
+   "campo_ini": "2026-10-10",
+   "campo_fin": "2026-10-11",
+   "publicacion": "2026-10-11",
+   "n": 1000,
+   "n_supuesto": false,
+   "modo": "Online (CAWI panel)",
+   "url": "https://sumomento.com/encuestas/sociometrica-2026-10-11",
+   "voto": {
+    "PP": 32.6,
+    "PSOE": 26.2,
+    "VOX": 18.8,
+    "SUMAR": 5.8
+   },
+   "ancla_privadas": true
+  },
+  {
+   "estudio": "imop-2026-10-ola2",
+   "casa": "IMOP",
+   "origen": "verificada",
+   "campo_ini": "2026-10-13",
+   "campo_fin": "2026-10-16",
+   "publicacion": "2026-10-23",
+   "n": 1000,
+   "n_supuesto": false,
+   "modo": "CATI + CAWI",
+   "url": "https://www.imop.es/encuesta-pre-electoral-el-confidencial-ola-2/",
+   "voto": {
+    "PP": 28.5,
+    "PSOE": 27.1,
+    "VOX": 20.0
+   },
+   "ancla_privadas": true
+  },
+  {
+   "estudio": "ateneo-2026-10-25",
+   "casa": "Ateneo del Dato",
+   "origen": "verificada",
+   "campo_ini": "2026-10-20",
+   "campo_fin": "2026-10-22",
+   "publicacion": "2026-10-25",
+   "n": 2000,
+   "n_supuesto": false,
+   "modo": "CAWI",
+   "url": "https://www.eldiario.es/politica/bloque-izquierdas-recorta-distancias-pp-vox-mantienen-mayoria-absoluta_1_13611052.html",
+   "voto": {
+    "PP": 31.1,
+    "PSOE": 27.6,
+    "VOX": 19.8,
+    "SUMAR": 6.8,
+    "PODEMOS": 2.7
+   },
+   "ancla_privadas": true
+  },
+  {
+   "estudio": "sigma-dos-2026-10-26",
+   "casa": "Sigma Dos",
+   "origen": "verificada",
+   "campo_ini": "2026-10-08",
+   "campo_fin": "2026-10-22",
+   "publicacion": "2026-10-26",
+   "n": 3122,
+   "n_supuesto": false,
+   "modo": "CATI + CAWI",
+   "url": "https://www.sigmados.com/noticia?id=OUze2FxEIVfARtu3",
+   "voto": {
+    "PP": 30.6,
+    "PSOE": 26.1,
+    "VOX": 19.9,
+    "SUMAR": 7.4,
+    "PODEMOS": 2.8,
+    "ERC": 2.5,
+    "BILDU": 1.2,
+    "JUNTS": 1.2,
+    "PNV": 0.9,
+    "BNG": 0.9,
+    "CC": 0.4
+   },
+   "ancla_privadas": true
+  },
+  {
+   "estudio": "sondaxe-2026-11-01",
+   "casa": "Sondaxe",
+   "origen": "verificada",
+   "campo_ini": "2026-10-26",
+   "campo_fin": "2026-10-28",
+   "publicacion": "2026-11-01",
+   "n": 1200,
+   "n_supuesto": false,
+   "modo": "CATI + CAWI",
+   "url": "https://www.lavozdegalicia.es/noticia/espana/2026/11/01/pp-ganaria-elecciones-23-puntos-ventaja-sobre-psoe/0003_202611G1P26991.htm",
+   "voto": {
+    "PP": 29.2,
+    "PSOE": 26.9,
+    "VOX": 19.2,
+    "SUMAR": 7.2,
+    "PODEMOS": 2.0,
+    "BNG": 0.9
+   },
+   "ancla_privadas": true
+  },
+  {
+   "estudio": "hamalgama-metrica-2026-11-02",
+   "casa": "Hamalgama Métrica",
+   "origen": "verificada",
+   "campo_ini": "2026-10-22",
+   "campo_fin": "2026-10-28",
+   "publicacion": "2026-11-02",
+   "n": 1000,
+   "n_supuesto": false,
+   "modo": "CATI",
+   "url": "https://www.vozpopuli.com/amp/espana/politica/pp-y-vox-suman-ya-un-techo-historico-de-127-millones-de-votos-y-lograrian-205-escanos.html",
+   "voto": {
+    "PP": 32.0,
+    "PSOE": 26.4,
+    "VOX": 19.9,
+    "SUMAR": 5.4
+   },
+   "ancla_privadas": true
+  },
+  {
+   "estudio": "sigma-dos-2026-11-02",
+   "casa": "Sigma Dos",
+   "origen": "verificada",
+   "campo_ini": "2026-10-29",
+   "campo_fin": "2026-10-30",
+   "publicacion": "2026-11-02",
+   "n": 2505,
+   "n_supuesto": false,
+   "modo": "CATI + CAWI",
+   "url": "https://www.sigmados.com/noticia?id=sa0OT7jgxEjay6E",
+   "voto": {
+    "PP": 31.1,
+    "PSOE": 24.6,
+    "VOX": 19.3,
+    "SUMAR": 7.1,
+    "PODEMOS": 1.9,
+    "ERC": 3.0,
+    "BILDU": 1.3,
+    "JUNTS": 1.1,
+    "BNG": 1.0,
+    "PNV": 0.9,
+    "CC": 0.4
+   },
+   "ancla_privadas": true
+  },
+  {
+   "estudio": "target-point-2026-11-02",
+   "casa": "Target Point",
+   "origen": "verificada",
+   "campo_ini": "2026-10-28",
+   "campo_fin": "2026-10-30",
+   "publicacion": "2026-11-02",
+   "n": 1024,
+   "n_supuesto": false,
+   "modo": "CAWI",
+   "url": "https://www.eldebate.com/espana/20261102/accidente-frena-psoe-amplia-apoyo-pp-mayoria-absolutisima-derecha_475640.html",
+   "voto": {
+    "PP": 31.8,
+    "PSOE": 25.5,
+    "VOX": 19.9,
+    "SUMAR": 6.6
+   },
+   "ancla_privadas": true
+  }
+ ],
+ "excluidas": [
+  {
+   "estudio": "sigmados-2026-10-12",
+   "casa": "Sigma Dos",
+   "origen": "terceros-29n",
+   "campo_ini": null,
+   "campo_fin": "2026-10-10",
+   "motivo": "Fecha de campo no publicada (supuesta a partir de la publicación)",
+   "url": "https://www.sigmados.com/sondeo-de-arranque-de-campana-estimacion-de-voto-para-las-elecciones-generales-29-n/"
+  },
+  {
+   "estudio": "prensa-sociometrica-2026-10-26",
+   "casa": "SocioMétrica",
+   "origen": "prensa-sin-verificar",
+   "campo_ini": null,
+   "campo_fin": "2026-10-23",
+   "motivo": "Cita de prensa sin original ni ficha técnica verificados",
+   "url": "https://es.euronews.com/2026/10/29/pedro-sanchez-accidente-urda-batalla-politica-elecciones-29n"
+  },
+  {
+   "estudio": "prensa-ncreport-2026-10-26",
+   "casa": "NC Report",
+   "origen": "prensa-sin-verificar",
+   "campo_ini": null,
+   "campo_fin": "2026-10-23",
+   "motivo": "Cita de prensa sin original ni ficha técnica verificados",
+   "url": "https://www.infobae.com/espana/2026/10/27/asi-estan-las-encuestas-para-el-29-de-noviembre-pp-y-vox-mantienen-la-mayoria-absoluta-el-psoe-gana-terreno-y-la-izquierda-fragmentada-no-logra-remontar/"
+  }
+ ],
+ "externos": [
+  {
+   "id": "elpais-llaneras-2026-10-03",
+   "nombre": "Promedio de EL PAÍS · Kiko Llaneras",
+   "fecha": "2026-10-03",
+   "fecha_tipo": "publicación",
+   "voto": {
+    "PP": 33,
+    "PSOE": 26,
+    "VOX": 18,
+    "SUMAR": 6,
+    "PODEMOS": 3
+   },
+   "escanos": {
+    "PP": 137,
+    "PSOE": 107,
+    "VOX": 62,
+    "SUMAR": 9,
+    "PODEMOS": 3,
+    "Resto": 32
+   },
+   "url": "https://elpais.com/actualidad/newsletter-kiko-llaneras/2026-10-03/que-dicen-las-encuestas-si-hay-elecciones-la-ventaja-pp-vox-y-las-opciones-de-sanchez.html",
+   "metodo": "Promedio de sondeos y modelo provincial con incertidumbre y 20.000 simulaciones, según la explicación de la publicación. No se reproduce ni se atribuye este modelo al observatorio.",
+   "verificado": true,
+   "aproximado": true,
+   "notas": "Referencia del 3 de octubre, no una cifra actualizada a hoy. Los porcentajes están redondeados en el texto original. Los escaños son resultados centrales del modelo de EL PAÍS. No es una encuesta independiente y queda fuera del archivo de entrevistas y de cualquier cómputo de institutos."
+  },
+  {
+   "id": "agregador-electopromedioelectomanía-2026-10-26",
+   "nombre": "ElectoPromedio (Electomanía)",
+   "fecha": "2026-10-26",
+   "fecha_tipo": "actualización",
+   "voto": {
+    "PP": 31.3,
+    "PSOE": 26.7,
+    "VOX": 19.1
+   },
+   "escanos": {},
+   "url": "https://electomania.es/category/encuestas/encuestas-generales/",
+   "metodo": "promedio de encuestas",
+   "verificado": false,
+   "aproximado": false,
+   "notas": "Cifras vistas en el resumen del buscador; original no consultado."
+  },
+  {
+   "id": "agregador-eleccionesespañacom-2026-10-25",
+   "nombre": "eleccionesEspaña.com",
+   "fecha": "2026-10-25",
+   "fecha_tipo": "fin del periodo de campo incluido",
+   "voto": {
+    "PP": 30.9,
+    "PSOE": 27.1,
+    "VOX": 19.0,
+    "SUMAR": 6.1
+   },
+   "escanos": {
+    "PP": 128
+   },
+   "url": "https://xn--eleccionesespaa-crb.com/",
+   "metodo": "última encuesta de 16 encuestadoras (campo 2-25 oct)",
+   "verificado": false,
+   "aproximado": false,
+   "notas": "Cifras vistas en el resumen del buscador; original no consultado."
+  },
+  {
+   "id": "agregador-eldebatemediasincis-2026-10-25",
+   "nombre": "El Debate (media sin CIS)",
+   "fecha": "2026-10-25",
+   "fecha_tipo": "publicación",
+   "voto": {
+    "PP": 32.0,
+    "PSOE": 26.4,
+    "VOX": 18.8
+   },
+   "escanos": {},
+   "url": "https://www.eldebate.com/espana/20261025/dicen-ultimas-encuestas-sobre-elecciones-generales-29-noviembre-cns_472138.html",
+   "metodo": "última encuesta de cada encuestadora sin el CIS",
+   "verificado": false,
+   "aproximado": false,
+   "notas": "Cifras vistas en el resumen del buscador; original no consultado."
+  },
+  {
+   "id": "agregador-demócrata16institutos-2026-11-01",
+   "nombre": "Demócrata (16 institutos)",
+   "fecha": "2026-11-01",
+   "fecha_tipo": "consulta (fecha del promedio no consta)",
+   "voto": {
+    "PP": 31.7,
+    "PSOE": 26.8,
+    "VOX": 18.7,
+    "SUMAR": 6.3,
+    "PODEMOS": 3.1
+   },
+   "escanos": {},
+   "url": "https://www.democrata.es/elecciones-generales-espana/herramientas/encuestas",
+   "metodo": "media de 16 institutos",
+   "verificado": false,
+   "aproximado": false,
+   "notas": "Cifras vistas en el resumen del buscador; fecha exacta de actualización no consta."
+  },
+  {
+   "id": "agregador-promediortvevíaelecciones29nov-2026-11-01",
+   "nombre": "Promedio RTVE (vía elecciones29noviembre.com)",
+   "fecha": "2026-11-01",
+   "fecha_tipo": "consulta (fecha del promedio no consta)",
+   "voto": {
+    "PP": 31.5,
+    "PSOE": 26.8,
+    "VOX": 18.7
+   },
+   "escanos": {
+    "PP": 136,
+    "PSOE": 106,
+    "VOX": 66
+   },
+   "url": "https://elecciones29noviembre.com/encuestas/",
+   "metodo": "promedio de RTVE citado por un tercero",
+   "verificado": false,
+   "aproximado": false,
+   "notas": "Cifras vistas en el resumen del buscador; fecha exacta de actualización no consta."
+  }
+ ],
+ "corte_anterior": {
+  "fecha": "2026-11-02",
+  "fecha_actual": "2026-11-03",
+  "firma_anterior": "9568bb5d653d8d93",
+  "firma_actual": "787ddbc9ea29f0b5",
+  "version_anterior": "2",
+  "version_actual": "2",
+  "cambio_metodo": false,
+  "nuevas": [],
+  "voto": {
+   "PP": -0.08,
+   "PSOE": 0.01,
+   "VOX": 0.03,
+   "SUMAR": -0.02,
+   "PODEMOS": 0.02
+  },
+  "escanos": {
+   "PP": 0.0,
+   "PSOE": 1.0,
+   "VOX": 0.0,
+   "SUMAR": 0.0,
+   "PODEMOS": 0.0,
+   "SALF": 0.0,
+   "ERC": 0.0,
+   "JUNTS": 0.0,
+   "BILDU": 0.0,
+   "PNV": 0.0,
+   "BNG": 0.0,
+   "CC": 0.0,
+   "UPN": 0.0
+  },
+  "bloques": {
+   "PP+VOX": 0.0,
+   "PP+VOX+UPN": 0.0,
+   "PSOE+SUMAR+PODEMOS": 1.0,
+   "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": 0.0
+  },
+  "nota": "Ambos cortes con el mismo método del historial (menos simulaciones que el principal publicado)."
+ },
+ "eventos": {
+  "urda-2026-10-28": {
+   "fecha": "2026-10-28",
+   "regla_solape": "Se excluyen las encuestas con entrevistas el mismo día del suceso",
+   "posteriores": [
+    {
+     "casa": "Sigma Dos",
+     "estudio": "sigma-dos-2026-11-02",
+     "campo_ini": "2026-10-29",
+     "campo_fin": "2026-10-30",
+     "origen": "verificada"
+    }
+   ],
+   "pares": [
+    {
+     "casa": "Sigma Dos",
+     "antes": "2026-10-22",
+     "despues": "2026-10-30",
+     "cambio": {
+      "PP": 0.5,
+      "PSOE": -1.5,
+      "VOX": -0.5999999999999979,
+      "SUMAR": -0.3000000000000007
+     }
+    }
+   ],
+   "media_pares": {
+    "PP": {
+     "cambio": 0.5,
+     "error_tipico": null,
+     "n": 1
+    },
+    "PSOE": {
+     "cambio": -1.5,
+     "error_tipico": null,
+     "n": 1
+    },
+    "VOX": {
+     "cambio": -0.5999999999999979,
+     "error_tipico": null,
+     "n": 1
+    },
+    "SUMAR": {
+     "cambio": -0.3000000000000007,
+     "error_tipico": null,
+     "n": 1
+    }
+   },
+   "modelo_salto": {
+    "PP": {
+     "encuestas_despues": 1,
+     "h0": {
+      "cambio": -0.2187895256926211,
+      "sd": 1.9919407913528753
+     },
+     "h7": null,
+     "h14": null
+    },
+    "PSOE": {
+     "encuestas_despues": 1,
+     "h0": {
+      "cambio": -1.4155783378301017,
+      "sd": 1.857756271392725
+     },
+     "h7": null,
+     "h14": null
+    },
+    "VOX": {
+     "encuestas_despues": 1,
+     "h0": {
+      "cambio": 0.08131220299962294,
+      "sd": 1.6214480460194451
+     },
+     "h7": null,
+     "h14": null
+    },
+    "SUMAR": {
+     "encuestas_despues": 1,
+     "h0": {
+      "cambio": 0.13741839983013548,
+      "sd": 1.0000494329995728
+     },
+     "h7": null,
+     "h14": null
+    }
+   },
+   "umbral_placebo": {
+    "PP": 3.144494944590633,
+    "PSOE": 1.2166124259601212,
+    "VOX": 1.790487070062032
+   },
+   "aplicado_al_pronostico": false,
+   "nota": "El pronóstico principal no incorpora ningún efecto de Urda. Los cambios son descriptivos; un cambio menor que el umbral placebo no se distingue de la oscilación habitual."
+  }
+ },
+ "sensibilidad_fuentes": {
+  "descripcion": "Mismo método que el principal usando solo data/polls.json (registros verificados)",
+  "n_estudios": 11,
+  "casas": [
+   "40dB.",
+   "Ateneo del Dato",
+   "CIS",
+   "DYM",
+   "GAD3",
+   "Hamalgama Métrica",
+   "IMOP",
+   "Sigma Dos",
+   "Sondaxe",
+   "Target Point"
+  ],
+  "partidos": {
+   "PP": {
+    "voto": [
+     30.17651423335717,
+     25.551077108741442,
+     34.64614840805281
+    ],
+    "escanos": [
+     126.0,
+     107.0,
+     144.0
+    ]
+   },
+   "PSOE": {
+    "voto": [
+     27.40292218624859,
+     23.40797092618546,
+     31.855385774931786
+    ],
+    "escanos": [
+     113.5,
+     93.95,
+     137.0
+    ]
+   },
+   "VOX": {
+    "voto": [
+     19.08954844112303,
+     15.533290633213516,
+     22.54531013222983
+    ],
+    "escanos": [
+     69.0,
+     53.95,
+     84.0
+    ]
+   },
+   "SUMAR": {
+    "voto": [
+     6.197136227356502,
+     4.2590470851457685,
+     8.035486762410393
+    ],
+    "escanos": [
+     8.0,
+     4.0,
+     16.0
+    ]
+   },
+   "PODEMOS": {
+    "voto": [
+     2.391009192239845,
+     1.156499011084893,
+     3.6927654149357734
+    ],
+    "escanos": [
+     1.0,
+     0.0,
+     3.0
+    ]
+   },
+   "SALF": {
+    "voto": [
+     1.7986635771158583,
+     0.5752193674564836,
+     3.0457174476976356
+    ],
+    "escanos": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "ERC": {
+    "voto": [
+     2.7648516765462143,
+     1.431721628018383,
+     4.260569602463524
+    ],
+    "escanos": [
+     12.0,
+     7.0,
+     17.0
+    ]
+   },
+   "JUNTS": {
+    "voto": [
+     1.1415063323581194,
+     0.21979234247761387,
+     2.0323807620523398
+    ],
+    "escanos": [
+     4.0,
+     0.0,
+     8.0
+    ]
+   },
+   "BILDU": {
+    "voto": [
+     1.3117784862956847,
+     0.3242650649834917,
+     2.348714209115031
+    ],
+    "escanos": [
+     7.0,
+     1.0,
+     12.0
+    ]
+   },
+   "PNV": {
+    "voto": [
+     0.8299865424630068,
+     0.024220032602107915,
+     1.6320075223777006
+    ],
+    "escanos": [
+     4.0,
+     0.0,
+     8.0
+    ]
+   },
+   "BNG": {
+    "voto": [
+     0.8798163701364803,
+     0.052663906622118964,
+     1.7689488033622325
+    ],
+    "escanos": [
+     2.0,
+     0.0,
+     6.0
+    ]
+   },
+   "CC": {
+    "voto": [
+     0.33939942115687294,
+     0.01,
+     1.1158155773940883
+    ],
+    "escanos": [
+     1.0,
+     0.0,
+     4.0
+    ]
+   },
+   "UPN": {
+    "voto": [
+     0.07042061030419994,
+     0.009992613056424501,
+     0.8803878891933262
+    ],
+    "escanos": [
+     0.0,
+     0.0,
+     3.0
+    ]
+   }
+  },
+  "bloques": {
+   "PP+VOX": {
+    "mediana": 196.0,
+    "p5": 169.95,
+    "p95": 217.0,
+    "p_mayoria": 0.9022222222222223
+   },
+   "PP+VOX+UPN": {
+    "mediana": 196.0,
+    "p5": 170.0,
+    "p95": 219.04999999999995,
+    "p_mayoria": 0.9022222222222223
+   },
+   "PSOE+SUMAR+PODEMOS": {
+    "mediana": 123.0,
+    "p5": 100.0,
+    "p95": 152.0,
+    "p_mayoria": 0.0011111111111111111
+   },
+   "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
+    "mediana": 154.0,
+    "p5": 130.0,
+    "p95": 180.0,
+    "p_mayoria": 0.08444444444444445
+   }
+  }
+ },
+ "geo_sensibilidad": {
+  "proporcional": {
+   "PP": [
+    129.0,
+    110.0,
+    147.0
+   ],
+   "PSOE": [
+    112.0,
+    91.45,
+    134.0
+   ],
+   "VOX": [
+    68.0,
+    54.0,
+    83.0
+   ],
+   "SUMAR": [
+    8.0,
+    4.0,
+    16.0
+   ],
+   "PODEMOS": [
+    1.0,
+    0.0,
+    3.0
+   ],
+   "SALF": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "ERC": [
+    11.0,
+    5.0,
+    16.0
+   ],
+   "JUNTS": [
+    4.0,
+    0.0,
+    8.0
+   ],
+   "BILDU": [
+    7.0,
+    1.0,
+    12.0
+   ],
+   "PNV": [
+    4.0,
+    0.0,
+    8.0
+   ],
+   "BNG": [
+    2.0,
+    0.0,
+    6.0
+   ],
+   "CC": [
+    1.0,
+    0.0,
+    4.0
+   ],
+   "UPN": [
+    0.0,
+    0.0,
+    3.0
+   ]
+  },
+  "uniforme": {
+   "PP": [
+    129.0,
+    109.0,
+    146.0
+   ],
+   "PSOE": [
+    110.0,
+    92.0,
+    133.0
+   ],
+   "VOX": [
+    70.0,
+    53.0,
+    84.0
+   ],
+   "SUMAR": [
+    9.0,
+    5.0,
+    15.0
+   ],
+   "PODEMOS": [
+    2.0,
+    0.0,
+    3.0
+   ],
+   "SALF": [
+    0.0,
+    0.0,
+    1.0
+   ],
+   "ERC": [
+    10.0,
+    6.0,
+    15.0
+   ],
+   "JUNTS": [
+    4.0,
+    1.0,
+    8.0
+   ],
+   "BILDU": [
+    7.0,
+    1.0,
+    12.0
+   ],
+   "PNV": [
+    3.0,
+    0.0,
+    8.0
+   ],
+   "BNG": [
+    2.0,
+    0.0,
+    6.0
+   ],
+   "CC": [
+    1.0,
+    0.0,
+    5.0
+   ],
+   "UPN": [
+    0.0,
+    0.0,
+    3.0
+   ]
+  },
+  "p_mayoria": {
+   "proporcional": 0.9266666666666666,
+   "uniforme": 0.9225
+  }
+ },
  "promedio_simple": {
-  "PP": 30.2625,
-  "PSOE": 27.81111111111111,
-  "VOX": 18.855555555555558,
-  "SUMAR": 6.099999999999999,
-  "PODEMOS": 2.7,
+  "PP": 30.825000000000003,
+  "PSOE": 27.16666666666666,
+  "VOX": 18.958333333333332,
+  "SUMAR": 6.054545454545454,
+  "PODEMOS": 2.433333333333333,
   "SALF": 1.8,
-  "ERC": 2.75,
-  "JUNTS": 1.15,
-  "BILDU": 1.4,
+  "ERC": 3.0,
+  "JUNTS": 1.1,
+  "BILDU": 1.4500000000000002,
   "PNV": 0.75,
-  "BNG": 0.9,
+  "BNG": 0.9333333333333332,
   "CC": 0.30000000000000004,
   "UPN": 0.1
  },
@@ -684,21 +4384,21 @@
  },
  "retroprueba_23j": {
   "consenso_privadas": {
-   "PP": 0.9231692787621739,
-   "PSOE": -3.7411406848073696,
-   "VOX": 0.7086516387917836,
-   "SUMAR": 0.41799582886056363
+   "PP": 0.9231692787637016,
+   "PSOE": -3.7411406848057105,
+   "VOX": 0.7086516387894264,
+   "SUMAR": 0.4179958288597234
   },
   "consenso_todas": {
-   "PP": 0.5812725404749415,
-   "PSOE": -3.2863257108377404,
-   "VOX": 0.37764373727806166,
-   "SUMAR": 0.7680004895756216
+   "PP": 0.5812725404731225,
+   "PSOE": -3.2863257108402166,
+   "VOX": 0.3776437372786017,
+   "SUMAR": 0.7680004895756714
   }
  },
  "umbral_placebo": {
-  "PP": 3.1444949445901647,
-  "PSOE": 1.216612425960213,
-  "VOX": 1.7904870700622344
+  "PP": 3.144494944590633,
+  "PSOE": 1.2166124259601212,
+  "VOX": 1.790487070062032
  }
 }
