@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {reviewStatus,fetchPublishedPolls,renderPollUpdate,triggerPollReview} from '../actualizar-encuestas.mjs';
+import {reviewStatus,fetchPublishedPolls,renderPollUpdate,triggerPollReview,pollReviewQueue,renderPollReviewQueue} from '../actualizar-encuestas.mjs';
 test('La búsqueda distingue ausencia, ejecución, fallo y éxito sin afirmar incorporación',()=>{
  assert.match(reviewStatus(),/no consta/);
  assert.match(reviewStatus({status:'in_progress'}),/en curso/);
@@ -27,4 +27,14 @@ test('Lanzar revisión llama a GitHub con credencial limitada y main',async()=>{
 test('Token ausente y permisos insuficientes producen errores claros',async()=>{
  await assert.rejects(triggerPollReview(''),/Introduce una autorización/);
  await assert.rejects(triggerPollReview('token',async()=>({status:403})),/Actions: Read and write/);
+});
+
+test('La cola no confunde issues de PR ni noticias con datos verificados',()=>{
+ const rows=pollReviewQueue([
+  {title:'[Vigilancia] Encuestas y análisis pendientes',html_url:'https://github.com/bhermoso/observatorio-electoral/issues/1',updated_at:'2026-11-03T00:00:00Z',body:'Propuestas: 3\\n- **CIS** · Sondeo pendiente'},
+  {title:'Cambio en código',pull_request:{url:'test'}}
+ ]);
+ assert.equal(rows.length,1);
+ assert.match(renderPollReviewQueue(rows),/Sondeo pendiente/);
+ assert.match(renderPollReviewQueue(rows),/Revisar candidatos/);
 });

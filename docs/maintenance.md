@@ -59,3 +59,14 @@ El registro está en `data/events.json` y la vista pública en `#contexto`. Cada
 ## Botón de actualización
 
 En el archivo de encuestas, «Actualizar encuestas» abre la vigilancia de GitHub. El propietario inicia sesión y pulsa Run workflow para lanzar la búsqueda. La web consulta el estado público al abrir el archivo y al volver a la pestaña. No almacena credenciales ni afirma haber iniciado una ejecución por abrir un enlace. «Cargar últimas encuestas publicadas» recupera el JSON sin caché, valida el archivo y refresca las vistas; conserva los datos anteriores ante un error. La búsqueda genera candidatos y no publica cifras sin verificación.
+
+
+## Ciclo de incorporación verificada (3 de noviembre de 2026)
+
+La portada de Encuestas muestra la cola de GitHub Issues creada por el workflow de vigilancia. **Candidato no significa encuesta incluida**. El botón de búsqueda solicita el workflow autenticado; la cola permite examinar enlaces y el estado. La validación de contenido sigue siendo editorial: origen primario, fechas, ficha técnica, ámbito nacional, variables y porcentajes.
+
+Para incorporar un estudio, crear una rama, introducir su ficha documentada en `data/polls.json`, sin alterar originales ajenos, y abrir un PR. El workflow `auditoria-encuestas.yml` compara el archivo con la rama base, bloquea fechas o porcentajes inválidos, IDs duplicados, posibles muestras repetidas, fuentes inseguras y supresiones no revisadas. Adjunta `auditoria.md` y `auditoria.json`. **No certifica la autenticidad de una fuente externa**: hace falta comprobar la publicación original.
+
+Cuando el cambio validado se integra en `main`, el workflow `pages.yml` ejecuta pruebas, recalcula `python -m modelo` (Motor 29N), procesa microdatos agregados y publica el sitio. Un fallo de pruebas impide desplegar. En la sección Encuestas se recargan los registros publicados sin caché, y los resúmenes del dashboard se regeneran al acceder a su vista.
+
+No se crea una encuesta a partir de un titular, no se adivinan datos ausentes y no se incluye un estudio regional en la estimación nacional sin tratamiento territorial explícito. La auditoría no sustituye la revisión de sesgos, microdatos ni recetas del motor.

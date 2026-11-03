@@ -1,0 +1,41 @@
+name: Auditar nuevas encuestas
+on:
+  pull_request:
+    paths:
+      - 'data/polls.json'
+      - 'scripts/auditar_encuestas.py'
+      - 'schema.mjs'
+      - '.github/workflows/auditoria-encuestas.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Auditar nuevas encuestas y duplicados
+        run: |
+          if [ "${{ github.event_name }}" = 'pull_request' ]; then
+            python scripts/auditar_encuestas.py --base "${{ github.event.pull_request.base.sha }}" --out audit-output
+          else
+            python scripts/auditar_encuestas.py --out audit-output
+          fi
+      - name: Probar reglas de auditoría
+        run: python -m unittest discover -s tests -p 'test_auditar_encuestas.py' -v
+      - name: Validar esquema, integración y cálculos
+        run: npm test
+      - name: Guardar informe de auditoría
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: auditoria-encuestas
+          path: audit-output/
