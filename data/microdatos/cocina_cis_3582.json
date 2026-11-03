@@ -1,6 +1,7 @@
 {
  "esquema": 1,
  "estudio": "3582",
+ "recuerdo_de": "23J 2023",
  "fuente": "MD3582.zip (CIS)",
  "sha256_zip": "1cfcf43b38ee036bb89dadc7d9b88a70d2098bb2c1a5051921aa517415a00c9f",
  "naturaleza": "Cocina propia sobre microdatos individuales. Solo agregados; ninguna entrevista se publica.",
@@ -121,8 +122,8 @@
   },
   {
    "id": "recuerdo",
-   "titulo": "Calibración por recuerdo de voto 2023",
-   "regla": "Entre quienes recuerdan haber votado, el recuerdo ponderado debe reproducir el resultado oficial del 23J",
+   "titulo": "Calibración por recuerdo de voto (generales 2023)",
+   "regla": "Entre quienes recuerdan haber votado, el recuerdo ponderado debe reproducir el resultado oficial de esas elecciones",
    "parametro": "RECUERDO; factores recortados a (0.2, 5.0)",
    "estimacion": {
     "PP": 26.657,
@@ -159,49 +160,49 @@
     "BLANCO": -0.253
    },
    "recuerdo_muestra_pct": {
-    "PSOE": 42.159,
     "PP": 21.529,
+    "PSOE": 42.159,
     "VOX": 10.584,
     "SUMAR": 12.263,
+    "OTROS": 2.679,
     "ERC": 2.618,
+    "BLANCO_NULO": 3.335,
     "JUNTS": 1.607,
     "BILDU": 1.261,
     "PNV": 0.766,
     "BNG": 0.754,
     "CC": 0.406,
-    "UPN": 0.04,
-    "OTROS": 2.679,
-    "BLANCO_NULO": 3.335
+    "UPN": 0.04
    },
-   "resultado_23j_pct": {
-    "PSOE": 31.346,
+   "resultado_oficial_pct": {
     "PP": 32.706,
+    "PSOE": 31.346,
     "VOX": 12.251,
     "SUMAR": 12.203,
+    "OTROS": 2.43,
     "ERC": 1.868,
+    "BLANCO_NULO": 1.864,
     "JUNTS": 1.585,
     "BILDU": 1.343,
     "PNV": 1.111,
     "BNG": 0.617,
     "CC": 0.466,
-    "UPN": 0.209,
-    "OTROS": 2.43,
-    "BLANCO_NULO": 1.864
+    "UPN": 0.209
    },
    "factores": {
-    "PSOE": 0.7435,
     "PP": 1.5191,
+    "PSOE": 0.7435,
     "VOX": 1.1576,
     "SUMAR": 0.9951,
+    "OTROS": 0.9073,
     "ERC": 0.7135,
+    "BLANCO_NULO": 0.5588,
     "JUNTS": 0.9861,
     "BILDU": 1.0648,
     "PNV": 1.4499,
     "BNG": 0.8189,
     "CC": 1.1495,
-    "UPN": 5.0,
-    "OTROS": 0.9073,
-    "BLANCO_NULO": 0.5588
+    "UPN": 5.0
    }
   },
   {

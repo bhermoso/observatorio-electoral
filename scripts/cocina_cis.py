@@ -32,7 +32,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-# Códigos del libro de códigos del estudio (comprobados en 3582_etiq.csv).
+# Códigos de los libros de códigos (comprobados en NNNN_etiq.csv de cada estudio).
 INTENCION = {1: "PSOE", 2: "PP", 3: "VOX", 8: "PODEMOS", 21: "SUMAR", 28: "SALF", 901: "ERC", 902: "JUNTS",
              1602: "BILDU", 1601: "PNV", 1201: "BNG", 503: "CC", 1501: "UPN",
              6: "OTROS", 29: "OTROS", 101: "OTROS", 8995: "OTROS", 8996: "BLANCO",
@@ -41,9 +41,23 @@ RECUERDO = {1: "PSOE", 2: "PP", 3: "VOX", 21: "SUMAR", 901: "ERC", 902: "JUNTS",
             1601: "PNV", 1201: "BNG", 503: "CC", 1501: "UPN", 6: "OTROS", 8995: "OTROS",
             8996: "BLANCO_NULO", 9977: "BLANCO_NULO", 9995: "NUEVO", 9996: "NUEVO",
             9997: "ABSTENCION", 9998: "NR", 9999: "NR"}
+# Recuerdo de las generales de noviembre de 2019 (estudios 3411 y 3415, previos al 23J).
+RECUERDO_2019 = {1: "PSOE", 2: "PP", 3: "VOX", 4: "UP", 903: "UP", 1202: "UP", 5: "CS", 7: "MAS_PAIS", 1001: "MAS_PAIS",
+                 901: "ERC", 902: "JUNTS", 904: "CUP", 1601: "PNV", 1602: "BILDU", 1201: "BNG", 501: "CC", 1501: "NA_SUMA",
+                 601: "PRC", 202: "TERUEL", 6: "OTROS", 8995: "OTROS", 8996: "BLANCO_NULO", 9977: "BLANCO_NULO",
+                 9995: "NUEVO", 9996: "NUEVO", 9997: "ABSTENCION", 9998: "NR", 9999: "NR"}
+# Intención en 2023 (3411, 3415): mismas siglas que 2026 salvo Podemos y SALF, que no concurrían.
+INTENCION_2023 = dict(INTENCION)
+for c in (101, 102, 201, 202, 502, 801, 802, 803, 808, 904, 905, 1502):
+    INTENCION_2023[c] = "OTROS"
+ESTUDIOS = {
+    "3582": dict(intencion=INTENCION, recuerdo=RECUERDO, objetivo="2023"),
+    "3411": dict(intencion=INTENCION_2023, recuerdo=RECUERDO_2019, objetivo="2019"),
+    "3415": dict(intencion=INTENCION_2023, recuerdo=RECUERDO_2019, objetivo="2019"),
+}
 CANDIDATURAS = ["PP", "PSOE", "VOX", "SUMAR", "PODEMOS", "SALF", "ERC", "JUNTS", "BILDU", "PNV", "BNG", "CC", "UPN", "OTROS"]
 VALIDOS = CANDIDATURAS + ["BLANCO"]
-VOTO_RECORDADO = ["PSOE", "PP", "VOX", "SUMAR", "ERC", "JUNTS", "BILDU", "PNV", "BNG", "CC", "UPN", "OTROS", "BLANCO_NULO"]
+NO_VOTO = {"NUEVO", "ABSTENCION", "NR"}
 RECORTE = (0.2, 5.0)
 
 
@@ -64,17 +78,53 @@ def resultado_23j():
     return {k: v / total for k, v in votos.items()}
 
 
+def resultado_2019():
+    d = json.load(open(ROOT / "data/sources/resultados_2019N.json", encoding="utf-8"))
+    v = dict(d["votos"])
+    listadas = sum(x for k, x in v.items() if k not in ("BLANCO", "NULO", "PACMA"))
+    otros = d["votantes"] - v["NULO"] - v["BLANCO"] - listadas
+    out = {k: x for k, x in v.items() if k not in ("BLANCO", "NULO", "PACMA")}
+    out["OTROS"] = otros
+    out["BLANCO_NULO"] = v["BLANCO"] + v["NULO"]
+    return {k: x / d["votantes"] for k, x in out.items()}
+
+
+def _csv(zip_path, estudio):
+    z = zipfile.ZipFile(zip_path)
+    nombre = f"{estudio}_num.csv"
+    if nombre in z.namelist():
+        return z.read(nombre)
+    interno = next(n for n in z.namelist() if n.endswith("csv.zip"))
+    return zipfile.ZipFile(io.BytesIO(z.read(interno))).read(nombre)
+
+
 def leer(zip_path, estudio):
-    raw = zipfile.ZipFile(zip_path).read(f"{estudio}_num.csv").decode("utf-8-sig")
+    conf = ESTUDIOS[estudio]
+    raw = _csv(zip_path, estudio).decode("utf-8-sig")
     filas = list(csv.reader(io.StringIO(raw), delimiter=";"))
     cab = [c.split(":", 1)[0] for c in filas[0]]
-    idx = {v: cab.index(v) for v in ("PESO", "INTENCIONGR", "VOTOSIMG", "RECUERDO", "PROBVOTO")}
+    vars_ = ["PESO", "INTENCIONGR", "VOTOSIMG", "RECUERDO", "PROBVOTO"]
+    if "CORREOEMITIDOINTENCIONGR" in cab:   # 3415: quienes ya votaron por correo declaran su voto en otra variable
+        vars_.append("CORREOEMITIDOINTENCIONGR")
+    idx = {v: cab.index(v) for v in vars_}
+    I, R = conf["intencion"], conf["recuerdo"]
     out = []
     for f in filas[1:]:
         g = lambda v: f[idx[v]].strip()
+        cod = lambda v: int(g(v)) if g(v).lstrip("-").isdigit() else 9999
+        inten, simp = cod("INTENCIONGR"), cod("VOTOSIMG")
+        correo = None
+        if "CORREOEMITIDOINTENCIONGR" in idx and cod("CORREOEMITIDOINTENCIONGR") not in (0, 9999):
+            correo = cod("CORREOEMITIDOINTENCIONGR")
+        if inten == 0 and correo is not None:
+            inten = correo
+        if simp == 0 and correo is not None:
+            simp = correo
         prob = int(g("PROBVOTO")) if g("PROBVOTO").isdigit() else None
-        out.append(dict(peso=float(g("PESO").replace(",", ".")), intencion=INTENCION.get(int(g("INTENCIONGR")), "OTROS"),
-                        votosim=INTENCION.get(int(g("VOTOSIMG")), "OTROS"), recuerdo=RECUERDO.get(int(g("RECUERDO")), "NR"),
+        if correo is not None:
+            prob = 10   # ya ha votado
+        out.append(dict(peso=float(g("PESO").replace(",", ".")), intencion=I.get(inten, "NC" if inten == 0 else "OTROS"),
+                        votosim=I.get(simp, "NC" if simp == 0 else "OTROS"), recuerdo=R.get(cod("RECUERDO"), "NR"),
                         prob=(prob / 10 if prob is not None and prob <= 10 else 0.5)))
     return out, hashlib.sha256(Path(zip_path).read_bytes()).hexdigest()
 
@@ -96,7 +146,7 @@ def estimar(e, campo, peso, imputar=None):
     return reparto(acc), acc
 
 
-def cocinar(e, oficial):
+def cocinar(e, oficial, titulo_recuerdo="Calibración por recuerdo de voto"):
     pasos = []
     def paso(clave, titulo, regla, parametro, shares, extra=None):
         prev = pasos[-1]["estimacion"] if pasos else None
@@ -117,24 +167,25 @@ def cocinar(e, oficial):
     peso_rec = defaultdict(float)
     for r, x in zip(e, w):
         peso_rec[r["recuerdo"]] += x
-    votantes = sum(peso_rec[g] for g in VOTO_RECORDADO)
+    voto_recordado = sorted(oficial, key=lambda g: -oficial[g])
+    votantes = sum(peso_rec[g] for g in voto_recordado)
     factores, recuerdo_muestra = {}, {}
-    for g in VOTO_RECORDADO:
+    for g in voto_recordado:
         recuerdo_muestra[g] = round(100 * peso_rec[g] / votantes, 3) if votantes else None
         objetivo = oficial.get(g, 0) * votantes
         f = objetivo / peso_rec[g] if peso_rec[g] else 1.0
         factores[g] = round(min(max(f, RECORTE[0]), RECORTE[1]), 4)
     w = [x * factores.get(r["recuerdo"], 1.0) for r, x in zip(e, w)]
     s, _ = estimar(e, "votosim", w)
-    paso("recuerdo", "Calibración por recuerdo de voto 2023",
-         "Entre quienes recuerdan haber votado, el recuerdo ponderado debe reproducir el resultado oficial del 23J",
+    paso("recuerdo", titulo_recuerdo,
+         "Entre quienes recuerdan haber votado, el recuerdo ponderado debe reproducir el resultado oficial de esas elecciones",
          f"RECUERDO; factores recortados a {RECORTE}", s,
-         dict(recuerdo_muestra_pct=recuerdo_muestra, resultado_23j_pct={g: round(100 * oficial.get(g, 0), 3) for g in VOTO_RECORDADO},
+         dict(recuerdo_muestra_pct=recuerdo_muestra, resultado_oficial_pct={g: round(100 * oficial.get(g, 0), 3) for g in voto_recordado},
               factores=factores))
     # Transferencias observadas: cómo votan hoy los decididos de cada grupo de recuerdo.
     trans = defaultdict(lambda: defaultdict(float))
     for r, x in zip(e, w):
-        if r["votosim"] in VALIDOS and r["recuerdo"] in VOTO_RECORDADO:
+        if r["votosim"] in VALIDOS and r["recuerdo"] in oficial:
             trans[r["recuerdo"]][r["votosim"]] += x
     imputar = {g: {k: v / sum(d.values()) for k, v in d.items()} for g, d in trans.items() if sum(d.values()) > 0}
     indecisos = sum(x for r, x in zip(e, w) if r["votosim"] in ("NS", "NC"))
@@ -160,8 +211,10 @@ def main():
     ap.add_argument("--salida")
     a = ap.parse_args()
     e, sha = leer(a.zip, a.estudio)
-    pasos, n_eff = cocinar(e, resultado_23j())
-    out = dict(esquema=1, estudio=a.estudio, fuente=f"MD{a.estudio}.zip (CIS)", sha256_zip=sha,
+    obj = ESTUDIOS[a.estudio]["objetivo"]
+    pasos, n_eff = cocinar(e, resultado_23j() if obj == "2023" else resultado_2019(),
+                           f"Calibración por recuerdo de voto ({'generales 2023' if obj == '2023' else 'generales noviembre 2019'})")
+    out = dict(esquema=1, estudio=a.estudio, recuerdo_de=("23J 2023" if obj == "2023" else "10N 2019"), fuente=f"MD{a.estudio}.zip (CIS)", sha256_zip=sha,
                naturaleza="Cocina propia sobre microdatos individuales. Solo agregados; ninguna entrevista se publica.",
                receta=[p["id"] for p in pasos], pasos=pasos,
                resultado=dict(estimacion=pasos[-1]["estimacion"], n_efectivo=n_eff,

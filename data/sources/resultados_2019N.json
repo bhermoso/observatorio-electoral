@@ -1,0 +1,21 @@
+{
+ "eleccion": "2019-11-10",
+ "fuente": "Junta Electoral Central, BOE-A-2019-17344 (2-dic-2019), cuadro de totales nacionales",
+ "url": "https://boe.es/boe/dias/2019/12/02/pdfs/BOE-A-2019-17344.pdf",
+ "uso": "Objetivo de calibración del recuerdo de voto de 2019 en los estudios CIS 3411 y 3415 (validación de la cocina propia frente al 23J).",
+ "votantes": 24507715,
+ "votos_validos": 24258228,
+ "votos": {
+  "PSOE": 6792199, "PP": 5047040, "VOX": 3656979, "UP": 3119364, "CS": 1650318, "MAS_PAIS": 582306,
+  "ERC": 874859, "JUNTS": 530225, "CUP": 246971, "PNV": 379002, "BILDU": 277621, "BNG": 120456,
+  "CC": 124289, "NA_SUMA": 99078, "PRC": 68830, "TERUEL": 19761, "PACMA": 228856,
+  "BLANCO": 217227, "NULO": 249487
+ },
+ "agrupaciones": {
+  "PSOE": "PSOE 5.997.533 + PSC 794.666",
+  "PP": "PP 4.917.095 + PP-Foro (Asturias) 129.945",
+  "UP": "Unidas Podemos 2.381.960 + En Comú Podem 549.173 + En Común-Unidas Podemos 188.231",
+  "MAS_PAIS": "Más País-Equo 353.541 + Més Compromís 176.287 + Más País-Candidatura Ecologista 52.478"
+ },
+ "nota": "Cifras leídas del BOE el 3-nov-2026; PP-Foro y el reparto de Más País siguen la agrupación habitual de los totales nacionales. El resto de candidaturas se calcula como votantes − nulos − blancos − suma de las listadas."
+}

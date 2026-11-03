@@ -1,0 +1,186 @@
+{
+ "esquema": 1,
+ "eleccion": "2023-07-23",
+ "resultado_oficial_pct_validos": {
+  "PSOE": 31.682155,
+  "PP": 33.055769,
+  "VOX": 12.38249,
+  "SUMAR": 12.333868
+ },
+ "criterio": "Error = estimación − resultado oficial (puntos sobre voto válido). MAE = media del error absoluto de PP, PSOE, Vox y Sumar.",
+ "receta": "Misma receta y mismos parámetros que en 3582 (scripts/cocina_cis.py); el recuerdo calibrado es el de noviembre de 2019.",
+ "estudios": {
+  "3411": [
+   {
+    "paso": "directa",
+    "titulo": "Intención directa sin ponderar",
+    "error": {
+     "PP": -0.65,
+     "PSOE": -0.95,
+     "VOX": -1.06,
+     "SUMAR": 2.7
+    },
+    "mae": 1.34
+   },
+   {
+    "paso": "peso",
+    "titulo": "Ponderación del CIS",
+    "error": {
+     "PP": -1.34,
+     "PSOE": -0.88,
+     "VOX": -1.37,
+     "SUMAR": 3.49
+    },
+    "mae": 1.77
+   },
+   {
+    "paso": "simpatia",
+    "titulo": "Voto + simpatía",
+    "error": {
+     "PP": -2.79,
+     "PSOE": -1.03,
+     "VOX": -1.98,
+     "SUMAR": 4.35
+    },
+    "mae": 2.54
+   },
+   {
+    "paso": "recuerdo",
+    "titulo": "Calibración por recuerdo de voto (generales noviembre 2019)",
+    "error": {
+     "PP": -2.53,
+     "PSOE": -5.87,
+     "VOX": 2.71,
+     "SUMAR": 3.32
+    },
+    "mae": 3.61
+   },
+   {
+    "paso": "indecisos",
+    "titulo": "Indecisos según su recuerdo",
+    "error": {
+     "PP": -2.59,
+     "PSOE": -5.76,
+     "VOX": 2.61,
+     "SUMAR": 3.35
+    },
+    "mae": 3.58
+   },
+   {
+    "paso": "participacion",
+    "titulo": "Probabilidad de votar",
+    "error": {
+     "PP": -1.96,
+     "PSOE": -5.67,
+     "VOX": 2.89,
+     "SUMAR": 3.36
+    },
+    "mae": 3.47
+   },
+   {
+    "paso": "cis_publicado",
+    "titulo": "Estimación publicada por el CIS",
+    "error": {
+     "PP": -1.66,
+     "PSOE": -0.48,
+     "VOX": -1.78,
+     "SUMAR": 4.07
+    },
+    "mae": 2.0
+   }
+  ],
+  "3415": [
+   {
+    "paso": "directa",
+    "titulo": "Intención directa sin ponderar",
+    "error": {
+     "PP": -0.67,
+     "PSOE": 1.37,
+     "VOX": -1.07,
+     "SUMAR": 2.1
+    },
+    "mae": 1.3
+   },
+   {
+    "paso": "peso",
+    "titulo": "Ponderación del CIS",
+    "error": {
+     "PP": -1.78,
+     "PSOE": 1.6,
+     "VOX": -1.43,
+     "SUMAR": 2.48
+    },
+    "mae": 1.82
+   },
+   {
+    "paso": "simpatia",
+    "titulo": "Voto + simpatía",
+    "error": {
+     "PP": -2.66,
+     "PSOE": 1.73,
+     "VOX": -1.78,
+     "SUMAR": 2.79
+    },
+    "mae": 2.24
+   },
+   {
+    "paso": "recuerdo",
+    "titulo": "Calibración por recuerdo de voto (generales noviembre 2019)",
+    "error": {
+     "PP": -3.14,
+     "PSOE": -2.65,
+     "VOX": 2.84,
+     "SUMAR": 2.26
+    },
+    "mae": 2.72
+   },
+   {
+    "paso": "indecisos",
+    "titulo": "Indecisos según su recuerdo",
+    "error": {
+     "PP": -3.13,
+     "PSOE": -2.59,
+     "VOX": 2.71,
+     "SUMAR": 2.27
+    },
+    "mae": 2.67
+   },
+   {
+    "paso": "participacion",
+    "titulo": "Probabilidad de votar",
+    "error": {
+     "PP": -3.11,
+     "PSOE": -2.59,
+     "VOX": 2.69,
+     "SUMAR": 2.28
+    },
+    "mae": 2.67
+   },
+   {
+    "paso": "cis_publicado",
+    "titulo": "Estimación publicada por el CIS",
+    "error": {
+     "PP": -2.26,
+     "PSOE": 0.52,
+     "VOX": -0.58,
+     "SUMAR": 2.57
+    },
+    "mae": 1.48
+   }
+  ]
+ },
+ "resumen": {
+  "peso": 1.79,
+  "simpatia": 2.39,
+  "recuerdo": 3.17,
+  "indecisos": 3.12,
+  "participacion": 3.07,
+  "cis_publicado": 1.74
+ },
+ "veredicto": "La receta completa (MAE medio 3,07) acierta peor que la estimación publicada por el CIS (1,74) y que la intención ponderada sin cocina (1,79). El paso que empeora es la calibración por recuerdo: rebaja al PSOE y sube a Vox más de lo que ocurrió. Ningún paso de cocina mejoró la intención directa sin ponderar en el 23J. La receta no entra en el pronóstico.",
+ "limites": [
+  "Una sola elección y dos estudios: no basta para concluir que la calibración por recuerdo sea mala en general.",
+  "El recuerdo de 2019 tenía casi cuatro años en 2023; en 3582 el recuerdo de 2023 tiene tres.",
+  "No se han probado variantes ajustadas a este resultado: elegir la receta mirando el 23J sería ajustar al examen."
+ ]
+}
