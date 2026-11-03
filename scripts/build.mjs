@@ -1,7 +1,21 @@
 import fs from 'node:fs';
+import path from 'node:path';
 import {enVeda, AVISO_VEDA} from './veda.mjs';
 import {validatePolls} from '../schema.mjs';
 import {validateEvents} from '../events.mjs';
+// Artefacto nuevo: nunca arrastrar JSON de una compilación previa a la veda.
+const workspace=fs.realpathSync('.'),output=path.join(workspace,'dist');
+if(fs.existsSync(output)){
+  const real=fs.realpathSync(output),relative=path.relative(workspace,real);
+  if(fs.lstatSync(output).isSymbolicLink()||relative!=='dist')throw Error('Destino dist fuera del proyecto');
+  fs.rmSync(output,{recursive:true,force:true});
+}
+fs.mkdirSync(output,{recursive:true});
+if(enVeda()){
+  for(const file of ['index.html','pronostico.html'])fs.writeFileSync(path.join(output,file),AVISO_VEDA);
+  fs.writeFileSync(path.join(output,'.nojekyll'),'');
+  console.log('Veda: artefacto limitado al aviso, sin sondeos ni JSON del modelo.');
+}else{
 const eventCount=validateEvents(JSON.parse(fs.readFileSync('data/events.json')));
 console.log(`Contexto: ${eventCount} acontecimientos documentados.`);
 const coverage=validatePolls(JSON.parse(fs.readFileSync('data/polls.json')),JSON.parse(fs.readFileSync('data/references.json')));
@@ -38,4 +52,5 @@ if(veda){
 }
 fs.writeFileSync('dist/.nojekyll','');
 console.log('Sitio estático listo en dist/');
+}
 

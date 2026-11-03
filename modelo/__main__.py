@@ -5,6 +5,7 @@
 import argparse
 import json
 import os
+import sys
 from datetime import date, timedelta
 import numpy as np
 from .motor import fuentes as F, evaluacion as V, eventos as EV, pronostico as PR, registro as RG, senales as SG, trazabilidad as TZ, ablaciones as AB
@@ -29,6 +30,8 @@ def tabla(cab, filas):
 
 
 def main():
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
     ap = argparse.ArgumentParser()
     ap.add_argument("--hoy", type=date.fromisoformat, default=date.today())
     ap.add_argument("--n", type=int, default=4000)
@@ -456,7 +459,7 @@ def main():
                         tipo_cocina="Reestimación sobre agregados publicados. No aplica cocina a microdatos individuales.",
                         decisiones=[dict(id="excluir_cis_ancla", variante="consenso_privadas", descripcion=PR.VARIANTES["consenso_privadas"]),
                                     dict(id="calibracion_23j", variante="calibrada_23j", descripcion=PR.VARIANTES["calibrada_23j"]),
-                                    dict(id="error_industria", valor=PR.INDUSTRIA_PRINCIPAL, descripcion="Error común a todas las casas, calibrado con el 23J"),
+                                    dict(id="error_industria", valor=PR.INDUSTRIA_PRINCIPAL, descripcion="Supuesto de error común a las casas, contrastado con el 23J; no es una calibración independiente"),
                                     dict(id="correlacion_bloques", valor=PR.RHO_BLOQUE, descripcion="Supuesto declarado; no estimable con una sola elección")],
                         no_aplicado=["voto directo", "recuerdo de voto", "simpatía", "transferencias", "indecisión", "probabilidad de votar",
                                      "efectos de acontecimientos"]),

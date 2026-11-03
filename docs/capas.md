@@ -10,7 +10,7 @@ Toda cifra de voto o escaños del Observatorio pertenece a una de estas clases. 
 | 4 | Otros observatorios y modelos | `data/references.json` (`aggregate-model`) y `modelo/externos/agregadores.csv` | Se muestran tal como se publicaron, con fecha, método declarado y si el original se consultó. | No entra en ningún promedio ni en el motor. |
 | — | Experimento | Microdatos CIS (`data/microdatos/`), laboratorio D’Hondt, simulaciones de acontecimientos | Ilustrativo. | No es una capa ni un pronóstico. |
 
-**Capa 3 − capa 2** es el cambio atribuible a decisiones del modelo, no a un factor político.
+**Capa 3 − capa 2** es una diferencia conjunta de configuraciones: cambian la mezcla de variantes y el error de industria (1,5 frente a 2,2 pp). No aísla el efecto de cada ajuste ni mide un efecto político. Los 2,2 pp son un supuesto intermedio contrastado con el 23J, no una calibración independiente.
 
 ## Puerta de calidad del motor
 
@@ -22,7 +22,7 @@ Toda cifra de voto o escaños del Observatorio pertenece a una de estas clases. 
 
 ## Acontecimientos
 
-Una encuesta con entrevistas el mismo día del suceso es «coincidente» y no entra en la comparación (misma regla en `events.mjs` y `modelo/motor/eventos.py`). Las diferencias entre dos oleadas de un instituto se comparan con su margen de error muestral (efecto de diseño 1,5). El cambio a 14 días del motor se compara con el umbral placebo. Nada de esto es un efecto causal estimado.
+Una encuesta con entrevistas el mismo día del suceso es «coincidente» y no entra en la comparación (misma regla en `events.mjs` y `modelo/motor/eventos.py`). Las diferencias entre dos oleadas se comparan con una referencia teórica al 95 % bajo independencia y muestreo probabilístico, con efecto de diseño fijado en 1,5. No acredita significación en paneles no probabilísticos ni incluye error de estimación o sesgo de instituto. El cambio a 14 días del motor se compara con el umbral placebo. Nada de esto es un efecto causal estimado.
 
 ## Versiones
 

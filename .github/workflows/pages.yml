@@ -28,6 +28,7 @@ jobs:
       - run: pip install numpy
       # Todas las pruebas Python de scripts (detecta, p. ej., errores de sintaxis en la incorporación).
       - run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - run: python -m unittest discover -s modelo/tests -t . -v
       # Regenera el pronóstico con las encuestas de main y la fecha del día antes de publicar.
       - run: python -m modelo --n 1500
       - run: python scripts/procesar_microdatos.py

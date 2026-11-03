@@ -56,7 +56,7 @@ export function canonicalValues(values){
 /** Convierte las entradas del Motor 29N en registros compatibles con selectStudies. */
 export function pollsFromModelInputs(entradas){
  return (entradas||[]).map(e=>({id:e.estudio,kind:'poll-estimate',institute:e.casa,fieldStart:e.campo_ini||e.campo_fin,fieldEnd:e.campo_fin,
-  published:e.publicacion||e.campo_fin,scope:'España',values:Object.fromEntries(Object.entries(e.voto||{})),origin:e.origen}));
+  published:e.publicacion||new Date(Date.parse(e.campo_fin+'T00:00:00Z')+2*86400000).toISOString().slice(0,10),scope:'España',values:Object.fromEntries(Object.entries(e.voto||{})),origin:e.origen}));
 }
 
 /**
@@ -80,6 +80,7 @@ export function promedioPublicado(polls,{corte,ventana=30,cis=true,ponderacion='
   const weight=manual*(ponderacion==='recencia'?2**(-age/semivida):1);
   return {id:p.id,institute:p.institute,fieldStart:p.fieldStart,fieldEnd:p.fieldEnd,published:p.published,origin:p.origin||'verificada',weight,age,...canonicalValues(p.values)};
  });
+ const activeRows=rows.filter(r=>r.weight>0);
  const partidos={};
  for(const {id} of PARTIES){
   const c=rows.filter(r=>r.weight>0&&id in r.values).map(r=>({id:r.id,institute:r.institute,value:r.values[id],label:r.labels[id],weight:r.weight}));
@@ -93,12 +94,12 @@ export function promedioPublicado(polls,{corte,ventana=30,cis=true,ponderacion='
   const w=c.reduce((s,x)=>s+x.weight,0);
   // Con menos de la mitad de los estudios, la suma representaría a unas pocas casas: no se publica.
   bloques[b.id]=!c.length||w<=0?{valor:null,n:0,motivo:'Ninguna encuesta publica todos los partidos del bloque'}
-   :c.length*2<rows.length?{valor:null,n:c.length,motivo:`Solo ${c.length} de ${rows.length} encuestas publican todos los partidos del bloque`}
-   :{valor:c.reduce((s,x)=>s+x.value*x.weight,0)/w,n:c.length,omitidos:rows.length-c.length};
+   :c.length*2<activeRows.length?{valor:null,n:c.length,motivo:`Solo ${c.length} de ${activeRows.length} encuestas activas publican todos los partidos del bloque`}
+   :{valor:c.reduce((s,x)=>s+x.value*x.weight,0)/w,n:c.length,omitidos:activeRows.length-c.length};
  }
  return {capa:1,tipo:'promedio',corte,ventana,cis,ponderacion,semivida:ponderacion==='recencia'?semivida:null,
   estudios:rows.map(({values,labels,ambiguous,...r})=>({...r,ambiguos:ambiguous})),excluidos:excluded,
-  institutos:new Set(rows.map(r=>r.institute)).size,partidos,bloques,
+  institutos:new Set(activeRows.map(r=>r.institute)).size,partidos,bloques,
   ultimaPublicacion:rows.map(r=>r.published).sort().at(-1)||null};
 }
 

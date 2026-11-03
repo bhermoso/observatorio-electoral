@@ -38,9 +38,12 @@ def escribir_encuestas(encuestas):
     return len(filas)
 
 
-def _firma(encuestas, fecha, n, industria):
-    ids = sorted(f"{e['estudio']}:{sorted(e['voto'].items())}" for e in encuestas)
-    txt = json.dumps([VERSION, str(fecha), n, industria, PR.RHO_BLOQUE, ids], ensure_ascii=False)
+def _firma(encuestas, fecha, n, industria, inicio=None, eleccion=None, errores_23j=None):
+    # Una corrección de muestra o campo cambia la verosimilitud aunque no cambie el voto.
+    campos = ("estudio", "casa", "voto", "n", "campo_ini", "campo_fin", "publicacion", "modo", "origen")
+    ids = sorted(json.dumps({k: e.get(k) for k in campos}, sort_keys=True, default=str) for e in encuestas)
+    txt = json.dumps([VERSION, str(fecha), n, industria, PR.RHO_BLOQUE, ids,
+                      str(inicio), str(eleccion), errores_23j], ensure_ascii=False, sort_keys=True, default=str)
     return hashlib.sha1(txt.encode()).hexdigest()[:16]
 
 
@@ -68,7 +71,8 @@ def historial(actuales, inicio, desde, hasta, eleccion, errores_23j, n_por_varia
     while d <= hasta:
         disp = [e for e in actuales if publicada_antes(e, d) and dia_central(e) <= d]
         if len({e["casa"] for e in disp}) >= 2:
-            firma = _firma(disp, d, n_por_variante, PR.INDUSTRIA_PRINCIPAL)
+            firma = _firma(disp, d, n_por_variante, PR.INDUSTRIA_PRINCIPAL,
+                           inicio=inicio, eleccion=eleccion, errores_23j=errores_23j)
             h = previo.get(str(d))
             if not h or h.get("firma") != firma:
                 r = PR.principal(disp, inicio, d, eleccion, errores_23j, n_por_variante=n_por_variante)

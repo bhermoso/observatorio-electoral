@@ -45,7 +45,7 @@ def integrate_each(existing, proposals):
             existing,a,s=integrate(existing,[record])
             added+=a;skipped+=s
         except ValueError as e:
-            rejected.append({"id":record.get("id") if isinstance(record,dict) else None,"motivo":str(e)})
+            rejected.append({"id":str(record.get("id") or "sin-id") if isinstance(record,dict) else "sin-id","motivo":str(e)})
     return existing,added,skipped,rejected
 
 def main():

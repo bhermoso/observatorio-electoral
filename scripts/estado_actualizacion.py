@@ -28,6 +28,8 @@ def construir(carpeta, previo=None, run_url=None, recalculo=False, ahora=None):
     ahora = ahora or datetime.now(timezone.utc).isoformat()
     added = inc.get("added") or []
     errores = [f"{e.get('source')}: {e.get('detail')}" for e in cand.get("errors", [])]
+    if not cand:
+        errores.append("La búsqueda no generó informe válido (fallo del paso)")
     if not inc:
         errores.append("La incorporación no generó informe (fallo del paso)")
     return {

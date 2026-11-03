@@ -14,6 +14,11 @@ def sample(id='a',fieldStart='2026-10-01',fieldEnd='2026-10-02',**changes):
     return item
 
 class TestIncorporacion(unittest.TestCase):
+    def test_ficha_sin_id_no_rompe_el_informe_ni_la_siguiente_alta(self):
+        updated,added,skipped,rejected=integrate_each([], [None, {}, sample()])
+        self.assertEqual(added,['a'])
+        self.assertEqual([r['id'] for r in rejected],['sin-id','sin-id'])
+        self.assertTrue('; '.join(r['id']+': '+r['motivo'] for r in rejected))
     def test_incorpora_y_no_duplica(self):
         new,added,skipped=integrate([], [sample()])
         self.assertEqual((len(new),added,skipped),(1,['a'],[]))
@@ -34,6 +39,12 @@ class TestIncorporacion(unittest.TestCase):
         self.assertEqual(added,['b']);self.assertEqual(rejected[0]['id'],'a');self.assertIn('faltan',rejected[0]['motivo'])
 
 class TestEstado(unittest.TestCase):
+    def test_busqueda_fallida_no_se_presenta_como_cero_resultados(self):
+        with tempfile.TemporaryDirectory() as d:
+            Path(d,'actualizacion.json').write_text(json.dumps({'before':13,'after':13,'added':[]}))
+            e=construir(d,ahora='T')
+        self.assertIsNone(e['candidatos_detectados'])
+        self.assertTrue(any('búsqueda no generó informe' in x for x in e['errores_busqueda']))
     def test_estado_resume_ejecucion_sin_inventar(self):
         with tempfile.TemporaryDirectory() as d:
             Path(d,'candidates.json').write_text(json.dumps({'checked_at':'2026-11-03T07:40:00+00:00','results':[{'title':'x'}],'errors':[{'source':'GAD3','detail':'timeout'}]}))

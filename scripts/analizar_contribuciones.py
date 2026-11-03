@@ -57,7 +57,7 @@ def calculate(data):
     return {
         "schema_version":1,
         "fecha_eleccion":"2023-07-23",
-        "origen":str(SOURCE),
+        "origen":SOURCE.as_posix(),
         "descripcion":"Contrastes descriptivos entre escenarios reconstruidos con códigos CIS revisados (8995 = Otro partido); no son contribuciones causales aisladas ni recetas secuenciales.",
         "comparaciones":cases,
         "ausencias":{

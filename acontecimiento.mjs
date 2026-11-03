@@ -81,14 +81,19 @@ export function analizarAcontecimiento(event,polls,{ventana=30,eventoModelo=null
    const agree=ds.every(d=>d>0)||ds.every(d=>d<0);
    const fuera=cs.filter(c=>c.margen!=null&&Math.abs(c.diferencia)>c.margen).length;
    const mtxt=cs.map(c=>c.margen==null?'margen no calculable':'±'+c.margen.toLocaleString('es-ES',{maximumFractionDigits:1})).join(', ');
-   conclusiones.push(`${id}: ${cs.length===1?'un solo instituto con dos oleadas':cs.length+' institutos con dos oleadas'} (${ds.map(d=>(d>0?'+':'')+d.toLocaleString('es-ES',{maximumFractionDigits:1})).join(', ')} pp)${cs.length>1?(agree?', mismo signo':', signos distintos'):''}. Margen de error muestral de la diferencia al 95 % (efecto de diseño ${String(DEFF).replace(".",",")}): ${mtxt}; ${fuera?`la supera${cs.length>1?' en '+fuera+' de '+cs.length:''}`:'queda dentro del margen'}.`);
+   conclusiones.push(`${id}: ${cs.length===1?'un solo instituto con dos oleadas':cs.length+' institutos con dos oleadas'} (${ds.map(d=>(d>0?'+':'')+d.toLocaleString('es-ES',{maximumFractionDigits:1})).join(', ')} pp)${cs.length>1?(agree?', mismo signo':', signos distintos'):''}. Referencia teórica al 95 % para muestras independientes (efecto de diseño ${String(DEFF).replace(".",",")}): ${mtxt}; ${fuera?`la supera${cs.length>1?' en '+fuera+' de '+cs.length:''}`:'queda dentro del margen'}.`);
   }
   const ms=eventoModelo?.modelo_salto||{};
   const saltos=['PP','PSOE','VOX'].filter(p=>ms[p]?.h0).map(p=>`${p} ${(ms[p].h0.cambio>0?'+':'')+ms[p].h0.cambio.toLocaleString('es-ES',{maximumFractionDigits:1})} ± ${ms[p].h0.sd.toLocaleString('es-ES',{maximumFractionDigits:1})}`);
   if(saltos.length)conclusiones.push(`Motor 29N, salto estimado el día del suceso (± error típico): ${saltos.join('; ')} pp. Ningún salto supera dos errores típicos${['PP','PSOE','VOX'].some(p=>ms[p]?.h0&&Math.abs(ms[p].h0.cambio)>2*ms[p].h0.sd)?' salvo alguno: revisar la tabla del nivel 4':''}.`.replace(/Ningún salto supera dos errores típicos salvo alguno/,'Algún salto supera dos errores típicos'));
-  if(Object.keys(umbral).length)conclusiones.push(`El cambio a 14 días, el que se compara con el umbral placebo (${['PP','PSOE','VOX'].filter(p=>umbral[p]!=null).map(p=>p+' ±'+umbral[p].toLocaleString('es-ES',{maximumFractionDigits:1})).join(', ')} pp), aún no puede calcularse: no hay encuestas 14 días después del suceso.`.replace(/aún no puede calcularse: no hay encuestas 14 días después del suceso\./,ms.PP?.h14?'ya puede calcularse: ver nivel 4.':'aún no puede calcularse: no hay encuestas 14 días después del suceso.'));
+  if(Object.keys(umbral).length){
+   const ids=['PP','PSOE','VOX'].filter(p=>umbral[p]!=null);
+   const disponibles=ids.filter(p=>ms[p]?.h14),pendientes=ids.filter(p=>!ms[p]?.h14);
+   conclusiones.push(`Cambio a 14 días y umbral placebo: ${ids.map(p=>p+' ±'+umbral[p].toLocaleString('es-ES',{maximumFractionDigits:1})).join(', ')} pp. ${disponibles.length?'Disponible para '+disponibles.join(', ')+': ver nivel 4. ':''}${pendientes.length?'Aún no calculable para '+pendientes.join(', ')+': faltan datos posteriores suficientes.':''}`);
+  }
   if(parejas.length<2)conclusiones.push('Con un único instituto no puede saberse si el cambio coincide entre casas.');
  }else if(counts.after)conclusiones.push('Ningún instituto tiene oleadas comparables antes y después: las diferencias de medias mezclan casas distintas.');
+ conclusiones.push('La referencia muestral supone independencia y muestreo probabilístico, con efecto de diseño fijado en 1,5. No acredita significación en paneles no probabilísticos ni incluye error de estimación o sesgo de instituto.');
  conclusiones.push('Se han observado oscilaciones de tamaño parecido en fechas sin acontecimientos (pruebas placebo del Motor 29N, ciclo 2019-23). Coincidencia temporal no es causalidad.');
  conclusiones.push(`Ninguna cifra de esta pantalla es un efecto causal estimado. El pronóstico ${eventoModelo?.aplicado_al_pronostico===false?'no incorpora':'no consta que incorpore'} ningún efecto del suceso.`);
  const faltan=['más encuestas con campo íntegramente posterior','segundas oleadas de los mismos institutos con igual método y escenario','microdatos con recuerdo de voto para analizar transferencias'];

@@ -115,7 +115,7 @@ test('externos: primero los verificados',()=>{
 });
 test('pollsFromModelInputs conserva el origen de cada entrada',()=>{
  const p=pollsFromModelInputs([{estudio:'s1',casa:'Casa A',campo_fin:'2026-10-10',voto:{PP:30},origen:'terceros-29n'}]);
- assert.equal(p[0].origin,'terceros-29n');assert.equal(p[0].published,'2026-10-10');
+ assert.equal(p[0].origin,'terceros-29n');assert.equal(p[0].published,'2026-10-12');
 });
 test('el pronóstico publicado del repositorio expone las cuatro capas',()=>{
  const f=JSON.parse(fs.readFileSync('modelo/salida/pronostico.json','utf8'));

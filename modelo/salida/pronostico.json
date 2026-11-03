@@ -3254,7 +3254,7 @@
     {
      "id": "error_industria",
      "valor": 2.2,
-     "descripcion": "Error común a todas las casas, calibrado con el 23J"
+     "descripcion": "Supuesto de error común a las casas, contrastado con el 23J; no es una calibración independiente"
     },
     {
      "id": "correlacion_bloques",
