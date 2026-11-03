@@ -19,7 +19,7 @@ test('Recarga sin caché y rechaza errores HTTP y archivos inválidos',async()=>
 test('Lanzar revisión llama a GitHub con credencial limitada y main',async()=>{
  let uri,options;
  assert.equal(await triggerPollReview('  github_pat_test  ',async(u,o)=>{uri=u;options=o;return {status:204}}),true);
- assert.match(uri,/vigilancia-encuestas\\.yml\\/dispatches$/);
+ assert.match(uri,/vigilancia-encuestas[.]yml[/]dispatches$/);
  assert.equal(options.method,'POST');
  assert.equal(options.headers.Authorization,'Bearer github_pat_test');
  assert.deepEqual(JSON.parse(options.body),{ref:'main'});
