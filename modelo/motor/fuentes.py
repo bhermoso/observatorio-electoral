@@ -152,10 +152,15 @@ def cargar_prensa():
         pub = _fecha(r["publicacion"])
         fin = _fecha(r["campo_fin"]) if r["campo_fin"] else pub - timedelta(days=3)
         voto = {p: float(r[p]) for p in ("PP", "PSOE", "VOX", "SUMAR", "PODEMOS") if r.get(p)}
+        # Con el original consultado y fechas de campo publicadas deja de ser una cita sin verificar.
+        consultado = bool(r.get("original_url")) and bool(r["campo_fin"])
         out.append(dict(casa=casa_canonica(r["casa"]), estudio=r["estudio"], campo_fin=fin,
                         campo_ini=_fecha(r["campo_ini"]) if r["campo_ini"] else None,
                         n=int(r["n"]) if r["n"] else 1000, modo=r["modo"], voto=voto,
-                        origen="prensa-sin-verificar", url=r["fuente_url"], ciclo=ciclo_de(fin),
+                        origen="prensa-original-consultado" if consultado else "prensa-sin-verificar",
+                        url=r.get("original_url") or r["fuente_url"], ciclo=ciclo_de(fin),
+                        contraste="cifras_confirmadas_sin_ficha" if consultado else "sin_contrastar",
+                        contraste_url=r.get("original_url") or None,
                         ambito="España", publicacion=pub, nota=r["nota"],
                         campo_supuesto=not r["campo_fin"], n_supuesto=not r["n"]))
     return out

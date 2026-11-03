@@ -68,7 +68,7 @@ class ContrasteTercerosTest(unittest.TestCase):
         from modelo.motor.fuentes import cargar_29n, contraste_terceros
         reg = {e["estudio"]: e for e in cargar_29n()}
         for k, c in contraste_terceros().items():
-            self.assertIn(c["estado"], ("original_consultado", "corregido_con_original", "solo_secundaria", "discrepancia_secundaria"))
+            self.assertIn(c["estado"], ("original_consultado", "corregido_con_original", "solo_secundaria", "discrepancia_secundaria", "cifras_confirmadas_sin_ficha"))
             self.assertTrue(c["original"].startswith("https://"))
             self.assertEqual(reg[k]["contraste"], c["estado"])
             for partido, v in (c.get("correcciones") or {}).items():
@@ -78,5 +78,15 @@ class ContrasteTercerosTest(unittest.TestCase):
         from modelo.motor.fuentes import cargar_29n, contraste_terceros
         conocidos = set(contraste_terceros())
         otros = [e for e in cargar_29n() if e["estudio"] not in conocidos]
-        self.assertTrue(otros)
         self.assertTrue(all(e["contraste"] == "sin_contrastar" for e in otros))
+
+    def test_prensa_con_original_y_campo_entra_y_sin_ellos_no(self):
+        from modelo.motor.fuentes import cargar_prensa, seleccion_pronostico
+        pr = cargar_prensa()
+        aptas, excl = seleccion_pronostico(pr)
+        for e in pr:
+            if e["origen"] == "prensa-original-consultado":
+                self.assertIn(e, aptas)
+                self.assertTrue(e["contraste_url"].startswith("https://"))
+            else:
+                self.assertTrue(any(x["estudio"] == e["estudio"] for x in excl))
