@@ -1,0 +1,19 @@
+{
+ "esquema": 1,
+ "generado": null,
+ "ejecucion": null,
+ "ultima_busqueda": null,
+ "candidatos_detectados": null,
+ "naturaleza_candidatos": "Titulares de Google News (RSS). No contienen cifras extraídas ni verificadas.",
+ "errores_busqueda": [],
+ "bandeja_validadas": null,
+ "incorporadas": [],
+ "ya_registradas": [],
+ "rechazadas": [],
+ "registros_antes": null,
+ "registros_despues": null,
+ "ultima_incorporacion_efectiva": null,
+ "recalculo_lanzado": false,
+ "ultimo_recalculo_lanzado": null,
+ "nota": "Archivo inicial. Se rellena en la primera ejecución de la vigilancia con este formato."
+}

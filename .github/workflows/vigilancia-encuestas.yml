@@ -25,7 +25,10 @@ jobs:
         with:
           node-version: '22'
       - name: Incorporar fichas verificadas, sin duplicados
+        id: incorporate
         run: |
+          # Solo entran fichas ya verificadas de data/ingesta/validadas.json.
+          # Una ficha inválida se rechaza con su motivo y no bloquea a las demás.
           python scripts/incorporar_encuestas.py --report monitor-output
           python -m unittest discover -s tests -p 'test_incorporar_encuestas.py' -v
           node scripts/export-csv.mjs
@@ -37,26 +40,51 @@ jobs:
           if git diff --cached --quiet; then
             echo 'updated=false' >> "$GITHUB_OUTPUT"
           else
-            git config user.name 'github-actions[bot]'
-            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git commit -m "Datos: incorporar encuestas verificadas y actualizar CSV"
-            git push origin HEAD:main
             echo 'updated=true' >> "$GITHUB_OUTPUT"
           fi
+      - name: Registrar el estado de la ejecución
+        if: always()
+        run: |
+          python scripts/estado_actualizacion.py monitor-output \
+            --run-url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            --recalculo-lanzado "${{ steps.publish.outputs.updated == 'true' }}"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/ingesta/estado.json
+          if [ "${{ steps.publish.outputs.updated }}" = 'true' ]; then
+            git add data/polls.json data/polls.csv data/poll-results.csv
+            git commit -m "Datos: incorporar encuestas verificadas y registrar estado de la vigilancia"
+          else
+            git diff --cached --quiet || git commit -m "Vigilancia: registrar estado de la ejecución"
+          fi
+          git push origin HEAD:main
       - name: Recalcular y publicar Motor 29N tras incorporar encuestas
         if: steps.publish.outputs.updated == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run pages.yml --ref main
       - name: Crear o actualizar cola de revisión en Issues
+        if: always()
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           python - <<'PY'
+          import json
           from pathlib import Path
           p=Path("monitor-output/report.md")
-          note="\n\n**Control editorial obligatorio:** corroborar fuente original, fecha de campo y de publicación, muestra, variable objetivo, categorías y escenario. No se realiza incorporación automática al promedio o al Motor 29N."
-          p.write_text(p.read_text(encoding="utf-8")+note+"\n",encoding="utf-8")
+          if not p.exists():
+              p.write_text("# Vigilancia de encuestas y modelos\n\nLa búsqueda no generó informe en esta ejecución.\n",encoding="utf-8")
+          inc=Path("monitor-output/actualizacion.json")
+          resumen="\n\n## Incorporación\n\n"
+          if inc.exists():
+              r=json.loads(inc.read_text(encoding="utf-8"))
+              resumen+=f"Registros antes: {r.get('before')} · después: {r.get('after')}\n\nIncorporadas: {', '.join(r.get('added') or []) or 'ninguna'}\n\nRechazadas: {'; '.join(x['id']+': '+x['motivo'] for x in r.get('rejected') or []) or 'ninguna'}\n"
+          else:
+              resumen+="El paso de incorporación falló antes de generar informe.\n"
+          note=("\n\n**Control editorial obligatorio para los candidatos de esta lista:** son titulares detectados por RSS, sin cifras extraídas. "
+                "Para incorporarlos hay que corroborar fuente original, fechas de campo y publicación, muestra, variable, categorías y escenario, "
+                "y añadir la ficha a data/ingesta/validadas.json. Solo esas fichas se incorporan automáticamente y disparan el recálculo del Motor 29N.")
+          p.write_text(p.read_text(encoding="utf-8")+resumen+note+"\n",encoding="utf-8")
           PY
           TITLE="[Vigilancia] Encuestas y análisis pendientes de revisión"
           EXISTING=$(gh issue list --state open --search "in:title [Vigilancia] Encuestas y análisis pendientes de revisión" --json number --jq '.[0].number // empty')

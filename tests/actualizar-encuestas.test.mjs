@@ -38,3 +38,11 @@ test('La cola no confunde issues de PR ni noticias con datos verificados',()=>{
  assert.match(renderPollReviewQueue(rows),/Sondeo pendiente/);
  assert.match(renderPollReviewQueue(rows),/Revisar candidatos/);
 });
+
+import {renderEstadoCircuito} from '../actualizar-encuestas.mjs';
+test('estado del circuito: muestra antes/después, rechazadas y errores sin inventar datos',()=>{
+ const html=renderEstadoCircuito({ultima_busqueda:'2026-11-03T07:40:00Z',candidatos_detectados:12,bandeja_validadas:1,incorporadas:['sintetica-1'],rechazadas:[{id:'sintetica-2',motivo:'faltan source'}],registros_antes:13,registros_despues:14,errores_busqueda:['GAD3: timeout'],naturaleza_candidatos:'Titulares'},{construido:'2026-11-03T08:00:00Z',corte_modelo:'2026-11-03'});
+ assert.match(html,/13 → 14/);assert.match(html,/sintetica-2: faltan source/);assert.match(html,/GAD3: timeout/);assert.match(html,/corte del modelo 2026-11-03/);
+ const empty=renderEstadoCircuito(null,null);
+ assert.match(empty,/sin registro/);assert.doesNotMatch(empty,/undefined|NaN/);
+});

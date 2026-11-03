@@ -1,12 +1,17 @@
 import unittest
-from scripts.incorporar_encuestas import integrate
+import json,tempfile
+from pathlib import Path
+from scripts.incorporar_encuestas import integrate,integrate_each
+from scripts.estado_actualizacion import construir
 
 def sample(id='a',fieldStart='2026-10-01',fieldEnd='2026-10-02',**changes):
     item=dict(id=id,institute='Ejemplo',publisher='Diario',title='Encuesta',
     fieldStart=fieldStart,fieldEnd=fieldEnd,published='2026-10-03',verified='2026-10-04',
     sample=1000,scope='España',universe='Mayores',scenario='Separados',denominator='votos válidos',
     source='https://example.org/original',technical='https://example.org/ficha',
-    verification='Revisada',sourcePages='p. 1',kind='poll-estimate',values={'PP':30})\n    item.update(changes)\n    return item
+    verification='Revisada',sourcePages='p. 1',kind='poll-estimate',values={'PP':30})
+    item.update(changes)
+    return item
 
 class TestIncorporacion(unittest.TestCase):
     def test_incorpora_y_no_duplica(self):
@@ -23,5 +28,24 @@ class TestIncorporacion(unittest.TestCase):
     def test_rechaza_datos_incompletos(self):
         with self.assertRaisesRegex(ValueError,'faltan'):
             integrate([],[sample(verification='')])
+
+    def test_una_ficha_invalida_no_bloquea_las_demas(self):
+        new,added,skipped,rejected=integrate_each([],[sample(verification=''),sample('b',fieldStart='2026-10-05',fieldEnd='2026-10-06',published='2026-10-07',verified='2026-10-08')])
+        self.assertEqual(added,['b']);self.assertEqual(rejected[0]['id'],'a');self.assertIn('faltan',rejected[0]['motivo'])
+
+class TestEstado(unittest.TestCase):
+    def test_estado_resume_ejecucion_sin_inventar(self):
+        with tempfile.TemporaryDirectory() as d:
+            Path(d,'candidates.json').write_text(json.dumps({'checked_at':'2026-11-03T07:40:00+00:00','results':[{'title':'x'}],'errors':[{'source':'GAD3','detail':'timeout'}]}))
+            Path(d,'actualizacion.json').write_text(json.dumps({'before':13,'after':14,'added':['n1'],'already_registered':[],'rejected':[],'candidates_approved':1}))
+            e=construir(d,previo={},run_url='https://github.com/x',recalculo=True,ahora='T')
+        self.assertEqual((e['registros_antes'],e['registros_despues'],e['incorporadas']),(13,14,['n1']))
+        self.assertEqual(e['ultima_incorporacion_efectiva'],'T');self.assertEqual(e['ultimo_recalculo_lanzado'],'T')
+        self.assertEqual(e['errores_busqueda'],['GAD3: timeout'])
+    def test_sin_incorporacion_conserva_fecha_previa_y_registra_fallo(self):
+        with tempfile.TemporaryDirectory() as d:
+            e=construir(d,previo={'ultima_incorporacion_efectiva':'P'},ahora='T')
+        self.assertEqual(e['ultima_incorporacion_efectiva'],'P');self.assertIsNone(e['registros_antes'])
+        self.assertTrue(any('no generó informe' in x for x in e['errores_busqueda']))
 
 if __name__=='__main__':unittest.main()
