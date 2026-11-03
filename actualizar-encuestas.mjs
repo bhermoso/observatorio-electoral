@@ -14,7 +14,7 @@ export function renderPollUpdate(){return `<section class="panel poll-update" ar
  <details id="poll-auth"><summary>Autorización de GitHub para ejecutar desde aquí</summary><p class="muted">El sitio es estático. Para ejecutar la búsqueda desde este botón necesitas una credencial personal de GitHub de permisos mínimos: token de acceso detallado limitado a <strong>bhermoso/observatorio-electoral</strong> y permiso <strong>Actions: Read and write</strong>. El token solo se envía a api.github.com; no se guarda en archivos, cookies ni almacenamiento del navegador. Se pierde al cerrar esta pestaña. No introduzcas el token en el chat.</p><label for="poll-token">Token de GitHub (solo esta pestaña)</label><div class="toolbar"><input id="poll-token" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…" aria-label="Token de GitHub"><button type="button" class="secondary" id="poll-clear-token">Olvidar autorización</button></div><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">Crear token de permisos limitados ↗</a></details>
  <p id="poll-dispatch-status" role="status" aria-live="polite"></p>
  <p class="muted">La búsqueda no publica sondeos por sí sola: abre candidatos para comprobar fuente primaria, fechas, muestra y cifras. Después de verificar y publicar nuevos registros, pulsa «Cargar últimas encuestas publicadas» para actualizar las vistas. También puedes <a href="${REVIEW_URL}" target="_blank" rel="noopener noreferrer">ejecutar la tarea desde GitHub ↗</a>, sin proporcionar ningún token en esta página.</p>
- <p id="poll-review-status" role="status">Consultando la última revisión…</p><p id="poll-reload-status" role="status"></p><a href="https://github.com/bhermoso/observatorio-electoral/issues?q=is%3Aissue+%5BVigilancia%5D" target="_blank" rel="noopener noreferrer">Consultar publicaciones pendientes de revisión ↗</a></section>`;}
+ <p id="poll-review-status" role="status">Consultando la última revisión…</p><div class="panel" id="poll-candidates-panel"><h3>Cola de verificación</h3><p class="muted">Candidatos descubiertos, todavía no aceptados como encuestas. Revisar la publicación original antes de importar.</p><div id="poll-candidates-list" aria-live="polite">Consultando cola…</div><button type="button" class="secondary" id="refresh-candidates">Actualizar lista de pendientes</button></div><p id="poll-reload-status" role="status"></p><a href="https://github.com/bhermoso/observatorio-electoral/issues?q=is%3Aissue+%5BVigilancia%5D" target="_blank" rel="noopener noreferrer">Consultar publicaciones pendientes de revisión ↗</a></section>`;}
 export async function triggerPollReview(token,fetcher=fetch){
  if(typeof token!=='string'||!token.trim())throw Error('Introduce una autorización de GitHub para ejecutar la revisión.');
  const response=await fetcher(DISPATCH_URL,{method:'POST',headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${token.trim()}`,'Content-Type':'application/json'},body:JSON.stringify({ref:'main'}),cache:'no-store'});
@@ -23,6 +23,28 @@ export async function triggerPollReview(token,fetcher=fetch){
  if(response.status===404)throw Error('No se encuentra la tarea o la cuenta no tiene acceso a este repositorio.');
  if(response.status===422)throw Error('GitHub no ha aceptado la ejecución. Comprueba que la tarea existe en la rama main.');
  throw Error(`No se pudo iniciar la revisión (GitHub HTTP ${response.status}).`);
+}
+const ISSUE_URL='https://api.github.com/repos/bhermoso/observatorio-electoral/issues?state=open&per_page=100';
+const safeHTML=text=>String(text??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+export function pollReviewQueue(issues){
+ if(!Array.isArray(issues))throw Error('Respuesta de pendientes no válida');
+ return issues.filter(issue=>!issue.pull_request&&issue.title?.startsWith('[Vigilancia]')).map(issue=>({
+  title:issue.title,url:issue.html_url,updated:issue.updated_at,
+  summary:issue.body?.slice(0,4000)||''
+ }));
+}
+export async function fetchPollReviewQueue(fetcher=fetch){
+ const response=await fetcher(ISSUE_URL,{cache:'no-store'});
+ if(!response.ok)throw Error('La cola de revisión no está disponible.');
+ return pollReviewQueue(await response.json());
+}
+export function renderPollReviewQueue(queue){
+ if(!queue.length)return '<p>No hay incidencias abiertas de vigilancia. Esto no demuestra que todas las fuentes estén al día.</p>';
+ return queue.map(issue=>{
+  const summary=issue.summary.split('\\n').filter(line=>/^(- \\*\\*|Propuestas:|Consultado:|Búsquedas fallidas:)/.test(line)).slice(0,10).join('\\n');
+  const url=typeof issue.url==='string'&&/^https:\\/\\/github[.]com\\//.test(issue.url)?issue.url:'#encuestas';
+  return `<article class="poll-queue-item"><strong>${safeHTML(issue.title)}</strong><p class="muted">Actualizada: ${safeHTML(issue.updated?.slice(0,10)||'sin fecha')}</p><pre style="white-space:pre-wrap;overflow-wrap:anywhere;font:inherit">${safeHTML(summary)}</pre><a href="${url}" target="_blank" rel="noopener noreferrer">Revisar candidatos y sus fuentes ↗</a></article>`;
+ }).join('');
 }
 export async function fetchPublishedPolls(fetcher=fetch){
  const response=await fetcher('data/polls.json',{cache:'no-store',signal:AbortSignal.timeout(15000)});
@@ -37,6 +59,10 @@ export function bindPollUpdate(onReload){
  const note=document.querySelector('#poll-dispatch-status'),auth=document.querySelector('#poll-auth');
  if(!status||!button||!dispatch||!tokenInput||!note)return ()=>{};
  const controller=new AbortController();
+ const pending=document.querySelector('#poll-candidates-list');
+ async function loadQueue(){if(!pending)return;try{pending.innerHTML=renderPollReviewQueue(await fetchPollReviewQueue());}catch{pending.textContent='No se pudo cargar la cola de revisión. Consulta GitHub Issues.';}}
+ const refresh=document.querySelector('#refresh-candidates');if(refresh)refresh.onclick=loadQueue;
+ void loadQueue();
  let checking=false;
  // No localStorage, sessionStorage, cookies or server-side credential storage.
  let credential='';
@@ -60,7 +86,7 @@ export function bindPollUpdate(onReload){
   try{
    await triggerPollReview(credential);
    note.textContent='Búsqueda solicitada correctamente. GitHub ejecutará la revisión documental; los nuevos candidatos no se incorporan hasta validarse.';
-   void check();
+   void check();void loadQueue();
   }catch(error){note.textContent=error.message;credential='';auth.open=true;}
   finally{dispatch.disabled=false;}
  };
