@@ -1,20 +1,63 @@
 import unittest
-from modelo.motor.fuentes import aptas_para_pronostico
+from datetime import date
+from modelo.motor.fuentes import aptas_para_pronostico, seleccion_pronostico
+from modelo.motor import eventos as EV
+
+
+def reg(estudio, origen, casa="X", ini=None, fin=date(2026, 10, 10), ciclo="2023-26", **kw):
+    return dict(estudio=estudio, origen=origen, casa=casa, campo_ini=ini, campo_fin=fin, ciclo=ciclo, **kw)
+
 
 class CalidadFuentesTest(unittest.TestCase):
     def test_excluye_prensa_sin_verificar_aunque_tenga_porcentajes(self):
-        registros = [
-          {"ciclo":"2023-26", "origen":"verificada", "estudio":"completa"},
-          {"ciclo":"2023-26", "origen":"terceros-29n", "estudio":"externa"},
-          {"ciclo":"2023-26", "origen":"prensa-sin-verificar", "estudio":"sin-original"},
-          {"ciclo":"2019-23", "origen":"verificada", "estudio":"historica"},
-        ]
-        activos=aptas_para_pronostico(registros)
+        registros = [reg("completa", "verificada"), reg("externa", "terceros-29n", casa="Y"),
+                     reg("sin-original", "prensa-sin-verificar"), reg("historica", "verificada", ciclo="2019-23")]
+        activos = aptas_para_pronostico(registros)
         self.assertEqual([e["estudio"] for e in activos], ["completa", "externa"])
-        self.assertEqual(len(registros),4)
+        self.assertEqual(len(registros), 4)
 
     def test_no_silencia_resto_de_fuentes_secundarias(self):
-        r=[{"ciclo":"2023-26","origen":"terceros-29n"}]
-        self.assertEqual(len(aptas_para_pronostico(r)),1)
+        self.assertEqual(len(aptas_para_pronostico([reg("t", "terceros-29n")])), 1)
 
-if __name__=="__main__": unittest.main()
+    def test_excluye_terceros_con_campo_supuesto(self):
+        aptas, excl = seleccion_pronostico([reg("t", "terceros-29n", campo_supuesto=True)])
+        self.assertEqual(aptas, [])
+        self.assertIn("supuesta", excl[0]["motivo"])
+
+    def test_excluye_terceros_solapados_con_verificada_de_la_misma_casa(self):
+        v = reg("v", "verificada", casa="Sigma Dos", ini=date(2026, 10, 8), fin=date(2026, 10, 22))
+        t = reg("t", "terceros-29n", casa="Sigma Dos", ini=date(2026, 10, 9), fin=date(2026, 10, 10))
+        otra = reg("o", "terceros-29n", casa="GAD3", ini=date(2026, 10, 9), fin=date(2026, 10, 10))
+        aptas, excl = seleccion_pronostico([v, t, otra])
+        self.assertEqual([e["estudio"] for e in aptas], ["v", "o"])
+        self.assertEqual(excl[0]["estudio"], "t")
+        self.assertIn("v", excl[0]["motivo"])
+
+    def test_cada_exclusion_tiene_motivo(self):
+        _, excl = seleccion_pronostico([reg("p", "prensa-sin-verificar"), reg("t", "terceros-29n", campo_supuesto=True)])
+        self.assertTrue(all(x["motivo"] for x in excl))
+
+
+class SolapeAcontecimientoTest(unittest.TestCase):
+    """Datos sintéticos. Mismo criterio que events.mjs: el día del suceso cuenta como solape."""
+    E = date(2026, 10, 28)
+
+    def enc(self, casa, ini, fin, pp):
+        return dict(casa=casa, campo_ini=ini, campo_fin=fin, voto={"PP": pp}, n=1000)
+
+    def test_campo_que_empieza_el_dia_del_suceso_no_es_posterior(self):
+        a = self.enc("A", date(2026, 10, 20), date(2026, 10, 22), 30.0)
+        b = self.enc("A", date(2026, 10, 28), date(2026, 10, 30), 31.0)
+        _, det = EV.pares([a, b], self.E, ["PP"])
+        self.assertEqual(det, {})
+
+    def test_campo_integramente_posterior_forma_par(self):
+        a = self.enc("A", date(2026, 10, 8), date(2026, 10, 22), 30.6)
+        b = self.enc("A", date(2026, 10, 29), date(2026, 10, 30), 31.1)
+        media, det = EV.pares([a, b], self.E, ["PP"])
+        self.assertAlmostEqual(det["A"]["cambio"]["PP"], 0.5)
+        self.assertEqual(media["PP"][2], 1)
+
+
+if __name__ == "__main__":
+    unittest.main()

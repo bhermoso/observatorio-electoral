@@ -2,6 +2,31 @@ export const REVIEW_URL='https://github.com/bhermoso/observatorio-electoral/acti
 const STATUS_URL='https://api.github.com/repos/bhermoso/observatorio-electoral/actions/workflows/vigilancia-encuestas.yml/runs?branch=main&per_page=1';
 const DISPATCH_URL='https://api.github.com/repos/bhermoso/observatorio-electoral/actions/workflows/vigilancia-encuestas.yml/dispatches';
 
+const ESTADO_URLS=['https://raw.githubusercontent.com/bhermoso/observatorio-electoral/main/data/ingesta/estado.json','data/ingesta/estado.json'];
+const fecha=v=>{if(!v)return 'sin registro';const d=new Date(v);return Number.isNaN(d.getTime())?String(v):d.toLocaleString('es-ES',{timeZone:'Europe/Madrid',dateStyle:'medium',timeStyle:'short'});};
+/** Estado auditable del circuito buscar → verificar → incorporar → recalcular → publicar. */
+export function renderEstadoCircuito(estado,publicacion){
+ const e=estado||{},p=publicacion||{};
+ const list=(a,empty)=>Array.isArray(a)&&a.length?a.map(x=>safe(typeof x==='string'?x:`${x.id}: ${x.motivo}`)).join('; '):empty;
+ const row=(k,v)=>`<div><dt>${k}</dt><dd>${v}</dd></div>`;
+ return `<dl class="pipeline-status">${[
+  row('1 · Última búsqueda',safe(fecha(e.ultima_busqueda))+(e.candidatos_detectados!=null?` · ${e.candidatos_detectados} titulares candidatos`:'')),
+  row('2 · Bandeja de fichas verificadas',e.bandeja_validadas!=null?`${e.bandeja_validadas} fichas`:'sin registro'),
+  row('3 · Última incorporación efectiva',safe(fecha(e.ultima_incorporacion_efectiva))),
+  row('Incorporadas en la última ejecución',list(e.incorporadas,'ninguna')),
+  row('Rechazadas',list(e.rechazadas,'ninguna')),
+  row('Registros antes → después',e.registros_antes!=null?`${e.registros_antes} → ${e.registros_despues}`:'sin registro'),
+  row('4 · Último recálculo lanzado por la vigilancia',safe(fecha(e.ultimo_recalculo_lanzado))),
+  row('5 · Última publicación del sitio',safe(fecha(p.construido))+(p.corte_modelo?` · corte del modelo ${safe(p.corte_modelo)}`:'')+(p.veda?' · <b>veda electoral</b>':'')),
+  row('Errores',list(e.errores_busqueda,'ninguno registrado'))].join('')}</dl>
+ <p class="muted">${safe(e.naturaleza_candidatos||'')} Pendientes de revisión: lista de candidatos más abajo.${e.ejecucion?` <a href="${safe(e.ejecucion)}" target="_blank" rel="noopener noreferrer">Ver la ejecución ↗</a>`:''}${e.nota?' '+safe(e.nota):''}</p>`;
+}
+export async function fetchEstadoCircuito(fetcher=fetch){
+ let estado=null,publicacion=null;
+ for(const url of ESTADO_URLS){try{const r=await fetcher(url,{cache:'no-store'});if(r.ok){estado=await r.json();break;}}catch{}}
+ try{const r=await fetcher('data/estado-publicacion.json',{cache:'no-store'});if(r.ok)publicacion=await r.json();}catch{}
+ return {estado,publicacion};
+}
 export function reviewStatus(run){
  if(!run)return 'Todavía no consta una revisión ejecutada.';
  if(run.status!=='completed')return 'Revisión en curso. Las encuestas publicadas todavía no han cambiado.';
@@ -9,7 +34,8 @@ export function reviewStatus(run){
  const when=new Date(run.updated_at);
  return `Última búsqueda completada${Number.isNaN(when.getTime())?'':' · '+when.toLocaleString('es-ES')}. Los candidatos requieren verificación antes de publicarse.`;
 }
-export function renderPollUpdate(){return `<section class="panel poll-update" aria-labelledby="poll-update-title"><div><h2 id="poll-update-title">Actualizar encuestas</h2><p>Lanza la búsqueda cuando quieras. Comprueba qué publicaciones requieren revisión y recupera los últimos datos validados.</p></div>
+export function renderPollUpdate(){return `<section class="panel poll-update" aria-labelledby="poll-update-title"><div><h2 id="poll-update-title">Actualizar encuestas</h2><p>Circuito: <b>buscar → identificar novedades → verificar → incorporar → recalcular → publicar</b>. La búsqueda automática solo detecta titulares; la verificación de cada ficha es humana; la incorporación, el recálculo y la publicación son automáticos para las fichas verificadas.</p></div>
+ <div id="pipeline-status" aria-live="polite">Consultando el estado del circuito…</div>
  <div class="toolbar"><button type="button" id="dispatch-polls">Buscar nuevas encuestas ahora</button><button type="button" class="secondary" id="reload-polls">Cargar últimas encuestas publicadas</button></div>
  <details id="poll-auth"><summary>Autorización de GitHub para ejecutar desde aquí</summary><p class="muted">El sitio es estático. Para ejecutar la búsqueda desde este botón necesitas una credencial personal de GitHub de permisos mínimos: token de acceso detallado limitado a <strong>bhermoso/observatorio-electoral</strong> y permiso <strong>Actions: Read and write</strong>. El token solo se envía a api.github.com; no se guarda en archivos, cookies ni almacenamiento del navegador. Se pierde al cerrar esta pestaña. No introduzcas el token en el chat.</p><label for="poll-token">Token de GitHub (solo esta pestaña)</label><div class="toolbar"><input id="poll-token" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…" aria-label="Token de GitHub"><button type="button" class="secondary" id="poll-clear-token">Olvidar autorización</button></div><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">Crear token de permisos limitados ↗</a></details>
  <p id="poll-dispatch-status" role="status" aria-live="polite"></p>
@@ -25,6 +51,7 @@ export async function triggerPollReview(token,fetcher=fetch){
  throw Error(`No se pudo iniciar la revisión (GitHub HTTP ${response.status}).`);
 }
 const ISSUE_URL='https://api.github.com/repos/bhermoso/observatorio-electoral/issues?state=open&per_page=100';
+const safe=text=>String(text??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const safeHTML=text=>String(text??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 export function pollReviewQueue(issues){
  if(!Array.isArray(issues))throw Error('Respuesta de pendientes no válida');
@@ -60,6 +87,8 @@ export function bindPollUpdate(onReload){
  if(!status||!button||!dispatch||!tokenInput||!note)return ()=>{};
  const controller=new AbortController();
  const pending=document.querySelector('#poll-candidates-list');
+ const pipe=document.querySelector('#pipeline-status');
+ if(pipe)fetchEstadoCircuito().then(({estado,publicacion})=>{if(pipe.isConnected)pipe.innerHTML=renderEstadoCircuito(estado,publicacion);}).catch(()=>{if(pipe.isConnected)pipe.textContent='Estado del circuito no disponible.';});
  async function loadQueue(){if(!pending)return;try{pending.innerHTML=renderPollReviewQueue(await fetchPollReviewQueue());}catch{pending.textContent='No se pudo cargar la cola de revisión. Consulta GitHub Issues.';}}
  const refresh=document.querySelector('#refresh-candidates');if(refresh)refresh.onclick=loadQueue;
  void loadQueue();

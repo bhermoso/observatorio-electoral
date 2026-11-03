@@ -16,7 +16,8 @@ from .fuentes import RAIZ, publicada_antes, dia_central
 from . import pronostico as PR
 
 DIR = os.path.join(RAIZ, "modelo", "registro")
-VERSION = "1"   # cambiar al modificar el modelo invalida el historial guardado
+VERSION = "2"   # cambiar al modificar el modelo invalida el historial guardado
+# 2 (2026-11-03): puerta de calidad de fuentes (fuentes.seleccion_pronostico).
 PRINCIPALES = ["PP", "PSOE", "VOX", "SUMAR", "PODEMOS"]
 
 
@@ -73,6 +74,7 @@ def historial(actuales, inicio, desde, hasta, eleccion, errores_23j, n_por_varia
                 r = PR.principal(disp, inicio, d, eleccion, errores_23j, n_por_variante=n_por_variante)
                 h = _compacto(r, d, disp)
                 h["firma"] = firma
+                h["version"] = VERSION
                 h["nuevas"] = sorted(e["estudio"] for e in disp
                                      if (e.get("publicacion") or e["campo_fin"] + timedelta(days=2)) == d)
             out.append(h)

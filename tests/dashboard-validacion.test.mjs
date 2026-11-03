@@ -5,8 +5,8 @@ import {renderValidationDashboard} from '../dashboard-validacion.mjs';
 const html=renderValidationDashboard();
 const forecast=JSON.parse(fs.readFileSync('modelo/salida/pronostico.json','utf8'));
 const audit=JSON.parse(fs.readFileSync('data/microdatos/auditoria_cocina_23j.json','utf8'));
-test('Home integra auditoría histórica navegable, no cifras inventadas',()=>{
- const home=fs.readFileSync('home-impact.mjs','utf8');
+test('El pronóstico completo integra la auditoría histórica navegable, no cifras inventadas',()=>{
+ const home=fs.readFileSync('pronostico-vista.mjs','utf8');
  const build=fs.readFileSync('scripts/build.mjs','utf8');
  assert.match(home,/renderValidationDashboard\(\)/);
  assert.match(home,/bindValidationDashboard\(\)/);

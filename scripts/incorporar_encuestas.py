@@ -8,7 +8,10 @@ import argparse
 import json
 from datetime import datetime,timezone
 from pathlib import Path
-try:\n    from scripts.auditar_encuestas import audit\nexcept ModuleNotFoundError:\n    from auditar_encuestas import audit
+try:
+    from scripts.auditar_encuestas import audit
+except ModuleNotFoundError:
+    from auditar_encuestas import audit
 ROOT=Path(__file__).resolve().parents[1]
 INPUT=ROOT/"data/ingesta/validadas.json"
 POLLS=ROOT/"data/polls.json"
@@ -33,6 +36,18 @@ def integrate(existing, proposals):
         added.append(key)
     return existing,added,skipped
 
+def integrate_each(existing, proposals):
+    """Como integrate, pero una ficha inválida no bloquea a las demás: se rechaza con su motivo."""
+    if not isinstance(proposals,list):raise ValueError("La bandeja de aprobadas debe ser una lista")
+    added,skipped,rejected=[],[],[]
+    for record in proposals:
+        try:
+            existing,a,s=integrate(existing,[record])
+            added+=a;skipped+=s
+        except ValueError as e:
+            rejected.append({"id":record.get("id") if isinstance(record,dict) else None,"motivo":str(e)})
+    return existing,added,skipped,rejected
+
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--dry-run",action="store_true")
@@ -40,11 +55,11 @@ def main():
     args=ap.parse_args()
     existing=json.loads(POLLS.read_text(encoding="utf-8"))
     proposals=json.loads(INPUT.read_text(encoding="utf-8")) if INPUT.exists() else []
-    updated,added,skipped=integrate(existing,proposals)
+    updated,added,skipped,rejected=integrate_each(existing,proposals)
     out=ROOT/args.report
     out.mkdir(exist_ok=True,parents=True)
     report={"checked_at":datetime.now(timezone.utc).isoformat(),
-            "before":len(existing),"after":len(updated),"added":added,"already_registered":skipped,
+            "before":len(existing),"after":len(updated),"added":added,"already_registered":skipped,"rejected":rejected,
             "candidates_approved":len(proposals),"published":not args.dry_run and bool(added)}
     (out/"actualizacion.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     (out/"actualizacion.md").write_text(
@@ -52,6 +67,7 @@ def main():
         f"Antes: {len(existing)} · Después: {len(updated)}\n\n"+
         f"Incorporadas: {', '.join(added) or 'ninguna'}\n\n"+
         f"Ya registradas: {', '.join(skipped) or 'ninguna'}\n\n"+
+        f"Rechazadas: {'; '.join(r['id']+': '+r['motivo'] for r in rejected) or 'ninguna'}\n\n"+
         "Solo se aceptan registros contrastados previamente; los titulares detectados no cuentan como encuestas.\n",encoding="utf-8")
     if not args.dry_run and added:POLLS.write_text(json.dumps(updated,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(json.dumps(report,ensure_ascii=False))

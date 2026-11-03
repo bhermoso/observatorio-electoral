@@ -110,13 +110,17 @@ def cargar_29n():
             if r.get("fecha_trabajo"):
                 ini, fin = r["fecha_trabajo"].split("/")
                 ini, fin = _fecha(ini), _fecha(fin)
+                supuesto = False
             else:  # sin campo publicado: fin = publicación - 2 días (supuesto declarado)
                 ini, fin = None, _fecha(r["fecha_publicacion"]) - timedelta(days=2)
+                supuesto = True
             por_id[r["estudio_id"]] = dict(casa=casa_canonica(r["fuente"]), estudio=r["estudio_id"],
                                            campo_fin=fin, campo_ini=ini, n=int(r.get("n") or 1000),
                                            modo=r.get("metodologia", ""), voto={}, origen="terceros-29n",
                                            url=r["fuente_url"], ciclo=ciclo_de(fin), ambito="España",
-                                           publicacion=_fecha(r["fecha_publicacion"]) if r.get("fecha_publicacion") else None)
+                                           publicacion=_fecha(r["fecha_publicacion"]) if r.get("fecha_publicacion") else None,
+                                           campo_supuesto=supuesto, n_supuesto=not r.get("n"),
+                                           fuente_tipo=r.get("fuente_tipo", ""))
         por_id[r["estudio_id"]]["voto"][p] = float(r["porcentaje"])
     return list(por_id.values())
 
@@ -136,17 +140,54 @@ def cargar_prensa():
                         campo_ini=_fecha(r["campo_ini"]) if r["campo_ini"] else None,
                         n=int(r["n"]) if r["n"] else 1000, modo=r["modo"], voto=voto,
                         origen="prensa-sin-verificar", url=r["fuente_url"], ciclo=ciclo_de(fin),
-                        ambito="España", publicacion=pub, nota=r["nota"]))
+                        ambito="España", publicacion=pub, nota=r["nota"],
+                        campo_supuesto=not r["campo_fin"], n_supuesto=not r["n"]))
     return out
 
 
-def aptas_para_pronostico(encuestas, ciclo="2023-26"):
-    """Puerta mínima de calidad: no utilizar como observación de voto
-    una cita de prensa sin original verificado ni ficha técnica.
-    Otras fuentes de terceros siguen requiriendo control y sensibilidad.
+def _solapa_campo(a, b):
+    """¿Se solapan los periodos de campo de dos registros? Sin inicio, se usa el fin."""
+    ai, bi = a.get("campo_ini") or a["campo_fin"], b.get("campo_ini") or b["campo_fin"]
+    return ai <= b["campo_fin"] and bi <= a["campo_fin"]
+
+
+def seleccion_pronostico(encuestas, ciclo="2023-26"):
+    """Puerta de calidad del pronóstico principal. Devuelve (aptas, excluidas).
+
+    Reglas, en este orden (cada exclusión conserva su motivo):
+    1. Prensa sin original verificado: nunca entra como observación de voto.
+    2. Registro de terceros con fecha de campo supuesta (no publicada): su posición
+       temporal es una conjetura y puede coincidir con otra oleada ya registrada.
+    3. Registro de terceros cuyo campo se solapa con un registro verificado de la
+       misma casa: probable submuestra u oleada acumulada; se evita contar dos veces
+       las mismas entrevistas.
+    Los registros de terceros que superan las tres reglas entran con su origen
+    marcado; `PROCEDENCIA.md` documenta la fuente y los límites de cada uno.
     """
-    return [e for e in encuestas if e["ciclo"] == ciclo
-            and e["origen"] != "prensa-sin-verificar"]
+    del_ciclo = [e for e in encuestas if e["ciclo"] == ciclo]
+    verificadas = [e for e in del_ciclo if e["origen"] == "verificada"]
+    aptas, excluidas = [], []
+    for e in del_ciclo:
+        motivo = None
+        if e["origen"] == "prensa-sin-verificar":
+            motivo = "Cita de prensa sin original ni ficha técnica verificados"
+        elif e["origen"] != "verificada" and e.get("campo_supuesto"):
+            motivo = "Fecha de campo no publicada (supuesta a partir de la publicación)"
+        elif e["origen"] != "verificada":
+            gemela = next((v for v in verificadas if v["casa"] == e["casa"] and _solapa_campo(e, v)), None)
+            if gemela is not None:
+                motivo = f"Campo solapado con el registro verificado {gemela['estudio']} de la misma casa"
+        if motivo:
+            excluidas.append(dict(estudio=e["estudio"], casa=e["casa"], origen=e["origen"],
+                                  campo_ini=e.get("campo_ini"), campo_fin=e["campo_fin"], motivo=motivo, url=e.get("url", "")))
+        else:
+            aptas.append(e)
+    return aptas, excluidas
+
+
+def aptas_para_pronostico(encuestas, ciclo="2023-26"):
+    """Compatibilidad: estudios que superan la puerta de calidad (ver seleccion_pronostico)."""
+    return seleccion_pronostico(encuestas, ciclo)[0]
 
 
 def todas(deduplicar=True):
