@@ -16,8 +16,9 @@ from .fuentes import RAIZ, publicada_antes, dia_central
 from . import pronostico as PR
 
 DIR = os.path.join(RAIZ, "modelo", "registro")
-VERSION = "2"   # cambiar al modificar el modelo invalida el historial guardado
+VERSION = "3"   # cambiar al modificar el modelo invalida el historial guardado
 # 2 (2026-11-03): puerta de calidad de fuentes (fuentes.seleccion_pronostico).
+# 3 (2026-11-03): corrección de la mitad del sesgo de industria del 23J (pronostico.correccion_industria).
 PRINCIPALES = ["PP", "PSOE", "VOX", "SUMAR", "PODEMOS"]
 
 
