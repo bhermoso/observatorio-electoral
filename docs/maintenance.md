@@ -55,3 +55,7 @@ Un accidente, sentencia, crisis o decisión política se registra con fecha y fu
 
 El registro está en `data/events.json` y la vista pública en `#contexto`. Cada revisión diaria debe leer [criterios de acontecimientos](events.md), incorporar hechos documentados que cumplan esos criterios y revisar si hay encuestas con campo posterior. No utilizar borradores, rumores ni fuentes inaccesibles como si estuvieran verificados. La compilación valida también este registro. Mantener el análisis temporal separado de los pesos del laboratorio.
 
+
+## Botón de actualización
+
+En el archivo de encuestas, «Actualizar encuestas» abre la vigilancia de GitHub. El propietario inicia sesión y pulsa Run workflow para lanzar la búsqueda. La web consulta el estado público al abrir el archivo y al volver a la pestaña. No almacena credenciales ni afirma haber iniciado una ejecución por abrir un enlace. «Cargar últimas encuestas publicadas» recupera el JSON sin caché, valida el archivo y refresca las vistas; conserva los datos anteriores ante un error. La búsqueda genera candidatos y no publica cifras sin verificación.
