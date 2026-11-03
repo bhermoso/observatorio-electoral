@@ -41,8 +41,8 @@ export async function fetchPollReviewQueue(fetcher=fetch){
 export function renderPollReviewQueue(queue){
  if(!queue.length)return '<p>No hay incidencias abiertas de vigilancia. Esto no demuestra que todas las fuentes estén al día.</p>';
  return queue.map(issue=>{
-  const summary=issue.summary.split('\\n').filter(line=>/^(- \\*\\*|Propuestas:|Consultado:|Búsquedas fallidas:)/.test(line)).slice(0,10).join('\\n');
-  const url=typeof issue.url==='string'&&/^https:\\/\\/github[.]com\\//.test(issue.url)?issue.url:'#encuestas';
+  const summary=issue.summary.split(String.fromCharCode(10)).filter(line=>line.startsWith('- **')||line.startsWith('Propuestas:')||line.startsWith('Consultado:')||line.startsWith('Búsquedas fallidas:')).slice(0,10).join(String.fromCharCode(10));
+  const url=typeof issue.url==='string'&&issue.url.startsWith('https://github.com/')?issue.url:'#encuestas';
   return `<article class="poll-queue-item"><strong>${safeHTML(issue.title)}</strong><p class="muted">Actualizada: ${safeHTML(issue.updated?.slice(0,10)||'sin fecha')}</p><pre style="white-space:pre-wrap;overflow-wrap:anywhere;font:inherit">${safeHTML(summary)}</pre><a href="${url}" target="_blank" rel="noopener noreferrer">Revisar candidatos y sus fuentes ↗</a></article>`;
  }).join('');
 }
