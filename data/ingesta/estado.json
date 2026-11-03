@@ -13,6 +13,6 @@
  "registros_antes": 13,
  "registros_despues": 13,
  "ultima_incorporacion_efectiva": null,
- "recalculo_lanzado": false,
- "ultimo_recalculo_lanzado": null
+ "recalculo_lanzado": true,
+ "ultimo_recalculo_lanzado": "2026-11-03T14:19:39.208246+00:00"
 }
