@@ -18,9 +18,10 @@ test('Cocina identifica su alcance experimental',()=>{
  assert.match(cocina,/href="flujograma.html"/);
 });
 test('Menú y metodología usan destinos comprensibles',()=>{
- assert.match(nav,/Cómo calculamos · Algoritmo/);
- assert.match(nav,/Cocina · Experimentos/);
- assert.match(nav,/Simulación alternativa/);
+ assert.match(nav,/href="#pronostico">Pronóstico completo/);
+ assert.match(nav,/href="#analisis">Promedios/);
+ assert.match(nav,/href="#cocina">Cocina/);
+ assert.doesNotMatch(nav,/Simulación alternativa/);
  assert.match(method,/Ver las ocho fases del algoritmo/);
  assert.match(method,/Abrir laboratorio de cocina/);
 });

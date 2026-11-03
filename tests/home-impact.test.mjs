@@ -16,8 +16,11 @@ test('Portada publica síntesis visual con cifras reales y dos fuentes separadas
  assert.match(homepage,/data\/modelo\/pronostico.json/);
  assert.match(homepage,/data\/microdatos\/cubo_decisiones_cis.json/);
  assert.match(homepage,/data\/election.json/);
- assert.match(homepage,/const key=p==='SUMAR'\?'Sumar':p/);
- assert.match(homepage,/consenso_privadas/);
+ // La portada muestra la estimación de referencia (capa 3 = principal) y nunca una variante en su lugar.
+ assert.match(homepage,/capaModelo\(ctx\.forecast,3\)/);
+ assert.doesNotMatch(homepage,/variantes\.consenso_privadas|variants\.consenso_privadas/);
+ assert.match(homepage,/href="#pronostico"/);
+ assert.doesNotMatch(homepage,/href="#analisis">Ver pronóstico completo/);
  assert.match(css,/prefers-reduced-motion/);
 });
 test('La comparación de recetas utiliza mismo estudio y el mismo traslado territorial',()=>{

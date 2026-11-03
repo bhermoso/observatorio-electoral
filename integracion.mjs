@@ -10,7 +10,7 @@ const blocks=[
 ];
 export function renderIntegratedForecast(){
  return `<section class="integrated" aria-labelledby="integrated-heading"><div class="section-title"><div><div class="eyebrow">Estimaciones actuales / Congreso de los Diputados</div><h2 id="integrated-heading">Escenarios de bloques parlamentarios</h2></div><span class="badge sim">Motor 29N · Simulación</span></div><p class="integrated-intro">Escenarios numéricos construidos por el <b>Motor 29N</b>. Se suman partidos a efectos de análisis; no se predicen acuerdos políticos. El umbral para la mayoría absoluta son <b>176 de 350</b>. No se presupone que exista un acuerdo.</p>
- <div class="toolbar"><label>Hipótesis del modelo<select id="integrated-model"><option value="consenso_privadas">Promedio de institutos privados</option><option value="consenso_todas">Incluyendo CIS</option><option value="calibrada_23j">Calibración retrospectiva 23J</option></select></label></div>
+ <div class="toolbar"><label>Hipótesis del modelo<select id="integrated-model"><option value="principal" selected>Estimación de referencia (principal)</option><option value="consenso_privadas">Variante: consenso de institutos privados</option><option value="consenso_todas">Variante: consenso incluyendo CIS (sin cocina)</option><option value="calibrada_23j">Variante: calibración con el error del 23J</option></select></label></div>
  <p class="muted" id="integrated-meta" role="status">Cargando pronóstico territorial…</p><div class="integrated-blocks" id="integrated-blocks"></div>
  <div class="integrated-actions"><a href="como-estimamos.html">Cómo se elabora la estimación →</a><a href="pronostico.html">Informe detallado del motor →</a><a href="#cocina">Entender la cocina electoral →</a><a href="#contexto">Comparar encuestas alrededor de acontecimientos →</a></div>
  <p class="muted integrated-foot">Voto conjunto = suma de estimaciones nacionales. Escaños = mediana de simulaciones conjuntas por provincias; el intervalo 5–95 % y la frecuencia de mayoría reflejan los supuestos del modelo. No predicen pactos políticos. Las frecuencias de simulación dependen de los supuestos estadísticos; no son certezas sobre resultados.</p></section>`;
@@ -23,8 +23,8 @@ export async function bindIntegratedForecast(){
   const forecast=await res.json();
   if(!root.isConnected)return;
   function update(){
-   const model=forecast.variantes?.[modelSelect.value];if(!model){meta.textContent='Esta variante no está disponible';return}
-   meta.textContent='Corte del modelo: '+forecast.corte+' · Escenario electoral: '+forecast.eleccion+' · 176 escaños para mayoría'+(forecast.auditoria_fuentes?' · Fuentes en el modelo: '+forecast.auditoria_fuentes.incluidas_2023_26+' · Prensa sin verificar excluida: '+forecast.auditoria_fuentes.excluidas_prensa_sin_verificar:'');
+   const model=modelSelect.value==='principal'?forecast.principal:forecast.variantes?.[modelSelect.value];if(!model){meta.textContent='Esta variante no está disponible';return}
+   meta.textContent=(modelSelect.value==='principal'?'Estimación de referencia':'Variante del modelo, no es la estimación de referencia')+' · Corte: '+forecast.corte+' · Escenario electoral: '+forecast.eleccion+' · 176 escaños para mayoría'+(forecast.auditoria_fuentes?' · Fuentes en el modelo: '+forecast.auditoria_fuentes.incluidas_2023_26+' · Excluidas por la puerta de calidad: '+(forecast.auditoria_fuentes.excluidas_total??forecast.auditoria_fuentes.excluidas_prensa_sin_verificar):'');
    root.innerHTML=blocks.map(([key,label,parties])=>{
     const b=model.bloques?.[key];if(!b)return '';
     const votes=parties.map(p=>model.partidos?.[p]?.voto?.[0]);const vote=votes.every(Number.isFinite)?num(votes.reduce((a,v)=>a+v,0),1)+' %':'No disponible';
