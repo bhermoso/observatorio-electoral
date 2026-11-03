@@ -328,3 +328,5 @@ table.variants td.ref,table.variants th.ref{background:#eef8df}
 .audit-home .impact-kicker{color:#2f5d22}.audit-small{color:#566b59!important}
 #audit-retro p,#audit-retro p b{color:#566b59}
 .cocina-propia th small,.cocina-propia td small{display:block;font-weight:400;color:var(--muted);font-size:11.5px;line-height:1.35}.cocina-propia tr.ref th,.cocina-propia tr.ref td{background:#eef8df}
+
+.leccion h3{margin:22px 0 6px;font-size:18px}.leccion p,.leccion li{line-height:1.7;max-width:880px}.leccion tr.ref th,.leccion tr.ref td{background:#eef8df}
