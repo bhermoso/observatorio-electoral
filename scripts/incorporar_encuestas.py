@@ -8,7 +8,7 @@ import argparse
 import json
 from datetime import datetime,timezone
 from pathlib import Path
-from scripts.auditar_encuestas import audit
+try:\n    from scripts.auditar_encuestas import audit\nexcept ModuleNotFoundError:\n    from auditar_encuestas import audit
 ROOT=Path(__file__).resolve().parents[1]
 INPUT=ROOT/"data/ingesta/validadas.json"
 POLLS=ROOT/"data/polls.json"
