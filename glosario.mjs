@@ -51,7 +51,7 @@ export const TERMINOS = [
  ["rho_bloque","Regula cuánta variación aleatoria del error de las casas se comparte entre partidos de un bloque. En el Motor 29N se usa 0,5 como supuesto; cambiarlo altera la dispersión conjunta de escaños y las frecuencias de mayoría."],
  ["placebo","En evaluación electoral, es una prueba de control realizada en una fecha sin el acontecimiento investigado. Sirve para saber si el método detecta cambios aparentes incluso cuando no hay un suceso que los explique."],
  ["prueba placebo","Se aplica el mismo análisis a fechas de control sin el acontecimiento. Si aparecen saltos parecidos, el cambio observado tras el suceso puede ser ruido normal de encuestas o del modelo."],
- ["pruebas placebo","Comparaciones repetidas en fechas de control sin el acontecimiento. Permiten medir la frecuencia de cambios aparantes y construir un umbral de detección; no prueban que el suceso haya causado nada."],
+ ["pruebas placebo","Comparaciones repetidas en fechas de control sin el acontecimiento. Permiten medir la frecuencia de cambios aparentes y construir un umbral de detección; no prueban que el suceso haya causado nada."],
  ["umbral placebo","Valor de referencia obtenido de cambios en fechas sin acontecimiento. Ejemplo: si el 95 % de los cambios placebo no supera 2 puntos, un salto de 1 punto no destaca del ruido habitual. Superar 2 tampoco demuestra causalidad."],
  ["percentil 95","Valor por debajo del cual queda el 95 % de las observaciones o simulaciones. En las pruebas placebo, el percentil 95 de los cambios absolutos es un umbral de detección, no una probabilidad de causalidad."],
  ["percentil 5","Valor que deja el 5 % inferior de las simulaciones. Junto al percentil 95 delimita el 90 % central de los resultados simulados, siempre condicionado al modelo."],
@@ -104,7 +104,6 @@ export const TERMINOS = [
  ["efecto de casa","Desviación sistemática estimada de una encuestadora respecto a una referencia temporal común. No debe confundirse con una acusación de manipulación."],
  ["diferencia en puntos porcentuales","Resta entre dos porcentajes. Pasar del 25 % al 23 % son −2 puntos porcentuales, no una caída del 2 % relativo."],
  ["puntos porcentuales","Unidad para restar porcentajes: del 30 % al 27 % hay −3 puntos porcentuales. Un cambio relativo sería −10 % respecto a 30."],
- ["pp","Abreviatura de puntos porcentuales. Ejemplo: pasar del 30 % al 28 % son −2 pp, no −2 % del valor inicial."],
  ["voto válido","Voto a una candidatura o voto en blanco; los votos nulos no se cuentan como válidos. El denominador determina cómo se expresan las cuotas de partido."],
  ["voto directo","Respuesta declarada en una pregunta sobre intención de voto antes de determinadas imputaciones o correcciones. Puede cambiar el denominador según se incluyan indecisos y abstencionistas."],
  ["voto estimado por partido","Porcentaje que un instituto o modelo calcula para una candidatura entre votos válidos. No equivale necesariamente a las respuestas directas de los entrevistados."],
@@ -112,8 +111,9 @@ export const TERMINOS = [
 const lookup=new Map(TERMINOS.map(([term,description])=>[term.toLocaleLowerCase('es'),description]));
 const patterns=TERMINOS.map(([term])=>term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).sort((a,b)=>b.length-a.length);
 const regex=new RegExp('(?<![\\p{L}\\p{N}])('+patterns.join('|')+')(?![\\p{L}\\p{N}])','giu');
-const SKIP='a,button,summary,input,select,textarea,script,style,noscript,code,pre,svg,math,nav,[contenteditable],.term-help,.glossary-tooltip,[data-no-glossary]';
+const SKIP='a,button,input,select,textarea,script,style,noscript,code,pre,svg,math,nav,[contenteditable],.term-help,.glossary-tooltip,[data-no-glossary]';
 let tooltip=null,active=null,rafScheduled=false;
+const queuedDecorations=new Set();
 function explanation(s){return lookup.get(s.toLocaleLowerCase('es'))}
 function markText(node){
  if(!node?.parentElement||node.parentElement.closest(SKIP))return;
@@ -164,8 +164,19 @@ function initialise(){
  decorate(document.body);
  const observer=new MutationObserver(records=>{
   const nodes=[];for(const record of records){for(const n of record.addedNodes){if(n.nodeType===1&&n.classList?.contains('glossary-tooltip'))continue;if(n.nodeType===3)nodes.push(n.parentElement);else if(n.nodeType===1)nodes.push(n)}}
-  if(!nodes.length||rafScheduled)return;
-  rafScheduled=true;requestAnimationFrame(()=>{rafScheduled=false;nodes.forEach(n=>{if(n?.isConnected&&!n.closest?.('.term-help')){if(n.nodeType===1)decorate(n);else if(n.parentElement)decorate(n.parentElement)}});if(active&&!active.isConnected)close()});
+  nodes.forEach(n=>queuedDecorations.add(n));
+  if(!queuedDecorations.size||rafScheduled)return;
+  rafScheduled=true;requestAnimationFrame(()=>{
+   rafScheduled=false;
+   const pending=[...queuedDecorations];queuedDecorations.clear();
+   pending.forEach(n=>{
+    if(n?.isConnected&&!n.closest?.('.term-help')){
+     if(n.nodeType===1)decorate(n);
+     else if(n.parentElement)decorate(n.parentElement);
+    }
+   });
+   if(active&&!active.isConnected)close();
+  });
  });
  observer.observe(document.body,{childList:true,subtree:true});
  document.addEventListener('pointerover',event=>{const el=event.target.closest?.('.term-help');if(el&&event.pointerType!=='touch')show(el)});
