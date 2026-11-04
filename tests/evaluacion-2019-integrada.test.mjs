@@ -42,7 +42,7 @@ test('El módulo está integrado en Pronóstico y empaquetado en GitHub Pages',(
  const forecast=fs.readFileSync('pronostico-vista.mjs','utf8');
  const build=fs.readFileSync('scripts/build.mjs','utf8');
  const page=renderPronostico();
- assert.match(page,/renderEvaluacion2019/);
+ assert.match(page,/id="historical-2019-data"/);
  assert.match(forecast,/bindEvaluacion2019\(\)/);
  assert.match(page,/Evaluación histórica de encuestas y recetas/);
  assert.match(page,/id="pronostico-evaluacion"/);
