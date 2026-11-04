@@ -874,3 +874,8 @@ body:not(.dashboard-route) .event-reading .er-levels>li{margin-bottom:12px}
  #pronostico-evaluacion .historical-codes-heading>a{display:inline-block;margin-top:8px}
  #pronostico-evaluacion .historical-codes{padding:12px}
 }
+
+/* Estado de cotejo contra originales recibidos: registros visibles, microdatos privados. */
+#pronostico-evaluacion .historical-codes-original{padding:7px 9px;border-left:3px solid #4a8c62;background:#eff7ee;color:#1e5638;font-size:12px!important;margin:8px 0!important;line-height:1.45}
+#pronostico-evaluacion .historical-codes-study details>p{overflow-wrap:anywhere;line-height:1.5}
+#pronostico-evaluacion .historical-codes-top{color:#294c39}
