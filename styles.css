@@ -895,3 +895,28 @@ body:not(.dashboard-route) .event-reading .er-levels>li{margin-bottom:12px}
 #pronostico-evaluacion .historical-transitions-detail summary{font-size:13px;font-weight:750;color:#236045}
 #pronostico-evaluacion .historical-transitions-caveat{font-size:12px!important;line-height:1.45!important}
 @media(max-width:760px){#pronostico-evaluacion .historical-transitions-heading{align-items:start;flex-direction:column;gap:5px}}
+
+
+/* Contraste documental de encuestadoras: visible sin grandes tarjetas ni falsa clasificación. */
+.pollster-evidence{margin:12px 0 17px;border:1px solid #bfd5c0;border-left:4px solid #3c8361;border-radius:10px;background:#f7fbf6;padding:15px 18px;color:#214331}
+.pollster-evidence-heading{display:flex;justify-content:space-between;align-items:start;gap:12px;margin-bottom:11px}
+.pollster-evidence-heading h2{font-size:18px;line-height:1.25;margin:4px 0 0;color:#193e2d}
+.pollster-evidence .eyebrow{font-size:10px;color:#436c53}
+.pollster-evidence-source{font-size:12px;font-weight:700;color:#1b6041;white-space:nowrap}
+.pollster-evidence-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+.pollster-evidence-facts>div{padding:0 14px;border-right:1px solid #d4e2d2;min-width:0}
+.pollster-evidence-facts>div:first-child{padding-left:0}
+.pollster-evidence-facts>div:last-child{border-right:0;padding-right:0}
+.pollster-evidence-facts b{font-size:14px;color:#1c583d}
+.pollster-evidence-facts p{font-size:12px;line-height:1.45;margin:4px 0 0;color:#3d5849}
+.pollster-evidence-foot{display:flex;gap:12px;justify-content:space-between;border-top:1px solid #d4e2d2;padding-top:9px;margin:11px 0 0;font-size:11px;line-height:1.4;color:#496653}
+.pollster-evidence-foot span:first-child{flex:1}
+.pollster-evidence-foot a{color:#1c6041;font-weight:700}
+@media(max-width:800px){
+  .pollster-evidence{padding:12px}
+  .pollster-evidence-heading,.pollster-evidence-foot{display:block}
+  .pollster-evidence-heading .pollster-evidence-source{display:inline-block;margin-top:7px;white-space:normal}
+  .pollster-evidence-facts{grid-template-columns:1fr}
+  .pollster-evidence-facts>div,.pollster-evidence-facts>div:first-child,.pollster-evidence-facts>div:last-child{padding:8px 0;border-right:0;border-bottom:1px solid #d4e2d2}
+  .pollster-evidence-facts>div:last-child{border-bottom:0}
+}
