@@ -1,0 +1,790 @@
+{
+  "esquema": 1,
+  "fecha_revision": "2026-11-05",
+  "descripcion": "Índice parcial en ampliación de fuentes de datos individuales; incluye publicaciones de varias encuestas, series acumuladas y accesos condicionados. No representa un censo exhaustivo de casas.",
+  "criterios": {
+    "original_auditado": "Microdatos originales recibidos y analizados localmente",
+    "enlace_documentado": "Página oficial anuncia o enlaza microdatos; el contenido original no se ha inspeccionado aquí",
+    "formulario_requerido": "Formulario por estudio necesario",
+    "registro_requerido": "Registro de usuario necesario; no se elude",
+    "microdatos_no_localizados_en_fuentes_verificadas": "Sin microdatos localizados en esta búsqueda; no implica inexistencia",
+    "solicitud_requerida": "Disponible solo previa petición al propietario y autorización de uso; no es descarga abierta."
+  },
+  "precaucion": "El estudio, la fecha de campo, el editor y el contratista deben distinguirse. No mezclar encuestas regionales como nacionales, ni duplicar olas. Licencia de uso pendiente de verificar por archivo. Las fechas de estudios que no indican publicación son orientativas o fin de campo, según nota; no inferir que sean la fecha de publicación.",
+  "fuentes": [
+    {
+      "id": "40db",
+      "nombre": "40dB.",
+      "tipo": "Privada",
+      "ambito": "España y autonomías",
+      "acceso": "Directo",
+      "portal": "https://elpais.com/noticias/barometro-el-pais/",
+      "formatos": "DTA · SAV · XLSX · ZIP"
+    },
+    {
+      "id": "more-in-common",
+      "nombre": "More in Common España",
+      "tipo": "Privada",
+      "ambito": "España",
+      "acceso": "Directo",
+      "portal": "https://moreincommon.es/pulso-electoral.html",
+      "formatos": "ZIP · codebook"
+    },
+    {
+      "id": "cis",
+      "nombre": "CIS",
+      "tipo": "Pública",
+      "ambito": "España y autonomías",
+      "acceso": "Formulario",
+      "portal": "https://www.cis.es/es/estudios/catalogo",
+      "formatos": "ZIP · FID"
+    },
+    {
+      "id": "ceo",
+      "nombre": "Centre d'Estudis d'Opinió",
+      "tipo": "Pública",
+      "ambito": "Cataluña",
+      "acceso": "Directo",
+      "portal": "https://web.gencat.cat/es/generalitat/dades-indicadors/centre-estudis-opinio/microdades",
+      "formatos": "CSV · SAV"
+    },
+    {
+      "id": "icps",
+      "nombre": "ICPS (trabajo de campo GESOP)",
+      "tipo": "Universitaria",
+      "ambito": "Cataluña",
+      "acceso": "Registro",
+      "portal": "https://www.icps.cat/recerca/sondeigs-i-dades/sondeigs/sondeigs-d-opinio-catalunya",
+      "formatos": "Base estadística"
+    },
+    {
+      "id": "sociometro-vasco",
+      "nombre": "Sociómetro Vasco",
+      "tipo": "Pública",
+      "ambito": "País Vasco",
+      "acceso": "Directo",
+      "portal": "https://www.euskadi.eus/sociometros-vascos/web01-s1lehike/es/",
+      "formatos": "CSV · SAV"
+    },
+    {
+      "id": "cemop",
+      "nombre": "CEMOP (Universidad de Murcia)",
+      "tipo": "Universitaria",
+      "ambito": "Murcia",
+      "acceso": "Directo",
+      "portal": "https://www.cemopmurcia.es/estudios/",
+      "formatos": "Microdatos · ficha · cuestionario"
+    },
+    {
+      "id": "gad3",
+      "nombre": "GAD3",
+      "tipo": "Privada",
+      "ambito": "Aragón, Andalucía y series electorales",
+      "acceso": "Directo / bajo solicitud",
+      "portal": "https://www.gad3.com/",
+      "formatos": "XLSX · ficheros por solicitud"
+    }
+  ],
+  "estudios": [
+    {
+      "id": "cis-2021-2026-parquet",
+      "productor": "cis",
+      "fecha": "2026-11-05",
+      "titulo": "Barómetros CIS 2021–2026 armonizados por proyecto externo",
+      "ambito": "España",
+      "pagina": "https://gastiaso.github.io/barometros/",
+      "estado": "enlace_documentado",
+      "archivo_indirecto": true,
+      "derivado": true,
+      "nota": "Compilación de tercero de 64 estudios CIS/264.081 entrevistas en Parquet. No son encuestas nuevas, no multiplicar muestras; verificar licencia y esquema original antes de procesar."
+    },
+    {
+      "id": "cis-2026-11-05",
+      "productor": "cis",
+      "fecha": "2026-11-05",
+      "titulo": "Catálogo y Fichero Integrado de Datos",
+      "ambito": "España",
+      "pagina": "https://www.cis.es/es/estudios/catalogo",
+      "estado": "formulario_requerido",
+      "nota": "Formulario individual para MDxxxx.zip; FID permite extracción integrada de variables."
+    },
+    {
+      "id": "40db-2026-10-09",
+      "productor": "40db",
+      "fecha": "2026-10-09",
+      "titulo": "Barómetro Flash octubre",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2026-10-09/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "original_auditado",
+      "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_08_barometro_flash_descargables.zip",
+      "n": 800
+    },
+    {
+      "id": "40db-2026-10-05",
+      "productor": "40db",
+      "fecha": "2026-10-05",
+      "titulo": "Barómetro Octubre",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2026-10-05/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "original_auditado",
+      "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-barometro/2026_10_barometro_descargables.zip",
+      "n": 2000
+    },
+    {
+      "id": "more-in-common-2026-10-01",
+      "productor": "more-in-common",
+      "fecha": "2026-10-01",
+      "titulo": "Pulso electoral · Octubre 2026",
+      "ambito": "España",
+      "pagina": "https://moreincommon.es/pulso-electoral.html",
+      "estado": "enlace_documentado",
+      "fecha_tipo": "mes",
+      "nota": "Portal oficial anuncia ZIP de microdatos y codebook. URL directa aún no verificada; usar enlace del portal."
+    },
+    {
+      "id": "40db-2026-09-07",
+      "productor": "40db",
+      "fecha": "2026-09-07",
+      "titulo": "Barómetro Septiembre",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2026-09-07/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "cemop-2026-09-01",
+      "productor": "cemop",
+      "fecha": "2026-09-01",
+      "titulo": "Barómetro Murcia verano 2026",
+      "ambito": "Murcia",
+      "pagina": "https://www.cemopmurcia.es/estudios/barometro-region-de-murcia-verano-2026/",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "more-in-common-2026-09-01",
+      "productor": "more-in-common",
+      "fecha": "2026-09-01",
+      "titulo": "Pulso electoral · Septiembre 2026",
+      "ambito": "España",
+      "pagina": "https://moreincommon.es/pulso-electoral.html",
+      "estado": "enlace_documentado",
+      "fecha_tipo": "mes",
+      "nota": "Portal oficial anuncia ZIP de microdatos y codebook. URL directa aún no verificada; usar enlace del portal."
+    },
+    {
+      "id": "40db-2026-07-06",
+      "productor": "40db",
+      "fecha": "2026-07-06",
+      "titulo": "Barómetro Julio",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2026-07-06/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "more-in-common-2026-07-01",
+      "productor": "more-in-common",
+      "fecha": "2026-07-01",
+      "titulo": "Pulso electoral julio",
+      "ambito": "España",
+      "pagina": "https://moreincommon.es/pulso-electoral.html",
+      "estado": "enlace_documentado",
+      "archivo": "https://moreincommon.es/data/microdatos-2026-07.zip",
+      "nota": "Enlace ZIP observado en página oficial; contenido del archivo todavía no auditado."
+    },
+    {
+      "id": "sociometro-vasco-2026-06-15",
+      "productor": "sociometro-vasco",
+      "fecha": "2026-06-15",
+      "titulo": "Sociómetro Vasco 89",
+      "ambito": "País Vasco",
+      "pagina": "https://opendata.euskadi.eus/catalogo/-/informes-estudios/sociometro-89/",
+      "estado": "enlace_documentado",
+      "nota": "Matriz CSV/SAV y ponderador wt documentados; comprobar que la ola incluye voto."
+    },
+    {
+      "id": "40db-2026-06-08",
+      "productor": "40db",
+      "fecha": "2026-06-08",
+      "titulo": "Barómetro Junio",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2026-06-08/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "40db-2026-05-11",
+      "productor": "40db",
+      "fecha": "2026-05-11",
+      "titulo": "Preelectoral Andalucía",
+      "ambito": "Andalucía",
+      "pagina": "https://elpais.com/espana/2026-05-11/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "gad3-2026-05-11",
+      "productor": "gad3",
+      "fecha": "2026-05-11",
+      "titulo": "Barómetro ABC Andalucía mayo 2026",
+      "ambito": "Andalucía",
+      "pagina": "https://www.gad3.com/barometro-abc-estimacion-de-voto-autonomico-en-andalucia-mayo/",
+      "estado": "enlace_documentado",
+      "archivo": "https://www.gad3.com/wp-content/uploads/2026/05/GAD3-Microdatos-ABC-Andalucia-2026.xlsx",
+      "n": 1142,
+      "nota": "XLSX enlazado directamente en web oficial; pendiente comprobar formato interior."
+    },
+    {
+      "id": "40db-2026-05-04",
+      "productor": "40db",
+      "fecha": "2026-05-04",
+      "titulo": "Barómetro Mayo",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2026-05-04/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "more-in-common-2026-05-01",
+      "productor": "more-in-common",
+      "fecha": "2026-05-01",
+      "titulo": "Pulso electoral mayo",
+      "ambito": "España",
+      "pagina": "https://moreincommon.es/pulso-electoral.html",
+      "estado": "enlace_documentado",
+      "archivo": "https://moreincommon.es/data/microdatos-2026-05.zip",
+      "nota": "Enlace ZIP observado en página oficial; contenido del archivo todavía no auditado."
+    },
+    {
+      "id": "sociometro-vasco-2026-04-16",
+      "productor": "sociometro-vasco",
+      "fecha": "2026-04-16",
+      "titulo": "Sociómetro Vasco 88",
+      "ambito": "País Vasco",
+      "pagina": "https://opendata.euskadi.eus/catalogo/-/informes-estudios/sociometro-88/",
+      "estado": "enlace_documentado",
+      "nota": "Matriz CSV/SAV y ponderador wt documentados; comprobar que la ola incluye voto."
+    },
+    {
+      "id": "40db-2026-04-06",
+      "productor": "40db",
+      "fecha": "2026-04-06",
+      "titulo": "Barómetro Abril",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2026-04-06/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "40db-2026-03-09",
+      "productor": "40db",
+      "fecha": "2026-03-09",
+      "titulo": "Preelectoral Castilla y León",
+      "ambito": "Castilla y León",
+      "pagina": "https://elpais.com/espana/2026-03-09/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "gad3-2026-02-08",
+      "productor": "gad3",
+      "fecha": "2026-02-08",
+      "titulo": "Aragón 8F · GAD3 / FORTA / CARTV",
+      "ambito": "Aragón",
+      "pagina": "https://www.gad3.com/rindiendo-cuentas-precision-de-escanos-en-las-elecciones-de-aragon/",
+      "estado": "enlace_documentado",
+      "archivo": "https://www.gad3.com/wp-content/uploads/2026/02/GAD3-FORTA-CARTV-8F-Microdatos.xlsx",
+      "n": 4123,
+      "nota": "Hoja de microdatos original en portal GAD3. No auditada localmente."
+    },
+    {
+      "id": "gad3-2026-01-26",
+      "productor": "gad3",
+      "fecha": "2026-01-26",
+      "titulo": "Estimación autonómica Aragón · HOY Aragón",
+      "ambito": "Aragón",
+      "pagina": "https://www.gad3.com/barometro-hoy-aragon-estimacion-de-voto-autonomico-en-aragon/",
+      "estado": "enlace_documentado",
+      "archivo": "https://www.gad3.com/wp-content/uploads/2026/01/GAD3xHOY-ARAGON-Microdatos-estimacion-de-voto.xlsx",
+      "n": 1207,
+      "nota": "Hoja XLSX enlazada en portal GAD3. No ha sido inspeccionado su contenido ni confirmado que sean filas individuales."
+    },
+    {
+      "id": "40db-2026-01-12",
+      "productor": "40db",
+      "fecha": "2026-01-12",
+      "titulo": "Barómetro Enero",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2026-01-12/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "original_auditado",
+      "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2026/01-barometro/2026_01_barometro_descargables.zip",
+      "n": 2000
+    },
+    {
+      "id": "more-in-common-2025-estudios",
+      "productor": "more-in-common",
+      "fecha": "2025-12-31",
+      "titulo": "Estudios de opinión política y social 2024–2025: bases solicitables",
+      "ambito": "España",
+      "pagina": "https://moreincommon.es/estudios.html",
+      "estado": "solicitud_requerida",
+      "fecha_tipo": "referencia_temporal",
+      "nota": "Microdatos de otras encuestas disponibles bajo solicitud a hola@moreincommon.com. Portfolio, no un único sondeo ni necesariamente electoral."
+    },
+    {
+      "id": "40db-2025-12-15",
+      "productor": "40db",
+      "fecha": "2025-12-15",
+      "titulo": "Preelectoral Extremadura",
+      "ambito": "Extremadura",
+      "pagina": "https://elpais.com/espana/2025-12-15/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "40db-2025-12-09",
+      "productor": "40db",
+      "fecha": "2025-12-09",
+      "titulo": "Barómetro Diciembre",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2025-12-09/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "sociometro-vasco-2025-12-05",
+      "productor": "sociometro-vasco",
+      "fecha": "2025-12-05",
+      "titulo": "Sociómetro Vasco 87",
+      "ambito": "País Vasco",
+      "pagina": "https://opendata.euskadi.eus/catalogo/-/informes-estudios/sociometro-87/",
+      "estado": "enlace_documentado",
+      "nota": "Matriz CSV/SAV y ponderador wt documentados; comprobar que la ola incluye voto."
+    },
+    {
+      "id": "cemop-2025-11-03",
+      "productor": "cemop",
+      "fecha": "2025-11-03",
+      "titulo": "Barómetro Murcia otono 2025",
+      "ambito": "Murcia",
+      "pagina": "https://www.cemopmurcia.es/estudios/barometro-region-de-murcia-otono-2025/",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "icps-2025-10-13",
+      "productor": "icps",
+      "fecha": "2025-10-13",
+      "titulo": "Sondeig d'Opinió Catalunya 2025",
+      "ambito": "Cataluña",
+      "pagina": "https://www.icps.cat/recerca/sondeigs-i-dades/sondeigs/sondeigs-d-opinio-catalunya",
+      "estado": "registro_requerido",
+      "contratista": "GESOP",
+      "n": 2000
+    },
+    {
+      "id": "40db-2025-10-06",
+      "productor": "40db",
+      "fecha": "2025-10-06",
+      "titulo": "Barómetro Octubre",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2025-10-06/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "40db-2025-09-08",
+      "productor": "40db",
+      "fecha": "2025-09-08",
+      "titulo": "Barómetro Septiembre",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2025-09-08/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "cemop-2025-09-01",
+      "productor": "cemop",
+      "fecha": "2025-09-01",
+      "titulo": "Barómetro Murcia verano 2025",
+      "ambito": "Murcia",
+      "pagina": "https://www.cemopmurcia.es/estudios/barometro-region-de-murcia-verano-2025/",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "40db-2025-07-04",
+      "productor": "40db",
+      "fecha": "2025-07-04",
+      "titulo": "Barómetro Julio",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2025-07-04/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "40db-2025-06-02",
+      "productor": "40db",
+      "fecha": "2025-06-02",
+      "titulo": "Barómetro Junio",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2025-06-02/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "40db-2025-04-07",
+      "productor": "40db",
+      "fecha": "2025-04-07",
+      "titulo": "Barómetro Abril",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2025-04-07/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "cemop-2025-03-24",
+      "productor": "cemop",
+      "fecha": "2025-03-24",
+      "titulo": "Barómetro Murcia primavera 2025",
+      "ambito": "Murcia",
+      "pagina": "https://www.cemopmurcia.es/estudios/barometro-region-de-murcia-primavera-2025/",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "40db-2025-03-03",
+      "productor": "40db",
+      "fecha": "2025-03-03",
+      "titulo": "Barómetro Marzo",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2025-03-03/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "40db-2025-01-07",
+      "productor": "40db",
+      "fecha": "2025-01-07",
+      "titulo": "Barómetro Enero",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2025-01-07/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "ceo-2025-01-01",
+      "productor": "ceo",
+      "fecha": "2025-01-01",
+      "titulo": "Microdatos acumulados del Barómetro de Opinión Política",
+      "ambito": "Cataluña",
+      "pagina": "https://web.gencat.cat/es/generalitat/dades-indicadors/centre-estudis-opinio/microdades",
+      "estado": "enlace_documentado",
+      "nota": "Series CSV/SAV desde 2006; no se cuentan como una sola encuesta ni se mezclan métodos."
+    },
+    {
+      "id": "40db-2024-12-09",
+      "productor": "40db",
+      "fecha": "2024-12-09",
+      "titulo": "Barómetro Diciembre",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2024-12-09/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "icps-2024-11-07",
+      "productor": "icps",
+      "fecha": "2024-11-07",
+      "titulo": "Sondeig d'Opinió Catalunya 2024",
+      "ambito": "Cataluña",
+      "pagina": "https://www.icps.cat/recerca/sondeigs-i-dades/sondeigs/sondeigs-d-opinio-catalunya",
+      "estado": "registro_requerido",
+      "contratista": "GESOP",
+      "n": 1200
+    },
+    {
+      "id": "40db-2024-10-08",
+      "productor": "40db",
+      "fecha": "2024-10-08",
+      "titulo": "Barómetro Octubre",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2024-10-08/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "cemop-2024-09-23",
+      "productor": "cemop",
+      "fecha": "2024-09-23",
+      "titulo": "Barómetro Murcia otono 2024",
+      "ambito": "Murcia",
+      "pagina": "https://www.cemopmurcia.es/estudios/barometro-region-de-murcia-otono-2024/",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "40db-2024-09-02",
+      "productor": "40db",
+      "fecha": "2024-09-02",
+      "titulo": "Barómetro Septiembre",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2024-09-02/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "40db-2024-04-15",
+      "productor": "40db",
+      "fecha": "2024-04-15",
+      "titulo": "Preelectoral País Vasco",
+      "ambito": "País Vasco",
+      "pagina": "https://elpais.com/espana/2024-04-15/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "40db-2024-03-11",
+      "productor": "40db",
+      "fecha": "2024-03-11",
+      "titulo": "Barómetro Marzo",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2024-03-11/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-de-marzo-cuestionarios-cruces-y-respuestas.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "cemop-2024-03-05",
+      "productor": "cemop",
+      "fecha": "2024-03-05",
+      "titulo": "Barómetro Murcia primavera 2024",
+      "ambito": "Murcia",
+      "pagina": "https://www.cemopmurcia.es/estudios/barometro-region-de-murcia-primavera-2024/",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "40db-2024-01-15",
+      "productor": "40db",
+      "fecha": "2024-01-15",
+      "titulo": "Barómetro Enero",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2024-01-15/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "40db-2024-01-08",
+      "productor": "40db",
+      "fecha": "2024-01-08",
+      "titulo": "Preelectoral Galicia",
+      "ambito": "Galicia",
+      "pagina": "https://elpais.com/espana/2024-01-08/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "enlace_documentado"
+    },
+    {
+      "id": "icps-2023-12-31",
+      "productor": "icps",
+      "fecha": "2023-12-31",
+      "titulo": "Base integrada ICPS 1991–2023",
+      "ambito": "Cataluña",
+      "pagina": "https://www.icps.cat/recerca/sondeigs-i-dades/basedadesintegrada",
+      "estado": "registro_requerido",
+      "nota": "Serie acumulada; no se cuenta como una ola nueva."
+    },
+    {
+      "id": "40db-2023-07-03",
+      "productor": "40db",
+      "fecha": "2023-07-03",
+      "titulo": "Preelectoral julio 2023",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2023-07-03/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-publicada-este-3-de-julio.html",
+      "estado": "original_auditado",
+      "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2023JulPrelectoral/2023_julio_preelectoral_descargable.zip",
+      "n": 2000,
+      "nota": "Original aportado; URL publicada de referencia a la serie de julio, no necesariamente la página propia de cada ola."
+    },
+    {
+      "id": "cemop-2023-07-01",
+      "productor": "cemop",
+      "fecha": "2023-07-01",
+      "titulo": "Preelectoral generales 23J en Región de Murcia",
+      "ambito": "Murcia",
+      "pagina": "https://www.cemopmurcia.es/estudios/encuesta-preelectoral-elecciones-generales-2023-region-de-murcia/",
+      "estado": "enlace_documentado",
+      "n": 1200,
+      "nota": "Campo del 3 al 13 julio 2023; fecha del catálogo orientativa."
+    },
+    {
+      "id": "40db-2023-06-19",
+      "productor": "40db",
+      "fecha": "2023-06-19",
+      "titulo": "Barómetro junio 2023",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2023-06-19/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-de-junio-cuestionarios-cruces-y-respuestas.html",
+      "estado": "original_auditado",
+      "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2023jun18/2023_05_junio18.zip",
+      "n": 2000,
+      "nota": "Original de la encuesta y ZIP aportado por usuario; respuestas individuales analizadas localmente."
+    },
+    {
+      "id": "40db-2023-06-05",
+      "productor": "40db",
+      "fecha": "2023-06-05",
+      "titulo": "Flash junio 2023",
+      "ambito": "España",
+      "pagina": "https://elpais.com/espana/2023-06-05/consulte-todos-los-datos-internos-de-la-encuesta-flash-de-el-pais-de-junio-cuestionarios-cruces-y-respuestas.html",
+      "estado": "original_auditado",
+      "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2023jun/2023_06_descargables.zip",
+      "n": 800,
+      "nota": "Original de la encuesta y ZIP aportado por usuario; respuestas individuales analizadas localmente."
+    },
+    {
+      "id": "cemop-2023-05-post",
+      "productor": "cemop",
+      "fecha": "2023-06-01",
+      "titulo": "Postelectoral autonómicas 2023, panel",
+      "ambito": "Murcia",
+      "pagina": "https://www.cemopmurcia.es/estudios/encuesta-postelectoral-elecciones-autonomicas-2023/",
+      "estado": "enlace_documentado",
+      "fecha_tipo": "orientativa",
+      "nota": "Panel de entrevistados de la encuesta preelectoral. No contar como muestra independiente; útil para verificar voto real declarado y cambios."
+    },
+    {
+      "id": "40db-2023-05-22",
+      "productor": "40db",
+      "fecha": "2023-05-22",
+      "titulo": "Municipales 2023: Madrid, Barcelona, Valencia, Sevilla, A Coruña y Zaragoza",
+      "ambito": "Seis municipios",
+      "pagina": "https://elpais.com/espana/elecciones-autonomicas/2023-05-22/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-para-las-elecciones-de-madrid-barcelona-valencia-sevilla-a-coruna-y-zaragoza.html",
+      "estado": "enlace_documentado",
+      "nota": "Varias muestras locales en una página documental; NO agregarlas como encuesta autonómica o nacional."
+    },
+    {
+      "id": "40db-2023-05-21",
+      "productor": "40db",
+      "fecha": "2023-05-21",
+      "titulo": "Preelectorales autonómicas Madrid y Comunitat Valenciana",
+      "ambito": "Madrid y Comunitat Valenciana",
+      "pagina": "https://elpais.com/espana/elecciones-autonomicas/2023-05-21/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-de-la-comunidad-de-madrid-y-comunidad-valenciana.html",
+      "estado": "enlace_documentado",
+      "nota": "La página incluye dos sondeos territoriales y descargables; contabilizada como una entrada documental, no necesariamente una única matriz."
+    },
+    {
+      "id": "cemop-2023-05-01",
+      "productor": "cemop",
+      "fecha": "2023-05-01",
+      "titulo": "Preelectoral autonómicas Región de Murcia 2023",
+      "ambito": "Murcia",
+      "pagina": "https://www.cemopmurcia.es/estudios/encuesta-preelectoral-elecciones-autonomicas-2023-region-de-murcia/",
+      "estado": "enlace_documentado",
+      "n": 1200,
+      "nota": "Fecha orientativa del catálogo, no trabajo de campo. Contrastar con mayo 2023."
+    },
+    {
+      "id": "cemop-2023-01-01",
+      "productor": "cemop",
+      "fecha": "2023-01-01",
+      "titulo": "Barómetro Región de Murcia, invierno 2023",
+      "ambito": "Murcia",
+      "pagina": "https://www.cemopmurcia.es/estudios/barometro-region-de-murcia-invierno-2023/",
+      "estado": "enlace_documentado",
+      "n": 820,
+      "nota": "Año de publicación conocido; fecha de catálogo orientativa (01/01), no fecha de campo."
+    },
+    {
+      "id": "gad3-2019-11-10",
+      "productor": "gad3",
+      "fecha": "2019-11-10",
+      "titulo": "Tracking electoral generales 10N de 2019",
+      "ambito": "España",
+      "pagina": "https://www.gad3.com/gad3-ofrece-los-microdatos-del-tracking-de-las-elecciones-del-10n-d51/",
+      "estado": "solicitud_requerida",
+      "n": 28611,
+      "nota": "Microdatos a disposición de investigadores que escriban a madrid@gad3.com; NO descarga pública ni permiso tácito de redistribución."
+    },
+    {
+      "id": "cemop-2019-10-31",
+      "productor": "cemop",
+      "fecha": "2019-10-31",
+      "titulo": "Preelectoral generales 10N de 2019",
+      "ambito": "Murcia",
+      "pagina": "https://www.cemopmurcia.es/estudios/encuesta-preelectoral-generales-10n-2019/",
+      "estado": "enlace_documentado",
+      "n": 820,
+      "fecha_tipo": "fin_de_campo",
+      "nota": "Trabajo de campo 28–31 octubre 2019. Archivos originales descargables desde la universidad. Otra elección para validar."
+    },
+    {
+      "id": "sociometro-vasco-2018-05-18",
+      "productor": "sociometro-vasco",
+      "fecha": "2018-05-18",
+      "titulo": "Sociómetro Vasco 66",
+      "ambito": "País Vasco",
+      "pagina": "https://opendata.euskadi.eus/catalogo/-/informes-estudios/sociometro-66/",
+      "estado": "enlace_documentado",
+      "nota": "Matriz CSV/SAV y ponderador wt documentados; comprobar que la ola incluye voto."
+    },
+    {
+      "id": "sociometro-vasco-2017-07-14",
+      "productor": "sociometro-vasco",
+      "fecha": "2017-07-14",
+      "titulo": "Sociómetro Vasco 64",
+      "ambito": "País Vasco",
+      "pagina": "https://opendata.euskadi.eus/catalogo/-/informes-estudios/sociometro-64/",
+      "estado": "enlace_documentado",
+      "nota": "Matriz CSV/SAV y ponderador wt documentados; comprobar que la ola incluye voto."
+    }
+  ],
+  "casas_pendientes": [
+    {
+      "nombre": "Sigma Dos",
+      "estado": "microdatos_no_localizados_en_fuentes_verificadas"
+    },
+    {
+      "nombre": "IMOP Insights",
+      "estado": "microdatos_no_localizados_en_fuentes_verificadas"
+    },
+    {
+      "nombre": "DYM",
+      "estado": "microdatos_no_localizados_en_fuentes_verificadas"
+    },
+    {
+      "nombre": "SocioMétrica",
+      "estado": "microdatos_no_localizados_en_fuentes_verificadas"
+    },
+    {
+      "nombre": "NC Report",
+      "estado": "microdatos_no_localizados_en_fuentes_verificadas"
+    },
+    {
+      "nombre": "Invymark",
+      "estado": "microdatos_no_localizados_en_fuentes_verificadas"
+    },
+    {
+      "nombre": "Celeste-Tel",
+      "estado": "microdatos_no_localizados_en_fuentes_verificadas"
+    },
+    {
+      "nombre": "Sondaxe",
+      "estado": "microdatos_no_localizados_en_fuentes_verificadas"
+    },
+    {
+      "nombre": "Target Point",
+      "estado": "microdatos_no_localizados_en_fuentes_verificadas"
+    },
+    {
+      "nombre": "GESOP (encuestas comerciales)",
+      "estado": "microdatos_no_localizados_en_fuentes_verificadas"
+    },
+    {
+      "nombre": "Ipsos",
+      "estado": "microdatos_no_localizados_en_fuentes_verificadas"
+    },
+    {
+      "nombre": "Hamalgama Métrica",
+      "estado": "microdatos_no_localizados_en_fuentes_verificadas"
+    },
+    {
+      "nombre": "Electomanía / EM-Analytics",
+      "estado": "microdatos_no_localizados_en_fuentes_verificadas"
+    },
+    {
+      "nombre": "Cluster17",
+      "estado": "microdatos_no_localizados_en_fuentes_verificadas"
+    },
+    {
+      "nombre": "Metroscopia",
+      "estado": "microdatos_no_localizados_en_fuentes_verificadas"
+    },
+    {
+      "nombre": "Ateneo del Dato",
+      "estado": "microdatos_no_localizados_en_fuentes_verificadas"
+    },
+    {
+      "nombre": "Opina 360",
+      "estado": "microdatos_no_localizados_en_fuentes_verificadas"
+    },
+    {
+      "nombre": "Data10",
+      "estado": "microdatos_no_localizados_en_fuentes_verificadas"
+    },
+    {
+      "nombre": "Simple Lógica",
+      "estado": "microdatos_no_localizados_en_fuentes_verificadas"
+    }
+  ]
+}
