@@ -98,7 +98,19 @@ export function analizarAcontecimiento(event,polls,{ventana=30,eventoModelo=null
  conclusiones.push(`Ninguna cifra de esta pantalla es un efecto causal estimado. El pronóstico ${eventoModelo?.aplicado_al_pronostico===false?'no incorpora':'no consta que incorpore'} ningún efecto del suceso.`);
  const faltan=['más encuestas con campo íntegramente posterior','segundas oleadas de los mismos institutos con igual método y escenario','microdatos con recuerdo de voto para analizar transferencias'];
  return {schemaVersion:1,kind:'event-reading',event:{id:event.id,date:event.date,title:event.title},ventana,causalEffectEstimated:false,counts,
-  institutosAntes:prior.size,institutosDespues:later.size,institutosAmbos:both,partidos,bloques,parejas,modelo:eventoModelo,conclusiones,faltan};
+  institutosAntes:prior.size,institutosDespues:later.size,institutosAmbos:both,
+  fichasPosteriores:[...later.values()].map(p=>({
+   id:p.id,institute:p.institute,fieldStart:p.fieldStart,fieldEnd:p.fieldEnd,published:p.published,
+   sample:p.sample,scope:p.scope,universe:p.universe,mode:p.mode,scenario:p.scenario,source:p.source,
+   values:p.values,
+   anterior:prior.has(p.institute)?{id:prior.get(p.institute).id,fieldStart:prior.get(p.institute).fieldStart,
+    fieldEnd:prior.get(p.institute).fieldEnd,published:prior.get(p.institute).published,
+    sample:prior.get(p.institute).sample,source:prior.get(p.institute).source,
+    values:prior.get(p.institute).values,scenario:prior.get(p.institute).scenario}:null,
+   comparabilidad:prior.has(p.institute)?comparabilidad(prior.get(p.institute),p):null
+  })),
+  estudiosSolapados:records.filter(p=>p.relation==='overlap').map(p=>({id:p.id,institute:p.institute,fieldStart:p.fieldStart,fieldEnd:p.fieldEnd,published:p.published,source:p.source})),
+  partidos,bloques,parejas,modelo:eventoModelo,conclusiones,faltan};
 }
 
 /** Simulación hipotética: desplaza puntos sobre la estimación de referencia y proyecta escaños (ilustrativo). */
@@ -152,6 +164,36 @@ export function resumenImpacto(a){
    aplicado:m.aplicado_al_pronostico===true};
 }
 
+/** Fichas originales: presentar observaciones, no promedios disfrazados de encuestas. */
+export function renderFichasPosteriores(a){
+ const posteriores=a.fichasPosteriores||[];
+ if(!posteriores.length)return '<section class="event-surveys"><h3>Encuestas posteriores identificadas</h3><p class="empty">No consta ninguna encuesta con trabajo de campo íntegramente posterior.</p></section>';
+ const list=posteriores.map(p=>{
+  const prev=p.anterior;
+  const parties=[...new Set([...Object.keys(prev?.values||{}),...Object.keys(p.values||{})])];
+  const rows=parties.map(name=>{
+   const earlier=prev?.values?.[name],later=p.values?.[name];
+   const delta=Number.isFinite(earlier)&&Number.isFinite(later)?later-earlier:null;
+   return `<tr><th scope="row">${h(name)}</th><td>${Number.isFinite(earlier)?f(earlier)+' %':'—'}</td><td>${Number.isFinite(later)?f(later)+' %':'—'}</td><td>${delta==null?'—':sg(delta)+' pp'}</td></tr>`;
+  }).join('');
+  const limited=p.comparabilidad?.nivel!=='alta';
+  const limitations=prev&&limited?`<p class="notice"><b>Comparación limitada:</b> ${h(p.comparabilidad?.motivos?.join('; ')||'faltan metadatos comparables')}. Las variaciones son aritméticas entre dos publicaciones; no miden el efecto del acontecimiento.</p>`:'';
+  return `<article class="event-survey-card"><h4>${h(p.institute)} · publicada ${h(fd(p.published))}</h4>
+   <p><b>Campo posterior:</b> ${h(fd(p.fieldStart))}–${h(fd(p.fieldEnd))} · <b>Muestra:</b> ${p.sample?Number(p.sample).toLocaleString('es-ES'):'no consta'} · <b>Método:</b> ${h(p.mode||'no consta')}</p>
+   <p class="muted"><b>Ámbito:</b> ${h(p.scope||'no consta')} · <b>Universo:</b> ${h(p.universe||'no consta')}</p>
+   <p class="muted"><b>Escenario electoral:</b> ${h(p.scenario||'no consta')}</p>
+   <p><a href="${h(p.source)}" target="_blank" rel="noopener noreferrer">Consultar publicación original de ${h(p.institute)} ↗</a> · ID: <code>${h(p.id)}</code></p>
+   ${prev?`<p><b>Referencia anterior de la misma casa:</b> campo ${h(fd(prev.fieldStart))}–${h(fd(prev.fieldEnd))}, publicada ${h(fd(prev.published))}, n=${prev.sample?Number(prev.sample).toLocaleString('es-ES'):'—'} · <a href="${h(prev.source)}" target="_blank" rel="noopener noreferrer">ver original anterior ↗</a></p>`:'<p>No consta una oleada anterior de la misma casa dentro de la ventana.</p>'}
+   <div class="table-wrap"><table><caption>${prev?'Valores originales de ambas encuestas: sin imputaciones ni agrupaciones entre etiquetas.':'Cifras originales de la encuesta posterior.'}</caption>
+   <thead><tr><th scope="col">Candidatura publicada</th><th scope="col">Anterior</th><th scope="col">Posterior</th><th scope="col">Diferencia</th></tr></thead><tbody>${rows}</tbody></table></div>
+   ${limitations}
+  </article>`;
+ }).join('');
+ const overlap=a.estudiosSolapados||[];
+ const note=overlap.length?`<p class="muted"><b>Encuestas que incluyen el 28 de octubre y NO son plenamente posteriores:</b> ${overlap.map(p=>`<a href="${h(p.source)}" target="_blank" rel="noopener noreferrer">${h(p.institute)} (${h(fd(p.fieldStart))}–${h(fd(p.fieldEnd))})</a>`).join('; ')}.</p>`:'';
+ return `<section class="event-surveys" aria-labelledby="event-surveys-title"><h3 id="event-surveys-title">La evidencia: encuestas posteriores, con sus cifras originales</h3><p class="muted">Primera oleada con campo posterior de cada instituto, dentro de la ventana. Las etiquetas se conservan exactamente como se publicaron. Los huecos no equivalen a cero.</p>${list}${note}</section>`;
+}
+
 export function renderLectura(a,event){
  const m=a.modelo;
  const resumen=resumenImpacto(a);
@@ -171,7 +213,7 @@ export function renderLectura(a,event){
  const ms=m?.modelo_salto||{};
  const stat=m?`<div class="table-wrap"><table><caption>Motor 29N, entradas del pronóstico (incluye registros de terceros). Salto = cambio del estado latente entre el día anterior y el del suceso.</caption><thead><tr><th>Partido</th><th>Pares por casa (media)</th><th>Salto inmediato ± error típico</th><th>Cambio a 7 días</th><th>Umbral placebo (p95)</th></tr></thead><tbody>${['PP','PSOE','VOX','SUMAR'].map(p=>{const mp=m.media_pares?.[p],x=ms[p];return `<tr><th scope="row">${h(p)}</th><td>${mp?sg(mp.cambio)+' pp (n='+mp.n+')':'—'}</td><td>${x?.h0?sg(x.h0.cambio)+' ± '+f(x.h0.sd):'—'}</td><td>${x?.h7?sg(x.h7.cambio)+' ± '+f(x.h7.sd):'<small>sin datos tras 7 días</small>'}</td><td>${m.umbral_placebo?.[p]!=null?'±'+f(m.umbral_placebo[p]):'—'}</td></tr>`;}).join('')}</tbody></table></div><p class="muted">${h(m.nota||'')} Regla: ${h(m.regla_solape||'')}. Con una sola encuesta posterior el error típico es grande y el salto depende de esa encuesta.</p>`:'<p class="empty">La salida del Motor 29N no incluye el análisis de este acontecimiento.</p>';
  return `<section class="panel event-reading" aria-labelledby="er-h"><span class="eyebrow">Lectura principal</span><h2 id="er-h">${h(event.title)} · ${h(fd(event.date))}</h2>
- ${resumenHTML}<ol class="er-levels">
+ ${resumenHTML}${renderFichasPosteriores(a)}<ol class="er-levels">
  <li><h3>1. Hecho y cronología</h3><p>${h(event.summary)}</p><p class="muted">Fuentes: ${sources}. Revisado el ${h(fd(event.verified))}.</p>
   <div class="event-evidence-kpis"><div><span>Campo anterior</span><strong>${a.counts.before}</strong></div><div><span>Incluyen el día del suceso</span><strong>${a.counts.overlap}</strong></div><div><span>Campo íntegramente posterior</span><strong>${a.counts.after}</strong></div></div><p class="muted">Ventana de ${a.ventana} días a cada lado, recalculada con el archivo actual. Las encuestas que entrevistan el mismo día del suceso se excluyen de la comparación.</p></li>
  <li><h3>2. Cambios observados</h3><p class="muted">Última encuesta de cada instituto antes del suceso frente a la primera posterior. «Mismo instituto» compara solo casas con oleadas a ambos lados.</p><div class="table-wrap"><table><thead><tr><th>Partido</th><th>Media anterior</th><th>Media posterior</th><th>Diferencia</th><th>Mismo instituto</th><th>Comparabilidad</th></tr></thead><tbody>${pt}</tbody></table></div>
