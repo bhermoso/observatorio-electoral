@@ -9,14 +9,15 @@ const statuses={
  original_auditado:'Original auditado',
  enlace_documentado:'Microdatos documentados',
  registro_requerido:'Requiere registro',
- formulario_requerido:'Requiere formulario'
+ formulario_requerido:'Requiere formulario',
+ solicitud_requerida:'Bajo solicitud'
 };
 export function renderCatalogoMicrodatos(){
  return `<section class="archivo-md" id="archivo-microdatos" aria-labelledby="archivo-md-title">
  <div class="archivo-md-head"><div>
  <span class="eyebrow">Fuentes originales · transparencia y trazabilidad</span>
- <h2 id="archivo-md-title">Archivo de microdatos electorales: todas las casas, todos los periodos</h2>
- <p>Buscamos entrevistas individuales anonimizadas, no solo PDFs o tablas de cruces. Cada registro distingue quién hizo el campo, quién publica, dónde se puede acceder y qué hemos comprobado.</p></div>
+ <h2 id="archivo-md-title">Archivo de microdatos electorales: fuentes y estudios en ampliación</h2>
+ <p>Buscamos entrevistas individuales anonimizadas, no solo PDFs o tablas de cruces. Cada registro identifica el productor, el ámbito, el acceso y el nivel de comprobación. No es todavía un inventario exhaustivo.</p></div>
  <a href="${SOURCE}" download>Descargar catálogo JSON ↓</a></div>
  <div id="archivo-md-datos" aria-live="polite">Cargando catálogo de microdatos…</div>
  </section>`;
@@ -32,7 +33,7 @@ export async function bindCatalogoMicrodatos(){
   if(d.esquema!==1||!Array.isArray(d.fuentes)||!Array.isArray(d.estudios))throw Error('Formato de catálogo inválido');
   const count=s=>d.estudios.filter(x=>x.productor===s).length;
   root.innerHTML=`
-   <p class="archivo-md-metrics"><strong>${d.fuentes.length} repositorios</strong> con documentación individual · <strong>${d.estudios.length} entradas catalogadas</strong> (incluidas series acumuladas y portales) · <strong>${d.estudios.filter(x=>x.estado==='original_auditado').length} originales auditados</strong> · <strong>${d.casas_pendientes.length} casas</strong> a investigar</p>
+   <p class="archivo-md-metrics"><strong>${d.fuentes.length} repositorios</strong> con vías de acceso a datos individuales · <strong>${d.estudios.length} entradas documentales</strong> (incluidas series acumuladas, portales y varias encuestas por página) · <strong>${d.estudios.filter(x=>x.estado==='original_auditado').length} originales auditados</strong> · <strong>${d.casas_pendientes.length} casas</strong> a investigar</p>
    <div class="archivo-md-providers">${d.fuentes.map(f=>`<div><b>${h(f.nombre)}</b><small>${h(f.ambito)} · ${h(f.acceso)}</small><small>${count(f.id)} entradas · ${h(f.formatos)}</small><a href="${h(f.portal)}" target="_blank" rel="noopener noreferrer">Fuente oficial ↗</a></div>`).join('')}</div>
    <div class="archivo-md-controls">
      <label>Fuente<select id="archivo-md-source"><option value="todos">Todas las fuentes</option>${d.fuentes.map(f=>`<option value="${h(f.id)}">${h(f.nombre)}</option>`).join('')}</select></label>
