@@ -15,6 +15,19 @@ Los enlaces exactos a los ZIP están en `data/microdatos/fuentes-40db.json`. El 
 
 No se suben respuestas individuales a GitHub o GitHub Pages. Las condiciones de acceso de una publicación **no equivalen** a una licencia abierta de redistribución. Mantener fuente, atribución y restricciones del titular.
 
+## 1 bis. Contraste histórico publicado por Llaneras y Andrino (19/10/2026)
+
+Fuente: [¿Qué encuestas aciertan más? Compara los errores y los sesgos de cada encuestadora](https://elpais.com/espana/elecciones-generales/2026-10-18/que-encuestas-aciertan-mas-compara-los-errores-y-los-sesgos-de-cada-encuestadora.html), EL PAÍS, Kiko Llaneras y Borja Andrino, publicado el 19 de octubre de 2026.
+
+- El análisis utiliza **44 elecciones desde 2018** y compara **17 encuestadoras** con al menos cinco citas electorales. Para cada casa, incluye su última encuesta cuyo trabajo de campo terminó entre **5 y 41 días** antes de votar.
+- Según sus resultados, **40dB fue la encuestadora más precisa en las tres generales evaluadas**, pero presentó un error aproximadamente medio al considerar juntas generales, autonómicas y europeas. **GAD3** registró el menor error medio general (aproximadamente 1,5 puntos por partido); siguieron IMOP, Sociométrica y Sigma Dos.
+- El **promedio de EL PAÍS** tuvo error medio similar al de GAD3 y fue más preciso que la encuestadora mediana en las 19 elecciones en que se publicó. Esta regularidad sugiere evaluar una combinación robusta de fuentes; no acredita que se conozca ni replique la cocina individual de 40dB.
+- En el estudio se considera la **publicación de microdatos** como criterio específico de transparencia. No debe confundirse publicación de respuestas individuales con acceso a todas las decisiones internas de estimación.
+- Los autores advierten que diferencias pequeñas no son estadísticamente concluyentes y que su evaluación **no mide** dependencia entre casas (*herding*) ni capacidad de detectar cambios antes del consenso.
+- El artículo define error absoluto medio por partido, con candidaturas de al menos el 2 % y, para las generales, presentadas en más de diez provincias. Mide también sesgo agregado entre bloques, con categorías y exclusiones explícitas. Estas decisiones deben reproducirse como **una evaluación de referencia documentada**, sin confundirla con otros denominadores o métricas del Motor 29N.
+
+**Criterio para nuestro trabajo:** evaluar por separado generales y otras convocatorias, documentar los horizontes temporales y contrastar la capacidad de la cocina sobre microdatos con un promedio robusto y con la estimación publicada *sin contar dos veces 40dB*. La referencia de Llaneras no es validación propia ni justifica reasignar automáticamente pesos por reputación.
+
 ## 2. Auditoría local, antes de cualquier cocina
 
 Después de descargar manualmente el ZIP desde la fuente:
