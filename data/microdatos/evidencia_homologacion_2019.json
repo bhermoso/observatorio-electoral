@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "updated": "2026-11-04",
-  "status": "DOCUMENTAL_PARCIAL_BLOQUEADA",
-  "type": "registro de evidencias documentales verificadas; no reemplaza un libro de códigos de microdatos",
-  "rationale": "Los cuestionarios recogen códigos de pregunta; los nombres de las variables derivadas en DA/ES y la selección de ponderación necesitan confirmación con libro de códigos y ZIP originales.",
+  "status": "ORIGINALES_COTEJADOS_HOMOLOGACION_ELECTORAL_PARCIAL",
+  "type": "registro de evidencias contrastadas con ZIP originales (ES, DA, diccionarios, cuestionarios); no acredita por sí solo validación predictiva",
+  "rationale": "Recibidos y cotejados MD3242.zip y MD3263.zip. El contenido de las variables, sus posiciones y la ponderación nacional están verificados; quedan pendientes la homologación electoral de alianzas, reglas de imputación y validación predictiva.",
   "studies": {
     "3242": {
       "election": "2019-04-28",
@@ -21,23 +21,26 @@
         },
         {
           "field": "ponderación",
-          "value": "La ficha prescribe coeficientes de ponderación nacionales para el conjunto; falta verificar la variable concreta del archivo de microdatos",
+          "value": "Ficha técnica exige ponderación nacional; ES3242 confirma PESO (columnas 214–220), PESOCCAA autonómico y ejecución WEIGHT BY PESO.",
           "source": "https://www.cis.es/documents/20117/1556851/FT3242pdf.pdf"
         }
       ],
       "data_aggregates": "data/microdatos/diagnostico_2019_original.json",
-      "variables_from_aggregates_not_confirmed": {
+      "unresolved": [
+        "Definir el mapa completo de candidaturas provinciales de abril de 2019; la etiqueta 'otras' agrupa partidos diferentes.",
+        "Reproducir y documentar la regla exacta de recodificación P10 → P10R y VOTOSIMG, incluidos filtros y combinaciones territoriales.",
+        "Revisar universo de voto válido y pérdidas por no respuesta antes de atribuir rendimiento predictivo a una receta.",
+        "Evaluar diseños muestrales e incertidumbre; cotejar validez fuera de la muestra y establecer revisión metodológica independiente."
+      ],
+      "original_zip_sha256": "24cbdbccf119d1174fb6ed5cd3fc7a23aa8303d8244ca5cdf717d27399f08bbc",
+      "original_check_ref": "data/microdatos/cotejo_originales_2019.json",
+      "variables_verified_in_original_ES": {
         "intention": "P10R",
         "combined_vote_sympathy": "VOTOSIMG",
         "weight": "PESO",
         "recall": "RECUERDO",
         "participation": "P12"
-      },
-      "unresolved": [
-        "Revisar el cuestionario y libro de códigos originales del estudio 3242, incluidos códigos y filtros",
-        "Vincular P10R, VOTOSIMG, PESO, RECUERDO y P12 a variables documentadas",
-        "Homologar todas las candidaturas provinciales del 28-A y el voto válido"
-      ]
+      }
     },
     "3263": {
       "election": "2019-11-10",
@@ -47,7 +50,7 @@
       "verified": [
         {
           "field": "participación declarada",
-          "value": "P.8: intención de acudir a votar; no es una probabilidad individual calibrada",
+          "value": "P.8: intención de ir a votar; P11: escala 0–10 de probabilidad declarada de votar, variables distintas, ambas documentadas en código original.",
           "source": "https://www.cis.es/documents/20117/1557011/cues3263.pdf",
           "page": 3
         },
@@ -65,7 +68,7 @@
         },
         {
           "field": "recuerdo de voto",
-          "value": "P.17: recuerdo de participación y voto del 28-A; todavía falta revisar la codificación derivada",
+          "value": "P.17 pregunta participación anterior; P.17a recoge recuerdo de voto de abril de 2019. ES3263 identifica RECUERDO como variable recodificada.",
           "source": "https://www.cis.es/documents/20117/1557011/cues3263.pdf",
           "page": 5
         },
@@ -95,26 +98,29 @@
         "06": "En Comú Podem"
       },
       "data_aggregates": "data/microdatos/diagnostico_2019_original.json",
-      "variables_from_aggregates_not_confirmed": {
+      "unresolved": [
+        "Homologar por territorio Unidas Podemos, En Comú Podem, En Común-Unidas Podemos, Más País, Más País-Chunta y Més Compromís sin fusionarlos con Sumar.",
+        "Documentar la regla exacta de recodificación P9 → P9R y VOTOSIMG, incluidos filtros y traslado de códigos territoriales.",
+        "Revisar universo de voto válido y tratamiento de no respuesta antes de evaluar una receta general.",
+        "Evaluar diseños muestrales e incertidumbre; cotejar validez fuera de la muestra y establecer revisión metodológica independiente."
+      ],
+      "original_zip_sha256": "efe93eeb74047a677d2cd4c39be0fa5e340c5f7db4ec651fc4e4a6f3bcc3532c",
+      "original_check_ref": "data/microdatos/cotejo_originales_2019.json",
+      "variables_verified_in_original_ES": {
         "intention": "P9R",
         "combined_vote_sympathy": "VOTOSIMG",
         "weight": "PESO",
         "recall": "RECUERDO",
         "participation": "P11"
-      },
-      "unresolved": [
-        "Comprobar la recodificación P.9→P9R en el libro de códigos del ZIP original",
-        "Verificar la creación de VOTOSIMG y los filtros derivados",
-        "Resolver la discrepancia entre pregunta P.8 y variable P11 etiquetada 'participación' en los agregados",
-        "Confirmar PESO nacional y universo para inferencia electoral",
-        "Homologar coaliciones territoriales y denominador de voto válido contra escrutinio del 10-N"
-      ]
+      }
     }
   },
   "restrictions": [
-    "Los códigos 94 (indecisión), 98 (no sabe) y 99 (no contesta) no son equivalentes ni se imputan juntos por defecto",
-    "La pregunta P.9 y la variable recodificada P9R requieren un puente documentado; equivalencia no demostrada",
-    "La ficha técnica y los cuestionarios no sustituyen al libro de códigos de un archivo de microdatos",
-    "Sin validación de ambos diccionarios, filtros y candidaturas, homologación completa = falso y ninguna receta puede promocionarse al Motor 29N"
+    "Los códigos 94 (indecisión), 98 (no sabe) y 99 (no contesta) son categorías distintas.",
+    "Se han verificado las variables y posiciones de ES y diccionarios; las reglas derivadas de P10R/P9R y VOTOSIMG requieren auditoría antes de atribuir cambios electorales.",
+    "El PESO nacional se utiliza para los agregados; PESOCCAA sirve para análisis autonómico y no se intercambia con él.",
+    "El RECUERDO de 3242 refiere a 2016 y el de 3263 a abril de 2019; no es la misma base electoral.",
+    "No trasladar etiquetas territoriales ni agrupar automáticamente alianzas, Unidas Podemos, Más País y Sumar.",
+    "No presentar esta evidencia como prueba prospectiva de cocina ni introducir ajustes en el Motor 29N."
   ]
 }

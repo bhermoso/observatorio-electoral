@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-11-04",
+  "status": "ZIP_ORIGINALES_Y_AGREGADOS_COTEJADOS",
+  "privacy": "No se publican ZIP, ficheros DA, SAV ni respuestas individuales. Solo sumas y metadatos verificables.",
+  "source": "Archivos MD3242.zip y MD3263.zip aportados directamente en conversación; no se copian al repositorio.",
+  "comparison": "Se cotejan SHA-256, n, Σ PESO, Kish, principales recuentos y etiquetas/posiciones de sintaxis ES frente a data/microdatos/diagnostico_2019_original.json.",
+  "studies": {
+    "3242": {
+      "archive_sha256": "24cbdbccf119d1174fb6ed5cd3fc7a23aa8303d8244ca5cdf717d27399f08bbc",
+      "original_files": {
+        "DA3242": {
+          "sha256": "3c96f32a2ae0f5170370eff28279cd2b9952e9abc9f1ee0fd762c5cfcbf9e174",
+          "size_bytes": 4113276
+        },
+        "ES3242": {
+          "sha256": "c6613e64f766d2c3389727a9e3c7251bb780e90f0ff175a70facf53f06c5b7a0"
+        },
+        "codigo3242.pdf": {
+          "sha256": "231be74989ad343c8d26da1510ec57040e3d5266f90367ba69c6fc363d024181"
+        }
+      },
+      "n": 16194,
+      "weighted_n": 16193.9455,
+      "kish_n": 11435.6,
+      "variables": {
+        "P10R": [
+          225,
+          226
+        ],
+        "VOTOSIMG": [
+          229,
+          230
+        ],
+        "RECUERDO": [
+          233,
+          234
+        ],
+        "PESO": [
+          214,
+          220
+        ],
+        "PESOCCAA": [
+          246,
+          252
+        ],
+        "P12": [
+          86,
+          87
+        ]
+      },
+      "raw_intention": "P10",
+      "raw_sympathy": "P10A",
+      "recode_sympathy": "P10AR",
+      "turnout_question": "P9",
+      "turnout_probability": "P12",
+      "prior_election_recall": "2016-06-26",
+      "count_checks": {
+        "PP": 1498,
+        "PSOE": 3003,
+        "VOX": 624,
+        "CIUDADANOS": 1104,
+        "UNIDAS_PODEMOS": 855,
+        "INDECISION": 4202,
+        "NO_SABE": 724,
+        "NO_CONTESTA": 1296,
+        "BLANCO": 356,
+        "NULO": 125
+      },
+      "matched_existing_aggregates": true,
+      "rounding_tolerance_weight": 0.02,
+      "confirmed_national_weight": "PESO",
+      "regional_weight": "PESOCCAA",
+      "status": "ORIGINALES_VERIFICADOS_AGREGADOS_COINCIDEN"
+    },
+    "3263": {
+      "archive_sha256": "efe93eeb74047a677d2cd4c39be0fa5e340c5f7db4ec651fc4e4a6f3bcc3532c",
+      "original_files": {
+        "DA3263": {
+          "sha256": "b6cdf84fae41f81b108b720618d5491fe4ae98f46c8b509a657fdaf30bafe660",
+          "size_bytes": 5047900
+        },
+        "ES3263": {
+          "sha256": "84d32135b3325f7f729d359661ef10ae6625e56e363b1214eb40bffb3698e008"
+        },
+        "codigo3263.pdf": {
+          "sha256": "6eff7c982a46463a717a8a21b332bc7c6458772741ca7d6179368e6738328791"
+        }
+      },
+      "n": 17650,
+      "weighted_n": 17649.99822,
+      "kish_n": 11747.6,
+      "variables": {
+        "P9R": [
+          252,
+          253
+        ],
+        "VOTOSIMG": [
+          256,
+          257
+        ],
+        "RECUERDO": [
+          268,
+          269
+        ],
+        "PESO": [
+          271,
+          277
+        ],
+        "PESOCCAA": [
+          278,
+          284
+        ],
+        "P11": [
+          79,
+          80
+        ]
+      },
+      "raw_intention": "P9",
+      "raw_sympathy": "P9A",
+      "recode_sympathy": "P9AR",
+      "turnout_question": "P8",
+      "turnout_probability": "P11",
+      "prior_election_recall": "2019-04-28",
+      "count_checks": {
+        "PP": 1823,
+        "PSOE": 3574,
+        "VOX": 726,
+        "CIUDADANOS": 710,
+        "UNIDAS_PODEMOS": 985,
+        "INDECISION": 3620,
+        "NO_SABE": 542,
+        "NO_CONTESTA": 1590,
+        "BLANCO": 266,
+        "NULO": 113
+      },
+      "matched_existing_aggregates": true,
+      "rounding_tolerance_weight": 0.02,
+      "confirmed_national_weight": "PESO",
+      "regional_weight": "PESOCCAA",
+      "status": "ORIGINALES_VERIFICADOS_AGREGADOS_COINCIDEN"
+    }
+  }
+}
