@@ -2,7 +2,8 @@
 // Candidaturas homólogas inequívocas: PSOE, PP, VOX y Ciudadanos.
 // No se imputa el código 98 (N.S.) ni el 99 (N.C.) en esta primera comparación.
 export const PARTIES_2019=['PSOE','PP','VOX','CIUDADANOS'];
-export const CANDIDATE_GROUPS_2019=[...PARTIES_2019,'UNIDAS_PODEMOS','OTRAS_CANDIDATURAS'];
+// El voto válido oficial INCLUYE el blanco; abstención y nulos quedan fuera.
+export const CANDIDATE_GROUPS_2019=[...PARTIES_2019,'UNIDAS_PODEMOS','OTRAS_CANDIDATURAS','BLANCO'];
 export const OFFICIAL_2019={
  '3242':{election:'2019-04-28',valid_votes:26201371,votes:{PSOE:7513142,PP:4373653,VOX:2688092,CIUDADANOS:4155665},source:'https://www.boe.es/diario_boe/txt.php?id=BOE-A-2019-8070'},
  '3263':{election:'2019-11-10',valid_votes:24258228,votes:{PSOE:6792199,PP:5047040,VOX:3656979,CIUDADANOS:1650318},source:'https://boe.es/diario_boe/txt.php?id=BOE-A-2019-17344&lang=es'}};
@@ -34,7 +35,7 @@ export function historicalStudy2019(data,id,method){
   return {party:p,estimated,observed,error_pp:estimated-observed,absolute_error_pp:Math.abs(estimated-observed)};
  });
  return {id,election:official.election,method,rule:METHODS_2019[method],
-  initial_denominator:base,final_denominator:denominator,group_n:g.n,group_weight:g.w,
+  initial_denominator:base,final_denominator:denominator,vote_valid_includes_blank:true,blank_weight:final.BLANCO,group_n:g.n,group_weight:g.w,
   identified_weight:identified,residual_weight:residual,assigned_weight:added,metrics,
   mae:total(metrics.map(m=>m.absolute_error_pp))/metrics.length,official_source:official.source};
 }
@@ -50,5 +51,6 @@ export function retrospective2019(data){
    'Las coaliciones territoriales y el significado preciso de otras candidaturas necesitan homologación adicional.',
    'El estudio de octubre y la elección de noviembre son contextos diferentes al estudio de marzo y elección de abril.',
    'La selección de recetas se ha realizado después de conocer los resultados históricos; estas dos elecciones NO son pruebas prospectivas independientes.',
+   'El denominador estimado incluye candidaturas y voto blanco, como el voto válido oficial; no cuenta voto nulo ni abstención.',
    'Sin errores provinciales, escaños o intervalos de incertidumbre de diseño.']};
 }

@@ -13,6 +13,18 @@ test('Resultados de dos elecciones 2019 conservan cuatro comparaciones precisas'
   assert.ok(r.mae>=0&&r.mae<20);
   assert.ok(Math.abs(r.metrics.reduce((a,p)=>a+p.absolute_error_pp,0)/4-r.mae)<1e-10);
   assert.ok(Math.abs(r.initial_denominator+r.assigned_weight-r.final_denominator)<0.01);
+  assert.equal(r.vote_valid_includes_blank,true);
+  assert.ok(r.blank_weight>0);
+  assert.ok(r.initial_denominator>=data.studies[r.id].intention.BLANCO.w);
+ }
+});
+test('El voto blanco entra en el denominador de voto válido pero no entre los cuatro partidos evaluados',()=>{
+ for(const id of ['3242','3263']){
+  const v=historicalStudy2019(data,id,'exclude');
+  const white=data.studies[id].intention.BLANCO.w;
+  assert.ok(Math.abs(v.blank_weight-white)<0.0001);
+  const estimatedSum=v.metrics.reduce((a,b)=>a+b.estimated,0);
+  assert.ok(estimatedSum<100);
  }
 });
 test('La imputación proporcional completa no cambia proporciones',()=>{

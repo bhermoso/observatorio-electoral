@@ -14,10 +14,10 @@ test('2019 aporta comparaciones calculadas por dos convocatorias y cuatro métod
  assert.equal(r.rows.length,4);
  const baseline=r.rows.find(row=>row.method==='exclude');
  const sympathy=r.rows.find(row=>row.method==='sympathy');
- assert.ok(Math.abs(baseline.studies[0].mae-3.314)<0.002);
- assert.ok(Math.abs(baseline.studies[1].mae-5.41)<0.002);
- assert.ok(Math.abs(sympathy.studies[0].mae-2.952)<0.002);
- assert.ok(Math.abs(sympathy.studies[1].mae-5.773)<0.002);
+ assert.ok(Math.abs(baseline.studies[0].mae-3.323)<0.002);
+ assert.ok(Math.abs(baseline.studies[1].mae-5.278)<0.002);
+ assert.ok(Math.abs(sympathy.studies[0].mae-2.971)<0.002);
+ assert.ok(Math.abs(sympathy.studies[1].mae-5.653)<0.002);
  assert.ok(sympathy.studies[0].mae<baseline.studies[0].mae);
  assert.ok(sympathy.studies[1].mae>baseline.studies[1].mae);
 });
@@ -25,8 +25,9 @@ test('Evaluación visual es verificable y no anuncia receta ganadora',()=>{
  const html=renderResultados2019(data);
  assert.match(html,/Dos elecciones históricas estudiadas/);
  assert.match(html,/0 pruebas prospectivas/);
- for(const v of ['3,31 pp','5,41 pp','2,95 pp','5,77 pp'])assert.ok(html.includes(v),v);
+ for(const v of ['3,32 pp','5,28 pp','2,97 pp','5,65 pp'])assert.ok(html.includes(v),v);
  assert.match(html,/La mejora de abril no se reproduce en noviembre/);
+ assert.match(html,/candidaturas \+ voto blanco/);
  assert.match(html,/no validan prospectivamente ninguna corrección del Motor 29N/);
  assert.match(html,/Indecisión 94: VOTOSIMG identificable/);
  assert.match(html,/Desglosar errores por partido/);

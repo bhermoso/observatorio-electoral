@@ -15,7 +15,7 @@
 1. El Motor 29N consume estimaciones ya publicadas; no lee las entrevistas individuales de encuestadoras privadas.
 2. Los agregados CIS se calcularon a partir del archivo identificado como `MD3582.zip`; los escenarios directos, entre decididos, simpatía y participación difieren en pregunta o denominador, y no son componentes aislados de una receta causal.
 3. La selección de procedimientos con CIS 3411/3415 no mejora la estimación publicada en las dos pruebas documentadas; ambas son de la **misma elección**.
-4. La auditoría temporal del promedio respeta publicación, cortes y veda, pero evalúa **solo una convocatoria (23J)**. Separadamente, el análisis retrospectivo compara cuatro tratamientos de indecisión explícita en los estudios CIS 3242 y 3263: son dos elecciones históricas, **no pruebas prospectivas ni validación del Motor 29N**.
+4. La auditoría temporal del promedio respeta publicación, cortes y veda, pero evalúa **solo una convocatoria (23J)**. Separadamente, el análisis retrospectivo compara cuatro tratamientos de indecisión explícita en los estudios CIS 3242 y 3263, usando como denominador candidaturas y voto en blanco para ser comparable con el voto válido oficial: son dos elecciones históricas, **no pruebas prospectivas ni validación del Motor 29N**.
 5. La base territorial del pronóstico sigue siendo las generales de 2023. Los datos adicionales de europeas de 2024 no están incorporados.
 6. El catálogo oficial del CIS ofrece la búsqueda del estudio 3582, pero no se proporciona un enlace directo a su ficha hasta verificarlo.
 
