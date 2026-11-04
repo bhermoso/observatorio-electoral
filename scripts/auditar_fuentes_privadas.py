@@ -172,9 +172,12 @@ def inspect_sav(data: bytes) -> dict:
     # No se publican respuestas individuales ni categorías de menos de 20 personas.
     if "INTENCION_DE_VOTO" in meta.column_names:
         from collections import Counter
-        values, m2 = pyreadstat.read_sav(
-            str(f), usecols=["INTENCION_DE_VOTO"], output_format="dict"
-        )
+        with tempfile.TemporaryDirectory() as temp_dir:
+            sample_file = Path(temp_dir) / "intencion.sav"
+            sample_file.write_bytes(data)
+            values, m2 = pyreadstat.read_sav(
+                str(sample_file), usecols=["INTENCION_DE_VOTO"], output_format="dict"
+            )
         serie = values["INTENCION_DE_VOTO"]
         labs = m2.variable_value_labels.get("INTENCION_DE_VOTO", {})
         counts = Counter(
