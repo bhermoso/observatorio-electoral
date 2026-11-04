@@ -1,6 +1,6 @@
 # Archivo de microdatos de encuestas españolas
 
-**Actualizado el 5 de noviembre de 2026.** Inventario **parcial y ampliable**: [fuentes y fichas en JSON](../data/microdatos/catalogo-publico.json). Se presenta en las pestañas **Encuestas** y **Cocina**. Contiene **8 fuentes y 62 entradas documentales**, pero no 62 encuestas distintas: algunas entradas agrupan varios estudios o describen repositorios y series acumuladas.
+**Actualizado el 5 de noviembre de 2026.** Inventario **parcial y ampliable**: [fuentes y fichas en JSON](../data/microdatos/catalogo-publico.json). Se presenta en las pestañas **Encuestas** y **Cocina**. Contiene **9 fuentes y 76 entradas documentales**, pero no 62 encuestas distintas: algunas entradas agrupan varios estudios o describen repositorios y series acumuladas.
 
 ## Qué se considera microdato
 
@@ -14,9 +14,10 @@
 | Institución o productor | Acceso | Ámbito | Utilidad |
 |---|---|---|---|
 | 40dB / EL PAÍS | ZIP directo | España, autonómicas y municipales | Continuidad de entrevistas 2023–2026; auditorías reales de seis ZIP ya completadas |
-| GAD3 | XLSX enlazados y algunos ficheros bajo solicitud | Aragón, Andalucía y series históricas | Tres hojas de 2026 documentadas y tracking del 10N de 2019 bajo solicitud |
+| GAD3 | XLSX enlazados y ficheros bajo solicitud | Aragón, Andalucía y series históricas | Tres hojas de 2026 documentadas y tracking del 10N de 2019 bajo solicitud |
+| SocioMétrica / EL ESPAÑOL | SAV enlazados | España | Nueve publicaciones 2024–2025, incluidas series acumulativas y aplicaciones de ajuste por recuerdo |
 | More in Common España | ZIP + codebook | España | Cuatro olas de 2026 anunciadas en el portal; otros trabajos 2024–2025 bajo solicitud |
-| CEMOP (Universidad de Murcia) | Microdatos desde ficha oficial | Murcia | Preelectorales 10N-2019 y 23J-2023, autonómicas 2023, panel posterior, barómetros |
+| CEMOP (Universidad de Murcia) | Microdatos desde ficha oficial | Murcia | Preelectorales 10N-2019 y 23J-2023, autonómicas 2019 y 2023, paneles, barómetros y encuestas nacionales de polarización política |
 | CIS | Formulario y FID | Nacional y autonómico | Serie larga, datos individuales y reconstrucción por estudios |
 | CEO | CSV/SAV | Cataluña | Barómetros y serie histórica |
 | ICPS (con campo GESOP) | Registro de usuario | Cataluña | Sondeos anuales y base acumulada; GESOP no es una muestra extra |
@@ -33,6 +34,8 @@ Fuentes originales destacadas: [GAD3 Aragón 2026](https://www.gad3.com/rindiend
 5. Usar el escrutinio de elecciones históricas como referencia. No ajustar coeficientes con una elección y declarar esa misma elección prueba fuera de muestra.
 6. Publicar **solo agregados** que respeten condiciones de reutilización; mostrar cuándo un resultado está verificado, calculado, inferido o pendiente.
 
-**Prioridad de investigación:** GAD3 Aragón 2026 y Andalucía 2026, CEMOP 10N-2019 y 23J-2023, More in Common 2026, serie 40dB 2024–2025 y luego CEO/ICPS/Sociómetro para contrastes autonómicos. Las empresas comerciales del bloque de pendientes **no se clasifican como carentes de microdatos**: falta localizarlos o solicitar acceso.
+**Embargo:** la encuesta nacional de polarización de CEMOP de 2025 declara los microdatos **embargados hasta enero de 2027**. El catálogo marca esa condición y no la presenta como archivo descargable.
+
+**Prioridad de investigación:** GAD3 Aragón 2026 y Andalucía 2026, SocioMétrica 2024–2025, CEMOP 10N-2019 y 23J-2023, More in Common 2026, serie 40dB 2024–2025 y luego CEO/ICPS/Sociómetro para contrastes autonómicos. Las empresas comerciales del bloque de pendientes **no se clasifican como carentes de microdatos**: falta localizarlos o solicitar acceso.
 
 **Importante:** este catálogo no modifica el pronóstico operativo del Motor 29N ni inserta sus registros como encuestas de intención de voto. Un mismo estudio no puede añadirse por duplicado al aparecer en portal del productor y en el de su contratante.
