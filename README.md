@@ -35,7 +35,7 @@ El workflow `.github/workflows/pages.yml` ejecuta las pruebas y genera `dist`. S
 
 ## Microdatos públicos de 40dB (experimental)
 
-El catálogo incorpora fuentes primarias de enero y octubre de 2026, incluido el archivo ZIP de la encuesta flash del 9 de octubre. Los enlaces, condiciones y límites están en [alta cocina 40dB](docs/alta-cocina-40db.md). La herramienta `scripts/inspeccionar_40db.py` verifica únicamente metadatos y huellas SHA-256 de ZIP descargados localmente, sin abrir entrevistas. Ni los microdatos ni las recetas experimentales se incorporan al pronóstico hasta superar una evaluación fuera de muestra.
+El catálogo incluye los ZIP de tres encuestas 40dB. Tras recibir los originales, **4.800 entrevistas fueron auditadas y tabuladas localmente**, con variables originales, ponderador `ponde`, reconstrucción del voto directo y recetas exploratorias; solo se publican [agregados auditados](data/microdatos/40db-auditoria-2026.json) y documentación en [alta cocina 40dB](docs/alta-cocina-40db.md). La vista de Cocina permite contrastar las cifras y recordar sus límites. La utilidad predictiva no está validada: no se ha incorporado ninguna receta al Motor 29N.
 
 ## Documentación
 
