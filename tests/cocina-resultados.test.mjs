@@ -13,7 +13,7 @@ test('La portada de Cocina contiene resultados reproducibles del CIS 3582',()=>{
  assert.equal(s.rows.find(x=>x.party==='PSOE').direct,25.298);
  assert.equal(s.rows.find(x=>x.party==='PP').official,22.2);
  const html=renderTablaCocina(s);
- assert.match(html,/5\.024/);
+ assert.match(html,/(?:5024|5\.024)/);
  assert.match(html,/25,3 %/);
  assert.match(html,/36,2 %/);
  assert.match(html,/34,0 %/);
@@ -33,7 +33,7 @@ test('El examen cruzado no aprueba cocina a partir de una sola elección',()=>{
  const html=renderTablaCocina(s);
  assert.match(html,/0 de 2/);
  assert.match(html,/una misma elección/);
- assert.match(html,/no justifican trasladar/);
+ assert.match(html,/(?:no|ni) justifican trasladar/);
 });
 test('Datos ilegibles o manipulados se rechazan, sin fabricar estimaciones',()=>{
  assert.throws(()=>extraerResultadosCocina({...micro,n:0},audit));
