@@ -589,3 +589,7 @@ details.panel.panorama-secondary{padding:12px 17px}
  #impact .impact-facts{grid-template-columns:repeat(2,minmax(0,1fr))}
  #impact .forecast-lead-content{grid-template-columns:1fr}
 }
+
+/* La regla general nav{order:3} del breakpoint de 1300 px no debe
+   desplazar las pestañas de Panorama por debajo del resultado. */
+#impact nav.panorama-tabs{order:0;width:100%;justify-content:flex-start;overflow:visible;flex:none}
