@@ -6,15 +6,19 @@ import {renderPronostico} from '../pronostico-vista.mjs';
 
 const evidence=JSON.parse(fs.readFileSync('data/microdatos/evidencia_homologacion_2019.json','utf8'));
 const config=JSON.parse(fs.readFileSync('data/microdatos/homologacion_2019_pendiente.json','utf8'));
+const originals=JSON.parse(fs.readFileSync('data/microdatos/cotejo_originales_2019.json','utf8'));
 
 test('CIS 2019: referencias oficiales comprobadas no equivalen a homologación completa',()=>{
- const a=validarEvidencia2019(evidence,config);
+ const a=validarEvidencia2019(evidence,config,originals);
  assert.equal(a.ready,false);
  assert.equal(a.status,'PARCIAL');
  assert.equal(a.verified,8);
  assert.equal(a.elections.length,2);
  assert.ok(a.elections.every(x=>!x.homologated&&x.missing.length>0&&x.unresolved.length>0));
- assert.equal(evidence.status,'DOCUMENTAL_PARCIAL_BLOQUEADA');
+ assert.equal(evidence.status,'ORIGINALES_COTEJADOS_HOMOLOGACION_ELECTORAL_PARCIAL');
+ assert.ok(a.elections.every(x=>x.original?.matched_existing_aggregates));
+ assert.deepEqual(a.elections.map(x=>x.original?.n),[16194,17650]);
+ assert.deepEqual(a.elections.map(x=>Math.round(x.original.kish_n)),[11436,11748]);
  for(const item of a.elections)for(const proof of item.proof.verified)
   assert.match(proof.source,/^https:\/\/www\.cis\.es\//);
 });
@@ -28,21 +32,36 @@ test('El cuestionario del CIS 3263 distingue indecisión, no respuesta, intenci�
  assert.equal(x.direct_vote_questionnaire_codes['21'],'Unidas Podemos');
  assert.equal(x.direct_vote_questionnaire_codes['50'].includes('no convertir automáticamente'),true);
  assert.ok(x.verified.some(v=>v.field==='participación declarada'&&v.value.includes('P.8')));
- assert.ok(x.unresolved.some(v=>v.includes('P.8')&&v.includes('P11')));
- assert.ok(x.unresolved.some(v=>v.includes('P.9')&&v.includes('P9R')));
- assert.equal(config.studies['3263'].intention,null);
- assert.equal(config.studies['3242'].intention,null);
+ assert.equal(originals.studies['3263'].turnout_question,'P8');
+ assert.equal(originals.studies['3263'].turnout_probability,'P11');
+ assert.equal(originals.studies['3242'].turnout_question,'P9');
+ assert.equal(originals.studies['3242'].turnout_probability,'P12');
+ assert.equal(originals.studies['3242'].prior_election_recall,'2016-06-26');
+ assert.equal(originals.studies['3263'].prior_election_recall,'2019-04-28');
+ assert.ok(x.unresolved.some(v=>v.includes('P9')&&v.includes('P9R')));
+ assert.equal(config.studies['3263'].intention,'P9R');
+ assert.equal(config.studies['3242'].intention,'P10R');
+ assert.equal(config.studies['3242'].weight,'PESO');
+ assert.equal(config.studies['3263'].participation,'P11');
+ assert.equal(config.studies['3242'].codes.INDECISION[0],94);
+ assert.equal(config.studies['3263'].codes.NO_SABE[0],98);
+ assert.equal(config.studies['3242'].codes.OTRAS_CANDIDATURAS,null);
+ assert.equal(config.studies['3263'].codes.MAS_PAIS,null);
 });
 test('Evaluación muestra evidencia y límites, sin convertirla en validación del Motor',()=>{
- const checked=validarEvidencia2019(evidence,config),html=renderEstadoHomologacion2019(checked);
+ const checked=validarEvidencia2019(evidence,config,originals),html=renderEstadoHomologacion2019(checked);
  assert.match(html,/0 de 2 estudios habilitados/);
+ assert.match(html,/2 de 2 ZIP originales cotejados/);
+ assert.match(html,/16\.194 entrevistas/);
+ assert.match(html,/17\.650 entrevistas/);
+ assert.match(html,/PESOCCAA/);
  assert.match(html,/Pendiente de homologación completa/g);
  assert.match(html,/CIS 3242/);
  assert.match(html,/CIS 3263/);
  assert.match(html,/P\.9/);
- assert.match(html,/libro de códigos/);
+ assert.match(html,/sintaxis y diccionario originales/);
  assert.match(html,/Fuente CIS/);
- assert.match(html,/no se altera la receta/);
+ assert.match(html,/no se altera el Motor/);
  assert.match(renderHomologacion2019(),/id="historical-codes-data"/);
  const page=renderPronostico();
  assert.match(page,/id="pronostico-homologacion"/);
@@ -57,5 +76,8 @@ test('No se inventan códigos sin soporte documental',()=>{
  assert.throws(()=>validarEvidencia2019(evidence,{}),/Falta contrato/);
  const modified=structuredClone(evidence);
  modified.studies['3263'].verified[0].source='https://example.com/inventado';
- assert.throws(()=>validarEvidencia2019(modified,config),/fuente oficial/);
+ assert.throws(()=>validarEvidencia2019(modified,config,originals),/fuente oficial/);
+ const damaged=structuredClone(originals);
+ damaged.studies['3263'].archive_sha256='0'.repeat(64);
+ assert.throws(()=>validarEvidencia2019(evidence,config,damaged),/No se confirma el ZIP original/);
 });

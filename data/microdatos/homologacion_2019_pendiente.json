@@ -4,54 +4,104 @@
   "studies": {
     "3242": {
       "election": "2019-04-28",
-      "weight": null,
-      "intention": null,
-      "combined_vote_sympathy": null,
-      "recall": null,
-      "participation": null,
+      "weight": "PESO",
+      "intention": "P10R",
+      "combined_vote_sympathy": "VOTOSIMG",
+      "recall": "RECUERDO",
+      "participation": "P12",
       "universe_filter": null,
       "codes": {
-        "PSOE": null,
-        "PP": null,
-        "VOX": null,
-        "UNIDAS_PODEMOS": null,
-        "CIUDADANOS": null,
+        "PSOE": [
+          2
+        ],
+        "PP": [
+          1
+        ],
+        "VOX": [
+          18
+        ],
+        "UNIDAS_PODEMOS": [
+          3
+        ],
+        "CIUDADANOS": [
+          4
+        ],
         "OTRAS_CANDIDATURAS": null,
-        "INDECISION": null,
-        "NO_CONTESTA": null,
-        "ABSTENCION": null,
-        "BLANCO": null,
-        "NULO": null
+        "INDECISION": [
+          94
+        ],
+        "NO_CONTESTA": [
+          99
+        ],
+        "ABSTENCION": [
+          97
+        ],
+        "BLANCO": [
+          96
+        ],
+        "NULO": [
+          77
+        ],
+        "NO_SABE": [
+          98
+        ]
       },
-      "result_vote_denominator": null,
+      "result_vote_denominator": "voto_válido_oficial_incluye_blancos_excluye_nulos_y_abstención",
       "reviewed_by": null,
-      "review_date": null
+      "review_date": null,
+      "code_source": "ES3242 + codigo3242.pdf contenidos en MD3242.zip, cotejados contra DA3242",
+      "source_archive_sha256": "24cbdbccf119d1174fb6ed5cd3fc7a23aa8303d8244ca5cdf717d27399f08bbc"
     },
     "3263": {
       "election": "2019-11-10",
-      "weight": null,
-      "intention": null,
-      "combined_vote_sympathy": null,
-      "recall": null,
-      "participation": null,
+      "weight": "PESO",
+      "intention": "P9R",
+      "combined_vote_sympathy": "VOTOSIMG",
+      "recall": "RECUERDO",
+      "participation": "P11",
       "universe_filter": null,
       "codes": {
-        "PSOE": null,
-        "PP": null,
-        "VOX": null,
-        "UNIDAS_PODEMOS": null,
-        "CIUDADANOS": null,
+        "PSOE": [
+          2
+        ],
+        "PP": [
+          1
+        ],
+        "VOX": [
+          18
+        ],
+        "UNIDAS_PODEMOS": [
+          21
+        ],
+        "CIUDADANOS": [
+          4
+        ],
         "MAS_PAIS": null,
         "OTRAS_CANDIDATURAS": null,
-        "INDECISION": null,
-        "NO_CONTESTA": null,
-        "ABSTENCION": null,
-        "BLANCO": null,
-        "NULO": null
+        "INDECISION": [
+          94
+        ],
+        "NO_CONTESTA": [
+          99
+        ],
+        "ABSTENCION": [
+          97
+        ],
+        "BLANCO": [
+          96
+        ],
+        "NULO": [
+          77
+        ],
+        "NO_SABE": [
+          98
+        ]
       },
-      "result_vote_denominator": null,
+      "result_vote_denominator": "voto_válido_oficial_incluye_blancos_excluye_nulos_y_abstención",
       "reviewed_by": null,
-      "review_date": null
+      "review_date": null,
+      "code_source": "ES3263 + codigo3263.pdf contenidos en MD3263.zip, cotejados contra DA3263",
+      "source_archive_sha256": "efe93eeb74047a677d2cd4c39be0fa5e340c5f7db4ec651fc4e4a6f3bcc3532c"
     }
   },
   "constraints": [
