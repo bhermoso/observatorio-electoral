@@ -17,7 +17,7 @@ test('Catálogo inicial identifica nueve productores y 76 entradas sin duplicado
 });
 test('El catálogo conserva área, originales, estado y formatos sin anunciar cifras inexistentes',()=>{
  const ids=new Set(d.fuentes.map(x=>x.id));
- const estados=new Set(['original_auditado','enlace_documentado','formulario_requerido','registro_requerido','solicitud_requerida','embargado']);
+ const estados=new Set(['original_auditado','enlace_documentado','formulario_requerido','registro_requerido','solicitud_requerida','embargado','estructura_sav_verificada']);
  for(const s of d.estudios){
   assert.ok(ids.has(s.productor),s.id+' carece de productor');
   assert.ok(estados.has(s.estado),s.id+' carece de estado reconocido');
