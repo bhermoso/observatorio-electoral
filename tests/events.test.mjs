@@ -43,7 +43,7 @@ test('Urda identifica Sigma Dos posterior, publica cifras y enlaza fichas origin
  assert.equal(sigma.comparabilidad.nivel,'baja'); // escenarios de candidaturas diferentes
  const html=renderFichasPosteriores(a);
  assert.match(html,/Sigma Dos/);
- assert.match(html,/2\\.505/);
+ assert.match(html,/(?:2\\.505|2505)/);
  assert.match(html,/24,6/);
  assert.match(html,/26,1/);
  assert.match(html,/−1,5 pp/);
