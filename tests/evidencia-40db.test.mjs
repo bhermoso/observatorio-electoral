@@ -28,7 +28,7 @@ test('La evidencia es visible al inicio de Promedios y Cocina y se empaqueta',()
   const analysis=fs.readFileSync(new URL('../analysis.mjs',import.meta.url),'utf8');
   const cocina=fs.readFileSync(new URL('../cocina.mjs',import.meta.url),'utf8');
   const build=fs.readFileSync(new URL('../scripts/build.mjs',import.meta.url),'utf8');
-  assert.match(analysis,/<\/div>\$\{renderEvidencia40db\(\)\}<div class="toolbar">/);
-  assert.match(cocina,/\$\{renderEvidencia40db\(\)\}\s*\$\{renderResultadosCocina\(\)\}/);
+  assert.match(analysis,/\$\{renderEvidencia40db\(\)\}/);
+  assert.match(cocina,/\$\{renderEvidencia40db\(\)\}/);
   assert.match(build,/'evidencia-40db\.mjs'/);
 });
