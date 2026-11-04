@@ -24,7 +24,7 @@ test('40dB: no declarar una receta reproducida con los microdatos sin procesar',
   assert.match(html,/no identifica el coeficiente ni la técnica privada/);
   assert.match(html,/voto blanco incluido/);
   assert.match(html,/7,46/);
-  assert.match(html,/−5,29/);
+  assert.match(html,/-5,29/);
   assert.match(html,/pp\. 8 y 13/);
   assert.match(html,/pp\. 5 y 16/);
   assert.match(html,/rel="noopener noreferrer"/);
