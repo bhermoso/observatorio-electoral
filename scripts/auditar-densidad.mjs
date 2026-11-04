@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import {chromium} from 'playwright';
 const SITE='https://bhermoso.github.io/observatorio-electoral/';
-const overlays=new Set(['styles.css','home-impact.mjs','analysis.mjs','promedios-comparador.mjs','events.mjs','eventos-visual.mjs']);
+const overlays=new Set(['styles.css','home-impact.mjs','analysis.mjs','promedios-comparador.mjs','events.mjs','eventos-visual.mjs','acontecimiento.mjs']);
 const cases=[
  {route:'dashboard',width:1200,height:700},
  {route:'dashboard',width:1366,height:768},
@@ -41,7 +41,7 @@ try{
     lastParty:box('.forecast-lead-table tbody tr:last-child'),lastBloc:box('.forecast-lead-bloc:last-child'),forecastFoot:box('.forecast-lead-foot'),
     kpis:box('.forecast-lead-kpis'),lastKpi:box('.forecast-mini-kpi:last-child'),
     compare:box('#analysis-compare'),houseChart:box('.house-chart'),houseMatrix:box('.house-matrix'),weights:box('.analysis-weights-detail'),
-    eventVisual:box('.event-visual-summary'),eventReading:box('.event-reading'),eventHouse:box('.event-visual-house'),
+    eventVisual:box('.event-visual-summary'),eventReading:box('.event-reading'),eventHouse:box('.event-visual-house'),eventDeepOpen:document.querySelector('.event-deep-dive')?.open,eventDeep:box('.event-deep-dive'),
     route:location.hash,bodyOverflow:getComputedStyle(document.body).overflowY};
   },{route:c.route});
   if(info.docWidth>c.width+3)errors.push('Desbordamiento horizontal '+info.docWidth+'>'+c.width);
@@ -65,6 +65,7 @@ try{
    if(!info.eventVisual?.visible)errors.push('Faltan datos visuales del acontecimiento');
    if(info.eventVisual?.y>c.height)errors.push('Evidencia no aparece en primera pantalla');
    if(info.eventVisual?.bottom>info.eventReading?.y+2)errors.push('Evidencia invadió el análisis');
+   if(info.eventDeepOpen!==false)errors.push('El bloque de metodología detallada debería estar cerrado por defecto');
   }
   if(info.header?.height>145)errors.push('Cabecera desmesurada de '+info.header.height+' px');
   if(jsErrors.length)errors.push(...jsErrors.map(x=>'JS: '+x.slice(0,150)));
