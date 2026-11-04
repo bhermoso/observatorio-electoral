@@ -27,7 +27,7 @@ export function parsePercentages(text) {
 export function renderCandidates(data) {
  const errors=Array.isArray(data.errors)?data.errors:[];
  const list=Array.isArray(data.candidates)?data.candidates:[];
- return `<p><b>Última búsqueda:</b> ${esc(when(data.checked_at))}. ${data.cached?'Se muestra la búsqueda reciente; se permite una nueva cada cinco minutos.':''}</p>${errors.length?`<p role="alert">${errors.map(esc).join(' · ')}</p>`:''}
+ return `<p><b>Última búsqueda con resultados:</b> ${esc(when(data.checked_at))}. ${data.cached?'Se muestra la búsqueda reciente; se permite una nueva cada cinco minutos.':''}</p>${errors.length?`<p role="alert"><b>Incidencias de un intento posterior:</b> ${errors.map(esc).join(' · ')}</p>`:''}
  <p>${list.length} titulares encontrados. Son pistas para revisar; pueden incluir noticias repetidas, análisis y encuestas ya registradas.</p>
  ${list.length?`<details><summary>Ver publicaciones encontradas</summary>${list.map(c=>{
   let url='';try{const u=new URL(c.url);if(u.protocol==='https:'&&u.hostname==='news.google.com')url=u.href;}catch{}
@@ -54,7 +54,7 @@ export function renderPollUpdate(){return `<section class="panel poll-update" ar
  <p><label><input type="checkbox" name="confirmed" required> He revisado la fuente original, las fechas, la muestra y cada cifra.</label></p>
  <button type="submit">Guardar encuesta verificada</button><p id="poll-save-status" role="status"></p></form></details>
  <div id="poll-approved" aria-live="polite"></div>
- <details><summary>Estado de incorporación y publicación</summary><div id="pipeline-status">Consultando…</div></details>
+ <details><summary>Vigilancia automática de GitHub Actions y estado de publicación (independiente de Supabase)</summary><div id="pipeline-status">Consultando…</div></details>
  </section>`;}
 export function bindPollUpdate(onReload){
  const $=s=>document.querySelector(s),button=$('#dispatch-polls'),reload=$('#reload-polls'),pending=$('#poll-candidates-list'),note=$('#poll-dispatch-status'),form=$('#poll-editor');
