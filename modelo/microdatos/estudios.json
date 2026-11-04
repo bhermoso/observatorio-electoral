@@ -75,18 +75,36 @@
     ]
   },
   "40db-2026-10-flash": {
-    "estado": "ZIP público localizado; matriz, variables, ponderación y códigos sin inspeccionar",
+    "estado": "estudio original verificado localmente: variables, códigos categóricos y ponde; crudos fuera de GitHub; estimación predictiva no homologada",
     "pagina_microdatos": "https://elpais.com/espana/2026-10-09/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
     "archivo_original": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_08_barometro_flash_descargables.zip",
-    "intencion": null,
-    "recuerdo": null,
-    "simpatia": null,
-    "participacion": null,
-    "peso": null,
+    "intencion": "p2",
+    "recuerdo": "p9",
+    "simpatia": "p3",
+    "participacion": "p1",
+    "peso": "ponde",
     "codigos_intencion": {},
     "codigos_recuerdo": {},
-    "partidos_validos": [],
+    "partidos_validos": [
+      "PP",
+      "PSOE",
+      "VOX",
+      "SUMAR",
+      "PODEMOS",
+      "SALF",
+      "ERC",
+      "JUNTS",
+      "BILDU",
+      "PNV",
+      "BNG",
+      "CC",
+      "UPN",
+      "OTROS",
+      "BLANCO"
+    ],
     "entra_en_pronostico": false,
-    "nota": "No asumir PESO del CIS ni equivalencia de códigos. Las respuestas deben permanecer fuera de GitHub. Evitar doble cuenta con la estimación publicada de la misma muestra."
+    "nota": "Variables y etiquetas comprobadas desde .dta original aportado por usuario; no imputar equivalencias territoriales ni usar recetas experimentales en Motor 29N.",
+    "n": 800,
+    "procesado_agregado": "data/microdatos/40db-auditoria-2026.json"
   }
 }
