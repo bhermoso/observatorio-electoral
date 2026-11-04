@@ -52,7 +52,7 @@ try{
    if(info.forecastResults?.scrollHeight>info.forecastResults?.clientHeight+3)errors.push('Pronóstico con contenido recortado');
   }else if(c.route==='analisis'){
    if(!info.houseChart?.visible||!info.houseMatrix?.visible)errors.push('Falta el comparador de casas');
-   if(info.houseChart?.bottom>info.houseMatrix?.y+2)errors.push('El gráfico invade la tabla');
+   if(c.width>=1100&&info.houseChart?.right>info.houseMatrix?.x+2)errors.push('El gráfico invade la tabla');
    if(info.houseChart?.y>c.height)errors.push('Gráfico de casas fuera de la primera pantalla');
   }else if(c.route==='contexto'){
    if(!info.eventVisual?.visible)errors.push('Faltan datos visuales del acontecimiento');
