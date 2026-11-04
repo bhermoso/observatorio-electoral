@@ -33,6 +33,10 @@ Resultados históricos verificados el 28 de octubre y encuestas ampliadas el 30 
 
 El workflow `.github/workflows/pages.yml` ejecuta las pruebas y genera `dist`. Solo despliega la rama `main`; los PR ejecutan pruebas sin desplegar. En Settings → Pages debe seleccionarse **GitHub Actions**. El destino previsto es https://bhermoso.github.io/observatorio-electoral/. No se debe considerar publicado hasta que la ejecución de Actions y la respuesta HTTP del sitio se hayan verificado.
 
+## Microdatos públicos de 40dB (experimental)
+
+El catálogo incorpora fuentes primarias de enero y octubre de 2026, incluido el archivo ZIP de la encuesta flash del 9 de octubre. Los enlaces, condiciones y límites están en [alta cocina 40dB](docs/alta-cocina-40db.md). La herramienta `scripts/inspeccionar_40db.py` verifica únicamente metadatos y huellas SHA-256 de ZIP descargados localmente, sin abrir entrevistas. Ni los microdatos ni las recetas experimentales se incorporan al pronóstico hasta superar una evaluación fuera de muestra.
+
 ## Documentación
 
 - [Metodología y supuestos](docs/methodology.md)
