@@ -46,7 +46,7 @@ class AuditoriaFuentesTest(unittest.TestCase):
         self.assertNotIn("sha256", result)
         self.assertNotIn("entrevistas", result)
         self.assertNotIn("filas", result)
-        self.assertEqual(len(MODULE.ARCHIVOS), 4)
+        self.assertEqual(len(MODULE.ARCHIVOS), 7)
         self.assertEqual({x["casa"] for x in MODULE.ARCHIVOS}, {"GAD3", "SocioMétrica"})
 
 
