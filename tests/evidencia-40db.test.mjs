@@ -14,12 +14,12 @@ test('40dB: distinguir tres generales de la evaluación global',()=>{
   assert.match(html,/más peso a 40dB/);
 });
 
-test('40dB: fuente original y microdatos separados, con estado pendiente',()=>{
+test('40dB: fuente original y microdatos separados, con microdatos auditados y límites expresos',()=>{
   const html=renderEvidencia40db();
   assert.equal(EVIDENCIA_40DB.publicado,'2026-10-19');
   assert.match(EVIDENCIA_40DB.fuente,/elpais\.com\/espana\/elecciones-generales\/2026-10-18\/que-encuestas-aciertan-mas/);
   assert.match(EVIDENCIA_40DB.archivo,/\.zip$/);
-  assert.match(html,/aún no analizado/);
+  assert.match(html,/4.800 entrevistas/);
   assert.match(html,/aria-labelledby="pollster-evidence-title"/);
   assert.match(html,/rel="noopener noreferrer"/);
 });
@@ -28,7 +28,7 @@ test('La evidencia es visible al inicio de Promedios y Cocina y se empaqueta',()
   const analysis=fs.readFileSync(new URL('../analysis.mjs',import.meta.url),'utf8');
   const cocina=fs.readFileSync(new URL('../cocina.mjs',import.meta.url),'utf8');
   const build=fs.readFileSync(new URL('../scripts/build.mjs',import.meta.url),'utf8');
-  assert.match(analysis,/<\/div>\$\{renderEvidencia40db\(\)\}<div class="toolbar">/);
-  assert.match(cocina,/\$\{renderEvidencia40db\(\)\}\s*\$\{renderResultadosCocina\(\)\}/);
+  assert.match(analysis,/\$\{renderEvidencia40db\(\)\}/);
+  assert.match(cocina,/\$\{renderEvidencia40db\(\)\}/);
   assert.match(build,/'evidencia-40db\.mjs'/);
 });

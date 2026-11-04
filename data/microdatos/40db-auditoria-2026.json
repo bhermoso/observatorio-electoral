@@ -1,0 +1,150 @@
+{
+  "fecha_auditoria": "2026-11-04",
+  "estado": "agregados_de_microdatos_originales_reproducidos",
+  "nota": "Todas las cifras proceden de matrices .dta de ZIP originales aportados por el usuario. No hay entrevistas ni datos individuales publicados. El ajuste por recuerdo es experimental; no equivale a la receta de 40dB ni a una validación predictiva.",
+  "metodo": "Ponderación 40dB ponde; normalización sobre voto válido declarado incluido blanco; calibración hipotética completa del recuerdo entre PP PSOE Vox Sumar a porcentajes oficiales 2023 para ese mismo subconjunto; los demás recuerdos permanecen sin reponderar.",
+  "partidos": [
+    "PP",
+    "PSOE",
+    "VOX",
+    "SUMAR"
+  ],
+  "referencia_23j_2023_cuatro": {
+    "PP": 36.983,
+    "PSOE": 35.419,
+    "VOX": 13.855,
+    "SUMAR": 13.743
+  },
+  "olas": [
+    {
+      "id": "enero",
+      "titulo": "Enero 2026",
+      "campo": "29 dic 2025–5 ene 2026",
+      "entrevistas": 2000,
+      "efectivo_kish": 1935.19,
+      "sha256": "8645593800850d2a7cba98c1782ac99db55df0c6b8ad818a430cd907032fb9ba",
+      "validos_pct": 81.209,
+      "indecisos_mas_no_respuesta_pct": 11,
+      "ponderador": "ponde",
+      "intencion": "p3",
+      "simpatia": "p4",
+      "recuerdo": "p6",
+      "participacion": "p2",
+      "zip": "https://ep00.epimg.net/infografias/encuestas40db/2026/01-barometro/2026_01_barometro_descargables.zip",
+      "directa": {
+        "PP": 22.927,
+        "PSOE": 26.23,
+        "VOX": 21.401,
+        "SUMAR": 6.504
+      },
+      "recuerdo_calibrado": {
+        "PP": 26.922,
+        "PSOE": 23.689,
+        "VOX": 19.142,
+        "SUMAR": 7.157
+      },
+      "estimacion_publicada": {
+        "PP": 31.5,
+        "PSOE": 27.1,
+        "VOX": 17.9,
+        "SUMAR": 5.9
+      },
+      "recuerdo_cuatro": {
+        "PP": 30.489,
+        "PSOE": 40.134,
+        "VOX": 17.613,
+        "SUMAR": 11.764
+      }
+    },
+    {
+      "id": "octubre",
+      "titulo": "Octubre 2026",
+      "campo": "25–28 sep 2026",
+      "entrevistas": 2000,
+      "efectivo_kish": 1815.8,
+      "sha256": "a12373280c834cdf7b1724234c4f5ce7dc6c861a9f3af3c0e0d21e8550272c15",
+      "validos_pct": 81.142,
+      "indecisos_mas_no_respuesta_pct": 11.03,
+      "ponderador": "ponde",
+      "intencion": "p3",
+      "simpatia": "p4",
+      "recuerdo": "p6",
+      "participacion": "p2",
+      "zip": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-barometro/2026_10_barometro_descargables.zip",
+      "directa": {
+        "PP": 24.174,
+        "PSOE": 27.574,
+        "VOX": 23.519,
+        "SUMAR": 5.378
+      },
+      "recuerdo_calibrado": {
+        "PP": 28.84,
+        "PSOE": 24.825,
+        "VOX": 19.93,
+        "SUMAR": 6.541
+      },
+      "estimacion_publicada": {
+        "PP": 31.6,
+        "PSOE": 27.4,
+        "VOX": 18.4,
+        "SUMAR": 5.6
+      },
+      "recuerdo_cuatro": {
+        "PP": 29.688,
+        "PSOE": 40.792,
+        "VOX": 19.531,
+        "SUMAR": 9.989
+      }
+    },
+    {
+      "id": "flash",
+      "titulo": "Flash octubre 2026",
+      "campo": "7–8 oct 2026",
+      "entrevistas": 800,
+      "efectivo_kish": 784.96,
+      "sha256": "905d4ab237b58fc44e6b99944505acb4e99687c02e8894d5cb0e0e410e45a100",
+      "validos_pct": 83.016,
+      "indecisos_mas_no_respuesta_pct": 11.43,
+      "ponderador": "ponde",
+      "intencion": "p2",
+      "simpatia": "p3",
+      "recuerdo": "p9",
+      "participacion": "p1",
+      "zip": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_08_barometro_flash_descargables.zip",
+      "directa": {
+        "PP": 24.661,
+        "PSOE": 27.68,
+        "VOX": 24.164,
+        "SUMAR": 5.107
+      },
+      "recuerdo_calibrado": {
+        "PP": 28.388,
+        "PSOE": 25.043,
+        "VOX": 20.122,
+        "SUMAR": 6.854
+      },
+      "estimacion_publicada": {
+        "PP": 31.9,
+        "PSOE": 28.1,
+        "VOX": 18.9,
+        "SUMAR": 5.3
+      },
+      "recuerdo_cuatro": {
+        "PP": 30.586,
+        "PSOE": 40.882,
+        "VOX": 20.074,
+        "SUMAR": 8.457
+      }
+    }
+  ],
+  "escenario_unificacion_flash": {
+    "intencion_directa_separadas_sobre_muestra": 6.046,
+    "intencion_directa_unida_sobre_muestra": 8.342,
+    "estimacion_publicada_separadas_suma": 7.6,
+    "estimacion_publicada_unida": 9.5,
+    "nota": "Mismos entrevistados, dos escenarios declarados. No validación electoral ni ganancia causal."
+  },
+  "microdatos_2023_fuente_potencial": "https://elpais.com/espana/2023-07-03/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-publicada-este-3-de-julio.html",
+  "esquema": 1,
+  "tipo": "auditoria_agregada_de_microdatos_40db"
+}

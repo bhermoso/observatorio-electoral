@@ -1,7 +1,7 @@
 {
   "esquema": 1,
   "fecha_comprobacion": "2026-11-04",
-  "criterio": "Las páginas originales anuncian ZIP con respuestas individuales, cuestionarios y documentación. No se han descargado ni inspeccionado los ZIP; el acceso libre no implica permiso de redistribución.",
+  "criterio": "Los ZIP originales fueron aportados por el usuario y leídos localmente el 4 de noviembre de 2026. Se verificó SHA-256 y analizaron solo agregados; no se redistribuyen entrevistas ni se afirma reproducir la receta interna.",
   "fuentes": [
     {
       "id": "40db-2026-01-mensual",
@@ -10,8 +10,10 @@
       "tipo": "barometro_mensual",
       "pagina": "https://elpais.com/espana/2026-01-12/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
       "zip": "https://ep00.epimg.net/infografias/encuestas40db/2026/01-barometro/2026_01_barometro_descargables.zip",
-      "estado": "enlace_publicado_zip_sin_inspeccionar",
-      "entra_en_pronostico": false
+      "estado": "microdatos_dta_auditados_agregados_sin_crudos_en_github",
+      "entra_en_pronostico": false,
+      "sha256_zip_local": "8645593800850d2a7cba98c1782ac99db55df0c6b8ad818a430cd907032fb9ba",
+      "informe_agregado": "data/microdatos/40db-auditoria-2026.json"
     },
     {
       "id": "40db-2026-10-mensual",
@@ -20,8 +22,10 @@
       "tipo": "barometro_mensual",
       "pagina": "https://elpais.com/espana/2026-10-05/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
       "zip": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-barometro/2026_10_barometro_descargables.zip",
-      "estado": "enlace_publicado_zip_sin_inspeccionar",
-      "entra_en_pronostico": false
+      "estado": "microdatos_dta_auditados_agregados_sin_crudos_en_github",
+      "entra_en_pronostico": false,
+      "sha256_zip_local": "a12373280c834cdf7b1724234c4f5ce7dc6c861a9f3af3c0e0d21e8550272c15",
+      "informe_agregado": "data/microdatos/40db-auditoria-2026.json"
     },
     {
       "id": "40db-2026-10-flash",
@@ -30,8 +34,10 @@
       "tipo": "encuesta_flash",
       "pagina": "https://elpais.com/espana/2026-10-09/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
       "zip": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_08_barometro_flash_descargables.zip",
-      "estado": "enlace_publicado_zip_sin_inspeccionar",
-      "entra_en_pronostico": false
+      "estado": "microdatos_dta_auditados_agregados_sin_crudos_en_github",
+      "entra_en_pronostico": false,
+      "sha256_zip_local": "905d4ab237b58fc44e6b99944505acb4e99687c02e8894d5cb0e0e410e45a100",
+      "informe_agregado": "data/microdatos/40db-auditoria-2026.json"
     }
   ]
 }

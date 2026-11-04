@@ -1,7 +1,7 @@
 /**
  * Evidencia histórica EXTERNA sobre encuestadoras (EL PAÍS, 19-10-2026).
  * Es información documental: no es un ranking calculado por el Observatorio,
- * no cambia los pesos de las casas y no indica que el ZIP haya sido procesado.
+ * no cambia los pesos de las casas; la auditoría de ZIP 2026 figura por separado.
  */
 export const EVIDENCIA_40DB={
   publicado:'2026-10-19',
@@ -23,7 +23,7 @@ export function renderEvidencia40db(){
     <div class="pollster-evidence-facts">
       <div><b>3 de 3 generales</b><p>Según el análisis, 40dB fue la encuestadora con <strong>menor error en cada una de las tres elecciones generales</strong> evaluadas.</p></div>
       <div><b>44 elecciones examinadas</b><p>Al incluir autonómicas y europeas, su error fue <strong>aproximadamente el de la media</strong>. No todas las casas participaron en las 44.</p></div>
-      <div><b>Microdatos públicos</b><p>40dB publica respuestas individuales de sus estudios. <strong>El ZIP de octubre está localizado, pero aún no analizado</strong> en el Observatorio.</p></div>
+      <div><b>Microdatos públicos</b><p>40dB publica respuestas individuales de sus estudios. <strong>Tres ZIP de 2026 analizados: 4.800 entrevistas; la receta final sigue sin identificarse</strong> en el Observatorio.</p></div>
     </div>
     <p class="pollster-evidence-foot">
       <span><strong>Interpretación:</strong> comparación histórica de terceros; no es una evaluación nueva del Observatorio ni autoriza a dar automáticamente más peso a 40dB.</span>
