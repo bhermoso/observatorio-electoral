@@ -6,6 +6,7 @@ import {renderInvestidura,bindInvestidura} from './investidura.mjs';
 import {renderValidationDashboard,bindValidationDashboard} from './dashboard-validacion.mjs';
 import {renderRecuento} from './recuento-encuestas.mjs';
 import {renderEvaluacion2019,bindEvaluacion2019} from './evaluacion-2019.mjs';
+import {renderHomologacion2019,bindHomologacion2019} from './homologacion-2019.mjs';
 
 const h=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt=(v,d=1)=>Number.isFinite(Number(v))?Number(v).toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
@@ -34,7 +35,7 @@ export function renderPronostico(){
  <section class="panel" id="pronostico-evolucion"><h2>E. Evolución por cortes</h2><p class="muted">Serie retrospectiva recalculada con el método actual y las encuestas disponibles en cada corte; no es un archivo de lo que se publicó entonces. La versión 2 (3-nov-2026) recalculó toda la serie; para recuperar versiones anteriores hay que consultar el historial del repositorio. Las entradas con otra versión del modelo se señalan: su diferencia no es solo cambio en los datos.</p><div id="fc-history">Cargando…</div></section>
  <section class="panel" id="pronostico-territorio"><h2>F. Proyección territorial</h2><div id="fc-territory">Cargando…</div></section>
  <section class="panel" id="pronostico-fuentes"><h2>Estudios usados y excluidos</h2><div id="fc-sources">Cargando…</div></section>
- <section class="panel" id="pronostico-evaluacion"><h2>Evaluación histórica de encuestas y recetas</h2><p class="muted">Separamos dos ejercicios distintos: la auditoría temporal de promedios sobre el 23J y el contraste retrospectivo de tratamientos de microdatos del CIS en 2019. Ninguno calibra las probabilidades de mayoría del Motor 29N.</p><div id="fc-validation-publica"></div>${renderEvaluacion2019()}${renderValidationDashboard()}</section>
+ <section class="panel" id="pronostico-evaluacion"><h2>Evaluación histórica de encuestas y recetas</h2><p class="muted">Separamos dos ejercicios distintos: la auditoría temporal de promedios sobre el 23J y el contraste retrospectivo de tratamientos de microdatos del CIS en 2019. Ninguno calibra las probabilidades de mayoría del Motor 29N.</p><div id="fc-validation-publica"></div>${renderEvaluacion2019()}${renderHomologacion2019()}${renderValidationDashboard()}</section>
  <section class="panel" id="pronostico-externos"><h2>Capa 4 · Otros observatorios y modelos</h2><p class="muted">${h(LAYERS.externo.explica)}</p><div id="fc-external">Cargando…</div></section>`;
 }
 
@@ -143,5 +144,5 @@ export async function bindPronostico(){
  set('#fc-validation-publica',()=>publicValidation(f));
  set('#fc-main',()=>partyTable(f));set('#fc-variants',()=>variantsTable(f));set('#fc-chain',()=>chain(f));set('#fc-blocks',()=>blocks(f));
  set('#fc-history',()=>history(hist));set('#fc-territory',()=>territory(f));set('#fc-sources',()=>sources(f));set('#fc-external',()=>external(f));
- void bindTrazabilidad();void bindInvestidura();void bindValidationDashboard();void bindEvaluacion2019();
+ void bindTrazabilidad();void bindInvestidura();void bindValidationDashboard();void bindEvaluacion2019();void bindHomologacion2019();
 }
