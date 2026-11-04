@@ -771,3 +771,11 @@ body:not(.dashboard-route) .event-reading .er-levels>li{margin-bottom:12px}
  #impact .forecast-lead-kpis .forecast-mini-kpi:last-child{display:flex}
  #impact .forecast-lead-content{grid-template-rows:auto}
 }
+
+/* En 1200×700 las tarjetas se reducen solo lo imprescindible para no cubrir los bloques. */
+@media(min-width:1200px) and (max-height:739px){
+ #impact .forecast-lead-kpis .forecast-mini-kpi{min-height:45px;padding:4px 7px;gap:1px}
+ #impact .forecast-lead-kpis .forecast-mini-kpi>span{font-size:11px;line-height:1.1}
+ #impact .forecast-lead-kpis .forecast-mini-kpi>strong{font-size:17px}
+ #impact .forecast-lead-kpis .forecast-mini-kpi>small{display:none}
+}
