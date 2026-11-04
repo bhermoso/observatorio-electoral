@@ -1,5 +1,4 @@
 {
-  "schema": 1,
   "fecha_auditoria": "2026-11-04",
   "estado": "agregados_de_microdatos_originales_reproducidos",
   "nota": "Todas las cifras proceden de matrices .dta de ZIP originales aportados por el usuario. No hay entrevistas ni datos individuales publicados. El ajuste por recuerdo es experimental; no equivale a la receta de 40dB ni a una validación predictiva.",
@@ -145,5 +144,7 @@
     "estimacion_publicada_unida": 9.5,
     "nota": "Mismos entrevistados, dos escenarios declarados. No validación electoral ni ganancia causal."
   },
-  "microdatos_2023_fuente_potencial": "https://elpais.com/espana/2023-07-03/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-publicada-este-3-de-julio.html"
+  "microdatos_2023_fuente_potencial": "https://elpais.com/espana/2023-07-03/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-publicada-este-3-de-julio.html",
+  "esquema": 1,
+  "tipo": "auditoria_agregada_de_microdatos_40db"
 }
