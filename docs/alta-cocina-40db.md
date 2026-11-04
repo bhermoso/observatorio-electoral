@@ -1,7 +1,7 @@
 # Alta cocina demoscópica: fuentes 40dB y validación predictiva
 
-**Estado (4 de noviembre de 2026): fuentes localizadas; contenido de los ZIP no inspeccionado.**
-Esta incorporación abre el acceso a fuentes primarias recientes y un procedimiento de auditoría de procedencia. **No añade una receta ganadora, no cambia el Motor 29N y no autoriza a publicar una mejora de acierto.**
+**Estado (4 de noviembre de 2026): los tres ZIP originales aportados por el usuario han sido abiertos, con 4.800 entrevistas auditadas y agregados verificables.**
+Esta fase incorpora el análisis empírico de 2.000 entrevistas de enero, 2.000 de octubre y 800 del flash de octubre, con variables, ponderación y ejercicios comparables desde los archivos originales. **No añade una receta ganadora, no cambia el Motor 29N y no autoriza a publicar una mejora de acierto.**
 
 ## 1. Fuentes primarias, públicas, pero no necesariamente de libre redistribución
 
@@ -11,7 +11,7 @@ EL PAÍS publica enlaces gratuitos a ZIP con cuestionarios, documentación metod
 - Barómetro del 5 de octubre de 2026: https://elpais.com/espana/2026-10-05/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html
 - Flash electoral del 9 de octubre de 2026: https://elpais.com/espana/2026-10-09/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html
 
-Los enlaces exactos a los ZIP están en `data/microdatos/fuentes-40db.json`. El servidor de publicaciones anuncia un archivo ZIP en cada enlace, pero la revisión actual no ha logrado descargarlo. No se ha verificado aún qué variables y ponderaciones contiene cada matriz, ni sus códigos, universo o permisos de reutilización.
+Los enlaces exactos a los ZIP están en `data/microdatos/fuentes-40db.json`. Los ZIP llegaron como archivos aportados por el usuario; contienen DTA, SAV, hojas de cálculo y PDF. Se analizaron las matrices DTA (enero: 71 variables; octubre: 97; flash: 33), el ponderador ponde y los cuestionarios. Las condiciones de redistribución no están confirmadas: los ZIP no se publican en GitHub.
 
 No se suben respuestas individuales a GitHub o GitHub Pages. Las condiciones de acceso de una publicación **no equivalen** a una licencia abierta de redistribución. Mantener fuente, atribución y restricciones del titular.
 
@@ -28,9 +28,9 @@ Fuente: [¿Qué encuestas aciertan más? Compara los errores y los sesgos de cad
 
 **Criterio para nuestro trabajo:** evaluar por separado generales y otras convocatorias, documentar los horizontes temporales y contrastar la capacidad de la cocina sobre microdatos con un promedio robusto y con la estimación publicada *sin contar dos veces 40dB*. La referencia de Llaneras no es validación propia ni justifica reasignar automáticamente pesos por reputación.
 
-## 1 ter. Primer contraste empírico sobre los informes de octubre de 2026
+## 1 ter. Contraste agregado previo a recibir las entrevistas (etapa superada)
 
-**Fase: análisis de cifras agregadas publicadas, NO microdatos individuales.** Se han revisado las páginas con intención directa, estimación y no respuesta de los informes originales: barómetro mensual del **5 de octubre** (pp. 8 y 13) y flash del **9 de octubre** (pp. 5 y 16). Los ZIP originales se anuncian públicamente pero el entorno de análisis no pudo obtener sus bytes (no admite el tipo ZIP para lectura web y el descargador local no dispone de resolución de dominio). La web no declara las entrevistas como procesadas.
+**Esta fase inicial examinó solo cifras publicadas. Posteriormente se recibieron y analizaron los microdatos originales; sus resultados figuran en la sección siguiente.** Se revisaron las páginas con intención directa, estimación y no respuesta de los informes originales: barómetro mensual del **5 de octubre** (pp. 8 y 13) y flash del **9 de octubre** (pp. 5 y 16). Inicialmente no estaban disponibles los ZIP; después los aportó el usuario y se analizaron localmente. La web publica agregados, nunca entrevistas individuales.
 
 El módulo `contraste-40db.mjs` conserva los valores transcritos y calcula:
 - `D = 100 - (nulo + no votaría + no lo sabe + no contesta)` puntos de la población entrevistada; incluye **voto en blanco** entre los declarantes de voto válido. Los datos redondeados dan **81,2 %** el 5/10 y **83,1 %** el 9/10.
@@ -46,7 +46,23 @@ El módulo `contraste-40db.mjs` conserva los valores transcritos y calcula:
 
 Valores en porcentaje; brechas en puntos porcentuales. Las pequeñas diferencias están afectadas por redondeos de los originales. **Patrón descriptivo:** la normalización por denominador no explica la brecha positiva del PP y negativa de Vox; el patrón aparece en dos informes muy cercanos, que no constituyen validaciones electorales independientes.
 
-**Siguiente prueba necesaria:** con cuestionario y matriz verificables, reconstruir los porcentajes no ponderados y ponderados, comprobar diferencias por ponderación, participación y recuerdo, reproducir transferencias y contrastar la distribución de indecisos. Ninguna de estas atribuciones puede realizarse únicamente con las tablas de informe, y ninguna justifica por ahora modificar el Motor 29N.
+**Situación posterior:** ya se reconstruyó el voto directo ponderado, se verificó ponde, se contrastó recuerdo y simpatía y se ensayaron reponderaciones sobre matrices reales. Ninguno de estos ejercicios justifica por ahora modificar el Motor 29N.
+
+## 1 quater. Auditoría realizada con 4.800 entrevistas originales
+
+Se recibieron los tres ZIP y se verificaron sus SHA-256. Las matrices DTA contienen **2.000 + 2.000 + 800 entrevistas**. El ponderador `ponde` permite reproducir la intención directa publicada, una vez normalizado el denominador; no permite recuperar por sí mismo el algoritmo final de estimación.
+
+- **Enero 2026 (campo 29/12/2025–05/01/2026):** PP 18,62 %, PSOE 21,30 %, Vox 17,38 % sobre todas las personas entrevistadas; voto válido declarado 81,21 %; n efectivo Kish 1.935.
+- **Octubre mensual (25–28/09/2026):** PP 19,62 %, PSOE 22,37 %, Vox 19,08 %; voto válido declarado 81,14 %; Kish 1.816.
+- **Flash (07–08/10/2026):** PP 20,47 %, PSOE 22,98 %, Vox 20,06 %; voto válido declarado 83,02 %; Kish 785.
+
+**Experimento de recuerdo:** el recuerdo ponderado del PP supone el 29,69 % de los recuerdos de PP, PSOE, Vox y Sumar en octubre, frente al 36,98 % de sus resultados de 2023 normalizados entre esas cuatro candidaturas. Vox representa el 19,53 % de recuerdos frente al 13,85 % de referencia. Una calibración completa hipotética mueve el voto válido declarado de octubre de **PP 24,17 → 28,84 %**, **Vox 23,52 → 19,93 %**, **PSOE 27,57 → 24,83 %** y **Sumar 5,38 → 6,54 %**. La estimación publicada fue 31,6 / 18,4 / 27,4 / 5,6 % respectivamente. La calibración acerca algunas cifras y aleja otras. **No reproduce la fórmula de 40dB ni demuestra más acierto electoral**.
+
+**Escenario conjunto:** entre los 800 entrevistados del flash, Sumar/Frente Amplio y Podemos tienen juntos un 6,05 % de intención directa ponderada si concurren separados, frente al 8,34 % de una candidatura unitaria; son dos respuestas hipotéticas dentro de la misma muestra, no una ganancia electoral observada.
+
+Los [agregados públicos con variables y huellas SHA-256](../data/microdatos/40db-auditoria-2026.json) no contienen entrevistas individuales; la pantalla Cocina permite cambiar entre directa ponderada y la calibración de recuerdo. Los datos completos permanecen fuera del repositorio.
+
+**Nueva fuente para evaluación histórica:** [microdatos preelectorales de 40dB del 3 de julio de 2023](https://elpais.com/espana/2023-07-03/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-publicada-este-3-de-julio.html), anteriores al escrutinio conocido del 23J. Todavía no se han descargado sus ZIP ni se ha ejecutado esa validación.
 
 ## 2. Auditoría local, antes de cualquier cocina
 
@@ -90,6 +106,6 @@ Se conserva la geografía de 52 circunscripciones, el voto blanco en el denomina
 - `modelo/motor/ablaciones.py` permite contrastes de sensibilidad, que **no** prueban precisión histórica.
 - `modelo/motor/validacion_publica.py` evalúa cortes temporalmente, aunque solo dispone de una convocatoria suficiente para la auditoría principal.
 - Los CIS 3242 y 3263 permiten estudiar empíricamente recodificaciones de 2019. Los datos de 40dB de 2026 aportarán contemporaneidad y contraste entre casas, pero por sí solos no aportan un resultado electoral futuro con el que validar.
-- El estudio 40dB flash del 9 de octubre figura en `data/polls.json`; se enlaza su ZIP original, y su catálogo lo seguirá señalando como **pendiente de procesamiento**, no como receta lista.
+- El estudio 40dB flash figura en data/polls.json; los tres ZIP de 2026 ya tienen agregados auditados en data/microdatos/40db-auditoria-2026.json, sin convertir ninguna receta experimental en pronóstico operativo.
 
-**Siguiente puerta de trabajo:** inspeccionar matrices y diccionarios de 40dB, comprobar pesos y universos, construir una tabla de equivalencias estudiada y reejecutar las recetas sin publicar filas de entrevistas. Solo después contrastar con elecciones históricas independientes y considerar cambios al motor.
+**Siguiente puerta de trabajo:** aprovechar microdatos preelectorales de 40dB de julio de 2023, cuyo resultado del 23J es conocido, para una evaluación temporal estricta. No seleccionar coeficientes con 2023 y declarar la misma elección una validación independiente.
