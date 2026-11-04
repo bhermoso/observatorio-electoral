@@ -1,0 +1,28 @@
+name: Auditoría visual real de Panorama
+on:
+  push:
+    branches: [audit/panorama-viewport-20261104]
+    paths:
+      - scripts/auditar-portada.mjs
+      - .github/workflows/auditar-portada.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  viewport:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save --ignore-scripts playwright
+      - run: npx playwright install --with-deps chromium
+      - run: node scripts/auditar-portada.mjs
+      - name: Conservar capturas y dimensiones
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: auditoria-portada
+          path: auditoria-portada/
