@@ -10,7 +10,7 @@ export function renderEvaluacion2019(){
  return '<section id="evaluacion-2019" class="historical-2019" aria-labelledby="historical-2019-title">'+
   '<header class="historical-2019-head"><div><span class="eyebrow">Contraste de microdatos históricos · método constante</span>'+
   '<h3 id="historical-2019-title">Abril y noviembre de 2019: ¿mejora la misma receta en ambas?</h3>'+
-  '<p>Cuatro formas de tratar la indecisión explícita (código 94), evaluadas frente al voto válido oficial de cuatro candidaturas comparables.</p></div>'+
+  '<p>Cuatro formas de tratar la indecisión explícita (código 94), evaluadas frente al voto válido oficial (candidaturas + blanco) de cuatro partidos comparables.</p></div>'+
   '<a href="validacion-recetas.html#vh-2019-retro">Auditoría y datos de origen ↗</a></header>'+
   '<div id="historical-2019-data" aria-live="polite"><p class="muted">Cargando el contraste histórico de microdatos…</p></div>'+
   '</section>';
@@ -48,12 +48,12 @@ export function renderResultados2019(datos){
   '<thead><tr><th scope="col">Tratamiento</th><th scope="col">28-A 2019 · CIS 3242</th>'+
   '<th scope="col">10-N 2019 · CIS 3263</th></tr></thead><tbody>'+methodRows+'</tbody></table></div>'+
   '<details class="historical-2019-detail"><summary>Desglosar errores por partido y consultar los resultados oficiales</summary>'+
-  '<p>Errores firmados: estimación menos escrutinio oficial; cambio positivo de error absoluto indica peor resultado.</p>'+
+  '<p>Errores firmados: estimación menos escrutinio oficial; cambio positivo de error absoluto indica peor resultado. Denominador: candidaturas + voto blanco; no incluye nulos ni abstención.</p>'+
   '<div class="table-wrap"><table><thead><tr><th>Partido</th><th>Elección</th><th>Sin imputar</th>'+
   '<th>VOTOSIMG identificable</th><th>Variación de error absoluto</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+
   '<p>Escrutinios oficiales: <a href="'+escape(OFFICIAL_2019['3242'].source)+'" target="_blank" rel="noopener">28-A (BOE) ↗</a> · '+
   '<a href="'+escape(OFFICIAL_2019['3263'].source)+'" target="_blank" rel="noopener">10-N (BOE) ↗</a>.</p>'+
-  '</details><p class="historical-2019-limit"><b>Alcance:</b> tratamientos retrospectivos sobre agregados CIS; se imputan solo los indecisos explícitos (94), no los códigos 98/99. No se verificó la equivalencia completa de todas las candidaturas ni se simulan escaños. Los métodos se han examinado con resultados históricos ya conocidos: <b>no validan prospectivamente ninguna corrección del Motor 29N.</b></p>';
+  '</details><p class="historical-2019-limit"><b>Alcance:</b> el denominador estimado incluye el voto en blanco. Tratamientos retrospectivos sobre agregados CIS; se imputan solo los indecisos explícitos (94), no los códigos 98/99. No se verificó la equivalencia completa de todas las candidaturas ni se simulan escaños. Los métodos se han examinado con resultados históricos ya conocidos: <b>no validan prospectivamente ninguna corrección del Motor 29N.</b></p>';
 }
 export async function bindEvaluacion2019(){
  const root=document.querySelector('#historical-2019-data');if(!root)return;
