@@ -27,3 +27,30 @@ test('La lectura del acontecimiento presenta un veredicto cuantificado antes de 
  assert.match(reading,/no demuestra causalidad/i);
  assert.match(reading,/No se ha incorporado un coeficiente atribuido/);
 });
+
+test('Urda identifica Sigma Dos posterior, publica cifras y enlaza fichas originales',async()=>{
+ const {analizarAcontecimiento,renderFichasPosteriores,renderLectura}=await import('../acontecimiento.mjs');
+ const a=analizarAcontecimiento(events[0],polls,{ventana:30});
+ assert.equal(a.counts.after,1);
+ assert.equal(a.fichasPosteriores.length,1);
+ const sigma=a.fichasPosteriores[0];
+ assert.equal(sigma.id,'sigma-dos-2026-11-02');
+ assert.equal(sigma.fieldStart,'2026-10-29');
+ assert.equal(sigma.fieldEnd,'2026-10-30');
+ assert.equal(sigma.sample,2505);
+ assert.equal(sigma.values.PSOE,24.6);
+ assert.equal(sigma.anterior.values.PSOE,26.1);
+ assert.equal(sigma.comparabilidad.nivel,'baja'); // escenarios de candidaturas diferentes
+ const html=renderFichasPosteriores(a);
+ assert.match(html,/Sigma Dos/);
+ assert.match(html,/2\\.505/);
+ assert.match(html,/24,6/);
+ assert.match(html,/26,1/);
+ assert.match(html,/−1,5 pp/);
+ assert.match(html,/sa0OT7jgxEjay6E/);
+ assert.match(html,/OUze2FxEIVfARtu3/);
+ assert.match(html,/Comparación limitada/);
+ assert.match(html,/Target Point/);
+ const whole=renderLectura(a,events[0]);
+ assert.ok(whole.indexOf('event-surveys-title')<whole.indexOf('er-levels'));
+});
