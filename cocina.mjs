@@ -6,6 +6,7 @@ import {renderContraste40db} from './contraste-40db.mjs';
 import {renderMicrodatos40db,bindMicrodatos40db} from './microdatos-40db.mjs';
 import {renderRetrospectiva40db,bindRetrospectiva40db} from './validacion-40db-2023.mjs';
 import {renderCatalogoMicrodatos,bindCatalogoMicrodatos} from './catalogo-microdatos.mjs';
+import {renderSocioMetrica,bindSocioMetrica} from './microdatos-sociometrica.mjs';
 // Cocina electoral: resultados agregados de estudio CIS 3582, sin entrevistas individuales.
 // Los métodos alternativos NO son etapas acumulables ni reconstrucciones de la receta del CIS.
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
@@ -25,6 +26,7 @@ export function renderCocina(){
  ${renderEvidencia40db()}
  ${renderRetrospectiva40db()}
  ${renderCatalogoMicrodatos()}
+ ${renderSocioMetrica()}
  ${renderContraste40db()}
  ${renderMicrodatos40db()}
  ${renderResultadosCocina()}
@@ -52,7 +54,7 @@ export function renderCocina(){
 <section class="panel cocina-main cocina-contributions"><div class="panel-head"><div><span class="eyebrow">Pruebas de sensibilidad · Cocina reproducible</span><h2>¿Qué cambia al utilizar otra receta?</h2><p class="muted">Comparación por partido y por estudio. La cifra muestra cuánto varía la estimación y cuánto aumenta o disminuye su error respecto a los resultados del 23J; no es una atribución causal de ingredientes.</p></div></div><div class="toolbar"><label>Comparar procedimiento<select id="kitchen-contribution-method"><option value="simpatia">Voto + simpatía frente a decididos</option><option value="participacion">Participación frente a decididos</option><option value="estimacion_publicada">Estimación publicada frente a decididos</option></select></label><label>Estudio<select id="kitchen-contribution-study"><option value="3411">CIS 3411</option><option value="3415">CIS 3415</option></select></label></div><div id="kitchen-contribution-data" role="status">Cargando contribuciones observables…</div><div class="notice"><b>Sobre recuerdo, transferencias, eventos y efecto en escaños:</b> todavía no existe una comparación equivalente y reproducible para estos dos estudios. No se imputan coeficientes ni cambios de diputados.</div><p><a href="data/microdatos/contribuciones_cocina_23j.json" download>Datos completos de contribuciones (JSON) ↓</a> · <a href="https://github.com/bhermoso/observatorio-electoral/blob/main/scripts/analizar_contribuciones.py" target="_blank" rel="noopener">Reproducir el cálculo ↗</a></p></section>
 <section class="panel cocina-main"><h2>¿De dónde salen los datos?</h2><p>El análisis utiliza resultados <b>agregados</b> reconstruidos de 5.024 registros utilizables del fichero CIS 3582 y los contrasta con su estimación oficial. No publicamos aquí entrevistas individuales. Se utiliza el peso nacional <code>PESO</code>; el fichero agregado incluye hipótesis parciales que no sustituyen una validación externa.</p><p><a href="data/microdatos/analisis_3582.json" download>Descargar las cifras y los supuestos (JSON) ↓</a> · <a href="https://www.cis.es/es/estudios/barometro-de-octubre-2026" target="_blank" rel="noopener">Estudio original del CIS ↗</a></p><details><summary>¿Qué se puede y qué no se puede concluir?</summary><p>Se pueden reproducir medidas descriptivas y probar el efecto de algunas decisiones de cálculo. No se puede afirmar que una coincidencia numérica descubra el algoritmo interno del CIS, ni atribuir a una sola corrección toda la diferencia con la estimación publicada.</p></details><p><a href="guia-cocina.html">Leer guía de cocina, documentación y supuestos →</a> · <a href="sala-mandos.html#microdatos">Abrir laboratorio técnico opcional →</a></p></section>`;
 }
-export async function bindCocina(){void bindCatalogoMicrodatos();void bindRetrospectiva40db();void bindMicrodatos40db();void bindResultadosCocina();void bindLeccion();void bindCocinaPropia();
+export async function bindCocina(){void bindSocioMetrica();void bindCatalogoMicrodatos();void bindRetrospectiva40db();void bindMicrodatos40db();void bindResultadosCocina();void bindLeccion();void bindCocinaPropia();
  const box=document.querySelector('#kitchen-study'),trans=document.querySelector('#kitchen-transfers'),selector=document.querySelector('#kitchen-party');
  bindHistoricCis();
  bindEvidenceAudit();
