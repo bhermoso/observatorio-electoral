@@ -39,3 +39,22 @@ Fuentes originales destacadas: [GAD3 Aragón 2026](https://www.gad3.com/rindiend
 **Prioridad de investigación:** GAD3 Aragón 2026 y Andalucía 2026, SocioMétrica 2024–2025, CEMOP 10N-2019 y 23J-2023, More in Common 2026, serie 40dB 2024–2025 y luego CEO/ICPS/Sociómetro para contrastes autonómicos. Las empresas comerciales del bloque de pendientes **no se clasifican como carentes de microdatos**: falta localizarlos o solicitar acceso.
 
 **Importante:** este catálogo no modifica el pronóstico operativo del Motor 29N ni inserta sus registros como encuestas de intención de voto. Un mismo estudio no puede añadirse por duplicado al aparecer en portal del productor y en el de su contratante.
+
+
+## Primera auditoría SocioMétrica: 4.383 registros SAV de mayo–septiembre de 2025
+
+Los originales fueron descargados desde enlaces oficiales de EL ESPAÑOL y analizados en una ejecución de GitHub Actions de solo lectura, sin publicar entrevistas. [Agregados comprobables en JSON](../data/microdatos/sociometrica-2025-agregados.json).
+
+| Ola | n anunciado | Filas SAV | Variables | PP directo | PSOE directo | Vox directo | Sumar directo |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Mayo | 1.000 | 1.034 | 47 | 23,11 % | 22,05 % | 10,54 % | 5,51 % |
+| Junio | 1.150 | 1.150 | 37 | 23,48 % | 21,30 % | 12,96 % | 6,35 % |
+| Julio | 1.100 | 1.100 | 45 | 22,18 % | 19,00 % | 19,82 % | 4,82 % |
+| Septiembre | 1.100 | 1.099 | 38 | 21,29 % | 18,84 % | 15,20 % | 7,28 % |
+
+Son **frecuencias simples de las preguntas cerradas**: `IV_GEN` (mayo, junio, septiembre) e `INTENCION_DE_VOTO` (julio). El denominador es el total de registros de cada fichero, incluidos indecisos, abstencionistas y respuestas en blanco. **No representan votos válidos ni estimación final; no se ajustó por ponderación, participación o recuerdo.** Solo se publican categorías con 20 o más respuestas. Las bases declaran variables de recuerdo, pero ningún campo se identifica inequívocamente como peso desde los nombres o etiquetas.
+
+**Incidencias:** mayo contiene 34 registros más que las 1.000 entrevistas anunciadas por EL ESPAÑOL, mientras septiembre presenta un registro menos que los 1.100 comunicados; se conserva cada cifra tal como procede del original hasta aclarar si se debe a redondeo, depuración o edición del fichero. Estas cuatro olas no constituyen cuatro elecciones independientes ni una evaluación histórica fuera de muestra.
+
+**Acceso GAD3:** los tres XLSX públicos de Aragón y Andalucía están localizados en el catálogo, pero el servidor cerró las conexiones de descarga tanto en el entorno local como en GitHub Actions. Permanecen **documentados, no analizados**. Una copia descargada por el usuario permitirá completar su homologación sin omitir las comprobaciones de SHA-256, n, preguntas y pesos.
+

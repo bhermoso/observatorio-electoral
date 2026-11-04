@@ -1,0 +1,282 @@
+{
+  "esquema": 1,
+  "fecha_auditoria": "2026-11-05",
+  "fuente": "SocioMétrica / EL ESPAÑOL",
+  "tipo": "microdatos_originales_sav_inspeccionados",
+  "ejecucion_github": "https://github.com/bhermoso/observatorio-electoral/actions/runs/41935078708",
+  "metodo": "SPSS SAV original leído mediante pyreadstat; porcentajes de categorías cerradas de intención de voto entre todos los registros, SIN ponderar. Solo categorías con al menos 20 personas.",
+  "nota": "La casa declara ponderaciones por recuerdo de voto, pero en estos cuatro SAV no hay variable identificable como peso en nombres o etiquetas. La ausencia de variable identificable NO prueba que no se hayan aplicado ajustes a la publicación. La clasificación de voto directo no reproduce la estimación publicada.",
+  "precauciones": [
+    "Una encuesta de 2025 no puede contrastarse todavía con un escrutinio electoral futuro desconocido.",
+    "Una diferencia entre porcentajes directos y estimados mezcla denominador, no respuesta y posibles calibraciones.",
+    "Mayo: 1034 filas frente a 1000 entrevistas anunciadas. Septiembre: 1099 frente a 1100. Investigar antes de declarar muestras homologadas.",
+    "Los resultados no contienen filas de entrevistas ni categorías con menos de 20 personas.",
+    "Solo se ha verificado la estructura y una pregunta; la codificación global, las ponderaciones y las transferencias requieren validación adicional."
+  ],
+  "estudios": [
+    {
+      "id": "sociometrica-2025-05-27",
+      "sha256_original": "3398ba6d68dca0d829046232132ab065e40f54168274d602eb8225e31b74137f",
+      "url_original": "https://s1.elespanol.com/upload/redaccion/2025/05/27/track_voto_elespanol_semana_29-22_may25.sav?utm_cmp_rs=linksinline",
+      "n_publicado": 1000,
+      "n_filas_sav": 1034,
+      "diferencia_n": 34,
+      "n_variables": 47,
+      "ponderador_identificado": false,
+      "pregunta": "IV_GEN",
+      "n_respuestas": 1034,
+      "n_base": 1034,
+      "etiquetas_valor": true,
+      "partidos_y_categorias_n_20": [
+        {
+          "etiqueta": "PP",
+          "n": 239,
+          "pct_muestra": 23.11
+        },
+        {
+          "etiqueta": "PSOE",
+          "n": 228,
+          "pct_muestra": 22.05
+        },
+        {
+          "etiqueta": "VOX",
+          "n": 109,
+          "pct_muestra": 10.54
+        },
+        {
+          "etiqueta": "No lo sé",
+          "n": 105,
+          "pct_muestra": 10.15
+        },
+        {
+          "etiqueta": "No votaría",
+          "n": 70,
+          "pct_muestra": 6.77
+        },
+        {
+          "etiqueta": "Sumar",
+          "n": 57,
+          "pct_muestra": 5.51
+        },
+        {
+          "etiqueta": "Blanco",
+          "n": 48,
+          "pct_muestra": 4.64
+        },
+        {
+          "etiqueta": "Podemos",
+          "n": 40,
+          "pct_muestra": 3.87
+        },
+        {
+          "etiqueta": "Cualquier otro",
+          "n": 39,
+          "pct_muestra": 3.77
+        },
+        {
+          "etiqueta": "Se acabó la fiesta (Alvise)",
+          "n": 33,
+          "pct_muestra": 3.19
+        }
+      ]
+    },
+    {
+      "id": "sociometrica-2025-06-23",
+      "sha256_original": "b820490246f066db81a7aafb8d50e146cdcb631d2aa89dfddfda9cb218a90cfe",
+      "url_original": "https://s1.elespanol.com/upload/redaccion/2025/06/23/track_sociometrica_elespanol_18-21_jun25.sav?utm_cmp_rs=linksinline",
+      "n_publicado": 1150,
+      "n_filas_sav": 1150,
+      "diferencia_n": 0,
+      "n_variables": 37,
+      "ponderador_identificado": false,
+      "pregunta": "IV_GEN",
+      "n_respuestas": 1150,
+      "n_base": 1150,
+      "etiquetas_valor": true,
+      "partidos_y_categorias_n_20": [
+        {
+          "etiqueta": "PP",
+          "n": 270,
+          "pct_muestra": 23.48
+        },
+        {
+          "etiqueta": "PSOE",
+          "n": 245,
+          "pct_muestra": 21.3
+        },
+        {
+          "etiqueta": "VOX",
+          "n": 149,
+          "pct_muestra": 12.96
+        },
+        {
+          "etiqueta": "No lo sé",
+          "n": 107,
+          "pct_muestra": 9.3
+        },
+        {
+          "etiqueta": "No votaría",
+          "n": 82,
+          "pct_muestra": 7.13
+        },
+        {
+          "etiqueta": "Sumar",
+          "n": 73,
+          "pct_muestra": 6.35
+        },
+        {
+          "etiqueta": "Blanco",
+          "n": 45,
+          "pct_muestra": 3.91
+        },
+        {
+          "etiqueta": "Podemos",
+          "n": 42,
+          "pct_muestra": 3.65
+        },
+        {
+          "etiqueta": "Cualquier otro",
+          "n": 24,
+          "pct_muestra": 2.09
+        },
+        {
+          "etiqueta": "Se acabó la fiesta (Alvise)",
+          "n": 23,
+          "pct_muestra": 2
+        }
+      ]
+    },
+    {
+      "id": "sociometrica-2025-07-28",
+      "sha256_original": "fe6758b3ea0bcf2bbc043a54effeb3a2f84a8947de46c4dde047a480f9deaf24",
+      "url_original": "https://s1.elespanol.com/upload/redaccion/2025/07/28/track_sociometrica_elespanol_23-27_jul25.sav?utm_cmp_rs=linksinline",
+      "n_publicado": 1100,
+      "n_filas_sav": 1100,
+      "diferencia_n": 0,
+      "n_variables": 45,
+      "ponderador_identificado": false,
+      "pregunta": "INTENCION_DE_VOTO",
+      "n_respuestas": 1100,
+      "n_base": 1100,
+      "etiquetas_valor": true,
+      "partidos_y_categorias_n_20": [
+        {
+          "etiqueta": "PP",
+          "n": 244,
+          "pct_muestra": 22.18
+        },
+        {
+          "etiqueta": "VOX",
+          "n": 218,
+          "pct_muestra": 19.82
+        },
+        {
+          "etiqueta": "PSOE",
+          "n": 209,
+          "pct_muestra": 19
+        },
+        {
+          "etiqueta": "No lo sé",
+          "n": 75,
+          "pct_muestra": 6.82
+        },
+        {
+          "etiqueta": "No votaría",
+          "n": 69,
+          "pct_muestra": 6.27
+        },
+        {
+          "etiqueta": "Blanco",
+          "n": 55,
+          "pct_muestra": 5
+        },
+        {
+          "etiqueta": "Sumar",
+          "n": 53,
+          "pct_muestra": 4.82
+        },
+        {
+          "etiqueta": "Podemos",
+          "n": 36,
+          "pct_muestra": 3.27
+        },
+        {
+          "etiqueta": "Se acabó la fiesta (Alvise)",
+          "n": 35,
+          "pct_muestra": 3.18
+        },
+        {
+          "etiqueta": "Cualquier otro",
+          "n": 20,
+          "pct_muestra": 1.82
+        }
+      ]
+    },
+    {
+      "id": "sociometrica-2025-09-02",
+      "sha256_original": "845831d6e16ee3fc9402896ee8cb97914908a067350e6aa8e3770dd3e781e1aa",
+      "url_original": "https://s2.elespanol.com/upload/redaccion/2025/08/track_sociometrica_elespanol-2_ago25.sav?utm_cmp_rs=linksinline",
+      "n_publicado": 1100,
+      "n_filas_sav": 1099,
+      "diferencia_n": -1,
+      "n_variables": 38,
+      "ponderador_identificado": false,
+      "pregunta": "IV_GEN",
+      "n_respuestas": 1097,
+      "n_base": 1099,
+      "etiquetas_valor": true,
+      "partidos_y_categorias_n_20": [
+        {
+          "etiqueta": "PP",
+          "n": 234,
+          "pct_muestra": 21.29
+        },
+        {
+          "etiqueta": "PSOE",
+          "n": 207,
+          "pct_muestra": 18.84
+        },
+        {
+          "etiqueta": "VOX",
+          "n": 167,
+          "pct_muestra": 15.2
+        },
+        {
+          "etiqueta": "No lo sé",
+          "n": 87,
+          "pct_muestra": 7.92
+        },
+        {
+          "etiqueta": "Sumar",
+          "n": 80,
+          "pct_muestra": 7.28
+        },
+        {
+          "etiqueta": "No votaría",
+          "n": 67,
+          "pct_muestra": 6.1
+        },
+        {
+          "etiqueta": "Blanco",
+          "n": 67,
+          "pct_muestra": 6.1
+        },
+        {
+          "etiqueta": "Podemos",
+          "n": 48,
+          "pct_muestra": 4.37
+        },
+        {
+          "etiqueta": "Cualquier otro",
+          "n": 32,
+          "pct_muestra": 2.91
+        },
+        {
+          "etiqueta": "Se acabó la fiesta (Alvise)",
+          "n": 28,
+          "pct_muestra": 2.55
+        }
+      ]
+    }
+  ]
+}

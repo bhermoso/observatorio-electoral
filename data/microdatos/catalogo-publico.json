@@ -9,7 +9,8 @@
     "registro_requerido": "Registro de usuario necesario; no se elude",
     "microdatos_no_localizados_en_fuentes_verificadas": "Sin microdatos localizados en esta búsqueda; no implica inexistencia",
     "solicitud_requerida": "Disponible solo previa petición al propietario y autorización de uso; no es descarga abierta.",
-    "embargado": "La fuente anuncia microdatos pero no autoriza su divulgación hasta la fecha indicada."
+    "embargado": "La fuente anuncia microdatos pero no autoriza su divulgación hasta la fecha indicada.",
+    "estructura_sav_verificada": "Archivo SAV original descargado y comprobado en formato, n, variables y agregados cerrados. No equivale a ponderaciones homologadas."
   },
   "precaucion": "El estudio, la fecha de campo, el editor y el contratista deben distinguirse. No mezclar encuestas regionales como nacionales, ni duplicar olas. Licencia de uso pendiente de verificar por archivo. Las fechas de estudios que no indican publicación son orientativas o fin de campo, según nota; no inferir que sean la fecha de publicación.",
   "fuentes": [
@@ -407,10 +408,15 @@
       "titulo": "Barómetro nacional septiembre 2025",
       "ambito": "España",
       "pagina": "https://www.elespanol.com/espana/politica/20250902/espanol-publica-microdatos-encuesta-electoral-sociometrica-puede-consultarlos/1003743908447_0.html",
-      "estado": "enlace_documentado",
+      "estado": "estructura_sav_verificada",
       "n": 1100,
       "formato": "SAV",
-      "nota": "EL ESPAÑOL anuncia SAV descargable, archivo no inspeccionado localmente."
+      "nota": "EL ESPAÑOL anuncia SAV descargable, archivo no inspeccionado localmente. Fichero descargado y estructura comprobada; intención directa tabulada sin ponderación. Diferencia entre filas y n publicado: -1. No se ha reconstruido la estimación del instituto.",
+      "archivo": "https://s2.elespanol.com/upload/redaccion/2025/08/track_sociometrica_elespanol-2_ago25.sav?utm_cmp_rs=linksinline",
+      "sha256": "845831d6e16ee3fc9402896ee8cb97914908a067350e6aa8e3770dd3e781e1aa",
+      "n_detectado": 1099,
+      "n_variables": 38,
+      "auditoria": "data/microdatos/sociometrica-2025-agregados.json"
     },
     {
       "id": "cemop-2025-09-01",
@@ -428,11 +434,15 @@
       "titulo": "Barómetro nacional julio 2025",
       "ambito": "España",
       "pagina": "https://www.elespanol.com/espana/politica/20250728/espanol-publica-microdatos-encuesta-electoral-sociometrica-puede-consultarlos/1003743865244_0.html",
-      "estado": "enlace_documentado",
+      "estado": "estructura_sav_verificada",
       "n": 1100,
       "formato": "SAV",
-      "nota": "Enlace SAV de la fuente original; se conoce el tipo de fichero, no auditado localmente. La URL contiene parámetros originales.",
-      "archivo": "https://s1.elespanol.com/upload/redaccion/2025/07/28/track_sociometrica_elespanol_23-27_jul25.sav?utm_cmp_rs=linksinline"
+      "nota": "Enlace SAV de la fuente original; se conoce el tipo de fichero, no auditado localmente. La URL contiene parámetros originales. Fichero descargado y estructura comprobada; intención directa tabulada sin ponderación. Coincide n con filas SAV. No se ha reconstruido la estimación del instituto.",
+      "archivo": "https://s1.elespanol.com/upload/redaccion/2025/07/28/track_sociometrica_elespanol_23-27_jul25.sav?utm_cmp_rs=linksinline",
+      "sha256": "fe6758b3ea0bcf2bbc043a54effeb3a2f84a8947de46c4dde047a480f9deaf24",
+      "n_detectado": 1100,
+      "n_variables": 45,
+      "auditoria": "data/microdatos/sociometrica-2025-agregados.json"
     },
     {
       "id": "40db-2025-07-04",
@@ -450,10 +460,15 @@
       "titulo": "Barómetro nacional junio 2025",
       "ambito": "España",
       "pagina": "https://www.elespanol.com/espana/politica/20250623/espanol-publica-microdatos-encuesta-electoral-sociometrica-puede-consultarlos/1003743818002_0.html",
-      "estado": "enlace_documentado",
+      "estado": "estructura_sav_verificada",
       "n": 1150,
       "formato": "SAV",
-      "nota": "EL ESPAÑOL anuncia SAV descargable, archivo no inspeccionado localmente."
+      "nota": "EL ESPAÑOL anuncia SAV descargable, archivo no inspeccionado localmente. Fichero descargado y estructura comprobada; intención directa tabulada sin ponderación. Coincide n con filas SAV. No se ha reconstruido la estimación del instituto.",
+      "archivo": "https://s1.elespanol.com/upload/redaccion/2025/06/23/track_sociometrica_elespanol_18-21_jun25.sav?utm_cmp_rs=linksinline",
+      "sha256": "b820490246f066db81a7aafb8d50e146cdcb631d2aa89dfddfda9cb218a90cfe",
+      "n_detectado": 1150,
+      "n_variables": 37,
+      "auditoria": "data/microdatos/sociometrica-2025-agregados.json"
     },
     {
       "id": "cemop-2025-06-17",
@@ -484,10 +499,15 @@
       "titulo": "Barómetro nacional mayo 2025",
       "ambito": "España",
       "pagina": "https://www.elespanol.com/espana/politica/20250527/espanol-publica-microdatos-encuesta-electoral-sociometrica-puede-consultarlos/1003743776100_0.html",
-      "estado": "enlace_documentado",
+      "estado": "estructura_sav_verificada",
       "n": 1000,
       "formato": "SAV",
-      "nota": "EL ESPAÑOL anuncia SAV descargable, archivo no inspeccionado localmente."
+      "nota": "EL ESPAÑOL anuncia SAV descargable, archivo no inspeccionado localmente. Fichero descargado y estructura comprobada; intención directa tabulada sin ponderación. Diferencia entre filas y n publicado: 34. No se ha reconstruido la estimación del instituto.",
+      "archivo": "https://s1.elespanol.com/upload/redaccion/2025/05/27/track_voto_elespanol_semana_29-22_may25.sav?utm_cmp_rs=linksinline",
+      "sha256": "3398ba6d68dca0d829046232132ab065e40f54168274d602eb8225e31b74137f",
+      "n_detectado": 1034,
+      "n_variables": 47,
+      "auditoria": "data/microdatos/sociometrica-2025-agregados.json"
     },
     {
       "id": "sociometrica-2025-04-28",
