@@ -14,8 +14,8 @@ export function validarEvidencia2019(registry,config){
   const unresolved=(proof.unresolved||[]);
   return {id,election:proof.election,proof,missing,unresolved,homologated:missing.length===0&&unresolved.length===0};
  });
- if(elections.some(x=>x.homologated))throw Error('Se ha declarado homologación completa sin revisar el registro de evidencias');
- return {status:'PARCIAL',elections,verified:ElectionsProofCount(elections),ready:false};
+ const ready=elections.every(x=>x.homologated);
+ return {status:ready?'VERIFICADA':'PARCIAL',elections,verified:ElectionsProofCount(elections),ready};
 }
 const ElectionsProofCount=items=>items.reduce((n,item)=>n+item.proof.verified.length,0);
 
