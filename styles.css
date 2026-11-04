@@ -593,3 +593,137 @@ details.panel.panorama-secondary{padding:12px 17px}
 /* La regla general nav{order:3} del breakpoint de 1300 px no debe
    desplazar las pestañas de Panorama por debajo del resultado. */
 #impact nav.panorama-tabs{order:0;width:100%;justify-content:flex-start;overflow:visible;flex:none}
+
+/* Densidad editorial transversal · alcance moderado, sin esconder contenido. */
+body:not(.dashboard-route)>header{padding:13px 3.5%;gap:18px}
+body:not(.dashboard-route)>header nav{gap:16px}
+body:not(.dashboard-route)>header nav a{font-size:12px;padding:4px 0}
+body:not(.dashboard-route) #main{max-width:1550px;padding:21px 3.5% 44px}
+body:not(.dashboard-route) #main .hero{gap:18px;margin-bottom:17px;align-items:center}
+body:not(.dashboard-route) #main .hero h1{font-size:clamp(28px,3vw,39px);letter-spacing:-1.1px;margin:5px 0 8px;line-height:1.18}
+body:not(.dashboard-route) #main .hero p{font-size:14px;line-height:1.45}
+body:not(.dashboard-route) #main .hero-aside{font-size:11px}
+body:not(.dashboard-route) #main .panel{padding:17px 19px;margin-bottom:13px}
+body:not(.dashboard-route) #main .panel-head{margin-bottom:12px;gap:12px}
+body:not(.dashboard-route) #main .panel h2{font-size:20px;line-height:1.25}
+body:not(.dashboard-route) #main .grid,body:not(.dashboard-route) #main .home-grid,body:not(.dashboard-route) #main .lab-layout{gap:13px;margin:13px 0}
+body:not(.dashboard-route) #main .stats{gap:10px;margin:12px 0}
+body:not(.dashboard-route) #main .stat{padding:13px 15px}
+body:not(.dashboard-route) #main .stat strong{font-size:27px;margin:2px 0}
+body:not(.dashboard-route) #main .section-title{margin:22px 0 11px}
+body:not(.dashboard-route) #main .cards,body:not(.dashboard-route) #main .method-grid{gap:12px}
+body:not(.dashboard-route) #main .card{padding:17px}
+body:not(.dashboard-route) #main .card .symbol{margin-bottom:8px}
+body:not(.dashboard-route) #main .card strong{margin-top:11px}
+body:not(.dashboard-route) #main .toolbar{gap:10px;margin:12px 0}
+body:not(.dashboard-route) #main .toolbar label{min-width:145px}
+body:not(.dashboard-route) #main input,body:not(.dashboard-route) #main select{padding:7px 9px;font-size:13px}
+body:not(.dashboard-route) #main .table-wrap td,body:not(.dashboard-route) #main .table-wrap th{padding:7px 9px;font-size:13px;line-height:1.3}
+body:not(.dashboard-route) #main .panel-link{margin-top:13px;padding-top:10px}
+body:not(.dashboard-route) #main details{padding:10px 0}
+body:not(.dashboard-route) #main .notice{margin:11px 0 16px;padding:10px 12px;font-size:13px}
+body:not(.dashboard-route) #main .event-verdict{margin:10px 0 13px;padding:14px}
+body:not(.dashboard-route) #main nav:not(.panorama-tabs){order:0}
+body:not(.dashboard-route)>footer{padding:16px 3.5%}
+
+/* Portada: indicadores enlazados, dentro de la superficie clara ya existente. */
+#impact .forecast-lead-side{display:flex;flex-direction:column;gap:10px;align-self:stretch;min-width:0}
+#impact .forecast-lead-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:auto}
+#impact .forecast-mini-kpi{display:flex;flex-direction:column;justify-content:center;gap:2px;padding:9px 10px;min-height:68px;border:1px solid #d2e3d0;border-radius:7px;background:#f2f7ef;color:#214a37;text-decoration:none}
+#impact .forecast-mini-kpi:hover,#impact .forecast-mini-kpi:focus-visible{background:#e4f0de;border-color:#6d9a78}
+#impact .forecast-mini-kpi>span{font-weight:700;font-size:11px;line-height:1.23}
+#impact .forecast-mini-kpi>strong{font-size:18px;font-variant-numeric:tabular-nums;line-height:1.1}
+#impact .forecast-mini-kpi>strong small{font-size:11px;font-weight:500}
+#impact .forecast-mini-kpi>small{font-size:10px;line-height:1.2;color:#516d5b}
+@media(max-width:1199px),(max-height:699px){
+ #impact .forecast-lead-side{display:block}
+ #impact .forecast-lead-kpis{margin:9px 0 0}
+}
+@media(min-width:1200px) and (max-height:739px){
+ #impact .forecast-mini-kpi{padding:5px 7px;min-height:53px}
+ #impact .forecast-mini-kpi>strong{font-size:16px}
+ #impact .forecast-mini-kpi>small{font-size:9px}
+}
+
+/* Promedios: matriz de institutos y comparación por partido en primer plano. */
+.analysis-compare-panel{border-color:#c3d7c5!important}
+.house-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:12px}
+.house-head h2{margin:0 0 4px}
+.house-head p{font-size:13px;margin:0;color:#557061;line-height:1.45}
+.house-head label{min-width:190px;font-weight:700}
+.house-head select{width:100%}
+.house-chart{background:#f2f7f0;border:1px solid #d2e2ce;border-radius:10px;padding:13px 17px;margin:0 0 12px}
+.house-chart-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:13px;color:#315644}
+.house-chart-top strong{font-size:18px;color:#173c2e}
+.house-plot{margin-top:7px}
+.house-plot-guide{margin-left:clamp(120px,15vw,175px);margin-right:73px;display:flex;justify-content:space-between;color:#5c7966;font-size:11px}
+.house-plot-row{display:grid;grid-template-columns:minmax(112px,166px) minmax(0,1fr) 68px;align-items:center;gap:10px;min-height:25px}
+.house-plot-name{font-size:12px;font-weight:700;text-decoration:none;color:#245640;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.house-plot-name:hover{text-decoration:underline}
+.house-plot-row>b{font-size:12px;text-align:right;color:#204a35;white-space:nowrap}
+.house-plot-track{height:20px;position:relative;background:linear-gradient(to bottom,transparent calc(50% - 1px),#c5d5c3 calc(50% - 1px),#c5d5c3 calc(50% + 1px),transparent calc(50% + 1px))}
+.house-plot-track::before{content:"";position:absolute;left:var(--mean-x);top:0;bottom:0;border-left:2px dashed #447b55}
+.house-plot-dot{position:absolute;top:50%;width:9px;height:9px;transform:translate(-50%,-50%);border-radius:50%;background:#216a4b;border:1px solid #fff;box-shadow:0 0 0 1px #216a4b;z-index:1}
+.house-plot-dot.inactive{background:#aaa;box-shadow:0 0 0 1px #888}
+.house-chart-note{font-size:12px;color:#506c5b;line-height:1.4;margin:9px 0 0}
+.house-matrix{overflow-x:auto}
+.house-matrix table{min-width:740px}
+.house-matrix th,.house-matrix td{white-space:nowrap;font-variant-numeric:tabular-nums}
+.house-matrix th:first-child a{color:#245640}
+.house-matrix tr.house-excluded{opacity:.65}
+.analysis-meta-details{margin:9px 0 12px}
+.analysis-meta-details summary,.analysis-weights-detail summary{font-size:14px;color:#1b5c40;font-weight:750}
+.analysis-weights-detail{margin-bottom:13px}
+.analysis-projection{margin-top:12px}
+.analysis-projection>summary{font-size:16px;color:#1a5e42}
+.analysis-projection-content{margin-top:13px}
+
+/* Acontecimientos: primero cifras observables y cambios por instituto. */
+.event-visual-summary{padding:17px 20px;border:1px solid #c1d7c1;border-radius:10px;background:#fff;margin:10px 0 12px}
+.event-visual-heading{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.event-visual-heading h2{font-size:22px;margin:4px 0 5px;color:#174534}
+.event-visual-heading>p{margin:0;font-size:12px;color:#53705c}
+.event-visual-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:8px 0 10px}
+.event-visual-kpis>div{display:flex;align-items:baseline;gap:9px;padding:7px 11px;border:1px solid #d6e3d1;background:#f2f7ef;border-radius:7px}
+.event-visual-kpis strong{font-size:22px;color:#1f5c40;line-height:1.1}
+.event-visual-kpis span{font-size:12px;color:#416650}
+.event-visual-summary>p{margin:8px 0 10px;font-size:13px;line-height:1.4}
+.event-visual-house{padding:12px 14px;border-radius:8px;border:1px solid #d0dfd0;margin-top:10px}
+.event-visual-house-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;border:0;background:transparent;padding:0;margin-bottom:8px}
+.event-visual-house-head h3{font-size:16px;margin:0}
+.event-visual-house-head span{font-size:12px;color:#506b59}
+.event-visual-column-head,.event-visual-row{display:grid;grid-template-columns:minmax(105px,1.15fr) minmax(60px,.6fr) minmax(60px,.6fr) minmax(170px,1.25fr);gap:9px;align-items:center}
+.event-visual-column-head{font-size:11px;font-weight:700;color:#54715d;border-bottom:1px solid #d9e5d6;padding-bottom:4px}
+.event-visual-row{padding:5px 0;border-bottom:1px solid #edf1eb;font-variant-numeric:tabular-nums}
+.event-visual-row strong{font-size:13px}
+.event-visual-row>span{font-size:13px}
+.event-delta{display:flex;align-items:center;gap:9px}
+.event-delta>b{font-size:13px;min-width:63px}
+.event-delta>b.down{color:#925026}
+.event-delta>b.up{color:#225d57}
+.event-delta>b.flat{color:#60736e}
+.event-delta-track{height:7px;background:#edf1eb;flex:1;border-radius:4px;overflow:hidden}
+.event-delta-track i{display:block;height:100%;border-radius:4px}
+.event-delta-track i.down{background:#c47a40}
+.event-delta-track i.up{background:#3e927b}
+.event-visual-sources{display:flex;gap:12px;flex-wrap:wrap;align-items:baseline;margin-top:9px;font-size:12px}
+.event-visual-sources a{color:#1a6545}
+.event-visual-sources small{font-size:11px;color:#5e7265}
+.event-visual-warning{margin:6px 0 0;font-size:12px;color:#865128}
+.event-visual-note{color:#506956;font-size:12px}
+body:not(.dashboard-route) .event-reading{margin-top:12px}
+body:not(.dashboard-route) .event-reading .event-verdict{padding:13px;margin:7px 0 10px}
+body:not(.dashboard-route) .event-reading .er-levels{margin:12px 0}
+body:not(.dashboard-route) .event-reading .er-levels>li{margin-bottom:12px}
+@media(max-width:800px){
+ .house-head,.event-visual-heading,.event-visual-house-head{align-items:start;flex-direction:column;gap:6px}
+ .house-head label{min-width:180px}
+ .house-plot-row{grid-template-columns:minmax(85px,110px) minmax(0,1fr) 57px;gap:5px}
+ .house-plot-name{font-size:11px}
+ .house-plot-guide{margin-left:114px;margin-right:57px}
+ .event-visual-kpis{grid-template-columns:1fr}
+ .event-visual-column-head,.event-visual-row{grid-template-columns:1fr 55px 55px minmax(115px,1.2fr);gap:5px}
+ .event-visual-summary{padding:12px}
+ .event-delta{gap:4px}
+ .event-delta>b{min-width:53px;font-size:11px}
+}
