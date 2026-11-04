@@ -31,7 +31,7 @@ export function renderHomeImpact(){
  <ol class="layer-legend" aria-label="Las cuatro capas">${Object.entries(LAYERS).map(([k,l])=>`<li class="layer-${k}"><span class="layer-num" aria-hidden="true">${l.capa}</span><div><b>${h(l.nombre)}</b><small>${h(l.naturaleza)}</small><details><summary>¿Qué es exactamente?</summary><p>${h(l.explica)}</p></details></div></li>`).join('')}</ol></details>
  </section>
  <details class="panorama-secondary"><summary>Recuentos completos de las fuentes</summary><div id="home-counts"></div></details>
- <details class="panel matrix-panel panorama-secondary" open><summary>Contrastar promedio y pronóstico, partido a partido</summary>
+ <details class="panel matrix-panel panorama-secondary"><summary>Contrastar promedio y pronóstico, partido a partido</summary>
   <div class="panel-head"><div><span class="eyebrow">Diferenciar procesos</span><h2 id="matrix-heading">Qué es promedio y qué es pronóstico</h2><p class="muted" id="matrix-sub">Cargando datos…</p></div></div>
   <div class="matrix-controls">
    <fieldset class="seg" id="matrix-view"><legend>Mostrar</legend>
@@ -48,10 +48,10 @@ export function renderHomeImpact(){
   <div class="table-wrap"><table class="matrix" id="matrix-table"><caption class="vh">Comparación de capas</caption><tbody><tr><td>Cargando…</td></tr></tbody></table></div>
   <div id="matrix-notes" class="matrix-notes"></div>
  </details>
- <div class="home-grid">
-  <section class="panel" aria-labelledby="blocks-heading"><span class="eyebrow">Capa 3 · Estimación de referencia</span><h2 id="blocks-heading">Escaños por bloques</h2><p class="muted">${h(BLOCK_NOTE)} Mayoría absoluta: 176 de 350.</p><div id="home-blocks" class="home-blocks">Cargando…</div></section>
+ <details class="panorama-secondary"><summary>Detalle por bloques y evolución diaria</summary><div class="home-grid">
+  <section class="panel" aria-labelledby="blocks-heading"><span class="eyebrow">Pronóstico · bloques ampliados</span><h2 id="blocks-heading">Escaños por bloques</h2><p class="muted">${h(BLOCK_NOTE)} Mayoría absoluta: 176 de 350.</p><div id="home-blocks" class="home-blocks">Cargando…</div></section>
   <section class="panel" aria-labelledby="changes-heading"><span class="eyebrow">Corte anterior</span><h2 id="changes-heading">Qué ha cambiado</h2><div id="home-changes">Cargando…</div></section>
- </div>
+ </div></details>
  <details class="panel panorama-secondary" aria-labelledby="cocina-heading"><summary>Qué cambia por nuestros ajustes estadísticos e históricos</summary><span class="eyebrow">Ajustes sobre estimaciones publicadas</span><h2 id="cocina-heading">La diferencia entre dos variantes del motor</h2><p class="muted">Las variantes del motor cambian la selección de anclas, las correcciones históricas y el error de industria. Ninguna de ellas repondera entrevistas individuales.</p><div id="home-cocina">Cargando…</div></details>
  <details class="panel experiment panorama-secondary" aria-labelledby="exp-heading"><summary>Experimento separado: cocina sobre respuestas del CIS</summary><span class="badge sim">Microdatos · fuera del pronóstico</span><h2 id="exp-heading">Qué cambia al trabajar con entrevistas del CIS</h2>
   <p class="muted">Cocina aplicada a <b>microdatos individuales</b> de un solo instituto (CIS). No alimenta el Motor 29N ni la matriz. La proyección de escaños es ilustrativa: ajuste proporcional sobre el mapa de 2023 y D’Hondt.</p>
