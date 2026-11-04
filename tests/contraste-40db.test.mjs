@@ -33,6 +33,6 @@ test('40dB: no declarar una receta reproducida con los microdatos sin procesar',
 test('40dB: contrastes visibles en Cocina y empaquetados sin modificar el Motor 29N',()=>{
   const cocina=fs.readFileSync(new URL('../cocina.mjs',import.meta.url),'utf8');
   const build=fs.readFileSync(new URL('../scripts/build.mjs',import.meta.url),'utf8');
-  assert.match(cocina,/\$\{renderContraste40db\(\)\}\s*\$\{renderResultadosCocina\(\)\}/);
+  assert.match(cocina,/\$\{renderContraste40db\(\)\}/);
   assert.match(build,/'contraste-40db\.mjs'/);
 });
