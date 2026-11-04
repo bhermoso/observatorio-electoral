@@ -8,14 +8,14 @@
 - **Promedios (`#analisis`):** encuestas originales comparables por instituto, con fechas, muestras, pesos editables y una proyección territorial experimental separada.
 - **Acontecimientos (`#contexto`):** diferencias descriptivas entre dos oleadas del mismo instituto y enlaces a fuentes; no implica causalidad.
 - **Cocina (`#cocina`):** tabla inicial del CIS 3582, seis partidos, denominadores y prueba de recetas con CIS 3411/3415. No se reconstruye la fórmula interna del CIS.
-- **Pronóstico completo (`#pronostico`):** tendencias, bloques, fuentes y evaluación temporal del 23J en `#pronostico-evaluacion`.
+- **Pronóstico completo (`#pronostico`):** tendencias, bloques, fuentes y evaluación en `#pronostico-evaluacion`: cortes temporales del 23J y contraste retrospectivo de tratamientos de indecisos del CIS en las dos elecciones generales de 2019.
 
 ## Límites explícitos
 
 1. El Motor 29N consume estimaciones ya publicadas; no lee las entrevistas individuales de encuestadoras privadas.
 2. Los agregados CIS se calcularon a partir del archivo identificado como `MD3582.zip`; los escenarios directos, entre decididos, simpatía y participación difieren en pregunta o denominador, y no son componentes aislados de una receta causal.
 3. La selección de procedimientos con CIS 3411/3415 no mejora la estimación publicada en las dos pruebas documentadas; ambas son de la **misma elección**.
-4. La auditoría temporal del 23J respeta fechas de publicación, cortes y veda, pero solo incluye **una convocatoria independiente**. No valida todavía las probabilidades de mayoría del Motor 29N.
+4. La auditoría temporal del promedio respeta publicación, cortes y veda, pero evalúa **solo una convocatoria (23J)**. Separadamente, el análisis retrospectivo compara cuatro tratamientos de indecisión explícita en los estudios CIS 3242 y 3263: son dos elecciones históricas, **no pruebas prospectivas ni validación del Motor 29N**.
 5. La base territorial del pronóstico sigue siendo las generales de 2023. Los datos adicionales de europeas de 2024 no están incorporados.
 6. El catálogo oficial del CIS ofrece la búsqueda del estudio 3582, pero no se proporciona un enlace directo a su ficha hasta verificarlo.
 
@@ -29,7 +29,7 @@
 
 ## Pendiente para una validación predictiva
 
-- Nuevas elecciones independientes, con resultados oficiales y encuestas con fecha de publicación documentada.
+- Nuevas elecciones independientes, con resultados oficiales y encuestas con fecha de publicación documentada. No confundir las dos elecciones 2019 del contraste de recetas con validación del pronóstico principal.
 - Homologación de candidaturas y verificación de fuentes territoriales de otros ciclos.
 - Calibración empírica de intervalos y probabilidades de mayoría; no sustituirla por multiplicar cortes de una sola elección.
 - Verificar URL directa del estudio CIS 3582 y disponibilidad pública de su archivo original.
