@@ -49,6 +49,10 @@ try{
    if(info.docHeight>c.height+3)errors.push('Scroll vertical en la portada');
    if(!info.lastKpi?.visible)errors.push('KPI no visible');
    if(info.lastKpi?.bottom>info.forecastFoot?.y+1)errors.push('Los indicadores se superponen al pie');
+   if(info.lastParty&&info.kpis&&
+      info.lastParty.x<info.kpis.right&&info.lastParty.right>info.kpis.x&&
+      info.lastParty.y<info.kpis.bottom&&info.lastParty.bottom>info.kpis.y)
+     errors.push('Los indicadores se superponen a la última fila de partidos');
    if(info.forecastResults?.scrollHeight>info.forecastResults?.clientHeight+3)errors.push('Pronóstico con contenido recortado');
   }else if(c.route==='analisis'){
    if(!info.houseChart?.visible||!info.houseMatrix?.visible)errors.push('Falta el comparador de casas');
