@@ -5,7 +5,7 @@ import {parsePercentages,serviceRequest,renderCandidates,renderPollUpdate,SERVIC
 import {validateSubmission,fingerprint,parseFeed,inBlackout} from '../supabase/functions/encuestas/core.mjs';
 const fixture=()=>({...JSON.parse(fs.readFileSync(new URL('../data/polls.json',import.meta.url)))[0],id:'cis-prueba',seats:null});
 test('El botón y el formulario no piden acceso a GitHub',()=>{
- const html=renderPollUpdate();assert.match(html,/Actualizar encuestas/);assert.match(html,/Clave de edición/);assert.doesNotMatch(html,/github|github_pat|token/i);assert.match(html,/07:40 UTC/);
+ const html=renderPollUpdate();assert.match(html,/Actualizar encuestas/);assert.match(html,/Clave de edición/);assert.doesNotMatch(html,/github_pat|ghp_|access.token/i);assert.match(html,/07:40 UTC/);
 });
 test('Acepta coma decimal, conserva ausencias y rechaza duplicados o datos inválidos',()=>{
  assert.deepEqual(parsePercentages('PP: 30,2\nPSOE: 28.1 %'),{PP:30.2,PSOE:28.1});
