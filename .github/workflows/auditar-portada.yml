@@ -5,6 +5,10 @@ on:
     paths:
       - scripts/auditar-portada.mjs
       - .github/workflows/auditar-portada.yml
+  pull_request:
+    paths:
+      - scripts/auditar-portada.mjs
+      - .github/workflows/auditar-portada.yml
   workflow_dispatch:
 permissions:
   contents: read
