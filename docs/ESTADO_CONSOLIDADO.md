@@ -32,7 +32,7 @@
 ## Pendiente para una validación predictiva
 
 - Nuevas elecciones independientes, con resultados oficiales y encuestas con fecha de publicación documentada. No confundir las dos elecciones 2019 del contraste de recetas con validación del pronóstico principal.
-- **Archivos originales cotejados (4-nov-2026):** MD3242.zip (16.194 entrevistas) y MD3263.zip (17.650), con coincidencia de SHA-256, sumas de PESO, n de Kish, variables y recuentos agregados. El registro reproducible y sin entrevistas está en `data/microdatos/cotejo_originales_2019.json`. Quedan pendientes reglas exactas de recodificación P10/P9 a P10R/P9R, VOTOSIMG, correspondencia territorial y pruebas fuera de muestra. No se han subido los microdatos originales al repositorio.
+- **Archivos originales cotejados (4-nov-2026):** MD3242.zip (16.194 entrevistas) y MD3263.zip (17.650), con coincidencia de SHA-256, sumas de PESO, n de Kish, variables y recuentos agregados. El registro reproducible y sin entrevistas está en `data/microdatos/cotejo_originales_2019.json`. Además, `data/microdatos/transiciones_2019.json` y `docs/AUDITORIA_TRANSICIONES_CIS_2019.md` documentan una correspondencia empírica unívoca por provincia para las combinaciones observadas de voto y simpatía. Esto NO recupera la fórmula original ni resuelve las coaliciones para otros procesos electorales. Falta validación fuera de muestra. No se han subido microdatos individuales al repositorio.
 - Calibración empírica de intervalos y probabilidades de mayoría; no sustituirla por multiplicar cortes de una sola elección.
 - Verificar URL directa del estudio CIS 3582 y disponibilidad pública de su archivo original.
 

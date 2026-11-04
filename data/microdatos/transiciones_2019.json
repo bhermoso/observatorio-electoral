@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "source": "ZIP originales MD3242 y MD3263, DA y sintaxis ES",
+  "method": "Recuentos de correspondencias observadas por código y provincia; no es el algoritmo interno del CIS",
+  "privacy": "Solo agregados; las celdas ejemplares inferiores a 20 se agrupan, sin microdatos",
+  "studies": {
+    "3242": {
+      "source_zip_sha256": "24cbdbccf119d1174fb6ed5cd3fc7a23aa8303d8244ca5cdf717d27399f08bbc",
+      "n": 16194,
+      "geographic_unit": "provincia",
+      "key_scope": "solo combinaciones presentes en el fichero original",
+      "raw_vote_to_recoded_by_province": {
+        "observed_keys": 764,
+        "ambiguous_keys": 0,
+        "minimum_disagreements": 0
+      },
+      "raw_sympathy_to_recoded_by_province": {
+        "observed_keys": 582,
+        "ambiguous_keys": 0,
+        "minimum_disagreements": 0
+      },
+      "non_candidate_raw_sympathy_to_combined_by_province": {
+        "observed_keys": 530,
+        "ambiguous_keys": 0,
+        "minimum_disagreements": 0
+      },
+      "direct_vote_retained_in_votosimg": {
+        "n": 8786,
+        "total": 8786
+      },
+      "requires_sympathy_or_special_recode": {
+        "n": 7408,
+        "same_as_recoded_sympathy": 7223,
+        "different_due_to_additional_recode": 185
+      },
+      "global_raw_vote_to_recoded": {
+        "observed_keys": 53,
+        "ambiguous_keys": 6,
+        "minimum_disagreements": 100
+      },
+      "global_raw_sympathy_to_recoded": {
+        "observed_keys": 32,
+        "ambiguous_keys": 0,
+        "minimum_disagreements": 0
+      },
+      "examples_vote_recode_min_cell_20": [
+        {
+          "code_from": "3",
+          "n": 657,
+          "destinations": {
+            "3": 592,
+            "6": 65
+          }
+        },
+        {
+          "code_from": "5",
+          "n": 257,
+          "destinations": {
+            "3": 252,
+            "OTRAS_TRANSFORMACIONES_AGRUPADAS": 5
+          }
+        },
+        {
+          "code_from": "1",
+          "n": 1507,
+          "destinations": {
+            "1": 1497,
+            "OTRAS_TRANSFORMACIONES_AGRUPADAS": 10
+          }
+        },
+        {
+          "code_from": "4",
+          "n": 1117,
+          "destinations": {
+            "4": 1104,
+            "OTRAS_TRANSFORMACIONES_AGRUPADAS": 13
+          }
+        }
+      ],
+      "fully_explained_observed_records": 16194,
+      "not_proven": [
+        "Fórmula exacta de programación del CIS",
+        "Combinaciones no observadas de código y provincia",
+        "Equivalencia de las candidaturas para otras elecciones",
+        "Rendimiento predictivo fuera de muestra"
+      ]
+    },
+    "3263": {
+      "source_zip_sha256": "efe93eeb74047a677d2cd4c39be0fa5e340c5f7db4ec651fc4e4a6f3bcc3532c",
+      "n": 17650,
+      "geographic_unit": "provincia",
+      "key_scope": "solo combinaciones presentes en el fichero original",
+      "raw_vote_to_recoded_by_province": {
+        "observed_keys": 832,
+        "ambiguous_keys": 0,
+        "minimum_disagreements": 0
+      },
+      "raw_sympathy_to_recoded_by_province": {
+        "observed_keys": 612,
+        "ambiguous_keys": 0,
+        "minimum_disagreements": 0
+      },
+      "non_candidate_raw_sympathy_to_combined_by_province": {
+        "observed_keys": 556,
+        "ambiguous_keys": 0,
+        "minimum_disagreements": 0
+      },
+      "direct_vote_retained_in_votosimg": {
+        "n": 9675,
+        "total": 9675
+      },
+      "requires_sympathy_or_special_recode": {
+        "n": 7975,
+        "same_as_recoded_sympathy": 7712,
+        "different_due_to_additional_recode": 263
+      },
+      "global_raw_vote_to_recoded": {
+        "observed_keys": 43,
+        "ambiguous_keys": 14,
+        "minimum_disagreements": 305
+      },
+      "global_raw_sympathy_to_recoded": {
+        "observed_keys": 35,
+        "ambiguous_keys": 9,
+        "minimum_disagreements": 20
+      },
+      "examples_vote_recode_min_cell_20": [
+        {
+          "code_from": "21",
+          "n": 745,
+          "destinations": {
+            "6": 52,
+            "21": 632,
+            "67": 61
+          }
+        },
+        {
+          "code_from": "3",
+          "n": 296,
+          "destinations": {
+            "6": 33,
+            "21": 239,
+            "67": 24
+          }
+        },
+        {
+          "code_from": "5",
+          "n": 111,
+          "destinations": {
+            "21": 108,
+            "OTRAS_TRANSFORMACIONES_AGRUPADAS": 3
+          }
+        },
+        {
+          "code_from": "50",
+          "n": 177,
+          "destinations": {
+            "50": 69,
+            "95": 88,
+            "OTRAS_TRANSFORMACIONES_AGRUPADAS": 20
+          }
+        },
+        {
+          "code_from": "1",
+          "n": 1841,
+          "destinations": {
+            "1": 1823,
+            "OTRAS_TRANSFORMACIONES_AGRUPADAS": 18
+          }
+        },
+        {
+          "code_from": "4",
+          "n": 716,
+          "destinations": {
+            "4": 708,
+            "OTRAS_TRANSFORMACIONES_AGRUPADAS": 8
+          }
+        }
+      ],
+      "fully_explained_observed_records": 17650,
+      "not_proven": [
+        "Fórmula exacta de programación del CIS",
+        "Combinaciones no observadas de código y provincia",
+        "Equivalencia de las candidaturas para otras elecciones",
+        "Rendimiento predictivo fuera de muestra"
+      ]
+    }
+  },
+  "caveats": [
+    "Coincidencia perfecta dentro de la muestra no implica validez para códigos o provincias no observados",
+    "El agrupamiento depende de límites provinciales y etiquetas de 2019",
+    "No se habilita una receta del Motor 29N ni se imputan respuestas sin una regla auditada"
+  ]
+}
