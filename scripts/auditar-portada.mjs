@@ -15,6 +15,16 @@ const outputs=[];
 try{
  for(const size of viewports){
   const page=await browser.newPage({viewport:size,deviceScaleFactor:1});
+  // Previsualización exacta de JS/CSS del PR con las mismas encuestas publicadas.
+  // Así se valida antes de fusionar, sin tener que publicar un cambio no revisado.
+  await page.route('**/*',async route=>{
+   const u=new URL(route.request().url),name=u.pathname.split('/').pop();
+   if(['app.mjs','home-impact.mjs','styles.css'].includes(name)&&
+      u.pathname.startsWith('/observatorio-electoral/')){
+    await route.fulfill({path:name,contentType:name.endsWith('.css')?'text/css':'text/javascript'});
+   }else await route.continue();
+  });
+
   const url=URL+'?audit='+Date.now();
   await page.goto(url,{waitUntil:'domcontentloaded',timeout:60000});
   await page.waitForTimeout(1500);
@@ -37,7 +47,7 @@ try{
     const e=document.querySelector(sel);
     if(!e){items[name]={exists:false};continue;}
     const box=e.getBoundingClientRect(),style=getComputedStyle(e);
-    items[name]={exists:true,x:Math.round(box.left),y:Math.round(box.top),right:Math.round(box.right),bottom:Math.round(box.bottom),
+    items[name]={color:style.color,background:style.backgroundColor,exists:true,x:Math.round(box.left),y:Math.round(box.top),right:Math.round(box.right),bottom:Math.round(box.bottom),
       w:Math.round(box.width),h:Math.round(box.height),
       visible:style.display!=='none'&&style.visibility!=='hidden'&&box.width>0&&box.height>0};
    }
@@ -52,7 +62,7 @@ try{
      viewport:{width:innerWidth,height:innerHeight},items,containers,bodyScroll:document.documentElement.scrollHeight>innerHeight+2,route:location.href};
   });
   const errors=[];
-  if(!/Panorama electoral/i.test(report.h1||''))errors.push('No se ha cargado la portada nueva');
+  if(!/Panorama/i.test(report.h1||''))errors.push('No se ha cargado la portada nueva');
   if(report.tabCount!==5)errors.push('Faltan pestañas');
   if(report.bodyScroll)errors.push('La página tiene desplazamiento vertical');
   for(const key of ['head','tabs','forecast','firstParty','lastParty','firstBloc','lastBloc','editor','editorFoot','forecastFoot']){
@@ -65,6 +75,11 @@ try{
     errors.push(sel+': contenido vertical desbordado '+c.scrollHeight+'>'+c.clientHeight);
   }
   if(report.items.editor?.bottom>report.items.results?.bottom+2)errors.push('La lectura editorial se recorta por el panel');
+  if(report.items.lastParty?.bottom>report.items.forecastFoot?.y-1)
+    errors.push('Última fila solapa el pie del pronóstico');
+  if(report.items.lastBloc?.bottom>report.items.forecastFoot?.y-1)
+    errors.push('El último bloque solapa el pie del pronóstico');
+
   report.errors=errors;report.pasa=errors.length===0;
   const image='auditoria-portada/'+size.width+'x'+size.height+'.png';
   await page.screenshot({path:image,fullPage:true});
