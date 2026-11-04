@@ -117,8 +117,53 @@ const f=(v,d=1)=>Number.isFinite(v)?v.toLocaleString('es-ES',{minimumFractionDig
 const sg=(v,d=1)=>Number.isFinite(v)?(v>0?'+':v<0?'−':'±')+f(Math.abs(v),d):'—';
 const fd=s=>s?new Date(String(s).slice(0,10)+'T12:00:00Z').toLocaleDateString('es-ES',{day:'numeric',month:'short',timeZone:'Europe/Madrid'}):'—';
 
+/** Veredicto legible: cambio observable ≠ efecto causal.
+ * No convierte un resultado 'no significativo' en un efecto de cero. */
+export function resumenImpacto(a){
+ const m=a.modelo||{};
+ const ms=m.modelo_salto||{};
+ const parties=['PP','PSOE','VOX','SUMAR'];
+ const filas=parties.map(id=>{
+  const r=a.partidos?.find(p=>p.id===id);
+  const par=a.parejas?.flatMap(p=>p.comparabilidad?.nivel==='baja'?[]:(p.cambios||[]).filter(c=>c.id===id).map(c=>({...c,institute:p.institute})))||[];
+  const salto=ms[id]?.h0||null;
+  const plazo=ms[id]?.h14||null;
+  const placebo=m.umbral_placebo?.[id]??null;
+  const supera=Number.isFinite(plazo?.cambio)&&Number.isFinite(placebo)&&Math.abs(plazo.cambio)>placebo;
+  return {id,antes:r?.antes??null,despues:r?.despues??null,
+   cambio:r?.diferencia??null,pares:par.length,
+   salto:salto&&Number.isFinite(salto.cambio)&&Number.isFinite(salto.sd)?salto:null,
+   plazo:plazo&&Number.isFinite(plazo.cambio)&&Number.isFinite(plazo.sd)?plazo:null,
+   placebo:Number.isFinite(placebo)?placebo:null,supera};
+ });
+ const n=a.counts?.after||0;
+ const paresComparables=filas.some(x=>x.pares>0);
+ const suficientes=filas.some(x=>x.plazo&&x.placebo!=null);
+ const algunoSupera=filas.some(x=>x.supera);
+ const estado=!n?'sin_datos_posteriores':!paresComparables&&!suficientes?'evidencia_insuficiente':
+  algunoSupera?'cambio_supera_placebo':'cambio_no_distinguible';
+ const titular={
+  sin_datos_posteriores:'Todavía no puede medirse un cambio posterior.',
+  evidencia_insuficiente:'Hay encuestas posteriores, pero no una comparación suficientemente sólida.',
+  cambio_supera_placebo:'Se observa al menos un cambio superior al umbral de referencia.',
+  cambio_no_distinguible:'No se identifica un cambio claramente distinguible en la evidencia disponible.'
+ }[estado];
+ return {estado,titular,filas,posteriores:n,parejas:a.parejas?.length||0,
+   aplicado:m.aplicado_al_pronostico===true};
+}
+
 export function renderLectura(a,event){
  const m=a.modelo;
+ const resumen=resumenImpacto(a);
+ const resumenHTML=`<section class="event-verdict" aria-labelledby="event-verdict-title">
+  <span class="eyebrow">Resultado del análisis · ${h(fd(event.date))}</span>
+  <h3 id="event-verdict-title">${h(resumen.titular)}</h3>
+  <p>${resumen.posteriores} encuestas con campo íntegramente posterior; ${resumen.parejas} institutos con oleadas a ambos lados. <b>${resumen.aplicado?'El modelo declara un ajuste por este acontecimiento.':'No se ha incorporado un coeficiente atribuido al acontecimiento al pronóstico principal.'}</b></p>
+  <div class="table-wrap"><table><caption>Variación observada, no efecto causal. Las medias pueden comparar distintos institutos; el umbral placebo exige modelo y datos suficientes.</caption><thead><tr><th scope="col">Partido</th><th scope="col">Antes</th><th scope="col">Después</th><th scope="col">Variación</th><th scope="col">Cambio estimado a 14 días</th><th scope="col">Umbral placebo</th></tr></thead><tbody>
+  ${resumen.filas.map(r=>`<tr><th scope="row">${h(r.id)}</th><td>${f(r.antes)} %</td><td>${f(r.despues)} %</td><td><strong>${r.cambio==null?'—':sg(r.cambio)+' pp'}</strong></td><td>${r.plazo?sg(r.plazo.cambio)+' ± '+f(r.plazo.sd)+' pp':'—'}</td><td>${r.placebo==null?'—':'±'+f(r.placebo)+' pp'}${r.plazo&&r.placebo!=null?'<small>'+(r.supera?'supera el umbral':'no supera el umbral')+'</small>':''}</td></tr>`).join('')}
+  </tbody></table></div>
+  <p class="muted">La diferencia anterior/posterior es descriptiva y puede mezclar casas. Un cambio mayor que el placebo es una señal estadística, no demuestra causalidad. «No se distingue» tampoco significa impacto nulo. Los escaños del pronóstico no incorporan efectos atribuidos sin evidencia suficiente.</p>
+ </section>`;
  const sources=(event.sources||[]).map(s=>`<a href="${h(s.url)}" target="_blank" rel="noopener">${h(s.publisher)} · ${h(fd(s.published))} ↗</a>`).join(' · ');
  const pt=a.partidos.map(r=>`<tr><th scope="row">${h(r.label)}</th><td>${f(r.antes)} %<small>${r.nAntes} inst.</small></td><td>${r.despues==null?'—':f(r.despues)+' %'}<small>${r.nDespues} inst.</small></td><td>${sg(r.diferencia)}</td><td>${r.mismoInstituto.n?sg(r.mismoInstituto.media)+' pp<small>'+h(r.mismoInstituto.institutos.join(', '))+'</small>':'—'}</td><td><small>${h(r.comparabilidad)}</small></td></tr>`).join('');
  const bt=a.bloques.map(r=>`<tr><th scope="row">${h(r.label)}</th><td>${f(r.antes)} %</td><td>${r.despues==null?'—':f(r.despues)+' %'}</td><td>${sg(r.diferencia)}</td><td><small>${h(r.cobertura)}</small></td></tr>`).join('');
@@ -126,7 +171,7 @@ export function renderLectura(a,event){
  const ms=m?.modelo_salto||{};
  const stat=m?`<div class="table-wrap"><table><caption>Motor 29N, entradas del pronóstico (incluye registros de terceros). Salto = cambio del estado latente entre el día anterior y el del suceso.</caption><thead><tr><th>Partido</th><th>Pares por casa (media)</th><th>Salto inmediato ± error típico</th><th>Cambio a 7 días</th><th>Umbral placebo (p95)</th></tr></thead><tbody>${['PP','PSOE','VOX','SUMAR'].map(p=>{const mp=m.media_pares?.[p],x=ms[p];return `<tr><th scope="row">${h(p)}</th><td>${mp?sg(mp.cambio)+' pp (n='+mp.n+')':'—'}</td><td>${x?.h0?sg(x.h0.cambio)+' ± '+f(x.h0.sd):'—'}</td><td>${x?.h7?sg(x.h7.cambio)+' ± '+f(x.h7.sd):'<small>sin datos tras 7 días</small>'}</td><td>${m.umbral_placebo?.[p]!=null?'±'+f(m.umbral_placebo[p]):'—'}</td></tr>`;}).join('')}</tbody></table></div><p class="muted">${h(m.nota||'')} Regla: ${h(m.regla_solape||'')}. Con una sola encuesta posterior el error típico es grande y el salto depende de esa encuesta.</p>`:'<p class="empty">La salida del Motor 29N no incluye el análisis de este acontecimiento.</p>';
  return `<section class="panel event-reading" aria-labelledby="er-h"><span class="eyebrow">Lectura principal</span><h2 id="er-h">${h(event.title)} · ${h(fd(event.date))}</h2>
- <ol class="er-levels">
+ ${resumenHTML}<ol class="er-levels">
  <li><h3>1. Hecho y cronología</h3><p>${h(event.summary)}</p><p class="muted">Fuentes: ${sources}. Revisado el ${h(fd(event.verified))}.</p>
   <div class="event-evidence-kpis"><div><span>Campo anterior</span><strong>${a.counts.before}</strong></div><div><span>Incluyen el día del suceso</span><strong>${a.counts.overlap}</strong></div><div><span>Campo íntegramente posterior</span><strong>${a.counts.after}</strong></div></div><p class="muted">Ventana de ${a.ventana} días a cada lado, recalculada con el archivo actual. Las encuestas que entrevistan el mismo día del suceso se excluyen de la comparación.</p></li>
  <li><h3>2. Cambios observados</h3><p class="muted">Última encuesta de cada instituto antes del suceso frente a la primera posterior. «Mismo instituto» compara solo casas con oleadas a ambos lados.</p><div class="table-wrap"><table><thead><tr><th>Partido</th><th>Media anterior</th><th>Media posterior</th><th>Diferencia</th><th>Mismo instituto</th><th>Comparabilidad</th></tr></thead><tbody>${pt}</tbody></table></div>

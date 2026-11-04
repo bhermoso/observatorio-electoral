@@ -12,3 +12,18 @@ test('Ventana inclusiva, cruza meses y años y excluye agregadores',()=>{const r
 test('Los seis estudios de la carga inicial preceden al accidente de Urda',()=>{const initialIds=new Set(['cis-3582','40db-2026-10-flash','gad3-2026-10','imop-2026-10-ola2','dym-2026-10','ateneo-2026-10-25']);const initialPolls=polls.filter(p=>initialIds.has(p.id)),records=contextPolls(initialPolls,'2026-10-28',30);assert.equal(records.length,6);assert.ok(records.every(p=>p.relation==='before'));assert.deepEqual(descriptivePairs(initialPolls,'2026-10-28',30),[]);});
 test('Compara último anterior y primer posterior sin fusionar coaliciones ni rellenar ausentes',()=>{const records=[p('a','2026-10-05','2026-10-06'),p('b','2026-10-24','2026-10-25',{PP:31,Sumar:6,VOX:20}),p('c','2026-10-28','2026-10-29',{PP:10}),p('d','2026-10-29','2026-10-30',{PP:32,'Frente Amplio':8,VOX:0}),p('e','2026-11-01','2026-11-02',{PP:40})];const [pair]=descriptivePairs(records,'2026-10-28');assert.equal(pair.beforeId,'b');assert.equal(pair.afterId,'d');assert.deepEqual(pair.differences,[{party:'PP',before:31,after:32,points:1},{party:'VOX',before:20,after:0,points:-20}]);});
 test('Institutos, escenarios, modos o electorados diferentes no producen pares',()=>{const before=p('a','2026-10-24','2026-10-25');for(const extra of [{institute:'Otro'},{scope:'Andalucía'},{mode:'CAWI'},{mode:null},{scenario:'B'},{universe:'Otro universo'}])assert.deepEqual(descriptivePairs([before,p('b','2026-10-29','2026-10-30',{},extra)],'2026-10-28'),[]);});
+
+test('La lectura del acontecimiento presenta un veredicto cuantificado antes de los detalles',async()=>{
+ const {resumenImpacto,renderLectura}=await import('../acontecimiento.mjs');
+ const e=events[0];
+ const missing={counts:{before:4,overlap:1,after:0},partidos:[],parejas:[],modelo:null};
+ assert.equal(resumenImpacto(missing).estado,'sin_datos_posteriores');
+ const withChange={counts:{before:2,overlap:1,after:2},partidos:[{id:'PP',antes:30,despues:32,diferencia:2}],parejas:[],
+   modelo:{aplicado_al_pronostico:false,modelo_salto:{PP:{h14:{cambio:2.5,sd:1}}},umbral_placebo:{PP:2}}};
+ const r=resumenImpacto(withChange);assert.equal(r.estado,'cambio_supera_placebo');
+ assert.equal(r.aplicado,false);assert.equal(r.filas.find(p=>p.id==='PP').cambio,2);
+ const reading=fs.readFileSync('acontecimiento.mjs','utf8');
+ assert.match(reading,/\$\{resumenHTML\}<ol class="er-levels">/);
+ assert.match(reading,/no demuestra causalidad/i);
+ assert.match(reading,/No se ha incorporado un coeficiente atribuido/);
+});
