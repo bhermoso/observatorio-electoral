@@ -38,7 +38,7 @@ try{
    const box=(sel)=>{const el=document.querySelector(sel);if(!el)return null;const r=el.getBoundingClientRect(),cs=getComputedStyle(el);return {x:Math.round(r.left),y:Math.round(r.top),right:Math.round(r.right),bottom:Math.round(r.bottom),width:Math.round(r.width),height:Math.round(r.height),clientHeight:el.clientHeight,scrollHeight:el.scrollHeight,display:cs.display,visible:cs.display!=='none'&&r.height>0};};
    return {viewport:{width:innerWidth,height:innerHeight},docWidth:document.documentElement.scrollWidth,docHeight:document.documentElement.scrollHeight,
     header:box('body>header'),main:box('#main'),hero:box('#main .hero'),forecast:box('.forecast-lead'),forecastResults:box('#forecast-lead-results'),
-    lastParty:box('.forecast-lead-table tbody tr:last-child'),forecastFoot:box('.forecast-lead-foot'),
+    lastParty:box('.forecast-lead-table tbody tr:last-child'),lastBloc:box('.forecast-lead-bloc:last-child'),forecastFoot:box('.forecast-lead-foot'),
     kpis:box('.forecast-lead-kpis'),lastKpi:box('.forecast-mini-kpi:last-child'),
     compare:box('#analysis-compare'),houseChart:box('.house-chart'),houseMatrix:box('.house-matrix'),weights:box('.analysis-weights-detail'),
     eventVisual:box('.event-visual-summary'),eventReading:box('.event-reading'),eventHouse:box('.event-visual-house'),
@@ -53,6 +53,9 @@ try{
       info.lastParty.x<info.kpis.right&&info.lastParty.right>info.kpis.x&&
       info.lastParty.y<info.kpis.bottom&&info.lastParty.bottom>info.kpis.y)
      errors.push('Los indicadores se superponen a la última fila de partidos');
+   if(info.lastBloc&&info.kpis&&info.lastBloc.x<info.kpis.right&&info.lastBloc.right>info.kpis.x&&
+      info.lastBloc.y<info.kpis.bottom&&info.lastBloc.bottom>info.kpis.y)
+     errors.push('Los indicadores se superponen a los bloques');
    if(info.forecastResults?.scrollHeight>info.forecastResults?.clientHeight+3)errors.push('Pronóstico con contenido recortado');
   }else if(c.route==='analisis'){
    if(!info.houseChart?.visible||!info.houseMatrix?.visible)errors.push('Falta el comparador de casas');
