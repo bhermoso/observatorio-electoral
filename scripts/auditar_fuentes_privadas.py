@@ -131,7 +131,7 @@ def inspect_sav(data: bytes) -> dict:
     with tempfile.TemporaryDirectory() as tmp:
         f = Path(tmp) / "datos.sav"
         f.write_bytes(data)
-        _, meta = pyreadstat.read_sav(str(f), metadataonly=True)
+        _, meta = pyreadstat.read_sav(str(f), metadataonly=True, output_format="dict")
     method_cols = []
     for col, label in zip(meta.column_names, meta.column_labels):
         # NO incluir valores de ninguna entrevista; únicamente nombres de variables.
