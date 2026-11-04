@@ -2,6 +2,7 @@ import {renderCocinaPropia,bindCocinaPropia} from './cocina-propia.mjs';
 import {renderLeccion,bindLeccion} from './cocina-leccion.mjs';
 import {renderResultadosCocina,bindResultadosCocina} from './cocina-resultados.mjs';
 import {renderEvidencia40db} from './evidencia-40db.mjs';
+import {renderContraste40db} from './contraste-40db.mjs';
 // Cocina electoral: resultados agregados de estudio CIS 3582, sin entrevistas individuales.
 // Los métodos alternativos NO son etapas acumulables ni reconstrucciones de la receta del CIS.
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
@@ -19,6 +20,7 @@ const EXPERIMENTS=[
 export function renderCocina(){
  return `<div class="hero"><div><div class="eyebrow">Microdatos / transparencia metodológica</div><h1>Entender la cocina electoral.</h1><p>De las respuestas originales a una estimación: qué sabemos, qué se modifica y qué sigue siendo una hipótesis.</p></div><div class="hero-aside"><span class="badge poll">Estudio CIS 3582</span><br><br><strong>Octubre de 2026</strong>Comparación de procedimientos</div></div>
  ${renderEvidencia40db()}
+ ${renderContraste40db()}
  ${renderResultadosCocina()}
  <details class="kitchen-extended-study"><summary>Ampliar análisis: nuestras recetas, la evaluación histórica y sus límites</summary>
  ${renderLeccion()}${renderCocinaPropia()}</details>
