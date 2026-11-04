@@ -46,6 +46,27 @@ ARCHIVOS = [
         "url": "https://www.gad3.com/wp-content/uploads/2026/05/GAD3-Microdatos-ABC-Andalucia-2026.xlsx",
     },
     {
+        "id": "sociometrica-mayo-2025",
+        "casa": "SocioMétrica",
+        "n_reportado": 1000,
+        "formato": "sav",
+        "url": "https://s1.elespanol.com/upload/redaccion/2025/05/27/track_voto_elespanol_semana_29-22_may25.sav?utm_cmp_rs=linksinline",
+    },
+    {
+        "id": "sociometrica-junio-2025",
+        "casa": "SocioMétrica",
+        "n_reportado": 1150,
+        "formato": "sav",
+        "url": "https://s1.elespanol.com/upload/redaccion/2025/06/23/track_sociometrica_elespanol_18-21_jun25.sav?utm_cmp_rs=linksinline",
+    },
+    {
+        "id": "sociometrica-septiembre-2025",
+        "casa": "SocioMétrica",
+        "n_reportado": 1100,
+        "formato": "sav",
+        "url": "https://s2.elespanol.com/upload/redaccion/2025/08/track_sociometrica_elespanol-2_ago25.sav?utm_cmp_rs=linksinline",
+    },
+    {
         "id": "sociometrica-julio-2025",
         "casa": "SocioMétrica",
         "n_reportado": 1100,
@@ -137,12 +158,45 @@ def inspect_sav(data: bytes) -> dict:
         # NO incluir valores de ninguna entrevista; únicamente nombres de variables.
         if METHOD_TERMS.search(col + " " + (label or "")):
             method_cols.append({"variable": col[:48], "etiqueta": (label or "")[:120]})
-    return {
+    resultado = {
         "formato_sav_reconocido": True,
         "filas_declaradas_en_metadatos": meta.number_rows,
         "columnas": meta.number_columns,
         "variables_metodologicas": method_cols[:25],
+        "ponderador_identificado_en_metadatos": any(
+            re.search(r"ponder|peso|factor|weight", c + " " + (l or ""), re.I)
+            for c, l in zip(meta.column_names, meta.column_labels)
+        ),
     }
+    # Solo agregados de la pregunta cerrada de intención nacional.
+    # No se publican respuestas individuales ni categorías de menos de 20 personas.
+    if "INTENCION_DE_VOTO" in meta.column_names:
+        from collections import Counter
+        values, m2 = pyreadstat.read_sav(
+            str(f), usecols=["INTENCION_DE_VOTO"], output_format="dict"
+        )
+        serie = values["INTENCION_DE_VOTO"]
+        labs = m2.variable_value_labels.get("INTENCION_DE_VOTO", {})
+        counts = Counter(
+            str(int(x)) if isinstance(x, (int, float)) and float(x).is_integer()
+            else str(x)
+            for x in serie if x is not None and str(x).lower() != "nan"
+        )
+        etiquetas = {str(int(k)) if isinstance(k, (int, float)) and float(k).is_integer()
+                     else str(k): str(v) for k, v in labs.items()}
+        resultado["intencion_directa_sin_ponderar"] = {
+            "variable": "INTENCION_DE_VOTO",
+            "n_respuestas": int(sum(counts.values())),
+            "denominador": int(len(serie)),
+            "con_etiquetas_de_valor": bool(labs),
+            "categorias_n_ge_20": [
+                {"etiqueta": etiquetas.get(k, "Código sin etiqueta")[:90],
+                 "n": int(v),
+                 "pct_muestra": round(100.0 * v / len(serie), 2)}
+                for k, v in counts.most_common() if v >= 20
+            ],
+        }
+    return resultado
 
 
 def inspect_one(source: dict) -> dict:
