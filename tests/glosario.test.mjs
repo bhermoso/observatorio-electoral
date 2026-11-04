@@ -38,3 +38,42 @@ test('Portal, páginas técnicas y pronóstico generado cargan el mismo glosario
  assert.match(build,/\x27glosario.mjs\x27/);
  assert.match(build,/src="glosario.mjs"/);
 });
+
+test('Placebo, efecto, comparabilidad y límites estadísticos explicados con ejemplos',()=>{
+ for(const term of ['placebo','prueba placebo','pruebas placebo','umbral placebo','percentil 95',
+   'salto inmediato','cambio a 14 días','efecto causal','contrafactual',
+   'comparabilidad','campo íntegramente posterior','oleada',
+   'error típico','significación estadística','ruido estadístico',
+   'mediana de escaños','probabilidad de mayoría','retroprueba','backtesting',
+   'veda electoral','fecha de publicación','fecha de corte',
+   'fuente primaria','fuente secundaria','puerta de calidad','Monte Carlo',
+   'distribución provincial','magnitud de distrito','número de simulaciones']){
+  assert.ok(terms.has(term.toLowerCase()),'Falta etiqueta emergente: '+term);
+  assert.ok(terms.get(term.toLowerCase()).length>75,'Explicación insuficiente: '+term);
+ }
+ assert.match(terms.get('umbral placebo'),/95 %/);
+ assert.match(terms.get('efecto causal'),/contrafactual/);
+ assert.match(terms.get('probabilidad de mayoría'),/no es la probabilidad/);
+ assert.ok(!terms.has('pp'),'No confundir la abreviatura técnica con el partido PP');
+});
+
+test('Glosario reconoce texto de encabezados desplegables y los cambios DOM sin perder registros',()=>{
+ assert.match(script,/const SKIP='a,button,summary,input/);
+ assert.match(script,/function decorateSummaries\(root\)/);
+ assert.match(script,/summary\.setAttribute\('aria-description'/);
+ assert.match(script,/queuedDecorations\.add\(n\)/);
+ assert.match(script,/queuedDecorations\.clear\(\)/);
+ const duplicates=items.map(([name])=>name.toLowerCase()).filter((name,index,arr)=>arr.indexOf(name)!==index);
+ assert.equal(duplicates.length,0,'Los términos no deben duplicarse');
+ assert.ok(items.length>=90,'El glosario debe explicar términos de varias áreas');
+});
+
+test('Los términos críticos de la página de acontecimientos están cubiertos',()=>{
+ const src=fs.readFileSync(new URL('../acontecimiento.mjs',import.meta.url),'utf8');
+ for(const term of ['placebo','comparabilidad','margen','salto','efecto causal']){
+  assert.ok(src.toLowerCase().includes(term),'La página debería mencionar '+term);
+ }
+ for(const term of ['placebo','comparabilidad','margen de error','salto inmediato','efecto causal']){
+  assert.ok(terms.has(term),'No hay ayuda para '+term);
+ }
+});

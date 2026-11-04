@@ -440,3 +440,13 @@ details.panel.panorama-secondary{padding:12px 17px}
 .event-survey-card th,.event-survey-card td{font-size:14px;padding:6px 10px}
 .event-survey-card td{font-variant-numeric:tabular-nums}
 .event-survey-card .notice{padding:9px 12px}
+
+
+/* Glosario visible pero discreto: misma ayuda en escritorio, teclado y móvil. */
+.term-help{cursor:help;text-decoration:underline dotted #45846b;text-decoration-thickness:1px;text-underline-offset:3px;border-bottom:0;border-radius:2px}
+.term-help:hover,.term-help:focus-visible{color:#146a4d;background:rgba(52,121,88,.10)}
+.term-help:focus-visible{outline:2px solid #1f7159;outline-offset:3px}
+.glossary-tooltip{box-sizing:border-box;width:max-content;max-width:min(340px,calc(100vw - 24px));max-height:65vh;overflow-y:auto;pointer-events:auto;padding:12px 14px;line-height:1.45}
+.glossary-tooltip strong{font-size:14px;line-height:1.3}
+.glossary-tooltip p{font-size:13px;line-height:1.5}
+@media(max-width:520px){.glossary-tooltip{max-width:calc(100vw - 20px);padding:11px 12px}}

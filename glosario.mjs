@@ -49,12 +49,71 @@ export const TERMINOS = [
  ["IPF","Procedimiento iterativo que reajusta una tabla para que sus filas y columnas alcancen totales fijados. Ejemplo: distribuir el voto de un partido entre provincias conservando aproximadamente su patrón anterior y ajustando la suma nacional."],
  ["MAE","Se calcula la media de los errores sin signo. Si tres partidos tienen errores de 1, 2 y 3 puntos, el MAE es (1+2+3)/3 = 2 puntos. Un MAE menor indica mejor ajuste en esa evaluación, no necesariamente mayor precisión futura."],
  ["rho_bloque","Regula cuánta variación aleatoria del error de las casas se comparte entre partidos de un bloque. En el Motor 29N se usa 0,5 como supuesto; cambiarlo altera la dispersión conjunta de escaños y las frecuencias de mayoría."],
-];
+ ["placebo","En evaluación electoral, es una prueba de control realizada en una fecha sin el acontecimiento investigado. Sirve para saber si el método detecta cambios aparentes incluso cuando no hay un suceso que los explique."],
+ ["prueba placebo","Se aplica el mismo análisis a fechas de control sin el acontecimiento. Si aparecen saltos parecidos, el cambio observado tras el suceso puede ser ruido normal de encuestas o del modelo."],
+ ["pruebas placebo","Comparaciones repetidas en fechas de control sin el acontecimiento. Permiten medir la frecuencia de cambios aparentes y construir un umbral de detección; no prueban que el suceso haya causado nada."],
+ ["umbral placebo","Valor de referencia obtenido de cambios en fechas sin acontecimiento. Ejemplo: si el 95 % de los cambios placebo no supera 2 puntos, un salto de 1 punto no destaca del ruido habitual. Superar 2 tampoco demuestra causalidad."],
+ ["percentil 95","Valor por debajo del cual queda el 95 % de las observaciones o simulaciones. En las pruebas placebo, el percentil 95 de los cambios absolutos es un umbral de detección, no una probabilidad de causalidad."],
+ ["percentil 5","Valor que deja el 5 % inferior de las simulaciones. Junto al percentil 95 delimita el 90 % central de los resultados simulados, siempre condicionado al modelo."],
+ ["p5","Abreviatura del percentil 5: el 5 % de las simulaciones queda por debajo. No es una estimación mínima garantizada."],
+ ["p95","Abreviatura del percentil 95: el 95 % de las simulaciones queda por debajo. No es un límite máximo garantizado."],
+ ["salto inmediato","Cambio que un modelo de tendencia atribuye alrededor de una fecha concreta, por ejemplo de un día al siguiente. Puede reflejar ruido, cambios de muestra, tendencias previas o el acontecimiento; no identifica por sí solo su causa."],
+ ["salto estimado","Variación de una tendencia reconstruida por el modelo alrededor de una fecha. No es una variación observada de una misma persona ni una prueba de que el acontecimiento la causó."],
+ ["cambio a 14 días","Diferencia estimada entre el nivel de voto cercano al acontecimiento y el de dos semanas después. Requiere encuestas realmente posteriores y puede contener cambios ajenos al acontecimiento."],
+ ["efecto causal","Cambio que habría ocurrido por el acontecimiento y no se habría producido en su ausencia. Para estimarlo haría falta una comparación contrafactual defendible; observar encuestas antes y después no basta."],
+ ["causalidad","Relación en la que un acontecimiento produce efectivamente un cambio. La sucesión temporal o correlación entre encuestas no basta para demostrarla."],
+ ["correlación","Relación estadística entre dos variables. Que el voto cambie tras una noticia no implica que la noticia sea su causa: ambas cosas pueden responder a otros factores."],
+ ["comparabilidad","Grado en que dos mediciones pueden contrastarse sin mezclar diferencias de método, universo, fechas, pregunta o candidaturas. Usar el mismo instituto no garantiza por sí solo comparabilidad."],
+ ["campo íntegramente posterior","Encuesta cuyas entrevistas comenzaron después del día del acontecimiento. Una encuesta que incluye ese mismo día no se clasifica como plenamente posterior si se desconoce la hora de cada entrevista."],
+ ["oleada","Trabajo de campo específico de un instituto. Dos oleadas pueden representar poblaciones o cuestionarios diferentes, aunque las publique la misma empresa."],
+ ["serie temporal","Secuencia de estimaciones ordenadas por fecha de trabajo de campo. Los cambios entre puntos pueden mezclar variaciones reales de opinión y diferencias entre institutos."],
+ ["error típico","Estimación de la variabilidad de un estimador al repetir un procedimiento bajo sus supuestos. Un salto de 1 punto con error típico de 1,5 no permite distinguir fácilmente el cambio del ruido."],
+ ["error estándar","Otra denominación habitual de error típico: mide variación estadística estimada, no todos los sesgos posibles ni la veracidad causal del resultado."],
+ ["intervalo de confianza","Intervalo que, bajo un procedimiento de muestreo y supuestos correctos, cubriría el parámetro en una proporción fijada de repeticiones. En cuotas online no probabilísticas no debe interpretarse automáticamente así."],
+ ["significación estadística","Un resultado puede ser poco compatible con una hipótesis estadística según un modelo de error. No demuestra causalidad ni que el cambio tenga importancia política."],
+ ["ruido estadístico","Oscilación de cifras que puede aparecer sin cambio real: variabilidad muestral, diferencias de diseño, redondeos o incertidumbre del modelo."],
+ ["incertidumbre de método","Variación de las estimaciones al elegir razonablemente distintas reglas, fuentes, anclas o parámetros. No se elimina simplemente aumentando el número de simulaciones."],
+ ["intervalo del 90 %","Tramo entre los percentiles 5 y 95 de las simulaciones, que contiene su 90 % central. Si el modelo está mal calibrado, no implica que el resultado real caiga dentro nueve de cada diez veces."],
+ ["mediana de escaños","Valor central de los escaños obtenidos en todas las simulaciones: la mitad de los escenarios queda a cada lado. La suma de medianas de partidos no tiene por qué coincidir con la mediana de un bloque."],
+ ["probabilidad de mayoría","Proporción de simulaciones en que un bloque suma al menos 176 escaños. Depende de los supuestos del modelo y no es la probabilidad de que esos partidos acuerden gobernar."],
+ ["simulación electoral","Escenario generado por el modelo con votos, reparto provincial y escaños compatibles entre partidos. Muchas simulaciones describen la incertidumbre asumida, no garantizan que esté bien calibrada."],
+ ["error de pronóstico","Diferencia entre lo estimado antes de votar y el resultado oficial, medida tras la elección. Puede estudiarse en puntos de voto, escaños o cobertura de intervalos; no se conoce para unas elecciones futuras."],
+ ["retroprueba","Aplicación del modelo a una fecha pasada usando solo la información disponible entonces, para compararlo después con el resultado real. Si ajusta parámetros con ese resultado, deja de ser una evaluación independiente."],
+ ["backtesting","Retroprueba del método en elecciones y cortes anteriores. Debe respetar fechas de publicación, evitar duplicaciones y no utilizar el resultado futuro para seleccionar la receta evaluada."],
+ ["veda electoral","Período legal anterior a la votación durante el cual se restringe publicar sondeos electorales. Las retropruebas deben detener su información en la fecha legal de publicación."],
+ ["fecha de publicación","Día en que una encuesta se hizo accesible al público. Es distinto de las fechas de entrevista: una retroprueba no puede utilizarla antes de su publicación."],
+ ["fecha de corte","Fecha hasta la cual el Observatorio incorpora información conocida y disponible. Dos modelos con cortes diferentes no deben compararse como si midieran la misma actualidad."],
+ ["media simple","Promedio que da el mismo peso a cada observación o instituto. Ejemplo: encuestas con 30 % y 34 % producen 32 %. No equivale a estimación propia corregida ni a sumar entrevistas de distintos institutos."],
+ ["promedio publicado","Agregación de las estimaciones finales difundidas por las encuestadoras. Esas cifras ya pueden incluir su propia cocina; no son una media de respuestas directas sin ajustar."],
+ ["promedio de encuestas","Media de estimaciones publicadas por distintos estudios, seleccionados con reglas de fecha y peso. No utiliza necesariamente los microdatos individuales."],
+ ["margen de diferencia","Incertidumbre aproximada de la resta de dos mediciones bajo un diseño y supuestos concretos. No equivale a sumar sin más dos márgenes y no recoge necesariamente sesgos comunes."],
+ ["fuente primaria","Documento o base original que contiene los datos y la ficha del estudio: informe, cuestionario, microdatos o tablas oficiales. Una noticia que cita una encuesta puede ser una fuente secundaria."],
+ ["fuente secundaria","Publicación que resume o reproduce datos de otro productor. Puede servir para localizar una encuesta, pero debe cotejarse con el original antes de utilizarla como dato verificado."],
+ ["muestra","Conjunto de personas entrevistadas. Una cifra grande no elimina sesgo de selección, no respuesta ni diferencias entre universos de estudio."],
+ ["universo","Población a la que pretende representar una encuesta, por ejemplo electores residentes en España. Cambiar el universo puede impedir comparar dos oleadas directamente."],
+ ["cuota electoral","Porcentaje de votos válidos atribuido a una candidatura. Debe precisarse el denominador; no equivale al porcentaje de entrevistados que la menciona espontáneamente."],
+ ["distribución provincial","Reparto territorial de los votos por las 52 circunscripciones del Congreso. Con la misma cifra nacional de voto, una distribución provincial distinta puede cambiar bastante los escaños."],
+ ["magnitud de distrito","Número de diputados que elige una circunscripción. Provincias con pocos escaños presentan barreras efectivas más altas para candidaturas pequeñas."],
+ ["ancla de consenso","Referencia elegida por el motor para identificar los sesgos relativos de las casas. Elegir solo privadas o incluir CIS puede cambiar el nivel estimado; la elección no equivale a descubrir la verdad."],
+ ["contrafactual","Situación hipotética que habría ocurrido sin un acontecimiento. Es necesaria para atribuir un efecto causal, pero no se observa directamente en una comparación sencilla de antes y después."],
+ ["ajuste histórico","Corrección basada en errores de encuestas anteriores. Solo es razonable si se valida fuera del mismo resultado usado para calcular el ajuste y si las condiciones son comparables."],
+ ["puerta de calidad","Reglas que determinan qué registros pueden alimentar el pronóstico: se excluyen citas sin verificar, fechas de campo supuestas y solapamientos susceptibles de duplicar entrevistas."],
+ ["instituto demoscópico","Empresa u organismo que realiza una encuesta. En el promedio por institutos se intenta no otorgar más peso a quien publica más oleadas en una misma ventana."],
+ ["número de simulaciones","Cantidad de elecciones ficticias que ejecuta el motor. Aumentarla reduce el error numérico de Monte Carlo, pero no corrige supuestos erróneos, fuentes deficientes ni sesgos del modelo."],
+ ["Monte Carlo","Método que repite cálculos con valores aleatorios para representar distribuciones de posibles resultados. Sus frecuencias dependen de las distribuciones introducidas, no son evidencias directas de acierto histórico."],
+ ["efecto de casa","Desviación sistemática estimada de una encuestadora respecto a una referencia temporal común. No debe confundirse con una acusación de manipulación."],
+ ["diferencia en puntos porcentuales","Resta entre dos porcentajes. Pasar del 25 % al 23 % son −2 puntos porcentuales, no una caída del 2 % relativo."],
+ ["puntos porcentuales","Unidad para restar porcentajes: del 30 % al 27 % hay −3 puntos porcentuales. Un cambio relativo sería −10 % respecto a 30."],
+ ["voto válido","Voto a una candidatura o voto en blanco; los votos nulos no se cuentan como válidos. El denominador determina cómo se expresan las cuotas de partido."],
+ ["voto directo","Respuesta declarada en una pregunta sobre intención de voto antes de determinadas imputaciones o correcciones. Puede cambiar el denominador según se incluyan indecisos y abstencionistas."],
+ ["voto estimado por partido","Porcentaje que un instituto o modelo calcula para una candidatura entre votos válidos. No equivale necesariamente a las respuestas directas de los entrevistados."],
+]; 
 const lookup=new Map(TERMINOS.map(([term,description])=>[term.toLocaleLowerCase('es'),description]));
 const patterns=TERMINOS.map(([term])=>term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).sort((a,b)=>b.length-a.length);
 const regex=new RegExp('(?<![\\p{L}\\p{N}])('+patterns.join('|')+')(?![\\p{L}\\p{N}])','giu');
 const SKIP='a,button,summary,input,select,textarea,script,style,noscript,code,pre,svg,math,nav,[contenteditable],.term-help,.glossary-tooltip,[data-no-glossary]';
 let tooltip=null,active=null,rafScheduled=false;
+const queuedDecorations=new Set();
 function explanation(s){return lookup.get(s.toLocaleLowerCase('es'))}
 function markText(node){
  if(!node?.parentElement||node.parentElement.closest(SKIP))return;
@@ -72,8 +131,28 @@ function markText(node){
  if(index<text.length)fragment.append(document.createTextNode(text.slice(index)));
  node.replaceWith(fragment);
 }
+function decorateSummaries(root){
+ const summaries=[...(root.matches?.('summary')?[root]:[]),...(root.querySelectorAll?.('summary')||[])];
+ for(const summary of summaries){
+  regex.lastIndex=0;
+  const seen=new Set(),definitions=[];
+  for(const match of summary.textContent.matchAll(regex)){
+   const key=match[0].toLocaleLowerCase('es');
+   if(seen.has(key))continue;
+   seen.add(key);
+   definitions.push(match[0]+': '+explanation(match[0]));
+   if(definitions.length===2)break;
+  }
+  if(definitions.length){
+   summary.title=definitions.join(' | ');
+   summary.setAttribute('aria-description',definitions.join(' '));
+  }
+ }
+}
 function decorate(root){
  if(!root||!root.isConnected)return;
+ // No se introducen controles enfocables dentro de summary: título y descripción nativos.
+ decorateSummaries(root);
  const walk=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>
   n.parentElement&&!n.parentElement.closest(SKIP)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT});
  const nodes=[];while(walk.nextNode())nodes.push(walk.currentNode);
@@ -105,8 +184,19 @@ function initialise(){
  decorate(document.body);
  const observer=new MutationObserver(records=>{
   const nodes=[];for(const record of records){for(const n of record.addedNodes){if(n.nodeType===1&&n.classList?.contains('glossary-tooltip'))continue;if(n.nodeType===3)nodes.push(n.parentElement);else if(n.nodeType===1)nodes.push(n)}}
-  if(!nodes.length||rafScheduled)return;
-  rafScheduled=true;requestAnimationFrame(()=>{rafScheduled=false;nodes.forEach(n=>{if(n?.isConnected&&!n.closest?.('.term-help')){if(n.nodeType===1)decorate(n);else if(n.parentElement)decorate(n.parentElement)}});if(active&&!active.isConnected)close()});
+  nodes.forEach(n=>queuedDecorations.add(n));
+  if(!queuedDecorations.size||rafScheduled)return;
+  rafScheduled=true;requestAnimationFrame(()=>{
+   rafScheduled=false;
+   const pending=[...queuedDecorations];queuedDecorations.clear();
+   pending.forEach(n=>{
+    if(n?.isConnected&&!n.closest?.('.term-help')){
+     if(n.nodeType===1)decorate(n);
+     else if(n.parentElement)decorate(n.parentElement);
+    }
+   });
+   if(active&&!active.isConnected)close();
+  });
  });
  observer.observe(document.body,{childList:true,subtree:true});
  document.addEventListener('pointerover',event=>{const el=event.target.closest?.('.term-help');if(el&&event.pointerType!=='touch')show(el)});
