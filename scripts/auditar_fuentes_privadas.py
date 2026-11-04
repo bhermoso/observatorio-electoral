@@ -86,7 +86,7 @@ def inspect_xlsx(data: bytes) -> dict:
         sheets = sorted(
             s
             for s in files
-            if re.fullmatch(r"xl/worksheets/sheet[0-9]+\\.xml", s)
+            if re.fullmatch(r"xl/worksheets/sheet[0-9]+\.xml", s)
         )
         if not sheets or "[Content_Types].xml" not in files:
             raise ValueError("No es XLSX de Excel válido")
