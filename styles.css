@@ -477,7 +477,7 @@ details.panel.panorama-secondary{padding:12px 17px}
 #impact .forecast-lead-header .eyebrow{font-size:10px}
 #impact .forecast-lead-header .panel-link{font-size:11px}
 #impact .forecast-lead-status{padding:3px 0;font-size:11px;gap:4px 15px}
-#impact #forecast-lead-results{display:grid;grid-template-rows:auto minmax(0,1fr) auto;min-height:0;gap:4px}
+#impact #forecast-lead-results{display:grid;grid-template-rows:auto minmax(0,1fr) auto auto;min-height:0;gap:5px}
 #impact .forecast-lead-content{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(270px,.85fr);gap:12px;min-width:0;min-height:0;align-items:start}
 #impact .forecast-lead-side{grid-column:2;grid-row:1;min-width:0}
 #impact .forecast-lead-table-holder{grid-column:1;grid-row:1;min-width:0;margin:0;overflow:visible}
@@ -628,11 +628,11 @@ body:not(.dashboard-route)>footer{padding:16px 3.5%}
 
 /* Portada: indicadores enlazados, dentro de la superficie clara ya existente. */
 #impact .forecast-lead-side{display:flex;flex-direction:column;gap:10px;align-self:stretch;min-width:0}
-#impact .forecast-lead-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:auto}
-#impact .forecast-mini-kpi{display:flex;flex-direction:column;justify-content:center;gap:2px;padding:9px 10px;min-height:68px;border:1px solid #d2e3d0;border-radius:7px;background:#f2f7ef;color:#214a37;text-decoration:none}
+#impact .forecast-lead-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0}
+#impact .forecast-mini-kpi{display:flex;flex-direction:column;justify-content:center;gap:2px;padding:7px 10px;min-height:58px;border:1px solid #d2e3d0;border-radius:7px;background:#f2f7ef;color:#214a37;text-decoration:none}
 #impact .forecast-mini-kpi:hover,#impact .forecast-mini-kpi:focus-visible{background:#e4f0de;border-color:#6d9a78}
-#impact .forecast-mini-kpi>span{font-weight:700;font-size:11px;line-height:1.23}
-#impact .forecast-mini-kpi>strong{font-size:18px;font-variant-numeric:tabular-nums;line-height:1.1}
+#impact .forecast-mini-kpi>span{font-weight:700;font-size:12px;line-height:1.23}
+#impact .forecast-mini-kpi>strong{font-size:19px;font-variant-numeric:tabular-nums;line-height:1.1}
 #impact .forecast-mini-kpi>strong small{font-size:11px;font-weight:500}
 #impact .forecast-mini-kpi>small{font-size:10px;line-height:1.2;color:#516d5b}
 @media(max-width:1199px),(max-height:699px){
@@ -726,4 +726,34 @@ body:not(.dashboard-route) .event-reading .er-levels>li{margin-bottom:12px}
  .event-visual-summary{padding:12px}
  .event-delta{gap:4px}
  .event-delta>b{min-width:53px;font-size:11px}
+}
+
+/* Composición final: comparadores juntos, lectura técnica bajo demanda. */
+.house-comparison-body{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.4fr);gap:12px;align-items:start}
+.house-comparison-body .house-chart{margin:0;min-width:0}
+.house-comparison-body .house-matrix{margin:0;min-width:0;overflow-x:auto}
+.house-comparison-body .house-matrix table{min-width:680px}
+.house-comparison-body .house-plot-row{grid-template-columns:minmax(90px,126px) minmax(0,1fr) 58px;gap:5px}
+.house-comparison-body .house-plot-name{font-size:11px}
+.house-comparison-body .house-plot-guide{margin-left:126px;margin-right:58px}
+.house-comparison-body .house-plot-row>b{font-size:11px}
+.house-comparison-body .house-matrix th,.house-comparison-body .house-matrix td{font-size:12px!important;padding:5px 6px!important}
+.house-comparison-body .house-matrix td small{font-size:10px}
+.event-deep-dive{border:1px solid #c7d8c8;border-radius:8px;background:#f6f9f3;padding:11px 13px!important;margin-top:13px}
+.event-deep-dive>summary{font-size:14px;font-weight:750;color:#205f46}
+.event-deep-dive>.er-levels{padding-left:24px}
+@media(max-width:1100px){
+ .house-comparison-body{grid-template-columns:1fr}
+ .house-comparison-body .house-plot-row{grid-template-columns:minmax(110px,160px) minmax(0,1fr) 65px}
+ .house-comparison-body .house-plot-guide{margin-left:165px;margin-right:65px}
+}
+@media(min-width:1200px) and (min-height:760px){
+ #impact .forecast-lead-table th,#impact .forecast-lead-table td{font-size:13px;padding:4px 6px}
+ #impact .forecast-lead-table td b,#impact .forecast-lead-table td strong{font-size:15px}
+ #impact .forecast-lead-status{font-size:11px}
+ #impact .forecast-lead-foot{font-size:11px}
+ #impact .panorama-editorial p{font-size:12px;line-height:1.35}
+}
+@media(max-width:1199px),(max-height:699px){
+ #impact .forecast-lead-kpis{grid-template-columns:1fr}
 }
