@@ -27,7 +27,7 @@ class TestValidacionPublica(unittest.TestCase):
         polls=[poll("A","2023-07-13","2023-07-17",32)]
         report=auditar_historico(polls,[dict(fecha=date(2023,7,23),resultado={"PP":33.06},
                                         fuente="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-18907")],
-                               partidos=("PP",),horizontes=(7,1))
+                               partidos=("PP",),horizontes=(6,1))
         e=report["elecciones"][0]["cortes"]
         self.assertEqual(e[0]["voto"],e[1]["voto"])
         self.assertEqual(e[1]["fecha"],"2023-07-17")
