@@ -1,0 +1,130 @@
+{
+  "schema": 1,
+  "fecha_auditoria": "2026-11-04",
+  "eleccion": "2023-07-23",
+  "marco": "BOE-A-2023-18907",
+  "denominador": "votos válidos, blanco incluido; PSOE+PSC",
+  "metrica": "MAE puntos porcentuales entre PP, PSOE/PSC, Vox y Sumar",
+  "tipo": "evaluacion_retrospectiva_exploratoria",
+  "advertencia": "Son tres encuestas de una única elección, no tres validaciones independientes. Parámetros experimentales examinados después de conocer el 23J. No se infiere ni se publica la cocina interna de 40dB; no se trasladan correcciones a Motor 29N.",
+  "voto_real": {
+    "PP": 33.05576896,
+    "PSOE": 31.68215504,
+    "VOX": 12.38249039,
+    "SUMAR": 12.33386775
+  },
+  "metodos": {
+    "sin_ponderar": "Directa sin ponderar",
+    "ponde": "Directa ponderada (ponde)",
+    "participacion": "Directa × participación declarada",
+    "simpatia": "Imputación simple por simpatía",
+    "recuerdo2019": "Calibración parcial recuerdo 2019",
+    "recuerdo_simpatia": "Recuerdo + simpatía",
+    "recuerdo_participacion": "Recuerdo + participación",
+    "recuerdo_simpatia_participacion": "Recuerdo + simpatía + participación"
+  },
+  "estudios": [
+    {
+      "id": "junio_flash",
+      "nombre": "Flash 5 junio",
+      "campo": "2023-05-31 / 2023-06-01",
+      "publicado": "2023-06-05",
+      "n": 800,
+      "n_efectivo": 661.57,
+      "variables": 22,
+      "sha256_zip": "ded455be319920618a3010e2393667381a886d57bfdc072385d79a7f28b79a03",
+      "preguntas": {
+        "voto": "p4",
+        "simpatia": "p5",
+        "participacion": "p1",
+        "recuerdo_2019": "p6"
+      },
+      "estimacion_publicada": {
+        "PP": 32.3,
+        "PSOE": 27.2,
+        "VOX": 13.6,
+        "SUMAR": 15.6
+      },
+      "mae_publicado": 2.43,
+      "mae_metodos": [
+        3.43,
+        2.854,
+        3.005,
+        2.961,
+        3.718,
+        3.812,
+        3.942,
+        4.031
+      ],
+      "recuerdo2019_frecuencia_pp": 26.51
+    },
+    {
+      "id": "junio_barometro",
+      "nombre": "Barómetro 19 junio",
+      "campo": "2023-06-12 / 2023-06-14",
+      "publicado": "2023-06-19",
+      "n": 2000,
+      "n_efectivo": 1898.23,
+      "variables": 113,
+      "sha256_zip": "b5d1c0f6fd83263adbb318ba1eb5459aa7d6cd69e18ae6cca190daa2cda5bd5c",
+      "preguntas": {
+        "voto": "p5",
+        "simpatia": "p6",
+        "participacion": "p4",
+        "recuerdo_2019": "p10"
+      },
+      "estimacion_publicada": {
+        "PP": 33.1,
+        "PSOE": 27.4,
+        "VOX": 13.8,
+        "SUMAR": 13.1
+      },
+      "mae_publicado": 1.628,
+      "mae_metodos": [
+        3.085,
+        3.195,
+        3.025,
+        3.02,
+        4.321,
+        4.133,
+        4.197,
+        4.083
+      ],
+      "recuerdo2019_frecuencia_pp": 25.23
+    },
+    {
+      "id": "julio_preelectoral",
+      "nombre": "Preelectoral 3 julio",
+      "campo": "2023-06-23 / 2023-06-26",
+      "publicado": "2023-07-03",
+      "n": 2000,
+      "n_efectivo": 1875.98,
+      "variables": 78,
+      "sha256_zip": "529f2044c28813fa026704f2fe1aad09f19dbc711a4362ed66ca61b8d41f6ff2",
+      "preguntas": {
+        "voto": "p3",
+        "simpatia": "p4",
+        "participacion": "p2",
+        "recuerdo_2019": "p6"
+      },
+      "estimacion_publicada": {
+        "PP": 30.9,
+        "PSOE": 28.7,
+        "VOX": 15.1,
+        "SUMAR": 12.5
+      },
+      "mae_publicado": 2.005,
+      "mae_metodos": [
+        2.856,
+        2.926,
+        2.721,
+        2.674,
+        4.163,
+        3.878,
+        3.983,
+        3.737
+      ],
+      "recuerdo2019_frecuencia_pp": 25.3
+    }
+  ]
+}
