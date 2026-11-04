@@ -12,6 +12,7 @@ from .motor import fuentes as F, evaluacion as V, eventos as EV, pronostico as P
 from .motor.tendencia import ajustar
 from .motor.inventario import resumir as inventario_encuestas
 from .motor.validacion_publica import auditar_historico
+from .motor.geografia_publica import estado_geografico
 
 ELECCION = date(2026, 11, 29)
 URDA = date(2026, 10, 28)
@@ -502,7 +503,7 @@ def main():
                                           criterio='Puerta de calidad (fuentes.seleccion_pronostico): sin prensa no verificada, sin terceros con campo supuesto, sin terceros solapados con un registro verificado de la misma casa'),
                    capas=capas, entradas=entradas, excluidas=excluidas, externos=externos, corte_anterior=corte_anterior,
                    eventos=eventos_web, sensibilidad_fuentes=sens_fuentes, geo_sensibilidad=dict(proporcional=geo_sens["proporcional"], uniforme=geo_sens["uniforme"], p_mayoria=geo_sens["p_mayoria"]), promedio_simple=simple, error_23j={c: r["error"] for c, r in err.items()},
-                   industria_23j=ind, retroprueba_23j=bt, validacion_publica=validacion_publica, umbral_placebo=umbrales),
+                   industria_23j=ind, retroprueba_23j=bt, validacion_publica=validacion_publica, geografia_publica=estado_geografico(False), umbral_placebo=umbrales),
               open(os.path.join(SALIDA, "pronostico.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=1, default=str)
     from .motor import exportar
