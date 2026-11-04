@@ -40,6 +40,16 @@ class CalidadFuentesTest(unittest.TestCase):
 
 
 class Historical23JCompletenessTest(unittest.TestCase):
+    def test_serie_febrero_julio_2023_completa_y_con_fecha(self):
+        from modelo.motor.fuentes import cargar_wikipedia_2023
+        filas = cargar_wikipedia_2023()
+        self.assertGreaterEqual(len(filas), 200)
+        self.assertTrue(any(e["campo_fin"].month == 2 for e in filas))
+        self.assertTrue(any(e["campo_fin"].month == 7 for e in filas))
+        self.assertTrue(all(e["origen"] == "terceros-wikipedia" for e in filas))
+        self.assertTrue(all(e.get("publicacion") for e in filas))
+        self.assertTrue(any(e["publicacion"] > date(2023, 7, 17) for e in filas))
+
     def test_ultimas_40db_imop_y_sigma_dos_anteriores_a_veda(self):
         from modelo.motor.fuentes import todas, resultado_23j
         from modelo.motor.evaluacion import error_final
