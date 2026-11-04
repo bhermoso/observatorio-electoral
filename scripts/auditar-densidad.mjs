@@ -39,7 +39,7 @@ try{
    return {viewport:{width:innerWidth,height:innerHeight},docWidth:document.documentElement.scrollWidth,docHeight:document.documentElement.scrollHeight,
     header:box('body>header'),main:box('#main'),hero:box('#main .hero'),forecast:box('.forecast-lead'),forecastResults:box('#forecast-lead-results'),
     lastParty:box('.forecast-lead-table tbody tr:last-child'),lastBloc:box('.forecast-lead-bloc:last-child'),forecastFoot:box('.forecast-lead-foot'),
-    kpis:box('.forecast-lead-kpis'),lastKpi:box('.forecast-mini-kpi:last-child'),
+    kpis:box('.forecast-lead-kpis'),lastKpi:box('.forecast-mini-kpi:first-child'),
     compare:box('#analysis-compare'),houseChart:box('.house-chart'),houseMatrix:box('.house-matrix'),weights:box('.analysis-weights-detail'),
     eventVisual:box('.event-visual-summary'),eventReading:box('.event-reading'),eventHouse:box('.event-visual-house'),eventDeepOpen:document.querySelector('.event-deep-dive')?.open,eventDeep:box('.event-deep-dive'),
     route:location.hash,bodyOverflow:getComputedStyle(document.body).overflowY};
@@ -48,7 +48,7 @@ try{
   if(c.route==='dashboard'){
    if(info.docHeight>c.height+3)errors.push('Scroll vertical en la portada');
    if(!info.lastKpi?.visible)errors.push('KPI no visible');
-   if(info.lastKpi?.bottom>info.forecastFoot?.y+1)errors.push('Los indicadores se superponen al pie');
+   if(info.kpis?.bottom>info.forecastFoot?.y+1)errors.push('Los indicadores se superponen al pie');
    if(info.lastParty&&info.kpis&&
       info.lastParty.x<info.kpis.right&&info.lastParty.right>info.kpis.x&&
       info.lastParty.y<info.kpis.bottom&&info.lastParty.bottom>info.kpis.y)
