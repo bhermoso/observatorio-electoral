@@ -70,7 +70,7 @@ test('Panorama ocupa una vista inicial, conserva todo el contenido por pestañas
  assert.equal((html.match(/role="tab"/g)||[]).length,5);
  assert.match(html,/data-panorama-tab="resultados"[^>]*>Resultados/);
  assert.match(html,/data-panorama-panel="fuentes"[^>]*hidden/);
- assert.match(html,/forecast-lead-content/);
+ assert.match(fs.readFileSync('home-impact.mjs','utf8'),/forecast-lead-content/);
  assert.ok(html.indexOf('forecast-lead')<html.indexOf('panorama-editorial'));
  const app=fs.readFileSync('app.mjs','utf8');
  assert.match(app,/function dashboard\(\)\{[\s\S]*?return renderHomeImpact\(\);/);
