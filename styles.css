@@ -920,3 +920,22 @@ body:not(.dashboard-route) .event-reading .er-levels>li{margin-bottom:12px}
   .pollster-evidence-facts>div,.pollster-evidence-facts>div:first-child,.pollster-evidence-facts>div:last-child{padding:8px 0;border-right:0;border-bottom:1px solid #d4e2d2}
   .pollster-evidence-facts>div:last-child{border-bottom:0}
 }
+
+
+/* Análisis reproducible 40dB: tabla editorial compacta, sin tarjetas KPI enormes. */
+.k40-comparison{margin:14px 0 20px;border:1px solid #b9d2bc;border-radius:10px;background:#f8fbf7;padding:16px 18px;color:#244331}
+.k40-heading{display:flex;align-items:start;justify-content:space-between;gap:12px}
+.k40-heading h2{font-size:18px;line-height:1.35;color:#183e2a;margin:4px 0 8px}
+.k40-status{font-size:11px;font-weight:700;color:#775220;border:1px solid #e0c9a5;background:#fff8ec;border-radius:6px;padding:5px 8px;white-space:nowrap}
+.k40-intro{font-size:12px;line-height:1.5;color:#3e5947;margin:0 0 10px}
+.k40-table{width:100%;min-width:690px;border-collapse:collapse;font-size:12px}
+.k40-table th,.k40-table td{padding:7px 10px;text-align:right;border-bottom:1px solid #dbe7d8;white-space:nowrap;font-variant-numeric:tabular-nums}
+.k40-table th:first-child,.k40-table td:first-child{text-align:left}
+.k40-table thead th{background:#e9f3e7;color:#244632;white-space:normal;line-height:1.35}
+.k40-table .k40-first-row th,.k40-table .k40-first-row td{border-top:2px solid #accbb0}
+.k40-date{display:inline-block;font-size:11px;font-weight:800;color:#285c3e;min-width:66px}
+.k40-foot{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.k40-foot p{font-size:12px;line-height:1.48;color:#48634e;margin:10px 0 0}
+.k40-sources{font-size:12px;border-top:1px solid #d3e2d2;padding-top:9px;margin-top:12px}
+.k40-sources a{font-weight:700;color:#225f44}
+@media(max-width:760px){.k40-comparison{padding:12px}.k40-heading{display:block}.k40-status{display:inline-block;margin-bottom:10px}.k40-foot{grid-template-columns:1fr;gap:0}.k40-table th,.k40-table td{padding:6px 8px}}
