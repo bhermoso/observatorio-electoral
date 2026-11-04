@@ -141,6 +141,25 @@ def cargar_29n():
     return list(por_id.values())
 
 
+
+def cargar_23j_complementos():
+    """Correcciones históricas documentadas sin reescribir fuentes importadas."""
+    ruta = os.path.join(EXT, "23j_complementos.json")
+    if not os.path.exists(ruta):
+        return []
+    registros = json.load(open(ruta, encoding="utf-8"))["registros"]
+    out = []
+    for r in registros:
+        fin = _fecha(r["campo_fin"])
+        out.append(dict(casa=casa_canonica(r["casa"]), estudio=r["estudio"],
+                        campo_fin=fin, campo_ini=_fecha(r["campo_ini"]), n=int(r["n"]),
+                        modo=r["modo"], voto=r["voto"], origen="terceros-wikipedia",
+                        url=r["url"], publicacion=_fecha(r["publicacion"]),
+                        ciclo=ciclo_de(fin), ambito="España",
+                        nota=r.get("nota", ""), contraste="fuente_secundaria_con_fecha"))
+    return out
+
+
 def cargar_prensa():
     """Encuestas citadas en prensa sin original consultado (modelo/externos/prensa_2026.csv).
     Sin fin de campo publicado se supone publicación - 3 días (supuesto declarado)."""
@@ -214,7 +233,7 @@ def aptas_para_pronostico(encuestas, ciclo="2023-26"):
 def todas(deduplicar=True):
     """Todas las fuentes. Si una misma casa tiene dos registros con fin de campo a
     <= 2 días, se conserva el verificado (o el primero cargado)."""
-    enc = cargar_verificadas() + cargar_29n() + cargar_prensa() + cargar_wikipedia()
+    enc = cargar_verificadas() + cargar_23j_complementos() + cargar_29n() + cargar_prensa() + cargar_wikipedia()
     if not deduplicar:
         return enc
     out = []
