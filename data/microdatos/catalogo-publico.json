@@ -7,7 +7,8 @@
     "enlace_documentado": "Página oficial anuncia o enlaza microdatos; el contenido original no se ha inspeccionado aquí",
     "formulario_requerido": "Formulario por estudio necesario",
     "registro_requerido": "Registro de usuario necesario; no se elude",
-    "microdatos_no_localizados_en_fuentes_verificadas": "Sin microdatos localizados en esta búsqueda; no implica inexistencia"
+    "microdatos_no_localizados_en_fuentes_verificadas": "Sin microdatos localizados en esta búsqueda; no implica inexistencia",
+    "solicitud_requerida": "Disponible solo previa petición al propietario y autorización de uso; no es descarga abierta."
   },
   "precaucion": "El estudio, la fecha de campo, el editor y el contratista deben distinguirse. No mezclar encuestas regionales como nacionales, ni duplicar olas. Licencia de uso pendiente de verificar por archivo.",
   "fuentes": [
@@ -73,6 +74,15 @@
       "acceso": "Directo",
       "portal": "https://www.cemopmurcia.es/estudios/",
       "formatos": "Microdatos · ficha · cuestionario"
+    },
+    {
+      "id": "gad3",
+      "nombre": "GAD3",
+      "tipo": "Privada",
+      "ambito": "Aragón, Andalucía y series electorales",
+      "acceso": "Directo / bajo solicitud",
+      "portal": "https://www.gad3.com/",
+      "formatos": "XLSX · ficheros por solicitud"
     }
   ],
   "estudios": [
@@ -175,6 +185,18 @@
       "estado": "enlace_documentado"
     },
     {
+      "id": "gad3-2026-05-11",
+      "productor": "gad3",
+      "fecha": "2026-05-11",
+      "titulo": "Barómetro ABC Andalucía mayo 2026",
+      "ambito": "Andalucía",
+      "pagina": "https://www.gad3.com/barometro-abc-estimacion-de-voto-autonomico-en-andalucia-mayo/",
+      "estado": "enlace_documentado",
+      "archivo": "https://www.gad3.com/wp-content/uploads/2026/05/GAD3-Microdatos-ABC-Andalucia-2026.xlsx",
+      "n": 1142,
+      "nota": "XLSX enlazado directamente en web oficial; pendiente comprobar formato interior."
+    },
+    {
       "id": "40db-2026-05-04",
       "productor": "40db",
       "fecha": "2026-05-04",
@@ -221,6 +243,30 @@
       "ambito": "Castilla y León",
       "pagina": "https://elpais.com/espana/2026-03-09/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
       "estado": "enlace_documentado"
+    },
+    {
+      "id": "gad3-2026-02-08",
+      "productor": "gad3",
+      "fecha": "2026-02-08",
+      "titulo": "Aragón 8F · GAD3 / FORTA / CARTV",
+      "ambito": "Aragón",
+      "pagina": "https://www.gad3.com/rindiendo-cuentas-precision-de-escanos-en-las-elecciones-de-aragon/",
+      "estado": "enlace_documentado",
+      "archivo": "https://www.gad3.com/wp-content/uploads/2026/02/GAD3-FORTA-CARTV-8F-Microdatos.xlsx",
+      "n": 4123,
+      "nota": "Hoja de microdatos original en portal GAD3. No auditada localmente."
+    },
+    {
+      "id": "gad3-2026-01-26",
+      "productor": "gad3",
+      "fecha": "2026-01-26",
+      "titulo": "Estimación autonómica Aragón · HOY Aragón",
+      "ambito": "Aragón",
+      "pagina": "https://www.gad3.com/barometro-hoy-aragon-estimacion-de-voto-autonomico-en-aragon/",
+      "estado": "enlace_documentado",
+      "archivo": "https://www.gad3.com/wp-content/uploads/2026/01/GAD3xHOY-ARAGON-Microdatos-estimacion-de-voto.xlsx",
+      "n": 1207,
+      "nota": "Hoja XLSX enlazada en portal GAD3. No ha sido inspeccionado su contenido ni confirmado que sean filas individuales."
     },
     {
       "id": "40db-2026-01-12",
@@ -487,6 +533,17 @@
       "nota": "Original aportado; URL publicada de referencia a la serie de julio, no necesariamente la página propia de cada ola."
     },
     {
+      "id": "cemop-2023-07-01",
+      "productor": "cemop",
+      "fecha": "2023-07-01",
+      "titulo": "Preelectoral generales 23J en Región de Murcia",
+      "ambito": "Murcia",
+      "pagina": "https://www.cemopmurcia.es/estudios/encuesta-preelectoral-elecciones-generales-2023-region-de-murcia/",
+      "estado": "enlace_documentado",
+      "n": 1200,
+      "nota": "Campo del 3 al 13 julio 2023; fecha del catálogo orientativa."
+    },
+    {
       "id": "40db-2023-06-19",
       "productor": "40db",
       "fecha": "2023-06-19",
@@ -511,6 +568,39 @@
       "nota": "Original aportado; URL publicada de referencia a la serie de julio, no necesariamente la página propia de cada ola."
     },
     {
+      "id": "cemop-2023-05-01",
+      "productor": "cemop",
+      "fecha": "2023-05-01",
+      "titulo": "Preelectoral autonómicas Región de Murcia 2023",
+      "ambito": "Murcia",
+      "pagina": "https://www.cemopmurcia.es/estudios/encuesta-preelectoral-elecciones-autonomicas-2023-region-de-murcia/",
+      "estado": "enlace_documentado",
+      "n": 1200,
+      "nota": "Fecha orientativa del catálogo, no trabajo de campo. Contrastar con mayo 2023."
+    },
+    {
+      "id": "cemop-2023-01-01",
+      "productor": "cemop",
+      "fecha": "2023-01-01",
+      "titulo": "Barómetro Región de Murcia, invierno 2023",
+      "ambito": "Murcia",
+      "pagina": "https://www.cemopmurcia.es/estudios/barometro-region-de-murcia-invierno-2023/",
+      "estado": "enlace_documentado",
+      "n": 820,
+      "nota": "Año de publicación conocido; fecha de catálogo orientativa (01/01), no fecha de campo."
+    },
+    {
+      "id": "gad3-2019-11-10",
+      "productor": "gad3",
+      "fecha": "2019-11-10",
+      "titulo": "Tracking electoral generales 10N de 2019",
+      "ambito": "España",
+      "pagina": "https://www.gad3.com/gad3-ofrece-los-microdatos-del-tracking-de-las-elecciones-del-10n-d51/",
+      "estado": "solicitud_requerida",
+      "n": 28611,
+      "nota": "Microdatos a disposición de investigadores que escriban a madrid@gad3.com; NO descarga pública ni permiso tácito de redistribución."
+    },
+    {
       "id": "sociometro-vasco-2018-05-18",
       "productor": "sociometro-vasco",
       "fecha": "2018-05-18",
@@ -532,10 +622,6 @@
     }
   ],
   "casas_pendientes": [
-    {
-      "nombre": "GAD3",
-      "estado": "microdatos_no_localizados_en_fuentes_verificadas"
-    },
     {
       "nombre": "Sigma Dos",
       "estado": "microdatos_no_localizados_en_fuentes_verificadas"
