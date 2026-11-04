@@ -43,7 +43,7 @@ async function render2019(){
   if(table)table.innerHTML='<h3>Primer contraste histórico de recetas: errores por elección</h3>'+
    '<table><thead><tr><th>Tratamiento de indecisión 94</th><th>MAE abril 2019</th><th>MAE noviembre 2019</th><th>Media descriptiva</th></tr></thead><tbody>'+
    retro.rows.map(row=>'<tr><td>'+esc(row.label)+'</td><td>'+fmt(row.studies[0].mae)+' pp</td><td>'+fmt(row.studies[1].mae)+' pp</td><td>'+fmt(row.mae_mean)+' pp</td></tr>').join('')+
-   '</tbody></table><p>El MAE se calcula sobre PSOE, PP, Vox y Ciudadanos, contra el porcentaje de voto válido de cada elección. Se mantienen fuera los casos de 98 y 99. Las coaliciones territoriales se agrupan en el denominador residual. <b>Son ensayos retrospectivos, no resultados de validación prospectiva.</b></p>';
+   '</tbody></table><p>El MAE se calcula sobre PSOE, PP, Vox y Ciudadanos, contra el porcentaje de voto válido (candidaturas más blanco) de cada elección. Se mantienen fuera los casos de 98 y 99. Las coaliciones territoriales se agrupan en el denominador residual. <b>Son ensayos retrospectivos, no resultados de validación prospectiva.</b></p>';
  }catch(e){root.textContent='No pudo cargarse el diagnóstico 2019: '+e.message}
 }
 async function renderCoverage(){
