@@ -20,7 +20,7 @@ test('La portada de Cocina contiene resultados reproducibles del CIS 3582',()=>{
  assert.match(html,/probarla en otro estudio/);
  assert.match(html,/No equivalen|denominadores distintos/i);
  assert.match(html,/cambiar|prueba/i);
- assert.match(html,/Documento original del CIS/);
+ assert.match(html,/Catálogo oficial CIS · buscar estudio 3582/);
 });
 test('El examen cruzado no aprueba cocina a partir de una sola elección',()=>{
  const s=extraerResultadosCocina(micro,audit);
