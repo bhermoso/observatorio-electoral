@@ -57,3 +57,29 @@ test('Panorama editorial compacto separa encuesta, modelo, microdatos y noticias
  assert.match(css,/--oee-body-size:15px/);
  assert.match(css,/\.panorama-source-grid/);
 });
+
+test('Panorama ocupa una vista inicial, conserva todo el contenido por pestañas y evita scroll en escritorio',async()=>{
+ const {renderHomeImpact}=await import('../home-impact.mjs');
+ const html=renderHomeImpact();
+ const ids=['resultados','comparar','variacion','fuentes','microdatos'];
+ for(const id of ids){
+  assert.match(html,new RegExp('id="panorama-tab-'+id+'"'));
+  assert.match(html,new RegExp('id="panorama-panel-'+id+'"'));
+ }
+ assert.equal((html.match(/role="tabpanel"/g)||[]).length,5);
+ assert.equal((html.match(/role="tab"/g)||[]).length,5);
+ assert.match(html,/data-panorama-tab="resultados"[^>]*>Resultados/);
+ assert.match(html,/data-panorama-panel="fuentes"[^>]*hidden/);
+ assert.match(html,/forecast-lead-content/);
+ assert.ok(html.indexOf('forecast-lead')<html.indexOf('panorama-editorial'));
+ const app=fs.readFileSync('app.mjs','utf8');
+ assert.match(app,/function dashboard\(\)\{[\s\S]*?return renderHomeImpact\(\);/);
+ assert.match(app,/classList\.toggle\('dashboard-route',route==='dashboard'\)/);
+ const css=fs.readFileSync('styles.css','utf8');
+ assert.match(css,/body\.dashboard-route\{height:100dvh;overflow:hidden/);
+ assert.match(css,/#impact \.forecast-lead-content\{display:grid/);
+ const js=fs.readFileSync('home-impact.mjs','utf8');
+ assert.match(js,/function bindPanoramaTabs\(root\)/);
+ assert.match(js,/ArrowRight/);
+ assert.match(js,/panel\.hidden=panel\.dataset\.panoramaPanel!==name/);
+});
