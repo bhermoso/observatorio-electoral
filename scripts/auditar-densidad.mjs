@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import {chromium} from 'playwright';
 const SITE='https://bhermoso.github.io/observatorio-electoral/';
-const overlays=new Set(['styles.css','home-impact.mjs','analysis.mjs','promedios-comparador.mjs','events.mjs','eventos-visual.mjs','acontecimiento.mjs']);
+const overlays=new Set(['styles.css','home-impact.mjs','analysis.mjs','promedios-comparador.mjs','events.mjs','eventos-visual.mjs','cocina.mjs','cocina-resultados.mjs','acontecimiento.mjs']);
 const cases=[
  {route:'dashboard',width:1200,height:700},
  {route:'dashboard',width:1366,height:768},
@@ -41,7 +41,7 @@ try{
     lastParty:box('.forecast-lead-table tbody tr:last-child'),lastBloc:box('.forecast-lead-bloc:last-child'),forecastFoot:box('.forecast-lead-foot'),
     kpis:box('.forecast-lead-kpis'),lastKpi:box('.forecast-mini-kpi:first-child'),
     compare:box('#analysis-compare'),houseChart:box('.house-chart'),houseMatrix:box('.house-matrix'),weights:box('.analysis-weights-detail'),
-    eventVisual:box('.event-visual-summary'),eventReading:box('.event-reading'),eventHouse:box('.event-visual-house'),eventDeepOpen:document.querySelector('.event-deep-dive')?.open,eventDeep:box('.event-deep-dive'),
+    eventVisual:box('.event-visual-summary'),eventReading:box('.event-reading'),kitchen:box('#cocina-resultados'),kitchenTable:box('.kitchen-observed-table tbody tr:first-child'),eventHouse:box('.event-visual-house'),eventDeepOpen:document.querySelector('.event-deep-dive')?.open,eventDeep:box('.event-deep-dive'),
     route:location.hash,bodyOverflow:getComputedStyle(document.body).overflowY};
   },{route:c.route});
   if(info.docWidth>c.width+3)errors.push('Desbordamiento horizontal '+info.docWidth+'>'+c.width);
@@ -61,6 +61,9 @@ try{
    if(!info.houseChart?.visible||!info.houseMatrix?.visible)errors.push('Falta el comparador de casas');
    if(c.width>=1100&&info.houseChart?.right>info.houseMatrix?.x+2)errors.push('El gráfico invade la tabla');
    if(info.houseChart?.y>c.height)errors.push('Gráfico de casas fuera de la primera pantalla');
+  }else if(c.route==='cocina'){
+   if(!info.kitchen?.visible||!info.kitchenTable?.visible)errors.push('No se ven los datos reales de la cocina');
+   if(info.kitchen?.y>c.height)errors.push('Los resultados de la cocina quedan bajo la primera pantalla');
   }else if(c.route==='contexto'){
    if(!info.eventVisual?.visible)errors.push('Faltan datos visuales del acontecimiento');
    if(info.eventVisual?.y>c.height)errors.push('Evidencia no aparece en primera pantalla');
