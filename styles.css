@@ -367,3 +367,64 @@ table.variants td.ref,table.variants th.ref{background:#eef8df}
 .event-verdict th,.event-verdict td{padding:11px 13px}
 .event-verdict td small{display:block;color:#61756a;font-size:11px}
 .event-verdict td strong{font-size:17px;color:#153d32}
+
+
+/* Sistema editorial común: compacto en portada, legible en toda la web. */
+:root{--oee-body-size:15px;--oee-small-size:13px}
+body{font-size:var(--oee-body-size);line-height:1.5}
+main{line-height:1.55}
+main .muted, main .notice, main .sources,main .panel p,main .panel li{font-size:inherit;line-height:1.55}
+main .panel small,main .panel .muted,main .panel .sources,main .panel .meta{font-size:var(--oee-small-size)}
+main .panel th,main .panel td{font-size:14px;line-height:1.45}
+main .panel td small, main .panel th small{font-size:12px;line-height:1.4}
+main .panel h2{font-size:clamp(19px,2vw,25px);line-height:1.2}
+main .panel h3{font-size:17px;line-height:1.3}
+main .panel .eyebrow{font-size:12px}
+main .toolbar label,main .toolbar select,main .toolbar input,main .toolbar button{font-size:14px}
+#impact{padding:clamp(12px,1.8vw,22px);margin-bottom:12px;border-radius:12px}
+#impact .impact-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(160px,.35fr);gap:12px;align-items:start}
+#impact h1{font-size:clamp(25px,3vw,40px);margin:5px 0 8px;line-height:1.08}
+#impact .impact-head p{margin:0 0 6px;max-width:850px;font-size:14px;line-height:1.45}
+#impact .impact-links{margin-top:9px;gap:8px}
+#impact .impact-links a{padding:7px 10px;font-size:12px}
+#impact .impact-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+#impact .impact-facts>div{padding:7px}
+#impact .impact-facts dt,#impact .impact-facts dd small{font-size:12px}
+#impact .impact-facts dd{font-size:19px;margin:2px 0}
+#impact .forecast-lead{margin:10px 0;padding:14px 18px;border-radius:9px}
+#impact .forecast-lead-header{margin-bottom:7px}
+#impact .forecast-lead-header h2{font-size:clamp(20px,2vw,26px);margin:2px 0 5px}
+#impact .forecast-lead-overview{margin:10px 0;gap:10px;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+#impact .forecast-lead-winner{padding:12px 14px}
+#impact .forecast-lead-winner>strong{font-size:30px;margin:5px 0}
+#impact .forecast-lead-winner>div b{font-size:29px}
+#impact .forecast-lead-blocs h3{font-size:16px;margin:2px 0 5px}
+#impact .forecast-lead-bloc{padding:5px 0}
+#impact .forecast-lead-bloc>b{font-size:20px}
+#impact .forecast-lead-table th,#impact .forecast-lead-table td{padding:5px 9px}
+#impact .forecast-lead-table td b,#impact .forecast-lead-table td strong{font-size:16px}
+#impact .forecast-lead-foot{font-size:12px;margin:6px 0 0}
+#impact .forecast-lead-status{padding:7px 0;font-size:12px}
+#impact .forecast-lead-prob{font-size:12px}
+#impact .forecast-lead-table{margin-top:2px}
+#impact .panorama-editorial{padding:10px 14px;background:#e7f0e5;border-radius:8px;color:#193d2e;font-size:14px;line-height:1.4}
+#impact .panorama-editorial p{margin:3px 0 6px;font-size:14px;line-height:1.45}
+#impact .panorama-editorial .panorama-editorial-note{font-size:12px;color:#3c604a}
+#impact .panorama-sources{margin-top:8px;color:#e9f5e7;border-top:1px solid #365748;padding-top:7px}
+#impact .panorama-sources>summary{font-weight:700;font-size:13px;cursor:pointer}
+#impact .panorama-source-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 15px;margin:10px 0}
+#impact .panorama-source-grid p{margin:0;font-size:13px;line-height:1.5}
+#impact .layer-legend{margin:8px 0;gap:8px}
+.panorama-secondary{margin:10px 0}
+.panorama-secondary>summary{cursor:pointer;font-size:15px;font-weight:700;padding:8px 0;color:inherit}
+details.panel.panorama-secondary{padding:12px 17px}
+.panorama-secondary>.panel-head{margin-top:10px}
+.panorama-secondary>.table-wrap{margin-top:6px}
+.home-grid{gap:12px}
+#home-counts .poll-count-grid{gap:9px;margin:9px 0}
+#home-counts .poll-count-grid>div{padding:10px}
+#home-counts .poll-count-grid dd{font-size:25px;margin:3px 0}
+#impact .impact-visual{margin:10px 0}
+#impact .impact-line{padding:5px 0}
+@media(max-width:850px){#impact .impact-head{grid-template-columns:1fr}#impact .impact-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){#impact .forecast-lead-overview{grid-template-columns:1fr}#impact .panorama-source-grid{grid-template-columns:1fr}#impact .impact-facts{grid-template-columns:repeat(2,minmax(0,1fr))}main .panel th,main .panel td{font-size:13px}}
