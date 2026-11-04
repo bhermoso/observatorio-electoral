@@ -1,7 +1,7 @@
 {
   "esquema": 1,
   "fecha_revision": "2026-11-05",
-  "descripcion": "Catálogo documental de accesos a microdatos individuales anonimizados de encuestas políticas españolas. Los ZIP no se redistribuyen.",
+  "descripcion": "Índice parcial en ampliación de fuentes de datos individuales; incluye publicaciones de varias encuestas, series acumuladas y accesos condicionados. No representa un censo exhaustivo de casas.",
   "criterios": {
     "original_auditado": "Microdatos originales recibidos y analizados localmente",
     "enlace_documentado": "Página oficial anuncia o enlaza microdatos; el contenido original no se ha inspeccionado aquí",
@@ -10,7 +10,7 @@
     "microdatos_no_localizados_en_fuentes_verificadas": "Sin microdatos localizados en esta búsqueda; no implica inexistencia",
     "solicitud_requerida": "Disponible solo previa petición al propietario y autorización de uso; no es descarga abierta."
   },
-  "precaucion": "El estudio, la fecha de campo, el editor y el contratista deben distinguirse. No mezclar encuestas regionales como nacionales, ni duplicar olas. Licencia de uso pendiente de verificar por archivo.",
+  "precaucion": "El estudio, la fecha de campo, el editor y el contratista deben distinguirse. No mezclar encuestas regionales como nacionales, ni duplicar olas. Licencia de uso pendiente de verificar por archivo. Las fechas de estudios que no indican publicación son orientativas o fin de campo, según nota; no inferir que sean la fecha de publicación.",
   "fuentes": [
     {
       "id": "40db",
@@ -87,6 +87,18 @@
   ],
   "estudios": [
     {
+      "id": "cis-2021-2026-parquet",
+      "productor": "cis",
+      "fecha": "2026-11-05",
+      "titulo": "Barómetros CIS 2021–2026 armonizados por proyecto externo",
+      "ambito": "España",
+      "pagina": "https://gastiaso.github.io/barometros/",
+      "estado": "enlace_documentado",
+      "archivo_indirecto": true,
+      "derivado": true,
+      "nota": "Compilación de tercero de 64 estudios CIS/264.081 entrevistas en Parquet. No son encuestas nuevas, no multiplicar muestras; verificar licencia y esquema original antes de procesar."
+    },
+    {
       "id": "cis-2026-11-05",
       "productor": "cis",
       "fecha": "2026-11-05",
@@ -119,6 +131,17 @@
       "n": 2000
     },
     {
+      "id": "more-in-common-2026-10-01",
+      "productor": "more-in-common",
+      "fecha": "2026-10-01",
+      "titulo": "Pulso electoral · Octubre 2026",
+      "ambito": "España",
+      "pagina": "https://moreincommon.es/pulso-electoral.html",
+      "estado": "enlace_documentado",
+      "fecha_tipo": "mes",
+      "nota": "Portal oficial anuncia ZIP de microdatos y codebook. URL directa aún no verificada; usar enlace del portal."
+    },
+    {
       "id": "40db-2026-09-07",
       "productor": "40db",
       "fecha": "2026-09-07",
@@ -135,6 +158,17 @@
       "ambito": "Murcia",
       "pagina": "https://www.cemopmurcia.es/estudios/barometro-region-de-murcia-verano-2026/",
       "estado": "enlace_documentado"
+    },
+    {
+      "id": "more-in-common-2026-09-01",
+      "productor": "more-in-common",
+      "fecha": "2026-09-01",
+      "titulo": "Pulso electoral · Septiembre 2026",
+      "ambito": "España",
+      "pagina": "https://moreincommon.es/pulso-electoral.html",
+      "estado": "enlace_documentado",
+      "fecha_tipo": "mes",
+      "nota": "Portal oficial anuncia ZIP de microdatos y codebook. URL directa aún no verificada; usar enlace del portal."
     },
     {
       "id": "40db-2026-07-06",
@@ -278,6 +312,17 @@
       "estado": "original_auditado",
       "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2026/01-barometro/2026_01_barometro_descargables.zip",
       "n": 2000
+    },
+    {
+      "id": "more-in-common-2025-estudios",
+      "productor": "more-in-common",
+      "fecha": "2025-12-31",
+      "titulo": "Estudios de opinión política y social 2024–2025: bases solicitables",
+      "ambito": "España",
+      "pagina": "https://moreincommon.es/estudios.html",
+      "estado": "solicitud_requerida",
+      "fecha_tipo": "referencia_temporal",
+      "nota": "Microdatos de otras encuestas disponibles bajo solicitud a hola@moreincommon.com. Portfolio, no un único sondeo ni necesariamente electoral."
     },
     {
       "id": "40db-2025-12-15",
@@ -549,11 +594,11 @@
       "fecha": "2023-06-19",
       "titulo": "Barómetro junio 2023",
       "ambito": "España",
-      "pagina": "https://elpais.com/espana/2023-07-03/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-publicada-este-3-de-julio.html",
+      "pagina": "https://elpais.com/espana/2023-06-19/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-de-junio-cuestionarios-cruces-y-respuestas.html",
       "estado": "original_auditado",
       "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2023jun18/2023_05_junio18.zip",
       "n": 2000,
-      "nota": "Original aportado; URL publicada de referencia a la serie de julio, no necesariamente la página propia de cada ola."
+      "nota": "Original de la encuesta y ZIP aportado por usuario; respuestas individuales analizadas localmente."
     },
     {
       "id": "40db-2023-06-05",
@@ -561,11 +606,42 @@
       "fecha": "2023-06-05",
       "titulo": "Flash junio 2023",
       "ambito": "España",
-      "pagina": "https://elpais.com/espana/2023-07-03/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-publicada-este-3-de-julio.html",
+      "pagina": "https://elpais.com/espana/2023-06-05/consulte-todos-los-datos-internos-de-la-encuesta-flash-de-el-pais-de-junio-cuestionarios-cruces-y-respuestas.html",
       "estado": "original_auditado",
       "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2023jun/2023_06_descargables.zip",
       "n": 800,
-      "nota": "Original aportado; URL publicada de referencia a la serie de julio, no necesariamente la página propia de cada ola."
+      "nota": "Original de la encuesta y ZIP aportado por usuario; respuestas individuales analizadas localmente."
+    },
+    {
+      "id": "cemop-2023-05-post",
+      "productor": "cemop",
+      "fecha": "2023-06-01",
+      "titulo": "Postelectoral autonómicas 2023, panel",
+      "ambito": "Murcia",
+      "pagina": "https://www.cemopmurcia.es/estudios/encuesta-postelectoral-elecciones-autonomicas-2023/",
+      "estado": "enlace_documentado",
+      "fecha_tipo": "orientativa",
+      "nota": "Panel de entrevistados de la encuesta preelectoral. No contar como muestra independiente; útil para verificar voto real declarado y cambios."
+    },
+    {
+      "id": "40db-2023-05-22",
+      "productor": "40db",
+      "fecha": "2023-05-22",
+      "titulo": "Municipales 2023: Madrid, Barcelona, Valencia, Sevilla, A Coruña y Zaragoza",
+      "ambito": "Seis municipios",
+      "pagina": "https://elpais.com/espana/elecciones-autonomicas/2023-05-22/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-para-las-elecciones-de-madrid-barcelona-valencia-sevilla-a-coruna-y-zaragoza.html",
+      "estado": "enlace_documentado",
+      "nota": "Varias muestras locales en una página documental; NO agregarlas como encuesta autonómica o nacional."
+    },
+    {
+      "id": "40db-2023-05-21",
+      "productor": "40db",
+      "fecha": "2023-05-21",
+      "titulo": "Preelectorales autonómicas Madrid y Comunitat Valenciana",
+      "ambito": "Madrid y Comunitat Valenciana",
+      "pagina": "https://elpais.com/espana/elecciones-autonomicas/2023-05-21/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-de-la-comunidad-de-madrid-y-comunidad-valenciana.html",
+      "estado": "enlace_documentado",
+      "nota": "La página incluye dos sondeos territoriales y descargables; contabilizada como una entrada documental, no necesariamente una única matriz."
     },
     {
       "id": "cemop-2023-05-01",
@@ -599,6 +675,18 @@
       "estado": "solicitud_requerida",
       "n": 28611,
       "nota": "Microdatos a disposición de investigadores que escriban a madrid@gad3.com; NO descarga pública ni permiso tácito de redistribución."
+    },
+    {
+      "id": "cemop-2019-10-31",
+      "productor": "cemop",
+      "fecha": "2019-10-31",
+      "titulo": "Preelectoral generales 10N de 2019",
+      "ambito": "Murcia",
+      "pagina": "https://www.cemopmurcia.es/estudios/encuesta-preelectoral-generales-10n-2019/",
+      "estado": "enlace_documentado",
+      "n": 820,
+      "fecha_tipo": "fin_de_campo",
+      "nota": "Trabajo de campo 28–31 octubre 2019. Archivos originales descargables desde la universidad. Otra elección para validar."
     },
     {
       "id": "sociometro-vasco-2018-05-18",
