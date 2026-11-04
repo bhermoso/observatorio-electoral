@@ -32,7 +32,15 @@ try{
   page.on('pageerror',error=>jsErrors.push(error.message));
   await page.goto(SITE+'?audit=densidad-'+c.route+'#'+c.route,{waitUntil:'domcontentloaded',timeout:60000});
   const primary=c.route==='dashboard'?'#forecast-lead-results':c.route==='analisis'?'#analysis-compare':c.route==='contexto'?'#event-visual-title':'#main';
-  try{await page.waitForSelector(primary,{state:'visible',timeout:12000});}catch(e){errors.push('No se encuentra vista '+primary);}
+  try{
+   await page.waitForSelector(primary,{state:'visible',timeout:15000});
+  }catch(e){
+   // En una navegación fría el bootstrap de encuestas puede tardar más que el DOM.
+   // Repetir una sola vez antes de declararlo un fallo real; conservar capturas.
+   await page.reload({waitUntil:'domcontentloaded',timeout:60000});
+   try{await page.waitForSelector(primary,{state:'visible',timeout:20000});}
+   catch(err){errors.push('No se encuentra vista '+primary);}
+  }
   await page.waitForTimeout(1000);
   const info=await page.evaluate(({route})=>{
    const box=(sel)=>{const el=document.querySelector(sel);if(!el)return null;const r=el.getBoundingClientRect(),cs=getComputedStyle(el);return {x:Math.round(r.left),y:Math.round(r.top),right:Math.round(r.right),bottom:Math.round(r.bottom),width:Math.round(r.width),height:Math.round(r.height),clientHeight:el.clientHeight,scrollHeight:el.scrollHeight,display:cs.display,visible:cs.display!=='none'&&r.height>0};};
