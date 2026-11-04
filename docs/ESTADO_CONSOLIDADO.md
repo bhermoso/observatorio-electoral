@@ -19,6 +19,8 @@
 5. La base territorial del pronóstico sigue siendo las generales de 2023. Los datos adicionales de europeas de 2024 no están incorporados.
 6. El catálogo oficial del CIS ofrece la búsqueda del estudio 3582, pero no se proporciona un enlace directo a su ficha hasta verificarlo.
 
+**Origen temporal de RECUERDO:** en 3242 corresponde a las generales de 2016; en 3263 a las de abril de 2019. Las escalas P12/P11 (0–10) son distintas de las preguntas P9/P8 sobre intención de acudir a votar.
+
 ## Criterios de publicación
 
 - `npm test`: pruebas de cálculo, vistas, referencias y contrato transversal de las secciones.
@@ -30,7 +32,7 @@
 ## Pendiente para una validación predictiva
 
 - Nuevas elecciones independientes, con resultados oficiales y encuestas con fecha de publicación documentada. No confundir las dos elecciones 2019 del contraste de recetas con validación del pronóstico principal.
-- Homologación completa de los cuestionarios, libros de códigos, recodificaciones y candidaturas de 2019: la evidencia de preguntas P.8, P.9, P.9a y P.17 del estudio 3263 y el anexo territorial ya consta en `data/microdatos/evidencia_homologacion_2019.json`, pero la habilitación de ambas encuestas sigue bloqueada.
+- **Archivos originales cotejados (4-nov-2026):** MD3242.zip (16.194 entrevistas) y MD3263.zip (17.650), con coincidencia de SHA-256, sumas de PESO, n de Kish, variables y recuentos agregados. El registro reproducible y sin entrevistas está en `data/microdatos/cotejo_originales_2019.json`. Quedan pendientes reglas exactas de recodificación P10/P9 a P10R/P9R, VOTOSIMG, correspondencia territorial y pruebas fuera de muestra. No se han subido los microdatos originales al repositorio.
 - Calibración empírica de intervalos y probabilidades de mayoría; no sustituirla por multiplicar cortes de una sola elección.
 - Verificar URL directa del estudio CIS 3582 y disponibilidad pública de su archivo original.
 
