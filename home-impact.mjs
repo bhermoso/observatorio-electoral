@@ -16,22 +16,26 @@ export function renderHomeImpact(){
  return `<section class="impact" id="impact" aria-labelledby="impact-heading">
  <div class="impact-head">
   <div><span class="impact-kicker"><i></i> <span id="impact-cut">Cargando corte…</span></span>
-  <h1 id="impact-heading">Pronóstico del 29N<br><em>y cómo lo calculamos.</em></h1>
-  <p>La estimación propia se contrasta con promedios de encuestas publicadas. La cocina sobre microdatos del CIS es un experimento distinto; las noticias no equivalen a sondeos.</p>
-  <div class="impact-links"><a class="impact-primary" href="#pronostico">Pronóstico completo · Motor 29N →</a><a href="#encuestas">Encuestas y actualización</a><a href="#contexto">Acontecimientos: Urda</a></div></div>
+  <h1 id="impact-heading">Panorama electoral <em>29N</em></h1>
+  <p>Pronóstico propio, encuestas publicadas y mayorías. Lo esencial de un vistazo; detalle por pestañas.</p>
+  <div class="impact-links"><a class="impact-primary" href="#pronostico">Pronóstico completo →</a><a href="flujograma.html">Cómo se calcula</a><a href="construye-estimacion.html#cocina-secuencia">Cocina electoral</a><a href="como-estimamos.html">Método y validación</a><a href="#contexto">Urda</a></div></div>
   <dl class="impact-facts" id="impact-facts" aria-live="polite"><div><dt>Corte</dt><dd>…</dd></div></dl>
  </div>
+ <nav class="panorama-tabs" role="tablist" aria-label="Explorar Panorama"><button type="button" role="tab" id="panorama-tab-resultados" aria-controls="panorama-panel-resultados" aria-selected="true" tabindex="0" data-panorama-tab="resultados">Resultados</button><button type="button" role="tab" id="panorama-tab-comparar" aria-controls="panorama-panel-comparar" aria-selected="false" tabindex="-1" data-panorama-tab="comparar">Promedio y modelo</button><button type="button" role="tab" id="panorama-tab-variacion" aria-controls="panorama-panel-variacion" aria-selected="false" tabindex="-1" data-panorama-tab="variacion">Cambios y ajustes</button><button type="button" role="tab" id="panorama-tab-fuentes" aria-controls="panorama-panel-fuentes" aria-selected="false" tabindex="-1" data-panorama-tab="fuentes">Fuentes</button><button type="button" role="tab" id="panorama-tab-microdatos" aria-controls="panorama-panel-microdatos" aria-selected="false" tabindex="-1" data-panorama-tab="microdatos">Microdatos CIS</button></nav>
+ <div class="panorama-pane" id="panorama-panel-resultados" data-panorama-panel="resultados" role="tabpanel" aria-labelledby="panorama-tab-resultados">
  <section class="forecast-lead panel" aria-labelledby="forecast-lead-title">
-  <div class="forecast-lead-header"><div><span class="eyebrow">Estimación propia · Motor 29N</span><h2 id="forecast-lead-title">Nuestra estimación para el 29N</h2><p class="muted">Pronóstico del Congreso · votos, escaños y mayorías. Medianas e intervalos del 90 %, no resultados oficiales.</p></div><a class="panel-link" href="#pronostico">Ver pronóstico, método y circunscripciones →</a></div>
+  <div class="forecast-lead-header"><div><span class="eyebrow">Motor 29N · pronóstico propio</span><h2 id="forecast-lead-title">Voto y escaños estimados</h2></div><a class="panel-link" href="#pronostico">Ver pronóstico, método y circunscripciones →</a></div>
   <div id="forecast-lead-results" aria-live="polite"><p class="muted">Cargando estimación publicada…</p></div>
  </section>
  <div class="panorama-editorial" id="panorama-editorial" aria-live="polite">Calculando el contraste con las encuestas…</div>
- <details class="panorama-sources"><summary>Qué procede de encuestas, modelo, microdatos y noticias</summary>
+ </div>
+ <div class="panorama-pane" id="panorama-panel-fuentes" data-panorama-panel="fuentes" role="tabpanel" aria-labelledby="panorama-tab-fuentes" hidden>
+ <details class="panorama-sources" open><summary>Qué procede de encuestas, modelo, microdatos y noticias</summary>
  <div class="panorama-source-grid"><p><b>Promedio de encuestas:</b> agregamos estimaciones que ya publicaron los institutos. No son respuestas individuales.</p><p><b>Pronóstico propio:</b> tendencia, sesgos, calibración histórica y simulación de escaños; utiliza estimaciones publicadas, no microdatos.</p><p><b>Cocina sobre microdatos:</b> experimentos con respuestas del CIS; no alimentan este pronóstico.</p><p><b>Noticias y otros modelos:</b> pistas para verificar originales y comparadores externos, nunca encuestas añadidas automáticamente.</p></div>
  <ol class="layer-legend" aria-label="Las cuatro capas">${Object.entries(LAYERS).map(([k,l])=>`<li class="layer-${k}"><span class="layer-num" aria-hidden="true">${l.capa}</span><div><b>${h(l.nombre)}</b><small>${h(l.naturaleza)}</small><details><summary>¿Qué es exactamente?</summary><p>${h(l.explica)}</p></details></div></li>`).join('')}</ol></details>
- </section>
- <details class="panorama-secondary"><summary>Recuentos completos de las fuentes</summary><div id="home-counts"></div></details>
- <details class="panel matrix-panel panorama-secondary"><summary>Contrastar promedio y pronóstico, partido a partido</summary>
+ <details class="panorama-secondary" open><summary>Recuentos completos de las fuentes</summary><div id="home-counts"></div></details></div>
+ <div class="panorama-pane" id="panorama-panel-comparar" data-panorama-panel="comparar" role="tabpanel" aria-labelledby="panorama-tab-comparar" hidden>
+ <details class="panel matrix-panel panorama-secondary" open><summary>Contrastar promedio y pronóstico, partido a partido</summary>
   <div class="panel-head"><div><span class="eyebrow">Diferenciar procesos</span><h2 id="matrix-heading">Qué es promedio y qué es pronóstico</h2><p class="muted" id="matrix-sub">Cargando datos…</p></div></div>
   <div class="matrix-controls">
    <fieldset class="seg" id="matrix-view"><legend>Mostrar</legend>
@@ -47,17 +51,19 @@ export function renderHomeImpact(){
   </div>
   <div class="table-wrap"><table class="matrix" id="matrix-table"><caption class="vh">Comparación de capas</caption><tbody><tr><td>Cargando…</td></tr></tbody></table></div>
   <div id="matrix-notes" class="matrix-notes"></div>
- </details>
- <details class="panorama-secondary"><summary>Detalle por bloques y evolución diaria</summary><div class="home-grid">
+ </details></div>
+ <div class="panorama-pane" id="panorama-panel-variacion" data-panorama-panel="variacion" role="tabpanel" aria-labelledby="panorama-tab-variacion" hidden>
+ <details class="panorama-secondary" open><summary>Detalle por bloques y evolución diaria</summary><div class="home-grid">
   <section class="panel" aria-labelledby="blocks-heading"><span class="eyebrow">Pronóstico · bloques ampliados</span><h2 id="blocks-heading">Escaños por bloques</h2><p class="muted">${h(BLOCK_NOTE)} Mayoría absoluta: 176 de 350.</p><div id="home-blocks" class="home-blocks">Cargando…</div></section>
   <section class="panel" aria-labelledby="changes-heading"><span class="eyebrow">Corte anterior</span><h2 id="changes-heading">Qué ha cambiado</h2><div id="home-changes">Cargando…</div></section>
  </div></details>
- <details class="panel panorama-secondary" aria-labelledby="cocina-heading"><summary>Qué cambia por nuestros ajustes estadísticos e históricos</summary><span class="eyebrow">Ajustes sobre estimaciones publicadas</span><h2 id="cocina-heading">La diferencia entre dos variantes del motor</h2><p class="muted">Las variantes del motor cambian la selección de anclas, las correcciones históricas y el error de industria. Ninguna de ellas repondera entrevistas individuales.</p><div id="home-cocina">Cargando…</div></details>
- <details class="panel experiment panorama-secondary" aria-labelledby="exp-heading"><summary>Experimento separado: cocina sobre respuestas del CIS</summary><span class="badge sim">Microdatos · fuera del pronóstico</span><h2 id="exp-heading">Qué cambia al trabajar con entrevistas del CIS</h2>
+ <details class="panel panorama-secondary" aria-labelledby="cocina-heading"><summary>Qué cambia por nuestros ajustes estadísticos e históricos</summary><span class="eyebrow">Ajustes sobre estimaciones publicadas</span><h2 id="cocina-heading">La diferencia entre dos variantes del motor</h2><p class="muted">Las variantes del motor cambian la selección de anclas, las correcciones históricas y el error de industria. Ninguna de ellas repondera entrevistas individuales.</p><div id="home-cocina">Cargando…</div></details></div>
+ <div class="panorama-pane" id="panorama-panel-microdatos" data-panorama-panel="microdatos" role="tabpanel" aria-labelledby="panorama-tab-microdatos" hidden>
+ <details class="panel experiment panorama-secondary" open aria-labelledby="exp-heading"><summary>Experimento separado: cocina sobre respuestas del CIS</summary><span class="badge sim">Microdatos · fuera del pronóstico</span><h2 id="exp-heading">Qué cambia al trabajar con entrevistas del CIS</h2>
   <p class="muted">Cocina aplicada a <b>microdatos individuales</b> de un solo instituto (CIS). No alimenta el Motor 29N ni la matriz. La proyección de escaños es ilustrativa: ajuste proporcional sobre el mapa de 2023 y D’Hondt.</p>
   <div class="toolbar"><label>Estudio <select id="impact-cis"><option value="3411">CIS 3411 · 2023</option><option value="3415">CIS 3415 · 2023</option><option value="3582" selected>CIS 3582 · 2026</option></select></label><label>Procedimiento <select id="impact-recipe"><option value="decided">Ponderación + solo decididos</option><option value="sympathy">Ponderación + voto o simpatía</option><option value="turnout">Ponderación + decididos + participación</option></select></label></div>
   <div id="impact-recipe-output" class="impact-visual" aria-live="polite">Recalculando…</div>
-  <p class="muted"><a href="construye-estimacion.html">Construye una estimación, decisión a decisión →</a> · <a href="tutorial-estimacion.html">Tutorial</a> · <a href="metodo-evidencia.html">Por qué cambia la estimación</a> · <a href="#cocina">Cocina electoral →</a> · <a href="#laboratorio">Laboratorio D’Hondt →</a></p></details>`;
+  <p class="muted"><a href="construye-estimacion.html">Construye una estimación, decisión a decisión →</a> · <a href="tutorial-estimacion.html">Tutorial</a> · <a href="metodo-evidencia.html">Por qué cambia la estimación</a> · <a href="#cocina">Cocina electoral →</a> · <a href="#laboratorio">Laboratorio D’Hondt →</a></p></details></div></section>`;
 }
 
 function drawForecastLead(ctx){
@@ -77,11 +83,11 @@ function drawForecastLead(ctx){
  const caution=new Set(p.sin_encuestas||[]);
  el.innerHTML=`
  <div class="forecast-lead-status"><span>Corte: <b>${h(fdate(ctx.forecast.corte))}</b></span><span>${h(ctx.entradas??'—')} estudios utilizados</span><span>Mayoría absoluta: <b>176 escaños</b></span></div>
- <div class="forecast-lead-overview">
+ <div class="forecast-lead-content"><div class="forecast-lead-side"><div class="forecast-lead-overview">
   <div class="forecast-lead-winner"><span class="eyebrow">Mayor número de escaños · mediana</span><strong>${h(PARTIES.find(x=>x.id===first?.[0])?.label||first?.[0]||'—')}</strong><div><b>${fmt(first?.[1]?.escanos?.[0]??0,0)}</b> escaños <small>90 %: ${fmt(first?.[1]?.escanos?.[1]??0,0)}–${fmt(first?.[1]?.escanos?.[2]??0,0)}</small></div><p>Estimación de primera fuerza por mediana, no probabilidad de formar Gobierno.</p></div>
   <div class="forecast-lead-blocs"><h3>Bloques y mayoría absoluta: 176</h3>${blocks.map(([id,b])=>`<div class="forecast-lead-bloc"><span>${h(bName(id))}</span><b>${fmt(b.mediana,0)} <small>escaños</small></b><span class="forecast-lead-prob">${Number.isFinite(b.p_mayoria)?fmt(100*b.p_mayoria,0)+' % de simulaciones con 176 o más':'Probabilidad no disponible'}</span></div>`).join('')||'<p class="muted">Sin estimación de bloques disponible.</p>'}</div>
- </div>
- <div class="table-wrap"><table class="forecast-lead-table"><caption>Estimación por partido. Mediana e intervalo del 90 % del modelo.</caption><thead><tr><th scope="col">Partido</th><th scope="col">Voto estimado</th><th scope="col">Escaños estimados</th></tr></thead><tbody>${major.map(([id,v])=>`<tr><th scope="row">${h(PARTIES.find(x=>x.id===id)?.label||id)}${caution.has(id)?' <small class="warn">sin encuestas propias</small>':''}</th><td><b>${fmt(v.voto[0])} %</b><small>${fmt(v.voto[1])}–${fmt(v.voto[2])} %</small></td><td><strong>${fmt(v.escanos[0],0)}</strong><small>${fmt(v.escanos[1],0)}–${fmt(v.escanos[2],0)}</small></td></tr>`).join('')}</tbody></table></div>
+ </div></div>
+ <div class="table-wrap forecast-lead-table-holder"><table class="forecast-lead-table"><caption>Estimación por partido. Mediana e intervalo del 90 % del modelo.</caption><thead><tr><th scope="col">Partido</th><th scope="col">Voto estimado</th><th scope="col">Escaños estimados</th></tr></thead><tbody>${major.map(([id,v])=>`<tr><th scope="row">${h(PARTIES.find(x=>x.id===id)?.label||id)}${caution.has(id)?' <small class="warn">sin encuestas propias</small>':''}</th><td><b>${fmt(v.voto[0])} %</b><small>${fmt(v.voto[1])}–${fmt(v.voto[2])} %</small></td><td><strong>${fmt(v.escanos[0],0)}</strong><small>${fmt(v.escanos[1],0)}–${fmt(v.escanos[2],0)}</small></td></tr>`).join('')}</tbody></table></div></div>
  <p class="muted forecast-lead-foot">Pronóstico condicionado a las fuentes y supuestos del modelo. ${h(p.n??'—')} simulaciones; los intervalos expresan incertidumbre, no garantías. ${parties.length>major.length?`Se muestran ${major.length} de ${parties.length} candidaturas; <a href="#pronostico">ver todas</a>.`:' '} <a href="#metodologia">Metodología y fuentes</a>.</p>`;
 }
 
@@ -197,8 +203,34 @@ function drawFacts(ctx){
   <div><dt>Estudios en el Motor 29N</dt><dd>${ctx.entradas??'—'}<small>${Object.entries(ctx.con?.porOrigen||{}).map(([k,v])=>`${v} ${k}`).join(' · ')||'—'}</small></dd></div>
   <div><dt>Última publicación</dt><dd>${h(fdate(arch.map(p=>p.published).sort().at(-1)))}<small>Archivo verificado</small></dd></div>`;
 }
+function bindPanoramaTabs(root){
+ const tabs=[...root.querySelectorAll('[data-panorama-tab]')];
+ const activate=(name,focus=false)=>{
+  for(const tab of tabs){
+   const selected=tab.dataset.panoramaTab===name;
+   tab.setAttribute('aria-selected',String(selected));tab.tabIndex=selected?0:-1;
+  }
+  for(const panel of root.querySelectorAll('[data-panorama-panel]')){
+   panel.hidden=panel.dataset.panoramaPanel!==name;
+  }
+  if(focus)tabs.find(tab=>tab.dataset.panoramaTab===name)?.focus();
+ };
+ tabs.forEach((tab,index)=>{
+  tab.addEventListener('click',()=>activate(tab.dataset.panoramaTab));
+  tab.addEventListener('keydown',event=>{
+   if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
+   event.preventDefault();
+   const next=event.key==='Home'?0:event.key==='End'?tabs.length-1:
+    (index+(event.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;
+   activate(tabs[next].dataset.panoramaTab,true);
+  });
+ });
+ activate('resultados');
+}
+
 export async function bindHomeImpact(polls){
  const root=document.querySelector('#impact');if(!root)return;
+ bindPanoramaTabs(root);
  const ctx={polls,corte:new Date().toISOString().slice(0,10),forecast:null,sin:null,con:null,ext:[],entradas:null};
  try{
   const r=await fetch('data/modelo/pronostico.json',{cache:'no-store'});if(!r.ok)throw Error('pronóstico no publicado (HTTP '+r.status+')');
