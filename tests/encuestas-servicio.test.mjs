@@ -22,6 +22,18 @@ test('Los titulares no permiten HTML ni enlaces ejecutables',()=>{
  const html=renderCandidates({candidates:[{title:'<img onerror=alert(1)>',url:'javascript:alert(1)'}],errors:[]});
  assert.doesNotMatch(html,/<img|href="javascript:/);assert.match(html,/&lt;img/);assert.match(html,/pistas para revisar/);
 });
+test('Separa última búsqueda exitosa, incidencia posterior y vigilancia GitHub Actions',()=>{
+ const html=renderCandidates({checked_at:'2026-11-04T12:00:00Z',
+  candidates:[{title:'Titular anterior',url:'https://news.google.com/rss/articles/1'}],
+  errors:['2026-11-04T12:05:00Z · Búsqueda no disponible']});
+ assert.match(html,/Última búsqueda con resultados/);
+ assert.match(html,/Incidencias de un intento posterior/);
+ assert.match(html,/12:05:00Z/);
+ assert.match(html,/Titular anterior/);
+ const panel=renderPollUpdate();
+ assert.match(panel,/Dos procesos distintos/);
+ assert.match(panel,/GitHub Actions/);
+});
 test('La ficha exige muestra, fechas reales y ordenadas, fuentes HTTPS y cifras',()=>{
  const now=new Date('2026-11-04T15:00:00Z'),p=fixture();assert.equal(validateSubmission(p,now).id,p.id);
  for(const patch of [{sample:0},{sample:true},{fieldStart:'2023-02-30'},{published:'2027-01-01'},{source:'javascript:alert(1)'},{technical:'http://example.org'},{values:{PP:NaN}},{values:{PP:80,PSOE:30}},{scope:'Madrid'},{seats:{PP:{point:120}}},{title:'<script>'}])assert.throws(()=>validateSubmission({...p,...patch},now),JSON.stringify(patch));
