@@ -33,8 +33,19 @@ export function renderPronostico(){
  <section class="panel" id="pronostico-evolucion"><h2>E. Evolución por cortes</h2><p class="muted">Serie retrospectiva recalculada con el método actual y las encuestas disponibles en cada corte; no es un archivo de lo que se publicó entonces. La versión 2 (3-nov-2026) recalculó toda la serie; para recuperar versiones anteriores hay que consultar el historial del repositorio. Las entradas con otra versión del modelo se señalan: su diferencia no es solo cambio en los datos.</p><div id="fc-history">Cargando…</div></section>
  <section class="panel" id="pronostico-territorio"><h2>F. Proyección territorial</h2><div id="fc-territory">Cargando…</div></section>
  <section class="panel" id="pronostico-fuentes"><h2>Estudios usados y excluidos</h2><div id="fc-sources">Cargando…</div></section>
- <section class="panel" id="pronostico-evaluacion"><h2>Evaluación frente al 23J</h2><p class="muted">Única elección evaluada. No es una validación independiente entre convocatorias.</p>${renderValidationDashboard()}</section>
+ <section class="panel" id="pronostico-evaluacion"><h2>Evaluación frente al 23J</h2><div id="fc-validation-publica"></div><p class="muted">Única elección evaluada. No es una validación independiente entre convocatorias.</p>${renderValidationDashboard()}</section>
  <section class="panel" id="pronostico-externos"><h2>Capa 4 · Otros observatorios y modelos</h2><p class="muted">${h(LAYERS.externo.explica)}</p><div id="fc-external">Cargando…</div></section>`;
+}
+
+function publicValidation(f){
+ const v=f.validacion_publica,g=f.geografia_publica;
+ if(!v)return '<p class="muted">Aún no se ha publicado la evaluación temporal independiente del ajuste del motor.</p>';
+ const rows=(v.elecciones||[]).flatMap(e=>(e.cortes||[]).map(c=>`<tr><td>${h(e.eleccion)}</td><td>${h(c.fecha)}</td><td>${fmt(c.dias_antes,0)} días</td><td>${fmt(c.n,0)}</td><td>${c.mae==null?'—':fmt(c.mae)+' pp'}</td></tr>`)).join('');
+ return `<h3>Auditoría de disponibilidad: encuestas conocidas en cada fecha</h3>
+ <p>Convocatorias independientes comprobadas: <b>${fmt(v.elecciones_independientes,0)}</b>. Se incluyen varios cortes de una misma elección, pero <b>no cuentan como varias elecciones</b>. Este cálculo no usa el resultado del 23J para ajustar el promedio; tampoco valida los parámetros históricos ni las probabilidades de mayoría del motor.</p>
+ <div class="table-wrap"><table><thead><tr><th>Elección</th><th>Corte disponible</th><th>Antelación</th><th>Institutos</th><th>Error medio absoluto</th></tr></thead><tbody>${rows}</tbody></table></div>
+ <p class="muted">Durante la veda se congela la última fecha legal de publicación. Los sondeos sin fecha documentada o con campo supuesto no se incorporan a la evaluación. ${h(v.nota||'')}</p>
+ ${g?`<p><b>Proyección provincial:</b> ${h(g.mapa_base)}. Las europeas de 2024 tienen <a href="${h(g.fuente_2024)}" target="_blank" rel="noopener">datos públicos oficiales disponibles</a>, pero <b>todavía no se utilizan</b> en el pronóstico. Las candidaturas deben homologarse y la mejora necesita una comprobación fuera de muestra.</p>`:''}`;
 }
 
 function partyTable(f){
@@ -128,6 +139,7 @@ export async function bindPronostico(){
  document.querySelector('#fc-lead').innerHTML=`Corte del <b>${h(fdate(f.corte))}</b> · elección objetivo: generales del <b>${h(fdate(f.eleccion))}</b> (faltan ${days} días) · versión del modelo ${h(f.version_modelo||'1')}.`;
  const set=(id,fn)=>{const el=document.querySelector(id);try{el.innerHTML=fn();}catch(e){el.textContent='No se puede mostrar: '+e.message;}};
  set('#fc-counts',()=>renderRecuento({forecast:f}));
+ set('#fc-validation-publica',()=>publicValidation(f));
  set('#fc-main',()=>partyTable(f));set('#fc-variants',()=>variantsTable(f));set('#fc-chain',()=>chain(f));set('#fc-blocks',()=>blocks(f));
  set('#fc-history',()=>history(hist));set('#fc-territory',()=>territory(f));set('#fc-sources',()=>sources(f));set('#fc-external',()=>external(f));
  void bindTrazabilidad();void bindInvestidura();void bindValidationDashboard();

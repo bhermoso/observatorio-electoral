@@ -77,3 +77,13 @@ Todos los escenarios usan semillas fijas por variante y el mismo tamaño muestra
 ## Límites
 
 Un solo precedente con encuestas privadas evaluadas (23J). Para evaluar 2015, 2016 y 2019 hacen falta las tablas históricas (Wikipedia u originales). La retroprueba en el 23J muestra que corregir sesgos de casa no supera automáticamente al promedio simple: en 2023 el CIS fue la única casa que acertó con el PSOE.
+
+## Modelo de datos públicos: primera fase (4 de noviembre de 2026)
+
+- **Evaluación temporal reproducible:** `modelo/motor/validacion_publica.py` selecciona la última encuesta de cada instituto por **fecha documentada de publicación**, sin filtrar retrospectivamente con información futura y congelando los cortes durante la veda. El control usa el promedio simple, no una variante calibrada con el resultado observado.
+- **Unidad de evidencia:** cada convocatoria electoral constituye una observación independiente. Los cortes 30, 15, 7 y 1 días antes del 23J **no representan cuatro elecciones**. Se publica el recuento explícito y el error descriptivo en `pronostico.json.validacion_publica`.
+- **Geografía oficial:** `modelo/motor/geografia_publica.py` establece un contrato verificable para futuras distribuciones provinciales de europeas 2024. Rechaza perfiles parciales, duplicados, denominadores incoherentes, fuentes no institucionales y asignaciones automáticas de partidos.
+- **Estado territorial actual:** el pronóstico sigue usando el mapa provincial del Congreso de 2023. Los datos de europeas 2024 están disponibles en el [Ministerio del Interior](https://descargas.interior.gob.es/datasets/resultados_electorales/Elecciones-al-Parlamento-Europeo.xlsx), pero **no se han importado ni mezclado** sin comprobar la equivalencia territorial y entre candidaturas. El contrato y su estado se exportan en `pronostico.json.geografia_publica`.
+- **Consecuencia:** ninguna cifra de mayoría debe presentarse como probabilidad empíricamente calibrada. La auditoría es el primer componente de una futura evaluación multielectoral; no valida por sí misma la incertidumbre de 29N.
+
+El siguiente paso de datos requiere descargar y normalizar las 52 provincias de las europeas de 2024 desde la fuente oficial, documentar las candidaturas realmente comparables y evaluar la variación de acierto fuera de muestra antes de tocar la mezcla territorial del modelo principal.
