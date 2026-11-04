@@ -11,6 +11,7 @@ const statuses={
  registro_requerido:'Requiere registro',
  formulario_requerido:'Requiere formulario',
  solicitud_requerida:'Bajo solicitud',
+ estructura_sav_verificada:'SAV · estructura verificada',
  embargado:'Temporalmente embargado'
 };
 export function renderCatalogoMicrodatos(){
@@ -34,7 +35,7 @@ export async function bindCatalogoMicrodatos(){
   if(d.esquema!==1||!Array.isArray(d.fuentes)||!Array.isArray(d.estudios))throw Error('Formato de catálogo inválido');
   const count=s=>d.estudios.filter(x=>x.productor===s).length;
   root.innerHTML=`
-   <p class="archivo-md-metrics"><strong>${d.fuentes.length} repositorios</strong> con vías de acceso a datos individuales · <strong>${d.estudios.length} entradas documentales</strong> (incluidas series acumuladas, portales y varias encuestas por página) · <strong>${d.estudios.filter(x=>x.estado==='original_auditado').length} originales auditados</strong> · <strong>${d.casas_pendientes.length} casas</strong> a investigar</p>
+   <p class="archivo-md-metrics"><strong>${d.fuentes.length} repositorios</strong> con vías de acceso a datos individuales · <strong>${d.estudios.length} entradas documentales</strong> (incluidas series acumuladas, portales y varias encuestas por página) · <strong>${d.estudios.filter(x=>x.estado==='original_auditado').length} originales auditados</strong> · <strong>${d.estudios.filter(x=>x.estado==='estructura_sav_verificada').length} SAV verificados</strong> · <strong>${d.casas_pendientes.length} casas</strong> a investigar</p>
    <div class="archivo-md-providers">${d.fuentes.map(f=>`<div><b>${h(f.nombre)}</b><small>${h(f.ambito)} · ${h(f.acceso)}</small><small>${count(f.id)} entradas · ${h(f.formatos)}</small><a href="${h(f.portal)}" target="_blank" rel="noopener noreferrer">Fuente oficial ↗</a></div>`).join('')}</div>
    <div class="archivo-md-controls">
      <label>Fuente<select id="archivo-md-source"><option value="todos">Todas las fuentes</option>${d.fuentes.map(f=>`<option value="${h(f.id)}">${h(f.nombre)}</option>`).join('')}</select></label>
