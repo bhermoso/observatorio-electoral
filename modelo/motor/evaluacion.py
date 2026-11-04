@@ -14,10 +14,20 @@ from .fuentes import BLOQUE_IZQ
 
 
 def error_final(encuestas, fecha_eleccion, resultado, partidos, dias=21):
+    """Última encuesta publicada antes de la veda, no último trabajo de campo.
+
+    Exige fecha de publicación documentada: el fin de campo por sí solo no
+    demuestra que el estudio estuviera disponible antes del cierre legal.
+    Para las generales españolas la fecha límite es seis días antes del voto.
+    """
+    limite_publicacion = fecha_eleccion - timedelta(days=6)
     filas = {}
-    for e in sorted(encuestas, key=lambda e: e["campo_fin"]):
-        if fecha_eleccion - timedelta(days=dias) <= e["campo_fin"] < fecha_eleccion:
-            filas[e["casa"]] = e  # se queda la última
+    elegibles = (e for e in encuestas
+                 if fecha_eleccion - timedelta(days=dias) <= e["campo_fin"] < fecha_eleccion
+                 and e.get("publicacion") is not None
+                 and e["publicacion"] <= limite_publicacion)
+    for e in sorted(elegibles, key=lambda e: (e["publicacion"], e["campo_fin"], e["estudio"])):
+        filas[e["casa"]] = e  # última PUBLICADA, no última realizada
     out = {}
     for c, e in filas.items():
         err = {p: e["voto"][p] - resultado[p] for p in partidos if p in e["voto"]}
@@ -102,7 +112,12 @@ def retroprueba_cortes(encuestas, fecha_eleccion, resultado, partidos, cortes=(3
     out = []
     for d in cortes:
         corte = fecha_eleccion - timedelta(days=d)
-        disp = [e for e in encuestas if e["campo_fin"] < fecha_eleccion and publicada_antes(e, corte)]
+        # En cortes posteriores al comienzo de la veda no se pueden incorporar
+        # sondeos nuevos, aunque tengan campo anterior al día electoral.
+        limite_legal = fecha_eleccion - timedelta(days=6)
+        fecha_disponible = min(corte, limite_legal)
+        disp = [e for e in encuestas if e["campo_fin"] < fecha_eleccion
+                and publicada_antes(e, fecha_disponible)]
         ult = {}
         for e in sorted(disp, key=lambda e: e["campo_fin"]):
             if (corte - e["campo_fin"]).days <= dias_simple:

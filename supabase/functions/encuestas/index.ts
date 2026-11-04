@@ -34,8 +34,13 @@ Deno.serve(async(req:Request)=>{
    const data={checked_at:new Date().toISOString(),candidates:[...unique.values()].slice(0,80),errors:results.flatMap(x=>x.error?[x.error]:[])};
    // Retain previous candidates if every source failed; never report an empty success.
    if(results.every(x=>x.error)) {
-    await db('poll_update_cache?id=eq.1','PATCH',{errors:data.errors});
-    return reply({error:'No se pudieron consultar las fuentes. Se conserva la búsqueda anterior.'},502);
+    // Keep the last successful candidates/checked_at, but record the failed
+    // attempt separately in errors and release the cooldown for a retry.
+    await db('poll_update_cache?id=eq.1','PATCH',{
+     errors:data.errors.map(e=>data.checked_at+' · '+e),
+     locked_until:'1970-01-01T00:00:00Z'
+    });
+    return reply({error:'Fallaron todas las fuentes. Los titulares anteriores no se han actualizado; puedes reintentar.',attempted_at:data.checked_at},502);
    }
    await db('poll_update_cache?id=eq.1','PATCH',data);return reply(data);
   }

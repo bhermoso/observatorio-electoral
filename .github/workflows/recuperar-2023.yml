@@ -1,0 +1,29 @@
+name: Recuperar serie histórica 2023
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/importar_wikipedia_2023.py'
+      - '.github/workflows/recuperar-2023.yml'
+permissions:
+  contents: write
+jobs:
+  archivar:
+    if: github.ref != 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install beautifulsoup4
+      - run: python scripts/importar_wikipedia_2023.py
+      - name: Guardar solo la extracción comprobada en la rama
+        run: |
+          git add modelo/externos/wikipedia_2023_completa.csv modelo/externos/wikipedia_2023_completa.meta.json
+          if ! git diff --cached --quiet; then
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'data: archive full February-July 2023 Wikipedia polling series'
+            git push
+          fi

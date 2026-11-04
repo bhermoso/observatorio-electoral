@@ -16,7 +16,7 @@ EXT = os.path.join(RAIZ, "modelo", "externos")
 CASAS = {
     "imop insights": "IMOP", "imop": "IMOP", "sociometrica": "SocioMétrica",
     "sociométrica": "SocioMétrica", "40db": "40dB.", "40db.": "40dB.",
-    "gad3": "GAD3", "sigma dos": "Sigma Dos", "nc report": "NC Report",
+    "gad3": "GAD3", "sigma dos": "Sigma Dos", "sigmados": "Sigma Dos", "nc report": "NC Report",
     "simple lógica": "Simple Lógica", "cis": "CIS", "dym": "DYM",
     "ateneo del dato": "Ateneo del Dato", "demoscopia y servicios": "Demoscopia y Servicios",
     "electopanel": "ElectoPanel", "invymark": "InvyMark", "keydata": "KeyData",
@@ -141,6 +141,46 @@ def cargar_29n():
     return list(por_id.values())
 
 
+
+
+def cargar_wikipedia_2023():
+    """Serie ampliada secundaria (feb-jul 2023); sin inventar publicación."""
+    ruta = os.path.join(EXT, "wikipedia_2023_completa.csv")
+    if not os.path.exists(ruta):
+        return []
+    out = []
+    for r in csv.DictReader(open(ruta, encoding="utf-8")):
+        fin = _fecha(r["campo_fin"])
+        votos = {p: float(r[p]) for p in ("PP", "PSOE", "VOX", "SUMAR") if r.get(p)}
+        out.append(dict(casa=casa_canonica(r["casa"]), estudio=r["estudio"],
+                        campo_fin=fin, campo_ini=_fecha(r["campo_ini"]),
+                        n=int(r["n"]) if r.get("n") else 1000,
+                        n_supuesto=not bool(r.get("n")), modo="",
+                        voto=votos, origen="terceros-wikipedia", url=r["url"],
+                        publicacion=_fecha(r["publicacion"]) if r.get("publicacion") else None,
+                        fecha_publicacion_desconocida=not bool(r.get("publicacion")),
+                        ciclo=ciclo_de(fin), ambito="España", cliente=r.get("fuente_tabla","")))
+    return out
+
+
+def cargar_23j_complementos():
+    """Correcciones históricas documentadas sin reescribir fuentes importadas."""
+    ruta = os.path.join(EXT, "23j_complementos.json")
+    if not os.path.exists(ruta):
+        return []
+    registros = json.load(open(ruta, encoding="utf-8"))["registros"]
+    out = []
+    for r in registros:
+        fin = _fecha(r["campo_fin"])
+        out.append(dict(casa=casa_canonica(r["casa"]), estudio=r["estudio"],
+                        campo_fin=fin, campo_ini=_fecha(r["campo_ini"]), n=int(r["n"]),
+                        modo=r["modo"], voto=r["voto"], origen="terceros-wikipedia",
+                        url=r["url"], publicacion=_fecha(r["publicacion"]),
+                        ciclo=ciclo_de(fin), ambito="España",
+                        nota=r.get("nota", ""), contraste="fuente_secundaria_con_fecha"))
+    return out
+
+
 def cargar_prensa():
     """Encuestas citadas en prensa sin original consultado (modelo/externos/prensa_2026.csv).
     Sin fin de campo publicado se supone publicación - 3 días (supuesto declarado)."""
@@ -214,13 +254,17 @@ def aptas_para_pronostico(encuestas, ciclo="2023-26"):
 def todas(deduplicar=True):
     """Todas las fuentes. Si una misma casa tiene dos registros con fin de campo a
     <= 2 días, se conserva el verificado (o el primero cargado)."""
-    enc = cargar_verificadas() + cargar_29n() + cargar_prensa() + cargar_wikipedia()
+    enc = cargar_verificadas() + cargar_23j_complementos() + cargar_29n() + cargar_prensa() + cargar_wikipedia_2023() + cargar_wikipedia()
     if not deduplicar:
         return enc
     out = []
     for e in enc:
         dup = next((o for o in out if o["casa"] == e["casa"]
-                    and abs((o["campo_fin"] - e["campo_fin"]).days) <= 2), None)
+                    and ((e["ciclo"] == "2019-23"
+                          and o["campo_fin"] == e["campo_fin"]
+                          and o["voto"] == e["voto"])
+                         or (e["ciclo"] != "2019-23"
+                             and abs((o["campo_fin"] - e["campo_fin"]).days) <= 2))), None)
         if dup is None:
             out.append(e)
     return sorted(out, key=lambda e: e["campo_fin"])

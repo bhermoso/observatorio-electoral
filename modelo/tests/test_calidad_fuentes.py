@@ -38,6 +38,33 @@ class CalidadFuentesTest(unittest.TestCase):
         self.assertTrue(all(x["motivo"] for x in excl))
 
 
+
+class Historical23JCompletenessTest(unittest.TestCase):
+    def test_serie_febrero_julio_2023_completa_y_con_fecha(self):
+        from modelo.motor.fuentes import cargar_wikipedia_2023
+        filas = cargar_wikipedia_2023()
+        self.assertGreaterEqual(len(filas), 200)
+        self.assertTrue(any(e["campo_fin"].month == 2 for e in filas))
+        self.assertTrue(any(e["campo_fin"].month == 7 for e in filas))
+        self.assertTrue(all(e["origen"] == "terceros-wikipedia" for e in filas))
+        self.assertTrue(all(e.get("publicacion") for e in filas))
+        self.assertTrue(any(e["publicacion"] > date(2023, 7, 17) for e in filas))
+
+    def test_ultimas_40db_imop_y_sigma_dos_anteriores_a_veda(self):
+        from modelo.motor.fuentes import todas, resultado_23j
+        from modelo.motor.evaluacion import error_final
+        enc = todas()
+        finales = error_final(enc, date(2023, 7, 23), resultado_23j(),
+                             ["PP", "PSOE", "VOX", "SUMAR"])
+        self.assertEqual(finales["40dB."]["estudio"], "40db-2023-07-17-tracking11")
+        self.assertEqual(finales["IMOP"]["estudio"], "imop-2023-07-17-completo")
+        self.assertEqual(finales["Sigma Dos"]["estudio"], "sigmados-2023-07-17-elmundo")
+        for casa in ("40dB.", "IMOP", "Sigma Dos"):
+            self.assertTrue(finales[casa]["completa"], casa)
+        self.assertEqual(len(finales["40dB."]["error"]), 4)
+        self.assertEqual(len(finales["IMOP"]["error"]), 4)
+
+
 class SolapeAcontecimientoTest(unittest.TestCase):
     """Datos sintéticos. Mismo criterio que events.mjs: el día del suceso cuenta como solape."""
     E = date(2026, 10, 28)

@@ -5,7 +5,7 @@ import {parsePercentages,serviceRequest,renderCandidates,renderPollUpdate,SERVIC
 import {validateSubmission,fingerprint,parseFeed,inBlackout} from '../supabase/functions/encuestas/core.mjs';
 const fixture=()=>({...JSON.parse(fs.readFileSync(new URL('../data/polls.json',import.meta.url)))[0],id:'cis-prueba',seats:null});
 test('El botón y el formulario no piden acceso a GitHub',()=>{
- const html=renderPollUpdate();assert.match(html,/Actualizar encuestas/);assert.match(html,/Clave de edición/);assert.doesNotMatch(html,/github|github_pat|token/i);assert.match(html,/07:40 UTC/);
+ const html=renderPollUpdate();assert.match(html,/Actualizar encuestas/);assert.match(html,/Clave de edición/);assert.doesNotMatch(html,/github_pat|ghp_|access.token/i);assert.match(html,/07:40 UTC/);
 });
 test('Acepta coma decimal, conserva ausencias y rechaza duplicados o datos inválidos',()=>{
  assert.deepEqual(parsePercentages('PP: 30,2\nPSOE: 28.1 %'),{PP:30.2,PSOE:28.1});
@@ -21,6 +21,18 @@ test('La clave solo sale hacia la operación de edición del servicio fijo',asyn
 test('Los titulares no permiten HTML ni enlaces ejecutables',()=>{
  const html=renderCandidates({candidates:[{title:'<img onerror=alert(1)>',url:'javascript:alert(1)'}],errors:[]});
  assert.doesNotMatch(html,/<img|href="javascript:/);assert.match(html,/&lt;img/);assert.match(html,/pistas para revisar/);
+});
+test('Separa última búsqueda exitosa, incidencia posterior y vigilancia GitHub Actions',()=>{
+ const html=renderCandidates({checked_at:'2026-11-04T12:00:00Z',
+  candidates:[{title:'Titular anterior',url:'https://news.google.com/rss/articles/1'}],
+  errors:['2026-11-04T12:05:00Z · Búsqueda no disponible']});
+ assert.match(html,/Última búsqueda con resultados/);
+ assert.match(html,/Incidencias de un intento posterior/);
+ assert.match(html,/12:05:00Z/);
+ assert.match(html,/Titular anterior/);
+ const panel=renderPollUpdate();
+ assert.match(panel,/Dos procesos distintos/);
+ assert.match(panel,/GitHub Actions/);
 });
 test('La ficha exige muestra, fechas reales y ordenadas, fuentes HTTPS y cifras',()=>{
  const now=new Date('2026-11-04T15:00:00Z'),p=fixture();assert.equal(validateSubmission(p,now).id,p.id);

@@ -61,10 +61,37 @@ class TestEventos(unittest.TestCase):
 
 class TestEvaluacion(unittest.TestCase):
     def test_error_final(self):
-        enc = [dict(casa="X", campo_fin=date(2023, 7, 15), voto={"PP": 35.0}, estudio="a", origen="t", url=""),
-               dict(casa="X", campo_fin=date(2023, 6, 1), voto={"PP": 40.0}, estudio="b", origen="t", url="")]
+        enc = [dict(casa="X", campo_fin=date(2023, 7, 15), publicacion=date(2023, 7, 17), voto={"PP": 35.0}, estudio="a", origen="t", url=""),
+               dict(casa="X", campo_fin=date(2023, 6, 1), publicacion=date(2023, 6, 3), voto={"PP": 40.0}, estudio="b", origen="t", url="")]
         e = V.error_final(enc, date(2023, 7, 23), {"PP": 33.0}, ["PP"])
         self.assertAlmostEqual(e["X"]["error"]["PP"], 2.0)
+
+
+    def test_veda_excluye_sondeo_de_noche_electoral(self):
+        base = dict(casa="Sigma Dos", origen="test", url="")
+        enc = [
+            dict(base, estudio="preelectoral", campo_fin=date(2023, 7, 14),
+                 publicacion=date(2023, 7, 16), voto={"PP": 33.0, "PSOE": 28.0}),
+            dict(base, estudio="rtve-forta", campo_fin=date(2023, 7, 22),
+                 publicacion=date(2023, 7, 23), voto={"PP": 34.0, "PSOE": 29.0}),
+        ]
+        e = V.error_final(enc, date(2023, 7, 23),
+                          {"PP": 33.0, "PSOE": 31.0}, ["PP", "PSOE"])
+        self.assertEqual(e["Sigma Dos"]["estudio"], "preelectoral")
+        self.assertEqual(e["Sigma Dos"]["error"]["PSOE"], -3.0)
+
+    def test_gana_ultima_publicada_y_no_ultima_con_campo(self):
+        base = dict(casa="40dB.", origen="test", url="")
+        enc = [
+            dict(base, estudio="publicada", campo_fin=date(2023, 7, 15),
+                 publicacion=date(2023, 7, 17), voto={"PP": 32.0}),
+            dict(base, estudio="no_publicada_en_plazo", campo_fin=date(2023, 7, 16),
+                 publicacion=date(2023, 7, 18), voto={"PP": 40.0}),
+            dict(base, estudio="sin_fecha", campo_fin=date(2023, 7, 17),
+                 voto={"PP": 50.0}),
+        ]
+        e = V.error_final(enc, date(2023, 7, 23), {"PP": 33.0}, ["PP"])
+        self.assertEqual(e["40dB."]["estudio"], "publicada")
 
 
 class TestDisponibilidadTemporal(unittest.TestCase):

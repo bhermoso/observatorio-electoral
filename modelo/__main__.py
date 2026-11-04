@@ -55,7 +55,7 @@ def main():
     err = V.error_final(enc, E23, res23, P4)
     ind = V.sesgo_industria(err, P4)
     simple23 = V.error_promedio_simple(err, P4)
-    e23 = [e for e in enc if e["campo_fin"] < E23]
+    e23 = [e for e in enc if e["campo_fin"] < E23 and e.get("publicacion") is not None and e["publicacion"] <= E23 - timedelta(days=6)]
     bt = {}
     for var, kw in (("consenso_privadas", {}), ("consenso_todas", {"excluir_ancla": ()})):
         bt[var] = {}
@@ -210,7 +210,7 @@ def main():
     w("")
 
     w("## 2. Evaluación de las encuestas frente al 23J\n")
-    w("Última encuesta de cada casa en las 3 semanas previas. Error = encuesta − resultado (pp). "
+    w("Última encuesta publicada por cada casa antes de la veda (hasta el 17-jul-2023), con campo de las tres semanas previas. Error = encuesta − resultado (pp). "
       f"Resultado oficial: {', '.join(f'{p} {res23[p]:.2f}' for p in P4)}.\n")
     filas = [[c, r["campo_fin"], r["origen"]] + [f1(r["error"].get(p), True) for p in P4] +
              [f"{r['mae']:.2f}" + ("" if r["completa"] else " (incompleta)")]
@@ -218,7 +218,7 @@ def main():
     w(tabla(["Casa", "Fin campo", "Origen"] + P4 + ["MAE"], filas))
     w("\n**Error de industria** (media de casas; lo que ningún promedio corrige): " +
       ", ".join(f"{p} {m:+.1f} (sd entre casas {f1(s)}, n={n})" for p, (m, s, n) in ind.items()) + ".\n")
-    w("**Retroprueba en el 23J** (datos hasta el 22-jul-2023; error en pp):\n")
+    w("**Retroprueba en el 23J** (solo encuestas publicadas hasta el 17-jul-2023; error en pp):\n")
     filas = [["Promedio simple de las últimas"] + [f1(simple23.get(p), True) for p in P4] + [f"{mae(simple23):.2f}"]]
     for var, d in bt.items():
         filas.append([f"Modelo `{var}`"] + [f1(d.get(p), True) for p in P4] + [f"{mae(d):.2f}"])
