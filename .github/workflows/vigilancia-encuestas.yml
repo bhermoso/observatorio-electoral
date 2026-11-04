@@ -6,7 +6,6 @@ on:
 permissions:
   contents: write
   issues: write
-  actions: write
 concurrency:
   group: vigilancia-encuestas-main
   cancel-in-progress: false
@@ -67,28 +66,8 @@ jobs:
           # Conservar pushes ajenos; si la rebase entra en conflicto, fallar sin forzar.
           git pull --rebase origin main
           git push origin HEAD:main
-      - name: Recalcular y publicar Motor 29N tras incorporar encuestas
-        if: steps.publish.outputs.updated == 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh workflow run pages.yml --ref main
-          # Registrar el lanzamiento solo después de que GitHub acepte la solicitud.
-          # Conservar las fechas de incorporación del informe ya publicado.
-          python - <<'PY'
-          import json
-          from datetime import datetime, timezone
-          from pathlib import Path
-          p = Path('data/ingesta/estado.json')
-          e = json.loads(p.read_text(encoding='utf-8'))
-          e['recalculo_lanzado'] = True
-          e['ultimo_recalculo_lanzado'] = datetime.now(timezone.utc).isoformat()
-          p.write_text(json.dumps(e, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
-          PY
-          git add data/ingesta/estado.json
-          git commit -m "Vigilancia: confirmar solicitud de recálculo aceptada"
-          git pull --rebase origin main
-          git push origin HEAD:main
+      # Una incorporación confirmada se guarda con un push a main, que ya
+      # dispara Pages. No solicitar además otro workflow_dispatch redundante.
       - name: Crear o actualizar cola de revisión en Issues
         if: always()
         env:

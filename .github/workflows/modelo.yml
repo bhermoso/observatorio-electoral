@@ -1,9 +1,9 @@
 name: Motor de pronóstico (Python)
 on:
-  push:
-    paths: ['modelo/**', 'data/**', '.github/workflows/modelo.yml']
+  # Pages ya ejecuta estas pruebas en main; evitar comprobación doble en cada push.
   pull_request:
     paths: ['modelo/**', 'data/**', '.github/workflows/modelo.yml']
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:

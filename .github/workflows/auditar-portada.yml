@@ -1,14 +1,6 @@
 name: Auditoría visual real de Panorama
 on:
-  push:
-    branches: [audit/panorama-viewport-20261104]
-    paths:
-      - scripts/auditar-portada.mjs
-      - .github/workflows/auditar-portada.yml
-  pull_request:
-    paths:
-      - scripts/auditar-portada.mjs
-      - .github/workflows/auditar-portada.yml
+  # Auditoría completa de capturas bajo petición, no en cada commit.
   workflow_dispatch:
 permissions:
   contents: read

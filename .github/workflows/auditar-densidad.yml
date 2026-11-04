@@ -1,15 +1,8 @@
 name: Auditoría visual comparador y densidad
 on:
-  pull_request:
-    paths:
-      - styles.css
-      - home-impact.mjs
-      - analysis.mjs
-      - promedios-comparador.mjs
-      - events.mjs
-      - eventos-visual.mjs
-      - scripts/auditar-densidad.mjs
-      - .github/workflows/auditar-densidad.yml
+  # La auditoría gráfica completa se activa manualmente al cerrar una revisión,
+  # no en cada intento de ajustar el CSS o los gráficos.
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
