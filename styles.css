@@ -734,10 +734,10 @@ body:not(.dashboard-route) .event-reading .er-levels>li{margin-bottom:12px}
 .house-comparison-body .house-matrix{margin:0;min-width:0;overflow-x:auto}
 .house-comparison-body .house-matrix table{min-width:680px}
 .house-comparison-body .house-plot-row{grid-template-columns:minmax(90px,126px) minmax(0,1fr) 58px;gap:5px}
-.house-comparison-body .house-plot-name{font-size:11px}
+.house-comparison-body .house-plot-name{font-size:12px}
 .house-comparison-body .house-plot-guide{margin-left:126px;margin-right:58px}
-.house-comparison-body .house-plot-row>b{font-size:11px}
-.house-comparison-body .house-matrix th,.house-comparison-body .house-matrix td{font-size:12px!important;padding:5px 6px!important}
+.house-comparison-body .house-plot-row>b{font-size:12px}
+.house-comparison-body .house-matrix th,.house-comparison-body .house-matrix td{font-size:13px!important;padding:6px 7px!important}
 .house-comparison-body .house-matrix td small{font-size:10px}
 .event-deep-dive{border:1px solid #c7d8c8;border-radius:8px;background:#f6f9f3;padding:11px 13px!important;margin-top:13px}
 .event-deep-dive>summary{font-size:14px;font-weight:750;color:#205f46}
