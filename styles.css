@@ -358,3 +358,12 @@ table.variants td.ref,table.variants th.ref{background:#eef8df}
 .forecast-lead-table th,.forecast-lead-table td{padding:10px 14px}
 .forecast-lead-foot{font-size:12px;line-height:1.6;margin-bottom:0}
 @media(max-width:720px){.forecast-lead-overview{grid-template-columns:1fr}.forecast-lead-status{flex-direction:column;gap:5px}.forecast-lead-table th,.forecast-lead-table td{padding:9px 7px}}
+
+/* La lectura del impacto precede a la metodología en la página del acontecimiento. */
+.event-verdict{margin:10px 0 22px;padding:clamp(16px,2.8vw,26px);border:1px solid #c8dccb;border-radius:12px;background:#f7faf6}
+.event-verdict h3{color:#153e31;font-size:clamp(20px,2.6vw,29px);line-height:1.25;margin:8px 0 12px}
+.event-verdict>p{line-height:1.6;max-width:900px}
+.event-verdict table{font-variant-numeric:tabular-nums}
+.event-verdict th,.event-verdict td{padding:11px 13px}
+.event-verdict td small{display:block;color:#61756a;font-size:11px}
+.event-verdict td strong{font-size:17px;color:#153d32}
