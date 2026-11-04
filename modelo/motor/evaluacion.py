@@ -14,10 +14,20 @@ from .fuentes import BLOQUE_IZQ
 
 
 def error_final(encuestas, fecha_eleccion, resultado, partidos, dias=21):
+    """Última encuesta publicada antes de la veda, no último trabajo de campo.
+
+    Exige fecha de publicación documentada: el fin de campo por sí solo no
+    demuestra que el estudio estuviera disponible antes del cierre legal.
+    Para las generales españolas la fecha límite es seis días antes del voto.
+    """
+    limite_publicacion = fecha_eleccion - timedelta(days=6)
     filas = {}
-    for e in sorted(encuestas, key=lambda e: e["campo_fin"]):
-        if fecha_eleccion - timedelta(days=dias) <= e["campo_fin"] < fecha_eleccion:
-            filas[e["casa"]] = e  # se queda la última
+    elegibles = (e for e in encuestas
+                 if fecha_eleccion - timedelta(days=dias) <= e["campo_fin"] < fecha_eleccion
+                 and e.get("publicacion") is not None
+                 and e["publicacion"] <= limite_publicacion)
+    for e in sorted(elegibles, key=lambda e: (e["publicacion"], e["campo_fin"], e["estudio"])):
+        filas[e["casa"]] = e  # última PUBLICADA, no última realizada
     out = {}
     for c, e in filas.items():
         err = {p: e["voto"][p] - resultado[p] for p in partidos if p in e["voto"]}
