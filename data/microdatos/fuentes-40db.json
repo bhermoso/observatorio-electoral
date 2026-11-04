@@ -1,0 +1,37 @@
+{
+  "esquema": 1,
+  "fecha_comprobacion": "2026-11-04",
+  "criterio": "Las páginas originales anuncian ZIP con respuestas individuales, cuestionarios y documentación. No se han descargado ni inspeccionado los ZIP; el acceso libre no implica permiso de redistribución.",
+  "fuentes": [
+    {
+      "id": "40db-2026-01-mensual",
+      "instituto": "40dB.",
+      "publicacion": "2026-01-12",
+      "tipo": "barometro_mensual",
+      "pagina": "https://elpais.com/espana/2026-01-12/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "zip": "https://ep00.epimg.net/infografias/encuestas40db/2026/01-barometro/2026_01_barometro_descargables.zip",
+      "estado": "enlace_publicado_zip_sin_inspeccionar",
+      "entra_en_pronostico": false
+    },
+    {
+      "id": "40db-2026-10-mensual",
+      "instituto": "40dB.",
+      "publicacion": "2026-10-05",
+      "tipo": "barometro_mensual",
+      "pagina": "https://elpais.com/espana/2026-10-05/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "zip": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-barometro/2026_10_barometro_descargables.zip",
+      "estado": "enlace_publicado_zip_sin_inspeccionar",
+      "entra_en_pronostico": false
+    },
+    {
+      "id": "40db-2026-10-flash",
+      "instituto": "40dB.",
+      "publicacion": "2026-10-09",
+      "tipo": "encuesta_flash",
+      "pagina": "https://elpais.com/espana/2026-10-09/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "zip": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_08_barometro_flash_descargables.zip",
+      "estado": "enlace_publicado_zip_sin_inspeccionar",
+      "entra_en_pronostico": false
+    }
+  ]
+}
