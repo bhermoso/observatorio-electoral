@@ -879,3 +879,19 @@ body:not(.dashboard-route) .event-reading .er-levels>li{margin-bottom:12px}
 #pronostico-evaluacion .historical-codes-original{padding:7px 9px;border-left:3px solid #4a8c62;background:#eff7ee;color:#1e5638;font-size:12px!important;margin:8px 0!important;line-height:1.45}
 #pronostico-evaluacion .historical-codes-study details>p{overflow-wrap:anywhere;line-height:1.5}
 #pronostico-evaluacion .historical-codes-top{color:#294c39}
+
+/* Reconstrucción empírica de las recodificaciones: tabla compacta y detalle bajo demanda. */
+#pronostico-evaluacion .historical-transitions{border-top:1px solid #d3e0d1;padding:13px 0 3px;margin-top:14px}
+#pronostico-evaluacion .historical-transitions-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}
+#pronostico-evaluacion .historical-transitions-heading h4{font-size:16px;margin:0;color:#234b35}
+#pronostico-evaluacion .historical-transitions-heading a{font-size:12px;font-weight:700;white-space:nowrap;color:#215e42}
+#pronostico-evaluacion .historical-transitions>p{font-size:12px;color:#536b59;margin:8px 0;line-height:1.4}
+#pronostico-evaluacion .historical-transitions .table-wrap{max-width:100%;overflow-x:auto}
+#pronostico-evaluacion .historical-transitions table{min-width:690px}
+#pronostico-evaluacion .historical-transitions th,#pronostico-evaluacion .historical-transitions td{font-size:12px!important;padding:6px 8px!important;font-variant-numeric:tabular-nums}
+#pronostico-evaluacion .historical-transitions th{font-weight:750}
+#pronostico-evaluacion .historical-transitions thead th{background:#eaf3e8}
+#pronostico-evaluacion .historical-transitions-detail{padding:9px 0!important}
+#pronostico-evaluacion .historical-transitions-detail summary{font-size:13px;font-weight:750;color:#236045}
+#pronostico-evaluacion .historical-transitions-caveat{font-size:12px!important;line-height:1.45!important}
+@media(max-width:760px){#pronostico-evaluacion .historical-transitions-heading{align-items:start;flex-direction:column;gap:5px}}
