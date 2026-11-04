@@ -58,11 +58,13 @@ test('Placebo, efecto, comparabilidad y límites estadísticos explicados con ej
 });
 
 test('Glosario reconoce texto de encabezados desplegables y los cambios DOM sin perder registros',()=>{
- assert.match(script,/const SKIP='a,button,input/);
+ assert.match(script,/const SKIP='a,button,summary,input/);
+ assert.match(script,/function decorateSummaries\(root\)/);
+ assert.match(script,/summary\.setAttribute\('aria-description'/);
  assert.match(script,/queuedDecorations\.add\(n\)/);
  assert.match(script,/queuedDecorations\.clear\(\)/);
  const duplicates=items.map(([name])=>name.toLowerCase()).filter((name,index,arr)=>arr.indexOf(name)!==index);
- assert.deepEqual(duplicates,[]);
+ assert.equal(duplicates.length,0,'Los términos no deben duplicarse');
  assert.ok(items.length>=90,'El glosario debe explicar términos de varias áreas');
 });
 
