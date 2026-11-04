@@ -28,6 +28,26 @@ Fuente: [¿Qué encuestas aciertan más? Compara los errores y los sesgos de cad
 
 **Criterio para nuestro trabajo:** evaluar por separado generales y otras convocatorias, documentar los horizontes temporales y contrastar la capacidad de la cocina sobre microdatos con un promedio robusto y con la estimación publicada *sin contar dos veces 40dB*. La referencia de Llaneras no es validación propia ni justifica reasignar automáticamente pesos por reputación.
 
+## 1 ter. Primer contraste empírico sobre los informes de octubre de 2026
+
+**Fase: análisis de cifras agregadas publicadas, NO microdatos individuales.** Se han revisado las páginas con intención directa, estimación y no respuesta de los informes originales: barómetro mensual del **5 de octubre** (pp. 8 y 13) y flash del **9 de octubre** (pp. 5 y 16). Los ZIP originales se anuncian públicamente pero el entorno de análisis no pudo obtener sus bytes (no admite el tipo ZIP para lectura web y el descargador local no dispone de resolución de dominio). La web no declara las entrevistas como procesadas.
+
+El módulo `contraste-40db.mjs` conserva los valores transcritos y calcula:
+- (D = 100 - (\mathrm{nulo}+\mathrm{no\ votaría}+\mathrm{no\ sabe}+\mathrm{no\ contesta})) puntos de la población entrevistada; incluye **voto en blanco** entre los declarantes de voto válido. Los datos redondeados dan **81,2 %** el 5/10 y **83,1 %** el 9/10.
+- `directa_valida = directa / D * 100`, una **normalización mecánica**, no una estimación electoral.
+- `residuo = estimacion_40db - directa_valida`, brecha que **no permite recuperar por sí sola** un coeficiente interno, ni imputar causalmente efecto a recuerdo, simpatía o propensión.
+
+| Partido | 5/10 directa | 5/10 normalizada | 5/10 estimación | Brecha | 9/10 directa | 9/10 normalizada | 9/10 estimación | Brecha |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| PP | 19,6 | 24,14 | 31,6 | +7,46 | 20,5 | 24,67 | 31,9 | +7,23 |
+| PSOE | 22,4 | 27,59 | 27,4 | −0,19 | 23,0 | 27,68 | 28,1 | +0,42 |
+| Vox | 19,1 | 23,52 | 18,4 | −5,12 | 20,1 | 24,19 | 18,9 | −5,29 |
+| Sumar | 4,4 | 5,42 | 5,6 | +0,18 | 4,2 | 5,05 | 5,3 | +0,25 |
+
+Valores en porcentaje; brechas en puntos porcentuales. Las pequeñas diferencias están afectadas por redondeos de los originales. **Patrón descriptivo:** la normalización por denominador no explica la brecha positiva del PP y negativa de Vox; el patrón aparece en dos informes muy cercanos, que no constituyen validaciones electorales independientes.
+
+**Siguiente prueba necesaria:** con cuestionario y matriz verificables, reconstruir los porcentajes no ponderados y ponderados, comprobar diferencias por ponderación, participación y recuerdo, reproducir transferencias y contrastar la distribución de indecisos. Ninguna de estas atribuciones puede realizarse únicamente con las tablas de informe, y ninguna justifica por ahora modificar el Motor 29N.
+
 ## 2. Auditoría local, antes de cualquier cocina
 
 Después de descargar manualmente el ZIP desde la fuente:
