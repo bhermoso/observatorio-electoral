@@ -64,6 +64,27 @@ Los [agregados públicos con variables y huellas SHA-256](../data/microdatos/40d
 
 **Nueva fuente para evaluación histórica:** [microdatos preelectorales de 40dB del 3 de julio de 2023](https://elpais.com/espana/2023-07-03/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-publicada-este-3-de-julio.html), anteriores al escrutinio conocido del 23J. Todavía no se han descargado sus ZIP ni se ha ejecutado esa validación.
 
+
+## 1 quinquies. Prueba retrospectiva sobre 4.800 entrevistas 40dB anteriores al 23J de 2023
+
+Los ZIP originales aportados por el usuario contienen 800 entrevistas de una flash (publicada el 5/06/2023), 2.000 del barómetro (19/06/2023) y 2.000 del preelectoral (3/07/2023). Incluyen ponderador `ponde`, voto directo, simpatía, probabilidad declarada de acudir y recuerdo del voto **de 2019**. El resultado de contraste es el escrutinio definitivo de 2023, que entonces todavía no se conocía.
+
+**MAE frente al 23J en PP, PSOE/PSC, Vox y Sumar, puntos porcentuales:**
+
+| Procedimiento | 5 junio | 19 junio | 3 julio |
+| --- | ---: | ---: | ---: |
+| Estimación publicada 40dB | 2,43 | 1,63 | 2,01 |
+| Voto directo ponderado | 2,85 | 3,20 | 2,93 |
+| Directo ponderado × participación declarada | 3,01 | 3,03 | 2,72 |
+| Imputación simple a indecisos por simpatía | 2,96 | 3,02 | 2,67 |
+| Calibración parcial de recuerdo de 2019 | 3,72 | 4,32 | 4,16 |
+
+El módulo `validacion-40db-2023.mjs` expone además las recetas sin ponderación y las combinaciones experimentales. El JSON en `data/microdatos/40db-retrospectiva-2023.json` conserva tamaños, fechas de campo, preguntas originales, hashes y el error de cada procedimiento. Solo se publican **agregados**, no registros originales.
+
+**Interpretación:** la estimación publicada por 40dB se aproximó más a las cuatro cifras oficiales que el cálculo directo ponderado en las tres olas. La corrección exploratoria del recuerdo 2019 empeoró el MAE en las tres, pero esto no descarta otras técnicas de calibración correctamente documentadas. Simpatía y participación presentan resultados variables entre fechas. **Una elección = una unidad de validación; estas tres encuestas no equivalen a tres elecciones independientes**. Las olas terminan semanas antes del escrutinio, durante las que también pudo cambiar la intención de voto. No podemos usar la elección 2023 para elegir parámetros y declararla al mismo tiempo una validación futura.
+
+No se ha cambiado ninguna ponderación ni receta del Motor 29N. El objetivo es identificar hipótesis de investigación, no copiar una fórmula privada que no está publicada.
+
 ## 2. Auditoría local, antes de cualquier cocina
 
 Después de descargar manualmente el ZIP desde la fuente:
