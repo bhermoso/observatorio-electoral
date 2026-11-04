@@ -1,4 +1,4 @@
-import {renderPollUpdate,bindPollUpdate,fetchPublishedPolls} from './actualizar-encuestas.mjs';
+import {renderPollUpdate,bindPollUpdate,fetchPublishedPolls} from './encuestas-servicio.mjs';
 import {validatePolls} from './schema.mjs';
 let disposePollUpdate=()=>{};
 import {renderHomeImpact,bindHomeImpact} from './home-impact.mjs';
@@ -72,4 +72,3 @@ function render(){disposePollUpdate();const {route,anchor}=resolveRoute(location
 }
 $('.skip').addEventListener('click',e=>{e.preventDefault();$('#main').focus();$('#main').scrollIntoView();});
 try {const responses=await Promise.all(['data/election.json','data/polls.json','data/cartography.json','data/references.json','data/events.json'].map(p=>fetch(p)));if(responses.some(r=>!r.ok))throw Error('No se pudieron cargar los archivos de datos.');[data,polls,cartography,references,events]=await Promise.all(responses.map(r=>r.json()));render();window.addEventListener('hashchange',()=>{const before=currentRoute;render();if(currentRoute!==before||!resolveRoute(location.hash).anchor){$('#main').focus({preventScroll:true});window.scrollTo(0,0);}});}catch(e){$('#main').innerHTML=`<div role="alert" class="error">${escape(e.message)} <a href="https://github.com/bhermoso/observatorio-electoral">Consultar el repositorio</a></div>`;}
-

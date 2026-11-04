@@ -6,6 +6,8 @@ documentada que pasen el esquema y el detector de muestras repetidas.
 from __future__ import annotations
 import argparse
 import json
+from urllib.request import urlopen, Request
+from urllib.error import HTTPError
 from datetime import datetime,timezone
 from pathlib import Path
 try:
@@ -15,6 +17,20 @@ except ModuleNotFoundError:
 ROOT=Path(__file__).resolve().parents[1]
 INPUT=ROOT/"data/ingesta/validadas.json"
 POLLS=ROOT/"data/polls.json"
+SERVICE="https://gjzihgfzxorpvevrrfkh.supabase.co/functions/v1/encuestas"
+
+def read_service():
+    """Public read of editor-approved records; credentials stay on the service."""
+    try:
+        with urlopen(Request(SERVICE+"?action=approved",headers={"Accept":"application/json"}),timeout=30) as response:
+            raw=response.read(2_000_001)
+    except HTTPError as exc:
+        if exc.code==451:return []  # Same publication blackout as the site.
+        raise
+    if len(raw)>2_000_000:raise ValueError("Respuesta del servicio demasiado grande")
+    records=json.loads(raw)
+    if not isinstance(records,list):raise ValueError("Bandeja del servicio inválida")
+    return records
 
 def integrate(existing, proposals):
     if not isinstance(proposals,list):raise ValueError("La bandeja de aprobadas debe ser una lista")
@@ -52,9 +68,11 @@ def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--dry-run",action="store_true")
     ap.add_argument("--report",default="actualizacion-output")
+    ap.add_argument("--service",action="store_true",help="Añadir las fichas aprobadas desde el Observatorio")
     args=ap.parse_args()
     existing=json.loads(POLLS.read_text(encoding="utf-8"))
     proposals=json.loads(INPUT.read_text(encoding="utf-8")) if INPUT.exists() else []
+    if args.service:proposals+=read_service()
     updated,added,skipped,rejected=integrate_each(existing,proposals)
     out=ROOT/args.report
     out.mkdir(exist_ok=True,parents=True)

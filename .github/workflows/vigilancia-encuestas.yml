@@ -20,6 +20,8 @@ jobs:
           python-version: '3.12'
       - name: Descubrir noticias y fuentes candidatas
         run: python scripts/vigilar_encuestas.py monitor-output
+      - name: Actualizar la bandeja del Observatorio
+        run: python scripts/actualizar_servicio.py
       - uses: actions/upload-artifact@v4
         with:
           name: vigilancia-documental
@@ -30,9 +32,9 @@ jobs:
       - name: Incorporar fichas verificadas, sin duplicados
         id: incorporate
         run: |
-          # Solo entran fichas ya verificadas de data/ingesta/validadas.json.
+          # Fichas verificadas en el Observatorio y en data/ingesta/validadas.json.
           # Una ficha inválida se rechaza con su motivo y no bloquea a las demás.
-          python scripts/incorporar_encuestas.py --report monitor-output
+          python scripts/incorporar_encuestas.py --service --report monitor-output
           python -m unittest discover -s tests -p 'test_incorporar_encuestas.py' -v
           node scripts/export-csv.mjs
           npm test
