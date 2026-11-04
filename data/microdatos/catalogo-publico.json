@@ -1,14 +1,15 @@
 {
   "esquema": 1,
   "fecha_revision": "2026-11-05",
-  "descripcion": "Índice parcial en ampliación de fuentes de datos individuales; incluye publicaciones de varias encuestas, series acumuladas y accesos condicionados. No representa un censo exhaustivo de casas.",
+  "descripcion": "Índice parcial en ampliación de fuentes de datos individuales de encuestas políticas y electorales. Incluye estudios, series acumuladas, páginas con varias olas y archivos restringidos.",
   "criterios": {
     "original_auditado": "Microdatos originales recibidos y analizados localmente",
     "enlace_documentado": "Página oficial anuncia o enlaza microdatos; el contenido original no se ha inspeccionado aquí",
     "formulario_requerido": "Formulario por estudio necesario",
     "registro_requerido": "Registro de usuario necesario; no se elude",
     "microdatos_no_localizados_en_fuentes_verificadas": "Sin microdatos localizados en esta búsqueda; no implica inexistencia",
-    "solicitud_requerida": "Disponible solo previa petición al propietario y autorización de uso; no es descarga abierta."
+    "solicitud_requerida": "Disponible solo previa petición al propietario y autorización de uso; no es descarga abierta.",
+    "embargado": "La fuente anuncia microdatos pero no autoriza su divulgación hasta la fecha indicada."
   },
   "precaucion": "El estudio, la fecha de campo, el editor y el contratista deben distinguirse. No mezclar encuestas regionales como nacionales, ni duplicar olas. Licencia de uso pendiente de verificar por archivo. Las fechas de estudios que no indican publicación son orientativas o fin de campo, según nota; no inferir que sean la fecha de publicación.",
   "fuentes": [
@@ -83,6 +84,15 @@
       "acceso": "Directo / bajo solicitud",
       "portal": "https://www.gad3.com/",
       "formatos": "XLSX · ficheros por solicitud"
+    },
+    {
+      "id": "sociometrica",
+      "nombre": "SocioMétrica / EL ESPAÑOL",
+      "tipo": "Privada",
+      "ambito": "España",
+      "acceso": "SAV directo",
+      "portal": "https://www.elespanol.com/espana/politica/",
+      "formatos": "SAV"
     }
   ],
   "estudios": [
@@ -391,6 +401,18 @@
       "estado": "enlace_documentado"
     },
     {
+      "id": "sociometrica-2025-09-02",
+      "productor": "sociometrica",
+      "fecha": "2025-09-02",
+      "titulo": "Barómetro nacional septiembre 2025",
+      "ambito": "España",
+      "pagina": "https://www.elespanol.com/espana/politica/20250902/espanol-publica-microdatos-encuesta-electoral-sociometrica-puede-consultarlos/1003743908447_0.html",
+      "estado": "enlace_documentado",
+      "n": 1100,
+      "formato": "SAV",
+      "nota": "EL ESPAÑOL anuncia SAV descargable, archivo no inspeccionado localmente."
+    },
+    {
       "id": "cemop-2025-09-01",
       "productor": "cemop",
       "fecha": "2025-09-01",
@@ -398,6 +420,19 @@
       "ambito": "Murcia",
       "pagina": "https://www.cemopmurcia.es/estudios/barometro-region-de-murcia-verano-2025/",
       "estado": "enlace_documentado"
+    },
+    {
+      "id": "sociometrica-2025-07-28",
+      "productor": "sociometrica",
+      "fecha": "2025-07-28",
+      "titulo": "Barómetro nacional julio 2025",
+      "ambito": "España",
+      "pagina": "https://www.elespanol.com/espana/politica/20250728/espanol-publica-microdatos-encuesta-electoral-sociometrica-puede-consultarlos/1003743865244_0.html",
+      "estado": "enlace_documentado",
+      "n": 1100,
+      "formato": "SAV",
+      "nota": "Enlace SAV de la fuente original; se conoce el tipo de fichero, no auditado localmente. La URL contiene parámetros originales.",
+      "archivo": "https://s1.elespanol.com/upload/redaccion/2025/07/28/track_sociometrica_elespanol_23-27_jul25.sav?utm_cmp_rs=linksinline"
     },
     {
       "id": "40db-2025-07-04",
@@ -409,6 +444,31 @@
       "estado": "enlace_documentado"
     },
     {
+      "id": "sociometrica-2025-06-23",
+      "productor": "sociometrica",
+      "fecha": "2025-06-23",
+      "titulo": "Barómetro nacional junio 2025",
+      "ambito": "España",
+      "pagina": "https://www.elespanol.com/espana/politica/20250623/espanol-publica-microdatos-encuesta-electoral-sociometrica-puede-consultarlos/1003743818002_0.html",
+      "estado": "enlace_documentado",
+      "n": 1150,
+      "formato": "SAV",
+      "nota": "EL ESPAÑOL anuncia SAV descargable, archivo no inspeccionado localmente."
+    },
+    {
+      "id": "cemop-2025-06-17",
+      "productor": "cemop",
+      "fecha": "2025-06-17",
+      "titulo": "V Encuesta Nacional de Polarización Política",
+      "ambito": "España",
+      "pagina": "https://www.cemopmurcia.es/estudios/v-encuesta-nacional-de-polarizacion-politica-2025/",
+      "estado": "embargado",
+      "n": 1110,
+      "fecha_tipo": "fin_de_campo",
+      "embargado_hasta": "2027-01-01",
+      "nota": "El productor indica embargo de microdatos hasta enero de 2027. NO disponible para descarga actual."
+    },
+    {
       "id": "40db-2025-06-02",
       "productor": "40db",
       "fecha": "2025-06-02",
@@ -416,6 +476,30 @@
       "ambito": "España",
       "pagina": "https://elpais.com/espana/2025-06-02/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
       "estado": "enlace_documentado"
+    },
+    {
+      "id": "sociometrica-2025-05-27",
+      "productor": "sociometrica",
+      "fecha": "2025-05-27",
+      "titulo": "Barómetro nacional mayo 2025",
+      "ambito": "España",
+      "pagina": "https://www.elespanol.com/espana/politica/20250527/espanol-publica-microdatos-encuesta-electoral-sociometrica-puede-consultarlos/1003743776100_0.html",
+      "estado": "enlace_documentado",
+      "n": 1000,
+      "formato": "SAV",
+      "nota": "EL ESPAÑOL anuncia SAV descargable, archivo no inspeccionado localmente."
+    },
+    {
+      "id": "sociometrica-2025-04-28",
+      "productor": "sociometrica",
+      "fecha": "2025-04-28",
+      "titulo": "Barómetro nacional abril 2025",
+      "ambito": "España",
+      "pagina": "https://www.elespanol.com/espana/politica/20250428/espanol-publica-microdatos-encuesta-electoral-sociometrica-puede-consultarlos/1003743732879_0.html",
+      "estado": "enlace_documentado",
+      "n": 1000,
+      "formato": "SAV",
+      "nota": "EL ESPAÑOL anuncia SAV descargable, archivo no inspeccionado localmente."
     },
     {
       "id": "40db-2025-04-07",
@@ -473,6 +557,18 @@
       "estado": "enlace_documentado"
     },
     {
+      "id": "sociometrica-2024-11-25",
+      "productor": "sociometrica",
+      "fecha": "2024-11-25",
+      "titulo": "Barómetro nacional noviembre 2024",
+      "ambito": "España",
+      "pagina": "https://www.elespanol.com/espana/politica/20241125/espanol-publica-microdatos-encuesta-sociometrica-puede-consultarlos/903659790_0.html",
+      "estado": "enlace_documentado",
+      "n": 1227,
+      "formato": "SAV",
+      "nota": "EL ESPAÑOL anuncia SAV descargable, archivo no inspeccionado localmente."
+    },
+    {
       "id": "icps-2024-11-07",
       "productor": "icps",
       "fecha": "2024-11-07",
@@ -509,6 +605,54 @@
       "ambito": "España",
       "pagina": "https://elpais.com/espana/2024-09-02/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
       "estado": "enlace_documentado"
+    },
+    {
+      "id": "sociometrica-2024-06-23",
+      "productor": "sociometrica",
+      "fecha": "2024-06-23",
+      "titulo": "Estudio sobre CIS y confianza institucional",
+      "ambito": "España",
+      "pagina": "https://www.elespanol.com/espana/politica/20240623/espanol-publica-microdatos-encuesta-sociometrica-tezanos-consultan/864913662_0.html",
+      "estado": "enlace_documentado",
+      "n": 1249,
+      "formato": "SAV",
+      "nota": "EL ESPAÑOL anuncia SAV descargable, archivo no inspeccionado localmente."
+    },
+    {
+      "id": "cemop-2024-06-06",
+      "productor": "cemop",
+      "fecha": "2024-06-06",
+      "titulo": "IV Encuesta Nacional de Polarización Política",
+      "ambito": "España",
+      "pagina": "https://www.cemopmurcia.es/estudios/iv-encuesta-nacional-de-polarizacion-politica-2024/",
+      "estado": "enlace_documentado",
+      "n": 1239,
+      "fecha_tipo": "fin_de_campo",
+      "nota": "Campo 27/05–06/06/2024; microdatos enlazados, comprobar si hay intención de voto."
+    },
+    {
+      "id": "sociometrica-2024-05-20",
+      "productor": "sociometrica",
+      "fecha": "2024-05-20",
+      "titulo": "Mayo 2024 · 519 adicionales; acumulada 1798",
+      "ambito": "España",
+      "pagina": "https://www.elespanol.com/espana/politica/20240520/espanol-publica-microdatos-encuesta-sociometrica-puede-consultarlos/856414508_0.html",
+      "estado": "enlace_documentado",
+      "n": 519,
+      "formato": "SAV",
+      "nota": "Muestra ampliada mediante 519 entrevistas que se suman a las 1279 de la primera ola. NO sumar toda la acumulada otra vez como muestra independiente."
+    },
+    {
+      "id": "sociometrica-2024-05-06",
+      "productor": "sociometrica",
+      "fecha": "2024-05-06",
+      "titulo": "Generales y europeas mayo 2024",
+      "ambito": "España",
+      "pagina": "https://www.elespanol.com/espana/politica/20240506/espanol-publica-microdatos-encuesta-sociometrica-puede-consultarlos/853164681_0.html",
+      "estado": "enlace_documentado",
+      "n": 1279,
+      "formato": "SAV",
+      "nota": "EL ESPAÑOL anuncia SAV descargable, archivo no inspeccionado localmente."
     },
     {
       "id": "40db-2024-04-15",
@@ -666,6 +810,18 @@
       "nota": "Año de publicación conocido; fecha de catálogo orientativa (01/01), no fecha de campo."
     },
     {
+      "id": "cemop-2021-04-07",
+      "productor": "cemop",
+      "fecha": "2021-04-07",
+      "titulo": "I Encuesta Nacional de Polarización Política",
+      "ambito": "España",
+      "pagina": "https://www.cemopmurcia.es/estudios/polarizacion-politica/",
+      "estado": "enlace_documentado",
+      "n": 1236,
+      "fecha_tipo": "fin_de_campo",
+      "nota": "Microdatos publicados, enfoque político general. Campo 18/03–07/04/2021. No equivale a encuesta de intención de voto."
+    },
+    {
       "id": "gad3-2019-11-10",
       "productor": "gad3",
       "fecha": "2019-11-10",
@@ -687,6 +843,30 @@
       "n": 820,
       "fecha_tipo": "fin_de_campo",
       "nota": "Trabajo de campo 28–31 octubre 2019. Archivos originales descargables desde la universidad. Otra elección para validar."
+    },
+    {
+      "id": "cemop-2019-06-17",
+      "productor": "cemop",
+      "fecha": "2019-06-17",
+      "titulo": "Postelectoral autonómicas Murcia 2019, panel",
+      "ambito": "Murcia",
+      "pagina": "https://www.cemopmurcia.es/estudios/encuesta-poselectoral-elecciones-autonomicas-2019-region-de-murcia/",
+      "estado": "enlace_documentado",
+      "n": 668,
+      "fecha_tipo": "fin_de_campo",
+      "nota": "Panel de entrevistados ya usados en preelectoral; no n independiente."
+    },
+    {
+      "id": "cemop-2019-05-10",
+      "productor": "cemop",
+      "fecha": "2019-05-10",
+      "titulo": "Preelectoral autonómicas Murcia 2019",
+      "ambito": "Murcia",
+      "pagina": "https://www.cemopmurcia.es/estudios/encuesta-preelectoral-autonomicas-2019-region-de-murcia/",
+      "estado": "enlace_documentado",
+      "n": 1084,
+      "fecha_tipo": "fin_de_campo",
+      "nota": "Campo 2–10 de mayo. Incluye recuerdo generales abril 2019; microdatos enlazados."
     },
     {
       "id": "sociometro-vasco-2018-05-18",
@@ -720,10 +900,6 @@
     },
     {
       "nombre": "DYM",
-      "estado": "microdatos_no_localizados_en_fuentes_verificadas"
-    },
-    {
-      "nombre": "SocioMétrica",
       "estado": "microdatos_no_localizados_en_fuentes_verificadas"
     },
     {
