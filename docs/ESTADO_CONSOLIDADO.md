@@ -8,7 +8,7 @@
 - **Promedios (`#analisis`):** encuestas originales comparables por instituto, con fechas, muestras, pesos editables y una proyección territorial experimental separada.
 - **Acontecimientos (`#contexto`):** diferencias descriptivas entre dos oleadas del mismo instituto y enlaces a fuentes; no implica causalidad.
 - **Cocina (`#cocina`):** tabla inicial del CIS 3582, seis partidos, denominadores y prueba de recetas con CIS 3411/3415. No se reconstruye la fórmula interna del CIS.
-- **Pronóstico completo (`#pronostico`):** tendencias, bloques, fuentes y evaluación en `#pronostico-evaluacion`: cortes temporales del 23J y contraste retrospectivo de tratamientos de indecisos del CIS en las dos elecciones generales de 2019.
+- **Pronóstico completo (`#pronostico`):** tendencias, bloques, fuentes y evaluación en `#pronostico-evaluacion`: cortes temporales del 23J y contraste retrospectivo de tratamientos de indecisos del CIS en las dos elecciones generales de 2019. La sección incorpora el estado documental de homologación CIS 3242/3263.
 
 ## Límites explícitos
 
@@ -30,7 +30,7 @@
 ## Pendiente para una validación predictiva
 
 - Nuevas elecciones independientes, con resultados oficiales y encuestas con fecha de publicación documentada. No confundir las dos elecciones 2019 del contraste de recetas con validación del pronóstico principal.
-- Homologación de candidaturas y verificación de fuentes territoriales de otros ciclos.
+- Homologación completa de los cuestionarios, libros de códigos, recodificaciones y candidaturas de 2019: la evidencia de preguntas P.8, P.9, P.9a y P.17 del estudio 3263 y el anexo territorial ya consta en `data/microdatos/evidencia_homologacion_2019.json`, pero la habilitación de ambas encuestas sigue bloqueada.
 - Calibración empírica de intervalos y probabilidades de mayoría; no sustituirla por multiplicar cortes de una sola elección.
 - Verificar URL directa del estudio CIS 3582 y disponibilidad pública de su archivo original.
 

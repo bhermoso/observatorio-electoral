@@ -848,3 +848,29 @@ body:not(.dashboard-route) .event-reading .er-levels>li{margin-bottom:12px}
  #pronostico-evaluacion .historical-2019-summary p{margin:4px 0}
  #pronostico-evaluacion .historical-2019{padding:12px}
 }
+
+/* Estado de homologación documental del CIS 2019 (verificación parcial). */
+#pronostico-evaluacion .historical-codes{margin:14px 0 18px;padding:16px 18px;border:1px solid #cdddc9;border-radius:10px;background:#f6faf4;color:#234d37}
+#pronostico-evaluacion .historical-codes-heading{display:flex;gap:14px;align-items:start;justify-content:space-between;margin-bottom:10px}
+#pronostico-evaluacion .historical-codes-heading h3{font-size:18px;margin:4px 0 6px;color:#173d2d}
+#pronostico-evaluacion .historical-codes-heading p{margin:0;font-size:13px;line-height:1.42;color:#4c6854}
+#pronostico-evaluacion .historical-codes-heading>a{white-space:nowrap;color:#236143;font-weight:700;font-size:12px}
+#pronostico-evaluacion .historical-codes-top{margin:10px 0 12px;font-size:13px;line-height:1.4}
+#pronostico-evaluacion .historical-codes-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#pronostico-evaluacion .historical-codes-study{background:#fff;border:1px solid #d7e3d2;border-radius:9px;padding:12px;min-width:0}
+#pronostico-evaluacion .historical-codes-line{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap}
+#pronostico-evaluacion .historical-codes-line h4{font-size:15px;color:#193e2e;margin:0}
+#pronostico-evaluacion .historical-codes-status{font-size:11px;font-weight:700;color:#765426}
+#pronostico-evaluacion .historical-codes-study p{font-size:12px;line-height:1.4;margin:6px 0}
+#pronostico-evaluacion .historical-codes-study details{padding:5px 0!important}
+#pronostico-evaluacion .historical-codes-study summary{font-size:12px;font-weight:700;color:#205f44}
+#pronostico-evaluacion .historical-codes-study ul{padding-left:17px;margin:8px 0}
+#pronostico-evaluacion .historical-codes-study li{font-size:12px;line-height:1.45;margin:5px 0}
+#pronostico-evaluacion .historical-codes-study a{color:#1c6546}
+#pronostico-evaluacion .historical-codes-limit{font-size:12px;color:#526c5a;line-height:1.45;margin:10px 0 0}
+@media(max-width:850px){
+ #pronostico-evaluacion .historical-codes-grid{grid-template-columns:1fr}
+ #pronostico-evaluacion .historical-codes-heading{display:block}
+ #pronostico-evaluacion .historical-codes-heading>a{display:inline-block;margin-top:8px}
+ #pronostico-evaluacion .historical-codes{padding:12px}
+}
