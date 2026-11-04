@@ -3331,7 +3331,23 @@
    "terceros-29n": 8,
    "verificada": 11
   },
-  "criterio": "Puerta de calidad (fuentes.seleccion_pronostico): sin prensa no verificada, sin terceros con campo supuesto, sin terceros solapados con un registro verificado de la misma casa"
+  "criterio": "Puerta de calidad (fuentes.seleccion_pronostico): sin prensa no verificada, sin terceros con campo supuesto, sin terceros solapados con un registro verificado de la misma casa",
+  "inventario": {
+   "total": 681,
+   "historicas": 659,
+   "ciclo_actual": 22,
+   "wikipedia": 643,
+   "wikipedia_desde": "2019-11-12",
+   "wikipedia_hasta": "2023-01-15",
+   "archivo_verificado": 13,
+   "por_origen": {
+    "prensa-original-consultado": 1,
+    "prensa-sin-verificar": 1,
+    "terceros-29n": 23,
+    "terceros-wikipedia": 643,
+    "verificada": 13
+   }
+  }
  },
  "capas": {
   "esquema": 1,

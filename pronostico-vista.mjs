@@ -4,6 +4,7 @@ import {PARTIES,BLOCKS,BLOCK_NOTE,LAYERS,capaModelo,capasExternas,efectoCocina} 
 import {renderTrazabilidad,bindTrazabilidad} from './trazabilidad.mjs';
 import {renderInvestidura,bindInvestidura} from './investidura.mjs';
 import {renderValidationDashboard,bindValidationDashboard} from './dashboard-validacion.mjs';
+import {renderRecuento} from './recuento-encuestas.mjs';
 
 const h=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt=(v,d=1)=>Number.isFinite(Number(v))?Number(v).toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
@@ -22,6 +23,7 @@ export function renderPronostico(){
  return `<div class="hero"><div><div class="eyebrow">Motor 29N · capa 3 · estimación de referencia</div><h1>Pronóstico completo.</h1><p id="fc-lead">Cargando la salida publicada del Motor 29N…</p></div><div class="hero-aside"><span class="badge sim">Estimación modelizada</span><p>Las cifras son estimaciones condicionadas a los supuestos del modelo, no resultados electorales. Intervalos del 90 % de las simulaciones.</p><a href="pronostico.html">Informe técnico completo ↗</a></div></div>
  <nav class="subnav" aria-label="Secciones del pronóstico"><a href="#pronostico-principal">Principal</a><a href="#pronostico-variantes">Variantes</a><a href="#pronostico-cocina">Cocina y trazabilidad</a><a href="#pronostico-bloques">Bloques</a><a href="#pronostico-evolucion">Evolución</a><a href="#pronostico-territorio">52 circunscripciones</a><a href="#pronostico-fuentes">Estudios usados y excluidos</a><a href="#pronostico-evaluacion">Evaluación 23J</a><a href="#pronostico-externos">Otros modelos</a></nav>
  <div id="fc-error" role="alert"></div>
+ <div id="fc-counts"></div>
  <section class="panel" id="pronostico-principal"><h2>A. Pronóstico principal</h2><div id="fc-main">Cargando…</div></section>
  <section class="panel" id="pronostico-variantes"><h2>B. Variantes del modelo</h2><p class="muted">La diferencia entre variantes es incertidumbre de método: depende de qué casas fijan el «sesgo cero». Ninguna variante sustituye a la estimación de referencia.</p><div id="fc-variants">Cargando…</div></section>
  <section class="panel" id="pronostico-cocina"><h2>C. Cocina y trazabilidad: del dato al escaño</h2><div id="fc-chain">Cargando…</div></section>
@@ -125,6 +127,7 @@ export async function bindPronostico(){
  const days=Math.round((Date.parse(f.eleccion)-Date.parse(f.corte))/86400000);
  document.querySelector('#fc-lead').innerHTML=`Corte del <b>${h(fdate(f.corte))}</b> · elección objetivo: generales del <b>${h(fdate(f.eleccion))}</b> (faltan ${days} días) · versión del modelo ${h(f.version_modelo||'1')}.`;
  const set=(id,fn)=>{const el=document.querySelector(id);try{el.innerHTML=fn();}catch(e){el.textContent='No se puede mostrar: '+e.message;}};
+ set('#fc-counts',()=>renderRecuento({forecast:f}));
  set('#fc-main',()=>partyTable(f));set('#fc-variants',()=>variantsTable(f));set('#fc-chain',()=>chain(f));set('#fc-blocks',()=>blocks(f));
  set('#fc-history',()=>history(hist));set('#fc-territory',()=>territory(f));set('#fc-sources',()=>sources(f));set('#fc-external',()=>external(f));
  void bindTrazabilidad();void bindInvestidura();void bindValidationDashboard();

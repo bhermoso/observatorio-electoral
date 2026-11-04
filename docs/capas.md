@@ -12,6 +12,12 @@ Toda cifra de voto o escaños del Observatorio pertenece a una de estas clases. 
 
 **Capa 3 − capa 2** es una diferencia conjunta de configuraciones: cambian la mezcla de variantes y el error de industria (1,5 frente a 2,2 pp). No aísla el efecto de cada ajuste ni mide un efecto político. Los 2,2 pp son un supuesto intermedio contrastado con el 23J, no una calibración independiente.
 
+## Recuentos visibles
+
+La portada, Promedios y Pronóstico completo muestran el archivo verificado, los estudios admitidos en el pronóstico y el conjunto histórico. El promedio cuenta solo estudios con peso positivo de la selección activa. Los demás recuentos corresponden al corte publicado del motor, que puede diferir de la fecha elegida para el promedio.
+
+`modelo/motor/inventario.py` cuenta estudios después de la deduplicación y el filtro de disponibilidad del corte; `pronostico.json → auditoria_fuentes → inventario` conserva total, históricos, ciclo actual y procedencias, incluido Wikipedia. Las filas de partidos y las simulaciones no incrementan el número de encuestas. Los conjuntos se solapan: no se suman archivo, promedio y motor.
+
 ## Puerta de calidad del motor
 
 `modelo/motor/fuentes.py · seleccion_pronostico` excluye, con motivo publicado en `pronostico.json → excluidas`:

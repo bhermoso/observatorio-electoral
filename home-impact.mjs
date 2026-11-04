@@ -2,6 +2,7 @@
 // Capa 3 = `principal` del Motor 29N. Ninguna variante la sustituye.
 import {calculate} from './cocina-secuencial.mjs';
 import {projection} from './cocina-escanos.mjs';
+import {renderRecuento} from './recuento-encuestas.mjs';
 import {LAYERS,PARTIES,BLOCKS,BLOCK_NOTE,promedioPublicado,capaModelo,capasExternas,matriz,diferencias,efectoCocina,pollsFromModelInputs} from './capas.mjs';
 
 const h=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -22,6 +23,7 @@ export function renderHomeImpact(){
  </div>
  <ol class="layer-legend" aria-label="Las cuatro capas">${Object.entries(LAYERS).map(([k,l])=>`<li class="layer-${k}"><span class="layer-num" aria-hidden="true">${l.capa}</span><div><b>${h(l.nombre)}</b><small>${h(l.naturaleza)}</small><details><summary>¿Qué es exactamente?</summary><p>${h(l.explica)}</p></details></div></li>`).join('')}</ol>
  </section>
+ <div id="home-counts"></div>
  <section class="panel matrix-panel" aria-labelledby="matrix-heading">
   <div class="panel-head"><div><span class="eyebrow">Comparación central</span><h2 id="matrix-heading">Partidos y bloques en las cuatro capas</h2><p class="muted" id="matrix-sub">Cargando datos…</p></div></div>
   <div class="matrix-controls">
@@ -157,7 +159,7 @@ export async function bindHomeImpact(polls){
   const sub=document.querySelector('#matrix-sub');if(sub)sub.textContent='Motor 29N no disponible: '+err.message+'. Solo se muestra el promedio publicado.';
  }
  if(!root.isConnected)return;
- const redraw=()=>{try{computeLayer1(ctx);drawMatrix(ctx);}catch(e){document.querySelector('#matrix-table').innerHTML=`<tbody><tr><td role="alert">No se puede calcular: ${h(e.message)}</td></tr></tbody>`;}};
+ const redraw=()=>{try{computeLayer1(ctx);drawMatrix(ctx);document.querySelector('#home-counts').innerHTML=renderRecuento({forecast:ctx.forecast,archivo:polls.length,seleccion:{estudios:ctx.prom.estudios.filter(e=>e.weight>0).length,institutos:ctx.prom.institutos,detalle:`${state.ventana} días · ${state.base==='archivo'?'archivo verificado':'entradas del motor'}${state.cis?'':' · sin CIS'}`}});}catch(e){document.querySelector('#matrix-table').innerHTML=`<tbody><tr><td role="alert">No se puede calcular: ${h(e.message)}</td></tr></tbody>`;}};
  drawFacts(ctx);redraw();drawBlocks(ctx);drawChanges(ctx);drawCocina(ctx);
  document.querySelectorAll('input[name=mview]').forEach(i=>i.addEventListener('change',()=>{state.vista=i.value;redraw();}));
  const bindSel=(id,fn)=>{const el=document.querySelector(id);if(!el)return;el.addEventListener('change',()=>{fn(el.value);redraw();});};

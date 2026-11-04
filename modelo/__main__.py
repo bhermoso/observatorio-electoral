@@ -10,6 +10,7 @@ from datetime import date, timedelta
 import numpy as np
 from .motor import fuentes as F, evaluacion as V, eventos as EV, pronostico as PR, registro as RG, senales as SG, trazabilidad as TZ, ablaciones as AB
 from .motor.tendencia import ajustar
+from .motor.inventario import resumir as inventario_encuestas
 
 ELECCION = date(2026, 11, 29)
 URDA = date(2026, 10, 28)
@@ -481,7 +482,7 @@ def main():
     os.makedirs(SALIDA, exist_ok=True)
     open(os.path.join(SALIDA, "informe.md"), "w", encoding="utf-8").write("\n".join(L) + "\n")
     json.dump(dict(corte=hoy.isoformat(), eleccion=ELECCION.isoformat(), version_modelo=RG.VERSION, trazabilidad=auditoria_cocina, sensibilidad_cocina=sensibilidad_cocina, principal={k: princ[k] for k in ('partidos', 'bloques', 'investidura', 'n', 'industria', 'dias', 'sin_encuestas', 'provincias', 'correccion_industria')}, variantes=resumen,
-                   auditoria_fuentes=dict(excluidas_prensa_sin_verificar=len(provisionals), excluidas_total=len(excluidas), incluidas_2023_26=len(actuales),
+                   auditoria_fuentes=dict(inventario=inventario_encuestas(enc), excluidas_prensa_sin_verificar=len(provisionals), excluidas_total=len(excluidas), incluidas_2023_26=len(actuales),
                                           por_origen={o: sum(1 for e in actuales if e["origen"] == o) for o in sorted({e["origen"] for e in actuales})},
                                           criterio='Puerta de calidad (fuentes.seleccion_pronostico): sin prensa no verificada, sin terceros con campo supuesto, sin terceros solapados con un registro verificado de la misma casa'),
                    capas=capas, entradas=entradas, excluidas=excluidas, externos=externos, corte_anterior=corte_anterior,
