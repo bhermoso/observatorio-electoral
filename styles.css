@@ -428,3 +428,15 @@ details.panel.panorama-secondary{padding:12px 17px}
 #impact .impact-line{padding:5px 0}
 @media(max-width:850px){#impact .impact-head{grid-template-columns:1fr}#impact .impact-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){#impact .forecast-lead-overview{grid-template-columns:1fr}#impact .panorama-source-grid{grid-template-columns:1fr}#impact .impact-facts{grid-template-columns:repeat(2,minmax(0,1fr))}main .panel th,main .panel td{font-size:13px}}
+
+/* Datos de sondeos junto al veredicto del evento: lectura prioritaria y compacta. */
+.event-surveys{margin:12px 0 18px}
+.event-surveys>h3{margin:7px 0;font-size:19px}
+.event-surveys>p{margin:4px 0 9px}
+.event-survey-card{padding:12px 14px;margin:9px 0;border:1px solid #cbdccf;border-radius:9px;background:#fff}
+.event-survey-card>h4{font-size:17px;margin:2px 0 8px;color:#174a36}
+.event-survey-card>p{font-size:14px;line-height:1.5;margin:5px 0}
+.event-survey-card .table-wrap{margin:9px 0}
+.event-survey-card th,.event-survey-card td{font-size:14px;padding:6px 10px}
+.event-survey-card td{font-variant-numeric:tabular-nums}
+.event-survey-card .notice{padding:9px 12px}
