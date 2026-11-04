@@ -10,7 +10,8 @@ const statuses={
  enlace_documentado:'Microdatos documentados',
  registro_requerido:'Requiere registro',
  formulario_requerido:'Requiere formulario',
- solicitud_requerida:'Bajo solicitud'
+ solicitud_requerida:'Bajo solicitud',
+ embargado:'Temporalmente embargado'
 };
 export function renderCatalogoMicrodatos(){
  return `<section class="archivo-md" id="archivo-microdatos" aria-labelledby="archivo-md-title">
