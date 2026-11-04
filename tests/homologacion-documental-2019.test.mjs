@@ -38,7 +38,7 @@ test('El cuestionario del CIS 3263 distingue indecisión, no respuesta, intenci�
  assert.equal(originals.studies['3242'].turnout_probability,'P12');
  assert.equal(originals.studies['3242'].prior_election_recall,'2016-06-26');
  assert.equal(originals.studies['3263'].prior_election_recall,'2019-04-28');
- assert.ok(x.unresolved.some(v=>v.includes('P.9')&&v.includes('P9R')));
+ assert.ok(x.unresolved.some(v=>v.includes('P9')&&v.includes('P9R')));
  assert.equal(config.studies['3263'].intention,'P9R');
  assert.equal(config.studies['3242'].intention,'P10R');
  assert.equal(config.studies['3242'].weight,'PESO');
@@ -59,7 +59,7 @@ test('Evaluación muestra evidencia y límites, sin convertirla en validación d
  assert.match(html,/CIS 3242/);
  assert.match(html,/CIS 3263/);
  assert.match(html,/P\.9/);
- assert.match(html,/libro de códigos/);
+ assert.match(html,/sintaxis y diccionario originales/);
  assert.match(html,/Fuente CIS/);
  assert.match(html,/no se altera el Motor/);
  assert.match(renderHomologacion2019(),/id="historical-codes-data"/);
