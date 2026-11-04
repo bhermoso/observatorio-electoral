@@ -1,7 +1,7 @@
 // Resultados existentes de microdatos CIS; presentación verificable y no receta del Motor 29N.
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const f=(n,d=1)=>Number.isFinite(n)?n.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
-const source='https://www.cis.es/es/estudios/barometro-de-octubre-2026';
+const source='https://www.cis.es/es/estudios/catalogo';
 const METRICS=Object.freeze([
  ['direct','Intención directa','Todas las entrevistas, con indecisión y abstención en el denominador'],
  ['decided','Entre decididos','Solo respuestas con candidatura'],
@@ -53,7 +53,7 @@ export function renderTablaCocina(d){
  const trials=d.trials.map(t=>`<tr><td>${esc(t.seleccion)} → ${esc(t.evaluacion)}</td><td>${esc(t.metodo)}</td><td>${f(t.error,2)} pp</td><td>${f(t.referencia,2)} pp</td><td>${t.mejora?'Mejora':t.diferencia>0?'Empeora':'Empata'}</td></tr>`).join('');
  return `<div class="kitchen-observed-meta">
   <p><b>${Number(d.n).toLocaleString('es-ES')}</b> entrevistas · estudio ${esc(d.estudio)} · peso ${esc(d.pesos)}${Number.isFinite(d.efectiva)?' · n efectivo aproximado '+f(d.efectiva,0):''}</p>
-  <p><a href="${source}" target="_blank" rel="noopener">Documento original del CIS ↗</a> · <a href="data/microdatos/analisis_3582.json" download>Comprobar los cálculos ↓</a></p>
+  <p><a href="${source}" target="_blank" rel="noopener">Catálogo oficial CIS · buscar estudio 3582 ↗</a> · <a href="data/microdatos/analisis_3582.json" download>Comprobar los cálculos ↓</a></p>
  </div>
  <div class="table-wrap kitchen-observed-table"><table><caption>Porcentajes publicados o reconstruidos con denominadores distintos; los guiones indican ausencia, nunca cero</caption>
  <thead><tr><th scope="col">Partido</th>${labels}</tr></thead><tbody>${rows}</tbody></table></div>

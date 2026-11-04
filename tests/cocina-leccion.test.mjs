@@ -11,7 +11,7 @@ test('la lección toma sus cifras de los datos publicados, no de un texto fijo',
  assert.ok(html.includes(fmt(d.recuerdo.muestra.PSOE)));
  assert.ok(html.includes(fmt(d.con.partidos.PSOE.voto[0])));
  for(const k of Object.keys(d.correccion.puntos))assert.ok(Math.abs(d.correccion.puntos[k])<5);
- assert.match(html,/actitud disfrazada de dato/);
+ assert.match(html,/no permite distinguir por sí sola entre sesgo de muestra y error de recuerdo/);
  assert.doesNotMatch(html,/undefined|NaN/);
 });
 test('la corrección publicada es la mitad del error medio de las casas',()=>{
