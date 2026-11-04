@@ -112,7 +112,12 @@ def retroprueba_cortes(encuestas, fecha_eleccion, resultado, partidos, cortes=(3
     out = []
     for d in cortes:
         corte = fecha_eleccion - timedelta(days=d)
-        disp = [e for e in encuestas if e["campo_fin"] < fecha_eleccion and publicada_antes(e, corte)]
+        # En cortes posteriores al comienzo de la veda no se pueden incorporar
+        # sondeos nuevos, aunque tengan campo anterior al día electoral.
+        limite_legal = fecha_eleccion - timedelta(days=6)
+        fecha_disponible = min(corte, limite_legal)
+        disp = [e for e in encuestas if e["campo_fin"] < fecha_eleccion
+                and publicada_antes(e, fecha_disponible)]
         ult = {}
         for e in sorted(disp, key=lambda e: e["campo_fin"]):
             if (corte - e["campo_fin"]).days <= dias_simple:
