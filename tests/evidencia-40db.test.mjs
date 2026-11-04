@@ -14,12 +14,12 @@ test('40dB: distinguir tres generales de la evaluación global',()=>{
   assert.match(html,/más peso a 40dB/);
 });
 
-test('40dB: fuente original y microdatos separados, con estado pendiente',()=>{
+test('40dB: fuente original y microdatos separados, con microdatos auditados y límites expresos',()=>{
   const html=renderEvidencia40db();
   assert.equal(EVIDENCIA_40DB.publicado,'2026-10-19');
   assert.match(EVIDENCIA_40DB.fuente,/elpais\.com\/espana\/elecciones-generales\/2026-10-18\/que-encuestas-aciertan-mas/);
   assert.match(EVIDENCIA_40DB.archivo,/\.zip$/);
-  assert.match(html,/aún no analizado/);
+  assert.match(html,/4.800 entrevistas/);
   assert.match(html,/aria-labelledby="pollster-evidence-title"/);
   assert.match(html,/rel="noopener noreferrer"/);
 });
