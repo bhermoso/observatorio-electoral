@@ -38,6 +38,7 @@ const field=(name,label,type='text',value='')=>`<label>${label}<input name="${na
 export function renderPollUpdate(){return `<section class="panel poll-update" aria-labelledby="poll-update-title">
  <h2 id="poll-update-title">Actualizar encuestas</h2>
  <p>Busca publicaciones nuevas y carga el archivo disponible desde el Observatorio. Las cifras se incorporan después de contrastarlas con la fuente original.</p>
+ <p class="muted"><b>Dos procesos distintos:</b> el botón consulta titulares mediante Supabase (búsqueda manual); la vigilancia diaria de GitHub Actions ejecuta otra búsqueda y revisa el archivo para publicarlo. Las horas y cantidades de titulares no tienen por qué coincidir.</p>
  <div class="toolbar"><button type="button" id="dispatch-polls">Actualizar encuestas</button><button type="button" class="secondary" id="reload-polls">Cargar archivo publicado</button></div>
  <p id="poll-dispatch-status" role="status"></p><p id="poll-reload-status" role="status"></p>
  <div id="poll-candidates-list" aria-live="polite">Consultando la última búsqueda…</div>
