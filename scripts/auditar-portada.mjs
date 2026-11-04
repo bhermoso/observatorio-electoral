@@ -75,6 +75,7 @@ try{
     errors.push(sel+': contenido vertical desbordado '+c.scrollHeight+'>'+c.clientHeight);
   }
   if(report.items.editor?.bottom>report.items.results?.bottom+2)errors.push('La lectura editorial se recorta por el panel');
+  if(report.items.tabs?.bottom>report.items.results?.y+1)errors.push('Pestañas aparecen después del resultado');
   if(report.items.lastParty?.bottom>report.items.forecastFoot?.y-1)
     errors.push('Última fila solapa el pie del pronóstico');
   if(report.items.lastBloc?.bottom>report.items.forecastFoot?.y-1)
