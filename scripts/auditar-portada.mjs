@@ -18,7 +18,7 @@ try{
   // Previsualización exacta de JS/CSS del PR con las mismas encuestas publicadas.
   // Así se valida antes de fusionar, sin tener que publicar un cambio no revisado.
   await page.route('**/*',async route=>{
-   const u=new URL(route.request().url),name=u.pathname.split('/').pop();
+   const u=new URL(route.request().url()),name=u.pathname.split('/').pop();
    if(['app.mjs','home-impact.mjs','styles.css'].includes(name)&&
       u.pathname.startsWith('/observatorio-electoral/')){
     await route.fulfill({path:name,contentType:name.endsWith('.css')?'text/css':'text/javascript'});
