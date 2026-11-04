@@ -142,6 +142,27 @@ def cargar_29n():
 
 
 
+
+def cargar_wikipedia_2023():
+    """Serie ampliada secundaria (feb-jul 2023); sin inventar publicación."""
+    ruta = os.path.join(EXT, "wikipedia_2023_completa.csv")
+    if not os.path.exists(ruta):
+        return []
+    out = []
+    for r in csv.DictReader(open(ruta, encoding="utf-8")):
+        fin = _fecha(r["campo_fin"])
+        votos = {p: float(r[p]) for p in ("PP", "PSOE", "VOX", "SUMAR") if r.get(p)}
+        out.append(dict(casa=casa_canonica(r["casa"]), estudio=r["estudio"],
+                        campo_fin=fin, campo_ini=_fecha(r["campo_ini"]),
+                        n=int(r["n"]) if r.get("n") else 1000,
+                        n_supuesto=not bool(r.get("n")), modo="",
+                        voto=votos, origen="terceros-wikipedia", url=r["url"],
+                        publicacion=_fecha(r["publicacion"]) if r.get("publicacion") else None,
+                        fecha_publicacion_desconocida=not bool(r.get("publicacion")),
+                        ciclo=ciclo_de(fin), ambito="España", cliente=r.get("fuente_tabla","")))
+    return out
+
+
 def cargar_23j_complementos():
     """Correcciones históricas documentadas sin reescribir fuentes importadas."""
     ruta = os.path.join(EXT, "23j_complementos.json")
@@ -233,13 +254,17 @@ def aptas_para_pronostico(encuestas, ciclo="2023-26"):
 def todas(deduplicar=True):
     """Todas las fuentes. Si una misma casa tiene dos registros con fin de campo a
     <= 2 días, se conserva el verificado (o el primero cargado)."""
-    enc = cargar_verificadas() + cargar_23j_complementos() + cargar_29n() + cargar_prensa() + cargar_wikipedia()
+    enc = cargar_verificadas() + cargar_23j_complementos() + cargar_29n() + cargar_prensa() + cargar_wikipedia_2023() + cargar_wikipedia()
     if not deduplicar:
         return enc
     out = []
     for e in enc:
         dup = next((o for o in out if o["casa"] == e["casa"]
-                    and abs((o["campo_fin"] - e["campo_fin"]).days) <= 2), None)
+                    and ((e["ciclo"] == "2019-23"
+                          and o["campo_fin"] == e["campo_fin"]
+                          and o["voto"] == e["voto"])
+                         or (e["ciclo"] != "2019-23"
+                             and abs((o["campo_fin"] - e["campo_fin"]).days) <= 2))), None)
         if dup is None:
             out.append(e)
     return sorted(out, key=lambda e: e["campo_fin"])
