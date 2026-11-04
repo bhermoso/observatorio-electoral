@@ -43,6 +43,8 @@ jobs:
         with:
           path: dist
   deploy:
+    # Ninguna ejecución manual en una rama de trabajo puede publicar producción.
+    if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     permissions:
