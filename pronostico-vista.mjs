@@ -5,6 +5,7 @@ import {renderTrazabilidad,bindTrazabilidad} from './trazabilidad.mjs';
 import {renderInvestidura,bindInvestidura} from './investidura.mjs';
 import {renderValidationDashboard,bindValidationDashboard} from './dashboard-validacion.mjs';
 import {renderRecuento} from './recuento-encuestas.mjs';
+import {renderEvaluacion2019,bindEvaluacion2019} from './evaluacion-2019.mjs';
 
 const h=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt=(v,d=1)=>Number.isFinite(Number(v))?Number(v).toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
@@ -21,7 +22,7 @@ export const VARIANTS=[
 
 export function renderPronostico(){
  return `<div class="hero"><div><div class="eyebrow">Motor 29N · capa 3 · estimación de referencia</div><h1>Pronóstico completo.</h1><p id="fc-lead">Cargando la salida publicada del Motor 29N…</p></div><div class="hero-aside"><span class="badge sim">Estimación modelizada</span><p>Las cifras son estimaciones condicionadas a los supuestos del modelo, no resultados electorales. Intervalos del 90 % de las simulaciones.</p><a href="pronostico.html">Informe técnico completo ↗</a></div></div>
- <nav class="subnav" aria-label="Secciones del pronóstico"><a href="#pronostico-principal">Principal</a><a href="#pronostico-variantes">Variantes</a><a href="#pronostico-cocina">Cocina y trazabilidad</a><a href="#pronostico-bloques">Bloques</a><a href="#pronostico-evolucion">Evolución</a><a href="#pronostico-territorio">52 circunscripciones</a><a href="#pronostico-fuentes">Estudios usados y excluidos</a><a href="#pronostico-evaluacion">Evaluación 23J</a><a href="#pronostico-externos">Otros modelos</a></nav>
+ <nav class="subnav" aria-label="Secciones del pronóstico"><a href="#pronostico-principal">Principal</a><a href="#pronostico-variantes">Variantes</a><a href="#pronostico-cocina">Cocina y trazabilidad</a><a href="#pronostico-bloques">Bloques</a><a href="#pronostico-evolucion">Evolución</a><a href="#pronostico-territorio">52 circunscripciones</a><a href="#pronostico-fuentes">Estudios usados y excluidos</a><a href="#pronostico-evaluacion">Evaluación 2019 y 23J</a><a href="#pronostico-externos">Otros modelos</a></nav>
  <div id="fc-error" role="alert"></div>
  <div id="fc-counts"></div>
  <section class="panel" id="pronostico-principal"><h2>A. Pronóstico principal</h2><div id="fc-main">Cargando…</div></section>
@@ -33,7 +34,7 @@ export function renderPronostico(){
  <section class="panel" id="pronostico-evolucion"><h2>E. Evolución por cortes</h2><p class="muted">Serie retrospectiva recalculada con el método actual y las encuestas disponibles en cada corte; no es un archivo de lo que se publicó entonces. La versión 2 (3-nov-2026) recalculó toda la serie; para recuperar versiones anteriores hay que consultar el historial del repositorio. Las entradas con otra versión del modelo se señalan: su diferencia no es solo cambio en los datos.</p><div id="fc-history">Cargando…</div></section>
  <section class="panel" id="pronostico-territorio"><h2>F. Proyección territorial</h2><div id="fc-territory">Cargando…</div></section>
  <section class="panel" id="pronostico-fuentes"><h2>Estudios usados y excluidos</h2><div id="fc-sources">Cargando…</div></section>
- <section class="panel" id="pronostico-evaluacion"><h2>Evaluación frente al 23J</h2><div id="fc-validation-publica"></div><p class="muted">Única elección evaluada. No es una validación independiente entre convocatorias.</p>${renderValidationDashboard()}</section>
+ <section class="panel" id="pronostico-evaluacion"><h2>Evaluación histórica de encuestas y recetas</h2><p class="muted">Separamos dos ejercicios distintos: la auditoría temporal de promedios sobre el 23J y el contraste retrospectivo de tratamientos de microdatos del CIS en 2019. Ninguno calibra las probabilidades de mayoría del Motor 29N.</p><div id="fc-validation-publica"></div>${renderEvaluacion2019()}${renderValidationDashboard()}</section>
  <section class="panel" id="pronostico-externos"><h2>Capa 4 · Otros observatorios y modelos</h2><p class="muted">${h(LAYERS.externo.explica)}</p><div id="fc-external">Cargando…</div></section>`;
 }
 
@@ -142,5 +143,5 @@ export async function bindPronostico(){
  set('#fc-validation-publica',()=>publicValidation(f));
  set('#fc-main',()=>partyTable(f));set('#fc-variants',()=>variantsTable(f));set('#fc-chain',()=>chain(f));set('#fc-blocks',()=>blocks(f));
  set('#fc-history',()=>history(hist));set('#fc-territory',()=>territory(f));set('#fc-sources',()=>sources(f));set('#fc-external',()=>external(f));
- void bindTrazabilidad();void bindInvestidura();void bindValidationDashboard();
+ void bindTrazabilidad();void bindInvestidura();void bindValidationDashboard();void bindEvaluacion2019();
 }
