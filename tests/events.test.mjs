@@ -23,7 +23,7 @@ test('La lectura del acontecimiento presenta un veredicto cuantificado antes de 
  const r=resumenImpacto(withChange);assert.equal(r.estado,'cambio_supera_placebo');
  assert.equal(r.aplicado,false);assert.equal(r.filas.find(p=>p.id==='PP').cambio,2);
  const reading=fs.readFileSync('acontecimiento.mjs','utf8');
- assert.match(reading,/\$\{resumenHTML\}\$\{renderFichasPosteriores\(a\)\}<ol class="er-levels">/);
+ assert.match(reading,/\$\{resumenHTML\}\$\{renderFichasPosteriores\(a\)\}<details class="event-deep-dive">/);
  assert.match(reading,/no demuestra causalidad/i);
  assert.match(reading,/No se ha incorporado un coeficiente atribuido/);
 });
@@ -53,4 +53,5 @@ test('Urda identifica Sigma Dos posterior, publica cifras y enlaza fichas origin
  assert.match(html,/Target Point/);
  const whole=renderLectura(a,events[0]);
  assert.ok(whole.indexOf('event-surveys-title')<whole.indexOf('er-levels'));
+ assert.match(whole,/Ampliar análisis: cronología/);
 });
