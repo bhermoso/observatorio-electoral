@@ -2,7 +2,13 @@ name: Motor de pronóstico (Python)
 on:
   # Pages ya ejecuta estas pruebas en main; evitar comprobación doble en cada push.
   pull_request:
-    paths: ['modelo/**', 'data/**', '.github/workflows/modelo.yml']
+    paths:
+      - 'modelo/**'
+      - 'data/**'
+      # Los agregados de microdatos se verifican en la revisión rápida JS;
+      # no intervienen en el cálculo Python del Motor 29N.
+      - '!data/microdatos/**'
+      - '.github/workflows/modelo.yml'
   workflow_dispatch:
 permissions:
   contents: read
