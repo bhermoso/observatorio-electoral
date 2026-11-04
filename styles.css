@@ -477,6 +477,7 @@ details.panel.panorama-secondary{padding:12px 17px}
 #impact .forecast-lead-header .eyebrow{font-size:10px}
 #impact .forecast-lead-header .panel-link{font-size:11px}
 #impact .forecast-lead-status{padding:3px 0;font-size:11px;gap:4px 15px}
+#impact #forecast-lead-results{display:grid;grid-template-rows:auto minmax(0,1fr) auto;min-height:0;gap:4px}
 #impact .forecast-lead-content{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(270px,.85fr);gap:12px;min-width:0;min-height:0;align-items:start}
 #impact .forecast-lead-side{grid-column:2;grid-row:1;min-width:0}
 #impact .forecast-lead-table-holder{grid-column:1;grid-row:1;min-width:0;margin:0;overflow:visible}
@@ -509,7 +510,7 @@ details.panel.panorama-secondary{padding:12px 17px}
 #impact .panorama-pane:not(#panorama-panel-resultados) .matrix th,
 #impact .panorama-pane:not(#panorama-panel-resultados) .matrix td{padding:6px 8px}
 #impact .panorama-pane:not(#panorama-panel-resultados) .home-grid{margin-top:5px}
-@media(min-width:1050px) and (min-height:700px){
+@media(min-width:1200px) and (min-height:700px){
  body.dashboard-route{height:100dvh;overflow:hidden;display:grid;grid-template-rows:auto minmax(0,1fr) auto}
  body.dashboard-route header{padding:8px 3%;gap:12px}
  body.dashboard-route header nav{gap:10px}
@@ -522,7 +523,7 @@ details.panel.panorama-secondary{padding:12px 17px}
  body.dashboard-route .panorama-pane:not(#panorama-panel-resultados){overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable}
  body.dashboard-route #panorama-panel-resultados{overflow:hidden}
 }
-@media(max-width:1049px),(max-height:699px){
+@media(max-width:1199px),(max-height:699px){
  #impact .impact-head{grid-template-columns:1fr}
  #impact .impact-facts{grid-template-columns:repeat(2,minmax(0,1fr))}
  #impact .forecast-lead-content{grid-template-columns:minmax(0,1fr)}
