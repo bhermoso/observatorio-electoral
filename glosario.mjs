@@ -111,7 +111,7 @@ export const TERMINOS = [
 const lookup=new Map(TERMINOS.map(([term,description])=>[term.toLocaleLowerCase('es'),description]));
 const patterns=TERMINOS.map(([term])=>term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).sort((a,b)=>b.length-a.length);
 const regex=new RegExp('(?<![\\p{L}\\p{N}])('+patterns.join('|')+')(?![\\p{L}\\p{N}])','giu');
-const SKIP='a,button,input,select,textarea,script,style,noscript,code,pre,svg,math,nav,[contenteditable],.term-help,.glossary-tooltip,[data-no-glossary]';
+const SKIP='a,button,summary,input,select,textarea,script,style,noscript,code,pre,svg,math,nav,[contenteditable],.term-help,.glossary-tooltip,[data-no-glossary]';
 let tooltip=null,active=null,rafScheduled=false;
 const queuedDecorations=new Set();
 function explanation(s){return lookup.get(s.toLocaleLowerCase('es'))}
@@ -131,8 +131,28 @@ function markText(node){
  if(index<text.length)fragment.append(document.createTextNode(text.slice(index)));
  node.replaceWith(fragment);
 }
+function decorateSummaries(root){
+ const summaries=[...(root.matches?.('summary')?[root]:[]),...(root.querySelectorAll?.('summary')||[])];
+ for(const summary of summaries){
+  regex.lastIndex=0;
+  const seen=new Set(),definitions=[];
+  for(const match of summary.textContent.matchAll(regex)){
+   const key=match[0].toLocaleLowerCase('es');
+   if(seen.has(key))continue;
+   seen.add(key);
+   definitions.push(match[0]+': '+explanation(match[0]));
+   if(definitions.length===2)break;
+  }
+  if(definitions.length){
+   summary.title=definitions.join(' | ');
+   summary.setAttribute('aria-description',definitions.join(' '));
+  }
+ }
+}
 function decorate(root){
  if(!root||!root.isConnected)return;
+ // No se introducen controles enfocables dentro de summary: título y descripción nativos.
+ decorateSummaries(root);
  const walk=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>
   n.parentElement&&!n.parentElement.closest(SKIP)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT});
  const nodes=[];while(walk.nextNode())nodes.push(walk.currentNode);
