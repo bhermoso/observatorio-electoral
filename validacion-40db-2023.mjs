@@ -35,7 +35,7 @@ export async function bindRetrospectiva40db(){
      return `<tr${m.key==='publicado'?' class="validacion40db-reference"':''}><th scope="row">${esc(m.label)}</th>${nums.map(v=>`<td>${fmt(v)}</td>`).join('')}<td><strong>${fmt(mean(nums))}</strong></td></tr>`;
     }).join('')}</tbody></table></div>
    <div class="validacion40db-notes">
-    <p><strong>Cómo se ha calculado:</strong> intención de voto y `ponde` de los archivos originales; voto válido declarado como denominador (incluye voto blanco). Se comparan PP, PSOE+PSC, Vox y Sumar con el escrutinio definitivo del 23J. La propensión declarada, la simpatía y el ajuste del recuerdo son recetas experimentales nuestras, no técnicas atribuidas al instituto.</p>
+    <p><strong>Cómo se ha calculado:</strong> intención de voto y <code>ponde</code> de los archivos originales; voto válido declarado como denominador (incluye voto blanco). Se comparan PP, PSOE+PSC, Vox y Sumar con el escrutinio definitivo del 23J. La propensión declarada, la simpatía y el ajuste del recuerdo son recetas experimentales nuestras, no técnicas atribuidas al instituto.</p>
     <p><strong>Límite esencial:</strong> las tres encuestas predicen <em>la misma elección</em>, con campo entre mayo y junio. No son tres validaciones independientes y parte de la distancia al 23J puede ser cambio real de opinión durante la campaña. Se midió el error retrospectivamente, sin validación fuera de muestra.</p>
    </div>
    <details class="validacion40db-provenance"><summary>Protocolo y trazabilidad de los originales</summary><div class="table-wrap">
