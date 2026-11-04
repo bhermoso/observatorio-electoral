@@ -16,20 +16,23 @@ export function renderHomeImpact(){
  return `<section class="impact" id="impact" aria-labelledby="impact-heading">
  <div class="impact-head">
   <div><span class="impact-kicker"><i></i> <span id="impact-cut">Cargando corte…</span></span>
-  <h1 id="impact-heading">Qué dicen las encuestas<br><em>y qué estima el Observatorio.</em></h1>
-  <p>Cuatro capas que no se mezclan: lo que publican las encuestadoras, nuestra estimación estadística sin ajustes, nuestra estimación de referencia con cocina y lo que publican otros modelos.</p>
+  <h1 id="impact-heading">Pronóstico del 29N<br><em>y cómo lo calculamos.</em></h1>
+  <p>La estimación propia se contrasta con promedios de encuestas publicadas. La cocina sobre microdatos del CIS es un experimento distinto; las noticias no equivalen a sondeos.</p>
   <div class="impact-links"><a class="impact-primary" href="#pronostico">Pronóstico completo · Motor 29N →</a><a href="#encuestas">Encuestas y actualización</a><a href="#contexto">Acontecimientos: Urda</a></div></div>
   <dl class="impact-facts" id="impact-facts" aria-live="polite"><div><dt>Corte</dt><dd>…</dd></div></dl>
  </div>
  <section class="forecast-lead panel" aria-labelledby="forecast-lead-title">
-  <div class="forecast-lead-header"><div><span class="eyebrow">Estimación propia · Motor 29N</span><h2 id="forecast-lead-title">Si las elecciones fueran hoy</h2><p class="muted">Pronóstico del Congreso · votos, escaños y mayorías. Medianas e intervalos del 90 %, no resultados oficiales.</p></div><a class="panel-link" href="#pronostico">Ver pronóstico, método y circunscripciones →</a></div>
+  <div class="forecast-lead-header"><div><span class="eyebrow">Estimación propia · Motor 29N</span><h2 id="forecast-lead-title">Nuestra estimación para el 29N</h2><p class="muted">Pronóstico del Congreso · votos, escaños y mayorías. Medianas e intervalos del 90 %, no resultados oficiales.</p></div><a class="panel-link" href="#pronostico">Ver pronóstico, método y circunscripciones →</a></div>
   <div id="forecast-lead-results" aria-live="polite"><p class="muted">Cargando estimación publicada…</p></div>
  </section>
- <ol class="layer-legend" aria-label="Las cuatro capas">${Object.entries(LAYERS).map(([k,l])=>`<li class="layer-${k}"><span class="layer-num" aria-hidden="true">${l.capa}</span><div><b>${h(l.nombre)}</b><small>${h(l.naturaleza)}</small><details><summary>¿Qué es exactamente?</summary><p>${h(l.explica)}</p></details></div></li>`).join('')}</ol>
+ <div class="panorama-editorial" id="panorama-editorial" aria-live="polite">Calculando el contraste con las encuestas…</div>
+ <details class="panorama-sources"><summary>Qué procede de encuestas, modelo, microdatos y noticias</summary>
+ <div class="panorama-source-grid"><p><b>Promedio de encuestas:</b> agregamos estimaciones que ya publicaron los institutos. No son respuestas individuales.</p><p><b>Pronóstico propio:</b> tendencia, sesgos, calibración histórica y simulación de escaños; utiliza estimaciones publicadas, no microdatos.</p><p><b>Cocina sobre microdatos:</b> experimentos con respuestas del CIS; no alimentan este pronóstico.</p><p><b>Noticias y otros modelos:</b> pistas para verificar originales y comparadores externos, nunca encuestas añadidas automáticamente.</p></div>
+ <ol class="layer-legend" aria-label="Las cuatro capas">${Object.entries(LAYERS).map(([k,l])=>`<li class="layer-${k}"><span class="layer-num" aria-hidden="true">${l.capa}</span><div><b>${h(l.nombre)}</b><small>${h(l.naturaleza)}</small><details><summary>¿Qué es exactamente?</summary><p>${h(l.explica)}</p></details></div></li>`).join('')}</ol></details>
  </section>
- <div id="home-counts"></div>
- <section class="panel matrix-panel" aria-labelledby="matrix-heading">
-  <div class="panel-head"><div><span class="eyebrow">Comparación central</span><h2 id="matrix-heading">Partidos y bloques en las cuatro capas</h2><p class="muted" id="matrix-sub">Cargando datos…</p></div></div>
+ <details class="panorama-secondary"><summary>Recuentos completos de las fuentes</summary><div id="home-counts"></div></details>
+ <details class="panel matrix-panel panorama-secondary"><summary>Contrastar promedio y pronóstico, partido a partido</summary>
+  <div class="panel-head"><div><span class="eyebrow">Diferenciar procesos</span><h2 id="matrix-heading">Qué es promedio y qué es pronóstico</h2><p class="muted" id="matrix-sub">Cargando datos…</p></div></div>
   <div class="matrix-controls">
    <fieldset class="seg" id="matrix-view"><legend>Mostrar</legend>
     <label><input type="radio" name="mview" value="voto" checked> % de voto</label>
@@ -44,17 +47,17 @@ export function renderHomeImpact(){
   </div>
   <div class="table-wrap"><table class="matrix" id="matrix-table"><caption class="vh">Comparación de capas</caption><tbody><tr><td>Cargando…</td></tr></tbody></table></div>
   <div id="matrix-notes" class="matrix-notes"></div>
- </section>
- <div class="home-grid">
-  <section class="panel" aria-labelledby="blocks-heading"><span class="eyebrow">Capa 3 · Estimación de referencia</span><h2 id="blocks-heading">Escaños por bloques</h2><p class="muted">${h(BLOCK_NOTE)} Mayoría absoluta: 176 de 350.</p><div id="home-blocks" class="home-blocks">Cargando…</div></section>
+ </details>
+ <details class="panorama-secondary"><summary>Detalle por bloques y evolución diaria</summary><div class="home-grid">
+  <section class="panel" aria-labelledby="blocks-heading"><span class="eyebrow">Pronóstico · bloques ampliados</span><h2 id="blocks-heading">Escaños por bloques</h2><p class="muted">${h(BLOCK_NOTE)} Mayoría absoluta: 176 de 350.</p><div id="home-blocks" class="home-blocks">Cargando…</div></section>
   <section class="panel" aria-labelledby="changes-heading"><span class="eyebrow">Corte anterior</span><h2 id="changes-heading">Qué ha cambiado</h2><div id="home-changes">Cargando…</div></section>
- </div>
- <section class="panel" aria-labelledby="cocina-heading"><span class="eyebrow">Capa 3 − capa 2</span><h2 id="cocina-heading">Qué añade la cocina del Observatorio</h2><p class="muted">Diferencia conjunta entre dos configuraciones: cambian la mezcla de variantes y el error de industria (1,5 frente a 2,2 pp). No aísla el efecto de cada ajuste ni mide un efecto político.</p><div id="home-cocina">Cargando…</div></section>
- <section class="panel experiment" aria-labelledby="exp-heading"><span class="badge sim">Experimento · fuera de las cuatro capas</span><h2 id="exp-heading">Una decisión cambia la estimación (microdatos del CIS)</h2>
+ </div></details>
+ <details class="panel panorama-secondary" aria-labelledby="cocina-heading"><summary>Qué cambia por nuestros ajustes estadísticos e históricos</summary><span class="eyebrow">Ajustes sobre estimaciones publicadas</span><h2 id="cocina-heading">La diferencia entre dos variantes del motor</h2><p class="muted">Las variantes del motor cambian la selección de anclas, las correcciones históricas y el error de industria. Ninguna de ellas repondera entrevistas individuales.</p><div id="home-cocina">Cargando…</div></details>
+ <details class="panel experiment panorama-secondary" aria-labelledby="exp-heading"><summary>Experimento separado: cocina sobre respuestas del CIS</summary><span class="badge sim">Microdatos · fuera del pronóstico</span><h2 id="exp-heading">Qué cambia al trabajar con entrevistas del CIS</h2>
   <p class="muted">Cocina aplicada a <b>microdatos individuales</b> de un solo instituto (CIS). No alimenta el Motor 29N ni la matriz. La proyección de escaños es ilustrativa: ajuste proporcional sobre el mapa de 2023 y D’Hondt.</p>
   <div class="toolbar"><label>Estudio <select id="impact-cis"><option value="3411">CIS 3411 · 2023</option><option value="3415">CIS 3415 · 2023</option><option value="3582" selected>CIS 3582 · 2026</option></select></label><label>Procedimiento <select id="impact-recipe"><option value="decided">Ponderación + solo decididos</option><option value="sympathy">Ponderación + voto o simpatía</option><option value="turnout">Ponderación + decididos + participación</option></select></label></div>
   <div id="impact-recipe-output" class="impact-visual" aria-live="polite">Recalculando…</div>
-  <p class="muted"><a href="construye-estimacion.html">Construye una estimación, decisión a decisión →</a> · <a href="tutorial-estimacion.html">Tutorial</a> · <a href="metodo-evidencia.html">Por qué cambia la estimación</a> · <a href="#cocina">Cocina electoral →</a> · <a href="#laboratorio">Laboratorio D’Hondt →</a></p></section>`;
+  <p class="muted"><a href="construye-estimacion.html">Construye una estimación, decisión a decisión →</a> · <a href="tutorial-estimacion.html">Tutorial</a> · <a href="metodo-evidencia.html">Por qué cambia la estimación</a> · <a href="#cocina">Cocina electoral →</a> · <a href="#laboratorio">Laboratorio D’Hondt →</a></p></details>`;
 }
 
 function drawForecastLead(ctx){
@@ -76,10 +79,28 @@ function drawForecastLead(ctx){
  <div class="forecast-lead-status"><span>Corte: <b>${h(fdate(ctx.forecast.corte))}</b></span><span>${h(ctx.entradas??'—')} estudios utilizados</span><span>Mayoría absoluta: <b>176 escaños</b></span></div>
  <div class="forecast-lead-overview">
   <div class="forecast-lead-winner"><span class="eyebrow">Mayor número de escaños · mediana</span><strong>${h(PARTIES.find(x=>x.id===first?.[0])?.label||first?.[0]||'—')}</strong><div><b>${fmt(first?.[1]?.escanos?.[0]??0,0)}</b> escaños <small>90 %: ${fmt(first?.[1]?.escanos?.[1]??0,0)}–${fmt(first?.[1]?.escanos?.[2]??0,0)}</small></div><p>Estimación de primera fuerza por mediana, no probabilidad de formar Gobierno.</p></div>
-  <div class="forecast-lead-blocs"><h3>Mayorías posibles</h3>${blocks.map(([id,b])=>`<div class="forecast-lead-bloc"><span>${h(bName(id))}</span><b>${fmt(b.mediana,0)} <small>escaños</small></b><span class="forecast-lead-prob">${Number.isFinite(b.p_mayoria)?fmt(100*b.p_mayoria,0)+' % de simulaciones con ≥176':'Probabilidad no disponible'}</span></div>`).join('')||'<p class="muted">Sin estimación de bloques disponible.</p>'}</div>
+  <div class="forecast-lead-blocs"><h3>Bloques y mayoría absoluta: 176</h3>${blocks.map(([id,b])=>`<div class="forecast-lead-bloc"><span>${h(bName(id))}</span><b>${fmt(b.mediana,0)} <small>escaños</small></b><span class="forecast-lead-prob">${Number.isFinite(b.p_mayoria)?fmt(100*b.p_mayoria,0)+' % de simulaciones con 176 o más':'Probabilidad no disponible'}</span></div>`).join('')||'<p class="muted">Sin estimación de bloques disponible.</p>'}</div>
  </div>
  <div class="table-wrap"><table class="forecast-lead-table"><caption>Estimación por partido. Mediana e intervalo del 90 % del modelo.</caption><thead><tr><th scope="col">Partido</th><th scope="col">Voto estimado</th><th scope="col">Escaños estimados</th></tr></thead><tbody>${major.map(([id,v])=>`<tr><th scope="row">${h(PARTIES.find(x=>x.id===id)?.label||id)}${caution.has(id)?' <small class="warn">sin encuestas propias</small>':''}</th><td><b>${fmt(v.voto[0])} %</b><small>${fmt(v.voto[1])}–${fmt(v.voto[2])} %</small></td><td><strong>${fmt(v.escanos[0],0)}</strong><small>${fmt(v.escanos[1],0)}–${fmt(v.escanos[2],0)}</small></td></tr>`).join('')}</tbody></table></div>
  <p class="muted forecast-lead-foot">Pronóstico condicionado a las fuentes y supuestos del modelo. ${h(p.n??'—')} simulaciones; los intervalos expresan incertidumbre, no garantías. ${parties.length>major.length?`Se muestran ${major.length} de ${parties.length} candidaturas; <a href="#pronostico">ver todas</a>.`:' '} <a href="#metodologia">Metodología y fuentes</a>.</p>`;
+}
+
+
+function drawEditorial(ctx){
+ const el=document.querySelector('#panorama-editorial');if(!el)return;
+ const p=ctx.forecast?.principal;
+ if(!p?.partidos||!ctx.prom){el.textContent='No hay datos suficientes para comparar el promedio con el pronóstico; no se fabrican conclusiones.';return;}
+ const name=id=>PARTIES.find(x=>x.id===id)?.label||id;
+ const es=Object.entries(p.partidos).filter(([,r])=>Number.isFinite(r?.escanos?.[0])).sort((a,b)=>b[1].escanos[0]-a[1].escanos[0]);
+ const first=es[0],second=es[1],bloc=p.bloques?.['PP+VOX'];
+ const ds=['PP','PSOE','VOX','SUMAR'].flatMap(id=>{
+  const a=ctx.prom.partidos[id]?.valor,b=p.partidos[id]?.voto?.[0];
+  return Number.isFinite(a)&&Number.isFinite(b)?[{id,a,b,d:b-a}]:[];
+ }).sort((a,b)=>Math.abs(b.d)-Math.abs(a.d));
+ const winner=first?name(first[0])+' encabeza la estimación central con '+fmt(first[1].escanos[0],0)+' escaños'+(second?', frente a '+fmt(second[1].escanos[0],0)+' de '+name(second[0]):'')+'.':'No hay escaños comparables.';
+ const majority=Number.isFinite(bloc?.p_mayoria)?'PP + Vox logra al menos 176 en '+fmt(bloc.p_mayoria*100,0)+' % de las simulaciones. Esto no es la probabilidad de un pacto.':'No hay probabilidad simulada de mayoría.';
+ const d=ds[0],compare=d?'La mayor diferencia entre el promedio seleccionado y el pronóstico, entre los cuatro partidos principales con datos, es '+name(d.id)+': '+fmt(d.a)+' % publicado frente a '+fmt(d.b)+' % estimado ('+signed(d.d)+' pp). No demuestra qué método acertará.':'Los datos no permiten contrastar los principales partidos.';
+ el.innerHTML='<p><b>Lectura.</b> '+h(winner)+' '+h(majority)+'</p><p><b>Contraste.</b> '+h(compare)+'</p><p class="panorama-editorial-note">Promedio: '+ctx.prom.estudios.filter(x=>x.weight>0).length+' estudios seleccionados. Motor: '+h(ctx.entradas??'—')+' entradas. Las noticias y los experimentos con microdatos no se cuentan como encuestas.</p>';
 }
 
 function headerCell(col,ctx){
@@ -188,7 +209,7 @@ export async function bindHomeImpact(polls){
   const sub=document.querySelector('#matrix-sub');if(sub)sub.textContent='Motor 29N no disponible: '+err.message+'. Solo se muestra el promedio publicado.';
  }
  if(!root.isConnected)return;
- const redraw=()=>{try{computeLayer1(ctx);drawMatrix(ctx);document.querySelector('#home-counts').innerHTML=renderRecuento({forecast:ctx.forecast,archivo:polls.length,seleccion:{estudios:ctx.prom.estudios.filter(e=>e.weight>0).length,institutos:ctx.prom.institutos,detalle:`${state.ventana} días · ${state.base==='archivo'?'archivo verificado':'entradas del motor'}${state.cis?'':' · sin CIS'}`}});}catch(e){document.querySelector('#matrix-table').innerHTML=`<tbody><tr><td role="alert">No se puede calcular: ${h(e.message)}</td></tr></tbody>`;}};
+ const redraw=()=>{try{computeLayer1(ctx);drawMatrix(ctx);drawEditorial(ctx);document.querySelector('#home-counts').innerHTML=renderRecuento({forecast:ctx.forecast,archivo:polls.length,seleccion:{estudios:ctx.prom.estudios.filter(e=>e.weight>0).length,institutos:ctx.prom.institutos,detalle:`${state.ventana} días · ${state.base==='archivo'?'archivo verificado':'entradas del motor'}${state.cis?'':' · sin CIS'}`}});}catch(e){document.querySelector('#matrix-table').innerHTML=`<tbody><tr><td role="alert">No se puede calcular: ${h(e.message)}</td></tr></tbody>`;}};
  drawFacts(ctx);drawForecastLead(ctx);redraw();drawBlocks(ctx);drawChanges(ctx);drawCocina(ctx);
  document.querySelectorAll('input[name=mview]').forEach(i=>i.addEventListener('change',()=>{state.vista=i.value;redraw();}));
  const bindSel=(id,fn)=>{const el=document.querySelector(id);if(!el)return;el.addEventListener('change',()=>{fn(el.value);redraw();});};

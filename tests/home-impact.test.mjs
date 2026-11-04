@@ -38,3 +38,22 @@ test('La comparación de recetas utiliza mismo estudio y el mismo traslado terri
  assert.equal(sa.diagnostics.totalSeats,350);
  assert.equal(sb.diagnostics.totalSeats,350);
 });
+
+test('Panorama editorial compacto separa encuesta, modelo, microdatos y noticias',async()=>{
+ const {renderHomeImpact}=await import('../home-impact.mjs');
+ const html=renderHomeImpact();
+ assert.ok(html.indexOf('forecast-lead')<html.indexOf('matrix-panel'));
+ assert.match(html,/id="panorama-editorial"/);
+ assert.match(html,/Promedio de encuestas:/);
+ assert.match(html,/Pronóstico propio:/);
+ assert.match(html,/Cocina sobre microdatos:/);
+ assert.match(html,/Noticias y otros modelos:/);
+ assert.match(html,/panorama-secondary/);
+ assert.match(html,/No son respuestas individuales|No son respuestas individuales/i);
+ const js=fs.readFileSync('home-impact.mjs','utf8');
+ assert.match(js,/drawEditorial\(ctx\)/);
+ assert.match(js,/ctx\.prom\.partidos\[id\]\?\.valor/);
+ const css=fs.readFileSync('styles.css','utf8');
+ assert.match(css,/--oee-body-size:15px/);
+ assert.match(css,/\.panorama-source-grid/);
+});
