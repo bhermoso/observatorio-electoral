@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import { chromium } from 'playwright';
 
-const URL='https://bhermoso.github.io/observatorio-electoral/';
+const SITE_URL='https://bhermoso.github.io/observatorio-electoral/';
 const viewports=[
  {width:1200,height:700},
  {width:1280,height:720},
@@ -25,7 +25,7 @@ try{
    }else await route.continue();
   });
 
-  const url=URL+'?audit='+Date.now();
+  const url=SITE_URL+'?audit='+Date.now();
   await page.goto(url,{waitUntil:'domcontentloaded',timeout:60000});
   await page.waitForTimeout(1500);
   const report=await page.evaluate(()=>{
