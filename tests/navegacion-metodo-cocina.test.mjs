@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-const app=fs.readFileSync('app.mjs','utf8');
+const app=fs.readFileSync('home-impact.mjs','utf8');
 const cocina=fs.readFileSync('cocina.mjs','utf8');
 const nav=fs.readFileSync('index.html','utf8');
 const method=fs.readFileSync('como-estimamos.html','utf8');
