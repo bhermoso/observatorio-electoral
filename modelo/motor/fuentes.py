@@ -16,7 +16,7 @@ EXT = os.path.join(RAIZ, "modelo", "externos")
 CASAS = {
     "imop insights": "IMOP", "imop": "IMOP", "sociometrica": "SocioMétrica",
     "sociométrica": "SocioMétrica", "40db": "40dB.", "40db.": "40dB.",
-    "gad3": "GAD3", "sigma dos": "Sigma Dos", "nc report": "NC Report",
+    "gad3": "GAD3", "sigma dos": "Sigma Dos", "sigmados": "Sigma Dos", "nc report": "NC Report",
     "simple lógica": "Simple Lógica", "cis": "CIS", "dym": "DYM",
     "ateneo del dato": "Ateneo del Dato", "demoscopia y servicios": "Demoscopia y Servicios",
     "electopanel": "ElectoPanel", "invymark": "InvyMark", "keydata": "KeyData",
