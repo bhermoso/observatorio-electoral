@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "updated": "2026-11-04",
+  "status": "DOCUMENTAL_PARCIAL_BLOQUEADA",
+  "type": "registro de evidencias documentales verificadas; no reemplaza un libro de códigos de microdatos",
+  "rationale": "Los cuestionarios recogen códigos de pregunta; los nombres de las variables derivadas en DA/ES y la selección de ponderación necesitan confirmación con libro de códigos y ZIP originales.",
+  "studies": {
+    "3242": {
+      "election": "2019-04-28",
+      "official_study": "https://www.cis.es/es/estudios/macrobarometro-de-marzo-2019.-preelectoral-elecciones-generales-2019",
+      "verified": [
+        {
+          "field": "universo",
+          "value": "Población residente en España con derecho a voto en elecciones generales",
+          "source": "https://www.cis.es/documents/20117/1556851/FT3242pdf.pdf"
+        },
+        {
+          "field": "entrevistas",
+          "value": "16.194 realizadas",
+          "source": "https://www.cis.es/documents/20117/1556851/FT3242pdf.pdf"
+        },
+        {
+          "field": "ponderación",
+          "value": "La ficha prescribe coeficientes de ponderación nacionales para el conjunto; falta verificar la variable concreta del archivo de microdatos",
+          "source": "https://www.cis.es/documents/20117/1556851/FT3242pdf.pdf"
+        }
+      ],
+      "data_aggregates": "data/microdatos/diagnostico_2019_original.json",
+      "variables_from_aggregates_not_confirmed": {
+        "intention": "P10R",
+        "combined_vote_sympathy": "VOTOSIMG",
+        "weight": "PESO",
+        "recall": "RECUERDO",
+        "participation": "P12"
+      },
+      "unresolved": [
+        "Revisar el cuestionario y libro de códigos originales del estudio 3242, incluidos códigos y filtros",
+        "Vincular P10R, VOTOSIMG, PESO, RECUERDO y P12 a variables documentadas",
+        "Homologar todas las candidaturas provinciales del 28-A y el voto válido"
+      ]
+    },
+    "3263": {
+      "election": "2019-11-10",
+      "official_study": "https://www.cis.es/es/estudios/macrobarometro-de-octubre-2019.-preelectoral-elecciones-generales-2019",
+      "questionnaire": "https://www.cis.es/documents/20117/1557011/cues3263.pdf",
+      "territorial_annex": "https://www.cis.es/documents/20117/1557011/Anexo3263_candidaturas_territoriales.pdf",
+      "verified": [
+        {
+          "field": "participación declarada",
+          "value": "P.8: intención de acudir a votar; no es una probabilidad individual calibrada",
+          "source": "https://www.cis.es/documents/20117/1557011/cues3263.pdf",
+          "page": 3
+        },
+        {
+          "field": "intención directa",
+          "value": "P.9: intención de voto, respuesta espontánea",
+          "source": "https://www.cis.es/documents/20117/1557011/cues3263.pdf",
+          "page": 3
+        },
+        {
+          "field": "simpatía",
+          "value": "P.9a: partido que suscita más simpatía; no equivale por sí solo a la variable derivada VOTOSIMG",
+          "source": "https://www.cis.es/documents/20117/1557011/cues3263.pdf",
+          "page": 3
+        },
+        {
+          "field": "recuerdo de voto",
+          "value": "P.17: recuerdo de participación y voto del 28-A; todavía falta revisar la codificación derivada",
+          "source": "https://www.cis.es/documents/20117/1557011/cues3263.pdf",
+          "page": 5
+        },
+        {
+          "field": "alianzas territoriales",
+          "value": "Anexo oficial distingue PSC-PSOE, En Comú Podem, En Común-Unidas Podemos, Más País y Més Compromís; no mezclar automáticamente con Sumar 2023/2026",
+          "source": "https://www.cis.es/documents/20117/1557011/Anexo3263_candidaturas_territoriales.pdf",
+          "page": 1
+        }
+      ],
+      "direct_vote_questionnaire_codes": {
+        "18": "VOX",
+        "21": "Unidas Podemos",
+        "50": "Partido de Errejón (no convertir automáticamente en todas las candidaturas de Más País)",
+        "77": "Voto nulo",
+        "94": "Indecisión explícita",
+        "95": "Otro partido",
+        "96": "Voto en blanco",
+        "97": "No votará",
+        "98": "No sabe",
+        "99": "No contesta",
+        "01": "PP",
+        "02": "PSOE",
+        "04": "Ciudadanos",
+        "03": "Podemos",
+        "05": "IU",
+        "06": "En Comú Podem"
+      },
+      "data_aggregates": "data/microdatos/diagnostico_2019_original.json",
+      "variables_from_aggregates_not_confirmed": {
+        "intention": "P9R",
+        "combined_vote_sympathy": "VOTOSIMG",
+        "weight": "PESO",
+        "recall": "RECUERDO",
+        "participation": "P11"
+      },
+      "unresolved": [
+        "Comprobar la recodificación P.9→P9R en el libro de códigos del ZIP original",
+        "Verificar la creación de VOTOSIMG y los filtros derivados",
+        "Resolver la discrepancia entre pregunta P.8 y variable P11 etiquetada 'participación' en los agregados",
+        "Confirmar PESO nacional y universo para inferencia electoral",
+        "Homologar coaliciones territoriales y denominador de voto válido contra escrutinio del 10-N"
+      ]
+    }
+  },
+  "restrictions": [
+    "Los códigos 94 (indecisión), 98 (no sabe) y 99 (no contesta) no son equivalentes ni se imputan juntos por defecto",
+    "La pregunta P.9 y la variable recodificada P9R requieren un puente documentado; equivalencia no demostrada",
+    "La ficha técnica y los cuestionarios no sustituyen al libro de códigos de un archivo de microdatos",
+    "Sin validación de ambos diccionarios, filtros y candidaturas, homologación completa = falso y ninguna receta puede promocionarse al Motor 29N"
+  ]
+}
