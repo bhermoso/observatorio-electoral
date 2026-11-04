@@ -111,8 +111,8 @@ export function renderTransiciones2019(report,originals){
  return '<section class="historical-transitions" aria-label="Recodificaciones empíricas CIS 2019">'+
   '<div class="historical-transitions-heading"><h4>Reconstrucción de recodificaciones · 2019</h4>'+
   '<a href="data/microdatos/transiciones_2019.json" download>Datos agregados ↓</a></div>'+
-  '<p>Las combinaciones observadas de código original y provincia conducen a una sola codificación de destino en ambos estudios. No equivale a recuperar el programa interno del CIS.</p>'+
-  '<div class="table-wrap"><table><thead><tr><th>Estudio</th><th>Entrevistas</th><th>Claves voto + provincia</th><th>Claves simpatía + provincia</th><th>Claves simpatía → VOTOSIMG</th><th>Voto definido conservado</th><th>Claves ambiguas</th></tr></thead><tbody>'+trs+'</tbody></table></div>'+
+  '<p>Las combinaciones observadas de código original y provincia conducen a una sola codificación de destino en ambos estudios. Las respuestas definidas incluyen candidaturas, voto en blanco y voto nulo. No equivale a recuperar el programa interno del CIS.</p>'+
+  '<div class="table-wrap"><table><thead><tr><th>Estudio</th><th>Entrevistas</th><th>Claves voto + provincia</th><th>Claves simpatía + provincia</th><th>Claves simpatía → VOTOSIMG</th><th>Respuesta definida conservada</th><th>Claves ambiguas</th></tr></thead><tbody>'+trs+'</tbody></table></div>'+
   '<details class="historical-transitions-detail"><summary>Ver los cambios de candidaturas al recodificar por territorio</summary>'+
   '<p>Ejemplos con al menos 20 casos por celda; los menores se presentan agrupados. Código 67: En Común–Unidas Podemos; código 50: Más País. Estos nombres pertenecen a 2019, no a Sumar actual.</p>'+
   '<div class="table-wrap"><table><thead><tr><th>Estudio</th><th>Respuesta original</th><th>Destino en el archivo recodificado</th><th>Entrevistas</th></tr></thead><tbody>'+ex+'</tbody></table></div>'+
