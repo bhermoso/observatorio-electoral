@@ -33,7 +33,7 @@ Fuente: [¿Qué encuestas aciertan más? Compara los errores y los sesgos de cad
 **Fase: análisis de cifras agregadas publicadas, NO microdatos individuales.** Se han revisado las páginas con intención directa, estimación y no respuesta de los informes originales: barómetro mensual del **5 de octubre** (pp. 8 y 13) y flash del **9 de octubre** (pp. 5 y 16). Los ZIP originales se anuncian públicamente pero el entorno de análisis no pudo obtener sus bytes (no admite el tipo ZIP para lectura web y el descargador local no dispone de resolución de dominio). La web no declara las entrevistas como procesadas.
 
 El módulo `contraste-40db.mjs` conserva los valores transcritos y calcula:
-- (D = 100 - (\mathrm{nulo}+\mathrm{no\ votaría}+\mathrm{no\ sabe}+\mathrm{no\ contesta})) puntos de la población entrevistada; incluye **voto en blanco** entre los declarantes de voto válido. Los datos redondeados dan **81,2 %** el 5/10 y **83,1 %** el 9/10.
+- `D = 100 - (nulo + no votaría + no lo sabe + no contesta)` puntos de la población entrevistada; incluye **voto en blanco** entre los declarantes de voto válido. Los datos redondeados dan **81,2 %** el 5/10 y **83,1 %** el 9/10.
 - `directa_valida = directa / D * 100`, una **normalización mecánica**, no una estimación electoral.
 - `residuo = estimacion_40db - directa_valida`, brecha que **no permite recuperar por sí sola** un coeficiente interno, ni imputar causalmente efecto a recuerdo, simpatía o propensión.
 
