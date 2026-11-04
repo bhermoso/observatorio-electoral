@@ -1,0 +1,52 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {extraerResultadosCocina,renderResultadosCocina,renderTablaCocina} from '../cocina-resultados.mjs';
+import {renderCocina} from '../cocina.mjs';
+const micro=JSON.parse(fs.readFileSync('data/microdatos/analisis_3582.json','utf8'));
+const audit=JSON.parse(fs.readFileSync('data/microdatos/auditoria_cocina_23j.json','utf8'));
+test('La portada de Cocina contiene resultados reproducibles del CIS 3582',()=>{
+ const s=extraerResultadosCocina(micro,audit);
+ assert.equal(s.estudio,'3582');
+ assert.equal(s.n,5024);
+ assert.equal(s.rows.length,6);
+ assert.equal(s.rows.find(x=>x.party==='PSOE').direct,25.298);
+ assert.equal(s.rows.find(x=>x.party==='PP').official,22.2);
+ const html=renderTablaCocina(s);
+ assert.match(html,/(?:5024|5\.024)/);
+ assert.match(html,/25,3 %/);
+ assert.match(html,/36,2 %/);
+ assert.match(html,/34,0 %/);
+ assert.match(html,/probarla en otro estudio/);
+ assert.match(html,/No equivalen|denominadores distintos/i);
+ assert.match(html,/cambiar|prueba/i);
+ assert.match(html,/Documento original del CIS/);
+});
+test('El examen cruzado no aprueba cocina a partir de una sola elección',()=>{
+ const s=extraerResultadosCocina(micro,audit);
+ assert.equal(s.trials.length,2);
+ assert.equal(s.nMejoras,0);
+ assert.equal(s.trials[0].seleccion,'3411');
+ assert.equal(s.trials[0].evaluacion,'3415');
+ assert.ok(s.trials[0].error>s.trials[0].referencia);
+ assert.equal(s.trials[1].mejora,false);
+ const html=renderTablaCocina(s);
+ assert.match(html,/0 de 2/);
+ assert.match(html,/una misma elección/);
+ assert.match(html,/(?:no|ni) justifican trasladar/);
+});
+test('Datos ilegibles o manipulados se rechazan, sin fabricar estimaciones',()=>{
+ assert.throws(()=>extraerResultadosCocina({...micro,n:0},audit));
+ assert.throws(()=>extraerResultadosCocina({...micro,comparison:micro.comparison.slice(1)},audit));
+ assert.throws(()=>extraerResultadosCocina({...micro,comparison:[{...micro.comparison[0],direct:110},...micro.comparison.slice(1)]},audit));
+ assert.throws(()=>extraerResultadosCocina(micro,{...audit,pruebas_seleccion_y_traslado:[]}));
+});
+test('Resultados visibles antes de lección y tabla técnica desplegada',()=>{
+ const html=renderCocina();
+ assert.ok(html.indexOf('id="cocina-resultados"')>=0);
+ assert.ok(html.indexOf('id="cocina-resultados"')<html.indexOf('id="cocina-observatorio"'));
+ assert.match(html,/<details class="kitchen-extended-study">/);
+ assert.match(renderResultadosCocina(),/id="kitchen-results-data"/);
+ const build=fs.readFileSync('scripts/build.mjs','utf8');
+ assert.match(build,/cocina-resultados\.mjs/);
+});

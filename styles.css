@@ -779,3 +779,39 @@ body:not(.dashboard-route) .event-reading .er-levels>li{margin-bottom:12px}
  #impact .forecast-lead-kpis .forecast-mini-kpi>strong{font-size:17px}
  #impact .forecast-lead-kpis .forecast-mini-kpi>small{display:none}
 }
+
+/* Cocina: cifras observadas primero, explicación completa bajo demanda. */
+.kitchen-results{padding:17px 20px}
+.kitchen-results-heading{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:4px}
+.kitchen-results-heading h2{font-size:21px;margin:4px 0}
+.kitchen-results-heading>a{font-size:12px;font-weight:700;color:#205d44;white-space:nowrap}
+.kitchen-results-intro{font-size:13px;line-height:1.4;margin:5px 0 10px;color:#466153}
+.kitchen-observed-meta{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:7px}
+.kitchen-observed-meta p{margin:4px 0 9px;font-size:12px}
+.kitchen-observed-meta a{color:#205d44}
+.kitchen-observed-table{margin:0 0 7px;overflow-x:auto}
+.kitchen-observed-table table{min-width:760px}
+.kitchen-observed-table caption{font-size:11px;margin-bottom:4px}
+.kitchen-observed-table td,.kitchen-observed-table th{padding:7px 9px!important;font-size:13px!important;white-space:nowrap;font-variant-numeric:tabular-nums}
+.kitchen-observed-table td{font-weight:600;color:#244b37}
+.kitchen-observed-table th[scope=row]{color:#244b37}
+.kitchen-observed-table thead th{font-weight:650;color:#436453;background:#eaf2e8}
+.kitchen-observed-table span[title]{text-decoration:underline dotted;text-underline-offset:3px;cursor:help}
+.kitchen-measures{padding:6px 0!important}
+.kitchen-measures summary{font-size:12px;color:#245a40}
+.kitchen-measures dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 14px;margin:10px 0 0}
+.kitchen-measures dt{font-size:12px;font-weight:700}
+.kitchen-measures dd{font-size:12px;margin:0;color:#58705c}
+.kitchen-validation-head{border-top:1px solid #d6e2d4;display:flex;align-items:center;justify-content:space-between;gap:18px;padding-top:11px;margin-top:8px}
+.kitchen-validation-head h3{font-size:16px;margin:0}
+.kitchen-validation-head p{font-size:12px;margin:4px 0;line-height:1.35}
+.kitchen-validation-head>p{min-width:160px;color:#264c39}
+.kitchen-validation-head>p strong{font-family:Manrope,system-ui;font-size:22px}
+.kitchen-validation-table table{min-width:700px}
+.kitchen-validation-table th,.kitchen-validation-table td{font-size:12px!important;padding:6px 8px!important}
+.kitchen-limit{font-size:12px;line-height:1.4;color:#496456;margin:9px 0 0}
+.kitchen-limit a{color:#1c5b42}
+.kitchen-extended-study{margin:13px 0!important;padding:10px 0!important}
+.kitchen-extended-study>summary{font-size:14px;color:#215b42;font-weight:700}
+.kitchen-extended-study>.panel{margin:11px 0!important}
+@media(max-width:740px){.kitchen-results-heading,.kitchen-validation-head{align-items:start;flex-direction:column}.kitchen-measures dl{grid-template-columns:1fr}}
