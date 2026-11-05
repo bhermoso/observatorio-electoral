@@ -41,6 +41,17 @@ Fuentes originales destacadas: [GAD3 Aragón 2026](https://www.gad3.com/rindiend
 **Importante:** este catálogo no modifica el pronóstico operativo del Motor 29N ni inserta sus registros como encuestas de intención de voto. Un mismo estudio no puede añadirse por duplicado al aparecer en portal del productor y en el de su contratante.
 
 
+## Depósito privado de originales · 5 de noviembre de 2026
+
+Se ha creado en Supabase el bucket privado **oee-microdatos-originales** con public=false y sin políticas de acceso público para sus objetos. La tabla privada public.microdata_originals registra cada estudio, su SHA-256, tamaño, ruta privada y fecha de recuperación verificada. Su lectura directa no está concedida a cuentas anónimas ni autenticadas.
+
+La función Edge almacen-microdatos almacena exclusivamente archivos de una lista explícita de cuatro ZIP de More in Common (mayo, julio, septiembre y octubre de 2026), publicados en https://moreincommon.es/pulso-electoral.html para que terceros realicen análisis propios. Cada archivo tiene URL, tamaño y SHA-256 fijados tras la auditoría del Observatorio. Cambios de bytes o URLs no aprobadas se rechazan. No se presume autorización para redistribuir microdatos ni para almacenar otras casas sin revisar condiciones.
+
+El workflow de custodia .github/workflows/guardar-microdatos.yml usa identidad OpenID Connect de GitHub Actions, sin claves permanentes de Supabase en GitHub. El backend verifica firma, audiencia, repositorio, workflow y rama, descarga el fichero, confirma tamaño y SHA-256, lo guarda en Storage privado y vuelve a leerlo y comprobar su huella. Solo entonces registra un certificado. Los ZIP no se publican en GitHub Actions ni en GitHub Pages.
+
+El estado público de solo metadatos está en https://gjzihgfzxorpvevrrfkh.supabase.co/functions/v1/almacen-microdatos?action=status. Los dos paneles de Encuestas distinguen descarga temporal de original recuperable. Únicamente se muestra «Original guardado: Sí» cuando el certificado coincide con SHA-256 del manifiesto auditado; si no se consulta Supabase se indica «Sin verificar».
+
+Conservar matrices no implica homologar variables, aprobar una receta de cocina ni cambiar la estimación del Motor 29N. Las entrevistas permanecen privadas y solo podrán publicarse análisis agregados expresamente revisados.
 ## Cómo saber si un microdato está cargado (estado real, independiente de las encuestas)
 
 En **Encuestas → Archivo de microdatos** cada entrada muestra **Estado real de microdatos**, **Original guardado** y **Motor 29N**. Se puede filtrar entre localizados, descargados alguna vez, almacenados, analizados y pendientes.
