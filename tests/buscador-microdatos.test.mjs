@@ -52,6 +52,12 @@ test('Las noticias o fuentes maliciosas se escapan en pantalla',()=>{
  assert.doesNotMatch(html,/<script|href="javascript:|<img/);
  assert.match(html,/&lt;script/);
 });
+test('No atribuye noticias genéricas extranjeras a GAD3',()=>{
+ const rss='<rss><channel><item><title>Microdatos de las encuestas antes de primera - La Silla Vacía</title><link>https://news.google.com/rss/articles/a</link></item><item><title>GAD3 publica microdatos de encuesta electoral</title><link>https://news.google.com/rss/articles/b</link></item></channel></rss>';
+ const rows=microNews(rss,'GAD3');
+ assert.equal(rows.length,1);
+ assert.match(rows[0].titulo,/GAD3/);
+});
 test('Ordena páginas reales y no mezcla URL conocidas con enlaces nuevos',()=>{
  const d=JSON.parse(read('../data/microdatos/catalogo-publico.json'));
  const pages=choosePages(d,16);
