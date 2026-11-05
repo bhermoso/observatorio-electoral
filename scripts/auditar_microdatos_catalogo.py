@@ -35,6 +35,7 @@ ALLOWED = {
     "www.cemopmurcia.es", "cemopmurcia.es",
 }
 SUPPORTED = {".zip", ".sav", ".dta", ".csv", ".xlsx"}
+SCAN_URL = "https://gjzihgfzxorpvevrrfkh.supabase.co/functions/v1/microdatos?action=status"
 VAR_RE = re.compile(r"recuerd|vot|particip|ponder|peso|factor|weight|simpat|indecis|probab", re.I)
 FIELDS = ("id", "productor", "fecha", "archivo")
 CATALOG = Path("data/microdatos/catalogo-publico.json")
@@ -248,6 +249,56 @@ def candidates(catalog, limit=12):
     )[:limit]
 
 
+
+def read_discoveries(catalog):
+    """Conecta el resultado REAL del buscador al siguiente paso de descarga.
+
+    Solo admite URLs de archivos vistas en páginas oficiales, en hosts aprobados.
+    No interpreta noticias RSS como descargas. No persiste respuestas individuales.
+    """
+    from datetime import timedelta
+    try:
+        req = urllib.request.Request(
+            SCAN_URL,
+            headers={"Accept": "application/json", "Origin": "https://bhermoso.github.io"},
+        )
+        with urllib.request.urlopen(req, timeout=12) as response:
+            raw = response.read(400001)
+        if len(raw) > 400000:
+            raise ValueError("cache_excesiva")
+        data = json.loads(raw)
+        checked = datetime.fromisoformat(data["checked_at"].replace("Z", "+00:00"))
+        if datetime.now(timezone.utc) - checked > timedelta(days=8):
+            return []
+        known = {x.get("archivo", "").split("?")[0] for x in catalog["estudios"]}
+        allowed_sources = {"40db", "gad3", "more-in-common", "sociometrica", "cemop"}
+        out = []
+        for row in data.get("candidates", [])[:120]:
+            if row.get("tipo") != "enlace_a_archivo":
+                continue
+            source = str(row.get("fuente", "")).lower().strip()
+            if source not in allowed_sources:
+                continue
+            url = row.get("url")
+            try:
+                validate_url(url)
+            except (ValueError, TypeError):
+                continue
+            if url.split("?")[0] in known:
+                continue
+            known.add(url.split("?")[0])
+            out.append({
+                "id": "hallazgo-" + hashlib.sha256(url.split("?")[0].encode()).hexdigest()[:16],
+                "productor": source, "fecha": checked.date().isoformat(),
+                "ambito": "Por verificar", "archivo": url,
+                "estado": "candidato_documental", "origen": "scan_supabase",
+            })
+        return out[:10]
+    except (ValueError, KeyError, TimeoutError, OSError, urllib.error.URLError,
+            json.JSONDecodeError) as exc:
+        print("Hallazgos Supabase no disponibles; se utiliza catálogo: " + type(exc).__name__)
+        return []
+
 def build(previous, results, now):
     prior = {x["id"]: x for x in previous.get("archivos", [])}
     archived = []
@@ -258,20 +309,29 @@ def build(previous, results, now):
         old_comparable = {k: v for k, v in old.items() if k != "verificado_en"}
         record["verificado_en"] = old.get("verificado_en") if comparable == old_comparable else now
         archived.append(record)
-    return {"esquema": 1, "fuente": "archivos_orig_publicos_autorizados_para_lectura",
+    for key, old in sorted(prior.items()):
+        if key not in {r["id"] for r in archived}:
+            archived.append(old)
+    archived.sort(key=lambda row: row["id"])
+    return {"esquema": 1, "fuente": "enlaces_originales_publicos",
             "nota": "Auditoría técnica no equivale a autorización de redistribución, homologación de variables ni elegibilidad para Motor 29N. Ninguna respuesta individual se guarda en GitHub.",
             "archivos": archived}
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--limit", type=int, default=12)
+    ap.add_argument("--limit", type=int, default=18)
+    ap.add_argument("--sin-hallazgos", action="store_true", help="No consultar la búsqueda reciente")
     ap.add_argument("--output", default=str(OUTPUT))
     args = ap.parse_args()
     if not 1 <= args.limit <= 25:
         raise SystemExit("--limit debe estar entre 1 y 25")
     catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
     studies = candidates(catalog, args.limit)
+    if not args.sin_hallazgos:
+        fresh = read_discoveries(catalog)
+        # Los hallazgos del buscador se prueban antes que los enlaces antiguos.
+        studies = (fresh + studies)[:args.limit]
     if not studies:
         raise SystemExit("Ningún enlace autorizado en catálogo")
     output = Path(args.output)
