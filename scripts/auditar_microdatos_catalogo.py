@@ -102,10 +102,15 @@ def binary_matrix(data: bytes, ext: str):
     with tempfile.TemporaryDirectory() as tmp:
         file = Path(tmp) / ("encuesta" + ext)
         file.write_bytes(data)
-        if ext == ".sav":
-            _, md = pyreadstat.read_sav(str(file), metadataonly=True, output_format="dict")
-        else:
-            _, md = pyreadstat.read_dta(str(file), metadataonly=True, output_format="dict")
+        reader = pyreadstat.read_sav if ext == ".sav" else pyreadstat.read_dta
+        try:
+            _, md = reader(str(file), metadataonly=True, output_format="dict")
+        except Exception:
+            try:
+                # Las matrices antiguas pueden contener cadenas CP1252/Latin-1.
+                _, md = reader(str(file), metadataonly=True, output_format="dict", encoding="latin1")
+            except Exception:
+                raise RuntimeError("fichero_estadistico_no_legible") from None
     return {
         "tipo": ext.lstrip("."),
         "filas": int(md.number_rows or 0),
@@ -167,7 +172,7 @@ def zip_matrix(data: bytes):
                 else:
                     record = csv_matrix(raw)
                 summaries.append(record)
-            except (ValueError, RuntimeError, OSError, zipfile.BadZipFile) as exc:
+            except Exception as exc:
                 summaries.append({"tipo": suffix[1:], "error": type(exc).__name__})
         return {
             "tipo": "zip", "miembros": len(members),
@@ -221,8 +226,8 @@ def audit(study):
         result.update({"estado": "descarga_fallida", "error": "HTTP_" + str(e.code)})
     except urllib.error.URLError:
         result.update({"estado": "descarga_fallida", "error": "conexion_no_disponible"})
-    except (TimeoutError, OSError, ValueError, RuntimeError, zipfile.BadZipFile) as e:
-        result.update({"estado": "descarga_fallida", "error": str(e)[:85] if isinstance(e, ValueError) else type(e).__name__})
+    except Exception as e:
+        result.update({"estado": "descarga_fallida", "error": str(e)[:85] if isinstance(e, (ValueError, RuntimeError)) else type(e).__name__})
     return result
 
 
