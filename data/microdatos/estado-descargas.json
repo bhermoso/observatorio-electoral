@@ -1,6 +1,955 @@
 {
   "esquema": 1,
   "fuente": "enlaces_originales_publicos",
-  "nota": "Auditoría técnica de archivos. No se alojan entrevistas individuales; no equivale a homologación ni a autorización de redistribución. El análisis automático está pendiente de su primera ejecución.",
-  "archivos": []
+  "nota": "Auditoría técnica no equivale a autorización de redistribución, homologación de variables ni elegibilidad para Motor 29N. Ninguna respuesta individual se guarda en GitHub.",
+  "archivos": [
+    {
+      "id": "40db-2026-03-09",
+      "productor": "40db",
+      "fecha": "2026-03-09",
+      "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/03-cyl/2026_03_cyl_descargables.zip",
+      "estado": "matriz_detectada_pendiente_homologacion",
+      "es_pronostico": false,
+      "bytes": 3652709,
+      "sha256": "cdd99a251aaa956ff2e7a02889ad52821d86a57e334e6568790b169d0668d3af",
+      "estructura": {
+        "tipo": "zip",
+        "miembros": 7,
+        "ficheros_tabulares": 4,
+        "matrices": [
+          {
+            "tipo": "sav",
+            "filas": 1200,
+            "columnas": 64,
+            "variables_clave": []
+          },
+          {
+            "tipo": "dta",
+            "filas": 1200,
+            "columnas": 64,
+            "variables_clave": []
+          },
+          {
+            "tipo": "xlsx",
+            "hojas": 1,
+            "resumen_hojas": [
+              {
+                "filas": 1201,
+                "columnas": 64
+              }
+            ]
+          },
+          {
+            "tipo": "xlsx",
+            "hojas": 12,
+            "resumen_hojas": [
+              {
+                "filas": 1012,
+                "columnas": 26
+              },
+              {
+                "filas": 624,
+                "columnas": 61
+              },
+              {
+                "filas": 624,
+                "columnas": 60
+              },
+              {
+                "filas": 624,
+                "columnas": 62
+              },
+              {
+                "filas": 624,
+                "columnas": 53
+              },
+              {
+                "filas": 624,
+                "columnas": 58
+              },
+              {
+                "filas": 624,
+                "columnas": 57
+              },
+              {
+                "filas": 624,
+                "columnas": 58
+              },
+              {
+                "filas": 624,
+                "columnas": 58
+              },
+              {
+                "filas": 624,
+                "columnas": 58
+              },
+              {
+                "filas": 624,
+                "columnas": 60
+              },
+              {
+                "filas": 37,
+                "columnas": 10000
+              }
+            ]
+          }
+        ]
+      },
+      "verificado_en": "2026-11-05T06:45:14+00:00"
+    },
+    {
+      "id": "40db-2026-05-04",
+      "productor": "40db",
+      "fecha": "2026-05-04",
+      "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/05-barometro-y-regularizacion/2026_05_barometro_y_regularizacion.zip",
+      "estado": "hoja_descargada_sin_matriz_individual_confirmada",
+      "es_pronostico": false,
+      "bytes": 6099087,
+      "sha256": "6c1b3fcfff6a325e534a2530617f7577f4bd0b796e572d0219de94875daefcf8",
+      "estructura": {
+        "tipo": "zip",
+        "miembros": 8,
+        "ficheros_tabulares": 4,
+        "matrices": [
+          {
+            "tipo": "xlsx",
+            "hojas": 14,
+            "resumen_hojas": [
+              {
+                "filas": 1008,
+                "columnas": 26
+              },
+              {
+                "filas": 882,
+                "columnas": 12
+              },
+              {
+                "filas": 882,
+                "columnas": 18
+              },
+              {
+                "filas": 882,
+                "columnas": 18
+              },
+              {
+                "filas": 882,
+                "columnas": 18
+              },
+              {
+                "filas": 882,
+                "columnas": 18
+              },
+              {
+                "filas": 882,
+                "columnas": 18
+              },
+              {
+                "filas": 882,
+                "columnas": 18
+              },
+              {
+                "filas": 882,
+                "columnas": 18
+              },
+              {
+                "filas": 882,
+                "columnas": 18
+              },
+              {
+                "filas": 882,
+                "columnas": 18
+              },
+              {
+                "filas": 882,
+                "columnas": 18
+              }
+            ]
+          },
+          {
+            "tipo": "xlsx",
+            "hojas": 1,
+            "resumen_hojas": [
+              {
+                "filas": 2001,
+                "columnas": 75
+              }
+            ]
+          },
+          {
+            "tipo": "dta",
+            "filas": 2000,
+            "columnas": 75,
+            "variables_clave": []
+          },
+          {
+            "tipo": "sav",
+            "filas": 2000,
+            "columnas": 75,
+            "variables_clave": []
+          }
+        ]
+      },
+      "verificado_en": "2026-11-05T06:45:14+00:00"
+    },
+    {
+      "id": "40db-2026-05-11",
+      "productor": "40db",
+      "fecha": "2026-05-11",
+      "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/05-andalucia/2026_05_Andalucia_descargables.zip",
+      "estado": "hoja_descargada_sin_matriz_individual_confirmada",
+      "es_pronostico": false,
+      "bytes": 3394073,
+      "sha256": "bfff3d06b3c64d018c45f4e5210e8d9de4b576b9695d0cf39201a98e6297e944",
+      "estructura": {
+        "tipo": "zip",
+        "miembros": 7,
+        "ficheros_tabulares": 4,
+        "matrices": [
+          {
+            "tipo": "xlsx",
+            "hojas": 1,
+            "resumen_hojas": [
+              {
+                "filas": 1201,
+                "columnas": 54
+              }
+            ]
+          },
+          {
+            "tipo": "sav",
+            "filas": 1200,
+            "columnas": 54,
+            "variables_clave": []
+          },
+          {
+            "tipo": "dta",
+            "filas": 1200,
+            "columnas": 54,
+            "variables_clave": []
+          },
+          {
+            "tipo": "xlsx",
+            "hojas": 12,
+            "resumen_hojas": [
+              {
+                "filas": 1012,
+                "columnas": 26
+              },
+              {
+                "filas": 493,
+                "columnas": 58
+              },
+              {
+                "filas": 493,
+                "columnas": 57
+              },
+              {
+                "filas": 493,
+                "columnas": 58
+              },
+              {
+                "filas": 493,
+                "columnas": 53
+              },
+              {
+                "filas": 493,
+                "columnas": 58
+              },
+              {
+                "filas": 493,
+                "columnas": 57
+              },
+              {
+                "filas": 493,
+                "columnas": 58
+              },
+              {
+                "filas": 493,
+                "columnas": 58
+              },
+              {
+                "filas": 493,
+                "columnas": 58
+              },
+              {
+                "filas": 493,
+                "columnas": 60
+              },
+              {
+                "filas": 37,
+                "columnas": 10000
+              }
+            ]
+          }
+        ]
+      },
+      "verificado_en": "2026-11-05T06:45:14+00:00"
+    },
+    {
+      "id": "40db-2026-09-07",
+      "productor": "40db",
+      "fecha": "2026-09-07",
+      "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/09-barometro/2026_09_barometro_descargables.zip",
+      "estado": "matriz_detectada_pendiente_homologacion",
+      "es_pronostico": false,
+      "bytes": 6791970,
+      "sha256": "958f8fe771760ec52c138264bc430b9a57f06144d957e26c4f73666ba6e71703",
+      "estructura": {
+        "tipo": "zip",
+        "miembros": 8,
+        "ficheros_tabulares": 4,
+        "matrices": [
+          {
+            "tipo": "sav",
+            "filas": 2000,
+            "columnas": 83,
+            "variables_clave": []
+          },
+          {
+            "tipo": "dta",
+            "filas": 2000,
+            "columnas": 83,
+            "variables_clave": []
+          },
+          {
+            "tipo": "xlsx",
+            "hojas": 1,
+            "resumen_hojas": [
+              {
+                "filas": 2001,
+                "columnas": 83
+              }
+            ]
+          },
+          {
+            "tipo": "xlsx",
+            "hojas": 14,
+            "resumen_hojas": [
+              {
+                "filas": 1008,
+                "columnas": 26
+              },
+              {
+                "filas": 676,
+                "columnas": 12
+              },
+              {
+                "filas": 676,
+                "columnas": 18
+              },
+              {
+                "filas": 676,
+                "columnas": 18
+              },
+              {
+                "filas": 676,
+                "columnas": 18
+              },
+              {
+                "filas": 676,
+                "columnas": 18
+              },
+              {
+                "filas": 676,
+                "columnas": 18
+              },
+              {
+                "filas": 676,
+                "columnas": 18
+              },
+              {
+                "filas": 676,
+                "columnas": 18
+              },
+              {
+                "filas": 676,
+                "columnas": 18
+              },
+              {
+                "filas": 676,
+                "columnas": 18
+              },
+              {
+                "filas": 676,
+                "columnas": 18
+              }
+            ]
+          }
+        ]
+      },
+      "verificado_en": "2026-11-05T06:45:14+00:00"
+    },
+    {
+      "id": "gad3-2026-05-11",
+      "productor": "gad3",
+      "fecha": "2026-05-11",
+      "url": "https://www.gad3.com/wp-content/uploads/2026/05/GAD3-Microdatos-ABC-Andalucia-2026.xlsx",
+      "estado": "descarga_fallida",
+      "es_pronostico": false,
+      "error": "RemoteDisconnected",
+      "verificado_en": "2026-11-05T06:45:14+00:00"
+    },
+    {
+      "id": "hallazgo-3821cc0f24b31d84",
+      "productor": "40db",
+      "fecha": "2026-11-05",
+      "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/07-barometro/2026_07_barometro_descargables.zip?v=20260706.2",
+      "estado": "matriz_detectada_pendiente_homologacion",
+      "es_pronostico": false,
+      "bytes": 6066724,
+      "sha256": "ed09ff14efba5339038e48365d738b6f5dfb9584abbd12f5b78aab18d13f53ad",
+      "estructura": {
+        "tipo": "zip",
+        "miembros": 9,
+        "ficheros_tabulares": 4,
+        "matrices": [
+          {
+            "tipo": "dta",
+            "filas": 2000,
+            "columnas": 83,
+            "variables_clave": []
+          },
+          {
+            "tipo": "sav",
+            "filas": 2000,
+            "columnas": 83,
+            "variables_clave": []
+          },
+          {
+            "tipo": "xlsx",
+            "hojas": 14,
+            "resumen_hojas": [
+              {
+                "filas": 1008,
+                "columnas": 26
+              },
+              {
+                "filas": 904,
+                "columnas": 12
+              },
+              {
+                "filas": 904,
+                "columnas": 18
+              },
+              {
+                "filas": 904,
+                "columnas": 18
+              },
+              {
+                "filas": 904,
+                "columnas": 18
+              },
+              {
+                "filas": 904,
+                "columnas": 18
+              },
+              {
+                "filas": 904,
+                "columnas": 18
+              },
+              {
+                "filas": 904,
+                "columnas": 18
+              },
+              {
+                "filas": 904,
+                "columnas": 18
+              },
+              {
+                "filas": 904,
+                "columnas": 18
+              },
+              {
+                "filas": 904,
+                "columnas": 18
+              },
+              {
+                "filas": 904,
+                "columnas": 18
+              }
+            ]
+          },
+          {
+            "tipo": "xlsx",
+            "hojas": 1,
+            "resumen_hojas": [
+              {
+                "filas": 2001,
+                "columnas": 83
+              }
+            ]
+          }
+        ]
+      },
+      "verificado_en": "2026-11-05T06:45:14+00:00"
+    },
+    {
+      "id": "hallazgo-fb42daa738873a2a",
+      "productor": "40db",
+      "fecha": "2026-11-05",
+      "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/06-barometro-y-Papa/91_Junio_2026_completo.zip",
+      "estado": "hoja_descargada_sin_matriz_individual_confirmada",
+      "es_pronostico": false,
+      "bytes": 6701403,
+      "sha256": "3cb2de6bcc0b994532778d3bdfcf00a702996b80cd859f6a476ef53c1e3f61ca",
+      "estructura": {
+        "tipo": "zip",
+        "miembros": 8,
+        "ficheros_tabulares": 4,
+        "matrices": [
+          {
+            "tipo": "xlsx",
+            "hojas": 15,
+            "resumen_hojas": [
+              {
+                "filas": 1010,
+                "columnas": 26
+              },
+              {
+                "filas": 734,
+                "columnas": 12
+              },
+              {
+                "filas": 734,
+                "columnas": 18
+              },
+              {
+                "filas": 734,
+                "columnas": 18
+              },
+              {
+                "filas": 734,
+                "columnas": 18
+              },
+              {
+                "filas": 734,
+                "columnas": 18
+              },
+              {
+                "filas": 734,
+                "columnas": 18
+              },
+              {
+                "filas": 734,
+                "columnas": 18
+              },
+              {
+                "filas": 734,
+                "columnas": 18
+              },
+              {
+                "filas": 734,
+                "columnas": 18
+              },
+              {
+                "filas": 979,
+                "columnas": 18
+              },
+              {
+                "filas": 736,
+                "columnas": 18
+              }
+            ]
+          },
+          {
+            "tipo": "dta",
+            "filas": 2000,
+            "columnas": 93,
+            "variables_clave": []
+          },
+          {
+            "tipo": "sav",
+            "filas": 2000,
+            "columnas": 93,
+            "variables_clave": []
+          },
+          {
+            "tipo": "xlsx",
+            "hojas": 1,
+            "resumen_hojas": [
+              {
+                "filas": 2001,
+                "columnas": 93
+              }
+            ]
+          }
+        ]
+      },
+      "verificado_en": "2026-11-05T06:45:14+00:00"
+    },
+    {
+      "id": "hallazgo-fb59db5622e60316",
+      "productor": "40db",
+      "fecha": "2026-11-05",
+      "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/04-barometro-y-orden-mundial/2026_04_barometro_descargables.zip",
+      "estado": "hoja_descargada_sin_matriz_individual_confirmada",
+      "es_pronostico": false,
+      "bytes": 6124841,
+      "sha256": "54b110feeccdac1d57aa71e5000a59aaeef948cf6e92641c41e5bde29f11a9c3",
+      "estructura": {
+        "tipo": "zip",
+        "miembros": 8,
+        "ficheros_tabulares": 4,
+        "matrices": [
+          {
+            "tipo": "xlsx",
+            "hojas": 14,
+            "resumen_hojas": [
+              {
+                "filas": 1008,
+                "columnas": 26
+              },
+              {
+                "filas": 846,
+                "columnas": 12
+              },
+              {
+                "filas": 846,
+                "columnas": 18
+              },
+              {
+                "filas": 846,
+                "columnas": 18
+              },
+              {
+                "filas": 846,
+                "columnas": 18
+              },
+              {
+                "filas": 846,
+                "columnas": 18
+              },
+              {
+                "filas": 846,
+                "columnas": 18
+              },
+              {
+                "filas": 846,
+                "columnas": 18
+              },
+              {
+                "filas": 846,
+                "columnas": 18
+              },
+              {
+                "filas": 846,
+                "columnas": 18
+              },
+              {
+                "filas": 846,
+                "columnas": 18
+              },
+              {
+                "filas": 846,
+                "columnas": 18
+              }
+            ]
+          },
+          {
+            "tipo": "dta",
+            "filas": 2000,
+            "columnas": 99,
+            "variables_clave": []
+          },
+          {
+            "tipo": "sav",
+            "filas": 2000,
+            "columnas": 99,
+            "variables_clave": []
+          },
+          {
+            "tipo": "xlsx",
+            "hojas": 3,
+            "resumen_hojas": [
+              {
+                "filas": 2001,
+                "columnas": 99
+              },
+              {
+                "filas": 1,
+                "columnas": 1
+              },
+              {
+                "filas": 1,
+                "columnas": 1
+              }
+            ]
+          }
+        ]
+      },
+      "verificado_en": "2026-11-05T06:45:14+00:00"
+    },
+    {
+      "id": "more-in-common-2026-05-01",
+      "productor": "more-in-common",
+      "fecha": "2026-05-01",
+      "url": "https://moreincommon.es/data/microdatos-2026-05.zip",
+      "estado": "matriz_detectada_pendiente_homologacion",
+      "es_pronostico": false,
+      "bytes": 286799,
+      "sha256": "3a65823bcbd3b94df84f77650755f8bdf47b22e0ab4a4c252136d986a2b5b3f8",
+      "estructura": {
+        "tipo": "zip",
+        "miembros": 3,
+        "ficheros_tabulares": 2,
+        "matrices": [
+          {
+            "tipo": "csv",
+            "columnas": 60,
+            "filas_aproximadas": 2547,
+            "variables_clave": [
+              "participacion_2023_raw",
+              "participacion_2023_final",
+              "voto_2023_raw",
+              "voto_2023_raw_otros",
+              "voto_2023_final",
+              "prob_voto_declarada",
+              "intencion_voto_raw",
+              "intencion_voto_raw_otros",
+              "intencion_voto_simpatia",
+              "intencion_voto_final",
+              "simpatia_partido",
+              "simpatia_partido_otros",
+              "prob_voto_pp",
+              "prob_voto_psoe",
+              "prob_voto_vox",
+              "prob_voto_sumar",
+              "prob_voto_podemos",
+              "prob_voto_salf"
+            ]
+          },
+          {
+            "tipo": "sav",
+            "filas": 2547,
+            "columnas": 60,
+            "variables_clave": [
+              "participacion_2023_raw",
+              "participacion_2023_final",
+              "voto_2023_raw",
+              "voto_2023_raw_otros",
+              "voto_2023_final",
+              "prob_voto_declarada",
+              "intencion_voto_raw",
+              "intencion_voto_raw_otros",
+              "intencion_voto_simpatia",
+              "intencion_voto_final",
+              "simpatia_partido",
+              "simpatia_partido_otros",
+              "prob_voto_pp",
+              "prob_voto_psoe",
+              "prob_voto_vox",
+              "prob_voto_sumar",
+              "prob_voto_podemos",
+              "prob_voto_salf"
+            ]
+          }
+        ]
+      },
+      "verificado_en": "2026-11-05T06:45:14+00:00"
+    },
+    {
+      "id": "more-in-common-2026-07-01",
+      "productor": "more-in-common",
+      "fecha": "2026-07-01",
+      "url": "https://moreincommon.es/data/microdatos-2026-07.zip",
+      "estado": "matriz_detectada_pendiente_homologacion",
+      "es_pronostico": false,
+      "bytes": 270287,
+      "sha256": "6d369d9d91ccda486cddc64ba7cb80af265b263e12e413696c5c42fb843b0a71",
+      "estructura": {
+        "tipo": "zip",
+        "miembros": 3,
+        "ficheros_tabulares": 2,
+        "matrices": [
+          {
+            "tipo": "csv",
+            "columnas": 60,
+            "filas_aproximadas": 2277,
+            "variables_clave": [
+              "participacion_2023_raw",
+              "participacion_2023_final",
+              "voto_2023_raw",
+              "voto_2023_raw_otros",
+              "voto_2023_final",
+              "prob_voto_declarada",
+              "intencion_voto_raw",
+              "intencion_voto_raw_otros",
+              "intencion_voto_simpatia",
+              "intencion_voto_final",
+              "simpatia_partido",
+              "simpatia_partido_otros",
+              "prob_voto_pp",
+              "prob_voto_psoe",
+              "prob_voto_vox",
+              "prob_voto_sumar",
+              "prob_voto_podemos",
+              "prob_voto_salf"
+            ]
+          },
+          {
+            "tipo": "sav",
+            "filas": 2277,
+            "columnas": 60,
+            "variables_clave": [
+              "participacion_2023_raw",
+              "participacion_2023_final",
+              "voto_2023_raw",
+              "voto_2023_raw_otros",
+              "voto_2023_final",
+              "prob_voto_declarada",
+              "intencion_voto_raw",
+              "intencion_voto_raw_otros",
+              "intencion_voto_simpatia",
+              "intencion_voto_final",
+              "simpatia_partido",
+              "simpatia_partido_otros",
+              "prob_voto_pp",
+              "prob_voto_psoe",
+              "prob_voto_vox",
+              "prob_voto_sumar",
+              "prob_voto_podemos",
+              "prob_voto_salf"
+            ]
+          }
+        ]
+      },
+      "verificado_en": "2026-11-05T06:45:14+00:00"
+    },
+    {
+      "id": "more-in-common-2026-09-01",
+      "productor": "more-in-common",
+      "fecha": "2026-09-01",
+      "url": "https://moreincommon.es/data/microdatos-2026-09.zip",
+      "estado": "matriz_detectada_pendiente_homologacion",
+      "es_pronostico": false,
+      "bytes": 293998,
+      "sha256": "8f31b4042f7219903ba698d2955bf868ceee2c3ae4a86eea1939ece3c0821b27",
+      "estructura": {
+        "tipo": "zip",
+        "miembros": 3,
+        "ficheros_tabulares": 2,
+        "matrices": [
+          {
+            "tipo": "csv",
+            "columnas": 67,
+            "filas_aproximadas": 2144,
+            "variables_clave": [
+              "participacion_2023_raw",
+              "participacion_2023_final",
+              "voto_2023_raw",
+              "voto_2023_raw_otros",
+              "voto_2023_final",
+              "prob_voto_declarada",
+              "intencion_voto_raw",
+              "intencion_voto_raw_otros",
+              "intencion_voto_simpatia",
+              "intencion_voto_final",
+              "simpatia_partido",
+              "simpatia_partido_otros",
+              "prob_voto_pp",
+              "prob_voto_psoe",
+              "prob_voto_vox",
+              "prob_voto_sumar",
+              "prob_voto_podemos",
+              "prob_voto_salf"
+            ]
+          },
+          {
+            "tipo": "sav",
+            "filas": 2144,
+            "columnas": 67,
+            "variables_clave": [
+              "participacion_2023_raw",
+              "participacion_2023_final",
+              "voto_2023_raw",
+              "voto_2023_raw_otros",
+              "voto_2023_final",
+              "prob_voto_declarada",
+              "intencion_voto_raw",
+              "intencion_voto_raw_otros",
+              "intencion_voto_simpatia",
+              "intencion_voto_final",
+              "simpatia_partido",
+              "simpatia_partido_otros",
+              "prob_voto_pp",
+              "prob_voto_psoe",
+              "prob_voto_vox",
+              "prob_voto_sumar",
+              "prob_voto_podemos",
+              "prob_voto_salf"
+            ]
+          }
+        ]
+      },
+      "verificado_en": "2026-11-05T06:45:14+00:00"
+    },
+    {
+      "id": "more-in-common-2026-10-01",
+      "productor": "more-in-common",
+      "fecha": "2026-10-01",
+      "url": "https://moreincommon.es/data/microdatos-2026-10.zip",
+      "estado": "matriz_detectada_pendiente_homologacion",
+      "es_pronostico": false,
+      "bytes": 615299,
+      "sha256": "813f5a4f7b8cad45bb4f184b7744e4937d8651b34a09bee93b149513c9ff106f",
+      "estructura": {
+        "tipo": "zip",
+        "miembros": 3,
+        "ficheros_tabulares": 2,
+        "matrices": [
+          {
+            "tipo": "csv",
+            "columnas": 154,
+            "filas_aproximadas": 2210,
+            "variables_clave": [
+              "participacion_2023_raw",
+              "participacion_2023_final",
+              "voto_2023_raw",
+              "voto_2023_raw_otros",
+              "voto_2023_final",
+              "prob_voto_declarada",
+              "intencion_voto_raw",
+              "intencion_voto_raw_otros",
+              "intencion_voto_simpatia",
+              "intencion_voto_final",
+              "simpatia_partido",
+              "simpatia_partido_otros",
+              "prob_voto_pp",
+              "prob_voto_psoe",
+              "prob_voto_vox",
+              "prob_voto_frente_amplio",
+              "prob_voto_erc",
+              "prob_voto_junts"
+            ]
+          },
+          {
+            "tipo": "sav",
+            "filas": 2210,
+            "columnas": 154,
+            "variables_clave": [
+              "participacion_2023_raw",
+              "participacion_2023_final",
+              "voto_2023_raw",
+              "voto_2023_raw_otros",
+              "voto_2023_final",
+              "prob_voto_declarada",
+              "intencion_voto_raw",
+              "intencion_voto_raw_otros",
+              "intencion_voto_simpatia",
+              "intencion_voto_final",
+              "simpatia_partido",
+              "simpatia_partido_otros",
+              "prob_voto_pp",
+              "prob_voto_psoe",
+              "prob_voto_vox",
+              "prob_voto_frente_amplio",
+              "prob_voto_erc",
+              "prob_voto_junts"
+            ]
+          }
+        ]
+      },
+      "verificado_en": "2026-11-05T06:45:14+00:00"
+    }
+  ]
 }
