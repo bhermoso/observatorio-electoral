@@ -1,0 +1,622 @@
+{
+  "pasos": {
+    "directa_sin_peso": {
+      "estimacion": {
+        "PP": 23.96694214876033,
+        "PSOE": 28.31955922865014,
+        "VOX": 22.36914600550964,
+        "FRENTE_AMPLIO": 5.234159779614325,
+        "PODEMOS": 1.8181818181818181,
+        "SALF": 2.4242424242424243,
+        "RESTO_INCLUIDO_BLANCO": 15.867768595041326
+      },
+      "numeradores_ponderados": {
+        "PP": 435.0,
+        "PSOE": 514.0,
+        "VOX": 406.0,
+        "FRENTE_AMPLIO": 95.0,
+        "PODEMOS": 33.0,
+        "SALF": 44.0
+      },
+      "denominador_ponderado": 1815.0,
+      "efectivo_kish_asignado": 1815.0
+    },
+    "peso_demografico": {
+      "estimacion": {
+        "PP": 24.18823844496011,
+        "PSOE": 28.180164324791306,
+        "VOX": 22.604507373474636,
+        "FRENTE_AMPLIO": 5.036390546308072,
+        "PODEMOS": 1.7686753408468647,
+        "SALF": 2.616425922792555,
+        "RESTO_INCLUIDO_BLANCO": 15.605598046826458
+      },
+      "numeradores_ponderados": {
+        "PP": 435.64865642509426,
+        "PSOE": 507.5462917181422,
+        "VOX": 407.1244497119311,
+        "FRENTE_AMPLIO": 90.70924200304145,
+        "PODEMOS": 31.8551943187363,
+        "SALF": 47.123830058730995
+      },
+      "denominador_ponderado": 1801.0764091664,
+      "efectivo_kish_asignado": 1574.0506323292918
+    },
+    "simpatia": {
+      "estimacion": {
+        "PP": 23.993407903475845,
+        "PSOE": 28.25727403048615,
+        "VOX": 21.822348237339916,
+        "FRENTE_AMPLIO": 5.413723079391138,
+        "PODEMOS": 1.882574892645531,
+        "SALF": 2.812268900141704,
+        "RESTO_INCLUIDO_BLANCO": 15.81840295651972
+      },
+      "numeradores_ponderados": {
+        "PP": 459.7119800368401,
+        "PSOE": 541.407350187904,
+        "VOX": 418.1146320522346,
+        "FRENTE_AMPLIO": 103.72654715037383,
+        "PODEMOS": 36.07000034956872,
+        "SALF": 53.88287106530126
+      },
+      "denominador_ponderado": 1915.992850562271,
+      "efectivo_kish_asignado": 1673.325862049508
+    },
+    "indecisos_transferencias": {
+      "estimacion": {
+        "PP": 23.960276040722317,
+        "PSOE": 28.3309614283892,
+        "VOX": 21.688409415671604,
+        "FRENTE_AMPLIO": 5.398118314357591,
+        "PODEMOS": 1.8762117894888035,
+        "SALF": 2.821709337872157,
+        "RESTO_INCLUIDO_BLANCO": 15.924313673498332
+      },
+      "numeradores_ponderados": {
+        "PP": 479.96688354523616,
+        "PSOE": 567.5194743797421,
+        "VOX": 434.4573601155907,
+        "FRENTE_AMPLIO": 108.13389711985009,
+        "PODEMOS": 37.583854373850706,
+        "SALF": 56.52384951104941
+      },
+      "denominador_ponderado": 2003.1776041707358,
+      "efectivo_kish_asignado": 1756.6537663674883
+    },
+    "participacion": {
+      "estimacion": {
+        "PP": 24.31605529325405,
+        "PSOE": 28.36947414968811,
+        "VOX": 22.199993343898903,
+        "FRENTE_AMPLIO": 5.58565873515106,
+        "PODEMOS": 1.8806067082040894,
+        "SALF": 2.783207143770946,
+        "RESTO_INCLUIDO_BLANCO": 14.865004626032842
+      },
+      "numeradores_ponderados": {
+        "PP": 443.04062566091704,
+        "PSOE": 516.8942669922278,
+        "VOX": 404.4857943499497,
+        "FRENTE_AMPLIO": 101.7711841375947,
+        "PODEMOS": 34.26481649990351,
+        "SALF": 50.710274320781906
+      },
+      "denominador_ponderado": 1822.0086289400274,
+      "efectivo_kish_asignado": 1691.3313026868361
+    }
+  },
+  "diagnostico": {
+    "entrevistas": 2210,
+    "ns_iniciales": 206,
+    "nc_iniciales": 60,
+    "asignadas_por_simpatia": 113,
+    "asignadas_por_transferencias": 93,
+    "imputadas_con_distribucion_global": 58,
+    "participacion_faltante": 0,
+    "participacion_declarada_media_ponderada": 0.8664120236741516,
+    "contraccion": 50,
+    "imputar_nc": false,
+    "masa_final_asignada": 2021.0,
+    "sin_asignacion_final": 189
+  },
+  "sensibilidad_no_respuesta": {
+    "pasos": {
+      "directa_sin_peso": {
+        "estimacion": {
+          "PP": 23.96694214876033,
+          "PSOE": 28.31955922865014,
+          "VOX": 22.36914600550964,
+          "FRENTE_AMPLIO": 5.234159779614325,
+          "PODEMOS": 1.8181818181818181,
+          "SALF": 2.4242424242424243,
+          "RESTO_INCLUIDO_BLANCO": 15.867768595041326
+        },
+        "numeradores_ponderados": {
+          "PP": 435.0,
+          "PSOE": 514.0,
+          "VOX": 406.0,
+          "FRENTE_AMPLIO": 95.0,
+          "PODEMOS": 33.0,
+          "SALF": 44.0
+        },
+        "denominador_ponderado": 1815.0,
+        "efectivo_kish_asignado": 1815.0
+      },
+      "peso_demografico": {
+        "estimacion": {
+          "PP": 24.18823844496011,
+          "PSOE": 28.180164324791306,
+          "VOX": 22.604507373474636,
+          "FRENTE_AMPLIO": 5.036390546308072,
+          "PODEMOS": 1.7686753408468647,
+          "SALF": 2.616425922792555,
+          "RESTO_INCLUIDO_BLANCO": 15.605598046826458
+        },
+        "numeradores_ponderados": {
+          "PP": 435.64865642509426,
+          "PSOE": 507.5462917181422,
+          "VOX": 407.1244497119311,
+          "FRENTE_AMPLIO": 90.70924200304145,
+          "PODEMOS": 31.8551943187363,
+          "SALF": 47.123830058730995
+        },
+        "denominador_ponderado": 1801.0764091664,
+        "efectivo_kish_asignado": 1574.0506323292918
+      },
+      "simpatia": {
+        "estimacion": {
+          "PP": 23.993407903475845,
+          "PSOE": 28.25727403048615,
+          "VOX": 21.822348237339916,
+          "FRENTE_AMPLIO": 5.413723079391138,
+          "PODEMOS": 1.882574892645531,
+          "SALF": 2.812268900141704,
+          "RESTO_INCLUIDO_BLANCO": 15.81840295651972
+        },
+        "numeradores_ponderados": {
+          "PP": 459.7119800368401,
+          "PSOE": 541.407350187904,
+          "VOX": 418.1146320522346,
+          "FRENTE_AMPLIO": 103.72654715037383,
+          "PODEMOS": 36.07000034956872,
+          "SALF": 53.88287106530126
+        },
+        "denominador_ponderado": 1915.992850562271,
+        "efectivo_kish_asignado": 1673.325862049508
+      },
+      "indecisos_transferencias": {
+        "estimacion": {
+          "PP": 23.955199355450834,
+          "PSOE": 28.392580564633256,
+          "VOX": 21.651046366751704,
+          "FRENTE_AMPLIO": 5.391713052099333,
+          "PODEMOS": 1.8718220915506707,
+          "SALF": 2.8210892901481914,
+          "RESTO_INCLUIDO_BLANCO": 15.91654927936601
+        },
+        "numeradores_ponderados": {
+          "PP": 495.64164247711165,
+          "PSOE": 587.4526467681613,
+          "VOX": 447.9678930379311,
+          "FRENTE_AMPLIO": 111.55647144717743,
+          "PODEMOS": 38.72866854977825,
+          "SALF": 58.36934640351791
+        },
+        "denominador_ponderado": 2069.0357659842725,
+        "efectivo_kish_asignado": 1807.8844045956475
+      },
+      "participacion": {
+        "estimacion": {
+          "PP": 24.298161074501927,
+          "PSOE": 28.42663809143121,
+          "VOX": 22.14792837696984,
+          "FRENTE_AMPLIO": 5.573723491710482,
+          "PODEMOS": 1.8762319024557772,
+          "SALF": 2.7845505665449295,
+          "RESTO_INCLUIDO_BLANCO": 14.892766496385832
+        },
+        "numeradores_ponderados": {
+          "PP": 456.30670026591224,
+          "PSOE": 533.8373298037804,
+          "VOX": 415.9264598021861,
+          "FRENTE_AMPLIO": 104.67159909339532,
+          "PODEMOS": 35.234649474838086,
+          "SALF": 52.29239681339707
+        },
+        "denominador_ponderado": 1877.9474663403753,
+        "efectivo_kish_asignado": 1741.9284294468778
+      }
+    },
+    "diagnostico": {
+      "entrevistas": 2210,
+      "ns_iniciales": 206,
+      "nc_iniciales": 60,
+      "asignadas_por_simpatia": 113,
+      "asignadas_por_transferencias": 153,
+      "imputadas_con_distribucion_global": 108,
+      "participacion_faltante": 0,
+      "participacion_declarada_media_ponderada": 0.8664120236741516,
+      "contraccion": 50,
+      "imputar_nc": true,
+      "masa_final_asignada": 2081.0,
+      "sin_asignacion_final": 129
+    }
+  },
+  "esquema": 1,
+  "estado": "candidata_sin_validacion_predictiva",
+  "estudio": "More in Common · octubre 2026",
+  "entrevistas": 2210,
+  "campo": [
+    "2026-10-21",
+    "2026-10-25"
+  ],
+  "publicacion": "2026-11-03",
+  "corte": "2026-11-05",
+  "sha256_original": "813f5a4f7b8cad45bb4f184b7744e4937d8651b34a09bee93b149513c9ff106f",
+  "url_original": "https://moreincommon.es/data/microdatos-2026-10.zip",
+  "columnas_leidas": [
+    "intencion_voto_raw",
+    "simpatia_partido",
+    "voto_2023_raw",
+    "peso_demografico",
+    "prob_voto_declarada"
+  ],
+  "estimacion_publicada": {
+    "PP": 28.3,
+    "PSOE": 27.6,
+    "VOX": 20.8,
+    "SUMAR": 7.8,
+    "PODEMOS": 2.6
+  },
+  "sensibilidad_contraccion": {
+    "0": {
+      "PP": 24.252111774651333,
+      "PSOE": 28.28219288721494,
+      "VOX": 22.119942243827193,
+      "FRENTE_AMPLIO": 5.570677555958845,
+      "PODEMOS": 1.8797121952972606,
+      "SALF": 2.8339223189547327,
+      "RESTO_INCLUIDO_BLANCO": 15.0614410240957
+    },
+    "50": {
+      "PP": 24.31605529325405,
+      "PSOE": 28.36947414968811,
+      "VOX": 22.199993343898903,
+      "FRENTE_AMPLIO": 5.58565873515106,
+      "PODEMOS": 1.8806067082040894,
+      "SALF": 2.783207143770946,
+      "RESTO_INCLUIDO_BLANCO": 14.865004626032842
+    },
+    "100": {
+      "PP": 24.332090315053396,
+      "PSOE": 28.386500581025473,
+      "VOX": 22.224683140912884,
+      "FRENTE_AMPLIO": 5.588978397968138,
+      "PODEMOS": 1.8806928120235178,
+      "SALF": 2.776815990787094,
+      "RESTO_INCLUIDO_BLANCO": 14.810238762229503
+    }
+  },
+  "receta": [
+    "Peso demográfico publicado, sin el peso final que añade recuerdo",
+    "Intención bruta: candidaturas y blanco; nulo, abstención y NS/NC excluidos del denominador inicial",
+    "Para NS, se usa simpatía válida; Ninguno nunca se transforma en voto blanco",
+    "Para NS restantes, distribución de donantes por recuerdo; contracción hacia distribución global con masa previa 50, expresada en entrevistas efectivas de Kish",
+    "Sin donantes o recuerdo ausente se usa la distribución global; NC queda sin imputar en la referencia",
+    "Cada peso se multiplica por probabilidad declarada de votar / 10; faltantes usan la media ponderada observada",
+    "Normalización final sobre masa asignada a candidaturas y blanco"
+  ],
+  "limitaciones": [
+    "Estimación de encuesta referida al campo de octubre, no predicción aislada del 29N",
+    "No se usa intencion_voto_final, prob_voto_estimada, voto_2023_final ni el peso final de la casa",
+    "El peso demográfico sigue procediendo de More in Common; nuestra receta no es independiente de toda su preparación",
+    "La distribución de los indecisos se supone comparable a la de los donantes de su recuerdo; no es un comportamiento observado",
+    "El valor 50 es un supuesto previo, no un coeficiente optimizado. Se muestra sensibilidad 0/50/100 y tratamiento alternativo de NC",
+    "Kish es un diagnóstico de pesos, no una muestra probabilística ni un margen de error",
+    "No se ha validado esta receta en elecciones independientes ni se elige por parecerse a una cifra publicada",
+    "No se publica ninguna entrevista, texto libre ni celda pequeña de transferencias",
+    "El pronóstico principal, sus ficheros y su historial no se modifican"
+  ],
+  "puente_motor": {
+    "escenarios": {
+      "sin_more_in_common": {
+        "encuestas": 20,
+        "simulaciones": 2250,
+        "partidos": {
+          "PP": {
+            "voto": [
+              30.251179955151947,
+              25.726890627697212,
+              34.640146328853874
+            ],
+            "escanos": [
+              126.0,
+              107.0,
+              144.0
+            ],
+            "primero": 0.6622222222222223
+          },
+          "PSOE": {
+            "voto": [
+              28.35633348480968,
+              24.07492287140881,
+              32.52279966023095
+            ],
+            "escanos": [
+              117.0,
+              97.0,
+              138.0
+            ],
+            "primero": 0.3377777777777778
+          },
+          "VOX": {
+            "voto": [
+              18.68066367628487,
+              15.332960812925023,
+              22.123452639852115
+            ],
+            "escanos": [
+              67.0,
+              52.0,
+              81.54999999999973
+            ],
+            "primero": 0.0
+          },
+          "SUMAR": {
+            "voto": [
+              5.836955481528987,
+              3.8182418544207746,
+              7.8895708454235205
+            ],
+            "escanos": [
+              7.0,
+              4.0,
+              14.0
+            ],
+            "primero": 0.0
+          },
+          "PODEMOS": {
+            "voto": [
+              2.550538742601955,
+              1.2646879023925135,
+              3.811202537059162
+            ],
+            "escanos": [
+              1.0,
+              0.0,
+              3.0
+            ],
+            "primero": 0.0
+          }
+        },
+        "bloques": {
+          "PP+VOX": {
+            "mediana": 193.0,
+            "p5": 168.0,
+            "p95": 215.0,
+            "p_mayoria": 0.8808888888888889
+          },
+          "PP+VOX+UPN": {
+            "mediana": 194.0,
+            "p5": 168.0,
+            "p95": 217.0,
+            "p_mayoria": 0.884
+          },
+          "PSOE+SUMAR+PODEMOS": {
+            "mediana": 126.0,
+            "p5": 103.0,
+            "p95": 152.0,
+            "p_mayoria": 0.0008888888888888889
+          },
+          "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
+            "mediana": 155.0,
+            "p5": 132.0,
+            "p95": 182.0,
+            "p_mayoria": 0.10044444444444445
+          }
+        }
+      },
+      "con_more_publicada": {
+        "encuestas": 21,
+        "simulaciones": 2250,
+        "partidos": {
+          "PP": {
+            "voto": [
+              30.051576005406332,
+              25.551983741944476,
+              34.37692371897865
+            ],
+            "escanos": [
+              125.0,
+              106.0,
+              143.0
+            ],
+            "primero": 0.6511111111111111
+          },
+          "PSOE": {
+            "voto": [
+              28.381095949803566,
+              24.075268603543115,
+              32.531674057844626
+            ],
+            "escanos": [
+              117.0,
+              97.0,
+              139.0
+            ],
+            "primero": 0.3488888888888889
+          },
+          "VOX": {
+            "voto": [
+              18.803601270669226,
+              15.466643388809858,
+              22.255284985936363
+            ],
+            "escanos": [
+              67.0,
+              53.0,
+              82.0
+            ],
+            "primero": 0.0
+          },
+          "SUMAR": {
+            "voto": [
+              5.976984494668555,
+              3.9403233694277917,
+              8.041128158850386
+            ],
+            "escanos": [
+              7.0,
+              4.0,
+              15.0
+            ],
+            "primero": 0.0
+          },
+          "PODEMOS": {
+            "voto": [
+              2.5525964886692574,
+              1.2625505318374324,
+              3.8026545936410634
+            ],
+            "escanos": [
+              1.0,
+              0.0,
+              3.0
+            ],
+            "primero": 0.0
+          }
+        },
+        "bloques": {
+          "PP+VOX": {
+            "mediana": 193.0,
+            "p5": 168.0,
+            "p95": 215.0,
+            "p_mayoria": 0.876
+          },
+          "PP+VOX+UPN": {
+            "mediana": 194.0,
+            "p5": 168.0,
+            "p95": 217.0,
+            "p_mayoria": 0.8808888888888889
+          },
+          "PSOE+SUMAR+PODEMOS": {
+            "mediana": 126.0,
+            "p5": 103.0,
+            "p95": 153.0,
+            "p_mayoria": 0.00044444444444444447
+          },
+          "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
+            "mediana": 156.0,
+            "p5": 133.0,
+            "p95": 182.0,
+            "p_mayoria": 0.10711111111111112
+          }
+        }
+      },
+      "con_more_cocina_oee": {
+        "encuestas": 21,
+        "simulaciones": 2250,
+        "partidos": {
+          "PP": {
+            "voto": [
+              29.802068722607444,
+              25.312207075411777,
+              34.088062918981926
+            ],
+            "escanos": [
+              124.0,
+              105.0,
+              142.0
+            ],
+            "primero": 0.616
+          },
+          "PSOE": {
+            "voto": [
+              28.466252262199845,
+              24.11424845883661,
+              32.61172558707279
+            ],
+            "escanos": [
+              118.0,
+              98.0,
+              140.0
+            ],
+            "primero": 0.384
+          },
+          "VOX": {
+            "voto": [
+              18.92033537187882,
+              15.57641641319499,
+              22.3918909883415
+            ],
+            "escanos": [
+              68.0,
+              53.0,
+              83.0
+            ],
+            "primero": 0.0
+          },
+          "SUMAR": {
+            "voto": [
+              5.7837581156642655,
+              3.7792949096164126,
+              7.818729579881772
+            ],
+            "escanos": [
+              7.0,
+              3.0,
+              14.0
+            ],
+            "primero": 0.0
+          },
+          "PODEMOS": {
+            "voto": [
+              2.457717774930657,
+              1.1957243740726657,
+              3.689279318758232
+            ],
+            "escanos": [
+              1.0,
+              0.0,
+              3.0
+            ],
+            "primero": 0.0
+          }
+        },
+        "bloques": {
+          "PP+VOX": {
+            "mediana": 193.0,
+            "p5": 168.0,
+            "p95": 214.54999999999973,
+            "p_mayoria": 0.8764444444444445
+          },
+          "PP+VOX+UPN": {
+            "mediana": 194.0,
+            "p5": 168.0,
+            "p95": 217.0,
+            "p_mayoria": 0.88
+          },
+          "PSOE+SUMAR+PODEMOS": {
+            "mediana": 126.0,
+            "p5": 103.45,
+            "p95": 153.0,
+            "p_mayoria": 0.00044444444444444447
+          },
+          "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
+            "mediana": 156.0,
+            "p5": 133.0,
+            "p95": 182.0,
+            "p_mayoria": 0.108
+          }
+        }
+      }
+    },
+    "historicas_cargadas": 887,
+    "historicas_wikipedia": 870,
+    "muestra_anadida_una_vez_por_escenario": true,
+    "comparacion_receta": "con_more_cocina_oee frente a con_more_publicada; misma muestra y mismos cinco partidos",
+    "homologacion_explicita": "Solo para este escenario: Frente Amplio de octubre se asigna a SUMAR del motor. La composición y geografía de 2023 no están validadas para esta candidatura.",
+    "incertidumbre": "Se mantienen los supuestos del motor. No se incorpora todavía incertidumbre adicional de imputación ni de selección de receta; los intervalos no están validados."
+  }
+}
