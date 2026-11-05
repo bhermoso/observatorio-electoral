@@ -6,6 +6,8 @@ on:
     paths:
       - 'scripts/homologar_more_in_common.py'
       - 'tests/test_homologar_more_in_common.py'
+      - 'scripts/comparar-codigos-more-in-common.mjs'
+      - 'tests/compatibilidad-codigos-more-in-common.test.mjs'
       - '.github/workflows/homologar-more-in-common.yml'
 
 permissions:
@@ -48,11 +50,15 @@ jobs:
                       assert "respuestas" not in v
           print("Validados cuatro inventarios de variables: sin filas ni cocina automatizada.")
           PY
+      - name: Probar y detectar cambios de significado en códigos por ola
+        run: |
+          node --test tests/compatibilidad-codigos-more-in-common.test.mjs
+          node scripts/comparar-codigos-more-in-common.mjs
       - name: Guardar exclusivamente metadatos reproducibles
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/microdatos/homologacion-more-in-common-2026.json
+          git add data/microdatos/homologacion-more-in-common-2026.json data/microdatos/compatibilidad-codigos-more-in-common-2026.json
           if git diff --cached --quiet; then
             echo 'Sin nuevos metadatos.'
           else
