@@ -4,6 +4,7 @@
  * enlaces originales, nivel de verificación y advertencias de cobertura.
  */
 const SOURCE='data/microdatos/catalogo-publico.json';
+const STORAGE_STATUS='https://gjzihgfzxorpvevrrfkh.supabase.co/functions/v1/almacen-microdatos?action=status';
 const h=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const statuses={
  original_auditado:'Examinados y analizados; sin original almacenado',
@@ -46,6 +47,25 @@ export function mergeAuditStatuses(catalog,manifest){
  }
  return catalog;
 }
+export function mergeStoredStatuses(catalog,storage){
+ if(!Array.isArray(catalog?.estudios)||!Array.isArray(storage?.stored))return catalog;
+ const byId=new Map(storage.stored.filter(r=>
+  typeof r.study_id==='string'&&/^[a-f0-9]{64}$/.test(r.sha256||'')&&
+  ['conservado_pendiente_homologacion','homologado'].includes(r.status)
+ ).map(r=>[r.study_id,r]));
+ for(const study of catalog.estudios){
+  const r=byId.get(study.id);
+  if(!r||!study.microdatos?.sha256_verificado||
+    study.microdatos.sha256_verificado!==r.sha256)continue;
+  study.microdatos.original_almacenado=true;
+  study.microdatos.original_descargado_alguna_vez=true;
+  study.microdatos.original_almacenado_en=r.stored_at;
+  study.microdatos.integridad_verificada_en=r.verified_at;
+  // La custodia no cambia el análisis ni la inclusión en Motor 29N.
+ }
+ return catalog;
+}
+
 export function renderCatalogoMicrodatos(){
  return `<section class="archivo-md" id="archivo-microdatos" aria-labelledby="archivo-md-title">
  <div class="archivo-md-head"><div>
@@ -67,11 +87,19 @@ export async function bindCatalogoMicrodatos(){
    const ar=await fetch('data/microdatos/estado-descargas.json',{cache:'no-store'});
    if(ar.ok)mergeAuditStatuses(d,await ar.json());
   }catch{/* El catálogo permanece visible aunque la auditoría no responda. */}
+  let storageKnown=false;
+  try{
+   const rr=await fetch(STORAGE_STATUS,{cache:'no-store',signal:AbortSignal.timeout(12000)});
+   if(rr.ok){
+    const certified=await rr.json();
+    if(Array.isArray(certified.stored)){mergeStoredStatuses(d,certified);storageKnown=true;}
+   }
+  }catch{/* No declarar originales almacenados a partir de datos incompletos. */}
   if(!root.isConnected)return;
   if(d.esquema!==1||!Array.isArray(d.fuentes)||!Array.isArray(d.estudios))throw Error('Formato de catálogo inválido');
   const count=s=>d.estudios.filter(x=>x.productor===s).length;
   root.innerHTML=`
-   <p class="archivo-md-metrics"><strong>${d.fuentes.length} repositorios</strong> con vías de acceso a datos individuales · <strong>${d.estudios.length} entradas documentales</strong> (incluidas series acumuladas, portales y varias encuestas por página) · <strong>${d.estudios.filter(x=>x.microdatos?.original_almacenado).length} originales almacenados</strong> · <strong>${d.estudios.filter(x=>x.microdatos?.original_descargado_alguna_vez).length} descargados alguna vez</strong> · <strong>${d.estudios.filter(x=>x.microdatos?.analisis==='analizado').length} análisis completos</strong> + <strong>${d.estudios.filter(x=>x.microdatos?.analisis==='parcial').length} parciales</strong> · <strong>${d.casas_pendientes.length} casas</strong> a investigar</p>
+   <p class="archivo-md-metrics"><strong>${d.fuentes.length} repositorios</strong> con vías de acceso a datos individuales · <strong>${d.estudios.length} entradas documentales</strong> (incluidas series acumuladas, portales y varias encuestas por página) · <strong>${storageKnown?d.estudios.filter(x=>x.microdatos?.original_almacenado).length+' originales almacenados':'Custodia privada no verificada'}</strong> · <strong>${d.estudios.filter(x=>x.microdatos?.original_descargado_alguna_vez).length} descargados alguna vez</strong> · <strong>${d.estudios.filter(x=>x.microdatos?.analisis==='analizado').length} análisis completos</strong> + <strong>${d.estudios.filter(x=>x.microdatos?.analisis==='parcial').length} parciales</strong> · <strong>${d.casas_pendientes.length} casas</strong> a investigar</p>
    <div class="archivo-md-providers">${d.fuentes.map(f=>`<div><b>${h(f.nombre)}</b><small>${h(f.ambito)} · ${h(f.acceso)}</small><small>${count(f.id)} entradas · ${h(f.formatos)}</small><a href="${h(f.portal)}" target="_blank" rel="noopener noreferrer">Fuente oficial ↗</a></div>`).join('')}</div>
    <div class="archivo-md-controls">
      <label>Fuente<select id="archivo-md-source"><option value="todos">Todas las fuentes</option>${d.fuentes.map(f=>`<option value="${h(f.id)}">${h(f.nombre)}</option>`).join('')}</select></label>
@@ -108,7 +136,7 @@ export async function bindCatalogoMicrodatos(){
     <tbody>${shown.map(s=>`<tr><td><b>${h(d.fuentes.find(f=>f.id===s.productor)?.nombre||s.productor)}</b><small>${h(s.fecha)}</small></td>
     <td><b>${h(s.titulo)}</b><small>${h(s.ambito)}</small></td>
     <td><b>${h(microdataState(s))}</b><small>${h(statuses[s.estado]||s.estado)}</small>${s.microdatos?.resultados_agregados?`<small><a href="${h(s.microdatos.resultados_agregados)}" target="_blank" rel="noopener noreferrer">Ver resultados agregados ↗</a></small>`:''}</td>
-    <td><strong>${s.microdatos?.original_almacenado?'Sí':'No'}</strong></td><td>${s.microdatos?.usado_en_motor_29n?'Sí':'No'}</td>
+    <td><strong>${s.microdatos?.original_almacenado?'Sí · privado':storageKnown?'No':'Sin verificar'}</strong></td><td>${s.microdatos?.usado_en_motor_29n?'Sí':'No'}</td>
     <td><a href="${h(s.pagina)}" target="_blank" rel="noopener noreferrer">Fuente ↗</a>${s.archivo?` · <a href="${h(s.archivo)}" target="_blank" rel="noopener noreferrer">Archivo ↗</a>`:''}</td></tr>`).join('')}</tbody></table>`;
    more.hidden=all||filtered.length<=12;
   }

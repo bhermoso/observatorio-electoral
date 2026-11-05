@@ -1,0 +1,39 @@
+name: Conservar microdatos autorizados en depósito privado
+on:
+  workflow_dispatch:
+    inputs:
+      estudio:
+        type: choice
+        required: true
+        default: todos
+        description: 'Estudio a conservar (solo originales aprobados; no publica filas)'
+        options:
+          - todos
+          - more-in-common-2026-10-01
+          - more-in-common-2026-09-01
+          - more-in-common-2026-07-01
+          - more-in-common-2026-05-01
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/guardar-microdatos.yml'
+      - 'scripts/guardar_microdatos_privados.py'
+      - 'supabase/functions/almacen-microdatos/**'
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  conservar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Comprobar contrato y permisos del script
+        run: python -m unittest discover -s tests -p 'test_guardar_microdatos_privados.py' -v
+      - name: Conservación de originales con identidad firmada GitHub Actions
+        env:
+          STUDY: ${{ inputs.estudio || 'todos' }}
+        run: python scripts/guardar_microdatos_privados.py --study "$STUDY"
