@@ -53,7 +53,7 @@ class TestHomologacion(unittest.TestCase):
     def test_metadataonly_y_vocabulario_real_sin_entrevistas(self):
         calls=[]
         def read_sav(path,metadataonly,**kwargs):
-            calls.append(metadataonly)
+            calls.append((metadataonly,kwargs.get('output_format')))
             meta=types.SimpleNamespace(
                 column_names=["intencion_voto_raw","intencion_voto_final","prob_voto_pp","comentarios_abiertos","peso"],
                 column_labels=["Intención declarada", "Variable final", "Probabilidad", "Texto", "Factor"],
@@ -66,7 +66,7 @@ class TestHomologacion(unittest.TestCase):
             return None,meta
         with patch.dict(sys.modules,{"pyreadstat":types.SimpleNamespace(read_sav=read_sav)}):
             result=M.examine_zip(self.zip,self.fake_id)
-        self.assertEqual(calls,[True])
+        self.assertEqual(calls,[(True,'dict')])
         self.assertEqual(result["matrices"][0]["filas"],2201)
         relevant=result["matrices"][0]["variables_relevantes"]
         self.assertEqual(len(relevant),4)
