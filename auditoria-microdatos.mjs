@@ -1,5 +1,6 @@
 /* Estado de descargas REALES; no se publican entrevistas individuales. */
 const AUDIT_URL='data/microdatos/estado-descargas.json';
+const PRIVATE_STATUS='https://gjzihgfzxorpvevrrfkh.supabase.co/functions/v1/almacen-microdatos?action=status';
 const GITHUB='https://github.com/bhermoso/observatorio-electoral/actions/workflows/auditar-catalogo-microdatos.yml';
 const h=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const safe=s=>{try{const u=new URL(s);return u.protocol==='https:'&&!u.username&&!u.password?u.href:null}catch{return null}};
@@ -17,28 +18,37 @@ export function renderEstadoDescargas(){
  '<a href="'+GITHUB+'" target="_blank" rel="noopener noreferrer">Ver o ejecutar auditoría en GitHub ↗</a></div>'+
  '<div id="md-audit-result" aria-live="polite">Consultando el manifiesto de archivos comprobados…</div></section>';
 }
-export function renderAuditData(data){
+export function renderAuditData(data,storage=null){
  if(!data||data.esquema!==1||!Array.isArray(data.archivos))throw Error('Formato de auditoría inválido');
  const entries=data.archivos;
+ const confirmed=Array.isArray(storage?.stored)?new Map(storage.stored.map(x=>[x.study_id,x])):null;
+ const stored=entries.filter(r=>confirmed?.get(r.id)?.sha256===r.sha256&&!!r.sha256).length;
  if(!entries.length)return '<p class="muted">No hay todavía descargas verificadas en este almacén. El proceso automático guardará resultados aquí tras su primera ejecución.</p>';
  const success=entries.filter(downloaded),matrices=entries.filter(r=>r.estado==='matriz_detectada_pendiente_homologacion'),failed=entries.filter(r=>r.estado==='descarga_fallida');
  const latest=entries.map(r=>r.verificado_en).filter(Boolean).sort().at(-1);
  let out='<p class="md-audit-metrics"><strong>'+entries.length+' archivos intentados</strong> · <strong>'+success.length+' descargas comprobadas</strong> · <strong>'+matrices.length+' matrices detectadas</strong> · <strong>'+failed.length+' descarga'+(failed.length===1?' fallida':'s fallidas')+'</strong>. <small>Último cambio: '+h(latest?new Date(latest).toLocaleString('es-ES',{timeZone:'Europe/Madrid'}):'sin registro')+'</small></p>';
+ out+='<p class="muted"><strong>Depósito privado recuperable: '+(confirmed?stored+' de '+entries.length+' originales':'sin comprobar (servicio no disponible)')+'</strong>. Un archivo descargado en GitHub Actions no equivale a una copia recuperable en Supabase.</p>';
  out+='<div class="table-wrap"><table class="md-audit-table"><caption>La estructura no significa homologación ni entrada al Motor 29N.</caption>'+
- '<thead><tr><th>Estudio / fuente</th><th>Descarga y estado</th><th>Entrevistas / variables</th><th>Original</th></tr></thead><tbody>';
+ '<thead><tr><th>Estudio / fuente</th><th>Descarga y estado</th><th>Conservado</th><th>Entrevistas / variables</th><th>Original</th></tr></thead><tbody>';
  out+=entries.slice(0,35).map(r=>{
   const url=safe(r.url),m=r.estructura||{},matrix=(m.tipo==='zip'?m.matrices||[]:[m]).find(x=>x.filas>0);
   const sizes=matrix?Number(matrix.filas).toLocaleString('es-ES')+' filas · '+Number(matrix.columnas||0).toLocaleString('es-ES')+' columnas':m.tipo==='xlsx'?'Excel: comprobar tipo de registro':m.tipo==='zip'?(m.ficheros_tabulares||0)+' ficheros tabulares':'No determinado';
   return '<tr><td><b>'+h(r.id)+'</b><small>'+h(r.productor||'')+' · '+h(r.fecha||'')+'</small></td>'+
    '<td>'+h(status[r.estado]||r.estado)+(r.error?'<small>Incidencia: '+h(r.error)+'</small>':'')+
    (r.sha256?'<small>SHA-256: <code>'+h(r.sha256.slice(0,20))+'…</code></small>':'')+'</td>'+
-   '<td>'+h(sizes)+'</td><td>'+(url?'<a href="'+h(url)+'" target="_blank" rel="noopener noreferrer">Archivo origen ↗</a>':'Sin enlace')+'</td></tr>';
+   '<td>'+h(confirmed?(confirmed.get(r.id)?.sha256===r.sha256&&r.sha256?'Sí · depósito privado':'No'):'Sin verificar')+'</td><td>'+h(sizes)+'</td><td>'+(url?'<a href="'+h(url)+'" target="_blank" rel="noopener noreferrer">Archivo origen ↗</a>':'Sin enlace')+'</td></tr>';
  }).join('')+'</tbody></table></div>';
  return out+'<p class="muted">Una matriz detectada sigue pendiente de homologación de preguntas, universo, pesos y permisos de uso. Esta auditoría no modifica el pronóstico. Las descargas fallidas no cuentan como éxito.</p>';
 }
 export async function bindEstadoDescargas(){
  const root=document.getElementById('md-audit-result');if(!root)return;
  try{const r=await fetch(AUDIT_URL,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);
-  const data=await r.json();if(root.isConnected)root.innerHTML=renderAuditData(data);
+  const data=await r.json();
+  let storage=null;
+  try{
+    const s=await fetch(PRIVATE_STATUS,{cache:'no-store',signal:AbortSignal.timeout(12000)});
+    if(s.ok)storage=await s.json();
+  }catch{/* La auditoría sigue disponible sin la custodia remota. */}
+  if(root.isConnected)root.innerHTML=renderAuditData(data,storage);
  }catch(e){if(root.isConnected)root.textContent='No se pudo cargar el estado de descargas: '+e.message;}
 }
