@@ -41,6 +41,23 @@ Fuentes originales destacadas: [GAD3 Aragón 2026](https://www.gad3.com/rindiend
 **Importante:** este catálogo no modifica el pronóstico operativo del Motor 29N ni inserta sus registros como encuestas de intención de voto. Un mismo estudio no puede añadirse por duplicado al aparecer en portal del productor y en el de su contratante.
 
 
+## Cómo saber si un microdato está cargado (estado real, independiente de las encuestas)
+
+En **Encuestas → Archivo de microdatos** cada entrada muestra **Estado real de microdatos**, **Original guardado** y **Motor 29N**. Se puede filtrar entre localizados, descargados alguna vez, almacenados, analizados y pendientes.
+
+| Término | Comprobación exigida | ¿Tenemos una copia recuperable? | ¿Afecta al 29N? |
+| --- | --- | --- | --- |
+| Localizado | Se conoce URL o página original | No | No |
+| Descargado | Descarga temporal real verificada, huella SHA-256 | No necesariamente | No |
+| Almacenado | Copia íntegra recuperable en depósito privado autorizado y referencia verificable | Sí | No, salvo decisión explícita |
+| Analizado | Estimaciones o agregados calculados a partir de una matriz auténtica | No necesariamente | No, salvo receta aprobada |
+
+**Corte actual del catálogo: 6 matrices de 40dB analizadas + 4 SAV de SocioMétrica con análisis parcial; 10 originales descargados alguna vez; 0 originales conservados permanentemente.** Este dato es explícito: no confundimos informes agregados publicados en GitHub con los ZIP/SAV individuales originales. El archivo `data/microdatos/catalogo-publico.json` registra `microdatos.original_almacenado` y `microdatos.usado_en_motor_29n` por estudio; no son sinónimos.
+
+La nueva auditoría de descargas se ejecuta sobre URLs de productores preaprobados (ZIP/SAV/DTA/CSV/XLSX) y genera exclusivamente `data/microdatos/estado-descargas.json`: huella, estado, tamaño, estructura y error. También prueba enlaces nuevos detectados por la búsqueda de Supabase. Las matrices se leen en un directorio temporal y se desechan: **no existe todavía almacén permanente de originales ni permiso de redistribución establecido**. El fichero público no contiene entrevistas.
+
+**En GitHub:** [ejecutar/comprobar auditoría](https://github.com/bhermoso/observatorio-electoral/actions/workflows/auditar-catalogo-microdatos.yml). Se ejecuta tras cambiar el catálogo y en comprobaciones programadas. Un resultado `matriz_detectada_pendiente_homologacion` no es una cocina validada.
+
 ## Primera auditoría SocioMétrica: 4.383 registros SAV de mayo–septiembre de 2025
 
 Los originales fueron descargados desde enlaces oficiales de EL ESPAÑOL y analizados en una ejecución de GitHub Actions de solo lectura, sin publicar entrevistas. [Agregados comprobables en JSON](../data/microdatos/sociometrica-2025-agregados.json).
