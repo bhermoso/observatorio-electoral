@@ -1,0 +1,282 @@
+{
+  "esquema": 1,
+  "fuente": "Metadatos SPSS con huellas SHA-256 verificadas, sin entrevistas",
+  "olas": [
+    {
+      "id": "more-in-common-2026-05-01",
+      "ola": "05",
+      "sha256": "3a65823bcbd3b94df84f77650755f8bdf47b22e0ab4a4c252136d986a2b5b3f8"
+    },
+    {
+      "id": "more-in-common-2026-07-01",
+      "ola": "07",
+      "sha256": "6d369d9d91ccda486cddc64ba7cb80af265b263e12e413696c5c42fb843b0a71"
+    },
+    {
+      "id": "more-in-common-2026-09-01",
+      "ola": "09",
+      "sha256": "8f31b4042f7219903ba698d2955bf868ceee2c3ae4a86eea1939ece3c0821b27"
+    },
+    {
+      "id": "more-in-common-2026-10-01",
+      "ola": "10",
+      "sha256": "813f5a4f7b8cad45bb4f184b7744e4937d8651b34a09bee93b149513c9ff106f"
+    }
+  ],
+  "variables_comunes": [
+    "intencion_voto_final",
+    "intencion_voto_raw",
+    "intencion_voto_simpatia",
+    "participacion_2023_final",
+    "participacion_2023_raw",
+    "peso",
+    "prob_voto_bildu",
+    "prob_voto_bng",
+    "prob_voto_cc",
+    "prob_voto_declarada",
+    "prob_voto_erc",
+    "prob_voto_estimada",
+    "prob_voto_junts",
+    "prob_voto_pnv",
+    "prob_voto_podemos",
+    "prob_voto_pp",
+    "prob_voto_psoe",
+    "prob_voto_salf",
+    "prob_voto_vox",
+    "simpatia_partido",
+    "voto_2023_final",
+    "voto_2023_raw"
+  ],
+  "cambios_de_significado": [
+    {
+      "variable": "intencion_voto_final",
+      "codigo": "4.0",
+      "diferencias": [
+        {
+          "ola": "05",
+          "etiqueta": "Sumar"
+        },
+        {
+          "ola": "07",
+          "etiqueta": "Sumar"
+        },
+        {
+          "ola": "09",
+          "etiqueta": "Sumar"
+        },
+        {
+          "ola": "10",
+          "etiqueta": "Frente Amplio"
+        }
+      ],
+      "accion": "Revisar y declarar equivalencia o ruptura por ola. No recodificar automáticamente."
+    },
+    {
+      "variable": "intencion_voto_raw",
+      "codigo": "4.0",
+      "diferencias": [
+        {
+          "ola": "05",
+          "etiqueta": "Sumar"
+        },
+        {
+          "ola": "07",
+          "etiqueta": "Sumar"
+        },
+        {
+          "ola": "09",
+          "etiqueta": "Sumar"
+        },
+        {
+          "ola": "10",
+          "etiqueta": "Frente Amplio"
+        }
+      ],
+      "accion": "Revisar y declarar equivalencia o ruptura por ola. No recodificar automáticamente."
+    },
+    {
+      "variable": "intencion_voto_simpatia",
+      "codigo": "4.0",
+      "diferencias": [
+        {
+          "ola": "05",
+          "etiqueta": "Sumar"
+        },
+        {
+          "ola": "07",
+          "etiqueta": "Sumar"
+        },
+        {
+          "ola": "09",
+          "etiqueta": "Sumar"
+        },
+        {
+          "ola": "10",
+          "etiqueta": "Frente Amplio"
+        }
+      ],
+      "accion": "Revisar y declarar equivalencia o ruptura por ola. No recodificar automáticamente."
+    },
+    {
+      "variable": "simpatia_partido",
+      "codigo": "4.0",
+      "diferencias": [
+        {
+          "ola": "05",
+          "etiqueta": "Sumar"
+        },
+        {
+          "ola": "07",
+          "etiqueta": "Sumar"
+        },
+        {
+          "ola": "09",
+          "etiqueta": "Sumar"
+        },
+        {
+          "ola": "10",
+          "etiqueta": "Frente Amplio"
+        }
+      ],
+      "accion": "Revisar y declarar equivalencia o ruptura por ola. No recodificar automáticamente."
+    }
+  ],
+  "codigos_en_una_sola_ola": [
+    {
+      "variable": "intencion_voto_raw",
+      "codigo": "32.0",
+      "ola": "10",
+      "etiqueta": "Adelante Andalucía"
+    },
+    {
+      "variable": "intencion_voto_raw",
+      "codigo": "33.0",
+      "ola": "10",
+      "etiqueta": "Drago Canarias"
+    },
+    {
+      "variable": "intencion_voto_raw",
+      "codigo": "5.0",
+      "ola": "05",
+      "etiqueta": "Sumar-Més"
+    },
+    {
+      "variable": "intencion_voto_simpatia",
+      "codigo": "32.0",
+      "ola": "10",
+      "etiqueta": "Adelante Andalucía"
+    },
+    {
+      "variable": "intencion_voto_simpatia",
+      "codigo": "33.0",
+      "ola": "10",
+      "etiqueta": "Drago Canarias"
+    },
+    {
+      "variable": "prob_voto_adelante",
+      "codigo": "1.0",
+      "ola": "10",
+      "etiqueta": "Muy probable"
+    },
+    {
+      "variable": "prob_voto_adelante",
+      "codigo": "2.0",
+      "ola": "10",
+      "etiqueta": "Algo probable"
+    },
+    {
+      "variable": "prob_voto_adelante",
+      "codigo": "3.0",
+      "ola": "10",
+      "etiqueta": "Poco probable"
+    },
+    {
+      "variable": "prob_voto_adelante",
+      "codigo": "99.0",
+      "ola": "10",
+      "etiqueta": "No lo sé"
+    },
+    {
+      "variable": "prob_voto_drago",
+      "codigo": "1.0",
+      "ola": "10",
+      "etiqueta": "Muy probable"
+    },
+    {
+      "variable": "prob_voto_drago",
+      "codigo": "2.0",
+      "ola": "10",
+      "etiqueta": "Algo probable"
+    },
+    {
+      "variable": "prob_voto_drago",
+      "codigo": "3.0",
+      "ola": "10",
+      "etiqueta": "Poco probable"
+    },
+    {
+      "variable": "prob_voto_drago",
+      "codigo": "99.0",
+      "ola": "10",
+      "etiqueta": "No lo sé"
+    },
+    {
+      "variable": "prob_voto_frente_amplio",
+      "codigo": "1.0",
+      "ola": "10",
+      "etiqueta": "Muy probable"
+    },
+    {
+      "variable": "prob_voto_frente_amplio",
+      "codigo": "2.0",
+      "ola": "10",
+      "etiqueta": "Algo probable"
+    },
+    {
+      "variable": "prob_voto_frente_amplio",
+      "codigo": "3.0",
+      "ola": "10",
+      "etiqueta": "Poco probable"
+    },
+    {
+      "variable": "prob_voto_frente_amplio",
+      "codigo": "99.0",
+      "ola": "10",
+      "etiqueta": "No lo sé"
+    },
+    {
+      "variable": "prob_voto_sumar",
+      "codigo": "99.0",
+      "ola": "09",
+      "etiqueta": "No lo sé"
+    },
+    {
+      "variable": "prob_voto_upn",
+      "codigo": "99.0",
+      "ola": "09",
+      "etiqueta": "No lo sé"
+    },
+    {
+      "variable": "simpatia_partido",
+      "codigo": "32.0",
+      "ola": "10",
+      "etiqueta": "Adelante Andalucía"
+    },
+    {
+      "variable": "simpatia_partido",
+      "codigo": "33.0",
+      "ola": "10",
+      "etiqueta": "Drago Canarias"
+    },
+    {
+      "variable": "simpatia_partido",
+      "codigo": "99.0",
+      "ola": "10",
+      "etiqueta": "NS"
+    }
+  ],
+  "politica": "Un mismo código con una etiqueta distinta es incompatible hasta declaración humana. Código ausente no significa cero respuestas.",
+  "homologacion_automatica": false,
+  "calculos_electorales": false,
+  "participa_motor_29n": false
+}
