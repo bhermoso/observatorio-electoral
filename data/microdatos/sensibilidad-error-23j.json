@@ -1,0 +1,1885 @@
+{
+  "corte": "2026-11-05",
+  "eleccion": "2026-11-29",
+  "inicio_comun": "2025-08-27",
+  "estado": "sensibilidad_no_validacion_predictiva",
+  "n_por_variante": 2000,
+  "control": "Semillas idénticas por variante y corte; todas las variantes con el mismo número de simulaciones.",
+  "definicion_cis": "Sin CIS excluye sus encuestas actuales y su error histórico; no es un efecto exclusivo sobre el ancla.",
+  "definicion_fraccion": "Se varían conjuntamente la corrección de consenso y el centro previo histórico de casa.",
+  "cero": "0 % anula el traslado direccional del error de 2023, pero mantiene la variante calibrada con centros cero y su dispersión previa. No equivale a eliminar esa variante ni toda la información histórica.",
+  "invariantes": {
+    "industria": 2.2,
+    "rho_bloque": 0.5,
+    "sd_prov": 0.08,
+    "metodo_geo": "proporcional",
+    "variantes": [
+      "consenso_privadas",
+      "consenso_todas",
+      "calibrada_23j"
+    ]
+  },
+  "encuestas_actuales": [
+    {
+      "casa": "Demoscopia y Servicios",
+      "estudio": "demoscopia-2025-09-08",
+      "campo_fin": "2025-09-05",
+      "publicacion": "2025-09-08",
+      "voto": {
+        "PP": 35.1,
+        "PSOE": 26.6,
+        "VOX": 16.7,
+        "SUMAR": 6.1,
+        "ERC": 1.6,
+        "PNV": 1.0,
+        "BNG": 0.7,
+        "PODEMOS": 5.1
+      },
+      "n": 3000
+    },
+    {
+      "casa": "GAD3",
+      "estudio": "gad3-2026-05-28",
+      "campo_fin": "2026-05-28",
+      "publicacion": "2026-06-01",
+      "voto": {
+        "PP": 33.1,
+        "PSOE": 26.8,
+        "VOX": 17.1,
+        "SUMAR": 5.9
+      },
+      "n": 1011
+    },
+    {
+      "casa": "NC Report",
+      "estudio": "ncreport-2026-09-03",
+      "campo_fin": "2026-09-03",
+      "publicacion": "None",
+      "voto": {
+        "PP": 34.4,
+        "PSOE": 24.9,
+        "VOX": 18.3,
+        "SUMAR": 5.7,
+        "PODEMOS": 3.4
+      },
+      "n": 1000
+    },
+    {
+      "casa": "Sigma Dos",
+      "estudio": "sigmados-2026-10-01",
+      "campo_fin": "2026-10-01",
+      "publicacion": "None",
+      "voto": {
+        "PP": 32.6,
+        "PSOE": 25.6,
+        "VOX": 18.3,
+        "SUMAR": 6.6
+      },
+      "n": 2116
+    },
+    {
+      "casa": "SocioMétrica",
+      "estudio": "sociometrica-2026-10-01",
+      "campo_fin": "2026-10-03",
+      "publicacion": "2026-10-04",
+      "voto": {
+        "PP": 33.4,
+        "PSOE": 26.5,
+        "VOX": 18.1,
+        "SUMAR": 5.3
+      },
+      "n": 1000
+    },
+    {
+      "casa": "CIS",
+      "estudio": "cis-3582",
+      "campo_fin": "2026-10-06",
+      "publicacion": "2026-10-14",
+      "voto": {
+        "PSOE": 34.0,
+        "PP": 22.2,
+        "VOX": 17.1,
+        "SUMAR": 6.1,
+        "PODEMOS": 3.1,
+        "ERC": 3.0,
+        "SALF": 1.8,
+        "BILDU": 1.6,
+        "JUNTS": 1.1,
+        "BNG": 0.9,
+        "PNV": 0.6,
+        "CC": 0.2,
+        "UPN": 0.1
+      },
+      "n": 5025
+    },
+    {
+      "casa": "NC Report",
+      "estudio": "ncreport-2026-10-06",
+      "campo_fin": "2026-10-06",
+      "publicacion": "2026-10-08",
+      "voto": {
+        "PP": 34.1,
+        "PSOE": 25.0,
+        "VOX": 18.2,
+        "SUMAR": 5.3,
+        "PODEMOS": 3.9
+      },
+      "n": 1000
+    },
+    {
+      "casa": "DYM",
+      "estudio": "dym-2026-10",
+      "campo_fin": "2026-10-07",
+      "publicacion": "2026-10-09",
+      "voto": {
+        "PP": 34.0,
+        "PSOE": 28.2,
+        "VOX": 18.2,
+        "SUMAR": 3.6,
+        "PODEMOS": 2.6
+      },
+      "n": 1011
+    },
+    {
+      "casa": "IMOP",
+      "estudio": "imop-2026-10-05",
+      "campo_fin": "2026-10-07",
+      "publicacion": "2026-10-09",
+      "voto": {
+        "PP": 30.0,
+        "PSOE": 26.0,
+        "VOX": 19.0,
+        "SUMAR": 7.6,
+        "ERC": 2.2,
+        "PNV": 0.9,
+        "BNG": 1.1,
+        "CC": 0.6
+      },
+      "n": 900
+    },
+    {
+      "casa": "40dB.",
+      "estudio": "40db-2026-10-flash",
+      "campo_fin": "2026-10-08",
+      "publicacion": "2026-10-09",
+      "voto": {
+        "PP": 31.9,
+        "PSOE": 28.1,
+        "VOX": 18.9,
+        "SUMAR": 5.3,
+        "PODEMOS": 2.3,
+        "SALF": 1.8
+      },
+      "n": 800
+    },
+    {
+      "casa": "GAD3",
+      "estudio": "gad3-2026-10",
+      "campo_fin": "2026-10-08",
+      "publicacion": "2026-10-12",
+      "voto": {
+        "PP": 31.4,
+        "PSOE": 26.4,
+        "VOX": 18.2,
+        "SUMAR": 7.4
+      },
+      "n": 1077
+    },
+    {
+      "casa": "SocioMétrica",
+      "estudio": "sociometrica-2026-10-10",
+      "campo_fin": "2026-10-11",
+      "publicacion": "2026-10-11",
+      "voto": {
+        "PP": 32.6,
+        "PSOE": 26.2,
+        "VOX": 18.8,
+        "SUMAR": 4.9,
+        "PODEMOS": 2.8
+      },
+      "n": 1000
+    },
+    {
+      "casa": "IMOP",
+      "estudio": "imop-2026-10-ola2",
+      "campo_fin": "2026-10-16",
+      "publicacion": "2026-10-23",
+      "voto": {
+        "PP": 28.5,
+        "PSOE": 27.1,
+        "VOX": 20.0
+      },
+      "n": 1000
+    },
+    {
+      "casa": "Ateneo del Dato",
+      "estudio": "ateneo-2026-10-25",
+      "campo_fin": "2026-10-22",
+      "publicacion": "2026-10-25",
+      "voto": {
+        "PP": 31.1,
+        "PSOE": 27.6,
+        "VOX": 19.8,
+        "SUMAR": 6.8,
+        "PODEMOS": 2.7
+      },
+      "n": 2000
+    },
+    {
+      "casa": "Sigma Dos",
+      "estudio": "sigma-dos-2026-10-26",
+      "campo_fin": "2026-10-22",
+      "publicacion": "2026-10-26",
+      "voto": {
+        "PP": 30.6,
+        "PSOE": 26.1,
+        "VOX": 19.9,
+        "SUMAR": 7.4,
+        "PODEMOS": 2.8,
+        "ERC": 2.5,
+        "BILDU": 1.2,
+        "JUNTS": 1.2,
+        "PNV": 0.9,
+        "BNG": 0.9,
+        "CC": 0.4
+      },
+      "n": 3122
+    },
+    {
+      "casa": "NC Report",
+      "estudio": "prensa-ncreport-2026-10-26",
+      "campo_fin": "2026-10-24",
+      "publicacion": "2026-10-26",
+      "voto": {
+        "PP": 32.9,
+        "PSOE": 25.8,
+        "VOX": 19.0,
+        "SUMAR": 6.6,
+        "PODEMOS": 2.6
+      },
+      "n": 1000
+    },
+    {
+      "casa": "Sondaxe",
+      "estudio": "sondaxe-2026-11-01",
+      "campo_fin": "2026-10-28",
+      "publicacion": "2026-11-01",
+      "voto": {
+        "PP": 29.2,
+        "PSOE": 26.9,
+        "VOX": 19.2,
+        "SUMAR": 7.2,
+        "PODEMOS": 2.0,
+        "BNG": 0.9
+      },
+      "n": 1200
+    },
+    {
+      "casa": "Hamalgama Métrica",
+      "estudio": "hamalgama-metrica-2026-11-02",
+      "campo_fin": "2026-10-28",
+      "publicacion": "2026-11-02",
+      "voto": {
+        "PP": 32.0,
+        "PSOE": 26.4,
+        "VOX": 19.9,
+        "SUMAR": 5.4
+      },
+      "n": 1000
+    },
+    {
+      "casa": "Sigma Dos",
+      "estudio": "sigma-dos-2026-11-02",
+      "campo_fin": "2026-10-30",
+      "publicacion": "2026-11-02",
+      "voto": {
+        "PP": 31.1,
+        "PSOE": 24.6,
+        "VOX": 19.3,
+        "SUMAR": 7.1,
+        "PODEMOS": 1.9,
+        "ERC": 3.0,
+        "BILDU": 1.3,
+        "JUNTS": 1.1,
+        "BNG": 1.0,
+        "PNV": 0.9,
+        "CC": 0.4
+      },
+      "n": 2505
+    },
+    {
+      "casa": "Target Point",
+      "estudio": "target-point-2026-11-02",
+      "campo_fin": "2026-10-30",
+      "publicacion": "2026-11-02",
+      "voto": {
+        "PP": 31.8,
+        "PSOE": 25.5,
+        "VOX": 19.9,
+        "SUMAR": 6.6
+      },
+      "n": 1024
+    }
+  ],
+  "errores_historicos": {
+    "SocioMétrica": {
+      "estudio": "sociometrica-2023-07-17-elespanol",
+      "campo_fin": "2023-07-16",
+      "origen": "terceros-29n",
+      "url": "https://www.electografica.com/2023/07/encuesta-sociometrica-230717.html",
+      "error": {
+        "PP": 0.4442310374230303,
+        "PSOE": -3.3821550410122896,
+        "VOX": 1.3175096110119817,
+        "SUMAR": 0.8661322523693311
+      },
+      "mae": 1.5025069854541582,
+      "completa": true
+    },
+    "GAD3": {
+      "estudio": "gad3-2023-07-17-abc-tracking14",
+      "campo_fin": "2023-07-17",
+      "origen": "terceros-29n",
+      "url": "https://www.electografica.com/2023/07/encuesta-gad3-230717-2.html",
+      "error": {
+        "PP": 3.844231037423029,
+        "PSOE": -3.082155041012289,
+        "VOX": -0.6824903889880183,
+        "SUMAR": -0.8338677476306682
+      },
+      "mae": 2.110686053763501,
+      "completa": true
+    },
+    "Sigma Dos": {
+      "estudio": "sigmados-2023-07-17-elmundo",
+      "campo_fin": "2023-07-17",
+      "origen": "terceros-29n",
+      "url": "https://www.elmundo.es/elecciones/elecciones-generales/2023/07/17/64b58986e9cf4a5e018b459f.html",
+      "error": {
+        "PP": 2.344231037423029,
+        "PSOE": -3.6821550410122903,
+        "VOX": -1.1824903889880183,
+        "SUMAR": 1.2661322523693315
+      },
+      "mae": 2.1187521799481672,
+      "completa": true
+    },
+    "DYM": {
+      "estudio": "wiki2023-0d8682b4978c0b",
+      "campo_fin": "2023-07-13",
+      "origen": "terceros-wikipedia",
+      "url": "https://www.heraldo.es/noticias/nacional/2023/07/17/fuga-votantes-psoe-y-vox-lanzaria-pp-hasta-150-escanos-elecciones-generales-23j-1665249.html",
+      "error": {
+        "PP": 2.4442310374230303,
+        "PSOE": -4.582155041012289,
+        "VOX": -0.08249038898801686,
+        "SUMAR": 0.7661322523693315
+      },
+      "mae": 1.9687521799481669,
+      "completa": true
+    },
+    "40dB.": {
+      "estudio": "40db-2023-07-17-tracking11",
+      "campo_fin": "2023-07-16",
+      "origen": "terceros-wikipedia",
+      "url": "https://www.electografica.com/2023/07/encuesta-40db-230717.html",
+      "error": {
+        "PP": -0.15576896257697115,
+        "PSOE": -2.982155041012291,
+        "VOX": 1.1175096110119824,
+        "SUMAR": 1.3661322523693311
+      },
+      "mae": 1.405391466742644,
+      "completa": true
+    },
+    "EM-Analytics": {
+      "estudio": "wiki2023-05160326237bf7",
+      "campo_fin": "2023-07-17",
+      "origen": "terceros-wikipedia",
+      "url": "https://electomania.es/electopanel-17jl-confirmado-la-moncloa-se-disputa-por-unos-pocos-escanos/",
+      "error": {
+        "PP": 1.4442310374230303,
+        "PSOE": -2.8821550410122896,
+        "VOX": 0.5175096110119828,
+        "SUMAR": 1.0661322523693322
+      },
+      "mae": 1.4775069854541587,
+      "completa": true
+    },
+    "YouGov": {
+      "estudio": "wiki2023-a762790eeaa1c1",
+      "campo_fin": "2023-07-17",
+      "origen": "terceros-wikipedia",
+      "url": "https://yougov.co.uk/topics/politics/articles-reports/2023/07/17/2023-spanish-general-election-final-call-right-win",
+      "error": {
+        "PP": -1.0557689625769697,
+        "PSOE": -3.6821550410122903,
+        "VOX": 1.6175096110119824,
+        "SUMAR": 1.6661322523693318
+      },
+      "mae": 2.0053914667426436,
+      "completa": true
+    },
+    "Opinòmetre": {
+      "estudio": "wiki2023-ce345330344d50",
+      "campo_fin": "2023-07-04",
+      "origen": "terceros-wikipedia",
+      "url": "https://www.ara.cat/politica/eleccions-generals/l-esquerra-aguanta-barra-pas-pp-vox-segons-l-enquesta-l-ara_1_4750544.html",
+      "error": {
+        "PP": -0.4557689625769683,
+        "PSOE": -2.6821550410122903,
+        "VOX": 0.3175096110119817,
+        "SUMAR": 3.166132252369332
+      },
+      "mae": 1.655391466742643,
+      "completa": true
+    },
+    "KeyData": {
+      "estudio": "wiki2023-4fcc532f2c8a07",
+      "campo_fin": "2023-07-17",
+      "origen": "terceros-wikipedia",
+      "url": "https://www.publico.es/politica/psoe-sumar-recortan-tres-escanos-campana-pp-vox-mantienen-mayoria.html",
+      "error": {
+        "PP": 1.6442310374230331,
+        "PSOE": -3.6821550410122903,
+        "VOX": 0.5175096110119828,
+        "SUMAR": 0.46613225236933253
+      },
+      "mae": 1.5775069854541597,
+      "completa": true
+    },
+    "Ipsos": {
+      "estudio": "wiki2023-72153076e05285",
+      "campo_fin": "2023-07-06",
+      "origen": "terceros-wikipedia",
+      "url": "https://www.lavanguardia.com/politica/20230709/9096905/encuesta-elecciones-23j-pp-mayoria-vox.html",
+      "error": {
+        "PP": 2.2442310374230274,
+        "PSOE": -3.482155041012291,
+        "VOX": 0.21750961101198207,
+        "SUMAR": 0.5661322523693322
+      },
+      "mae": 1.6275069854541582,
+      "completa": true
+    },
+    "InvyMark": {
+      "estudio": "wiki2023-dbca7601e8c77d",
+      "campo_fin": "2023-07-14",
+      "origen": "terceros-wikipedia",
+      "url": "https://www.lasexta.com/elecciones/generales/barometro-lasexta-ganaria-elecciones-generales-23j-335-votos_2023071664b3f42b1f1191000172ecfd.html",
+      "error": {
+        "PP": 0.4442310374230303,
+        "PSOE": -5.38215504101229,
+        "VOX": 1.4175096110119831,
+        "SUMAR": 1.3661322523693311
+      },
+      "mae": 2.1525069854541585,
+      "completa": true
+    },
+    "Target Point": {
+      "estudio": "wiki2023-db2dc2cf98e764",
+      "campo_fin": "2023-07-16",
+      "origen": "terceros-wikipedia",
+      "url": "https://www.eldebate.com/espana/20230717/psoe-apenas-puede-sostener-pobre-resultado-2019_128555.html",
+      "error": {
+        "PP": 3.344231037423029,
+        "PSOE": -3.582155041012289,
+        "VOX": 0.017509611011982784,
+        "SUMAR": -0.23386774763066853
+      },
+      "mae": 1.7944408592694923,
+      "completa": true
+    },
+    "Sondaxe": {
+      "estudio": "wiki2023-8e41c35cab0e74",
+      "campo_fin": "2023-07-16",
+      "origen": "terceros-wikipedia",
+      "url": "https://www.lavozdegalicia.es/noticia/elecciones-23j/2023/07/17/encuesta-sondaxe-pp-sigue-alza-alcanza-141-escanos/00031689606665440254294.htm",
+      "error": {
+        "PP": 1.2442310374230274,
+        "PSOE": -2.982155041012291,
+        "VOX": 0.11750961101198243,
+        "SUMAR": 1.6661322523693318
+      },
+      "mae": 1.5025069854541582,
+      "completa": true
+    },
+    "IMOP": {
+      "estudio": "imop-2023-07-17-completo",
+      "campo_fin": "2023-07-14",
+      "origen": "terceros-wikipedia",
+      "url": "https://www.elconfidencial.com/espana/observatorio-electoral/2023-07-17/sondeos-elecciones-generales-23j-pp-consolida-ganar-mayoria-vox_3434093/",
+      "error": {
+        "PP": -0.15576896257697115,
+        "PSOE": -3.482155041012291,
+        "VOX": 2.1175096110119824,
+        "SUMAR": 0.46613225236933253
+      },
+      "mae": 1.5553914667426443,
+      "completa": true
+    },
+    "Data10": {
+      "estudio": "wiki2023-3ec742a6b7add5",
+      "campo_fin": "2023-07-17",
+      "origen": "terceros-wikipedia",
+      "url": "https://okdiario.com/elecciones/encuesta-electoral-pp-llega-escanos-mas-psoe-sumar-erc-bildu-juntos-11273283",
+      "error": {
+        "PP": 2.9442310374230303,
+        "PSOE": -4.18215504101229,
+        "VOX": 0.11750961101198243,
+        "SUMAR": 0.16613225236933182
+      },
+      "mae": 1.8525069854541587,
+      "completa": true
+    },
+    "NC Report": {
+      "estudio": "ncreport-2023-07-17-larazon-tracking6",
+      "campo_fin": "2023-07-16",
+      "origen": "terceros-29n",
+      "url": "https://www.electografica.com/2023/07/encuesta-nc-report-230717.html",
+      "error": {
+        "PP": 4.144231037423033,
+        "PSOE": -3.3821550410122896,
+        "VOX": -1.282490388988018,
+        "SUMAR": -1.0338677476306675
+      },
+      "mae": 2.460686053763502,
+      "completa": true
+    },
+    "Simple Lógica": {
+      "estudio": "wiki2023-8ff42dd5b99127",
+      "campo_fin": "2023-07-16",
+      "origen": "terceros-wikipedia",
+      "url": "https://www.eldiario.es/politica/psoe-sube-derecha-no-asegurada-mayoria-semana-elecciones-generales_1_10382875.html",
+      "error": {
+        "PP": -0.8557689625769669,
+        "PSOE": -3.082155041012289,
+        "VOX": 1.5175096110119828,
+        "SUMAR": 1.4661322523693325
+      },
+      "mae": 1.7303914667426428,
+      "completa": true
+    },
+    "Top Position": {
+      "estudio": "wiki2023-2619c0617a62c8",
+      "campo_fin": "2023-07-06",
+      "origen": "terceros-wikipedia",
+      "url": "https://t-position.com/la-suma-de-pp-y-vox-obtendria-mayoria-absoluta-en-las-elecciones-generales-del-23j/",
+      "error": {
+        "PP": 1.1442310374230331,
+        "PSOE": -3.582155041012289,
+        "VOX": 0.9175096110119831,
+        "SUMAR": 0.46613225236933253
+      },
+      "mae": 1.5275069854541594,
+      "completa": true
+    },
+    "CIS": {
+      "estudio": "3415",
+      "campo_fin": "2023-07-12",
+      "origen": "verificada",
+      "url": "https://www.cis.es/documents/d/cis/es3415marMT_a",
+      "error": {
+        "PP": -2.255768962576969,
+        "PSOE": 0.5178449589877125,
+        "VOX": -0.5824903889880169,
+        "SUMAR": 2.566132252369332
+      },
+      "mae": 1.4805591407305077,
+      "completa": true
+    },
+    "Celeste-Tel": {
+      "estudio": "wiki2023-552cac38ad026f",
+      "campo_fin": "2023-07-12",
+      "origen": "terceros-wikipedia",
+      "url": "https://www.ondacero.es/elecciones/generales/ganaria-elecciones-pero-necesitaria-vox-poder-gobernar-segun-encuesta-celestetel_2023071464b11554bcaee000013d8ed7.html",
+      "error": {
+        "PP": 3.4442310374230303,
+        "PSOE": -3.2821550410122917,
+        "VOX": -0.9824903889880172,
+        "SUMAR": -0.8338677476306682
+      },
+      "mae": 2.135686053763502,
+      "completa": true
+    },
+    "Hamalgama Métrica": {
+      "estudio": "wiki2023-ada5abe775a67e",
+      "campo_fin": "2023-07-13",
+      "origen": "terceros-wikipedia",
+      "url": "https://www.vozpopuli.com/espana/politica/elecciones-generales/pactos-debate-disparan-feijoo-costa-vox-147-escanos-2-millones-votos-mas-sanchez.html",
+      "error": {
+        "PP": 3.2442310374230274,
+        "PSOE": -4.18215504101229,
+        "VOX": 1.4175096110119831,
+        "SUMAR": -0.23386774763066853
+      },
+      "mae": 2.2694408592694923,
+      "completa": true
+    },
+    "GESOP": {
+      "estudio": "wiki2023-812b4ed434baf0",
+      "campo_fin": "2023-07-15",
+      "origen": "terceros-wikipedia",
+      "url": "https://www.epe.es/es/elecciones/generales/20230716/encuesta-elecciones-generales-espana-89955829",
+      "error": {
+        "PP": -2.4557689625769683,
+        "PSOE": -4.282155041012292,
+        "VOX": 2.6175096110119824,
+        "SUMAR": 2.066132252369332
+      },
+      "mae": 2.8553914667426437,
+      "completa": true
+    },
+    "Cluster17": {
+      "estudio": "wiki2023-fe2f20ed6ea917",
+      "campo_fin": "2023-07-14",
+      "origen": "terceros-wikipedia",
+      "url": "https://legrandcontinent.eu/fr/2023/07/17/le-vote-utile-fera-t-il-lelection-en-espagne-sondage-exclusif/",
+      "error": {
+        "PP": 0.5442310374230317,
+        "PSOE": -2.7821550410122917,
+        "VOX": 1.3175096110119817,
+        "SUMAR": 1.1661322523693318
+      },
+      "mae": 1.4525069854541592,
+      "completa": true
+    },
+    "AtlasIntel": {
+      "estudio": "wiki2023-df2bda21c4cd50",
+      "campo_fin": "2023-07-17",
+      "origen": "terceros-wikipedia",
+      "url": "https://atlasintel.org/poll/spain-national-2023-07-17",
+      "error": {
+        "PP": -2.255768962576969,
+        "PSOE": -2.2821550410122917,
+        "VOX": 4.617509611011982,
+        "SUMAR": 3.7661322523693332
+      },
+      "mae": 3.230391466742644,
+      "completa": true
+    }
+  },
+  "escenarios": [
+    {
+      "cis": true,
+      "fraccion": 0,
+      "encuestas": 20,
+      "casas_actuales": [
+        "40dB.",
+        "Ateneo del Dato",
+        "CIS",
+        "DYM",
+        "Demoscopia y Servicios",
+        "GAD3",
+        "Hamalgama Métrica",
+        "IMOP",
+        "NC Report",
+        "Sigma Dos",
+        "SocioMétrica",
+        "Sondaxe",
+        "Target Point"
+      ],
+      "casas_historicas": [
+        "40dB.",
+        "AtlasIntel",
+        "CIS",
+        "Celeste-Tel",
+        "Cluster17",
+        "DYM",
+        "Data10",
+        "EM-Analytics",
+        "GAD3",
+        "GESOP",
+        "Hamalgama Métrica",
+        "IMOP",
+        "InvyMark",
+        "Ipsos",
+        "KeyData",
+        "NC Report",
+        "Opinòmetre",
+        "Sigma Dos",
+        "Simple Lógica",
+        "SocioMétrica",
+        "Sondaxe",
+        "Target Point",
+        "Top Position",
+        "YouGov"
+      ],
+      "simulaciones": 6000,
+      "correccion_consensos": {
+        "fraccion": 0,
+        "puntos": {},
+        "variantes": [
+          "consenso_privadas",
+          "consenso_todas"
+        ]
+      },
+      "factor_prior_23j": 0,
+      "partidos": {
+        "PP": {
+          "voto": [
+            30.93163149465154,
+            26.498644845117525,
+            35.197687811725935
+          ],
+          "escanos": [
+            130.0,
+            112.0,
+            148.0
+          ],
+          "primero": 0.8273333333333334
+        },
+        "PSOE": {
+          "voto": [
+            26.752728274425678,
+            22.677811069748934,
+            30.79522462753491
+          ],
+          "escanos": [
+            110.0,
+            90.0,
+            131.0
+          ],
+          "primero": 0.17266666666666666
+        },
+        "VOX": {
+          "voto": [
+            18.93754762133404,
+            15.507581106555138,
+            22.393401903512295
+          ],
+          "escanos": [
+            68.0,
+            54.0,
+            83.0
+          ],
+          "primero": 0.0
+        },
+        "SUMAR": {
+          "voto": [
+            6.168792646775156,
+            4.166949339193291,
+            8.213756967225837
+          ],
+          "escanos": [
+            8.0,
+            5.0,
+            16.0
+          ],
+          "primero": 0.0
+        },
+        "PODEMOS": {
+          "voto": [
+            2.5396571584914627,
+            1.2610601564617732,
+            3.868943618809295
+          ],
+          "escanos": [
+            1.0,
+            0.0,
+            4.0
+          ],
+          "primero": 0.0
+        }
+      },
+      "bloques": {
+        "PP+VOX": {
+          "mediana": 198.0,
+          "p5": 175.0,
+          "p95": 221.0,
+          "p_mayoria": 0.9438333333333333
+        },
+        "PP+VOX+UPN": {
+          "mediana": 199.0,
+          "p5": 175.0,
+          "p95": 223.0,
+          "p_mayoria": 0.9455
+        },
+        "PSOE+SUMAR+PODEMOS": {
+          "mediana": 120.0,
+          "p5": 97.0,
+          "p95": 145.0,
+          "p_mayoria": 0.0003333333333333333
+        },
+        "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
+          "mediana": 150.0,
+          "p5": 127.0,
+          "p95": 175.0,
+          "p_mayoria": 0.04683333333333333
+        }
+      }
+    },
+    {
+      "cis": true,
+      "fraccion": 0.25,
+      "encuestas": 20,
+      "casas_actuales": [
+        "40dB.",
+        "Ateneo del Dato",
+        "CIS",
+        "DYM",
+        "Demoscopia y Servicios",
+        "GAD3",
+        "Hamalgama Métrica",
+        "IMOP",
+        "NC Report",
+        "Sigma Dos",
+        "SocioMétrica",
+        "Sondaxe",
+        "Target Point"
+      ],
+      "casas_historicas": [
+        "40dB.",
+        "AtlasIntel",
+        "CIS",
+        "Celeste-Tel",
+        "Cluster17",
+        "DYM",
+        "Data10",
+        "EM-Analytics",
+        "GAD3",
+        "GESOP",
+        "Hamalgama Métrica",
+        "IMOP",
+        "InvyMark",
+        "Ipsos",
+        "KeyData",
+        "NC Report",
+        "Opinòmetre",
+        "Sigma Dos",
+        "Simple Lógica",
+        "SocioMétrica",
+        "Sondaxe",
+        "Target Point",
+        "Top Position",
+        "YouGov"
+      ],
+      "simulaciones": 6000,
+      "correccion_consensos": {
+        "fraccion": 0.25,
+        "puntos": {
+          "PP": -0.263,
+          "PSOE": 0.834,
+          "VOX": -0.177,
+          "SUMAR": -0.242
+        },
+        "variantes": [
+          "consenso_privadas",
+          "consenso_todas"
+        ]
+      },
+      "factor_prior_23j": 0.25,
+      "partidos": {
+        "PP": {
+          "voto": [
+            30.59235979334911,
+            26.156660511774895,
+            34.88891156787717
+          ],
+          "escanos": [
+            128.0,
+            110.0,
+            146.0
+          ],
+          "primero": 0.757
+        },
+        "PSOE": {
+          "voto": [
+            27.547542693210172,
+            23.437695268380555,
+            31.642820513766022
+          ],
+          "escanos": [
+            113.0,
+            94.0,
+            135.0
+          ],
+          "primero": 0.243
+        },
+        "VOX": {
+          "voto": [
+            18.808733016416554,
+            15.384872232555027,
+            22.223458323992446
+          ],
+          "escanos": [
+            67.0,
+            53.0,
+            82.0
+          ],
+          "primero": 0.0
+        },
+        "SUMAR": {
+          "voto": [
+            5.997358650069489,
+            4.031031770044382,
+            8.011836143121139
+          ],
+          "escanos": [
+            7.0,
+            4.0,
+            15.0
+          ],
+          "primero": 0.0
+        },
+        "PODEMOS": {
+          "voto": [
+            2.5376938907456315,
+            1.260276287907505,
+            3.868943618809295
+          ],
+          "escanos": [
+            1.0,
+            0.0,
+            4.0
+          ],
+          "primero": 0.0
+        }
+      },
+      "bloques": {
+        "PP+VOX": {
+          "mediana": 196.0,
+          "p5": 172.0,
+          "p95": 218.0,
+          "p_mayoria": 0.9226666666666666
+        },
+        "PP+VOX+UPN": {
+          "mediana": 197.0,
+          "p5": 172.0,
+          "p95": 220.0,
+          "p_mayoria": 0.925
+        },
+        "PSOE+SUMAR+PODEMOS": {
+          "mediana": 123.0,
+          "p5": 100.0,
+          "p95": 148.0,
+          "p_mayoria": 0.0003333333333333333
+        },
+        "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
+          "mediana": 153.0,
+          "p5": 130.0,
+          "p95": 178.0,
+          "p_mayoria": 0.0645
+        }
+      }
+    },
+    {
+      "cis": true,
+      "fraccion": 0.5,
+      "encuestas": 20,
+      "casas_actuales": [
+        "40dB.",
+        "Ateneo del Dato",
+        "CIS",
+        "DYM",
+        "Demoscopia y Servicios",
+        "GAD3",
+        "Hamalgama Métrica",
+        "IMOP",
+        "NC Report",
+        "Sigma Dos",
+        "SocioMétrica",
+        "Sondaxe",
+        "Target Point"
+      ],
+      "casas_historicas": [
+        "40dB.",
+        "AtlasIntel",
+        "CIS",
+        "Celeste-Tel",
+        "Cluster17",
+        "DYM",
+        "Data10",
+        "EM-Analytics",
+        "GAD3",
+        "GESOP",
+        "Hamalgama Métrica",
+        "IMOP",
+        "InvyMark",
+        "Ipsos",
+        "KeyData",
+        "NC Report",
+        "Opinòmetre",
+        "Sigma Dos",
+        "Simple Lógica",
+        "SocioMétrica",
+        "Sondaxe",
+        "Target Point",
+        "Top Position",
+        "YouGov"
+      ],
+      "simulaciones": 6000,
+      "correccion_consensos": {
+        "fraccion": 0.5,
+        "puntos": {
+          "PP": -0.526,
+          "PSOE": 1.668,
+          "VOX": -0.355,
+          "SUMAR": -0.483
+        },
+        "variantes": [
+          "consenso_privadas",
+          "consenso_todas"
+        ]
+      },
+      "factor_prior_23j": 0.5,
+      "partidos": {
+        "PP": {
+          "voto": [
+            30.247926112928248,
+            25.80328426407009,
+            34.55936260547655
+          ],
+          "escanos": [
+            126.0,
+            108.0,
+            144.0
+          ],
+          "primero": 0.67
+        },
+        "PSOE": {
+          "voto": [
+            28.332510654826915,
+            24.189027366768894,
+            32.489946380405826
+          ],
+          "escanos": [
+            117.0,
+            97.0,
+            139.0
+          ],
+          "primero": 0.33
+        },
+        "VOX": {
+          "voto": [
+            18.689053062195924,
+            15.275324733803666,
+            22.06776805558975
+          ],
+          "escanos": [
+            67.0,
+            52.0,
+            81.0
+          ],
+          "primero": 0.0
+        },
+        "SUMAR": {
+          "voto": [
+            5.834214249530653,
+            3.8686439043472705,
+            7.882262938831317
+          ],
+          "escanos": [
+            7.0,
+            4.0,
+            15.0
+          ],
+          "primero": 0.0
+        },
+        "PODEMOS": {
+          "voto": [
+            2.5375265957228086,
+            1.2594782129440545,
+            3.86692956459075
+          ],
+          "escanos": [
+            1.0,
+            0.0,
+            4.0
+          ],
+          "primero": 0.0
+        }
+      },
+      "bloques": {
+        "PP+VOX": {
+          "mediana": 193.0,
+          "p5": 169.0,
+          "p95": 215.0,
+          "p_mayoria": 0.8886666666666667
+        },
+        "PP+VOX+UPN": {
+          "mediana": 194.0,
+          "p5": 169.0,
+          "p95": 217.0,
+          "p_mayoria": 0.8925
+        },
+        "PSOE+SUMAR+PODEMOS": {
+          "mediana": 126.0,
+          "p5": 103.0,
+          "p95": 152.0,
+          "p_mayoria": 0.0016666666666666668
+        },
+        "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
+          "mediana": 156.0,
+          "p5": 133.0,
+          "p95": 180.05000000000018,
+          "p_mayoria": 0.09366666666666666
+        }
+      }
+    },
+    {
+      "cis": true,
+      "fraccion": 1,
+      "encuestas": 20,
+      "casas_actuales": [
+        "40dB.",
+        "Ateneo del Dato",
+        "CIS",
+        "DYM",
+        "Demoscopia y Servicios",
+        "GAD3",
+        "Hamalgama Métrica",
+        "IMOP",
+        "NC Report",
+        "Sigma Dos",
+        "SocioMétrica",
+        "Sondaxe",
+        "Target Point"
+      ],
+      "casas_historicas": [
+        "40dB.",
+        "AtlasIntel",
+        "CIS",
+        "Celeste-Tel",
+        "Cluster17",
+        "DYM",
+        "Data10",
+        "EM-Analytics",
+        "GAD3",
+        "GESOP",
+        "Hamalgama Métrica",
+        "IMOP",
+        "InvyMark",
+        "Ipsos",
+        "KeyData",
+        "NC Report",
+        "Opinòmetre",
+        "Sigma Dos",
+        "Simple Lógica",
+        "SocioMétrica",
+        "Sondaxe",
+        "Target Point",
+        "Top Position",
+        "YouGov"
+      ],
+      "simulaciones": 6000,
+      "correccion_consensos": {
+        "fraccion": 1,
+        "puntos": {
+          "PP": -1.053,
+          "PSOE": 3.336,
+          "VOX": -0.709,
+          "SUMAR": -0.966
+        },
+        "variantes": [
+          "consenso_privadas",
+          "consenso_todas"
+        ]
+      },
+      "factor_prior_23j": 1,
+      "partidos": {
+        "PP": {
+          "voto": [
+            29.589802272484462,
+            25.155508217800957,
+            33.895858206450995
+          ],
+          "escanos": [
+            122.0,
+            103.94999999999999,
+            140.0
+          ],
+          "primero": 0.4671666666666667
+        },
+        "PSOE": {
+          "voto": [
+            29.923053154322055,
+            25.704419746157683,
+            34.16292142414475
+          ],
+          "escanos": [
+            124.0,
+            104.0,
+            146.0
+          ],
+          "primero": 0.5328333333333334
+        },
+        "VOX": {
+          "voto": [
+            18.43575809260583,
+            14.998502582663845,
+            21.77135157112211
+          ],
+          "escanos": [
+            66.0,
+            51.0,
+            80.0
+          ],
+          "primero": 0.0
+        },
+        "SUMAR": {
+          "voto": [
+            5.482714338814061,
+            3.5231867828451633,
+            7.6233227174778095
+          ],
+          "escanos": [
+            6.0,
+            2.0,
+            13.0
+          ],
+          "primero": 0.0
+        },
+        "PODEMOS": {
+          "voto": [
+            2.5354989589559978,
+            1.257824272261938,
+            3.8617420806927663
+          ],
+          "escanos": [
+            1.0,
+            0.0,
+            4.0
+          ],
+          "primero": 0.0
+        }
+      },
+      "bloques": {
+        "PP+VOX": {
+          "mediana": 188.0,
+          "p5": 164.0,
+          "p95": 210.0,
+          "p_mayoria": 0.8025
+        },
+        "PP+VOX+UPN": {
+          "mediana": 189.0,
+          "p5": 164.0,
+          "p95": 212.0,
+          "p_mayoria": 0.8093333333333333
+        },
+        "PSOE+SUMAR+PODEMOS": {
+          "mediana": 132.0,
+          "p5": 109.0,
+          "p95": 157.0,
+          "p_mayoria": 0.004333333333333333
+        },
+        "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
+          "mediana": 161.0,
+          "p5": 138.0,
+          "p95": 186.0,
+          "p_mayoria": 0.1695
+        }
+      }
+    },
+    {
+      "cis": false,
+      "fraccion": 0,
+      "encuestas": 19,
+      "casas_actuales": [
+        "40dB.",
+        "Ateneo del Dato",
+        "DYM",
+        "Demoscopia y Servicios",
+        "GAD3",
+        "Hamalgama Métrica",
+        "IMOP",
+        "NC Report",
+        "Sigma Dos",
+        "SocioMétrica",
+        "Sondaxe",
+        "Target Point"
+      ],
+      "casas_historicas": [
+        "40dB.",
+        "AtlasIntel",
+        "Celeste-Tel",
+        "Cluster17",
+        "DYM",
+        "Data10",
+        "EM-Analytics",
+        "GAD3",
+        "GESOP",
+        "Hamalgama Métrica",
+        "IMOP",
+        "InvyMark",
+        "Ipsos",
+        "KeyData",
+        "NC Report",
+        "Opinòmetre",
+        "Sigma Dos",
+        "Simple Lógica",
+        "SocioMétrica",
+        "Sondaxe",
+        "Target Point",
+        "Top Position",
+        "YouGov"
+      ],
+      "simulaciones": 6000,
+      "correccion_consensos": {
+        "fraccion": 0,
+        "puntos": {},
+        "variantes": [
+          "consenso_privadas",
+          "consenso_todas"
+        ]
+      },
+      "factor_prior_23j": 0,
+      "partidos": {
+        "PP": {
+          "voto": [
+            31.454440563020505,
+            27.03795957933664,
+            35.713713562671465
+          ],
+          "escanos": [
+            132.0,
+            114.0,
+            150.0
+          ],
+          "primero": 0.8831666666666667
+        },
+        "PSOE": {
+          "voto": [
+            26.297796015747565,
+            22.26295013627572,
+            30.340037623294325
+          ],
+          "escanos": [
+            108.0,
+            88.0,
+            128.0
+          ],
+          "primero": 0.11683333333333333
+        },
+        "VOX": {
+          "voto": [
+            19.035778255376115,
+            15.595697286501325,
+            22.469069137380593
+          ],
+          "escanos": [
+            68.0,
+            54.0,
+            84.0
+          ],
+          "primero": 0.0
+        },
+        "SUMAR": {
+          "voto": [
+            6.1621020182979445,
+            4.165955657796238,
+            8.207462813192597
+          ],
+          "escanos": [
+            8.0,
+            5.0,
+            16.0
+          ],
+          "primero": 0.0
+        },
+        "PODEMOS": {
+          "voto": [
+            2.5158843707834433,
+            1.2355201813230698,
+            3.8451289258218186
+          ],
+          "escanos": [
+            1.0,
+            0.0,
+            4.0
+          ],
+          "primero": 0.0
+        }
+      },
+      "bloques": {
+        "PP+VOX": {
+          "mediana": 201.0,
+          "p5": 178.0,
+          "p95": 223.0,
+          "p_mayoria": 0.961
+        },
+        "PP+VOX+UPN": {
+          "mediana": 202.0,
+          "p5": 178.0,
+          "p95": 226.0,
+          "p_mayoria": 0.9631666666666666
+        },
+        "PSOE+SUMAR+PODEMOS": {
+          "mediana": 118.0,
+          "p5": 94.0,
+          "p95": 142.0,
+          "p_mayoria": 0.00016666666666666666
+        },
+        "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
+          "mediana": 148.0,
+          "p5": 124.0,
+          "p95": 172.0,
+          "p_mayoria": 0.030666666666666665
+        }
+      }
+    },
+    {
+      "cis": false,
+      "fraccion": 0.25,
+      "encuestas": 19,
+      "casas_actuales": [
+        "40dB.",
+        "Ateneo del Dato",
+        "DYM",
+        "Demoscopia y Servicios",
+        "GAD3",
+        "Hamalgama Métrica",
+        "IMOP",
+        "NC Report",
+        "Sigma Dos",
+        "SocioMétrica",
+        "Sondaxe",
+        "Target Point"
+      ],
+      "casas_historicas": [
+        "40dB.",
+        "AtlasIntel",
+        "Celeste-Tel",
+        "Cluster17",
+        "DYM",
+        "Data10",
+        "EM-Analytics",
+        "GAD3",
+        "GESOP",
+        "Hamalgama Métrica",
+        "IMOP",
+        "InvyMark",
+        "Ipsos",
+        "KeyData",
+        "NC Report",
+        "Opinòmetre",
+        "Sigma Dos",
+        "Simple Lógica",
+        "SocioMétrica",
+        "Sondaxe",
+        "Target Point",
+        "Top Position",
+        "YouGov"
+      ],
+      "simulaciones": 6000,
+      "correccion_consensos": {
+        "fraccion": 0.25,
+        "puntos": {
+          "PP": -0.299,
+          "PSOE": 0.876,
+          "VOX": -0.191,
+          "SUMAR": -0.224
+        },
+        "variantes": [
+          "consenso_privadas",
+          "consenso_todas"
+        ]
+      },
+      "factor_prior_23j": 0.25,
+      "partidos": {
+        "PP": {
+          "voto": [
+            31.07442479175476,
+            26.680396784381667,
+            35.30780756227455
+          ],
+          "escanos": [
+            130.0,
+            112.0,
+            148.0
+          ],
+          "primero": 0.8168333333333333
+        },
+        "PSOE": {
+          "voto": [
+            27.140015180500274,
+            23.076413180382673,
+            31.25831339040197
+          ],
+          "escanos": [
+            112.0,
+            92.0,
+            132.0
+          ],
+          "primero": 0.18316666666666667
+        },
+        "VOX": {
+          "voto": [
+            18.89948479214494,
+            15.476823265182144,
+            22.29626082192473
+          ],
+          "escanos": [
+            67.0,
+            53.0,
+            83.0
+          ],
+          "primero": 0.0
+        },
+        "SUMAR": {
+          "voto": [
+            6.003169620979744,
+            4.03925518294127,
+            8.022565637288384
+          ],
+          "escanos": [
+            7.0,
+            4.0,
+            15.0
+          ],
+          "primero": 0.0
+        },
+        "PODEMOS": {
+          "voto": [
+            2.51546015006761,
+            1.2349063521693342,
+            3.8419703264051157
+          ],
+          "escanos": [
+            1.0,
+            0.0,
+            3.0
+          ],
+          "primero": 0.0
+        }
+      },
+      "bloques": {
+        "PP+VOX": {
+          "mediana": 198.0,
+          "p5": 174.0,
+          "p95": 220.0,
+          "p_mayoria": 0.9421666666666667
+        },
+        "PP+VOX+UPN": {
+          "mediana": 199.0,
+          "p5": 175.0,
+          "p95": 222.0,
+          "p_mayoria": 0.9458333333333333
+        },
+        "PSOE+SUMAR+PODEMOS": {
+          "mediana": 121.0,
+          "p5": 98.0,
+          "p95": 146.0,
+          "p_mayoria": 0.0003333333333333333
+        },
+        "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
+          "mediana": 151.0,
+          "p5": 127.0,
+          "p95": 175.0,
+          "p_mayoria": 0.04616666666666667
+        }
+      }
+    },
+    {
+      "cis": false,
+      "fraccion": 0.5,
+      "encuestas": 19,
+      "casas_actuales": [
+        "40dB.",
+        "Ateneo del Dato",
+        "DYM",
+        "Demoscopia y Servicios",
+        "GAD3",
+        "Hamalgama Métrica",
+        "IMOP",
+        "NC Report",
+        "Sigma Dos",
+        "SocioMétrica",
+        "Sondaxe",
+        "Target Point"
+      ],
+      "casas_historicas": [
+        "40dB.",
+        "AtlasIntel",
+        "Celeste-Tel",
+        "Cluster17",
+        "DYM",
+        "Data10",
+        "EM-Analytics",
+        "GAD3",
+        "GESOP",
+        "Hamalgama Métrica",
+        "IMOP",
+        "InvyMark",
+        "Ipsos",
+        "KeyData",
+        "NC Report",
+        "Opinòmetre",
+        "Sigma Dos",
+        "Simple Lógica",
+        "SocioMétrica",
+        "Sondaxe",
+        "Target Point",
+        "Top Position",
+        "YouGov"
+      ],
+      "simulaciones": 6000,
+      "correccion_consensos": {
+        "fraccion": 0.5,
+        "puntos": {
+          "PP": -0.598,
+          "PSOE": 1.752,
+          "VOX": -0.383,
+          "SUMAR": -0.448
+        },
+        "variantes": [
+          "consenso_privadas",
+          "consenso_todas"
+        ]
+      },
+      "factor_prior_23j": 0.5,
+      "partidos": {
+        "PP": {
+          "voto": [
+            30.692153172660873,
+            26.324553833906293,
+            34.90651200323775
+          ],
+          "escanos": [
+            128.0,
+            110.0,
+            146.0
+          ],
+          "primero": 0.7363333333333333
+        },
+        "PSOE": {
+          "voto": [
+            27.992088042284763,
+            23.869783234809624,
+            32.132181582015114
+          ],
+          "escanos": [
+            115.0,
+            96.0,
+            136.0
+          ],
+          "primero": 0.26366666666666666
+        },
+        "VOX": {
+          "voto": [
+            18.762548113512892,
+            15.342673766731604,
+            22.11030002641445
+          ],
+          "escanos": [
+            67.0,
+            52.0,
+            82.0
+          ],
+          "primero": 0.0
+        },
+        "SUMAR": {
+          "voto": [
+            5.852413034789395,
+            3.8847460847126114,
+            7.898104482553306
+          ],
+          "escanos": [
+            7.0,
+            4.0,
+            15.0
+          ],
+          "primero": 0.0
+        },
+        "PODEMOS": {
+          "voto": [
+            2.5145621363072523,
+            1.2343669052002246,
+            3.8383599972159725
+          ],
+          "escanos": [
+            1.0,
+            0.0,
+            3.0
+          ],
+          "primero": 0.0
+        }
+      },
+      "bloques": {
+        "PP+VOX": {
+          "mediana": 195.0,
+          "p5": 171.0,
+          "p95": 217.0,
+          "p_mayoria": 0.9138333333333334
+        },
+        "PP+VOX+UPN": {
+          "mediana": 196.0,
+          "p5": 172.0,
+          "p95": 219.0,
+          "p_mayoria": 0.9203333333333333
+        },
+        "PSOE+SUMAR+PODEMOS": {
+          "mediana": 124.0,
+          "p5": 101.0,
+          "p95": 149.0,
+          "p_mayoria": 0.0006666666666666666
+        },
+        "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
+          "mediana": 153.0,
+          "p5": 131.0,
+          "p95": 178.0,
+          "p_mayoria": 0.0665
+        }
+      }
+    },
+    {
+      "cis": false,
+      "fraccion": 1,
+      "encuestas": 19,
+      "casas_actuales": [
+        "40dB.",
+        "Ateneo del Dato",
+        "DYM",
+        "Demoscopia y Servicios",
+        "GAD3",
+        "Hamalgama Métrica",
+        "IMOP",
+        "NC Report",
+        "Sigma Dos",
+        "SocioMétrica",
+        "Sondaxe",
+        "Target Point"
+      ],
+      "casas_historicas": [
+        "40dB.",
+        "AtlasIntel",
+        "Celeste-Tel",
+        "Cluster17",
+        "DYM",
+        "Data10",
+        "EM-Analytics",
+        "GAD3",
+        "GESOP",
+        "Hamalgama Métrica",
+        "IMOP",
+        "InvyMark",
+        "Ipsos",
+        "KeyData",
+        "NC Report",
+        "Opinòmetre",
+        "Sigma Dos",
+        "Simple Lógica",
+        "SocioMétrica",
+        "Sondaxe",
+        "Target Point",
+        "Top Position",
+        "YouGov"
+      ],
+      "simulaciones": 6000,
+      "correccion_consensos": {
+        "fraccion": 1,
+        "puntos": {
+          "PP": -1.196,
+          "PSOE": 3.504,
+          "VOX": -0.765,
+          "SUMAR": -0.897
+        },
+        "variantes": [
+          "consenso_privadas",
+          "consenso_todas"
+        ]
+      },
+      "factor_prior_23j": 1,
+      "partidos": {
+        "PP": {
+          "voto": [
+            29.908231597490833,
+            25.527232932374424,
+            34.14474181947123
+          ],
+          "escanos": [
+            123.0,
+            105.0,
+            141.0
+          ],
+          "primero": 0.5213333333333333
+        },
+        "PSOE": {
+          "voto": [
+            29.682969901889077,
+            25.468448637623755,
+            33.90178719066054
+          ],
+          "escanos": [
+            122.0,
+            102.0,
+            144.0
+          ],
+          "primero": 0.4786666666666667
+        },
+        "VOX": {
+          "voto": [
+            18.460468111581953,
+            15.023702441147334,
+            21.79139296473188
+          ],
+          "escanos": [
+            66.0,
+            50.0,
+            80.0
+          ],
+          "primero": 0.0
+        },
+        "SUMAR": {
+          "voto": [
+            5.518763208736294,
+            3.567799225359577,
+            7.6606300650641215
+          ],
+          "escanos": [
+            6.0,
+            3.0,
+            13.0
+          ],
+          "primero": 0.0
+        },
+        "PODEMOS": {
+          "voto": [
+            2.5118856201192576,
+            1.2333592680508063,
+            3.8373410567515385
+          ],
+          "escanos": [
+            1.0,
+            0.0,
+            3.0
+          ],
+          "primero": 0.0
+        }
+      },
+      "bloques": {
+        "PP+VOX": {
+          "mediana": 189.0,
+          "p5": 165.0,
+          "p95": 211.0,
+          "p_mayoria": 0.8281666666666667
+        },
+        "PP+VOX+UPN": {
+          "mediana": 190.0,
+          "p5": 166.0,
+          "p95": 213.0,
+          "p_mayoria": 0.8406666666666667
+        },
+        "PSOE+SUMAR+PODEMOS": {
+          "mediana": 130.0,
+          "p5": 108.0,
+          "p95": 156.0,
+          "p_mayoria": 0.003
+        },
+        "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
+          "mediana": 159.0,
+          "p5": 137.0,
+          "p95": 184.0,
+          "p_mayoria": 0.1395
+        }
+      }
+    }
+  ],
+  "limites": [
+    "El experimento no demuestra cuál de las fracciones acierta más.",
+    "Las mayorías son frecuencias condicionadas al modelo; no probabilidades empíricamente calibradas.",
+    "Con y sin CIS cambia la evidencia actual y la histórica; se conserva el mismo inicio temporal.",
+    "100 % traslada el error entero en los centros y correcciones, no obliga a la salida final a moverse esa cantidad.",
+    "El ensayo conserva el principal sobre agregados; no incluye todavía la receta candidata More in Common."
+  ]
+}

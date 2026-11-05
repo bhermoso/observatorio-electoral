@@ -1,0 +1,1208 @@
+{
+  "eleccion": "2023-07-23",
+  "seleccion": {
+    "dias_campo": 21,
+    "publicacion_hasta": "2023-07-17",
+    "regla": "Última publicada por casa entre las elegibles; no todas las encuestas del periodo"
+  },
+  "convencion": "Error firmado = estimación publicada menos resultado; positivo sobreestima, negativo infraestima.",
+  "resultados_fuente": "Base electoral local F.resultado_23j(); no se verifica de nuevo externamente en esta ejecución.",
+  "fichas": [
+    {
+      "casa": "40dB.",
+      "estudio": "40db-2023-07-17-tracking11",
+      "campo_fin": "2023-07-16",
+      "publicacion": "2023-07-17",
+      "dias_entre_campo_y_eleccion": 7,
+      "origen": "terceros-wikipedia",
+      "url": "https://www.electografica.com/2023/07/encuesta-40db-230717.html",
+      "estimacion": {
+        "PP": 32.9,
+        "PSOE": 28.7,
+        "VOX": 13.5,
+        "SUMAR": 13.7
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": -0.15576896257697115,
+        "PSOE": -2.982155041012291,
+        "VOX": 1.1175096110119824,
+        "SUMAR": 1.3661322523693311
+      },
+      "mae_pp": 1.405391466742644,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": -0.07788448128848557,
+        "PSOE": -1.4910775205061455,
+        "VOX": 0.5587548055059912
+      }
+    },
+    {
+      "casa": "AtlasIntel",
+      "estudio": "wiki2023-df2bda21c4cd50",
+      "campo_fin": "2023-07-17",
+      "publicacion": "2023-07-17",
+      "dias_entre_campo_y_eleccion": 6,
+      "origen": "terceros-wikipedia",
+      "url": "https://atlasintel.org/poll/spain-national-2023-07-17",
+      "estimacion": {
+        "PP": 30.8,
+        "PSOE": 29.4,
+        "VOX": 17.0,
+        "SUMAR": 16.1
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": -2.255768962576969,
+        "PSOE": -2.2821550410122917,
+        "VOX": 4.617509611011982,
+        "SUMAR": 3.7661322523693332
+      },
+      "mae_pp": 3.230391466742644,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": -1.1278844812884845,
+        "PSOE": -1.1410775205061459,
+        "VOX": 2.308754805505991
+      }
+    },
+    {
+      "casa": "CIS",
+      "estudio": "3415",
+      "campo_fin": "2023-07-12",
+      "publicacion": "2023-07-17",
+      "dias_entre_campo_y_eleccion": 11,
+      "origen": "verificada",
+      "url": "https://www.cis.es/documents/d/cis/es3415marMT_a",
+      "estimacion": {
+        "PP": 30.8,
+        "PSOE": 32.2,
+        "VOX": 11.8,
+        "SUMAR": 14.9
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": -2.255768962576969,
+        "PSOE": 0.5178449589877125,
+        "VOX": -0.5824903889880169,
+        "SUMAR": 2.566132252369332
+      },
+      "mae_pp": 1.4805591407305077,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": -1.1278844812884845,
+        "PSOE": 0.2589224794938563,
+        "VOX": -0.29124519449400843
+      }
+    },
+    {
+      "casa": "Celeste-Tel",
+      "estudio": "wiki2023-552cac38ad026f",
+      "campo_fin": "2023-07-12",
+      "publicacion": "2023-07-14",
+      "dias_entre_campo_y_eleccion": 11,
+      "origen": "terceros-wikipedia",
+      "url": "https://www.ondacero.es/elecciones/generales/ganaria-elecciones-pero-necesitaria-vox-poder-gobernar-segun-encuesta-celestetel_2023071464b11554bcaee000013d8ed7.html",
+      "estimacion": {
+        "PP": 36.5,
+        "PSOE": 28.4,
+        "VOX": 11.4,
+        "SUMAR": 11.5
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": 3.4442310374230303,
+        "PSOE": -3.2821550410122917,
+        "VOX": -0.9824903889880172,
+        "SUMAR": -0.8338677476306682
+      },
+      "mae_pp": 2.135686053763502,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": 1.7221155187115151,
+        "PSOE": -1.6410775205061459,
+        "VOX": -0.4912451944940086
+      }
+    },
+    {
+      "casa": "Cluster17",
+      "estudio": "wiki2023-fe2f20ed6ea917",
+      "campo_fin": "2023-07-14",
+      "publicacion": "2023-07-17",
+      "dias_entre_campo_y_eleccion": 9,
+      "origen": "terceros-wikipedia",
+      "url": "https://legrandcontinent.eu/fr/2023/07/17/le-vote-utile-fera-t-il-lelection-en-espagne-sondage-exclusif/",
+      "estimacion": {
+        "PP": 33.6,
+        "PSOE": 28.9,
+        "VOX": 13.7,
+        "SUMAR": 13.5
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": 0.5442310374230317,
+        "PSOE": -2.7821550410122917,
+        "VOX": 1.3175096110119817,
+        "SUMAR": 1.1661322523693318
+      },
+      "mae_pp": 1.4525069854541592,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": 0.27211551871151585,
+        "PSOE": -1.3910775205061459,
+        "VOX": 0.6587548055059909
+      }
+    },
+    {
+      "casa": "DYM",
+      "estudio": "wiki2023-0d8682b4978c0b",
+      "campo_fin": "2023-07-13",
+      "publicacion": "2023-07-17",
+      "dias_entre_campo_y_eleccion": 10,
+      "origen": "terceros-wikipedia",
+      "url": "https://www.heraldo.es/noticias/nacional/2023/07/17/fuga-votantes-psoe-y-vox-lanzaria-pp-hasta-150-escanos-elecciones-generales-23j-1665249.html",
+      "estimacion": {
+        "PP": 35.5,
+        "PSOE": 27.1,
+        "VOX": 12.3,
+        "SUMAR": 13.1
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": 2.4442310374230303,
+        "PSOE": -4.582155041012289,
+        "VOX": -0.08249038898801686,
+        "SUMAR": 0.7661322523693315
+      },
+      "mae_pp": 1.9687521799481669,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": 1.2221155187115151,
+        "PSOE": -2.2910775205061444,
+        "VOX": -0.04124519449400843
+      }
+    },
+    {
+      "casa": "Data10",
+      "estudio": "wiki2023-3ec742a6b7add5",
+      "campo_fin": "2023-07-17",
+      "publicacion": "2023-07-17",
+      "dias_entre_campo_y_eleccion": 6,
+      "origen": "terceros-wikipedia",
+      "url": "https://okdiario.com/elecciones/encuesta-electoral-pp-llega-escanos-mas-psoe-sumar-erc-bildu-juntos-11273283",
+      "estimacion": {
+        "PP": 36.0,
+        "PSOE": 27.5,
+        "VOX": 12.5,
+        "SUMAR": 12.5
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": 2.9442310374230303,
+        "PSOE": -4.18215504101229,
+        "VOX": 0.11750961101198243,
+        "SUMAR": 0.16613225236933182
+      },
+      "mae_pp": 1.8525069854541587,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": 1.4721155187115151,
+        "PSOE": -2.091077520506145,
+        "VOX": 0.058754805505991214
+      }
+    },
+    {
+      "casa": "EM-Analytics",
+      "estudio": "wiki2023-05160326237bf7",
+      "campo_fin": "2023-07-17",
+      "publicacion": "2023-07-17",
+      "dias_entre_campo_y_eleccion": 6,
+      "origen": "terceros-wikipedia",
+      "url": "https://electomania.es/electopanel-17jl-confirmado-la-moncloa-se-disputa-por-unos-pocos-escanos/",
+      "estimacion": {
+        "PP": 34.5,
+        "PSOE": 28.8,
+        "VOX": 12.9,
+        "SUMAR": 13.4
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": 1.4442310374230303,
+        "PSOE": -2.8821550410122896,
+        "VOX": 0.5175096110119828,
+        "SUMAR": 1.0661322523693322
+      },
+      "mae_pp": 1.4775069854541587,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": 0.7221155187115151,
+        "PSOE": -1.4410775205061448,
+        "VOX": 0.2587548055059914
+      }
+    },
+    {
+      "casa": "GAD3",
+      "estudio": "gad3-2023-07-17-abc-tracking14",
+      "campo_fin": "2023-07-17",
+      "publicacion": "2023-07-17",
+      "dias_entre_campo_y_eleccion": 6,
+      "origen": "terceros-29n",
+      "url": "https://www.electografica.com/2023/07/encuesta-gad3-230717-2.html",
+      "estimacion": {
+        "PP": 36.9,
+        "PSOE": 28.6,
+        "VOX": 11.7,
+        "SUMAR": 11.5
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": 3.844231037423029,
+        "PSOE": -3.082155041012289,
+        "VOX": -0.6824903889880183,
+        "SUMAR": -0.8338677476306682
+      },
+      "mae_pp": 2.110686053763501,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": 1.9221155187115144,
+        "PSOE": -1.5410775205061444,
+        "VOX": -0.34124519449400914
+      }
+    },
+    {
+      "casa": "GESOP",
+      "estudio": "wiki2023-812b4ed434baf0",
+      "campo_fin": "2023-07-15",
+      "publicacion": "2023-07-16",
+      "dias_entre_campo_y_eleccion": 8,
+      "origen": "terceros-wikipedia",
+      "url": "https://www.epe.es/es/elecciones/generales/20230716/encuesta-elecciones-generales-espana-89955829",
+      "estimacion": {
+        "PP": 30.6,
+        "PSOE": 27.4,
+        "VOX": 15.0,
+        "SUMAR": 14.4
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": -2.4557689625769683,
+        "PSOE": -4.282155041012292,
+        "VOX": 2.6175096110119824,
+        "SUMAR": 2.066132252369332
+      },
+      "mae_pp": 2.8553914667426437,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": -1.2278844812884842,
+        "PSOE": -2.141077520506146,
+        "VOX": 1.3087548055059912
+      }
+    },
+    {
+      "casa": "Hamalgama Métrica",
+      "estudio": "wiki2023-ada5abe775a67e",
+      "campo_fin": "2023-07-13",
+      "publicacion": "2023-07-16",
+      "dias_entre_campo_y_eleccion": 10,
+      "origen": "terceros-wikipedia",
+      "url": "https://www.vozpopuli.com/espana/politica/elecciones-generales/pactos-debate-disparan-feijoo-costa-vox-147-escanos-2-millones-votos-mas-sanchez.html",
+      "estimacion": {
+        "PP": 36.3,
+        "PSOE": 27.5,
+        "VOX": 13.8,
+        "SUMAR": 12.1
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": 3.2442310374230274,
+        "PSOE": -4.18215504101229,
+        "VOX": 1.4175096110119831,
+        "SUMAR": -0.23386774763066853
+      },
+      "mae_pp": 2.2694408592694923,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": 1.6221155187115137,
+        "PSOE": -2.091077520506145,
+        "VOX": 0.7087548055059916
+      }
+    },
+    {
+      "casa": "IMOP",
+      "estudio": "imop-2023-07-17-completo",
+      "campo_fin": "2023-07-14",
+      "publicacion": "2023-07-17",
+      "dias_entre_campo_y_eleccion": 9,
+      "origen": "terceros-wikipedia",
+      "url": "https://www.elconfidencial.com/espana/observatorio-electoral/2023-07-17/sondeos-elecciones-generales-23j-pp-consolida-ganar-mayoria-vox_3434093/",
+      "estimacion": {
+        "PP": 32.9,
+        "PSOE": 28.2,
+        "VOX": 14.5,
+        "SUMAR": 12.8
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": -0.15576896257697115,
+        "PSOE": -3.482155041012291,
+        "VOX": 2.1175096110119824,
+        "SUMAR": 0.46613225236933253
+      },
+      "mae_pp": 1.5553914667426443,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": -0.07788448128848557,
+        "PSOE": -1.7410775205061455,
+        "VOX": 1.0587548055059912
+      }
+    },
+    {
+      "casa": "InvyMark",
+      "estudio": "wiki2023-dbca7601e8c77d",
+      "campo_fin": "2023-07-14",
+      "publicacion": "2023-07-16",
+      "dias_entre_campo_y_eleccion": 9,
+      "origen": "terceros-wikipedia",
+      "url": "https://www.lasexta.com/elecciones/generales/barometro-lasexta-ganaria-elecciones-generales-23j-335-votos_2023071664b3f42b1f1191000172ecfd.html",
+      "estimacion": {
+        "PP": 33.5,
+        "PSOE": 26.3,
+        "VOX": 13.8,
+        "SUMAR": 13.7
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": 0.4442310374230303,
+        "PSOE": -5.38215504101229,
+        "VOX": 1.4175096110119831,
+        "SUMAR": 1.3661322523693311
+      },
+      "mae_pp": 2.1525069854541585,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": 0.22211551871151514,
+        "PSOE": -2.691077520506145,
+        "VOX": 0.7087548055059916
+      }
+    },
+    {
+      "casa": "Ipsos",
+      "estudio": "wiki2023-72153076e05285",
+      "campo_fin": "2023-07-06",
+      "publicacion": "2023-07-09",
+      "dias_entre_campo_y_eleccion": 17,
+      "origen": "terceros-wikipedia",
+      "url": "https://www.lavanguardia.com/politica/20230709/9096905/encuesta-elecciones-23j-pp-mayoria-vox.html",
+      "estimacion": {
+        "PP": 35.3,
+        "PSOE": 28.2,
+        "VOX": 12.6,
+        "SUMAR": 12.9
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": 2.2442310374230274,
+        "PSOE": -3.482155041012291,
+        "VOX": 0.21750961101198207,
+        "SUMAR": 0.5661322523693322
+      },
+      "mae_pp": 1.6275069854541582,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": 1.1221155187115137,
+        "PSOE": -1.7410775205061455,
+        "VOX": 0.10875480550599104
+      }
+    },
+    {
+      "casa": "KeyData",
+      "estudio": "wiki2023-4fcc532f2c8a07",
+      "campo_fin": "2023-07-17",
+      "publicacion": "2023-07-17",
+      "dias_entre_campo_y_eleccion": 6,
+      "origen": "terceros-wikipedia",
+      "url": "https://www.publico.es/politica/psoe-sumar-recortan-tres-escanos-campana-pp-vox-mantienen-mayoria.html",
+      "estimacion": {
+        "PP": 34.7,
+        "PSOE": 28.0,
+        "VOX": 12.9,
+        "SUMAR": 12.8
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": 1.6442310374230331,
+        "PSOE": -3.6821550410122903,
+        "VOX": 0.5175096110119828,
+        "SUMAR": 0.46613225236933253
+      },
+      "mae_pp": 1.5775069854541597,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": 0.8221155187115166,
+        "PSOE": -1.8410775205061451,
+        "VOX": 0.2587548055059914
+      }
+    },
+    {
+      "casa": "NC Report",
+      "estudio": "ncreport-2023-07-17-larazon-tracking6",
+      "campo_fin": "2023-07-16",
+      "publicacion": "2023-07-17",
+      "dias_entre_campo_y_eleccion": 7,
+      "origen": "terceros-29n",
+      "url": "https://www.electografica.com/2023/07/encuesta-nc-report-230717.html",
+      "estimacion": {
+        "PP": 37.2,
+        "PSOE": 28.3,
+        "VOX": 11.1,
+        "SUMAR": 11.3
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": 4.144231037423033,
+        "PSOE": -3.3821550410122896,
+        "VOX": -1.282490388988018,
+        "SUMAR": -1.0338677476306675
+      },
+      "mae_pp": 2.460686053763502,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": 2.0721155187115166,
+        "PSOE": -1.6910775205061448,
+        "VOX": -0.641245194494009
+      }
+    },
+    {
+      "casa": "Opinòmetre",
+      "estudio": "wiki2023-ce345330344d50",
+      "campo_fin": "2023-07-04",
+      "publicacion": "2023-07-08",
+      "dias_entre_campo_y_eleccion": 19,
+      "origen": "terceros-wikipedia",
+      "url": "https://www.ara.cat/politica/eleccions-generals/l-esquerra-aguanta-barra-pas-pp-vox-segons-l-enquesta-l-ara_1_4750544.html",
+      "estimacion": {
+        "PP": 32.6,
+        "PSOE": 29.0,
+        "VOX": 12.7,
+        "SUMAR": 15.5
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": -0.4557689625769683,
+        "PSOE": -2.6821550410122903,
+        "VOX": 0.3175096110119817,
+        "SUMAR": 3.166132252369332
+      },
+      "mae_pp": 1.655391466742643,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": -0.22788448128848415,
+        "PSOE": -1.3410775205061451,
+        "VOX": 0.15875480550599086
+      }
+    },
+    {
+      "casa": "Sigma Dos",
+      "estudio": "sigmados-2023-07-17-elmundo",
+      "campo_fin": "2023-07-17",
+      "publicacion": "2023-07-17",
+      "dias_entre_campo_y_eleccion": 6,
+      "origen": "terceros-29n",
+      "url": "https://www.elmundo.es/elecciones/elecciones-generales/2023/07/17/64b58986e9cf4a5e018b459f.html",
+      "estimacion": {
+        "PP": 35.4,
+        "PSOE": 28.0,
+        "VOX": 11.2,
+        "SUMAR": 13.6
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": 2.344231037423029,
+        "PSOE": -3.6821550410122903,
+        "VOX": -1.1824903889880183,
+        "SUMAR": 1.2661322523693315
+      },
+      "mae_pp": 2.1187521799481672,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": 1.1721155187115144,
+        "PSOE": -1.8410775205061451,
+        "VOX": -0.5912451944940091
+      }
+    },
+    {
+      "casa": "Simple Lógica",
+      "estudio": "wiki2023-8ff42dd5b99127",
+      "campo_fin": "2023-07-16",
+      "publicacion": "2023-07-17",
+      "dias_entre_campo_y_eleccion": 7,
+      "origen": "terceros-wikipedia",
+      "url": "https://www.eldiario.es/politica/psoe-sube-derecha-no-asegurada-mayoria-semana-elecciones-generales_1_10382875.html",
+      "estimacion": {
+        "PP": 32.2,
+        "PSOE": 28.6,
+        "VOX": 13.9,
+        "SUMAR": 13.8
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": -0.8557689625769669,
+        "PSOE": -3.082155041012289,
+        "VOX": 1.5175096110119828,
+        "SUMAR": 1.4661322523693325
+      },
+      "mae_pp": 1.7303914667426428,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": -0.42788448128848344,
+        "PSOE": -1.5410775205061444,
+        "VOX": 0.7587548055059914
+      }
+    },
+    {
+      "casa": "SocioMétrica",
+      "estudio": "sociometrica-2023-07-17-elespanol",
+      "campo_fin": "2023-07-16",
+      "publicacion": "2023-07-17",
+      "dias_entre_campo_y_eleccion": 7,
+      "origen": "terceros-29n",
+      "url": "https://www.electografica.com/2023/07/encuesta-sociometrica-230717.html",
+      "estimacion": {
+        "PP": 33.5,
+        "PSOE": 28.3,
+        "VOX": 13.7,
+        "SUMAR": 13.2
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": 0.4442310374230303,
+        "PSOE": -3.3821550410122896,
+        "VOX": 1.3175096110119817,
+        "SUMAR": 0.8661322523693311
+      },
+      "mae_pp": 1.5025069854541582,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": 0.22211551871151514,
+        "PSOE": -1.6910775205061448,
+        "VOX": 0.6587548055059909
+      }
+    },
+    {
+      "casa": "Sondaxe",
+      "estudio": "wiki2023-8e41c35cab0e74",
+      "campo_fin": "2023-07-16",
+      "publicacion": "2023-07-17",
+      "dias_entre_campo_y_eleccion": 7,
+      "origen": "terceros-wikipedia",
+      "url": "https://www.lavozdegalicia.es/noticia/elecciones-23j/2023/07/17/encuesta-sondaxe-pp-sigue-alza-alcanza-141-escanos/00031689606665440254294.htm",
+      "estimacion": {
+        "PP": 34.3,
+        "PSOE": 28.7,
+        "VOX": 12.5,
+        "SUMAR": 14.0
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": 1.2442310374230274,
+        "PSOE": -2.982155041012291,
+        "VOX": 0.11750961101198243,
+        "SUMAR": 1.6661322523693318
+      },
+      "mae_pp": 1.5025069854541582,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": 0.6221155187115137,
+        "PSOE": -1.4910775205061455,
+        "VOX": 0.058754805505991214
+      }
+    },
+    {
+      "casa": "Target Point",
+      "estudio": "wiki2023-db2dc2cf98e764",
+      "campo_fin": "2023-07-16",
+      "publicacion": "2023-07-17",
+      "dias_entre_campo_y_eleccion": 7,
+      "origen": "terceros-wikipedia",
+      "url": "https://www.eldebate.com/espana/20230717/psoe-apenas-puede-sostener-pobre-resultado-2019_128555.html",
+      "estimacion": {
+        "PP": 36.4,
+        "PSOE": 28.1,
+        "VOX": 12.4,
+        "SUMAR": 12.1
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": 3.344231037423029,
+        "PSOE": -3.582155041012289,
+        "VOX": 0.017509611011982784,
+        "SUMAR": -0.23386774763066853
+      },
+      "mae_pp": 1.7944408592694923,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": 1.6721155187115144,
+        "PSOE": -1.7910775205061444,
+        "VOX": 0.008754805505991392
+      }
+    },
+    {
+      "casa": "Top Position",
+      "estudio": "wiki2023-2619c0617a62c8",
+      "campo_fin": "2023-07-06",
+      "publicacion": "2023-07-11",
+      "dias_entre_campo_y_eleccion": 17,
+      "origen": "terceros-wikipedia",
+      "url": "https://t-position.com/la-suma-de-pp-y-vox-obtendria-mayoria-absoluta-en-las-elecciones-generales-del-23j/",
+      "estimacion": {
+        "PP": 34.2,
+        "PSOE": 28.1,
+        "VOX": 13.3,
+        "SUMAR": 12.8
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": 1.1442310374230331,
+        "PSOE": -3.582155041012289,
+        "VOX": 0.9175096110119831,
+        "SUMAR": 0.46613225236933253
+      },
+      "mae_pp": 1.5275069854541594,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": 0.5721155187115166,
+        "PSOE": -1.7910775205061444,
+        "VOX": 0.45875480550599157
+      }
+    },
+    {
+      "casa": "YouGov",
+      "estudio": "wiki2023-a762790eeaa1c1",
+      "campo_fin": "2023-07-17",
+      "publicacion": "2023-07-17",
+      "dias_entre_campo_y_eleccion": 6,
+      "origen": "terceros-wikipedia",
+      "url": "https://yougov.co.uk/topics/politics/articles-reports/2023/07/17/2023-spanish-general-election-final-call-right-win",
+      "estimacion": {
+        "PP": 32.0,
+        "PSOE": 28.0,
+        "VOX": 14.0,
+        "SUMAR": 14.0
+      },
+      "resultado": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "error_firmado_pp": {
+        "PP": -1.0557689625769697,
+        "PSOE": -3.6821550410122903,
+        "VOX": 1.6175096110119824,
+        "SUMAR": 1.6661322523693318
+      },
+      "mae_pp": 2.0053914667426436,
+      "partidos_comparados": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "prior_aplicado_variante_calibrada": {
+        "PP": -0.5278844812884849,
+        "PSOE": -1.8410775205061451,
+        "VOX": 0.8087548055059912
+      }
+    }
+  ],
+  "promedios": {
+    "todas": {
+      "PP": {
+        "casas": [
+          "40dB.",
+          "AtlasIntel",
+          "CIS",
+          "Celeste-Tel",
+          "Cluster17",
+          "DYM",
+          "Data10",
+          "EM-Analytics",
+          "GAD3",
+          "GESOP",
+          "Hamalgama Métrica",
+          "IMOP",
+          "InvyMark",
+          "Ipsos",
+          "KeyData",
+          "NC Report",
+          "Opinòmetre",
+          "Sigma Dos",
+          "Simple Lógica",
+          "SocioMétrica",
+          "Sondaxe",
+          "Target Point",
+          "Top Position",
+          "YouGov"
+        ],
+        "error_promedio_pp": 1.0525643707563637
+      },
+      "PSOE": {
+        "casas": [
+          "40dB.",
+          "AtlasIntel",
+          "CIS",
+          "Celeste-Tel",
+          "Cluster17",
+          "DYM",
+          "Data10",
+          "EM-Analytics",
+          "GAD3",
+          "GESOP",
+          "Hamalgama Métrica",
+          "IMOP",
+          "InvyMark",
+          "Ipsos",
+          "KeyData",
+          "NC Report",
+          "Opinòmetre",
+          "Sigma Dos",
+          "Simple Lógica",
+          "SocioMétrica",
+          "Sondaxe",
+          "Target Point",
+          "Top Position",
+          "YouGov"
+        ],
+        "error_promedio_pp": -3.3363217076789566
+      },
+      "VOX": {
+        "casas": [
+          "40dB.",
+          "AtlasIntel",
+          "CIS",
+          "Celeste-Tel",
+          "Cluster17",
+          "DYM",
+          "Data10",
+          "EM-Analytics",
+          "GAD3",
+          "GESOP",
+          "Hamalgama Métrica",
+          "IMOP",
+          "InvyMark",
+          "Ipsos",
+          "KeyData",
+          "NC Report",
+          "Opinòmetre",
+          "Sigma Dos",
+          "Simple Lógica",
+          "SocioMétrica",
+          "Sondaxe",
+          "Target Point",
+          "Top Position",
+          "YouGov"
+        ],
+        "error_promedio_pp": 0.7091762776786491
+      },
+      "SUMAR": {
+        "casas": [
+          "40dB.",
+          "AtlasIntel",
+          "CIS",
+          "Celeste-Tel",
+          "Cluster17",
+          "DYM",
+          "Data10",
+          "EM-Analytics",
+          "GAD3",
+          "GESOP",
+          "Hamalgama Métrica",
+          "IMOP",
+          "InvyMark",
+          "Ipsos",
+          "KeyData",
+          "NC Report",
+          "Opinòmetre",
+          "Sigma Dos",
+          "Simple Lógica",
+          "SocioMétrica",
+          "Sondaxe",
+          "Target Point",
+          "Top Position",
+          "YouGov"
+        ],
+        "error_promedio_pp": 0.966132252369332
+      }
+    },
+    "sin_cis": {
+      "PP": {
+        "casas": [
+          "40dB.",
+          "AtlasIntel",
+          "Celeste-Tel",
+          "Cluster17",
+          "DYM",
+          "Data10",
+          "EM-Analytics",
+          "GAD3",
+          "GESOP",
+          "Hamalgama Métrica",
+          "IMOP",
+          "InvyMark",
+          "Ipsos",
+          "KeyData",
+          "NC Report",
+          "Opinòmetre",
+          "Sigma Dos",
+          "Simple Lógica",
+          "SocioMétrica",
+          "Sondaxe",
+          "Target Point",
+          "Top Position",
+          "YouGov"
+        ],
+        "error_promedio_pp": 1.1964049504665086
+      },
+      "PSOE": {
+        "casas": [
+          "40dB.",
+          "AtlasIntel",
+          "Celeste-Tel",
+          "Cluster17",
+          "DYM",
+          "Data10",
+          "EM-Analytics",
+          "GAD3",
+          "GESOP",
+          "Hamalgama Métrica",
+          "IMOP",
+          "InvyMark",
+          "Ipsos",
+          "KeyData",
+          "NC Report",
+          "Opinòmetre",
+          "Sigma Dos",
+          "Simple Lógica",
+          "SocioMétrica",
+          "Sondaxe",
+          "Target Point",
+          "Top Position",
+          "YouGov"
+        ],
+        "error_promedio_pp": -3.503894171447073
+      },
+      "VOX": {
+        "casas": [
+          "40dB.",
+          "AtlasIntel",
+          "Celeste-Tel",
+          "Cluster17",
+          "DYM",
+          "Data10",
+          "EM-Analytics",
+          "GAD3",
+          "GESOP",
+          "Hamalgama Métrica",
+          "IMOP",
+          "InvyMark",
+          "Ipsos",
+          "KeyData",
+          "NC Report",
+          "Opinòmetre",
+          "Sigma Dos",
+          "Simple Lógica",
+          "SocioMétrica",
+          "Sondaxe",
+          "Target Point",
+          "Top Position",
+          "YouGov"
+        ],
+        "error_promedio_pp": 0.7653356979685042
+      },
+      "SUMAR": {
+        "casas": [
+          "40dB.",
+          "AtlasIntel",
+          "Celeste-Tel",
+          "Cluster17",
+          "DYM",
+          "Data10",
+          "EM-Analytics",
+          "GAD3",
+          "GESOP",
+          "Hamalgama Métrica",
+          "IMOP",
+          "InvyMark",
+          "Ipsos",
+          "KeyData",
+          "NC Report",
+          "Opinòmetre",
+          "Sigma Dos",
+          "Simple Lógica",
+          "SocioMétrica",
+          "Sondaxe",
+          "Target Point",
+          "Top Position",
+          "YouGov"
+        ],
+        "error_promedio_pp": 0.8965670349780276
+      }
+    }
+  },
+  "correccion_consenso": {
+    "fraccion": 0.5,
+    "minimo_casas": 5,
+    "puntos": {
+      "PP": -0.526,
+      "PSOE": 1.668,
+      "VOX": -0.355,
+      "SUMAR": -0.483
+    },
+    "variantes": [
+      "consenso_privadas",
+      "consenso_todas"
+    ],
+    "universo": "Todas las casas elegibles, incluido CIS, también para corregir consenso_privadas"
+  },
+  "incertidumbre_industria": {
+    "parametro": 2.2,
+    "estado": "Supuesto del motor, no error demostrado de cada encuesta ni desviación estimada entre elecciones"
+  },
+  "limites": [
+    "Una sola elección no identifica sesgo persistente por casa ni varianza de industria entre elecciones.",
+    "La desviación puede incluir cambio posterior al campo. No identifica su causa.",
+    "MAE entre casas solo comparable con el mismo conjunto de partidos.",
+    "El factor 0.5 es una decisión de cocina, no una recurrencia aprendida con elecciones independientes.",
+    "Un error medio compartido no significa que todas las casas errasen con el mismo signo."
+  ]
+}

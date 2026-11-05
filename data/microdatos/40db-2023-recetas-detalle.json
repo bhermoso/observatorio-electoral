@@ -1,0 +1,438 @@
+{
+  "schema": 1,
+  "method": "retrospective descriptive; fixed, deliberately simple recipes; single election; no prospective validation",
+  "election": "2023-07-23",
+  "truth_source": "BOE-A-2023-18907 (votos válidos, PSOE+PSC)",
+  "truth_pct": {
+    "PP": 33.0557689626,
+    "PSOE": 31.682155041,
+    "VOX": 12.382490389,
+    "SUMAR": 12.3338677476
+  },
+  "recall_reference_2019_approx_pct": {
+    "PP": 20.8,
+    "PSOE": 27.99,
+    "VOX": 15.07,
+    "UP": 12.86,
+    "CS": 6.8,
+    "MP": 2.39
+  },
+  "studies": [
+    {
+      "id": "junio_flash",
+      "publication": "2023-06-05",
+      "field": [
+        "2023-05-31",
+        "2023-06-01"
+      ],
+      "label": "Flash 5 junio (listas unidas)",
+      "filename": "2023_06_descargables.zip",
+      "sha256": "ded455be319920618a3010e2393667381a886d57bfdc072385d79a7f28b79a03",
+      "n": 800,
+      "n_eff_kish": 661.57,
+      "n_variables": 22,
+      "variables": {
+        "vote": "p4",
+        "affinity": "p5",
+        "turnout": "p1",
+        "recall": "p6"
+      },
+      "published": {
+        "PP": 32.3,
+        "PSOE": 27.2,
+        "VOX": 13.6,
+        "SUMAR": 15.6
+      },
+      "published_mae_23j": 2.43,
+      "recall2019_observed": {
+        "PP": 26.51,
+        "PSOE": 36.14,
+        "VOX": 14.55,
+        "UP": 12.19,
+        "CS": 8.71,
+        "MP": 1.9
+      },
+      "recall2019_factors_full": {
+        "PP": 0.913,
+        "PSOE": 0.902,
+        "VOX": 1.205,
+        "UP": 1.228,
+        "CS": 0.908,
+        "MP": 1.465
+      },
+      "imputed_n": 17,
+      "imputed_weight_pct": 1.75,
+      "recipes": {
+        "directa_sin_ponderar": {
+          "vote": {
+            "PP": 29.664,
+            "PSOE": 27.37,
+            "VOX": 14.373,
+            "SUMAR": 16.361
+          },
+          "mae_23j": 3.43,
+          "denominator_valid_pct": 81.75,
+          "n_eff_kish": 800.0
+        },
+        "directa_ponderada_ponde": {
+          "vote": {
+            "PP": 31.116,
+            "PSOE": 27.296,
+            "VOX": 14.624,
+            "SUMAR": 15.181
+          },
+          "mae_23j": 2.854,
+          "denominator_valid_pct": 82.314,
+          "n_eff_kish": 661.6
+        },
+        "directa_ponderada_x_participacion_0_10": {
+          "vote": {
+            "PP": 31.138,
+            "PSOE": 27.279,
+            "VOX": 15.42,
+            "SUMAR": 14.995
+          },
+          "mae_23j": 3.005,
+          "denominator_valid_pct": 88.917,
+          "n_eff_kish": 577.7
+        },
+        "simpatia_para_indecisos": {
+          "vote": {
+            "PP": 30.578,
+            "PSOE": 27.555,
+            "VOX": 14.481,
+            "SUMAR": 15.473
+          },
+          "mae_23j": 2.961,
+          "denominator_valid_pct": 84.059,
+          "n_eff_kish": 661.6
+        },
+        "recuerdo_2019_calibracion_50pct": {
+          "vote": {
+            "PP": 30.271,
+            "PSOE": 26.427,
+            "VOX": 15.43,
+            "SUMAR": 16.12
+          },
+          "mae_23j": 3.718,
+          "denominator_valid_pct": 82.359,
+          "n_eff_kish": 660.8
+        },
+        "recuerdo_mas_simpatia_indecisos": {
+          "vote": {
+            "PP": 29.765,
+            "PSOE": 26.68,
+            "VOX": 15.289,
+            "SUMAR": 16.383
+          },
+          "mae_23j": 3.812,
+          "denominator_valid_pct": 84.096,
+          "n_eff_kish": 660.8
+        },
+        "recuerdo_mas_participacion": {
+          "vote": {
+            "PP": 30.198,
+            "PSOE": 26.368,
+            "VOX": 16.295,
+            "SUMAR": 16.019
+          },
+          "mae_23j": 3.942,
+          "denominator_valid_pct": 88.95,
+          "n_eff_kish": 576.3
+        },
+        "recuerdo_mas_simpatia_mas_participacion": {
+          "vote": {
+            "PP": 29.705,
+            "PSOE": 26.623,
+            "VOX": 16.158,
+            "SUMAR": 16.271
+          },
+          "mae_23j": 4.031,
+          "denominator_valid_pct": 90.841,
+          "n_eff_kish": 576.3
+        },
+        "separadas_sumar_mas_podemos_solo_experimento": {
+          "vote": {
+            "PP": 30.243,
+            "PSOE": 27.124,
+            "VOX": 15.105,
+            "SUMAR": 13.93
+          },
+          "mae_23j": 2.922,
+          "denominator_valid_pct": 80.17,
+          "n_eff_kish": 661.6
+        }
+      }
+    },
+    {
+      "id": "junio_barometro",
+      "publication": "2023-06-19",
+      "field": [
+        "2023-06-12",
+        "2023-06-14"
+      ],
+      "label": "Barómetro 19 junio",
+      "filename": "2023_05_junio18.zip",
+      "sha256": "b5d1c0f6fd83263adbb318ba1eb5459aa7d6cd69e18ae6cca190daa2cda5bd5c",
+      "n": 2000,
+      "n_eff_kish": 1898.23,
+      "n_variables": 113,
+      "variables": {
+        "vote": "p5",
+        "affinity": "p6",
+        "turnout": "p4",
+        "recall": "p10"
+      },
+      "published": {
+        "PP": 33.1,
+        "PSOE": 27.4,
+        "VOX": 13.8,
+        "SUMAR": 13.1
+      },
+      "published_mae_23j": 1.628,
+      "recall2019_observed": {
+        "PP": 25.23,
+        "PSOE": 39.37,
+        "VOX": 12.02,
+        "UP": 11.78,
+        "CS": 9.22,
+        "MP": 2.38
+      },
+      "recall2019_factors_full": {
+        "PP": 0.96,
+        "PSOE": 0.828,
+        "VOX": 1.46,
+        "UP": 1.271,
+        "CS": 0.858,
+        "MP": 1.171
+      },
+      "imputed_n": 88,
+      "imputed_weight_pct": 4.42,
+      "recipes": {
+        "directa_sin_ponderar": {
+          "vote": {
+            "PP": 30.139,
+            "PSOE": 26.86,
+            "VOX": 15.195,
+            "SUMAR": 14.124
+          },
+          "mae_23j": 3.085,
+          "denominator_valid_pct": 79.3,
+          "n_eff_kish": 2000.0
+        },
+        "directa_ponderada_ponde": {
+          "vote": {
+            "PP": 29.81,
+            "PSOE": 26.729,
+            "VOX": 15.558,
+            "SUMAR": 13.74
+          },
+          "mae_23j": 3.195,
+          "denominator_valid_pct": 79.297,
+          "n_eff_kish": 1898.2
+        },
+        "directa_ponderada_x_participacion_0_10": {
+          "vote": {
+            "PP": 30.084,
+            "PSOE": 27.491,
+            "VOX": 15.861,
+            "SUMAR": 13.792
+          },
+          "mae_23j": 3.025,
+          "denominator_valid_pct": 87.021,
+          "n_eff_kish": 1653.8
+        },
+        "simpatia_para_indecisos": {
+          "vote": {
+            "PP": 29.426,
+            "PSOE": 27.428,
+            "VOX": 15.082,
+            "SUMAR": 13.832
+          },
+          "mae_23j": 3.02,
+          "denominator_valid_pct": 83.719,
+          "n_eff_kish": 1898.2
+        },
+        "recuerdo_2019_calibracion_50pct": {
+          "vote": {
+            "PP": 29.173,
+            "PSOE": 25.123,
+            "VOX": 17.165,
+            "SUMAR": 14.396
+          },
+          "mae_23j": 4.321,
+          "denominator_valid_pct": 79.412,
+          "n_eff_kish": 1884.7
+        },
+        "recuerdo_mas_simpatia_indecisos": {
+          "vote": {
+            "PP": 28.828,
+            "PSOE": 25.803,
+            "VOX": 16.637,
+            "SUMAR": 14.503
+          },
+          "mae_23j": 4.133,
+          "denominator_valid_pct": 83.76,
+          "n_eff_kish": 1884.7
+        },
+        "recuerdo_mas_participacion": {
+          "vote": {
+            "PP": 29.434,
+            "PSOE": 25.806,
+            "VOX": 17.532,
+            "SUMAR": 14.473
+          },
+          "mae_23j": 4.197,
+          "denominator_valid_pct": 87.137,
+          "n_eff_kish": 1640.6
+        },
+        "recuerdo_mas_simpatia_mas_participacion": {
+          "vote": {
+            "PP": 29.015,
+            "PSOE": 26.38,
+            "VOX": 17.07,
+            "SUMAR": 14.636
+          },
+          "mae_23j": 4.083,
+          "denominator_valid_pct": 91.623,
+          "n_eff_kish": 1640.6
+        }
+      }
+    },
+    {
+      "id": "julio_preelectoral",
+      "publication": "2023-07-03",
+      "field": [
+        "2023-06-23",
+        "2023-06-26"
+      ],
+      "label": "Preelectoral 3 julio",
+      "filename": "2023_julio_preelectoral_descargable.zip",
+      "sha256": "529f2044c28813fa026704f2fe1aad09f19dbc711a4362ed66ca61b8d41f6ff2",
+      "n": 2000,
+      "n_eff_kish": 1875.98,
+      "n_variables": 78,
+      "variables": {
+        "vote": "p3",
+        "affinity": "p4",
+        "turnout": "p2",
+        "recall": "p6"
+      },
+      "published": {
+        "PP": 30.9,
+        "PSOE": 28.7,
+        "VOX": 15.1,
+        "SUMAR": 12.5
+      },
+      "published_mae_23j": 2.005,
+      "recall2019_observed": {
+        "PP": 25.3,
+        "PSOE": 38.97,
+        "VOX": 11.53,
+        "UP": 13.25,
+        "CS": 8.79,
+        "MP": 2.15
+      },
+      "recall2019_factors_full": {
+        "PP": 0.957,
+        "PSOE": 0.836,
+        "VOX": 1.521,
+        "UP": 1.13,
+        "CS": 0.9,
+        "MP": 1.294
+      },
+      "imputed_n": 77,
+      "imputed_weight_pct": 4.0,
+      "recipes": {
+        "directa_sin_ponderar": {
+          "vote": {
+            "PP": 28.599,
+            "PSOE": 29.239,
+            "VOX": 16.315,
+            "SUMAR": 12.924
+          },
+          "mae_23j": 2.856,
+          "denominator_valid_pct": 78.15,
+          "n_eff_kish": 2000.0
+        },
+        "directa_ponderada_ponde": {
+          "vote": {
+            "PP": 28.286,
+            "PSOE": 29.521,
+            "VOX": 16.583,
+            "SUMAR": 12.907
+          },
+          "mae_23j": 2.926,
+          "denominator_valid_pct": 78.092,
+          "n_eff_kish": 1876.0
+        },
+        "directa_ponderada_x_participacion_0_10": {
+          "vote": {
+            "PP": 28.715,
+            "PSOE": 29.918,
+            "VOX": 16.382,
+            "SUMAR": 13.114
+          },
+          "mae_23j": 2.721,
+          "denominator_valid_pct": 85.885,
+          "n_eff_kish": 1657.4
+        },
+        "simpatia_para_indecisos": {
+          "vote": {
+            "PP": 27.734,
+            "PSOE": 30.353,
+            "VOX": 15.926,
+            "SUMAR": 12.837
+          },
+          "mae_23j": 2.674,
+          "denominator_valid_pct": 82.095,
+          "n_eff_kish": 1876.0
+        },
+        "recuerdo_2019_calibracion_50pct": {
+          "vote": {
+            "PP": 27.687,
+            "PSOE": 27.666,
+            "VOX": 18.64,
+            "SUMAR": 13.342
+          },
+          "mae_23j": 4.163,
+          "denominator_valid_pct": 78.276,
+          "n_eff_kish": 1864.3
+        },
+        "recuerdo_mas_simpatia_indecisos": {
+          "vote": {
+            "PP": 27.174,
+            "PSOE": 28.519,
+            "VOX": 17.922,
+            "SUMAR": 13.26
+          },
+          "mae_23j": 3.878,
+          "denominator_valid_pct": 82.165,
+          "n_eff_kish": 1864.3
+        },
+        "recuerdo_mas_participacion": {
+          "vote": {
+            "PP": 28.093,
+            "PSOE": 28.027,
+            "VOX": 18.465,
+            "SUMAR": 13.568
+          },
+          "mae_23j": 3.983,
+          "denominator_valid_pct": 86.078,
+          "n_eff_kish": 1646.4
+        },
+        "recuerdo_mas_simpatia_mas_participacion": {
+          "vote": {
+            "PP": 27.556,
+            "PSOE": 28.871,
+            "VOX": 17.822,
+            "SUMAR": 13.53
+          },
+          "mae_23j": 3.737,
+          "denominator_valid_pct": 89.803,
+          "n_eff_kish": 1646.4
+        }
+      }
+    }
+  ]
+}

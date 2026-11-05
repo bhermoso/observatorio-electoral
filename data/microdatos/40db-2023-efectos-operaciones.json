@@ -1,0 +1,520 @@
+{
+  "estado": "retrospectiva_exploratoria_una_eleccion",
+  "fuente": "40db-2023-recetas-detalle.json",
+  "combinacion_ausente": "simpatia_mas_participacion_sin_recuerdo",
+  "comparaciones": [
+    {
+      "estudio": "junio_flash",
+      "operacion": "recuerdo",
+      "receta_origen": "directa_ponderada_ponde",
+      "receta_destino": "recuerdo_2019_calibracion_50pct",
+      "cambio_voto_pp": {
+        "PP": -0.845,
+        "PSOE": -0.869,
+        "VOX": 0.806,
+        "SUMAR": 0.939
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": 0.845,
+        "PSOE": 0.869,
+        "VOX": 0.806,
+        "SUMAR": 0.939
+      },
+      "cambio_mae_pp": 0.86475
+    },
+    {
+      "estudio": "junio_flash",
+      "operacion": "simpatia",
+      "receta_origen": "directa_ponderada_ponde",
+      "receta_destino": "simpatia_para_indecisos",
+      "cambio_voto_pp": {
+        "PP": -0.538,
+        "PSOE": 0.259,
+        "VOX": -0.143,
+        "SUMAR": 0.292
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": 0.538,
+        "PSOE": -0.259,
+        "VOX": -0.143,
+        "SUMAR": 0.292
+      },
+      "cambio_mae_pp": 0.107
+    },
+    {
+      "estudio": "junio_flash",
+      "operacion": "participacion",
+      "receta_origen": "directa_ponderada_ponde",
+      "receta_destino": "directa_ponderada_x_participacion_0_10",
+      "cambio_voto_pp": {
+        "PP": 0.022,
+        "PSOE": -0.017,
+        "VOX": 0.796,
+        "SUMAR": -0.186
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": -0.022,
+        "PSOE": 0.017,
+        "VOX": 0.796,
+        "SUMAR": -0.186
+      },
+      "cambio_mae_pp": 0.15125
+    },
+    {
+      "estudio": "junio_flash",
+      "operacion": "recuerdo",
+      "receta_origen": "directa_ponderada_x_participacion_0_10",
+      "receta_destino": "recuerdo_mas_participacion",
+      "cambio_voto_pp": {
+        "PP": -0.94,
+        "PSOE": -0.911,
+        "VOX": 0.875,
+        "SUMAR": 1.024
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": 0.94,
+        "PSOE": 0.911,
+        "VOX": 0.875,
+        "SUMAR": 1.024
+      },
+      "cambio_mae_pp": 0.9375
+    },
+    {
+      "estudio": "junio_flash",
+      "operacion": "recuerdo",
+      "receta_origen": "simpatia_para_indecisos",
+      "receta_destino": "recuerdo_mas_simpatia_indecisos",
+      "cambio_voto_pp": {
+        "PP": -0.813,
+        "PSOE": -0.875,
+        "VOX": 0.808,
+        "SUMAR": 0.91
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": 0.813,
+        "PSOE": 0.875,
+        "VOX": 0.808,
+        "SUMAR": 0.91
+      },
+      "cambio_mae_pp": 0.8515
+    },
+    {
+      "estudio": "junio_flash",
+      "operacion": "simpatia",
+      "receta_origen": "recuerdo_2019_calibracion_50pct",
+      "receta_destino": "recuerdo_mas_simpatia_indecisos",
+      "cambio_voto_pp": {
+        "PP": -0.506,
+        "PSOE": 0.253,
+        "VOX": -0.141,
+        "SUMAR": 0.263
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": 0.506,
+        "PSOE": -0.253,
+        "VOX": -0.141,
+        "SUMAR": 0.263
+      },
+      "cambio_mae_pp": 0.09375
+    },
+    {
+      "estudio": "junio_flash",
+      "operacion": "participacion",
+      "receta_origen": "recuerdo_2019_calibracion_50pct",
+      "receta_destino": "recuerdo_mas_participacion",
+      "cambio_voto_pp": {
+        "PP": -0.073,
+        "PSOE": -0.059,
+        "VOX": 0.865,
+        "SUMAR": -0.101
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": 0.073,
+        "PSOE": 0.059,
+        "VOX": 0.865,
+        "SUMAR": -0.101
+      },
+      "cambio_mae_pp": 0.224
+    },
+    {
+      "estudio": "junio_flash",
+      "operacion": "simpatia",
+      "receta_origen": "recuerdo_mas_participacion",
+      "receta_destino": "recuerdo_mas_simpatia_mas_participacion",
+      "cambio_voto_pp": {
+        "PP": -0.493,
+        "PSOE": 0.255,
+        "VOX": -0.137,
+        "SUMAR": 0.252
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": 0.493,
+        "PSOE": -0.255,
+        "VOX": -0.137,
+        "SUMAR": 0.252
+      },
+      "cambio_mae_pp": 0.08825
+    },
+    {
+      "estudio": "junio_flash",
+      "operacion": "participacion",
+      "receta_origen": "recuerdo_mas_simpatia_indecisos",
+      "receta_destino": "recuerdo_mas_simpatia_mas_participacion",
+      "cambio_voto_pp": {
+        "PP": -0.06,
+        "PSOE": -0.057,
+        "VOX": 0.869,
+        "SUMAR": -0.112
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": 0.06,
+        "PSOE": 0.057,
+        "VOX": 0.869,
+        "SUMAR": -0.112
+      },
+      "cambio_mae_pp": 0.2185
+    },
+    {
+      "estudio": "junio_barometro",
+      "operacion": "recuerdo",
+      "receta_origen": "directa_ponderada_ponde",
+      "receta_destino": "recuerdo_2019_calibracion_50pct",
+      "cambio_voto_pp": {
+        "PP": -0.637,
+        "PSOE": -1.606,
+        "VOX": 1.607,
+        "SUMAR": 0.656
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": 0.637,
+        "PSOE": 1.606,
+        "VOX": 1.607,
+        "SUMAR": 0.656
+      },
+      "cambio_mae_pp": 1.1265
+    },
+    {
+      "estudio": "junio_barometro",
+      "operacion": "simpatia",
+      "receta_origen": "directa_ponderada_ponde",
+      "receta_destino": "simpatia_para_indecisos",
+      "cambio_voto_pp": {
+        "PP": -0.384,
+        "PSOE": 0.699,
+        "VOX": -0.476,
+        "SUMAR": 0.092
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": 0.384,
+        "PSOE": -0.699,
+        "VOX": -0.476,
+        "SUMAR": 0.092
+      },
+      "cambio_mae_pp": -0.17475
+    },
+    {
+      "estudio": "junio_barometro",
+      "operacion": "participacion",
+      "receta_origen": "directa_ponderada_ponde",
+      "receta_destino": "directa_ponderada_x_participacion_0_10",
+      "cambio_voto_pp": {
+        "PP": 0.274,
+        "PSOE": 0.762,
+        "VOX": 0.303,
+        "SUMAR": 0.052
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": -0.274,
+        "PSOE": -0.762,
+        "VOX": 0.303,
+        "SUMAR": 0.052
+      },
+      "cambio_mae_pp": -0.17025
+    },
+    {
+      "estudio": "junio_barometro",
+      "operacion": "recuerdo",
+      "receta_origen": "directa_ponderada_x_participacion_0_10",
+      "receta_destino": "recuerdo_mas_participacion",
+      "cambio_voto_pp": {
+        "PP": -0.65,
+        "PSOE": -1.685,
+        "VOX": 1.671,
+        "SUMAR": 0.681
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": 0.65,
+        "PSOE": 1.685,
+        "VOX": 1.671,
+        "SUMAR": 0.681
+      },
+      "cambio_mae_pp": 1.17175
+    },
+    {
+      "estudio": "junio_barometro",
+      "operacion": "recuerdo",
+      "receta_origen": "simpatia_para_indecisos",
+      "receta_destino": "recuerdo_mas_simpatia_indecisos",
+      "cambio_voto_pp": {
+        "PP": -0.598,
+        "PSOE": -1.625,
+        "VOX": 1.555,
+        "SUMAR": 0.671
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": 0.598,
+        "PSOE": 1.625,
+        "VOX": 1.555,
+        "SUMAR": 0.671
+      },
+      "cambio_mae_pp": 1.11225
+    },
+    {
+      "estudio": "junio_barometro",
+      "operacion": "simpatia",
+      "receta_origen": "recuerdo_2019_calibracion_50pct",
+      "receta_destino": "recuerdo_mas_simpatia_indecisos",
+      "cambio_voto_pp": {
+        "PP": -0.345,
+        "PSOE": 0.68,
+        "VOX": -0.528,
+        "SUMAR": 0.107
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": 0.345,
+        "PSOE": -0.68,
+        "VOX": -0.528,
+        "SUMAR": 0.107
+      },
+      "cambio_mae_pp": -0.189
+    },
+    {
+      "estudio": "junio_barometro",
+      "operacion": "participacion",
+      "receta_origen": "recuerdo_2019_calibracion_50pct",
+      "receta_destino": "recuerdo_mas_participacion",
+      "cambio_voto_pp": {
+        "PP": 0.261,
+        "PSOE": 0.683,
+        "VOX": 0.367,
+        "SUMAR": 0.077
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": -0.261,
+        "PSOE": -0.683,
+        "VOX": 0.367,
+        "SUMAR": 0.077
+      },
+      "cambio_mae_pp": -0.125
+    },
+    {
+      "estudio": "junio_barometro",
+      "operacion": "simpatia",
+      "receta_origen": "recuerdo_mas_participacion",
+      "receta_destino": "recuerdo_mas_simpatia_mas_participacion",
+      "cambio_voto_pp": {
+        "PP": -0.419,
+        "PSOE": 0.574,
+        "VOX": -0.462,
+        "SUMAR": 0.163
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": 0.419,
+        "PSOE": -0.574,
+        "VOX": -0.462,
+        "SUMAR": 0.163
+      },
+      "cambio_mae_pp": -0.1135
+    },
+    {
+      "estudio": "junio_barometro",
+      "operacion": "participacion",
+      "receta_origen": "recuerdo_mas_simpatia_indecisos",
+      "receta_destino": "recuerdo_mas_simpatia_mas_participacion",
+      "cambio_voto_pp": {
+        "PP": 0.187,
+        "PSOE": 0.577,
+        "VOX": 0.433,
+        "SUMAR": 0.133
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": -0.187,
+        "PSOE": -0.577,
+        "VOX": 0.433,
+        "SUMAR": 0.133
+      },
+      "cambio_mae_pp": -0.0495
+    },
+    {
+      "estudio": "julio_preelectoral",
+      "operacion": "recuerdo",
+      "receta_origen": "directa_ponderada_ponde",
+      "receta_destino": "recuerdo_2019_calibracion_50pct",
+      "cambio_voto_pp": {
+        "PP": -0.599,
+        "PSOE": -1.855,
+        "VOX": 2.057,
+        "SUMAR": 0.435
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": 0.599,
+        "PSOE": 1.855,
+        "VOX": 2.057,
+        "SUMAR": 0.435
+      },
+      "cambio_mae_pp": 1.2365
+    },
+    {
+      "estudio": "julio_preelectoral",
+      "operacion": "simpatia",
+      "receta_origen": "directa_ponderada_ponde",
+      "receta_destino": "simpatia_para_indecisos",
+      "cambio_voto_pp": {
+        "PP": -0.552,
+        "PSOE": 0.832,
+        "VOX": -0.657,
+        "SUMAR": -0.07
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": 0.552,
+        "PSOE": -0.832,
+        "VOX": -0.657,
+        "SUMAR": -0.07
+      },
+      "cambio_mae_pp": -0.25175
+    },
+    {
+      "estudio": "julio_preelectoral",
+      "operacion": "participacion",
+      "receta_origen": "directa_ponderada_ponde",
+      "receta_destino": "directa_ponderada_x_participacion_0_10",
+      "cambio_voto_pp": {
+        "PP": 0.429,
+        "PSOE": 0.397,
+        "VOX": -0.201,
+        "SUMAR": 0.207
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": -0.429,
+        "PSOE": -0.397,
+        "VOX": -0.201,
+        "SUMAR": 0.207
+      },
+      "cambio_mae_pp": -0.205
+    },
+    {
+      "estudio": "julio_preelectoral",
+      "operacion": "recuerdo",
+      "receta_origen": "directa_ponderada_x_participacion_0_10",
+      "receta_destino": "recuerdo_mas_participacion",
+      "cambio_voto_pp": {
+        "PP": -0.622,
+        "PSOE": -1.891,
+        "VOX": 2.083,
+        "SUMAR": 0.454
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": 0.622,
+        "PSOE": 1.891,
+        "VOX": 2.083,
+        "SUMAR": 0.454
+      },
+      "cambio_mae_pp": 1.2625
+    },
+    {
+      "estudio": "julio_preelectoral",
+      "operacion": "recuerdo",
+      "receta_origen": "simpatia_para_indecisos",
+      "receta_destino": "recuerdo_mas_simpatia_indecisos",
+      "cambio_voto_pp": {
+        "PP": -0.56,
+        "PSOE": -1.834,
+        "VOX": 1.996,
+        "SUMAR": 0.423
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": 0.56,
+        "PSOE": 1.834,
+        "VOX": 1.996,
+        "SUMAR": 0.423
+      },
+      "cambio_mae_pp": 1.20325
+    },
+    {
+      "estudio": "julio_preelectoral",
+      "operacion": "simpatia",
+      "receta_origen": "recuerdo_2019_calibracion_50pct",
+      "receta_destino": "recuerdo_mas_simpatia_indecisos",
+      "cambio_voto_pp": {
+        "PP": -0.513,
+        "PSOE": 0.853,
+        "VOX": -0.718,
+        "SUMAR": -0.082
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": 0.513,
+        "PSOE": -0.853,
+        "VOX": -0.718,
+        "SUMAR": -0.082
+      },
+      "cambio_mae_pp": -0.285
+    },
+    {
+      "estudio": "julio_preelectoral",
+      "operacion": "participacion",
+      "receta_origen": "recuerdo_2019_calibracion_50pct",
+      "receta_destino": "recuerdo_mas_participacion",
+      "cambio_voto_pp": {
+        "PP": 0.406,
+        "PSOE": 0.361,
+        "VOX": -0.175,
+        "SUMAR": 0.226
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": -0.406,
+        "PSOE": -0.361,
+        "VOX": -0.175,
+        "SUMAR": 0.226
+      },
+      "cambio_mae_pp": -0.179
+    },
+    {
+      "estudio": "julio_preelectoral",
+      "operacion": "simpatia",
+      "receta_origen": "recuerdo_mas_participacion",
+      "receta_destino": "recuerdo_mas_simpatia_mas_participacion",
+      "cambio_voto_pp": {
+        "PP": -0.537,
+        "PSOE": 0.844,
+        "VOX": -0.643,
+        "SUMAR": -0.038
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": 0.537,
+        "PSOE": -0.844,
+        "VOX": -0.643,
+        "SUMAR": -0.038
+      },
+      "cambio_mae_pp": -0.247
+    },
+    {
+      "estudio": "julio_preelectoral",
+      "operacion": "participacion",
+      "receta_origen": "recuerdo_mas_simpatia_indecisos",
+      "receta_destino": "recuerdo_mas_simpatia_mas_participacion",
+      "cambio_voto_pp": {
+        "PP": 0.382,
+        "PSOE": 0.352,
+        "VOX": -0.1,
+        "SUMAR": 0.27
+      },
+      "cambio_error_absoluto_pp": {
+        "PP": -0.382,
+        "PSOE": -0.352,
+        "VOX": -0.1,
+        "SUMAR": 0.27
+      },
+      "cambio_mae_pp": -0.141
+    }
+  ]
+}

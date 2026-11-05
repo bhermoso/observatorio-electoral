@@ -1,0 +1,495 @@
+{
+  "estado": "exploratorio_una_eleccion",
+  "estudios": [
+    {
+      "estudio": "junio_flash",
+      "n": 800,
+      "sha256": "ded455be319920618a3010e2393667381a886d57bfdc072385d79a7f28b79a03",
+      "recetas_previas_reproducidas": 7,
+      "recetas": [
+        {
+          "recuerdo": 0,
+          "simpatia": 0,
+          "participacion": 0,
+          "nombre": "directa_ponderada_ponde",
+          "voto": {
+            "PP": 31.116269937251683,
+            "PSOE": 27.295546246820813,
+            "VOX": 14.623805532647157,
+            "SUMAR": 15.181312228857937
+          },
+          "error_firmado_pp": {
+            "PP": -1.939499025348315,
+            "PSOE": -4.386608794179189,
+            "VOX": 2.2413151436471566,
+            "SUMAR": 2.847444481257938
+          },
+          "mae_pp": 2.8537168611081496
+        },
+        {
+          "recuerdo": 0,
+          "simpatia": 0,
+          "participacion": 1,
+          "nombre": "directa_ponderada_x_participacion_0_10",
+          "voto": {
+            "PP": 31.13750585144103,
+            "PSOE": 27.278670355846867,
+            "VOX": 15.419712693382797,
+            "SUMAR": 14.994948800557225
+          },
+          "error_firmado_pp": {
+            "PP": -1.9182631111589679,
+            "PSOE": -4.403484685153135,
+            "VOX": 3.037222304382796,
+            "SUMAR": 2.6610810529572255
+          },
+          "mae_pp": 3.005012788413031
+        },
+        {
+          "recuerdo": 0,
+          "simpatia": 1,
+          "participacion": 0,
+          "nombre": "simpatia_para_indecisos",
+          "voto": {
+            "PP": 30.578065771148548,
+            "PSOE": 27.55538320647125,
+            "VOX": 14.481062700100155,
+            "SUMAR": 15.473377494541179
+          },
+          "error_firmado_pp": {
+            "PP": -2.4777031914514502,
+            "PSOE": -4.12677183452875,
+            "VOX": 2.0985723111001544,
+            "SUMAR": 3.1395097469411795
+          },
+          "mae_pp": 2.9606392710053835
+        },
+        {
+          "recuerdo": 0,
+          "simpatia": 1,
+          "participacion": 1,
+          "nombre": "simpatia_mas_participacion_sin_recuerdo",
+          "voto": {
+            "PP": 30.609739641652247,
+            "PSOE": 27.54398583482971,
+            "VOX": 15.280785231613361,
+            "SUMAR": 15.274949555754807
+          },
+          "error_firmado_pp": {
+            "PP": -2.4460293209477513,
+            "PSOE": -4.138169206170293,
+            "VOX": 2.8982948426133603,
+            "SUMAR": 2.9410818081548076
+          },
+          "mae_pp": 3.105893794471553
+        },
+        {
+          "recuerdo": 1,
+          "simpatia": 0,
+          "participacion": 0,
+          "nombre": "recuerdo_2019_calibracion_50pct",
+          "voto": {
+            "PP": 30.271040278252585,
+            "PSOE": 26.42745894099081,
+            "VOX": 15.43047506634405,
+            "SUMAR": 16.119654491766667
+          },
+          "error_firmado_pp": {
+            "PP": -2.7847286843474137,
+            "PSOE": -5.254696100009191,
+            "VOX": 3.047984677344049,
+            "SUMAR": 3.7857867441666677
+          },
+          "mae_pp": 3.7182990514668304
+        },
+        {
+          "recuerdo": 1,
+          "simpatia": 0,
+          "participacion": 1,
+          "nombre": "recuerdo_mas_participacion",
+          "voto": {
+            "PP": 30.19801025378703,
+            "PSOE": 26.368017057082643,
+            "VOX": 16.295208027641216,
+            "SUMAR": 16.018568236292474
+          },
+          "error_firmado_pp": {
+            "PP": -2.8577587088129697,
+            "PSOE": -5.314137983917359,
+            "VOX": 3.9127176386412152,
+            "SUMAR": 3.6847004886924744
+          },
+          "mae_pp": 3.9423287050160045
+        },
+        {
+          "recuerdo": 1,
+          "simpatia": 1,
+          "participacion": 0,
+          "nombre": "recuerdo_mas_simpatia_indecisos",
+          "voto": {
+            "PP": 29.765048007482356,
+            "PSOE": 26.67998194203589,
+            "VOX": 15.289274551833433,
+            "SUMAR": 16.383376462974695
+          },
+          "error_firmado_pp": {
+            "PP": -3.290720955117642,
+            "PSOE": -5.002173098964111,
+            "VOX": 2.906784162833432,
+            "SUMAR": 4.049508715374696
+          },
+          "mae_pp": 3.81229673307247
+        },
+        {
+          "recuerdo": 1,
+          "simpatia": 1,
+          "participacion": 1,
+          "nombre": "recuerdo_mas_simpatia_mas_participacion",
+          "voto": {
+            "PP": 29.70509531026806,
+            "PSOE": 26.62307840175931,
+            "VOX": 16.158021628452232,
+            "SUMAR": 16.270680545767515
+          },
+          "error_firmado_pp": {
+            "PP": -3.3506736523319383,
+            "PSOE": -5.05907663924069,
+            "VOX": 3.7755312394522313,
+            "SUMAR": 3.936812798167516
+          },
+          "mae_pp": 4.030523582298094
+        }
+      ],
+      "participacion_no_numerica": 39
+    },
+    {
+      "estudio": "junio_barometro",
+      "n": 2000,
+      "sha256": "b5d1c0f6fd83263adbb318ba1eb5459aa7d6cd69e18ae6cca190daa2cda5bd5c",
+      "recetas_previas_reproducidas": 7,
+      "recetas": [
+        {
+          "recuerdo": 0,
+          "simpatia": 0,
+          "participacion": 0,
+          "nombre": "directa_ponderada_ponde",
+          "voto": {
+            "PP": 29.81020765493079,
+            "PSOE": 26.72926798330731,
+            "VOX": 15.55764842674361,
+            "SUMAR": 13.739648146297037
+          },
+          "error_firmado_pp": {
+            "PP": -3.2455613076692096,
+            "PSOE": -4.952887057692692,
+            "VOX": 3.175158037743609,
+            "SUMAR": 1.405780398697038
+          },
+          "mae_pp": 3.194846700450637
+        },
+        {
+          "recuerdo": 0,
+          "simpatia": 0,
+          "participacion": 1,
+          "nombre": "directa_ponderada_x_participacion_0_10",
+          "voto": {
+            "PP": 30.083532678252002,
+            "PSOE": 27.491232737097086,
+            "VOX": 15.861235438969812,
+            "SUMAR": 13.792211388298162
+          },
+          "error_firmado_pp": {
+            "PP": -2.9722362843479964,
+            "PSOE": -4.190922303902916,
+            "VOX": 3.4787450499698114,
+            "SUMAR": 1.4583436406981622
+          },
+          "mae_pp": 3.0250618197297214
+        },
+        {
+          "recuerdo": 0,
+          "simpatia": 1,
+          "participacion": 0,
+          "nombre": "simpatia_para_indecisos",
+          "voto": {
+            "PP": 29.426304046454266,
+            "PSOE": 27.428254192481635,
+            "VOX": 15.081853902015615,
+            "SUMAR": 13.83155656889536
+          },
+          "error_firmado_pp": {
+            "PP": -3.629464916145732,
+            "PSOE": -4.2539008485183665,
+            "VOX": 2.699363513015614,
+            "SUMAR": 1.4976888212953607
+          },
+          "mae_pp": 3.0201045247437683
+        },
+        {
+          "recuerdo": 0,
+          "simpatia": 1,
+          "participacion": 1,
+          "nombre": "simpatia_mas_participacion_sin_recuerdo",
+          "voto": {
+            "PP": 29.629661328057324,
+            "PSOE": 28.075924994772738,
+            "VOX": 15.450506275728651,
+            "SUMAR": 13.940128440594112
+          },
+          "error_firmado_pp": {
+            "PP": -3.4261076345426744,
+            "PSOE": -3.606230046227264,
+            "VOX": 3.0680158867286504,
+            "SUMAR": 1.6062606929941126
+          },
+          "mae_pp": 2.9266535651231753
+        },
+        {
+          "recuerdo": 1,
+          "simpatia": 0,
+          "participacion": 0,
+          "nombre": "recuerdo_2019_calibracion_50pct",
+          "voto": {
+            "PP": 29.173248657454348,
+            "PSOE": 25.123426201167657,
+            "VOX": 17.164599447858233,
+            "SUMAR": 14.395970363205178
+          },
+          "error_firmado_pp": {
+            "PP": -3.8825203051456505,
+            "PSOE": -6.5587288398323444,
+            "VOX": 4.782109058858232,
+            "SUMAR": 2.0621026156051787
+          },
+          "mae_pp": 4.321365204860351
+        },
+        {
+          "recuerdo": 1,
+          "simpatia": 0,
+          "participacion": 1,
+          "nombre": "recuerdo_mas_participacion",
+          "voto": {
+            "PP": 29.43386165684615,
+            "PSOE": 25.805762023187338,
+            "VOX": 17.53156999195047,
+            "SUMAR": 14.472833579678625
+          },
+          "error_firmado_pp": {
+            "PP": -3.6219073057538473,
+            "PSOE": -5.8763930178126635,
+            "VOX": 5.149079602950469,
+            "SUMAR": 2.1389658320786253
+          },
+          "mae_pp": 4.196586439648901
+        },
+        {
+          "recuerdo": 1,
+          "simpatia": 1,
+          "participacion": 0,
+          "nombre": "recuerdo_mas_simpatia_indecisos",
+          "voto": {
+            "PP": 28.828084804825284,
+            "PSOE": 25.803470150298452,
+            "VOX": 16.637454790514198,
+            "SUMAR": 14.5029142194547
+          },
+          "error_firmado_pp": {
+            "PP": -4.227684157774714,
+            "PSOE": -5.87868489070155,
+            "VOX": 4.254964401514197,
+            "SUMAR": 2.169046471854701
+          },
+          "mae_pp": 4.13259498046129
+        },
+        {
+          "recuerdo": 1,
+          "simpatia": 1,
+          "participacion": 1,
+          "nombre": "recuerdo_mas_simpatia_mas_participacion",
+          "voto": {
+            "PP": 29.01482200494062,
+            "PSOE": 26.380493883911658,
+            "VOX": 17.06968673698314,
+            "SUMAR": 14.635917595242988
+          },
+          "error_firmado_pp": {
+            "PP": -4.040946957659379,
+            "PSOE": -5.301661157088343,
+            "VOX": 4.687196347983139,
+            "SUMAR": 2.302049847642989
+          },
+          "mae_pp": 4.082963577593462
+        }
+      ],
+      "participacion_no_numerica": 68
+    },
+    {
+      "estudio": "julio_preelectoral",
+      "n": 2000,
+      "sha256": "529f2044c28813fa026704f2fe1aad09f19dbc711a4362ed66ca61b8d41f6ff2",
+      "recetas_previas_reproducidas": 7,
+      "recetas": [
+        {
+          "recuerdo": 0,
+          "simpatia": 0,
+          "participacion": 0,
+          "nombre": "directa_ponderada_ponde",
+          "voto": {
+            "PP": 28.285558337267133,
+            "PSOE": 29.520962106027767,
+            "VOX": 16.582901647132637,
+            "SUMAR": 12.906844587411724
+          },
+          "error_firmado_pp": {
+            "PP": -4.770210625332865,
+            "PSOE": -2.1611929349722345,
+            "VOX": 4.200411258132636,
+            "SUMAR": 0.5729768398117248
+          },
+          "mae_pp": 2.926197914562365
+        },
+        {
+          "recuerdo": 0,
+          "simpatia": 0,
+          "participacion": 1,
+          "nombre": "directa_ponderada_x_participacion_0_10",
+          "voto": {
+            "PP": 28.71493889841429,
+            "PSOE": 29.91829592411665,
+            "VOX": 16.38194033906491,
+            "SUMAR": 13.113564912726586
+          },
+          "error_firmado_pp": {
+            "PP": -4.34083006418571,
+            "PSOE": -1.7638591168833528,
+            "VOX": 3.9994499500649106,
+            "SUMAR": 0.7796971651265867
+          },
+          "mae_pp": 2.72095907406514
+        },
+        {
+          "recuerdo": 0,
+          "simpatia": 1,
+          "participacion": 0,
+          "nombre": "simpatia_para_indecisos",
+          "voto": {
+            "PP": 27.734416657105793,
+            "PSOE": 30.353126019508274,
+            "VOX": 15.926006087582012,
+            "SUMAR": 12.837485850612698
+          },
+          "error_firmado_pp": {
+            "PP": -5.321352305494205,
+            "PSOE": -1.3290290214917277,
+            "VOX": 3.543515698582011,
+            "SUMAR": 0.5036181030126983
+          },
+          "mae_pp": 2.6743787821451606
+        },
+        {
+          "recuerdo": 0,
+          "simpatia": 1,
+          "participacion": 1,
+          "nombre": "simpatia_mas_participacion_sin_recuerdo",
+          "voto": {
+            "PP": 28.139720554312,
+            "PSOE": 30.737549385351794,
+            "VOX": 15.798570242287555,
+            "SUMAR": 13.090423772790482
+          },
+          "error_firmado_pp": {
+            "PP": -4.916048408287999,
+            "PSOE": -0.944605655648207,
+            "VOX": 3.4160798532875543,
+            "SUMAR": 0.7565560251904824
+          },
+          "mae_pp": 2.5083224856035606
+        },
+        {
+          "recuerdo": 1,
+          "simpatia": 0,
+          "participacion": 0,
+          "nombre": "recuerdo_2019_calibracion_50pct",
+          "voto": {
+            "PP": 27.686531615517534,
+            "PSOE": 27.665658200008476,
+            "VOX": 18.639841386755723,
+            "SUMAR": 13.34173873893698
+          },
+          "error_firmado_pp": {
+            "PP": -5.369237347082464,
+            "PSOE": -4.016496840991525,
+            "VOX": 6.257350997755722,
+            "SUMAR": 1.007870991336981
+          },
+          "mae_pp": 4.162739044291673
+        },
+        {
+          "recuerdo": 1,
+          "simpatia": 0,
+          "participacion": 1,
+          "nombre": "recuerdo_mas_participacion",
+          "voto": {
+            "PP": 28.092727813490992,
+            "PSOE": 28.027401222654998,
+            "VOX": 18.464765313081145,
+            "SUMAR": 13.567639390398469
+          },
+          "error_firmado_pp": {
+            "PP": -4.9630411491090065,
+            "PSOE": -3.6547538183450037,
+            "VOX": 6.082274924081144,
+            "SUMAR": 1.2337716427984695
+          },
+          "mae_pp": 3.983460383583406
+        },
+        {
+          "recuerdo": 1,
+          "simpatia": 1,
+          "participacion": 0,
+          "nombre": "recuerdo_mas_simpatia_indecisos",
+          "voto": {
+            "PP": 27.17436061547902,
+            "PSOE": 28.51907648014518,
+            "VOX": 17.92198635561467,
+            "SUMAR": 13.260266431183096
+          },
+          "error_firmado_pp": {
+            "PP": -5.881408347120978,
+            "PSOE": -3.163078560854821,
+            "VOX": 5.53949596661467,
+            "SUMAR": 0.9263986835830966
+          },
+          "mae_pp": 3.8775953895433912
+        },
+        {
+          "recuerdo": 1,
+          "simpatia": 1,
+          "participacion": 1,
+          "nombre": "recuerdo_mas_simpatia_mas_participacion",
+          "voto": {
+            "PP": 27.555908480500996,
+            "PSOE": 28.870500996345434,
+            "VOX": 17.821840493295696,
+            "SUMAR": 13.530034172541328
+          },
+          "error_firmado_pp": {
+            "PP": -5.4998604820990025,
+            "PSOE": -2.811654044654567,
+            "VOX": 5.439350104295695,
+            "SUMAR": 1.1961664249413282
+          },
+          "mae_pp": 3.736757763997648
+        }
+      ],
+      "participacion_no_numerica": 56
+    }
+  ],
+  "limitaciones": [
+    "No se han elegido coeficientes según el resultado; evaluación retrospectiva, no validación independiente.",
+    "Se conservan la referencia aproximada de recuerdo, ajuste del 50 % y participación/10 del ensayo previo.",
+    "Participación no numérica se trata como 0.5, supuesto heredado sin calibración.",
+    "Una combinación ausente se calcula ahora desde las entrevistas, no se interpola desde los errores.",
+    "La clasificación heredada reúne categorías no reconocidas en OTROS: requiere auditoría antes de ampliar su uso."
+  ]
+}

@@ -2,8 +2,9 @@
 
 - error_final: última encuesta de cada casa en los `dias` previos a la elección
   frente al resultado oficial. Error firmado = encuesta - resultado (pp).
-- sesgo_industria: error medio de todas las casas. Es el error que NINGÚN promedio
-  puede corregir por sí solo, porque todas fallan en la misma dirección.
+- sesgo_industria: error medio de las casas seleccionadas en una elección.
+  Describe el error del promedio simple; no demuestra que todas fallen en la
+  misma dirección ni identifica un sesgo persistente o su causa.
 - sesgos_ciclo: sesgo de cada casa respecto al consenso dentro de un ciclo (del
   modelo de tendencia). Comparar ciclos dice si la "cocina" de una casa es estable.
 """
