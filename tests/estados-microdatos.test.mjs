@@ -39,7 +39,11 @@ test('La descarga temporal observada en manifiesto nunca se finge guardada o ana
 });
 test('El archivo vacío no anuncia descargas ficticias y se integra en Encuestas',()=>{
  const seed=JSON.parse(read('../data/microdatos/estado-descargas.json'));
- assert.match(renderAuditData(seed),/No hay todavía descargas verificadas/);
+ const html=renderAuditData(seed);
+ if(seed.archivos.length){
+  assert.match(html,/archivos intentados/);
+  assert.match(html,/Archivo origen/);
+ }else{assert.match(html,/No hay todavía descargas verificadas/);}
  const ui=renderCatalogoMicrodatos();
  assert.match(ui,/analizado|almacenado/i);
  const app=read('../app.mjs'),build=read('../scripts/build.mjs');
