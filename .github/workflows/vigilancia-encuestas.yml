@@ -20,8 +20,11 @@ jobs:
       - name: Descubrir noticias y fuentes candidatas
         run: python scripts/vigilar_encuestas.py monitor-output
       - name: Actualizar la bandeja del Observatorio
-        run: python scripts/actualizar_servicio.py
+        id: refresh_service
+        continue-on-error: true
+        run: python scripts/actualizar_servicio.py --report monitor-output
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: vigilancia-documental
           path: monitor-output/
@@ -68,6 +71,13 @@ jobs:
           git push origin HEAD:main
       # Una incorporación confirmada se guarda con un push a main, que ya
       # dispara Pages. No solicitar además otro workflow_dispatch redundante.
+      # Señalar la búsqueda degradada después de tramitar las fichas aprobadas.
+      # El error permanece visible y no convierte un fallo en «sin novedades».
+      - name: Señalar fallo de la búsqueda del servicio
+        if: always() && steps.refresh_service.outcome == 'failure'
+        run: |
+          echo 'La búsqueda del servicio falló; consultar servicio.json. La incorporación independiente se ha intentado.'
+          exit 1
       - name: Crear o actualizar cola de revisión en Issues
         if: always()
         env:

@@ -78,3 +78,7 @@ El workflow `vigilancia-encuestas.yml`, programado diariamente o lanzado con **R
 **Límite importante:** la búsqueda RSS sigue detectando solo candidatos, y NO alimenta por sí misma la bandeja `validadas.json`. El sistema no aprueba noticias no estructuradas; los estudios que no tienen una ficha validada no se importan. Por tanto, «Run workflow» puede terminar correctamente con cero altas. Incorporación real confirmada el 3/11/2026: Hamalgama Métrica/Vozpópuli, 2/11/2026, muestra 1000, campo 22–28/10/2026 (fuente original en el registro).
 
 La ejecución de GitHub utiliza la cuenta ya autenticada, sin necesidad de pegar un token en la web. El formulario de disparo desde el sitio sigue requiriendo autorización personal; no guardar tokens en JavaScript distribuido públicamente.
+
+### Fallo de descubrimiento y bandeja aprobada
+
+El refresco de candidatos del servicio es independiente de la lectura de fichas aprobadas. Si falla, `scripts/actualizar_servicio.py --report monitor-output` conserva el error en `servicio.json`, sin inventar una fecha de búsqueda efectiva ni un recuento de cero candidatos. La vigilancia intenta después incorporar las fichas verificadas y publica el error concreto en su estado. Al terminar, la ejecución queda marcada como fallida por descubrimiento, aunque la incorporación independiente haya terminado; no debe confundirse con una búsqueda sin novedades. La veda HTTP 451 es una suspensión prevista.

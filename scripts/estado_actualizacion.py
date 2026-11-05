@@ -25,9 +25,11 @@ def construir(carpeta, previo=None, run_url=None, recalculo=False, ahora=None):
     previo = previo or {}
     cand = leer(Path(carpeta) / "candidates.json") or {}
     inc = leer(Path(carpeta) / "actualizacion.json") or {}
+    servicio = leer(Path(carpeta) / "servicio.json") or {}
     ahora = ahora or datetime.now(timezone.utc).isoformat()
     added = inc.get("added") or []
     errores = [f"{e.get('source')}: {e.get('detail')}" for e in cand.get("errors", [])]
+    errores.extend(str(e) for e in servicio.get('errors', []))
     if not cand:
         errores.append("La búsqueda no generó informe válido (fallo del paso)")
     if not inc:
