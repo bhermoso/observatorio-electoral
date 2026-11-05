@@ -1049,3 +1049,14 @@ body:not(.dashboard-route) .event-reading .er-levels>li{margin-bottom:12px}
 .sm-source small{display:block;font-size:10px;max-width:240px;overflow-wrap:anywhere}
 .sm-source code{font-size:10px;overflow-wrap:anywhere}
 @media(max-width:700px){.sm-research{padding:11px}.sm-head{display:block}.sm-head>a{display:inline-block;margin-bottom:10px;white-space:normal}}
+
+
+/* Los buscadores son operaciones distintas: panel sobrio y estado legible. */
+.poll-microdata-search{margin:14px 0;padding:14px 18px;border-left:3px solid #4a855f}
+.poll-microdata-search h2{font-size:18px;color:#234d32}
+.poll-microdata-search p{font-size:12px;line-height:1.5}
+.poll-microdata-search .poll-queue-item{padding:7px 1px;border-bottom:1px solid #dce6dc}
+.poll-microdata-search .poll-queue-item p{margin:4px 0}
+.poll-microdata-search .poll-queue-item a{font-size:12px;color:#226444}
+.poll-microdata-search details{margin:8px 0}
+.poll-microdata-search summary{font-size:12px;font-weight:650}

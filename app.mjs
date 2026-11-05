@@ -4,6 +4,7 @@ let disposePollUpdate=()=>{};
 import {renderHomeImpact,bindHomeImpact} from './home-impact.mjs';
 import {renderCocina,bindCocina} from './cocina.mjs';
 import {renderCatalogoMicrodatos,bindCatalogoMicrodatos} from './catalogo-microdatos.mjs';
+import {renderBuscadorMicrodatos,bindBuscadorMicrodatos} from './buscador-microdatos.mjs';
 import {renderPronostico,bindPronostico} from './pronostico-vista.mjs';
 import {renderAnalysis,bindAnalysis} from './analysis.mjs';
 import {renderEvents,bindEvents} from './events.mjs';
@@ -28,7 +29,7 @@ function dashboard(){
  return renderHomeImpact();
 }
 function resultsTable(groups,valid){return `<div class="table-wrap"><table><caption>PSOE incluye PSC. Porcentajes sobre votos válidos.</caption><thead><tr><th>Formación</th><th>Votos</th><th>%</th><th>Escaños</th></tr></thead><tbody>${groups.filter(p=>p.votes).map(p=>`<tr><td>${escape(p.label)}</td><td>${fmt(p.votes)}</td><td>${dec(p.votes/valid*100)}</td><td>${p.seats}</td></tr>`).join('')}</tbody></table></div>`;}
-function pollPage(){return renderPollUpdate()+renderCatalogoMicrodatos()+`<div class="notice"><a href="#analisis">Promedios con pesos y proyección experimental de escaños →</a> · <a href="#pronostico">Pronóstico completo del Motor 29N →</a></div>`+renderPollArchive(polls)+renderReferenceDirectory(references);}
+function pollPage(){return renderPollUpdate()+renderBuscadorMicrodatos()+renderCatalogoMicrodatos()+`<div class="notice"><a href="#analisis">Promedios con pesos y proyección experimental de escaños →</a> · <a href="#pronostico">Pronóstico completo del Motor 29N →</a></div>`+renderPollArchive(polls)+renderReferenceDirectory(references);}
 function atlasPage(){return `${hero('Atlas / Congreso 2023','52 formas de elegir.','Explora los escaños, la participación y el voto de cada circunscripción. La magnitud territorial corresponde a la convocatoria de 2023.')}<div class="toolbar"><label>Buscar circunscripción<input id="atlas-search" type="search" placeholder="Madrid, Soria, Ceuta…"></label><label>Ordenar por<select id="atlas-order"><option value="name">Nombre</option><option value="seats">Más escaños</option></select></label><a class="button secondary" href="data/districts.csv" download>Descargar atlas CSV ↓</a></div><div class="atlas-layout"><section class="panel"><h2>El territorio del Congreso</h2><div id="atlas-map"></div><p class="muted">Índice de 52 circunscripciones. Cada casilla muestra su número de escaños; la disposición no representa coordenadas geográficas.</p><div id="atlas-count" class="muted" role="status"></div><div id="atlas-grid" class="atlas-grid"></div></section><section id="district-detail" class="panel" aria-live="polite"></section></div>${source()}`;}
 function updateMap(){const container=$('#atlas-map');if(!container)return;container.innerHTML=renderMap(cartography,data,selected);container.querySelectorAll('[data-map-district]').forEach(g=>{const choose=()=>{selected=g.dataset.mapDistrict;filterAtlas();detail();};g.onclick=choose;g.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose();}};});}
 function filterAtlas(){updateMap();const q=$('#atlas-search').value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();let ds=data.districts.filter(d=>d.name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().includes(q));ds.sort($('#atlas-order').value==='seats'?(a,b)=>b.seats-a.seats:(a,b)=>a.name.localeCompare(b.name,'es'));$('#atlas-count').textContent=`${ds.length} circunscripciones`;$('#atlas-grid').innerHTML=ds.map(d=>`<button class="district" data-district="${d.id}" aria-pressed="${d.id===selected}"><b>${d.seats}</b>${escape(d.name)}</button>`).join('')||'<p class="empty">Sin coincidencias.</p>';$('#atlas-grid').querySelectorAll('button').forEach(b=>b.onclick=()=>{selected=b.dataset.district;filterAtlas();detail();});}
@@ -56,6 +57,7 @@ function render(){disposePollUpdate();const {route,anchor}=resolveRoute(location
  if(route==='dashboard'){bindHomeImpact(polls);}
  if(route==='pronostico'){bindPronostico();}
  if(route==='encuestas'){
+  bindBuscadorMicrodatos();
   void bindCatalogoMicrodatos();
   bindPollArchive(polls);
   disposePollUpdate=bindPollUpdate(async()=>{
