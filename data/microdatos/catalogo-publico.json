@@ -150,7 +150,9 @@
       "pagina": "https://moreincommon.es/pulso-electoral.html",
       "estado": "enlace_documentado",
       "fecha_tipo": "mes",
-      "nota": "Portal oficial anuncia ZIP de microdatos y codebook. URL directa aún no verificada; usar enlace del portal."
+      "nota": "Portal oficial anuncia ZIP de microdatos y codebook. URL directa aún no verificada; usar enlace del portal. ZIP enlazado desde página del productor en búsqueda de 5/11/2026; no se ha descargado ni auditado su contenido.",
+      "archivo": "https://moreincommon.es/data/microdatos-2026-10.zip",
+      "procedencia_archivo": "enlace_extraido_de_pagina_del_productor_2026-11-05"
     },
     {
       "id": "40db-2026-09-07",
@@ -159,7 +161,10 @@
       "titulo": "Barómetro Septiembre",
       "ambito": "España",
       "pagina": "https://elpais.com/espana/2026-09-07/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2026/09-barometro/2026_09_barometro_descargables.zip",
+      "procedencia_archivo": "enlace_extraido_de_pagina_del_productor_2026-11-05",
+      "nota": "ZIP enlazado desde página del productor en búsqueda de 5/11/2026; no se ha descargado ni auditado su contenido."
     },
     {
       "id": "cemop-2026-09-01",
@@ -179,7 +184,9 @@
       "pagina": "https://moreincommon.es/pulso-electoral.html",
       "estado": "enlace_documentado",
       "fecha_tipo": "mes",
-      "nota": "Portal oficial anuncia ZIP de microdatos y codebook. URL directa aún no verificada; usar enlace del portal."
+      "nota": "Portal oficial anuncia ZIP de microdatos y codebook. URL directa aún no verificada; usar enlace del portal. ZIP enlazado desde página del productor en búsqueda de 5/11/2026; no se ha descargado ni auditado su contenido.",
+      "archivo": "https://moreincommon.es/data/microdatos-2026-09.zip",
+      "procedencia_archivo": "enlace_extraido_de_pagina_del_productor_2026-11-05"
     },
     {
       "id": "40db-2026-07-06",
@@ -227,7 +234,10 @@
       "titulo": "Preelectoral Andalucía",
       "ambito": "Andalucía",
       "pagina": "https://elpais.com/espana/2026-05-11/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2026/05-andalucia/2026_05_Andalucia_descargables.zip",
+      "procedencia_archivo": "enlace_extraido_de_pagina_del_productor_2026-11-05",
+      "nota": "ZIP enlazado desde página del productor en búsqueda de 5/11/2026; no se ha descargado ni auditado su contenido."
     },
     {
       "id": "gad3-2026-05-11",
@@ -248,7 +258,10 @@
       "titulo": "Barómetro Mayo",
       "ambito": "España",
       "pagina": "https://elpais.com/espana/2026-05-04/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2026/05-barometro-y-regularizacion/2026_05_barometro_y_regularizacion.zip",
+      "procedencia_archivo": "enlace_extraido_de_pagina_del_productor_2026-11-05",
+      "nota": "ZIP enlazado desde página del productor en búsqueda de 5/11/2026; no se ha descargado ni auditado su contenido."
     },
     {
       "id": "more-in-common-2026-05-01",
@@ -287,7 +300,10 @@
       "titulo": "Preelectoral Castilla y León",
       "ambito": "Castilla y León",
       "pagina": "https://elpais.com/espana/2026-03-09/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2026/03-cyl/2026_03_cyl_descargables.zip",
+      "procedencia_archivo": "enlace_extraido_de_pagina_del_productor_2026-11-05",
+      "nota": "ZIP enlazado desde página del productor en búsqueda de 5/11/2026; no se ha descargado ni auditado su contenido."
     },
     {
       "id": "gad3-2026-02-08",

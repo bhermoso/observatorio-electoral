@@ -27,6 +27,11 @@ export function microNews(xml,topic){
   const get=k=>entityDecode(m[1].match(new RegExp('<'+k+'[^>]*>([\\s\\S]*?)</'+k+'>','i'))?.[1]?.trim()||'');
   const title=get('title'),link=safeHttp(get('link')),date=get('pubDate');
   if(!titleHit.test(title)||!link||new URL(link).hostname!=='news.google.com')continue;
+  // No atribuir noticias de otros países o productores a una casa española.
+  if(topic==='GAD3'&&!/\bGAD3\b/i.test(title))continue;
+  if(topic==='EL ESPAÑOL / SocioMétrica'&&!/sociom[eé]trica|EL ESPAÑOL/i.test(title))continue;
+  if(topic==='EL PAÍS / 40dB'&&!/40dB|EL PA[IÍ]S/i.test(title))continue;
+  if(topic==='Publicación de bases'&&!/espa[nñ]a|espa[nñ]ol|EL PA[IÍ]S|EL PERI[OÓ]DICO|elecciones generales|CIS|auton[oó]mic/i.test(title))continue;
   out.push({tipo:'noticia_sobre_microdatos',titulo:title.slice(0,240),url:link,fecha:date.slice(0,100),fuente:topic,estado:'pendiente_de_verificacion'});
   if(out.length>=20)break;
  }
