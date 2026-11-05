@@ -51,6 +51,17 @@ class TestAuditorMicrodatos(unittest.TestCase):
         self.assertEqual(M.classify(info), "matriz_detectada_pendiente_homologacion")
         self.assertNotIn("PP", json.dumps(info))  # ninguna respuesta individual
 
+    def test_lector_dta_con_error_no_cancela_los_demas_archivos(self):
+        data = io.BytesIO()
+        with zipfile.ZipFile(data, "w") as z:
+            z.writestr("microdatos/matriz.dta", b"un formato que el lector no reconoce")
+        with patch.object(M, "binary_matrix", side_effect=RuntimeError("fichero_estadistico_no_legible")):
+            info = M.inspect(data.getvalue(), ".zip")
+        self.assertEqual(info["ficheros_tabulares"], 1)
+        self.assertEqual(info["matrices"][0]["tipo"], "dta")
+        self.assertEqual(info["matrices"][0]["error"], "RuntimeError")
+        self.assertEqual(M.classify(info), "archivo_descargado_sin_matriz_confirmada")
+
     def test_detecta_html_y_zip_no_valido(self):
         for body, suffix in [(b"<html>Access denied", ".sav"), (b"nada", ".zip")]:
             with self.assertRaises(ValueError):
