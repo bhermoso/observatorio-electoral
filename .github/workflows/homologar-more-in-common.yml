@@ -1,0 +1,63 @@
+name: Reconocer códigos de More in Common sin publicar entrevistas
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/homologar_more_in_common.py'
+      - 'tests/test_homologar_more_in_common.py'
+      - '.github/workflows/homologar-more-in-common.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: homologacion-more-in-common
+  cancel-in-progress: false
+
+jobs:
+  metadatos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Dependencia estadística con versión fijada
+        run: python -m pip install --disable-pip-version-check pyreadstat==1.3.2
+      - name: Test sintético: jamás leer filas ni inventar códigos
+        run: python -m unittest discover -s tests -p test_homologar_more_in_common.py -v
+      - name: Extraer solo nombres, etiquetas y categorías publicadas en SAV
+        run: python scripts/homologar_more_in_common.py
+      - name: Comprobar que el informe no incluye respuestas individuales ni cambia el motor
+        run: |
+          python - <<'PY'
+          import json
+          p='data/microdatos/homologacion-more-in-common-2026.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d["esquema"]==1 and len(d["estudios"])==4
+          assert d["motor_29n_modificado"] is False
+          for r in d["estudios"]:
+              assert r["entra_en_motor_29n"] is False
+              for m in r["matrices"]:
+                  assert m["filas"]>100 and m["columnas"]>=30
+                  assert len(m["variables_relevantes"])>3
+                  for v in m["variables_relevantes"]:
+                      assert v["uso_en_motor"] is False
+                      assert "respuestas" not in v
+          print("Validados cuatro inventarios de variables: sin filas ni cocina automatizada.")
+          PY
+      - name: Guardar exclusivamente metadatos reproducibles
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/microdatos/homologacion-more-in-common-2026.json
+          if git diff --cached --quiet; then
+            echo 'Sin nuevos metadatos.'
+          else
+            git commit -m 'Microdatos: reconocer etiquetas SPSS More in Common sin filas ni pronóstico'
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
