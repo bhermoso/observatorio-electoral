@@ -1,5 +1,5 @@
 /* Estado de descargas REALES; no se publican entrevistas individuales. */
-const URL='data/microdatos/estado-descargas.json';
+const AUDIT_URL='data/microdatos/estado-descargas.json';
 const GITHUB='https://github.com/bhermoso/observatorio-electoral/actions/workflows/auditar-catalogo-microdatos.yml';
 const h=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const safe=s=>{try{const u=new URL(s);return u.protocol==='https:'&&!u.username&&!u.password?u.href:null}catch{return null}};
@@ -23,7 +23,7 @@ export function renderAuditData(data){
  if(!entries.length)return '<p class="muted">No hay todavía descargas verificadas en este almacén. El proceso automático guardará resultados aquí tras su primera ejecución.</p>';
  const success=entries.filter(downloaded),matrices=entries.filter(r=>r.estado==='matriz_detectada_pendiente_homologacion'),failed=entries.filter(r=>r.estado==='descarga_fallida');
  const latest=entries.map(r=>r.verificado_en).filter(Boolean).sort().at(-1);
- let out='<p class="md-audit-metrics"><strong>'+entries.length+' archivos intentados</strong> · <strong>'+success.length+' descargas comprobadas</strong> · <strong>'+matrices.length+' matrices detectadas</strong> · <strong>'+failed.length+' descargas fallidas</strong>. <small>Último cambio: '+h(latest?new Date(latest).toLocaleString('es-ES',{timeZone:'Europe/Madrid'}):'sin registro')+'</small></p>';
+ let out='<p class="md-audit-metrics"><strong>'+entries.length+' archivos intentados</strong> · <strong>'+success.length+' descargas comprobadas</strong> · <strong>'+matrices.length+' matrices detectadas</strong> · <strong>'+failed.length+' descarga'+(failed.length===1?' fallida':'s fallidas')+'</strong>. <small>Último cambio: '+h(latest?new Date(latest).toLocaleString('es-ES',{timeZone:'Europe/Madrid'}):'sin registro')+'</small></p>';
  out+='<div class="table-wrap"><table class="md-audit-table"><caption>La estructura no significa homologación ni entrada al Motor 29N.</caption>'+
  '<thead><tr><th>Estudio / fuente</th><th>Descarga y estado</th><th>Entrevistas / variables</th><th>Original</th></tr></thead><tbody>';
  out+=entries.slice(0,35).map(r=>{
@@ -38,7 +38,7 @@ export function renderAuditData(data){
 }
 export async function bindEstadoDescargas(){
  const root=document.getElementById('md-audit-result');if(!root)return;
- try{const r=await fetch(URL,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);
+ try{const r=await fetch(AUDIT_URL,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);
   const data=await r.json();if(root.isConnected)root.innerHTML=renderAuditData(data);
  }catch(e){if(root.isConnected)root.textContent='No se pudo cargar el estado de descargas: '+e.message;}
 }
