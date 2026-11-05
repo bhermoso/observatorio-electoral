@@ -37,3 +37,30 @@ jobs:
         env:
           STUDY: ${{ inputs.estudio || 'todos' }}
         run: python scripts/guardar_microdatos_privados.py --study "$STUDY"
+      - name: Confirmar inventario persistente y denegar descargas públicas
+        run: |
+          python - <<'PY'
+          import json, urllib.request
+          base='https://gjzihgfzxorpvevrrfkh.supabase.co'
+          url=base+'/functions/v1/almacen-microdatos?action=status'
+          with urllib.request.urlopen(url,timeout=15) as r:
+              data=json.load(r)
+          wanted=['more-in-common-2026-05-01','more-in-common-2026-07-01',
+                  'more-in-common-2026-09-01','more-in-common-2026-10-01']
+          indexed={x['study_id']:x for x in data.get('stored',[])}
+          for id in wanted:
+              assert id in indexed and len(indexed[id]['sha256'])==64,(id,indexed)
+          assert all(indexed[id]['status']=='conservado_pendiente_homologacion' for id in wanted)
+          print('Verificados los cuatro certificados del inventario privado.')
+          source=indexed['more-in-common-2026-10-01']
+          path='more-in-common-2026-10-01/'+source['sha256']+'.zip'
+          raw=base+'/storage/v1/object/public/oee-microdatos-originales/'+path
+          try:
+              response=urllib.request.urlopen(raw,timeout=15)
+              status=response.status
+              response.close()
+          except urllib.error.HTTPError as e:
+              status=e.code
+          assert status!=200, f'ERROR: archivo privado accesible sin autenticación (HTTP {status})'
+          print('Acceso público directo denegado (HTTP',status,'). No se expusieron entrevistas.')
+          PY
