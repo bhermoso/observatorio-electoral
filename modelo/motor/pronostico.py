@@ -3,16 +3,17 @@
 Fuentes de incertidumbre (independientes, sumadas en varianza):
 1. Estimación de hoy (posterior del modelo de tendencia).
 2. Movimiento hasta la elección: paseo aleatorio tau * sqrt(días restantes).
-3. Error de industria: lo que fallan todas las casas a la vez. Calibrado con el 23J
-   (único precedente con datos en el sistema): RMS ~1,4 pp. Se usa sd = 1,5 pp para
-   un partido del 25 %, escalada con sqrt(p/25), mínimo 0,3 pp.
+3. Incertidumbre compartida de industria: supuesto sobre desviaciones que un
+   promedio puede conservar. simular usa por defecto 1,5 pp; principal pasa 2,2 pp
+   para un partido del 25 %, escalados con sqrt(p/25). No es el error observado
+   de cada casa ni una varianza estimada entre elecciones independientes.
 4. Error provincial del traslado a escaños (lognormal, sd 0,08).
 
 El error de industria no es independiente entre partidos. Una fracción `rho_bloque` de
 su varianza es un factor común que desplaza voto entre bloques (signo + para PP, Vox y
-UPN; − para PSOE, Sumar y Podemos; 0 para el resto). Motivo de método: todas las casas
-ponderan por recuerdo de voto y comparten el mismo tipo de fallo. En el 23J la diferencia
-entre bloques se infló 2,3 pp. Con una sola elección no se puede estimar rho: es un
+UPN; − para PSOE, Sumar y Podemos; 0 para el resto). Es una hipótesis de dependencia
+entre errores, no una causa demostrada ni una descripción de todas las casas.
+Con una sola elección no se puede estimar rho: es un
 supuesto declarado (0,5 por defecto) y el informe muestra la sensibilidad.
 """
 from datetime import timedelta
@@ -41,14 +42,15 @@ def priors_23j(errores, partido, factor=0.5, sd=1.5):
     return {c: (factor * r["error"][partido], sd) for c, r in errores.items() if partido in r["error"]}
 
 
-def estimar(encuestas, inicio, hoy, variante, errores_23j=None, eventos=(), tau=0.15):
+def estimar(encuestas, inicio, hoy, variante, errores_23j=None, eventos=(), tau=0.15,
+            factor_prior_23j=0.5):
     out = {}
     for p in PARTIDOS:
         kw = dict(tau=tau, eventos=eventos)
         if variante == "consenso_todas":
             kw["excluir_ancla"] = ()
         elif variante == "calibrada_23j" and p in ("PP", "PSOE", "VOX") and errores_23j:
-            kw["prior_sesgos"] = priors_23j(errores_23j, p)
+            kw["prior_sesgos"] = priors_23j(errores_23j, p, factor=factor_prior_23j)
         r = ajustar(encuestas, p, inicio, hoy, **kw)
         if r is not None:
             out[p] = r
@@ -207,7 +209,8 @@ def correccion_industria(errores_23j, fraccion=FRACCION_SESGO, min_casas=MIN_CAS
 
 def principal(encuestas, inicio, hoy, eleccion, errores_23j, n_por_variante=2000, industria=INDUSTRIA_PRINCIPAL,
               desplazamiento=None, metodo_geo="proporcional", rho_bloque=RHO_BLOQUE,
-              sd_prov=0.08, variantes=None, fraccion_sesgo=FRACCION_SESGO):
+              sd_prov=0.08, variantes=None, fraccion_sesgo=FRACCION_SESGO,
+              factor_prior_23j=0.5):
     """Pronóstico principal: une las simulaciones de las tres variantes de referencia, a
     partes iguales, con un error de industria intermedio entre el supuesto inicial (1,5)
     y el que habría cubierto 2023 (~2,9). Así la incertidumbre de método (qué casas
@@ -219,7 +222,8 @@ def principal(encuestas, inicio, hoy, eleccion, errores_23j, n_por_variante=2000
         raise ValueError("Variantes desconocidas o lista vacía")
     corr = correccion_industria(errores_23j, fraccion_sesgo) if fraccion_sesgo else {}
     for var in nombres:
-        aj = estimar(encuestas, inicio, hoy, var, errores_23j=errores_23j)
+        aj = estimar(encuestas, inicio, hoy, var, errores_23j=errores_23j,
+                     factor_prior_23j=factor_prior_23j)
         d = dict(desplazamiento or {})
         if var in VARIANTES_CORREGIDAS:
             for k, v in corr.items():
@@ -242,4 +246,5 @@ def principal(encuestas, inicio, hoy, eleccion, errores_23j, n_por_variante=2000
     r["dias"] = dias
     r["sin_encuestas"] = sims[0]["sin_encuestas"]
     r["correccion_industria"] = dict(fraccion=fraccion_sesgo, puntos=corr, variantes=list(VARIANTES_CORREGIDAS))
+    r["factor_prior_23j"] = factor_prior_23j
     return r
