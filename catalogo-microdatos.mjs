@@ -6,12 +6,12 @@
 const SOURCE='data/microdatos/catalogo-publico.json';
 const h=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const statuses={
- original_auditado:'Original auditado',
+ original_auditado:'Examinados y analizados; sin original almacenado',
  enlace_documentado:'Microdatos documentados',
  registro_requerido:'Requiere registro',
  formulario_requerido:'Requiere formulario',
  solicitud_requerida:'Bajo solicitud',
- estructura_sav_verificada:'SAV · estructura verificada',
+ estructura_sav_verificada:'SAV comprobado; análisis parcial',
  embargado:'Temporalmente embargado'
 };
 export function microdataState(s){
@@ -32,6 +32,20 @@ export function matchMicrodataFilter(s,choice){
   (choice==='analizados'&&(m.analisis==='analizado'||m.analisis==='parcial'))||
   (choice==='pendientes'&&!m.original_descargado_alguna_vez);
 }
+export function mergeAuditStatuses(catalog,manifest){
+ if(!Array.isArray(catalog?.estudios)||!Array.isArray(manifest?.archivos))return catalog;
+ const map=new Map(manifest.archivos.map(x=>[x.id,x]));
+ for(const study of catalog.estudios){
+  const r=map.get(study.id);
+  if(!r?.sha256||r.estado==='descarga_fallida')continue;
+  study.microdatos=study.microdatos||{};
+  study.microdatos.original_descargado_alguna_vez=true;
+  study.microdatos.descarga_verificada_en=r.verificado_en||null;
+  study.microdatos.sha256_verificado=r.sha256;
+  // Un manifiesto técnico no acredita copia conservada ni análisis electoral.
+ }
+ return catalog;
+}
 export function renderCatalogoMicrodatos(){
  return `<section class="archivo-md" id="archivo-microdatos" aria-labelledby="archivo-md-title">
  <div class="archivo-md-head"><div>
@@ -49,6 +63,10 @@ export async function bindCatalogoMicrodatos(){
   const res=await fetch(SOURCE,{cache:'no-store'});
   if(!res.ok)throw Error('HTTP '+res.status);
   const d=await res.json();
+  try{
+   const ar=await fetch('data/microdatos/estado-descargas.json',{cache:'no-store'});
+   if(ar.ok)mergeAuditStatuses(d,await ar.json());
+  }catch{/* El catálogo permanece visible aunque la auditoría no responda. */}
   if(!root.isConnected)return;
   if(d.esquema!==1||!Array.isArray(d.fuentes)||!Array.isArray(d.estudios))throw Error('Formato de catálogo inválido');
   const count=s=>d.estudios.filter(x=>x.productor===s).length;
@@ -58,7 +76,7 @@ export async function bindCatalogoMicrodatos(){
    <div class="archivo-md-controls">
      <label>Fuente<select id="archivo-md-source"><option value="todos">Todas las fuentes</option>${d.fuentes.map(f=>`<option value="${h(f.id)}">${h(f.nombre)}</option>`).join('')}</select></label>
      <label>Ámbito<select id="archivo-md-scope"><option value="todos">Todos los ámbitos</option><option value="España">España</option><option value="regional">Autonómicas y regionales</option></select></label>
-     <label>Acceso<select id="archivo-md-status"><option value="todos">Cualquier estado</option>${Object.entries(statuses).map(([key,val])=>`<option value="${key}">${val}</option>`).join('')}</select></label>
+     <label>Situación documental<select id="archivo-md-status"><option value="todos">Cualquier estado</option>${Object.entries(statuses).map(([key,val])=>`<option value="${key}">${val}</option>`).join('')}</select></label>
      <label>Microdatos<select id="archivo-md-progreso"><option value="todos">Cualquier estado</option><option value="localizados">Enlace localizado</option><option value="descargados">Descargados alguna vez</option><option value="almacenados">Originales almacenados</option><option value="analizados">Con algún análisis</option><option value="pendientes">Pendientes de descarga</option></select></label>
      <label>Buscar<input id="archivo-md-query" type="search" placeholder="2024, Murcia, GESOP…"></label>
    </div>
