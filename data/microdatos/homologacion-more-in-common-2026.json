@@ -1,0 +1,3541 @@
+{
+  "esquema": 1,
+  "generado_en": "2026-11-05T12:07:40+00:00",
+  "fuente": "More in Common España · Pulso electoral",
+  "metodo": "Metadatos SPSS originales con SHA-256; metadataonly=True; sin leer entrevistas",
+  "limites": [
+    "Los nombres sugieren funciones; hace falta verificar cuestionario y libro de códigos.",
+    "La variable terminada en final NO equivale por sí misma a estimación publicada.",
+    "La ponderación no se aplicará hasta identificar pesos y universos correctos.",
+    "No se publican microdatos, respuestas individuales ni tablas de contingencia.",
+    "Ningún estudio pasa automáticamente al Motor 29N."
+  ],
+  "estudios": [
+    {
+      "id": "more-in-common-2026-05-01",
+      "sha256": "3a65823bcbd3b94df84f77650755f8bdf47b22e0ab4a4c252136d986a2b5b3f8",
+      "tamano_bytes": 286799,
+      "documentos": [
+        "codebook-mayo-2026.pdf"
+      ],
+      "matrices": [
+        {
+          "archivo": "microdatos-mayo-2026.sav",
+          "filas": 2547,
+          "columnas": 60,
+          "variables_relevantes": [
+            {
+              "nombre": "participacion_2023_raw",
+              "funcion_provisional": "recuerdo_participacion_bruto",
+              "etiqueta_documentada": "Recuerdo de participación en las generales del 23-J 2023 (bruto)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Votó"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "No pudo"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "No suele votar"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sin edad"
+                },
+                {
+                  "codigo": "97.0",
+                  "etiqueta": "No recuerda"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "participacion_2023_final",
+              "funcion_provisional": "recuerdo_participacion_transformado",
+              "etiqueta_documentada": "Recuerdo de participación 2023 (variable final)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "-1.0",
+                  "etiqueta": "Sin edad"
+                },
+                {
+                  "codigo": "",
+                  "etiqueta": "Abstención"
+                },
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Votó"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "voto_2023_raw",
+              "funcion_provisional": "recuerdo_voto_bruto",
+              "etiqueta_documentada": "Recuerdo de voto en generales 2023 (bruto, recodificado)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "10.0",
+                  "etiqueta": "PNV"
+                },
+                {
+                  "codigo": "11.0",
+                  "etiqueta": "Bildu"
+                },
+                {
+                  "codigo": "12.0",
+                  "etiqueta": "CC"
+                },
+                {
+                  "codigo": "14.0",
+                  "etiqueta": "BNG"
+                },
+                {
+                  "codigo": "15.0",
+                  "etiqueta": "UPN"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "22.0",
+                  "etiqueta": "Otro"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Blanco"
+                },
+                {
+                  "codigo": "24.0",
+                  "etiqueta": "Nulo"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sumar"
+                },
+                {
+                  "codigo": "8.0",
+                  "etiqueta": "ERC"
+                },
+                {
+                  "codigo": "9.0",
+                  "etiqueta": "Junts"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "voto_2023_final",
+              "funcion_provisional": "recuerdo_voto_transformado",
+              "etiqueta_documentada": "Recuerdo de voto 2023 (variable final, post-imputación)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "-1.0",
+                  "etiqueta": "Sin edad"
+                },
+                {
+                  "codigo": "",
+                  "etiqueta": "Abstención"
+                },
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "10.0",
+                  "etiqueta": "PNV"
+                },
+                {
+                  "codigo": "11.0",
+                  "etiqueta": "Bildu"
+                },
+                {
+                  "codigo": "12.0",
+                  "etiqueta": "CC"
+                },
+                {
+                  "codigo": "14.0",
+                  "etiqueta": "BNG"
+                },
+                {
+                  "codigo": "15.0",
+                  "etiqueta": "UPN"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Blanco"
+                },
+                {
+                  "codigo": "24.0",
+                  "etiqueta": "Nulo"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sumar"
+                },
+                {
+                  "codigo": "8.0",
+                  "etiqueta": "ERC"
+                },
+                {
+                  "codigo": "9.0",
+                  "etiqueta": "Junts"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "Otros"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_declarada",
+              "funcion_provisional": "probabilidad_participacion",
+              "etiqueta_documentada": "Probabilidad declarada de votar (escala 0-10)",
+              "categorias_documentadas": [],
+              "categorias_truncadas": false,
+              "codigos_verificados": false,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "intencion_voto_raw",
+              "funcion_provisional": "intencion_declarada_bruta",
+              "etiqueta_documentada": "Intención de voto declarada (bruta)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "10.0",
+                  "etiqueta": "PNV"
+                },
+                {
+                  "codigo": "11.0",
+                  "etiqueta": "Bildu"
+                },
+                {
+                  "codigo": "12.0",
+                  "etiqueta": "CC"
+                },
+                {
+                  "codigo": "14.0",
+                  "etiqueta": "BNG"
+                },
+                {
+                  "codigo": "15.0",
+                  "etiqueta": "UPN"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "20.0",
+                  "etiqueta": "Podemos"
+                },
+                {
+                  "codigo": "21.0",
+                  "etiqueta": "SALF"
+                },
+                {
+                  "codigo": "22.0",
+                  "etiqueta": "Otro"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Blanco"
+                },
+                {
+                  "codigo": "24.0",
+                  "etiqueta": "Nulo"
+                },
+                {
+                  "codigo": "25.0",
+                  "etiqueta": "No votaría"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sumar"
+                },
+                {
+                  "codigo": "5.0",
+                  "etiqueta": "Sumar-Més"
+                },
+                {
+                  "codigo": "6.0",
+                  "etiqueta": "Sumar-En Comú"
+                },
+                {
+                  "codigo": "7.0",
+                  "etiqueta": "Sumar-Compromis"
+                },
+                {
+                  "codigo": "8.0",
+                  "etiqueta": "ERC"
+                },
+                {
+                  "codigo": "9.0",
+                  "etiqueta": "Junts"
+                },
+                {
+                  "codigo": "98.0",
+                  "etiqueta": "NC"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "NS"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "intencion_voto_simpatia",
+              "funcion_provisional": "intencion_y_simpatia_transformada",
+              "etiqueta_documentada": "Intención de voto tras pregunta de simpatía (B5 + B5a)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "10.0",
+                  "etiqueta": "PNV"
+                },
+                {
+                  "codigo": "11.0",
+                  "etiqueta": "Bildu"
+                },
+                {
+                  "codigo": "12.0",
+                  "etiqueta": "CC"
+                },
+                {
+                  "codigo": "14.0",
+                  "etiqueta": "BNG"
+                },
+                {
+                  "codigo": "15.0",
+                  "etiqueta": "UPN"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "20.0",
+                  "etiqueta": "Podemos"
+                },
+                {
+                  "codigo": "21.0",
+                  "etiqueta": "SALF"
+                },
+                {
+                  "codigo": "22.0",
+                  "etiqueta": "Otro"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Blanco"
+                },
+                {
+                  "codigo": "24.0",
+                  "etiqueta": "Nulo"
+                },
+                {
+                  "codigo": "25.0",
+                  "etiqueta": "No votaría"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sumar"
+                },
+                {
+                  "codigo": "8.0",
+                  "etiqueta": "ERC"
+                },
+                {
+                  "codigo": "9.0",
+                  "etiqueta": "Junts"
+                },
+                {
+                  "codigo": "98.0",
+                  "etiqueta": "NC"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "NS"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "intencion_voto_final",
+              "funcion_provisional": "intencion_final_fuente_sin_interpretar",
+              "etiqueta_documentada": "Intención de voto (variable final, post-imputación)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "",
+                  "etiqueta": "Abstención"
+                },
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "20.0",
+                  "etiqueta": "Podemos"
+                },
+                {
+                  "codigo": "21.0",
+                  "etiqueta": "SALF"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Blanco"
+                },
+                {
+                  "codigo": "24.0",
+                  "etiqueta": "Nulo"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sumar"
+                },
+                {
+                  "codigo": "98.0",
+                  "etiqueta": "Regionales"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "Otros"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "simpatia_partido",
+              "funcion_provisional": "simpatia",
+              "etiqueta_documentada": "Partido por el que siente más simpatía (B5a)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "10.0",
+                  "etiqueta": "PNV"
+                },
+                {
+                  "codigo": "12.0",
+                  "etiqueta": "CC"
+                },
+                {
+                  "codigo": "14.0",
+                  "etiqueta": "BNG"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "20.0",
+                  "etiqueta": "Podemos"
+                },
+                {
+                  "codigo": "21.0",
+                  "etiqueta": "SALF"
+                },
+                {
+                  "codigo": "22.0",
+                  "etiqueta": "Otro"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Ninguno"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sumar"
+                },
+                {
+                  "codigo": "5.0",
+                  "etiqueta": "Sumar-Més"
+                },
+                {
+                  "codigo": "6.0",
+                  "etiqueta": "Sumar-En Comú"
+                },
+                {
+                  "codigo": "7.0",
+                  "etiqueta": "Sumar-Compromis"
+                },
+                {
+                  "codigo": "8.0",
+                  "etiqueta": "ERC"
+                },
+                {
+                  "codigo": "9.0",
+                  "etiqueta": "Junts"
+                },
+                {
+                  "codigo": "98.0",
+                  "etiqueta": "NC"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_pp",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — PP",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_psoe",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — PSOE",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_vox",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — Vox",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_sumar",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — Sumar",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_podemos",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — Podemos",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_salf",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — SALF",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_erc",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — ERC",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_junts",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — Junts",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_pnv",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — PNV",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_bildu",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — Bildu",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_cc",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — CC",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_bng",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — BNG",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_upn",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — UPN",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_estimada",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad estimada de votar (modelo XGBoost)",
+              "categorias_documentadas": [],
+              "categorias_truncadas": false,
+              "codigos_verificados": false,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "peso",
+              "funcion_provisional": "ponderacion_candidata_sin_validar",
+              "etiqueta_documentada": "Peso final del/la encuestado/a",
+              "categorias_documentadas": [],
+              "categorias_truncadas": false,
+              "codigos_verificados": false,
+              "uso_en_motor": false
+            }
+          ]
+        }
+      ],
+      "estado": "metadatos_extraidos_pendientes_de_revision_semantica",
+      "entra_en_motor_29n": false
+    },
+    {
+      "id": "more-in-common-2026-07-01",
+      "sha256": "6d369d9d91ccda486cddc64ba7cb80af265b263e12e413696c5c42fb843b0a71",
+      "tamano_bytes": 270287,
+      "documentos": [
+        "codebook-julio-2026.pdf"
+      ],
+      "matrices": [
+        {
+          "archivo": "microdatos-julio-2026.sav",
+          "filas": 2277,
+          "columnas": 60,
+          "variables_relevantes": [
+            {
+              "nombre": "participacion_2023_raw",
+              "funcion_provisional": "recuerdo_participacion_bruto",
+              "etiqueta_documentada": "Recuerdo de participación en las generales del 23-J 2023 (bruto)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Votó"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "No pudo"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "No suele votar"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sin edad"
+                },
+                {
+                  "codigo": "97.0",
+                  "etiqueta": "No recuerda"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "participacion_2023_final",
+              "funcion_provisional": "recuerdo_participacion_transformado",
+              "etiqueta_documentada": "Recuerdo de participación 2023 (variable final)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "-1.0",
+                  "etiqueta": "Sin edad"
+                },
+                {
+                  "codigo": "",
+                  "etiqueta": "Abstención"
+                },
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Votó"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "voto_2023_raw",
+              "funcion_provisional": "recuerdo_voto_bruto",
+              "etiqueta_documentada": "Recuerdo de voto en generales 2023 (bruto, recodificado)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "10.0",
+                  "etiqueta": "PNV"
+                },
+                {
+                  "codigo": "11.0",
+                  "etiqueta": "Bildu"
+                },
+                {
+                  "codigo": "12.0",
+                  "etiqueta": "CC"
+                },
+                {
+                  "codigo": "14.0",
+                  "etiqueta": "BNG"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "22.0",
+                  "etiqueta": "Otro"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Blanco"
+                },
+                {
+                  "codigo": "24.0",
+                  "etiqueta": "Nulo"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sumar"
+                },
+                {
+                  "codigo": "8.0",
+                  "etiqueta": "ERC"
+                },
+                {
+                  "codigo": "9.0",
+                  "etiqueta": "Junts"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "voto_2023_final",
+              "funcion_provisional": "recuerdo_voto_transformado",
+              "etiqueta_documentada": "Recuerdo de voto 2023 (variable final, post-imputación)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "-1.0",
+                  "etiqueta": "Sin edad"
+                },
+                {
+                  "codigo": "",
+                  "etiqueta": "Abstención"
+                },
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "10.0",
+                  "etiqueta": "PNV"
+                },
+                {
+                  "codigo": "11.0",
+                  "etiqueta": "Bildu"
+                },
+                {
+                  "codigo": "12.0",
+                  "etiqueta": "CC"
+                },
+                {
+                  "codigo": "14.0",
+                  "etiqueta": "BNG"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Blanco"
+                },
+                {
+                  "codigo": "24.0",
+                  "etiqueta": "Nulo"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sumar"
+                },
+                {
+                  "codigo": "8.0",
+                  "etiqueta": "ERC"
+                },
+                {
+                  "codigo": "9.0",
+                  "etiqueta": "Junts"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "Otros"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_declarada",
+              "funcion_provisional": "probabilidad_participacion",
+              "etiqueta_documentada": "Probabilidad declarada de votar (escala 0-10)",
+              "categorias_documentadas": [],
+              "categorias_truncadas": false,
+              "codigos_verificados": false,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "intencion_voto_raw",
+              "funcion_provisional": "intencion_declarada_bruta",
+              "etiqueta_documentada": "Intención de voto declarada (bruta)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "10.0",
+                  "etiqueta": "PNV"
+                },
+                {
+                  "codigo": "11.0",
+                  "etiqueta": "Bildu"
+                },
+                {
+                  "codigo": "12.0",
+                  "etiqueta": "CC"
+                },
+                {
+                  "codigo": "14.0",
+                  "etiqueta": "BNG"
+                },
+                {
+                  "codigo": "15.0",
+                  "etiqueta": "UPN"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "20.0",
+                  "etiqueta": "Podemos"
+                },
+                {
+                  "codigo": "21.0",
+                  "etiqueta": "SALF"
+                },
+                {
+                  "codigo": "22.0",
+                  "etiqueta": "Otro"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Blanco"
+                },
+                {
+                  "codigo": "24.0",
+                  "etiqueta": "Nulo"
+                },
+                {
+                  "codigo": "25.0",
+                  "etiqueta": "No votaría"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sumar"
+                },
+                {
+                  "codigo": "6.0",
+                  "etiqueta": "Sumar-En Comú"
+                },
+                {
+                  "codigo": "7.0",
+                  "etiqueta": "Sumar-Compromis"
+                },
+                {
+                  "codigo": "8.0",
+                  "etiqueta": "ERC"
+                },
+                {
+                  "codigo": "9.0",
+                  "etiqueta": "Junts"
+                },
+                {
+                  "codigo": "98.0",
+                  "etiqueta": "NC"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "NS"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "intencion_voto_simpatia",
+              "funcion_provisional": "intencion_y_simpatia_transformada",
+              "etiqueta_documentada": "Intención de voto tras pregunta de simpatía (B5 + B5a)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "10.0",
+                  "etiqueta": "PNV"
+                },
+                {
+                  "codigo": "11.0",
+                  "etiqueta": "Bildu"
+                },
+                {
+                  "codigo": "12.0",
+                  "etiqueta": "CC"
+                },
+                {
+                  "codigo": "14.0",
+                  "etiqueta": "BNG"
+                },
+                {
+                  "codigo": "15.0",
+                  "etiqueta": "UPN"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "20.0",
+                  "etiqueta": "Podemos"
+                },
+                {
+                  "codigo": "21.0",
+                  "etiqueta": "SALF"
+                },
+                {
+                  "codigo": "22.0",
+                  "etiqueta": "Otro"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Blanco"
+                },
+                {
+                  "codigo": "24.0",
+                  "etiqueta": "Nulo"
+                },
+                {
+                  "codigo": "25.0",
+                  "etiqueta": "No votaría"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sumar"
+                },
+                {
+                  "codigo": "8.0",
+                  "etiqueta": "ERC"
+                },
+                {
+                  "codigo": "9.0",
+                  "etiqueta": "Junts"
+                },
+                {
+                  "codigo": "98.0",
+                  "etiqueta": "NC"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "NS"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "intencion_voto_final",
+              "funcion_provisional": "intencion_final_fuente_sin_interpretar",
+              "etiqueta_documentada": "Intención de voto (variable final, post-imputación)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "",
+                  "etiqueta": "Abstención"
+                },
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "20.0",
+                  "etiqueta": "Podemos"
+                },
+                {
+                  "codigo": "21.0",
+                  "etiqueta": "SALF"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Blanco"
+                },
+                {
+                  "codigo": "24.0",
+                  "etiqueta": "Nulo"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sumar"
+                },
+                {
+                  "codigo": "98.0",
+                  "etiqueta": "Regionales"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "Otros"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "simpatia_partido",
+              "funcion_provisional": "simpatia",
+              "etiqueta_documentada": "Partido por el que siente más simpatía (B5a)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "10.0",
+                  "etiqueta": "PNV"
+                },
+                {
+                  "codigo": "11.0",
+                  "etiqueta": "Bildu"
+                },
+                {
+                  "codigo": "12.0",
+                  "etiqueta": "CC"
+                },
+                {
+                  "codigo": "14.0",
+                  "etiqueta": "BNG"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "20.0",
+                  "etiqueta": "Podemos"
+                },
+                {
+                  "codigo": "21.0",
+                  "etiqueta": "SALF"
+                },
+                {
+                  "codigo": "22.0",
+                  "etiqueta": "Otro"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Ninguno"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sumar"
+                },
+                {
+                  "codigo": "5.0",
+                  "etiqueta": "Sumar-Més"
+                },
+                {
+                  "codigo": "6.0",
+                  "etiqueta": "Sumar-En Comú"
+                },
+                {
+                  "codigo": "7.0",
+                  "etiqueta": "Sumar-Compromis"
+                },
+                {
+                  "codigo": "8.0",
+                  "etiqueta": "ERC"
+                },
+                {
+                  "codigo": "98.0",
+                  "etiqueta": "NC"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_pp",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — PP",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_psoe",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — PSOE",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_vox",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — Vox",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_sumar",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — Sumar",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_podemos",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — Podemos",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_salf",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — SALF",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_erc",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — ERC",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_junts",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — Junts",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_pnv",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — PNV",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_bildu",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — Bildu",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_cc",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — CC",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_bng",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — BNG",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_upn",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — UPN",
+              "categorias_documentadas": [
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_estimada",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad estimada de votar (modelo XGBoost)",
+              "categorias_documentadas": [],
+              "categorias_truncadas": false,
+              "codigos_verificados": false,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "peso",
+              "funcion_provisional": "ponderacion_candidata_sin_validar",
+              "etiqueta_documentada": "Peso final del/la encuestado/a",
+              "categorias_documentadas": [],
+              "categorias_truncadas": false,
+              "codigos_verificados": false,
+              "uso_en_motor": false
+            }
+          ]
+        }
+      ],
+      "estado": "metadatos_extraidos_pendientes_de_revision_semantica",
+      "entra_en_motor_29n": false
+    },
+    {
+      "id": "more-in-common-2026-09-01",
+      "sha256": "8f31b4042f7219903ba698d2955bf868ceee2c3ae4a86eea1939ece3c0821b27",
+      "tamano_bytes": 293998,
+      "documentos": [
+        "codebook-septiembre-2026.pdf"
+      ],
+      "matrices": [
+        {
+          "archivo": "microdatos-septiembre-2026.sav",
+          "filas": 2144,
+          "columnas": 67,
+          "variables_relevantes": [
+            {
+              "nombre": "participacion_2023_raw",
+              "funcion_provisional": "recuerdo_participacion_bruto",
+              "etiqueta_documentada": "Recuerdo de participación en las generales del 23-J 2023 (bruto)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Votó"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "No pudo"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "No suele votar"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sin edad"
+                },
+                {
+                  "codigo": "97.0",
+                  "etiqueta": "No recuerda"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "participacion_2023_final",
+              "funcion_provisional": "recuerdo_participacion_transformado",
+              "etiqueta_documentada": "Recuerdo de participación 2023 (variable final)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "-1.0",
+                  "etiqueta": "Sin edad"
+                },
+                {
+                  "codigo": "",
+                  "etiqueta": "Abstención"
+                },
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Votó"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "voto_2023_raw",
+              "funcion_provisional": "recuerdo_voto_bruto",
+              "etiqueta_documentada": "Recuerdo de voto en generales 2023 (bruto, recodificado)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "10.0",
+                  "etiqueta": "PNV"
+                },
+                {
+                  "codigo": "11.0",
+                  "etiqueta": "Bildu"
+                },
+                {
+                  "codigo": "12.0",
+                  "etiqueta": "CC"
+                },
+                {
+                  "codigo": "14.0",
+                  "etiqueta": "BNG"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "22.0",
+                  "etiqueta": "Otro"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Blanco"
+                },
+                {
+                  "codigo": "24.0",
+                  "etiqueta": "Nulo"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sumar"
+                },
+                {
+                  "codigo": "8.0",
+                  "etiqueta": "ERC"
+                },
+                {
+                  "codigo": "9.0",
+                  "etiqueta": "Junts"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "voto_2023_final",
+              "funcion_provisional": "recuerdo_voto_transformado",
+              "etiqueta_documentada": "Recuerdo de voto 2023 (variable final, post-imputación)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "-1.0",
+                  "etiqueta": "Sin edad"
+                },
+                {
+                  "codigo": "",
+                  "etiqueta": "Abstención"
+                },
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "10.0",
+                  "etiqueta": "PNV"
+                },
+                {
+                  "codigo": "11.0",
+                  "etiqueta": "Bildu"
+                },
+                {
+                  "codigo": "12.0",
+                  "etiqueta": "CC"
+                },
+                {
+                  "codigo": "14.0",
+                  "etiqueta": "BNG"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Blanco"
+                },
+                {
+                  "codigo": "24.0",
+                  "etiqueta": "Nulo"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sumar"
+                },
+                {
+                  "codigo": "8.0",
+                  "etiqueta": "ERC"
+                },
+                {
+                  "codigo": "9.0",
+                  "etiqueta": "Junts"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "Otros"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_declarada",
+              "funcion_provisional": "probabilidad_participacion",
+              "etiqueta_documentada": "Probabilidad declarada de votar (escala 0-10)",
+              "categorias_documentadas": [],
+              "categorias_truncadas": false,
+              "codigos_verificados": false,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "intencion_voto_raw",
+              "funcion_provisional": "intencion_declarada_bruta",
+              "etiqueta_documentada": "Intención de voto declarada (bruta)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "10.0",
+                  "etiqueta": "PNV"
+                },
+                {
+                  "codigo": "11.0",
+                  "etiqueta": "Bildu"
+                },
+                {
+                  "codigo": "12.0",
+                  "etiqueta": "CC"
+                },
+                {
+                  "codigo": "14.0",
+                  "etiqueta": "BNG"
+                },
+                {
+                  "codigo": "15.0",
+                  "etiqueta": "UPN"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "20.0",
+                  "etiqueta": "Podemos"
+                },
+                {
+                  "codigo": "21.0",
+                  "etiqueta": "SALF"
+                },
+                {
+                  "codigo": "22.0",
+                  "etiqueta": "Otro"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Blanco"
+                },
+                {
+                  "codigo": "24.0",
+                  "etiqueta": "Nulo"
+                },
+                {
+                  "codigo": "25.0",
+                  "etiqueta": "No votaría"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sumar"
+                },
+                {
+                  "codigo": "6.0",
+                  "etiqueta": "Sumar-En Comú"
+                },
+                {
+                  "codigo": "7.0",
+                  "etiqueta": "Sumar-Compromis"
+                },
+                {
+                  "codigo": "8.0",
+                  "etiqueta": "ERC"
+                },
+                {
+                  "codigo": "9.0",
+                  "etiqueta": "Junts"
+                },
+                {
+                  "codigo": "98.0",
+                  "etiqueta": "NC"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "NS"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "intencion_voto_simpatia",
+              "funcion_provisional": "intencion_y_simpatia_transformada",
+              "etiqueta_documentada": "Intención de voto tras pregunta de simpatía (B5 + B5a)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "10.0",
+                  "etiqueta": "PNV"
+                },
+                {
+                  "codigo": "11.0",
+                  "etiqueta": "Bildu"
+                },
+                {
+                  "codigo": "12.0",
+                  "etiqueta": "CC"
+                },
+                {
+                  "codigo": "14.0",
+                  "etiqueta": "BNG"
+                },
+                {
+                  "codigo": "15.0",
+                  "etiqueta": "UPN"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "20.0",
+                  "etiqueta": "Podemos"
+                },
+                {
+                  "codigo": "21.0",
+                  "etiqueta": "SALF"
+                },
+                {
+                  "codigo": "22.0",
+                  "etiqueta": "Otro"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Blanco"
+                },
+                {
+                  "codigo": "24.0",
+                  "etiqueta": "Nulo"
+                },
+                {
+                  "codigo": "25.0",
+                  "etiqueta": "No votaría"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sumar"
+                },
+                {
+                  "codigo": "8.0",
+                  "etiqueta": "ERC"
+                },
+                {
+                  "codigo": "9.0",
+                  "etiqueta": "Junts"
+                },
+                {
+                  "codigo": "98.0",
+                  "etiqueta": "NC"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "NS"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "intencion_voto_final",
+              "funcion_provisional": "intencion_final_fuente_sin_interpretar",
+              "etiqueta_documentada": "Intención de voto (variable final, post-imputación)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "",
+                  "etiqueta": "Abstención"
+                },
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "20.0",
+                  "etiqueta": "Podemos"
+                },
+                {
+                  "codigo": "21.0",
+                  "etiqueta": "SALF"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Blanco"
+                },
+                {
+                  "codigo": "24.0",
+                  "etiqueta": "Nulo"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sumar"
+                },
+                {
+                  "codigo": "98.0",
+                  "etiqueta": "Regionales"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "Otros"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "simpatia_partido",
+              "funcion_provisional": "simpatia",
+              "etiqueta_documentada": "Partido por el que siente más simpatía (B5a)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "10.0",
+                  "etiqueta": "PNV"
+                },
+                {
+                  "codigo": "14.0",
+                  "etiqueta": "BNG"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "20.0",
+                  "etiqueta": "Podemos"
+                },
+                {
+                  "codigo": "21.0",
+                  "etiqueta": "SALF"
+                },
+                {
+                  "codigo": "22.0",
+                  "etiqueta": "Otro"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Ninguno"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sumar"
+                },
+                {
+                  "codigo": "6.0",
+                  "etiqueta": "Sumar-En Comú"
+                },
+                {
+                  "codigo": "8.0",
+                  "etiqueta": "ERC"
+                },
+                {
+                  "codigo": "9.0",
+                  "etiqueta": "Junts"
+                },
+                {
+                  "codigo": "98.0",
+                  "etiqueta": "NC"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_pp",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — PP",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_psoe",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — PSOE",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_vox",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — Vox",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_sumar",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — Sumar",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_podemos",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — Podemos",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_salf",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — SALF",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_erc",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — ERC",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_junts",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — Junts",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_pnv",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — PNV",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_bildu",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — Bildu",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_cc",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — CC",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_bng",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — BNG",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_upn",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad de votar — UPN",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_estimada",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad estimada de votar (modelo XGBoost)",
+              "categorias_documentadas": [],
+              "categorias_truncadas": false,
+              "codigos_verificados": false,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "peso",
+              "funcion_provisional": "ponderacion_candidata_sin_validar",
+              "etiqueta_documentada": "Peso final del/la encuestado/a",
+              "categorias_documentadas": [],
+              "categorias_truncadas": false,
+              "codigos_verificados": false,
+              "uso_en_motor": false
+            }
+          ]
+        }
+      ],
+      "estado": "metadatos_extraidos_pendientes_de_revision_semantica",
+      "entra_en_motor_29n": false
+    },
+    {
+      "id": "more-in-common-2026-10-01",
+      "sha256": "813f5a4f7b8cad45bb4f184b7744e4937d8651b34a09bee93b149513c9ff106f",
+      "tamano_bytes": 615299,
+      "documentos": [
+        "codebook-octubre-2026.pdf"
+      ],
+      "matrices": [
+        {
+          "archivo": "microdatos-octubre-2026.sav",
+          "filas": 2210,
+          "columnas": 154,
+          "variables_relevantes": [
+            {
+              "nombre": "participacion_2023_raw",
+              "funcion_provisional": "recuerdo_participacion_bruto",
+              "etiqueta_documentada": "B2. Recuerdo de participación en las generales del 23-J 2023 (bruto)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Votó"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "No pudo"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "No suele votar"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sin edad"
+                },
+                {
+                  "codigo": "97.0",
+                  "etiqueta": "No recuerda"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "participacion_2023_final",
+              "funcion_provisional": "recuerdo_participacion_transformado",
+              "etiqueta_documentada": "Recuerdo de participación 2023 (variable final)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "-1.0",
+                  "etiqueta": "Sin edad"
+                },
+                {
+                  "codigo": "",
+                  "etiqueta": "Abstención"
+                },
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Votó"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "voto_2023_raw",
+              "funcion_provisional": "recuerdo_voto_bruto",
+              "etiqueta_documentada": "B3. Recuerdo de voto en generales 2023 (bruto, recodificado)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "10.0",
+                  "etiqueta": "PNV"
+                },
+                {
+                  "codigo": "11.0",
+                  "etiqueta": "Bildu"
+                },
+                {
+                  "codigo": "12.0",
+                  "etiqueta": "CC"
+                },
+                {
+                  "codigo": "14.0",
+                  "etiqueta": "BNG"
+                },
+                {
+                  "codigo": "15.0",
+                  "etiqueta": "UPN"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "22.0",
+                  "etiqueta": "Otro"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Blanco"
+                },
+                {
+                  "codigo": "24.0",
+                  "etiqueta": "Nulo"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sumar"
+                },
+                {
+                  "codigo": "8.0",
+                  "etiqueta": "ERC"
+                },
+                {
+                  "codigo": "9.0",
+                  "etiqueta": "Junts"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "voto_2023_final",
+              "funcion_provisional": "recuerdo_voto_transformado",
+              "etiqueta_documentada": "Recuerdo de voto 2023 (variable final, post-imputación)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "-1.0",
+                  "etiqueta": "Sin edad"
+                },
+                {
+                  "codigo": "",
+                  "etiqueta": "Abstención"
+                },
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "10.0",
+                  "etiqueta": "PNV"
+                },
+                {
+                  "codigo": "11.0",
+                  "etiqueta": "Bildu"
+                },
+                {
+                  "codigo": "12.0",
+                  "etiqueta": "CC"
+                },
+                {
+                  "codigo": "14.0",
+                  "etiqueta": "BNG"
+                },
+                {
+                  "codigo": "15.0",
+                  "etiqueta": "UPN"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Blanco"
+                },
+                {
+                  "codigo": "24.0",
+                  "etiqueta": "Nulo"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Sumar"
+                },
+                {
+                  "codigo": "8.0",
+                  "etiqueta": "ERC"
+                },
+                {
+                  "codigo": "9.0",
+                  "etiqueta": "Junts"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "Otros"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_declarada",
+              "funcion_provisional": "probabilidad_participacion",
+              "etiqueta_documentada": "B4. Probabilidad declarada de votar (escala 0-10)",
+              "categorias_documentadas": [],
+              "categorias_truncadas": false,
+              "codigos_verificados": false,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "intencion_voto_raw",
+              "funcion_provisional": "intencion_declarada_bruta",
+              "etiqueta_documentada": "B5. Intención de voto declarada (bruta)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "10.0",
+                  "etiqueta": "PNV"
+                },
+                {
+                  "codigo": "11.0",
+                  "etiqueta": "Bildu"
+                },
+                {
+                  "codigo": "12.0",
+                  "etiqueta": "CC"
+                },
+                {
+                  "codigo": "14.0",
+                  "etiqueta": "BNG"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "20.0",
+                  "etiqueta": "Podemos"
+                },
+                {
+                  "codigo": "21.0",
+                  "etiqueta": "SALF"
+                },
+                {
+                  "codigo": "22.0",
+                  "etiqueta": "Otro"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Blanco"
+                },
+                {
+                  "codigo": "24.0",
+                  "etiqueta": "Nulo"
+                },
+                {
+                  "codigo": "25.0",
+                  "etiqueta": "No votaría"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "32.0",
+                  "etiqueta": "Adelante Andalucía"
+                },
+                {
+                  "codigo": "33.0",
+                  "etiqueta": "Drago Canarias"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Frente Amplio"
+                },
+                {
+                  "codigo": "8.0",
+                  "etiqueta": "ERC"
+                },
+                {
+                  "codigo": "9.0",
+                  "etiqueta": "Junts"
+                },
+                {
+                  "codigo": "98.0",
+                  "etiqueta": "NC"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "NS"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "intencion_voto_simpatia",
+              "funcion_provisional": "intencion_y_simpatia_transformada",
+              "etiqueta_documentada": "Intención de voto tras pregunta de simpatía (B5 + B5a)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "10.0",
+                  "etiqueta": "PNV"
+                },
+                {
+                  "codigo": "11.0",
+                  "etiqueta": "Bildu"
+                },
+                {
+                  "codigo": "12.0",
+                  "etiqueta": "CC"
+                },
+                {
+                  "codigo": "14.0",
+                  "etiqueta": "BNG"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "20.0",
+                  "etiqueta": "Podemos"
+                },
+                {
+                  "codigo": "21.0",
+                  "etiqueta": "SALF"
+                },
+                {
+                  "codigo": "22.0",
+                  "etiqueta": "Otro"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Blanco"
+                },
+                {
+                  "codigo": "24.0",
+                  "etiqueta": "Nulo"
+                },
+                {
+                  "codigo": "25.0",
+                  "etiqueta": "No votaría"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "32.0",
+                  "etiqueta": "Adelante Andalucía"
+                },
+                {
+                  "codigo": "33.0",
+                  "etiqueta": "Drago Canarias"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Frente Amplio"
+                },
+                {
+                  "codigo": "8.0",
+                  "etiqueta": "ERC"
+                },
+                {
+                  "codigo": "9.0",
+                  "etiqueta": "Junts"
+                },
+                {
+                  "codigo": "98.0",
+                  "etiqueta": "NC"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "NS"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "intencion_voto_final",
+              "funcion_provisional": "intencion_final_fuente_sin_interpretar",
+              "etiqueta_documentada": "Intención de voto (variable final, post-imputación)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "",
+                  "etiqueta": "Abstención"
+                },
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "20.0",
+                  "etiqueta": "Podemos"
+                },
+                {
+                  "codigo": "21.0",
+                  "etiqueta": "SALF"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Blanco"
+                },
+                {
+                  "codigo": "24.0",
+                  "etiqueta": "Nulo"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Frente Amplio"
+                },
+                {
+                  "codigo": "98.0",
+                  "etiqueta": "Regionales"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "Otros"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "simpatia_partido",
+              "funcion_provisional": "simpatia",
+              "etiqueta_documentada": "B5a. Partido por el que siente más simpatía",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "PP"
+                },
+                {
+                  "codigo": "10.0",
+                  "etiqueta": "PNV"
+                },
+                {
+                  "codigo": "11.0",
+                  "etiqueta": "Bildu"
+                },
+                {
+                  "codigo": "14.0",
+                  "etiqueta": "BNG"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "PSOE"
+                },
+                {
+                  "codigo": "20.0",
+                  "etiqueta": "Podemos"
+                },
+                {
+                  "codigo": "21.0",
+                  "etiqueta": "SALF"
+                },
+                {
+                  "codigo": "22.0",
+                  "etiqueta": "Otro"
+                },
+                {
+                  "codigo": "23.0",
+                  "etiqueta": "Ninguno"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Vox"
+                },
+                {
+                  "codigo": "32.0",
+                  "etiqueta": "Adelante Andalucía"
+                },
+                {
+                  "codigo": "33.0",
+                  "etiqueta": "Drago Canarias"
+                },
+                {
+                  "codigo": "4.0",
+                  "etiqueta": "Frente Amplio"
+                },
+                {
+                  "codigo": "8.0",
+                  "etiqueta": "ERC"
+                },
+                {
+                  "codigo": "9.0",
+                  "etiqueta": "Junts"
+                },
+                {
+                  "codigo": "98.0",
+                  "etiqueta": "NC"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "NS"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_pp",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "B7. Probabilidad de votar — PP",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_psoe",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "B7. Probabilidad de votar — PSOE",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_vox",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "B7. Probabilidad de votar — Vox",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_frente_amplio",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "B7. Probabilidad de votar — Frente Amplio (antes Sumar)",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_erc",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "B7. Probabilidad de votar — ERC",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_junts",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "B7. Probabilidad de votar — Junts",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_pnv",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "B7. Probabilidad de votar — PNV",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_bildu",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "B7. Probabilidad de votar — Bildu",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_cc",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "B7. Probabilidad de votar — CC",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_bng",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "B7. Probabilidad de votar — BNG",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_adelante",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "B7. Probabilidad de votar — Adelante Andalucía",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_drago",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "B7. Probabilidad de votar — Drago Canarias",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_podemos",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "B7. Probabilidad de votar — Podemos",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_salf",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "B7. Probabilidad de votar — SALF",
+              "categorias_documentadas": [
+                {
+                  "codigo": "1.0",
+                  "etiqueta": "Muy probable"
+                },
+                {
+                  "codigo": "2.0",
+                  "etiqueta": "Algo probable"
+                },
+                {
+                  "codigo": "3.0",
+                  "etiqueta": "Poco probable"
+                },
+                {
+                  "codigo": "99.0",
+                  "etiqueta": "No lo sé"
+                }
+              ],
+              "categorias_truncadas": false,
+              "codigos_verificados": true,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "prob_voto_estimada",
+              "funcion_provisional": "probabilidad_voto_por_partido",
+              "etiqueta_documentada": "Probabilidad estimada de votar (modelo XGBoost)",
+              "categorias_documentadas": [],
+              "categorias_truncadas": false,
+              "codigos_verificados": false,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "peso_demografico",
+              "funcion_provisional": "ponderacion_candidata_sin_validar",
+              "etiqueta_documentada": "Peso demográfico del/la encuestado/a",
+              "categorias_documentadas": [],
+              "categorias_truncadas": false,
+              "codigos_verificados": false,
+              "uso_en_motor": false
+            },
+            {
+              "nombre": "peso",
+              "funcion_provisional": "ponderacion_candidata_sin_validar",
+              "etiqueta_documentada": "Peso final del/la encuestado/a",
+              "categorias_documentadas": [],
+              "categorias_truncadas": false,
+              "codigos_verificados": false,
+              "uso_en_motor": false
+            }
+          ]
+        }
+      ],
+      "estado": "metadatos_extraidos_pendientes_de_revision_semantica",
+      "entra_en_motor_29n": false
+    }
+  ],
+  "comparabilidad_provisional": {
+    "roles_presentes_por_estudio": {
+      "more-in-common-2026-05-01": [
+        "intencion_declarada_bruta",
+        "intencion_final_fuente_sin_interpretar",
+        "intencion_y_simpatia_transformada",
+        "ponderacion_candidata_sin_validar",
+        "probabilidad_participacion",
+        "probabilidad_voto_por_partido",
+        "recuerdo_participacion_bruto",
+        "recuerdo_participacion_transformado",
+        "recuerdo_voto_bruto",
+        "recuerdo_voto_transformado",
+        "simpatia"
+      ],
+      "more-in-common-2026-07-01": [
+        "intencion_declarada_bruta",
+        "intencion_final_fuente_sin_interpretar",
+        "intencion_y_simpatia_transformada",
+        "ponderacion_candidata_sin_validar",
+        "probabilidad_participacion",
+        "probabilidad_voto_por_partido",
+        "recuerdo_participacion_bruto",
+        "recuerdo_participacion_transformado",
+        "recuerdo_voto_bruto",
+        "recuerdo_voto_transformado",
+        "simpatia"
+      ],
+      "more-in-common-2026-09-01": [
+        "intencion_declarada_bruta",
+        "intencion_final_fuente_sin_interpretar",
+        "intencion_y_simpatia_transformada",
+        "ponderacion_candidata_sin_validar",
+        "probabilidad_participacion",
+        "probabilidad_voto_por_partido",
+        "recuerdo_participacion_bruto",
+        "recuerdo_participacion_transformado",
+        "recuerdo_voto_bruto",
+        "recuerdo_voto_transformado",
+        "simpatia"
+      ],
+      "more-in-common-2026-10-01": [
+        "intencion_declarada_bruta",
+        "intencion_final_fuente_sin_interpretar",
+        "intencion_y_simpatia_transformada",
+        "ponderacion_candidata_sin_validar",
+        "probabilidad_participacion",
+        "probabilidad_voto_por_partido",
+        "recuerdo_participacion_bruto",
+        "recuerdo_participacion_transformado",
+        "recuerdo_voto_bruto",
+        "recuerdo_voto_transformado",
+        "simpatia"
+      ]
+    },
+    "roles_presentes_en_todos": [
+      "intencion_declarada_bruta",
+      "intencion_final_fuente_sin_interpretar",
+      "intencion_y_simpatia_transformada",
+      "ponderacion_candidata_sin_validar",
+      "probabilidad_participacion",
+      "probabilidad_voto_por_partido",
+      "recuerdo_participacion_bruto",
+      "recuerdo_participacion_transformado",
+      "recuerdo_voto_bruto",
+      "recuerdo_voto_transformado",
+      "simpatia"
+    ],
+    "nota": "Compartir nombre o función provisional no valida códigos, población, periodo, peso ni comparabilidad."
+  },
+  "motor_29n_modificado": false
+}
