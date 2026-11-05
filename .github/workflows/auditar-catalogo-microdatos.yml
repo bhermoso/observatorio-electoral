@@ -1,0 +1,51 @@
+name: Auditar descargas de microdatos (solo metadatos)
+on:
+  workflow_dispatch:
+    inputs:
+      limite:
+        description: 'Número máximo de archivos a comprobar (1–25)'
+        required: false
+        default: '12'
+  push:
+    branches: [main]
+    paths:
+      - 'data/microdatos/catalogo-publico.json'
+      - 'scripts/auditar_microdatos_catalogo.py'
+      - '.github/workflows/auditar-catalogo-microdatos.yml'
+  schedule:
+    - cron: '30 5 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: microdatos-manifiesto
+  cancel-in-progress: false
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar lectores estadísticos con versiones fijadas
+        run: python -m pip install --disable-pip-version-check pyreadstat==1.3.2 openpyxl==3.1.5
+      - name: Pruebas sintéticas sin red
+        run: python -m unittest discover -s tests -p test_auditar_catalogo_microdatos.py -v
+      - name: Descargar archivos públicos e inspeccionar estructura
+        env:
+          AUDIT_LIMIT: ${{ inputs.limite || '12' }}
+        run: python scripts/auditar_microdatos_catalogo.py --limit "$AUDIT_LIMIT"
+      - name: No publicar microdatos originales; guardar exclusivamente manifiesto
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/microdatos/estado-descargas.json
+          if git diff --staged --quiet; then
+            echo 'Sin cambios en las huellas ni estados de archivos; no se crea commit.'
+          else
+            git commit -m 'Microdatos: actualizar auditoría técnica de descargas sin filas individuales'
+            git push origin HEAD:main
+          fi

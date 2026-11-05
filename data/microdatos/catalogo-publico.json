@@ -107,7 +107,16 @@
       "estado": "enlace_documentado",
       "archivo_indirecto": true,
       "derivado": true,
-      "nota": "Compilación de tercero de 64 estudios CIS/264.081 entrevistas en Parquet. No son encuestas nuevas, no multiplicar muestras; verificar licencia y esquema original antes de procesar."
+      "nota": "Compilación de tercero de 64 estudios CIS/264.081 entrevistas en Parquet. No son encuestas nuevas, no multiplicar muestras; verificar licencia y esquema original antes de procesar.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "cis-2026-11-05",
@@ -117,7 +126,16 @@
       "ambito": "España",
       "pagina": "https://www.cis.es/es/estudios/catalogo",
       "estado": "formulario_requerido",
-      "nota": "Formulario individual para MDxxxx.zip; FID permite extracción integrada de variables."
+      "nota": "Formulario individual para MDxxxx.zip; FID permite extracción integrada de variables.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2026-10-09",
@@ -128,7 +146,16 @@
       "pagina": "https://elpais.com/espana/2026-10-09/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
       "estado": "original_auditado",
       "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_08_barometro_flash_descargables.zip",
-      "n": 800
+      "n": 800,
+      "microdatos": {
+        "enlace_localizado": true,
+        "original_descargado_alguna_vez": true,
+        "original_almacenado": false,
+        "analisis": "analizado",
+        "resultados_agregados": "data/microdatos/40db-auditoria-2026.json",
+        "usado_en_motor_29n": false,
+        "nota_original": "El archivo se examinó en una sesión o ejecutor temporal; no existe copia original recuperable en el almacén permanente."
+      }
     },
     {
       "id": "40db-2026-10-05",
@@ -139,7 +166,16 @@
       "pagina": "https://elpais.com/espana/2026-10-05/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
       "estado": "original_auditado",
       "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-barometro/2026_10_barometro_descargables.zip",
-      "n": 2000
+      "n": 2000,
+      "microdatos": {
+        "enlace_localizado": true,
+        "original_descargado_alguna_vez": true,
+        "original_almacenado": false,
+        "analisis": "analizado",
+        "resultados_agregados": "data/microdatos/40db-auditoria-2026.json",
+        "usado_en_motor_29n": false,
+        "nota_original": "El archivo se examinó en una sesión o ejecutor temporal; no existe copia original recuperable en el almacén permanente."
+      }
     },
     {
       "id": "more-in-common-2026-10-01",
@@ -152,7 +188,16 @@
       "fecha_tipo": "mes",
       "nota": "Portal oficial anuncia ZIP de microdatos y codebook. URL directa aún no verificada; usar enlace del portal. ZIP enlazado desde página del productor en búsqueda de 5/11/2026; no se ha descargado ni auditado su contenido.",
       "archivo": "https://moreincommon.es/data/microdatos-2026-10.zip",
-      "procedencia_archivo": "enlace_extraido_de_pagina_del_productor_2026-11-05"
+      "procedencia_archivo": "enlace_extraido_de_pagina_del_productor_2026-11-05",
+      "microdatos": {
+        "enlace_localizado": true,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2026-09-07",
@@ -164,7 +209,16 @@
       "estado": "enlace_documentado",
       "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2026/09-barometro/2026_09_barometro_descargables.zip",
       "procedencia_archivo": "enlace_extraido_de_pagina_del_productor_2026-11-05",
-      "nota": "ZIP enlazado desde página del productor en búsqueda de 5/11/2026; no se ha descargado ni auditado su contenido."
+      "nota": "ZIP enlazado desde página del productor en búsqueda de 5/11/2026; no se ha descargado ni auditado su contenido.",
+      "microdatos": {
+        "enlace_localizado": true,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "cemop-2026-09-01",
@@ -173,7 +227,16 @@
       "titulo": "Barómetro Murcia verano 2026",
       "ambito": "Murcia",
       "pagina": "https://www.cemopmurcia.es/estudios/barometro-region-de-murcia-verano-2026/",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "more-in-common-2026-09-01",
@@ -186,7 +249,16 @@
       "fecha_tipo": "mes",
       "nota": "Portal oficial anuncia ZIP de microdatos y codebook. URL directa aún no verificada; usar enlace del portal. ZIP enlazado desde página del productor en búsqueda de 5/11/2026; no se ha descargado ni auditado su contenido.",
       "archivo": "https://moreincommon.es/data/microdatos-2026-09.zip",
-      "procedencia_archivo": "enlace_extraido_de_pagina_del_productor_2026-11-05"
+      "procedencia_archivo": "enlace_extraido_de_pagina_del_productor_2026-11-05",
+      "microdatos": {
+        "enlace_localizado": true,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2026-07-06",
@@ -195,7 +267,16 @@
       "titulo": "Barómetro Julio",
       "ambito": "España",
       "pagina": "https://elpais.com/espana/2026-07-06/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "more-in-common-2026-07-01",
@@ -206,7 +287,16 @@
       "pagina": "https://moreincommon.es/pulso-electoral.html",
       "estado": "enlace_documentado",
       "archivo": "https://moreincommon.es/data/microdatos-2026-07.zip",
-      "nota": "Enlace ZIP observado en página oficial; contenido del archivo todavía no auditado."
+      "nota": "Enlace ZIP observado en página oficial; contenido del archivo todavía no auditado.",
+      "microdatos": {
+        "enlace_localizado": true,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "sociometro-vasco-2026-06-15",
@@ -216,7 +306,16 @@
       "ambito": "País Vasco",
       "pagina": "https://opendata.euskadi.eus/catalogo/-/informes-estudios/sociometro-89/",
       "estado": "enlace_documentado",
-      "nota": "Matriz CSV/SAV y ponderador wt documentados; comprobar que la ola incluye voto."
+      "nota": "Matriz CSV/SAV y ponderador wt documentados; comprobar que la ola incluye voto.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2026-06-08",
@@ -225,7 +324,16 @@
       "titulo": "Barómetro Junio",
       "ambito": "España",
       "pagina": "https://elpais.com/espana/2026-06-08/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2026-05-11",
@@ -237,7 +345,16 @@
       "estado": "enlace_documentado",
       "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2026/05-andalucia/2026_05_Andalucia_descargables.zip",
       "procedencia_archivo": "enlace_extraido_de_pagina_del_productor_2026-11-05",
-      "nota": "ZIP enlazado desde página del productor en búsqueda de 5/11/2026; no se ha descargado ni auditado su contenido."
+      "nota": "ZIP enlazado desde página del productor en búsqueda de 5/11/2026; no se ha descargado ni auditado su contenido.",
+      "microdatos": {
+        "enlace_localizado": true,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "gad3-2026-05-11",
@@ -249,7 +366,16 @@
       "estado": "enlace_documentado",
       "archivo": "https://www.gad3.com/wp-content/uploads/2026/05/GAD3-Microdatos-ABC-Andalucia-2026.xlsx",
       "n": 1142,
-      "nota": "XLSX enlazado directamente en web oficial; pendiente comprobar formato interior."
+      "nota": "XLSX enlazado directamente en web oficial; pendiente comprobar formato interior.",
+      "microdatos": {
+        "enlace_localizado": true,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2026-05-04",
@@ -261,7 +387,16 @@
       "estado": "enlace_documentado",
       "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2026/05-barometro-y-regularizacion/2026_05_barometro_y_regularizacion.zip",
       "procedencia_archivo": "enlace_extraido_de_pagina_del_productor_2026-11-05",
-      "nota": "ZIP enlazado desde página del productor en búsqueda de 5/11/2026; no se ha descargado ni auditado su contenido."
+      "nota": "ZIP enlazado desde página del productor en búsqueda de 5/11/2026; no se ha descargado ni auditado su contenido.",
+      "microdatos": {
+        "enlace_localizado": true,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "more-in-common-2026-05-01",
@@ -272,7 +407,16 @@
       "pagina": "https://moreincommon.es/pulso-electoral.html",
       "estado": "enlace_documentado",
       "archivo": "https://moreincommon.es/data/microdatos-2026-05.zip",
-      "nota": "Enlace ZIP observado en página oficial; contenido del archivo todavía no auditado."
+      "nota": "Enlace ZIP observado en página oficial; contenido del archivo todavía no auditado.",
+      "microdatos": {
+        "enlace_localizado": true,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "sociometro-vasco-2026-04-16",
@@ -282,7 +426,16 @@
       "ambito": "País Vasco",
       "pagina": "https://opendata.euskadi.eus/catalogo/-/informes-estudios/sociometro-88/",
       "estado": "enlace_documentado",
-      "nota": "Matriz CSV/SAV y ponderador wt documentados; comprobar que la ola incluye voto."
+      "nota": "Matriz CSV/SAV y ponderador wt documentados; comprobar que la ola incluye voto.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2026-04-06",
@@ -291,7 +444,16 @@
       "titulo": "Barómetro Abril",
       "ambito": "España",
       "pagina": "https://elpais.com/espana/2026-04-06/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2026-03-09",
@@ -303,7 +465,16 @@
       "estado": "enlace_documentado",
       "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2026/03-cyl/2026_03_cyl_descargables.zip",
       "procedencia_archivo": "enlace_extraido_de_pagina_del_productor_2026-11-05",
-      "nota": "ZIP enlazado desde página del productor en búsqueda de 5/11/2026; no se ha descargado ni auditado su contenido."
+      "nota": "ZIP enlazado desde página del productor en búsqueda de 5/11/2026; no se ha descargado ni auditado su contenido.",
+      "microdatos": {
+        "enlace_localizado": true,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "gad3-2026-02-08",
@@ -315,7 +486,16 @@
       "estado": "enlace_documentado",
       "archivo": "https://www.gad3.com/wp-content/uploads/2026/02/GAD3-FORTA-CARTV-8F-Microdatos.xlsx",
       "n": 4123,
-      "nota": "Hoja de microdatos original en portal GAD3. No auditada localmente."
+      "nota": "Hoja de microdatos original en portal GAD3. No auditada localmente.",
+      "microdatos": {
+        "enlace_localizado": true,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "gad3-2026-01-26",
@@ -327,7 +507,16 @@
       "estado": "enlace_documentado",
       "archivo": "https://www.gad3.com/wp-content/uploads/2026/01/GAD3xHOY-ARAGON-Microdatos-estimacion-de-voto.xlsx",
       "n": 1207,
-      "nota": "Hoja XLSX enlazada en portal GAD3. No ha sido inspeccionado su contenido ni confirmado que sean filas individuales."
+      "nota": "Hoja XLSX enlazada en portal GAD3. No ha sido inspeccionado su contenido ni confirmado que sean filas individuales.",
+      "microdatos": {
+        "enlace_localizado": true,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2026-01-12",
@@ -338,7 +527,16 @@
       "pagina": "https://elpais.com/espana/2026-01-12/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
       "estado": "original_auditado",
       "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2026/01-barometro/2026_01_barometro_descargables.zip",
-      "n": 2000
+      "n": 2000,
+      "microdatos": {
+        "enlace_localizado": true,
+        "original_descargado_alguna_vez": true,
+        "original_almacenado": false,
+        "analisis": "analizado",
+        "resultados_agregados": "data/microdatos/40db-auditoria-2026.json",
+        "usado_en_motor_29n": false,
+        "nota_original": "El archivo se examinó en una sesión o ejecutor temporal; no existe copia original recuperable en el almacén permanente."
+      }
     },
     {
       "id": "more-in-common-2025-estudios",
@@ -349,7 +547,16 @@
       "pagina": "https://moreincommon.es/estudios.html",
       "estado": "solicitud_requerida",
       "fecha_tipo": "referencia_temporal",
-      "nota": "Microdatos de otras encuestas disponibles bajo solicitud a hola@moreincommon.com. Portfolio, no un único sondeo ni necesariamente electoral."
+      "nota": "Microdatos de otras encuestas disponibles bajo solicitud a hola@moreincommon.com. Portfolio, no un único sondeo ni necesariamente electoral.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2025-12-15",
@@ -358,7 +565,16 @@
       "titulo": "Preelectoral Extremadura",
       "ambito": "Extremadura",
       "pagina": "https://elpais.com/espana/2025-12-15/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2025-12-09",
@@ -367,7 +583,16 @@
       "titulo": "Barómetro Diciembre",
       "ambito": "España",
       "pagina": "https://elpais.com/espana/2025-12-09/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "sociometro-vasco-2025-12-05",
@@ -377,7 +602,16 @@
       "ambito": "País Vasco",
       "pagina": "https://opendata.euskadi.eus/catalogo/-/informes-estudios/sociometro-87/",
       "estado": "enlace_documentado",
-      "nota": "Matriz CSV/SAV y ponderador wt documentados; comprobar que la ola incluye voto."
+      "nota": "Matriz CSV/SAV y ponderador wt documentados; comprobar que la ola incluye voto.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "cemop-2025-11-03",
@@ -386,7 +620,16 @@
       "titulo": "Barómetro Murcia otono 2025",
       "ambito": "Murcia",
       "pagina": "https://www.cemopmurcia.es/estudios/barometro-region-de-murcia-otono-2025/",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "icps-2025-10-13",
@@ -397,7 +640,16 @@
       "pagina": "https://www.icps.cat/recerca/sondeigs-i-dades/sondeigs/sondeigs-d-opinio-catalunya",
       "estado": "registro_requerido",
       "contratista": "GESOP",
-      "n": 2000
+      "n": 2000,
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2025-10-06",
@@ -406,7 +658,16 @@
       "titulo": "Barómetro Octubre",
       "ambito": "España",
       "pagina": "https://elpais.com/espana/2025-10-06/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2025-09-08",
@@ -415,7 +676,16 @@
       "titulo": "Barómetro Septiembre",
       "ambito": "España",
       "pagina": "https://elpais.com/espana/2025-09-08/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "sociometrica-2025-09-02",
@@ -432,7 +702,16 @@
       "sha256": "845831d6e16ee3fc9402896ee8cb97914908a067350e6aa8e3770dd3e781e1aa",
       "n_detectado": 1099,
       "n_variables": 38,
-      "auditoria": "data/microdatos/sociometrica-2025-agregados.json"
+      "auditoria": "data/microdatos/sociometrica-2025-agregados.json",
+      "microdatos": {
+        "enlace_localizado": true,
+        "original_descargado_alguna_vez": true,
+        "original_almacenado": false,
+        "analisis": "parcial",
+        "resultados_agregados": "data/microdatos/sociometrica-2025-agregados.json",
+        "usado_en_motor_29n": false,
+        "nota_original": "El archivo se examinó en una sesión o ejecutor temporal; no existe copia original recuperable en el almacén permanente."
+      }
     },
     {
       "id": "cemop-2025-09-01",
@@ -441,7 +720,16 @@
       "titulo": "Barómetro Murcia verano 2025",
       "ambito": "Murcia",
       "pagina": "https://www.cemopmurcia.es/estudios/barometro-region-de-murcia-verano-2025/",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "sociometrica-2025-07-28",
@@ -458,7 +746,16 @@
       "sha256": "fe6758b3ea0bcf2bbc043a54effeb3a2f84a8947de46c4dde047a480f9deaf24",
       "n_detectado": 1100,
       "n_variables": 45,
-      "auditoria": "data/microdatos/sociometrica-2025-agregados.json"
+      "auditoria": "data/microdatos/sociometrica-2025-agregados.json",
+      "microdatos": {
+        "enlace_localizado": true,
+        "original_descargado_alguna_vez": true,
+        "original_almacenado": false,
+        "analisis": "parcial",
+        "resultados_agregados": "data/microdatos/sociometrica-2025-agregados.json",
+        "usado_en_motor_29n": false,
+        "nota_original": "El archivo se examinó en una sesión o ejecutor temporal; no existe copia original recuperable en el almacén permanente."
+      }
     },
     {
       "id": "40db-2025-07-04",
@@ -467,7 +764,16 @@
       "titulo": "Barómetro Julio",
       "ambito": "España",
       "pagina": "https://elpais.com/espana/2025-07-04/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "sociometrica-2025-06-23",
@@ -484,7 +790,16 @@
       "sha256": "b820490246f066db81a7aafb8d50e146cdcb631d2aa89dfddfda9cb218a90cfe",
       "n_detectado": 1150,
       "n_variables": 37,
-      "auditoria": "data/microdatos/sociometrica-2025-agregados.json"
+      "auditoria": "data/microdatos/sociometrica-2025-agregados.json",
+      "microdatos": {
+        "enlace_localizado": true,
+        "original_descargado_alguna_vez": true,
+        "original_almacenado": false,
+        "analisis": "parcial",
+        "resultados_agregados": "data/microdatos/sociometrica-2025-agregados.json",
+        "usado_en_motor_29n": false,
+        "nota_original": "El archivo se examinó en una sesión o ejecutor temporal; no existe copia original recuperable en el almacén permanente."
+      }
     },
     {
       "id": "cemop-2025-06-17",
@@ -497,7 +812,16 @@
       "n": 1110,
       "fecha_tipo": "fin_de_campo",
       "embargado_hasta": "2027-01-01",
-      "nota": "El productor indica embargo de microdatos hasta enero de 2027. NO disponible para descarga actual."
+      "nota": "El productor indica embargo de microdatos hasta enero de 2027. NO disponible para descarga actual.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2025-06-02",
@@ -506,7 +830,16 @@
       "titulo": "Barómetro Junio",
       "ambito": "España",
       "pagina": "https://elpais.com/espana/2025-06-02/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "sociometrica-2025-05-27",
@@ -523,7 +856,16 @@
       "sha256": "3398ba6d68dca0d829046232132ab065e40f54168274d602eb8225e31b74137f",
       "n_detectado": 1034,
       "n_variables": 47,
-      "auditoria": "data/microdatos/sociometrica-2025-agregados.json"
+      "auditoria": "data/microdatos/sociometrica-2025-agregados.json",
+      "microdatos": {
+        "enlace_localizado": true,
+        "original_descargado_alguna_vez": true,
+        "original_almacenado": false,
+        "analisis": "parcial",
+        "resultados_agregados": "data/microdatos/sociometrica-2025-agregados.json",
+        "usado_en_motor_29n": false,
+        "nota_original": "El archivo se examinó en una sesión o ejecutor temporal; no existe copia original recuperable en el almacén permanente."
+      }
     },
     {
       "id": "sociometrica-2025-04-28",
@@ -535,7 +877,16 @@
       "estado": "enlace_documentado",
       "n": 1000,
       "formato": "SAV",
-      "nota": "EL ESPAÑOL anuncia SAV descargable, archivo no inspeccionado localmente."
+      "nota": "EL ESPAÑOL anuncia SAV descargable, archivo no inspeccionado localmente.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2025-04-07",
@@ -544,7 +895,16 @@
       "titulo": "Barómetro Abril",
       "ambito": "España",
       "pagina": "https://elpais.com/espana/2025-04-07/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "cemop-2025-03-24",
@@ -553,7 +913,16 @@
       "titulo": "Barómetro Murcia primavera 2025",
       "ambito": "Murcia",
       "pagina": "https://www.cemopmurcia.es/estudios/barometro-region-de-murcia-primavera-2025/",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2025-03-03",
@@ -562,7 +931,16 @@
       "titulo": "Barómetro Marzo",
       "ambito": "España",
       "pagina": "https://elpais.com/espana/2025-03-03/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2025-01-07",
@@ -571,7 +949,16 @@
       "titulo": "Barómetro Enero",
       "ambito": "España",
       "pagina": "https://elpais.com/espana/2025-01-07/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "ceo-2025-01-01",
@@ -581,7 +968,16 @@
       "ambito": "Cataluña",
       "pagina": "https://web.gencat.cat/es/generalitat/dades-indicadors/centre-estudis-opinio/microdades",
       "estado": "enlace_documentado",
-      "nota": "Series CSV/SAV desde 2006; no se cuentan como una sola encuesta ni se mezclan métodos."
+      "nota": "Series CSV/SAV desde 2006; no se cuentan como una sola encuesta ni se mezclan métodos.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2024-12-09",
@@ -590,7 +986,16 @@
       "titulo": "Barómetro Diciembre",
       "ambito": "España",
       "pagina": "https://elpais.com/espana/2024-12-09/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "sociometrica-2024-11-25",
@@ -602,7 +1007,16 @@
       "estado": "enlace_documentado",
       "n": 1227,
       "formato": "SAV",
-      "nota": "EL ESPAÑOL anuncia SAV descargable, archivo no inspeccionado localmente."
+      "nota": "EL ESPAÑOL anuncia SAV descargable, archivo no inspeccionado localmente.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "icps-2024-11-07",
@@ -613,7 +1027,16 @@
       "pagina": "https://www.icps.cat/recerca/sondeigs-i-dades/sondeigs/sondeigs-d-opinio-catalunya",
       "estado": "registro_requerido",
       "contratista": "GESOP",
-      "n": 1200
+      "n": 1200,
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2024-10-08",
@@ -622,7 +1045,16 @@
       "titulo": "Barómetro Octubre",
       "ambito": "España",
       "pagina": "https://elpais.com/espana/2024-10-08/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "cemop-2024-09-23",
@@ -631,7 +1063,16 @@
       "titulo": "Barómetro Murcia otono 2024",
       "ambito": "Murcia",
       "pagina": "https://www.cemopmurcia.es/estudios/barometro-region-de-murcia-otono-2024/",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2024-09-02",
@@ -640,7 +1081,16 @@
       "titulo": "Barómetro Septiembre",
       "ambito": "España",
       "pagina": "https://elpais.com/espana/2024-09-02/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "sociometrica-2024-06-23",
@@ -652,7 +1102,16 @@
       "estado": "enlace_documentado",
       "n": 1249,
       "formato": "SAV",
-      "nota": "EL ESPAÑOL anuncia SAV descargable, archivo no inspeccionado localmente."
+      "nota": "EL ESPAÑOL anuncia SAV descargable, archivo no inspeccionado localmente.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "cemop-2024-06-06",
@@ -664,7 +1123,16 @@
       "estado": "enlace_documentado",
       "n": 1239,
       "fecha_tipo": "fin_de_campo",
-      "nota": "Campo 27/05–06/06/2024; microdatos enlazados, comprobar si hay intención de voto."
+      "nota": "Campo 27/05–06/06/2024; microdatos enlazados, comprobar si hay intención de voto.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "sociometrica-2024-05-20",
@@ -676,7 +1144,16 @@
       "estado": "enlace_documentado",
       "n": 519,
       "formato": "SAV",
-      "nota": "Muestra ampliada mediante 519 entrevistas que se suman a las 1279 de la primera ola. NO sumar toda la acumulada otra vez como muestra independiente."
+      "nota": "Muestra ampliada mediante 519 entrevistas que se suman a las 1279 de la primera ola. NO sumar toda la acumulada otra vez como muestra independiente.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "sociometrica-2024-05-06",
@@ -688,7 +1165,16 @@
       "estado": "enlace_documentado",
       "n": 1279,
       "formato": "SAV",
-      "nota": "EL ESPAÑOL anuncia SAV descargable, archivo no inspeccionado localmente."
+      "nota": "EL ESPAÑOL anuncia SAV descargable, archivo no inspeccionado localmente.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2024-04-15",
@@ -697,7 +1183,16 @@
       "titulo": "Preelectoral País Vasco",
       "ambito": "País Vasco",
       "pagina": "https://elpais.com/espana/2024-04-15/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2024-03-11",
@@ -706,7 +1201,16 @@
       "titulo": "Barómetro Marzo",
       "ambito": "España",
       "pagina": "https://elpais.com/espana/2024-03-11/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-de-marzo-cuestionarios-cruces-y-respuestas.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "cemop-2024-03-05",
@@ -715,7 +1219,16 @@
       "titulo": "Barómetro Murcia primavera 2024",
       "ambito": "Murcia",
       "pagina": "https://www.cemopmurcia.es/estudios/barometro-region-de-murcia-primavera-2024/",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2024-01-15",
@@ -724,7 +1237,16 @@
       "titulo": "Barómetro Enero",
       "ambito": "España",
       "pagina": "https://elpais.com/espana/2024-01-15/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2024-01-08",
@@ -733,7 +1255,16 @@
       "titulo": "Preelectoral Galicia",
       "ambito": "Galicia",
       "pagina": "https://elpais.com/espana/2024-01-08/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "enlace_documentado"
+      "estado": "enlace_documentado",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "icps-2023-12-31",
@@ -743,7 +1274,16 @@
       "ambito": "Cataluña",
       "pagina": "https://www.icps.cat/recerca/sondeigs-i-dades/basedadesintegrada",
       "estado": "registro_requerido",
-      "nota": "Serie acumulada; no se cuenta como una ola nueva."
+      "nota": "Serie acumulada; no se cuenta como una ola nueva.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2023-07-03",
@@ -755,7 +1295,16 @@
       "estado": "original_auditado",
       "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2023JulPrelectoral/2023_julio_preelectoral_descargable.zip",
       "n": 2000,
-      "nota": "Original aportado; URL publicada de referencia a la serie de julio, no necesariamente la página propia de cada ola."
+      "nota": "Original aportado; URL publicada de referencia a la serie de julio, no necesariamente la página propia de cada ola.",
+      "microdatos": {
+        "enlace_localizado": true,
+        "original_descargado_alguna_vez": true,
+        "original_almacenado": false,
+        "analisis": "analizado",
+        "resultados_agregados": "data/microdatos/40db-retrospectiva-2023.json",
+        "usado_en_motor_29n": false,
+        "nota_original": "El archivo se examinó en una sesión o ejecutor temporal; no existe copia original recuperable en el almacén permanente."
+      }
     },
     {
       "id": "cemop-2023-07-01",
@@ -766,7 +1315,16 @@
       "pagina": "https://www.cemopmurcia.es/estudios/encuesta-preelectoral-elecciones-generales-2023-region-de-murcia/",
       "estado": "enlace_documentado",
       "n": 1200,
-      "nota": "Campo del 3 al 13 julio 2023; fecha del catálogo orientativa."
+      "nota": "Campo del 3 al 13 julio 2023; fecha del catálogo orientativa.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2023-06-19",
@@ -778,7 +1336,16 @@
       "estado": "original_auditado",
       "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2023jun18/2023_05_junio18.zip",
       "n": 2000,
-      "nota": "Original de la encuesta y ZIP aportado por usuario; respuestas individuales analizadas localmente."
+      "nota": "Original de la encuesta y ZIP aportado por usuario; respuestas individuales analizadas localmente.",
+      "microdatos": {
+        "enlace_localizado": true,
+        "original_descargado_alguna_vez": true,
+        "original_almacenado": false,
+        "analisis": "analizado",
+        "resultados_agregados": "data/microdatos/40db-retrospectiva-2023.json",
+        "usado_en_motor_29n": false,
+        "nota_original": "El archivo se examinó en una sesión o ejecutor temporal; no existe copia original recuperable en el almacén permanente."
+      }
     },
     {
       "id": "40db-2023-06-05",
@@ -790,7 +1357,16 @@
       "estado": "original_auditado",
       "archivo": "https://ep00.epimg.net/infografias/encuestas40db/2023jun/2023_06_descargables.zip",
       "n": 800,
-      "nota": "Original de la encuesta y ZIP aportado por usuario; respuestas individuales analizadas localmente."
+      "nota": "Original de la encuesta y ZIP aportado por usuario; respuestas individuales analizadas localmente.",
+      "microdatos": {
+        "enlace_localizado": true,
+        "original_descargado_alguna_vez": true,
+        "original_almacenado": false,
+        "analisis": "analizado",
+        "resultados_agregados": "data/microdatos/40db-retrospectiva-2023.json",
+        "usado_en_motor_29n": false,
+        "nota_original": "El archivo se examinó en una sesión o ejecutor temporal; no existe copia original recuperable en el almacén permanente."
+      }
     },
     {
       "id": "cemop-2023-05-post",
@@ -801,7 +1377,16 @@
       "pagina": "https://www.cemopmurcia.es/estudios/encuesta-postelectoral-elecciones-autonomicas-2023/",
       "estado": "enlace_documentado",
       "fecha_tipo": "orientativa",
-      "nota": "Panel de entrevistados de la encuesta preelectoral. No contar como muestra independiente; útil para verificar voto real declarado y cambios."
+      "nota": "Panel de entrevistados de la encuesta preelectoral. No contar como muestra independiente; útil para verificar voto real declarado y cambios.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2023-05-22",
@@ -811,7 +1396,16 @@
       "ambito": "Seis municipios",
       "pagina": "https://elpais.com/espana/elecciones-autonomicas/2023-05-22/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-para-las-elecciones-de-madrid-barcelona-valencia-sevilla-a-coruna-y-zaragoza.html",
       "estado": "enlace_documentado",
-      "nota": "Varias muestras locales en una página documental; NO agregarlas como encuesta autonómica o nacional."
+      "nota": "Varias muestras locales en una página documental; NO agregarlas como encuesta autonómica o nacional.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "40db-2023-05-21",
@@ -821,7 +1415,16 @@
       "ambito": "Madrid y Comunitat Valenciana",
       "pagina": "https://elpais.com/espana/elecciones-autonomicas/2023-05-21/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-de-la-comunidad-de-madrid-y-comunidad-valenciana.html",
       "estado": "enlace_documentado",
-      "nota": "La página incluye dos sondeos territoriales y descargables; contabilizada como una entrada documental, no necesariamente una única matriz."
+      "nota": "La página incluye dos sondeos territoriales y descargables; contabilizada como una entrada documental, no necesariamente una única matriz.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "cemop-2023-05-01",
@@ -832,7 +1435,16 @@
       "pagina": "https://www.cemopmurcia.es/estudios/encuesta-preelectoral-elecciones-autonomicas-2023-region-de-murcia/",
       "estado": "enlace_documentado",
       "n": 1200,
-      "nota": "Fecha orientativa del catálogo, no trabajo de campo. Contrastar con mayo 2023."
+      "nota": "Fecha orientativa del catálogo, no trabajo de campo. Contrastar con mayo 2023.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "cemop-2023-01-01",
@@ -843,7 +1455,16 @@
       "pagina": "https://www.cemopmurcia.es/estudios/barometro-region-de-murcia-invierno-2023/",
       "estado": "enlace_documentado",
       "n": 820,
-      "nota": "Año de publicación conocido; fecha de catálogo orientativa (01/01), no fecha de campo."
+      "nota": "Año de publicación conocido; fecha de catálogo orientativa (01/01), no fecha de campo.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "cemop-2021-04-07",
@@ -855,7 +1476,16 @@
       "estado": "enlace_documentado",
       "n": 1236,
       "fecha_tipo": "fin_de_campo",
-      "nota": "Microdatos publicados, enfoque político general. Campo 18/03–07/04/2021. No equivale a encuesta de intención de voto."
+      "nota": "Microdatos publicados, enfoque político general. Campo 18/03–07/04/2021. No equivale a encuesta de intención de voto.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "gad3-2019-11-10",
@@ -866,7 +1496,16 @@
       "pagina": "https://www.gad3.com/gad3-ofrece-los-microdatos-del-tracking-de-las-elecciones-del-10n-d51/",
       "estado": "solicitud_requerida",
       "n": 28611,
-      "nota": "Microdatos a disposición de investigadores que escriban a madrid@gad3.com; NO descarga pública ni permiso tácito de redistribución."
+      "nota": "Microdatos a disposición de investigadores que escriban a madrid@gad3.com; NO descarga pública ni permiso tácito de redistribución.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "cemop-2019-10-31",
@@ -878,7 +1517,16 @@
       "estado": "enlace_documentado",
       "n": 820,
       "fecha_tipo": "fin_de_campo",
-      "nota": "Trabajo de campo 28–31 octubre 2019. Archivos originales descargables desde la universidad. Otra elección para validar."
+      "nota": "Trabajo de campo 28–31 octubre 2019. Archivos originales descargables desde la universidad. Otra elección para validar.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "cemop-2019-06-17",
@@ -890,7 +1538,16 @@
       "estado": "enlace_documentado",
       "n": 668,
       "fecha_tipo": "fin_de_campo",
-      "nota": "Panel de entrevistados ya usados en preelectoral; no n independiente."
+      "nota": "Panel de entrevistados ya usados en preelectoral; no n independiente.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "cemop-2019-05-10",
@@ -902,7 +1559,16 @@
       "estado": "enlace_documentado",
       "n": 1084,
       "fecha_tipo": "fin_de_campo",
-      "nota": "Campo 2–10 de mayo. Incluye recuerdo generales abril 2019; microdatos enlazados."
+      "nota": "Campo 2–10 de mayo. Incluye recuerdo generales abril 2019; microdatos enlazados.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "sociometro-vasco-2018-05-18",
@@ -912,7 +1578,16 @@
       "ambito": "País Vasco",
       "pagina": "https://opendata.euskadi.eus/catalogo/-/informes-estudios/sociometro-66/",
       "estado": "enlace_documentado",
-      "nota": "Matriz CSV/SAV y ponderador wt documentados; comprobar que la ola incluye voto."
+      "nota": "Matriz CSV/SAV y ponderador wt documentados; comprobar que la ola incluye voto.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     },
     {
       "id": "sociometro-vasco-2017-07-14",
@@ -922,7 +1597,16 @@
       "ambito": "País Vasco",
       "pagina": "https://opendata.euskadi.eus/catalogo/-/informes-estudios/sociometro-64/",
       "estado": "enlace_documentado",
-      "nota": "Matriz CSV/SAV y ponderador wt documentados; comprobar que la ola incluye voto."
+      "nota": "Matriz CSV/SAV y ponderador wt documentados; comprobar que la ola incluye voto.",
+      "microdatos": {
+        "enlace_localizado": false,
+        "original_descargado_alguna_vez": false,
+        "original_almacenado": false,
+        "analisis": "pendiente",
+        "resultados_agregados": null,
+        "usado_en_motor_29n": false,
+        "nota_original": "Original todavía no comprobado como descargado por el Observatorio."
+      }
     }
   ],
   "casas_pendientes": [
@@ -998,5 +1682,7 @@
       "nombre": "Simple Lógica",
       "estado": "microdatos_no_localizados_en_fuentes_verificadas"
     }
-  ]
+  ],
+  "definicion_cargado": "Solo se considera original almacenado cuando existe una copia recuperable en un almacén privado autorizado y se ha verificado su integridad. La descarga temporal y los agregados no implican almacenamiento original.",
+  "definicion_pronostico": "El catálogo y los análisis exploratorios no afectan al Motor 29N hasta pasar validación de recetas e incorporación expresamente trazable."
 }
