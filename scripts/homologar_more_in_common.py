@@ -97,9 +97,9 @@ def examine_zip(data, study):
                 path = Path(temp)/"matriz.sav"
                 path.write_bytes(archive.read(zfile))
                 try:
-                    _,meta = pyreadstat.read_sav(str(path),metadataonly=True)
+                    _,meta = pyreadstat.read_sav(str(path),metadataonly=True,output_format="dict")
                 except Exception:
-                    _,meta = pyreadstat.read_sav(str(path),metadataonly=True,encoding="latin1")
+                    _,meta = pyreadstat.read_sav(str(path),metadataonly=True,output_format="dict",encoding="latin1")
             variables = []
             for i,name in enumerate(meta.column_names):
                 role = select_role(name)
