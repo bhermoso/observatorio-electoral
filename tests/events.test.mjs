@@ -31,9 +31,9 @@ test('La lectura del acontecimiento presenta un veredicto cuantificado antes de 
 test('Urda identifica Sigma Dos posterior, publica cifras y enlaza fichas originales',async()=>{
  const {analizarAcontecimiento,renderFichasPosteriores,renderLectura}=await import('../acontecimiento.mjs');
  const a=analizarAcontecimiento(events[0],polls,{ventana:30});
- assert.equal(a.counts.after,1);
- assert.equal(a.fichasPosteriores.length,1);
- const sigma=a.fichasPosteriores[0];
+ assert.ok(a.counts.after>=2);
+ assert.ok(a.fichasPosteriores.some(p=>p.id==='celeste-tel-2026-11-04'));
+ const sigma=a.fichasPosteriores.find(p=>p.id==='sigma-dos-2026-11-02');
  assert.equal(sigma.id,'sigma-dos-2026-11-02');
  assert.equal(sigma.fieldStart,'2026-10-29');
  assert.equal(sigma.fieldEnd,'2026-10-30');

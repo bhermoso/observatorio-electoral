@@ -719,5 +719,84 @@
     "seatNotes": "Escaños atribuidos a Hamalgama Métrica en el texto original. No se infieren escaños para otros partidos.",
     "notes": "La ficha original emplea «residentes en la autonomía» pese a tratarse de una publicación de generales; se deja constancia de la incoherencia. No se agregan porcentajes no verificados. Esta estimación es del Congreso; no confundir con la publicación separada sobre el Senado.",
     "verified": "2026-11-03"
+  },
+  {
+    "id": "celeste-tel-2026-11-04",
+    "institute": "Celeste-Tel",
+    "publisher": "Celeste-Tel / Onda Cero",
+    "title": "Estudio electoral 29N · informe del 4 de noviembre",
+    "fieldStart": "2026-10-29",
+    "fieldEnd": "2026-11-03",
+    "published": "2026-11-06",
+    "sample": 1100,
+    "mode": "CATI",
+    "scope": "España",
+    "universe": "Censo electoral de españoles residentes en España (CER)",
+    "scenario": "Frente Amplio y Podemos separados",
+    "kind": "poll-estimate",
+    "values": {
+      "PP": 31.4,
+      "PSOE": 25.7,
+      "VOX": 19.2,
+      "Sumar/FA": 6.8,
+      "ERC": 2.2,
+      "Junts": 1.5,
+      "EH Bildu": 1.4,
+      "PNV": 0.9,
+      "BNG": 0.8,
+      "CC": 0.5,
+      "UPN": 0.4,
+      "Podemos": 1.9,
+      "SALF": 1.6
+    },
+    "source": "https://www.celeste-tel.es/wp-content/uploads/2026/11/Bar%C3%B3metro-Electoral-Elecciones-29-N-4-Noviembre-2026-1.pdf",
+    "technical": "https://www.celeste-tel.es/wp-content/uploads/2026/11/Bar%C3%B3metro-Electoral-Elecciones-29-N-4-Noviembre-2026-1.pdf",
+    "coverage": "partial",
+    "denominator": "Voto a candidaturas",
+    "verification": "Ficha técnica y estimación cotejadas en el informe original. Para Frente Amplio se conserva el 6,8 % del informe. La difusión de Onda Cero se fecha el 6 de noviembre.",
+    "sourcePages": "Páginas 4 y 7 del informe original",
+    "seats": {
+      "PP": {
+        "point": 136
+      },
+      "PSOE": {
+        "point": 101
+      },
+      "VOX": {
+        "point": 66
+      },
+      "Sumar/FA": {
+        "point": 10
+      },
+      "ERC": {
+        "point": 8
+      },
+      "Junts": {
+        "point": 6
+      },
+      "EH Bildu": {
+        "point": 7
+      },
+      "PNV": {
+        "point": 4
+      },
+      "BNG": {
+        "point": 2
+      },
+      "CC": {
+        "point": 1
+      },
+      "UPN": {
+        "point": 2
+      },
+      "Podemos": {
+        "point": 1
+      },
+      "SALF": {
+        "point": 0
+      }
+    },
+    "notes": "El informe está fechado el 4 de noviembre. El 6 de noviembre consta la difusión por Onda Cero. PP y UPN se conservan por separado.",
+    "verified": "2026-11-08"
   }
 ]
