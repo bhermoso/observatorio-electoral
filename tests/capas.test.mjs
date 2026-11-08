@@ -128,3 +128,16 @@ test('el pronóstico publicado del repositorio expone las cuatro capas',()=>{
  assert.ok(Array.isArray(f.externos));
  assert.equal(f.eventos?.['urda-2026-10-28']?.aplicado_al_pronostico,false);
 });
+
+test('capa 4 en la tabla: un registro por productor, el más reciente, y primero los consultados en origen',async()=>{
+ const {externosRecientes,productorExterno}=await import('../capas.mjs');
+ assert.equal(productorExterno({nombre:'Demócrata (11 institutos)'}),'Demócrata');
+ const x=externosRecientes([
+  {nombre:'Promedio de EL PAÍS',fecha:'2026-10-03',verificado:true},
+  {nombre:'Promedio de EL PAÍS',fecha:'2026-11-08',verificado:false},
+  {nombre:'Demócrata (16 institutos)',fecha:'2026-11-01',verificado:false},
+  {nombre:'Demócrata (11 institutos)',fecha:'2026-11-07',verificado:true},
+  {nombre:'Otro',fecha:'2026-10-20',verificado:false}
+ ]);
+ assert.deepEqual(x.map(e=>[e.nombre,e.fecha]),[['Demócrata (11 institutos)','2026-11-07'],['Promedio de EL PAÍS','2026-11-08']]);
+});

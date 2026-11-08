@@ -61,5 +61,31 @@
     "source": "https://elpais.com/espana/2026-11-07/se-mueven-las-encuestas-que-ha-cambiado-desde-la-convocatoria-y-tras-el-accidente-de-tren.html?outputType=amp",
     "notes": "Análisis fechado del promedio de EL PAÍS desde la convocatoria y de las olas de cinco institutos con entrevistas antes y después del accidente de Urda. La comparación temporal no identifica un efecto causal.",
     "methodology": "Promedio externo y comparación de estimaciones dentro de cada instituto. Referencia editorial sin entrevistas adicionales ni peso en el promedio del Observatorio."
+  },
+  {
+    "id": "democrata-media-2026-11-07",
+    "kind": "aggregate-model",
+    "name": "Demócrata (11 institutos)",
+    "publisher": "Demócrata",
+    "published": "2026-11-07",
+    "verified": "2026-11-08",
+    "status": "dated-reference",
+    "source": "https://www.democrata.es/elecciones-generales-espana/herramientas/encuestas",
+    "values": {
+      "PP": 31.0,
+      "PSOE": 26.2,
+      "VOX": 19.5,
+      "Sumar": 6.6,
+      "Podemos": 2.1
+    },
+    "modelSeats": {
+      "PP": 134,
+      "PSOE": 106,
+      "VOX": 68,
+      "Sumar": 10,
+      "Podemos": 1
+    },
+    "notes": "Media a 7 de noviembre de 2026 consultada en la página original el 8 de noviembre. La página usa la etiqueta «Frente Amplio», que aquí se registra como Sumar / Frente Amplio. Los escaños no son estimación propia de Demócrata: son la media de las proyecciones de 7 institutos. No es una encuesta y no entra en el promedio ni en el Motor 29N.",
+    "methodology": "Último sondeo de cada uno de 11 institutos, ponderado por antigüedad (pierde la mitad del peso cada 7 días y sale a los 30) y por muestra (no proporcional). Un partido ausente no cuenta como 0. Excluye el CIS, los sondeos encargados por partidos y los de empresa no identificada. No corrige la tendencia de cada empresa."
   }
 ]

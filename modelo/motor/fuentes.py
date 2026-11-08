@@ -305,7 +305,7 @@ def referencias_agregadores():
         esc = {PARTIDOS.get(k, k): v for k, v in (r.get("modelSeats") or {}).items()}
         out.append(dict(id=r["id"], nombre=r["name"], fecha=_fecha(r["published"]), voto=voto, escanos=esc,
                         url=r.get("source"), notas=r.get("notes", ""), metodo=r.get("methodology", ""),
-                        verificado=r.get("verified")))
+                        verificado=r.get("verified"), aproximado=bool(r.get("approximateValues"))))
     return out
 
 

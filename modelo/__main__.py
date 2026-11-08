@@ -446,7 +446,7 @@ def main():
     for ref in F.referencias_agregadores():
         externos.append(dict(id=ref["id"], nombre=ref["nombre"], fecha=ref["fecha"], fecha_tipo="publicación",
                              voto=ref["voto"], escanos=ref["escanos"], url=ref["url"], metodo=ref["metodo"],
-                             verificado=bool(ref["verificado"]), aproximado=True, notas=ref["notas"]))
+                             verificado=bool(ref["verificado"]), aproximado=ref.get("aproximado", True), notas=ref["notas"]))
     for ag in F.otros_agregadores():
         externos.append(dict(id="agregador-" + "".join(ch for ch in ag["nombre"].lower() if ch.isalnum())[:30] + "-" + str(ag["fecha"]),
                              nombre=ag["nombre"], fecha=ag["fecha"], fecha_tipo=ag["fecha_tipo"], voto=ag["voto"],
