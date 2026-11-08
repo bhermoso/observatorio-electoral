@@ -1113,3 +1113,36 @@ body:not(.dashboard-route) .event-reading .er-levels>li{margin-bottom:12px}
 @media(max-width:640px){
  #impact #forecast-lead-results .panorama-snapshot{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+
+#impact .series-panel{margin:0;padding:12px 16px;color:#173d30;background:#fff}
+.series-head{display:flex;justify-content:space-between;align-items:end;gap:8px 16px;flex-wrap:wrap}
+.series-head h2{margin:2px 0;font-size:clamp(18px,2.2vw,27px)}
+.series-controls,.series-events,.series-legend{display:flex;flex-wrap:wrap;gap:5px 8px}
+.series-controls label{font-size:12px}
+.series-controls select{padding:4px 6px;font-size:13px}
+.series-note{margin:4px 0 6px;color:#456454;font-size:12px}
+.series-events button,.series-legend button{border:1px solid #d5e4da;background:#f2f7f3;color:#234b3c;border-radius:6px;padding:4px 7px;font-size:12px;font-weight:600}
+.series-events button[aria-pressed="true"]{background:#234b3c;color:#fff}
+.series-events b{margin-right:3px}
+.series-chart svg{display:block;width:100%;max-height:310px}
+.series-axis line{stroke:#dbe6de}
+.series-axis text{fill:#456454;font-size:12px}
+.series-event line{stroke:#99612e;stroke-width:1.4;stroke-dasharray:5 4}
+.series-event circle{fill:#99612e}
+.series-event text{fill:#fff;font-size:11px;font-weight:700}
+.series-event.active line{stroke-width:3}
+.series-mark{fill:var(--series-color)}
+.series-mark path{fill:none;stroke:var(--series-color);stroke-width:1.4;opacity:.7}
+.series-mark.model path{stroke-width:3;opacity:1}
+.series-mark.external path{stroke-dasharray:3 3}
+.series-legend button[aria-pressed="false"]{opacity:.55;text-decoration:line-through}
+.series-legend i{display:inline-block;width:8px;height:8px;margin-right:5px;border-radius:50%;background:var(--series-color)}
+.series-reading,.series-details{margin-top:9px;border-top:1px solid #dbe6de;padding-top:6px;font-size:13px}
+.series-reading h3,.series-reading p{margin:3px 0 6px}
+.series-details details{margin:5px 0}
+.series-details td,.series-reading td{font-size:12px}
+.series-panel button:focus-visible,.series-panel summary:focus-visible{outline:2px solid #246f54;outline-offset:2px}
+@media(max-width:640px){
+ .series-axis text{font-size:10px}
+ #impact .series-panel{padding:9px}
+}

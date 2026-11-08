@@ -11,7 +11,7 @@ test('Portada publica síntesis visual con cifras reales y dos fuentes separadas
  const css=fs.readFileSync('styles.css','utf8');
  const build=fs.readFileSync('scripts/build.mjs','utf8');
  assert.match(app,/renderHomeImpact\(references,events\)/);
- assert.match(app,/bindHomeImpact\(polls\)/);
+ assert.match(app,/bindHomeImpact\(polls,events\)/);
  assert.match(build,/home-impact.mjs/);
  assert.match(homepage,/data\/modelo\/pronostico.json/);
  assert.match(homepage,/data\/microdatos\/cubo_decisiones_cis.json/);
@@ -96,4 +96,27 @@ test('La portada dibuja el historial de escaños de cada candidatura del pronós
  const withoutHistory=renderForecastOverview(forecast,[]);
  assert.match(withoutHistory,/Historial no disponible/);
  assert.doesNotMatch(withoutHistory,/<svg /);
+});
+
+test('El gráfico común cruza cortes y publicaciones con ambos acontecimientos',async()=>{
+ const {collectSeries,eventComparison,renderSeriesChart}=await import('../portada-series.mjs');
+ const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
+ const events=read('data/events.json');
+ const forecast=read('modelo/salida/pronostico.json');
+ const series=collectSeries(read('data/polls.json'),forecast,read('modelo/registro/historial.json'),'2026-11-08');
+ assert.ok(series.some(s=>s.id==='casa-CIS'));
+ assert.ok(series.some(s=>s.id==='casa-40dB.'));
+ assert.ok(series.some(s=>s.type==='external'));
+ const visible=series.map(s=>({...s,points:s.points.filter(p=>p.date>='2026-10-01'&&Number.isFinite(p.values.PP)).map(p=>({...p,value:p.values.PP}))}));
+ const html=renderSeriesChart(visible,events,'2026-10-01','2026-11-08','PP',null,330);
+ assert.match(html,/Urda/);
+ assert.match(html,/Midterms de EE\. UU\./);
+ assert.doesNotMatch(html,/NaN/);
+ const points=[
+  {date:'2026-10-30',start:'2026-10-23',end:'2026-10-26',value:30},
+  {date:'2026-10-31',start:'2026-10-25',end:'2026-10-28',value:33},
+  {date:'2026-11-02',start:'2026-10-29',end:'2026-10-30',value:31}
+ ];
+ assert.equal(eventComparison(points,'2026-10-28','house').change,1);
+ assert.equal(eventComparison(points,'2026-11-03','house').change,null);
 });

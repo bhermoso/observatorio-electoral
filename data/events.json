@@ -5,6 +5,7 @@
     "date": "2026-10-28",
     "datePrecision": "day",
     "title": "Accidente ferroviario en Urda (Toledo)",
+    "shortTitle": "Urda",
     "category": "Transporte y seguridad",
     "location": "Urda, Toledo",
     "scope": "España",
@@ -15,5 +16,31 @@
       {"publisher": "EL PAÍS", "published": "2026-10-28", "url": "https://elpais.com/espana/2026-10-28/donde-ha-sido-el-choque-mapas-y-primeras-informaciones-del-accidente-de-tren-en-toledo.html"}
     ],
     "notes": "La comprobación se apoya en las publicaciones originales de EFE y EL PAÍS. El comunicado de Renfe localizado en el buscador devolvía 404 al abrirlo y no se utiliza como evidencia verificada. No se transcriben balances provisionales de víctimas ni se atribuyen responsabilidades. No se asigna signo, intensidad ni corrección electoral al acontecimiento."
+  },
+  {
+    "id": "midterms-eeuu-2026-11-03",
+    "kind": "documented-event",
+    "date": "2026-11-03",
+    "datePrecision": "day",
+    "title": "Midterms de EE. UU. · los republicanos pierden ambas cámaras",
+    "shortTitle": "Midterms de EE. UU.",
+    "category": "Política internacional",
+    "location": "Estados Unidos",
+    "scope": "España · seguimiento de contexto internacional",
+    "summary": "En las elecciones legislativas del 3 de noviembre, los demócratas obtuvieron el control de la Cámara de Representantes y del Senado de Estados Unidos.",
+    "verified": "2026-11-08",
+    "sources": [
+      {
+        "publisher": "Associated Press",
+        "published": "2026-11-03",
+        "url": "https://apnews.com/article/f126e12e05b579a327b98481c0ae2226"
+      },
+      {
+        "publisher": "Reuters",
+        "published": "2026-11-04",
+        "url": "https://www.reuters.com/legal/government/democrats-seize-congress-sweeping-midterm-repudiation-trump-2026-11-04/"
+      }
+    ],
+    "notes": "La marca indica el día de la votación en Estados Unidos. El seguimiento español es descriptivo."
   }
 ]
