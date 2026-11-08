@@ -49,5 +49,17 @@
     "source": "https://elpais.com/espana/elecciones-generales/2026-10-18/que-encuestas-aciertan-mas-compara-los-errores-y-los-sesgos-de-cada-encuestadora.html",
     "notes": "Evaluación retrospectiva de 17 encuestadoras en 44 convocatorias desde 2018: precisión, desviación entre bloques y disponibilidad de microdatos. Los resultados dependen de la selección de elecciones, casas y ventanas de campo.",
     "methodology": "Contraste de las últimas encuestas previas al voto con resultados oficiales. Se usa como literatura de validación, no como nueva estimación de voto ni como corrección automática del Motor 29N."
+  },
+  {
+    "id": "elpais-llaneras-evolucion-2026-11-07",
+    "kind": "editorial-analysis",
+    "name": "Kiko Llaneras · evolución de los sondeos desde la convocatoria",
+    "publisher": "EL PAÍS",
+    "published": "2026-11-07",
+    "verified": "2026-11-08",
+    "status": "referencia-external",
+    "source": "https://elpais.com/espana/2026-11-07/se-mueven-las-encuestas-que-ha-cambiado-desde-la-convocatoria-y-tras-el-accidente-de-tren.html?outputType=amp",
+    "notes": "Análisis fechado del promedio de EL PAÍS desde la convocatoria y de las olas de cinco institutos con entrevistas antes y después del accidente de Urda. La comparación temporal no identifica un efecto causal.",
+    "methodology": "Promedio externo y comparación de estimaciones dentro de cada instituto. Referencia editorial sin entrevistas adicionales ni peso en el promedio del Observatorio."
   }
 ]
