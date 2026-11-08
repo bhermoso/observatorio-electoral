@@ -19,17 +19,17 @@ test('La clave solo sale hacia la operación de edición del servicio fijo',asyn
  await assert.rejects(serviceRequest('scan',{fetcher:async()=>({ok:false,json:async()=>({error:'Fuentes no disponibles'})})}),/Fuentes no disponibles/);
 });
 test('Los titulares no permiten HTML ni enlaces ejecutables',()=>{
- const html=renderCandidates({candidates:[{title:'<img onerror=alert(1)>',url:'javascript:alert(1)'}],errors:[]});
+ const html=renderCandidates({candidates:[{title:'Sondeo <img onerror=alert(1)>',url:'javascript:alert(1)',published:'2026-11-04T12:00:00Z'}],errors:[]},Date.parse('2026-11-04T13:00:00Z'));
  assert.doesNotMatch(html,/<img|href="javascript:/);assert.match(html,/&lt;img/);assert.match(html,/pistas para revisar/);
 });
 test('Separa última búsqueda exitosa, incidencia posterior y vigilancia GitHub Actions',()=>{
  const html=renderCandidates({checked_at:'2026-11-04T12:00:00Z',
-  candidates:[{title:'Titular anterior',url:'https://news.google.com/rss/articles/1'}],
-  errors:['2026-11-04T12:05:00Z · Búsqueda no disponible']});
+  candidates:[{title:'Sondeo anterior',published:'2026-11-04T11:00:00Z',url:'https://news.google.com/rss/articles/1'}],
+  errors:['2026-11-04T12:05:00Z · Búsqueda no disponible']},Date.parse('2026-11-04T13:00:00Z'));
  assert.match(html,/Última búsqueda con resultados/);
  assert.match(html,/Incidencias de un intento posterior/);
  assert.match(html,/12:05:00Z/);
- assert.match(html,/Titular anterior/);
+ assert.match(html,/Sondeo anterior/);
  const panel=renderPollUpdate();
  assert.match(panel,/Dos procesos distintos/);
  assert.match(panel,/GitHub Actions/);
@@ -47,4 +47,18 @@ test('El lector RSS distingue error de búsqueda de lista vacía y limita enlace
 });
 test('El servicio respeta los mismos límites temporales de veda que el sitio',()=>{
  assert.equal(inBlackout(new Date('2026-11-23T22:59:59Z')),false);assert.equal(inBlackout(new Date('2026-11-23T23:00:00Z')),true);assert.equal(inBlackout(new Date('2026-11-29T18:59:59Z')),true);assert.equal(inBlackout(new Date('2026-11-29T19:00:00Z')),false);
+});
+
+test('Los análisis recientes se ordenan por fecha y descartan duplicados y titulares antiguos',()=>{
+ const candidate=(title,published,url)=>({title,published,url});
+ const html=renderCandidates({candidates:[
+  candidate('Promedio anterior','Sun, 01 Nov 2026 09:00:00 GMT','a'),
+  candidate('Media de sondeos de octubre','Thu, 29 Oct 2026 10:00:00 GMT','b'),
+  candidate('Sondeo reciente','Sat, 07 Nov 2026 13:00:00 GMT','c'),
+  candidate('Promedio nuevo - Medio A','Sat, 07 Nov 2026 12:00:00 GMT','d'),
+  candidate('Promedio nuevo - Medio B','Sat, 07 Nov 2026 11:00:00 GMT','e'),
+  candidate('Promedio sin fecha','desconocida','f')
+ ]},Date.parse('2026-11-08T08:00:00Z'));
+ assert.match(html,/Promedios, estimaciones y proyecciones[\s\S]*Promedio nuevo[\s\S]*Promedio anterior[\s\S]*Otras publicaciones sobre sondeos[\s\S]*Sondeo reciente/);
+ assert.doesNotMatch(html,/octubre|Medio B|Promedio sin fecha/);
 });
