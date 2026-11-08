@@ -1,17 +1,19 @@
 {
  "esquema": 1,
- "generado": "2026-11-07T14:19:51.000647+00:00",
- "ejecucion": "https://github.com/bhermoso/observatorio-electoral/actions/runs/42381044823",
- "ultima_busqueda": "2026-11-07T14:19:33.752716+00:00",
+ "generado": "2026-11-08T14:29:54.573132+00:00",
+ "ejecucion": "https://github.com/bhermoso/observatorio-electoral/actions/runs/42490051541",
+ "ultima_busqueda": "2026-11-08T14:29:39.504364+00:00",
  "candidatos_detectados": 70,
  "naturaleza_candidatos": "Titulares de Google News (RSS). No contienen cifras extraídas ni verificadas.",
- "errores_busqueda": [],
+ "errores_busqueda": [
+  "Servicio de candidatos: HTTP 502; no se ha actualizado la bandeja."
+ ],
  "bandeja_validadas": 0,
  "incorporadas": [],
  "ya_registradas": [],
  "rechazadas": [],
- "registros_antes": 13,
- "registros_despues": 13,
+ "registros_antes": 14,
+ "registros_despues": 14,
  "ultima_incorporacion_efectiva": null,
  "recalculo_lanzado": false,
  "ultimo_recalculo_lanzado": "2026-11-03T14:19:39.208246+00:00"
