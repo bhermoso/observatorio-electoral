@@ -133,6 +133,22 @@ export function capasExternas(forecast){
   .sort((a,b)=>(b.verificado===true)-(a.verificado===true)||String(b.fecha).localeCompare(String(a.fecha))||String(a.nombre).localeCompare(String(b.nombre)));
 }
 
+/** Productor de un registro externo: el nombre sin el paréntesis final («Demócrata (11 institutos)» → «Demócrata»). */
+export const productorExterno=x=>String(x?.nombre||'').replace(/\s*\([^)]*\)\s*$/,'').trim();
+
+/** Para la tabla de capas: el registro más reciente de cada productor, sin repetir productor.
+ * Orden: primero los consultados en origen; después, por fecha descendente. */
+export function externosRecientes(externos,n=2){
+ const latest=new Map();
+ for(const x of externos){
+  const k=productorExterno(x),prev=latest.get(k);
+  if(!prev||String(x.fecha)>String(prev.fecha)||(String(x.fecha)===String(prev.fecha)&&x.verificado===true&&prev.verificado!==true))latest.set(k,x);
+ }
+ return [...latest.values()]
+  .sort((a,b)=>(b.verificado===true)-(a.verificado===true)||String(b.fecha).localeCompare(String(a.fecha))||String(a.nombre).localeCompare(String(b.nombre)))
+  .slice(0,n);
+}
+
 /** Diferencia con cocina − sin cocina: cambio atribuible a decisiones del modelo, no a un factor político. */
 export function efectoCocina(sin,con){
  const out={};
@@ -149,7 +165,7 @@ export function efectoCocina(sin,con){
  */
 export function matriz({promedio,sinCocina,conCocina,externos=[],promedioAnterior=null,corteAnterior=null},vista='voto'){
  if(!['voto','escanos','cambio'].includes(vista))throw Error('Vista desconocida');
- const ext=externos.slice(0,2);
+ const ext=externosRecientes(externos,2);
  const columns=[
   {id:'promedio',layer:'promedio'},{id:'sin',layer:'sinCocina'},{id:'con',layer:'conCocina'},
   ...ext.map((x,i)=>({id:'ext'+i,layer:'externo',externo:x}))
