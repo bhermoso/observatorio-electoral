@@ -24,15 +24,50 @@ export function parsePercentages(text) {
  if(!Object.keys(values).length)throw Error('Faltan los porcentajes contrastados.');
  return values;
 }
-export function renderCandidates(data) {
+const recentWindow=7*24*60*60*1000;
+const estimateHeadline=/promedio|media (?:de |movil)|agregador|estimacion de (?:voto|escanos)|proyeccion de (?:voto|escanos)|intencion de voto|(?:\d+[,.]\d+|\d+)\s*%|\d+\s+(?:escanos|diputados)/;
+const pollHeadline=/encuesta|sondeo|barometro|demoscop/;
+const normalize=value=>String(value??'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().trim();
+
+export function selectRecentPollNews(candidates, now=Date.now()) {
+ const items=(Array.isArray(candidates)?candidates:[]).map(item=>({
+  ...item,
+  timestamp:Date.parse(item?.published),
+  headline:normalize(item?.title).replace(/\s+[–—-]\s+[^–—-]+$/,'').replace(/[^a-z0-9]+/g,' ').trim()
+ })).filter(item=>item.headline&&item.timestamp<=now&&item.timestamp>=now-recentWindow)
+   .sort((a,b)=>b.timestamp-a.timestamp);
+ const headlines=new Set(),urls=new Set(),analysis=[],polls=[];
+ for(const item of items){
+  if(headlines.has(item.headline)||(item.url&&urls.has(item.url)))continue;
+  const title=normalize(item.title);
+  if(estimateHeadline.test(title))analysis.push(item);
+  else if(pollHeadline.test(title))polls.push(item);
+  else continue;
+  headlines.add(item.headline);
+  if(item.url)urls.add(item.url);
+ }
+ return {analysis:analysis.slice(0,5),polls:polls.slice(0,5)};
+}
+
+export function renderCandidates(data,now=Date.now()) {
  const errors=Array.isArray(data.errors)?data.errors:[];
- const list=Array.isArray(data.candidates)?data.candidates:[];
- return `<p><b>Última búsqueda con resultados:</b> ${esc(when(data.checked_at))}. ${data.cached?'Se muestra la búsqueda reciente; se permite una nueva cada cinco minutos.':''}</p>${errors.length?`<p role="alert"><b>Incidencias de un intento posterior:</b> ${errors.map(esc).join(' · ')}</p>`:''}
- <p>${list.length} titulares encontrados. Son pistas para revisar; pueden incluir noticias repetidas, análisis y encuestas ya registradas.</p>
- ${list.length?`<details open><summary>Ver publicaciones encontradas</summary>${list.map(c=>{
-  let url='';try{const u=new URL(c.url);if(u.protocol==='https:'&&u.hostname==='news.google.com')url=u.href;}catch{}
-  return `<article class="poll-queue-item"><p><b>${esc(c.title)}</b></p><p class="muted">${esc(c.published)}</p>${url?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">Consultar publicación ↗</a>`:''}</article>`;
- }).join('')}</details>`:'<p>No hay titulares en la última búsqueda disponible. Esto no acredita una cobertura exhaustiva.</p>'}`;
+ const {analysis,polls}=selectRecentPollNews(data.candidates,now);
+ function section(label,items,empty){
+  return `<section><h3>${label}</h3>${items.length?items.map(item=>{
+   let url='';
+   try {
+    const parsed=new URL(item.url);
+    if(parsed.protocol==='https:'&&parsed.hostname==='news.google.com')url=parsed.href;
+   }catch{}
+   const published=new Date(item.timestamp);
+   return `<article class="poll-queue-item"><p><b>${esc(item.title)}</b></p><p class="muted"><time datetime="${published.toISOString()}">${esc(when(published))}</time></p>${url?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">Leer publicación ↗</a>`:''}</article>`;
+  }).join(''):`<p>${empty}</p>`}</section>`;
+ }
+ return `<p><b>Última búsqueda con resultados</b> · ${esc(when(data.checked_at))}.${data.cached?' Consulta en caché.':''}</p>
+ ${errors.length?`<p role="alert"><b>Incidencias de un intento posterior</b> · ${errors.map(esc).join(' · ')}</p>`:''}
+ <p class="muted">Últimos siete días. Hasta cinco publicaciones por apartado, de más reciente a más antigua. Clasificación orientativa por titular. Son pistas para revisar.</p>
+ ${section('Promedios, estimaciones y proyecciones',analysis,'La búsqueda no encontró publicaciones recientes de este tipo.')}
+ ${section('Otras publicaciones sobre sondeos',polls,'La búsqueda no encontró otros sondeos recientes.')}`;
 }
 const field=(name,label,type='text',value='')=>`<label>${label}<input name="${name}" type="${type}" value="${esc(value)}" required maxlength="2000" ${type==='number'?'min="1" max="1000000" step="1"':''}></label>`;
 export function renderPollUpdate(){return `<section class="panel poll-update" aria-labelledby="poll-update-title">
@@ -89,8 +124,9 @@ export function bindPollUpdate(onReload){
   try {
    const data=await serviceRequest('scan',{signal});
    show(pending,el=>el.innerHTML=renderCandidates(data));
-   show(note,el=>el.textContent=(data.cached?'Búsqueda en caché: ':'Búsqueda completada: ')+
-    (data.candidates?.length||0)+' titulares candidatos a verificar.');
+   const {analysis,polls}=selectRecentPollNews(data.candidates);
+   show(note,el=>el.textContent=(data.cached?'Búsqueda en caché. ':'Búsqueda completada. ')+
+    analysis.length+' publicaciones de análisis y '+polls.length+' sobre otros sondeos.');
   }catch(error){
    show(note,el=>el.textContent='Error en la búsqueda: '+error.message);
   }

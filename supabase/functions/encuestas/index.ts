@@ -22,7 +22,13 @@ Deno.serve(async(req:Request)=>{
   if(action==='scan') {
    const claimed=await db('rpc/claim_poll_scan','POST',{});
    if(!claimed)return reply({...((await db('poll_update_cache?id=eq.1&select=checked_at,candidates,errors,locked_until'))[0]),cached:true});
-   const queries=['encuesta elecciones generales (CIS OR 40dB) when:14d','encuesta elecciones generales (GAD3 OR "Sigma Dos") when:14d','encuesta elecciones generales (Sociométrica OR IMOP) when:14d','encuesta elecciones generales (Sondaxe OR "Target Point" OR Hamalgama) when:14d'];
+   const queries=[
+    'elecciones generales España ("promedio de encuestas" OR "media de sondeos" OR agregador) when:7d',
+    'elecciones generales España ("estimación de voto" OR "proyección de escaños") when:7d',
+    'encuesta elecciones generales España (CIS OR 40dB OR GAD3 OR "Sigma Dos") when:7d',
+    'encuesta elecciones generales España (Sociométrica OR IMOP OR Sondaxe OR "Target Point" OR Hamalgama) when:7d',
+    'encuesta elecciones generales España ("Celeste Tel" OR "SW Demoscopia" OR "More in Common") when:7d'
+   ];
    const results=await Promise.all(queries.map(async q=>{
     try {const u='https://news.google.com/rss/search?'+new URLSearchParams({q,hl:'es',gl:'ES',ceid:'ES:es'});
      const r=await fetch(u,{signal:AbortSignal.timeout(12000)});if(!r.ok)throw Error('HTTP '+r.status);
@@ -31,7 +37,10 @@ Deno.serve(async(req:Request)=>{
     }catch{return {items:[],error:'Búsqueda no disponible: '+q};}
    }));
    const unique=new Map();for(const x of results)for(const item of x.items)unique.set(item.url,item);
-   const data={checked_at:new Date().toISOString(),candidates:[...unique.values()].slice(0,80),errors:results.flatMap(x=>x.error?[x.error]:[])};
+   const candidates=[...unique.values()]
+    .filter(item=>Number.isFinite(Date.parse(item.published)))
+    .sort((a,b)=>Date.parse(b.published)-Date.parse(a.published));
+   const data={checked_at:new Date().toISOString(),candidates:candidates.slice(0,120),errors:results.flatMap(x=>x.error?[x.error]:[])};
    // Retain previous candidates if every source failed; never report an empty success.
    if(results.every(x=>x.error)) {
     // Keep the last successful candidates/checked_at, but record the failed
