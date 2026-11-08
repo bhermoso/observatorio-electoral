@@ -55,7 +55,7 @@ export function resolveRoute(hash){const full=String(hash||'').replace(/^#/,'')|
 let currentRoute=null;
 function render(){const {route,anchor}=resolveRoute(location.hash);const same=route===currentRoute&&anchor&&document.getElementById(anchor);if(same){document.getElementById(anchor).scrollIntoView();return;}disposePollUpdate();currentRoute=route;document.body.classList.toggle('dashboard-route',route==='dashboard');document.querySelectorAll('header nav a').forEach(a=>{a.removeAttribute('aria-current');if(a.hash==='#'+route)a.setAttribute('aria-current','page');});const pages={dashboard,pronostico:renderPronostico,encuestas:pollPage,analisis:()=>renderAnalysis(polls),contexto:()=>renderEvents(events),cocina:renderCocina,atlas:atlasPage,laboratorio:labPage,metodologia:methodsPage};$('#main').innerHTML=(pages[route]||(()=>'<h1>Página no encontrada</h1><a href="#dashboard">Volver al panorama</a>'))();
  if(anchor)setTimeout(()=>document.getElementById(anchor)?.scrollIntoView(),400);
- if(route==='dashboard'){bindHomeImpact(polls);}
+ if(route==='dashboard'){bindHomeImpact(polls,events);}
  if(route==='pronostico'){bindPronostico();}
  if(route==='encuestas'){
   bindBuscadorMicrodatos();

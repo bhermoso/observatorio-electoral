@@ -1,5 +1,6 @@
 // Portada: corte temporal, cuatro capas inequívocas y matriz comparativa.
 // Capa 3 = `principal` del Motor 29N. Ninguna variante la sustituye.
+import {bindPortadaSeries} from './portada-series.mjs';
 import {calculate} from './cocina-secuencial.mjs';
 import {projection} from './cocina-escanos.mjs';
 import {renderRecuento} from './recuento-encuestas.mjs';
@@ -25,6 +26,7 @@ export function renderHomeImpact(references=[],events=[]){
  </div>
  <nav class="panorama-tabs" role="tablist" aria-label="Explorar Panorama"><button type="button" role="tab" id="panorama-tab-resultados" aria-controls="panorama-panel-resultados" aria-selected="true" tabindex="0" data-panorama-tab="resultados">Resultados</button><button type="button" role="tab" id="panorama-tab-comparar" aria-controls="panorama-panel-comparar" aria-selected="false" tabindex="-1" data-panorama-tab="comparar">Promedio y modelo</button><button type="button" role="tab" id="panorama-tab-variacion" aria-controls="panorama-panel-variacion" aria-selected="false" tabindex="-1" data-panorama-tab="variacion">Cambios y ajustes</button><button type="button" role="tab" id="panorama-tab-fuentes" aria-controls="panorama-panel-fuentes" aria-selected="false" tabindex="-1" data-panorama-tab="fuentes">Fuentes</button><button type="button" role="tab" id="panorama-tab-microdatos" aria-controls="panorama-panel-microdatos" aria-selected="false" tabindex="-1" data-panorama-tab="microdatos">Microdatos CIS</button></nav>
  <div class="panorama-pane" id="panorama-panel-resultados" data-panorama-panel="resultados" role="tabpanel" aria-labelledby="panorama-tab-resultados">
+ <section class="series-panel panel" id="home-series" aria-labelledby="series-heading"><h2 id="series-heading">Evolución de las estimaciones</h2><p>Cargando series…</p></section>
  <section class="forecast-lead panel" aria-labelledby="forecast-lead-title">
   <div class="forecast-lead-header"><div><span class="eyebrow">Motor 29N · pronóstico propio</span><h2 id="forecast-lead-title">Voto y escaños estimados</h2></div><a class="panel-link" href="#pronostico">Ver pronóstico, método y circunscripciones →</a></div>
   <div id="forecast-lead-results" aria-live="polite"><p class="muted">Cargando estimación publicada…</p></div>
@@ -279,7 +281,7 @@ function bindPanoramaTabs(root){
  activate('resultados');
 }
 
-export async function bindHomeImpact(polls){
+export async function bindHomeImpact(polls,events=[]){
  const root=document.querySelector('#impact');if(!root)return;
  bindPanoramaTabs(root);
  const ctx={polls,corte:new Date().toISOString().slice(0,10),forecast:null,history:null,sin:null,con:null,ext:[],entradas:null};
@@ -294,15 +296,18 @@ export async function bindHomeImpact(polls){
  if(!root.isConnected)return;
  const redraw=()=>{try{computeLayer1(ctx);drawForecastLead(ctx);drawMatrix(ctx);drawEditorial(ctx);document.querySelector('#home-counts').innerHTML=renderRecuento({forecast:ctx.forecast,archivo:polls.length,seleccion:{estudios:ctx.prom.estudios.filter(e=>e.weight>0).length,institutos:ctx.prom.institutos,detalle:`${state.ventana} días · ${state.base==='archivo'?'archivo verificado':'entradas del motor'}${state.cis?'':' · sin CIS'}`}});}catch(e){document.querySelector('#matrix-table').innerHTML=`<tbody><tr><td role="alert">No se puede calcular: ${h(e.message)}</td></tr></tbody>`;}};
  drawFacts(ctx);redraw();drawBlocks(ctx);drawChanges(ctx);drawCocina(ctx);
+ const chart=root.querySelector('#home-series');
+ const cutoff=new Date().toLocaleDateString('sv-SE',{timeZone:'Europe/Madrid'});
+ const drawSeries=()=>bindPortadaSeries(chart,{polls,forecast:ctx.forecast,history:ctx.history,events,cutoff});
  if(ctx.forecast){
   fetch('data/modelo/historial.json',{cache:'no-store'})
    .then(r=>r.ok?r.json():[])
    .catch(()=>[])
    .then(history=>{
     ctx.history=Array.isArray(history)?history:[];
-    if(root.isConnected)drawForecastLead(ctx);
+    if(root.isConnected){drawForecastLead(ctx);drawSeries();}
    });
- }
+ }else drawSeries();
  document.querySelectorAll('input[name=mview]').forEach(i=>i.addEventListener('change',()=>{state.vista=i.value;redraw();}));
  const bindSel=(id,fn)=>{const el=document.querySelector(id);if(!el)return;el.addEventListener('change',()=>{fn(el.value);redraw();});};
  const sync=(id,v)=>{const el=document.querySelector(id);if(el)el.value=String(v);};
