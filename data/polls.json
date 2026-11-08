@@ -798,5 +798,40 @@
     },
     "notes": "El informe está fechado el 4 de noviembre. El 6 de noviembre consta la difusión por Onda Cero. PP y UPN se conservan por separado.",
     "verified": "2026-11-08"
+  },
+  {
+    "id": "sondaxe-2026-11-08",
+    "institute": "Sondaxe",
+    "publisher": "La Voz de Galicia",
+    "title": "Encuesta nacional · segunda ola de noviembre",
+    "fieldStart": "2026-11-02",
+    "fieldEnd": "2026-11-04",
+    "published": "2026-11-08",
+    "sample": 1200,
+    "mode": "CATI + CAWI",
+    "scope": "España",
+    "universe": "Personas de 18 años o más con derecho a voto en elecciones generales; España",
+    "scenario": "Estimación nacional con Frente Amplio y Adelante Andalucía por separado",
+    "values": {
+      "PP": 29.7,
+      "PSOE": 27.3,
+      "VOX": 18.6,
+      "Frente Amplio": 7.1,
+      "BNG": 0.9,
+      "ERC": 2.9,
+      "PNV": 0.7,
+      "Adelante Andalucía": 2.3
+    },
+    "seats": null,
+    "source": "https://www.lavozdegalicia.es/amp/noticia/espana/2026/11/06/feijoo-adelanta-pedro-sanchez-candidato-preferido-gobernar/00031793992905957222982.htm",
+    "technical": "https://www.lavozdegalicia.es/amp/noticia/espana/2026/11/06/feijoo-adelanta-pedro-sanchez-candidato-preferido-gobernar/00031793992905957222982.htm",
+    "coverage": "partial",
+    "kind": "poll-estimate",
+    "denominator": "Estimación de voto; la publicación no explicita el denominador",
+    "verified": "2026-11-08",
+    "notes": "El Instituto Sondaxe realizó el campo, con afijación proporcional por comunidad y provincia y cuotas de edad y sexo. Se usa la fecha visible del artículo (8 de noviembre), aunque la ruta contiene 6 de noviembre.",
+    "seatNotes": "Sin escaños en el texto verificado.",
+    "verification": "Contraste directo del texto y la ficha técnica de La Voz de Galicia el 8 de noviembre de 2026. Solo se transcriben porcentajes de estimación expresos del texto.",
+    "sourcePages": "Apartados Estimación de voto y Ficha Técnica."
   }
 ]

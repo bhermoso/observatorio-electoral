@@ -79,3 +79,8 @@ Pendientes, sin integración en el promedio:
 - SocioMétrica / El Español (1 de noviembre): muestra acumulada de tracking desde septiembre; la ficha consultada no precisa el cierre ni la muestra efectiva de esta estimación. No contar el acumulado como una ola nueva independiente. Fuente: https://www.elespanol.com/espana/politica/20261101/primer-sondeo-tragedia-pp-vox-amplian-ventaja-sanchez-sigue-cayendo-pese-vaciar-frente-amplio/1003744442810_0.html
 
 El catálogo de GAD3 consultado mantiene el barómetro del 12 de octubre. La portada de IMOP devolvió timeout. Esta revisión no certifica cobertura exhaustiva de todas las publicaciones. La vigilancia diaria de GitHub es descubrimiento, no incorporación automática; el estado de la antigua revisión horaria del chat no está confirmado.
+
+
+## Revisión del 8 de noviembre de 2026
+
+El archivo reúne 15 estudios de 11 institutos. Se incorpora la segunda ola nacional de Sondaxe para La Voz de Galicia, publicada el 8 de noviembre, con 1.200 entrevistas CATI/CAWI del 2 al 4 de noviembre. El texto y la ficha técnica del comitente documentan ocho porcentajes de voto estimado y no detallan escaños. La ficha conserva la discrepancia entre la fecha visible y la ruta del artículo. Fuente: https://www.lavozdegalicia.es/amp/noticia/espana/2026/11/06/feijoo-adelanta-pedro-sanchez-candidato-preferido-gobernar/00031793992905957222982.htm
