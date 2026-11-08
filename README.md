@@ -52,7 +52,7 @@ El atlas usa geometría generalizada oficial Eurostat/GISCO NUTS 2024 agrupada e
 
 ## Estructura de la web
 
-- **Panorama** (`#dashboard`): corte temporal, las cuatro capas ([contrato](docs/capas.md)) en una matriz comparable por voto, escaños y cambio desde el corte anterior; bloques; qué añade la cocina.
+- **Panorama** (`#dashboard`): página que se lee de arriba abajo. Titular con la estimación de referencia (capa 3) y su intervalo; reparto de escaños y sumas por bloques frente a 176; tabla por partido con intervalos, cambio desde el corte anterior y promedio de encuestas; evolución de los principales partidos con encuestas y acontecimientos; contraste de las cuatro capas ([contrato](docs/capas.md)); detalle plegado (cambios entre cortes, procedencia de las cifras, experimento con microdatos del CIS). Auditoría visual: `scripts/auditar-portada.mjs` (seis tamaños, de 360 a 1920 px; `OEE_SITE` para medir una copia local).
 - **Pronóstico completo** (`#pronostico`): salida del Motor 29N, con variantes, cadena de cálculo, bloques, evolución, 52 circunscripciones, estudios usados y excluidos, evaluación 23J y modelos externos. Informe técnico íntegro en `pronostico.html`.
 - **Promedios** (`#analisis`): promedio con pesos configurables y proyección territorial experimental. No es el pronóstico.
 - **Acontecimientos** (`#contexto`): lectura en seis niveles (hecho, cambios observados, mismo instituto, estadística, simulación hipotética, conclusión). Ver [criterios](docs/events.md) y [capas](docs/capas.md#acontecimientos).

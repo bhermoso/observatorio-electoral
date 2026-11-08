@@ -1,11 +1,12 @@
 import fs from 'node:fs';
 import {chromium} from 'playwright';
-const SITE='https://bhermoso.github.io/observatorio-electoral/';
-const overlays=new Set(['styles.css','home-impact.mjs','analysis.mjs','promedios-comparador.mjs','events.mjs','eventos-visual.mjs','cocina.mjs','cocina-resultados.mjs','acontecimiento.mjs']);
+const SITE=process.env.OEE_SITE||'https://bhermoso.github.io/observatorio-electoral/';
+const overlays=new Set(['styles.css','home-impact.mjs','portada-series.mjs','analysis.mjs','promedios-comparador.mjs','events.mjs','eventos-visual.mjs','cocina.mjs','cocina-resultados.mjs','acontecimiento.mjs']);
 const cases=[
  {route:'dashboard',width:1200,height:700},
  {route:'dashboard',width:1366,height:768},
  {route:'dashboard',width:1440,height:900},
+ {route:'dashboard',width:390,height:844},
  {route:'analisis',width:1366,height:768},
  {route:'analisis',width:1440,height:900},
  {route:'contexto',width:1366,height:768},
@@ -46,24 +47,19 @@ try{
    const box=(sel)=>{const el=document.querySelector(sel);if(!el)return null;const r=el.getBoundingClientRect(),cs=getComputedStyle(el);return {x:Math.round(r.left),y:Math.round(r.top),right:Math.round(r.right),bottom:Math.round(r.bottom),width:Math.round(r.width),height:Math.round(r.height),clientHeight:el.clientHeight,scrollHeight:el.scrollHeight,display:cs.display,visible:cs.display!=='none'&&r.height>0};};
    return {viewport:{width:innerWidth,height:innerHeight},docWidth:document.documentElement.scrollWidth,docHeight:document.documentElement.scrollHeight,
     header:box('body>header'),main:box('#main'),hero:box('#main .hero'),forecast:box('.forecast-lead'),forecastResults:box('#forecast-lead-results'),
-    lastParty:box('.forecast-lead-table tbody tr:last-child'),lastBloc:box('.forecast-lead-bloc:last-child'),forecastFoot:box('.forecast-lead-foot'),
-    kpis:box('.forecast-lead-kpis'),lastKpi:box('.forecast-mini-kpi:first-child'),
+    titular:box('#portada-titular'),seatBar:box('.portada-barra'),lastParty:box('.portada-tabla tbody tr:last-child'),lastBloc:box('.portada-bloc:last-child'),
+    chart:box('.portada-grafico svg'),matrix:box('#matrix-table'),
     compare:box('#analysis-compare'),houseChart:box('.house-chart'),houseMatrix:box('.house-matrix'),weights:box('.analysis-weights-detail'),
     eventVisual:box('.event-visual-summary'),eventReading:box('.event-reading'),kitchen:box('#cocina-resultados'),kitchenTable:box('.kitchen-observed-table tbody tr:first-child'),eventHouse:box('.event-visual-house'),eventDeepOpen:document.querySelector('.event-deep-dive')?.open,eventDeep:box('.event-deep-dive'),
     route:location.hash,bodyOverflow:getComputedStyle(document.body).overflowY};
   },{route:c.route});
   if(info.docWidth>c.width+3)errors.push('Desbordamiento horizontal '+info.docWidth+'>'+c.width);
   if(c.route==='dashboard'){
-   if(info.docHeight>c.height+3)errors.push('Scroll vertical en la portada');
-   if(!info.lastKpi?.visible)errors.push('KPI no visible');
-   if(info.kpis?.bottom>info.forecastFoot?.y+1)errors.push('Los indicadores se superponen al pie');
-   if(info.lastParty&&info.kpis&&
-      info.lastParty.x<info.kpis.right&&info.lastParty.right>info.kpis.x&&
-      info.lastParty.y<info.kpis.bottom&&info.lastParty.bottom>info.kpis.y)
-     errors.push('Los indicadores se superponen a la última fila de partidos');
-   if(info.lastBloc&&info.kpis&&info.lastBloc.x<info.kpis.right&&info.lastBloc.right>info.kpis.x&&
-      info.lastBloc.y<info.kpis.bottom&&info.lastBloc.bottom>info.kpis.y)
-     errors.push('Los indicadores se superponen a los bloques');
+   // La portada se desplaza con normalidad: se comprueba que lo principal se vea y no se corte.
+   for(const k of ['titular','seatBar','lastParty','lastBloc','chart','matrix'])if(!info[k]?.visible)errors.push('No visible en la portada: '+k);
+   if(info.titular?.y>c.height)errors.push('El titular queda bajo la primera pantalla');
+   if(info.seatBar&&info.seatBar.right>c.width)errors.push('La barra de escaños se sale del ancho');
+   if(info.chart&&info.chart.right>c.width)errors.push('El gráfico de evolución se sale del ancho');
    if(info.forecastResults?.scrollHeight>info.forecastResults?.clientHeight+3)errors.push('Pronóstico con contenido recortado');
   }else if(c.route==='analisis'){
    if(!info.houseChart?.visible||!info.houseMatrix?.visible)errors.push('Falta el comparador de casas');
@@ -80,9 +76,9 @@ try{
   }
   if(info.header?.height>145)errors.push('Cabecera desmesurada de '+info.header.height+' px');
   if(jsErrors.length)errors.push(...jsErrors.map(x=>'JS: '+x.slice(0,150)));
-  await page.screenshot({path:'auditoria-densidad/'+c.route+'-'+c.width+'x'+c.height+'.png',fullPage:c.route!=='dashboard'});
+  await page.screenshot({path:'auditoria-densidad/'+c.route+'-'+c.width+'x'+c.height+'.png',fullPage:true});
   results.push({...c,ok:errors.length===0,errors,info});
-  console.log(JSON.stringify({route:c.route,screen:c.width+'x'+c.height,ok:!errors.length,errors,compare:info.compare,eventVisual:info.eventVisual,kpis:info.kpis,foot:info.forecastFoot}));
+  console.log(JSON.stringify({route:c.route,screen:c.width+'x'+c.height,ok:!errors.length,errors,compare:info.compare,eventVisual:info.eventVisual,titular:info.titular,chart:info.chart}));
   await page.close();
  }
 }finally{await browser.close();}

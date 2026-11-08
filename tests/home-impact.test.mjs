@@ -42,13 +42,13 @@ test('La comparación de recetas utiliza mismo estudio y el mismo traslado terri
 test('Panorama editorial compacto separa encuesta, modelo, microdatos y noticias',async()=>{
  const {renderHomeImpact}=await import('../home-impact.mjs');
  const html=renderHomeImpact();
- assert.ok(html.indexOf('forecast-lead')<html.indexOf('matrix-panel'));
+ assert.ok(html.indexOf('forecast-lead')<html.indexOf('portada-capas'));
  assert.match(html,/id="panorama-editorial"/);
  assert.match(html,/Promedio de encuestas:/);
  assert.match(html,/Pronóstico propio:/);
  assert.match(html,/Cocina sobre microdatos:/);
  assert.match(html,/Noticias y otros modelos:/);
- assert.match(html,/panorama-secondary/);
+ assert.match(html,/class="portada-plegable"/);
  assert.match(html,/No son respuestas individuales|No son respuestas individuales/i);
  const js=fs.readFileSync('home-impact.mjs','utf8');
  assert.match(js,/drawEditorial\(ctx\)/);
@@ -58,44 +58,53 @@ test('Panorama editorial compacto separa encuesta, modelo, microdatos y noticias
  assert.match(css,/\.panorama-source-grid/);
 });
 
-test('Panorama ocupa una vista inicial, conserva todo el contenido por pestañas y evita scroll en escritorio',async()=>{
+test('Panorama se lee de arriba abajo: titular, escaños, evolución, capas y detalle, sin pestañas ni altura fija',async()=>{
  const {renderHomeImpact}=await import('../home-impact.mjs');
  const html=renderHomeImpact();
- const ids=['resultados','comparar','variacion','fuentes','microdatos'];
- for(const id of ids){
-  assert.match(html,new RegExp('id="panorama-tab-'+id+'"'));
-  assert.match(html,new RegExp('id="panorama-panel-'+id+'"'));
- }
- assert.equal((html.match(/role="tabpanel"/g)||[]).length,5);
- assert.equal((html.match(/role="tab"/g)||[]).length,5);
- assert.match(html,/data-panorama-tab="resultados"[^>]*>Resultados/);
- assert.match(html,/data-panorama-panel="fuentes"[^>]*hidden/);
- assert.match(fs.readFileSync('home-impact.mjs','utf8'),/forecast-lead-content/);
- assert.ok(html.indexOf('forecast-lead')<html.indexOf('panorama-editorial'));
+ const order=['id="portada-titular"','id="forecast-lead-results"','id="home-series"','id="portada-capas"','id="portada-cambios"','id="portada-fuentes"','id="portada-microdatos"'];
+ for(const id of order)assert.ok(html.includes(id),'Falta '+id);
+ for(let i=1;i<order.length;i++)assert.ok(html.indexOf(order[i-1])<html.indexOf(order[i]),order[i-1]+' debe ir antes que '+order[i]);
+ assert.doesNotMatch(html,/role="tab"|role="tabpanel"/);
+ assert.match(html,/<h1 id="impact-heading">Panorama 29N<\/h1>/);
+ assert.match(html,/id="matrix-table"/);
+ assert.match(html,/id="matrix-toggle"/);
  const app=fs.readFileSync('app.mjs','utf8');
  assert.match(app,/function dashboard\(\)\{[\s\S]*?return renderHomeImpact\(references,events\);/);
  assert.match(app,/classList\.toggle\('dashboard-route',route==='dashboard'\)/);
  const css=fs.readFileSync('styles.css','utf8');
- assert.match(css,/body\.dashboard-route\{height:100dvh;overflow:hidden/);
- assert.match(css,/#impact \.forecast-lead-content\{display:grid/);
- const js=fs.readFileSync('home-impact.mjs','utf8');
- assert.match(js,/function bindPanoramaTabs\(root\)/);
- assert.match(js,/ArrowRight/);
- assert.match(js,/panel\.hidden=panel\.dataset\.panoramaPanel!==name/);
+ // La portada se desplaza con normalidad: sin alto de ventana fijo ni scroll interno.
+ assert.doesNotMatch(css,/body\.dashboard-route\{[^}]*height:100dvh/);
+ assert.doesNotMatch(css,/body\.dashboard-route #main\{[^}]*overflow:hidden/);
+ assert.doesNotMatch(css,/\.panorama-pane/);
+ // El gráfico de la portada no hereda el ancho mínimo del de Tendencias.
+ assert.match(html+fs.readFileSync('portada-series.mjs','utf8'),/class="portada-grafico"/);
+ assert.doesNotMatch(css,/\.portada-grafico\{[^}]*min-width:[1-9]/);
+ // Menú en su propia fila en pantallas estrechas.
+ assert.match(css,/@media\(max-width:1300px\)\{header>nav\{flex:1 0 100%;order:3\}\}/);
 });
 
-test('La portada dibuja el historial de escaños de cada candidatura del pronóstico',async()=>{
- const {renderForecastOverview}=await import('../home-impact.mjs');
+test('La portada dibuja el reparto, los bloques y la tabla por partido con intervalos',async()=>{
+ const {renderForecastOverview,renderTitular}=await import('../home-impact.mjs');
  const forecast=JSON.parse(fs.readFileSync('modelo/salida/pronostico.json','utf8'));
  const history=JSON.parse(fs.readFileSync('modelo/registro/historial.json','utf8'));
  const html=renderForecastOverview(forecast,history);
  const parties=Object.keys(forecast.principal.partidos).length;
- assert.equal((html.match(/class="panorama-party"/g)||[]).length,parties);
- assert.equal((html.match(/<svg /g)||[]).length,parties);
- assert.doesNotMatch(html,/NaN|Historial insuficiente/);
+ assert.equal((html.match(/<tr>\s*<th scope="row">/g)||[]).length,parties);
+ assert.equal((html.match(/class="portada-bloc"/g)||[]).length,Object.keys(forecast.principal.bloques).length);
+ assert.match(html,/class="portada-barra" role="img"/);
+ assert.match(html,/href="#pronostico-principal"/);
+ assert.match(html,/href="#pronostico-bloques"/);
+ assert.doesNotMatch(html,/NaN|undefined/);
+ const total=Object.values(forecast.principal.partidos).reduce((s,v)=>s+v.escanos[0],0);
+ if(total!==350)assert.match(html,new RegExp('aquí suman '+total));
  const withoutHistory=renderForecastOverview(forecast,[]);
- assert.match(withoutHistory,/Historial no disponible/);
- assert.doesNotMatch(withoutHistory,/<svg /);
+ assert.match(withoutHistory,/Sin cambio comparable/);
+ const titular=renderTitular(forecast);
+ assert.match(titular,/primera fuerza estimada/);
+ assert.match(titular,/90 % de las simulaciones/);
+ assert.match(titular,/no probabilidades de pacto/);
+ assert.doesNotMatch(titular,/NaN|undefined/);
+ assert.match(renderTitular(null),/No hay una estimación publicada/);
 });
 
 test('El gráfico común cruza cortes y publicaciones con ambos acontecimientos',async()=>{
@@ -112,6 +121,10 @@ test('El gráfico común cruza cortes y publicaciones con ambos acontecimientos'
  assert.match(html,/Urda/);
  assert.match(html,/Midterms de EE\. UU\./);
  assert.doesNotMatch(html,/NaN/);
+ assert.doesNotMatch(html,/class="series-mark house"[^>]*><path/);
+ const {niceScale}=await import('../portada-series.mjs');
+ assert.deepEqual(niceScale([21.9,34.2]).ticks,[20,25,30,35]);
+ assert.deepEqual(niceScale([1.2,33]).ticks,[0,10,20,30,40]);
  const points=[
   {date:'2026-10-30',start:'2026-10-23',end:'2026-10-26',value:30},
   {date:'2026-10-31',start:'2026-10-25',end:'2026-10-28',value:33},

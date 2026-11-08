@@ -62,15 +62,14 @@ test('Acontecimientos muestra el hecho y las dos encuestas originales con compar
  const js=fs.readFileSync('events.mjs','utf8');
  assert.match(js,/renderEventVisual\(reading,event\)\+renderLectura\(reading,event\)/);
 });
-test('KPIs clicables y densidad editorial sin recortar el contenido',()=>{
+test('Cifras enlazadas al pronóstico y densidad editorial sin recortar el contenido',()=>{
  const home=fs.readFileSync('home-impact.mjs','utf8');
- assert.match(home,/forecast-lead-kpis/);
  assert.match(home,/href="#pronostico-principal"/);
  assert.match(home,/href="#pronostico-bloques"/);
- assert.match(home,/Diferencia entre las medianas/);
+ assert.match(home,/en la estimación central/);
  const css=fs.readFileSync('styles.css','utf8');
  assert.match(css,/body:not\(\.dashboard-route\) #main/);
- assert.match(css,/#impact \.forecast-mini-kpi/);
+ assert.match(css,/\.portada-tabla/);
  assert.match(css,/\.house-matrix/);
  assert.match(css,/\.event-visual-row/);
 });
