@@ -32,3 +32,9 @@ test('El dashboard usa errores reales e identifica limitación histórica',()=>{
    assert.ok(Number.isFinite(audit.resultados_por_estudio[study][method].mae_pp),study+method);
  }
 });
+
+test('Los errores históricos se ordenan de menor a mayor',()=>{
+ const source=fs.readFileSync('dashboard-validacion.mjs','utf8');
+ assert.match(source,/Math\.abs\(x\[party\]\)-Math\.abs\(y\[party\]\)/);
+ assert.match(source,/sort\(\(a,b\)=>rank\(a\)-rank\(b\)\)/);
+});
