@@ -30,7 +30,7 @@ function dashboard(){
  return renderHomeImpact();
 }
 function resultsTable(groups,valid){return `<div class="table-wrap"><table><caption>PSOE incluye PSC. Porcentajes sobre votos válidos.</caption><thead><tr><th>Formación</th><th>Votos</th><th>%</th><th>Escaños</th></tr></thead><tbody>${groups.filter(p=>p.votes).map(p=>`<tr><td>${escape(p.label)}</td><td>${fmt(p.votes)}</td><td>${dec(p.votes/valid*100)}</td><td>${p.seats}</td></tr>`).join('')}</tbody></table></div>`;}
-function pollPage(){return renderPollUpdate()+renderBuscadorMicrodatos()+renderEstadoDescargas()+renderCatalogoMicrodatos()+`<div class="notice"><a href="#analisis">Promedios con pesos y proyección experimental de escaños →</a> · <a href="#pronostico">Pronóstico completo del Motor 29N →</a></div>`+renderPollArchive(polls)+renderReferenceDirectory(references);}
+function pollPage(){return renderPollUpdate()+renderBuscadorMicrodatos()+renderEstadoDescargas()+renderCatalogoMicrodatos()+`<div class="notice"><a href="#analisis">Promedios con pesos y proyección experimental de escaños →</a> · <a href="#pronostico">Pronóstico completo del Motor 29N →</a></div>`+'<div id="poll-archive-content">'+renderPollArchive(polls)+'</div>'+renderReferenceDirectory(references);}
 function atlasPage(){return `${hero('Atlas / Congreso 2023','52 formas de elegir.','Explora los escaños, la participación y el voto de cada circunscripción. La magnitud territorial corresponde a la convocatoria de 2023.')}<div class="toolbar"><label>Buscar circunscripción<input id="atlas-search" type="search" placeholder="Madrid, Soria, Ceuta…"></label><label>Ordenar por<select id="atlas-order"><option value="name">Nombre</option><option value="seats">Más escaños</option></select></label><a class="button secondary" href="data/districts.csv" download>Descargar atlas CSV ↓</a></div><div class="atlas-layout"><section class="panel"><h2>El territorio del Congreso</h2><div id="atlas-map"></div><p class="muted">Índice de 52 circunscripciones. Cada casilla muestra su número de escaños; la disposición no representa coordenadas geográficas.</p><div id="atlas-count" class="muted" role="status"></div><div id="atlas-grid" class="atlas-grid"></div></section><section id="district-detail" class="panel" aria-live="polite"></section></div>${source()}`;}
 function updateMap(){const container=$('#atlas-map');if(!container)return;container.innerHTML=renderMap(cartography,data,selected);container.querySelectorAll('[data-map-district]').forEach(g=>{const choose=()=>{selected=g.dataset.mapDistrict;filterAtlas();detail();};g.onclick=choose;g.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose();}};});}
 function filterAtlas(){updateMap();const q=$('#atlas-search').value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();let ds=data.districts.filter(d=>d.name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().includes(q));ds.sort($('#atlas-order').value==='seats'?(a,b)=>b.seats-a.seats:(a,b)=>a.name.localeCompare(b.name,'es'));$('#atlas-count').textContent=`${ds.length} circunscripciones`;$('#atlas-grid').innerHTML=ds.map(d=>`<button class="district" data-district="${d.id}" aria-pressed="${d.id===selected}"><b>${d.seats}</b>${escape(d.name)}</button>`).join('')||'<p class="empty">Sin coincidencias.</p>';$('#atlas-grid').querySelectorAll('button').forEach(b=>b.onclick=()=>{selected=b.dataset.district;filterAtlas();detail();});}
@@ -53,7 +53,7 @@ function download(obj,name){const url=URL.createObjectURL(new Blob([JSON.stringi
 export const ROUTES=['dashboard','pronostico','encuestas','analisis','contexto','cocina','atlas','laboratorio','metodologia'];
 export function resolveRoute(hash){const full=String(hash||'').replace(/^#/,'')||'dashboard';if(ROUTES.includes(full))return {route:full,anchor:null};const base=full.split('-')[0];return ROUTES.includes(base)?{route:base,anchor:full}:{route:full,anchor:null};}
 let currentRoute=null;
-function render(){disposePollUpdate();const {route,anchor}=resolveRoute(location.hash);const same=route===currentRoute&&anchor&&document.getElementById(anchor);if(same){document.getElementById(anchor).scrollIntoView();return;}currentRoute=route;document.body.classList.toggle('dashboard-route',route==='dashboard');document.querySelectorAll('header nav a').forEach(a=>{a.removeAttribute('aria-current');if(a.hash==='#'+route)a.setAttribute('aria-current','page');});const pages={dashboard,pronostico:renderPronostico,encuestas:pollPage,analisis:()=>renderAnalysis(polls),contexto:()=>renderEvents(events),cocina:renderCocina,atlas:atlasPage,laboratorio:labPage,metodologia:methodsPage};$('#main').innerHTML=(pages[route]||(()=>'<h1>Página no encontrada</h1><a href="#dashboard">Volver al panorama</a>'))();
+function render(){const {route,anchor}=resolveRoute(location.hash);const same=route===currentRoute&&anchor&&document.getElementById(anchor);if(same){document.getElementById(anchor).scrollIntoView();return;}disposePollUpdate();currentRoute=route;document.body.classList.toggle('dashboard-route',route==='dashboard');document.querySelectorAll('header nav a').forEach(a=>{a.removeAttribute('aria-current');if(a.hash==='#'+route)a.setAttribute('aria-current','page');});const pages={dashboard,pronostico:renderPronostico,encuestas:pollPage,analisis:()=>renderAnalysis(polls),contexto:()=>renderEvents(events),cocina:renderCocina,atlas:atlasPage,laboratorio:labPage,metodologia:methodsPage};$('#main').innerHTML=(pages[route]||(()=>'<h1>Página no encontrada</h1><a href="#dashboard">Volver al panorama</a>'))();
  if(anchor)setTimeout(()=>document.getElementById(anchor)?.scrollIntoView(),400);
  if(route==='dashboard'){bindHomeImpact(polls);}
  if(route==='pronostico'){bindPronostico();}
@@ -62,15 +62,25 @@ function render(){disposePollUpdate();const {route,anchor}=resolveRoute(location
   void bindEstadoDescargas();
   void bindCatalogoMicrodatos();
   bindPollArchive(polls);
-  disposePollUpdate=bindPollUpdate(async()=>{
+  disposePollUpdate=bindPollUpdate(async(signal)=>{
    const next=await fetchPublishedPolls();
+   if(signal.aborted)return;
    validatePolls(next,references);
-   const changed=JSON.stringify(next)!==JSON.stringify(polls);
-   polls=next;
-   if(location.hash==='#encuestas'){
-    render();
-    document.querySelector('#poll-reload-status').textContent=changed?`Archivo actualizado: ${polls.length} encuestas disponibles.`:'Ya estás viendo la última versión publicada.';
+   const previous=new Map(polls.map(p=>[p.id,JSON.stringify(p)]));
+   const added=next.filter(p=>!previous.has(p.id));
+   const corrected=next.filter(p=>previous.has(p.id)&&previous.get(p.id)!==JSON.stringify(p));
+   const nextIds=new Set(next.map(p=>p.id));
+   const removed=polls.filter(p=>!nextIds.has(p.id)).length;
+   if(added.length||corrected.length||removed){
+    const archive=document.getElementById('poll-archive-content');
+    archive.innerHTML=renderPollArchive(next);
+    polls=next;
+    bindPollArchive(polls);
    }
+   const names=added.map(p=>p.institute+' · '+p.published).join(', ');
+   return added.length||corrected.length||removed
+    ? `Archivo publicado: ${added.length} nuevas, ${corrected.length} corregidas, ${removed} retiradas.${names?' Nuevas: '+names+'.':''}`
+    : 'Archivo publicado sin cambios desde la última carga.';
   });
  }
  if(route==='analisis')bindAnalysis(polls,data);

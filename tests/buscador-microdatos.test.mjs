@@ -5,12 +5,11 @@ import {fileLinks,microNews,safeHttp,choosePages,knownLinks,makeCandidates} from
 import {renderMicrodataResults,renderBuscadorMicrodatos,consultMicrodata,MICRODATA_ENDPOINT} from '../buscador-microdatos.mjs';
 import {renderPollUpdate} from '../encuestas-servicio.mjs';
 const read=p=>fs.readFileSync(new URL(p,import.meta.url),'utf8');
-test('Botones significan operaciones distintas y el antiguo no sugiere actualizar el modelo',()=>{
+test('La actualización de encuestas y la búsqueda de microdatos son operaciones distintas',()=>{
  const html=renderPollUpdate()+renderBuscadorMicrodatos();
- assert.match(html,/Buscar titulares recientes/);
+ assert.match(html,/id="dispatch-polls">Actualizar encuestas/);
  assert.match(html,/Buscar enlaces de microdatos ahora/);
- assert.match(html,/no descarga microdatos y no recalcula el pronóstico/);
- assert.doesNotMatch(html,/id="dispatch-polls">Actualizar encuestas/);
+ assert.match(html,/Las estimaciones contrastadas entran por el proceso editorial/);
  assert.match(read('../app.mjs'),/bindBuscadorMicrodatos\(\)/);
  assert.match(read('../scripts/build.mjs'),/'buscador-microdatos\.mjs'/);
 });
