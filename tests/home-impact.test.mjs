@@ -10,7 +10,7 @@ test('Portada publica síntesis visual con cifras reales y dos fuentes separadas
  const homepage=fs.readFileSync('home-impact.mjs','utf8');
  const css=fs.readFileSync('styles.css','utf8');
  const build=fs.readFileSync('scripts/build.mjs','utf8');
- assert.match(app,/renderHomeImpact\(\)/);
+ assert.match(app,/renderHomeImpact\(references,events\)/);
  assert.match(app,/bindHomeImpact\(polls\)/);
  assert.match(build,/home-impact.mjs/);
  assert.match(homepage,/data\/modelo\/pronostico.json/);
@@ -73,7 +73,7 @@ test('Panorama ocupa una vista inicial, conserva todo el contenido por pestañas
  assert.match(fs.readFileSync('home-impact.mjs','utf8'),/forecast-lead-content/);
  assert.ok(html.indexOf('forecast-lead')<html.indexOf('panorama-editorial'));
  const app=fs.readFileSync('app.mjs','utf8');
- assert.match(app,/function dashboard\(\)\{[\s\S]*?return renderHomeImpact\(\);/);
+ assert.match(app,/function dashboard\(\)\{[\s\S]*?return renderHomeImpact\(references,events\);/);
  assert.match(app,/classList\.toggle\('dashboard-route',route==='dashboard'\)/);
  const css=fs.readFileSync('styles.css','utf8');
  assert.match(css,/body\.dashboard-route\{height:100dvh;overflow:hidden/);
@@ -82,4 +82,18 @@ test('Panorama ocupa una vista inicial, conserva todo el contenido por pestañas
  assert.match(js,/function bindPanoramaTabs\(root\)/);
  assert.match(js,/ArrowRight/);
  assert.match(js,/panel\.hidden=panel\.dataset\.panoramaPanel!==name/);
+});
+
+test('La portada dibuja el historial de escaños de cada candidatura del pronóstico',async()=>{
+ const {renderForecastOverview}=await import('../home-impact.mjs');
+ const forecast=JSON.parse(fs.readFileSync('modelo/salida/pronostico.json','utf8'));
+ const history=JSON.parse(fs.readFileSync('modelo/registro/historial.json','utf8'));
+ const html=renderForecastOverview(forecast,history);
+ const parties=Object.keys(forecast.principal.partidos).length;
+ assert.equal((html.match(/class="panorama-party"/g)||[]).length,parties);
+ assert.equal((html.match(/<svg /g)||[]).length,parties);
+ assert.doesNotMatch(html,/NaN|Historial insuficiente/);
+ const withoutHistory=renderForecastOverview(forecast,[]);
+ assert.match(withoutHistory,/Historial no disponible/);
+ assert.doesNotMatch(withoutHistory,/<svg /);
 });
