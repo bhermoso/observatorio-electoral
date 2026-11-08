@@ -1080,3 +1080,36 @@ body:not(.dashboard-route) .event-reading .er-levels>li{margin-bottom:12px}
 .archivo-md-controls{grid-template-columns:1fr 1fr 1fr 1.1fr 1.2fr}
 @media(max-width:950px){.archivo-md-controls{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.archivo-md-controls{grid-template-columns:1fr}.md-audit-head{display:block}.md-audit-head>a{display:inline-block;margin-bottom:8px;white-space:normal}}
+
+/* Panorama: tarjetas de las candidaturas y accesos a las demás áreas. */
+#impact #panorama-panel-resultados{display:flex;flex-direction:column;gap:8px}
+#impact #panorama-panel-resultados .forecast-lead,
+#impact #forecast-lead-results,
+#impact #forecast-lead-results .forecast-lead-content{display:block}
+#impact .forecast-lead-header{margin-bottom:8px}
+#impact .panorama-snapshot,.panorama-party-grid,.panorama-directory{display:grid;gap:6px}
+#impact #forecast-lead-results .panorama-snapshot{grid-template-columns:repeat(4,minmax(0,1fr));margin:0}
+.panorama-snapshot>div,.panorama-snapshot>a,.panorama-party{padding:6px 8px;border:1px solid #dbe7dc;border-radius:7px;background:#f8fbf7}
+.panorama-snapshot span,.panorama-snapshot small,.panorama-party-meta{display:block;color:#456454;font-size:11px;line-height:1.25}
+.panorama-snapshot strong{font-size:15px}
+.panorama-chart-heading{display:flex;align-items:baseline;justify-content:space-between;gap:4px 12px;flex-wrap:wrap;margin:8px 0 4px}
+.panorama-chart-heading h3{margin:0;font-size:15px}
+.panorama-chart-heading span{font-size:11px;color:#456454}
+.panorama-party-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr))}
+.panorama-party h4{margin:0;font-size:13px;line-height:1.15}
+.panorama-party-score{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:0 5px;font-size:11px}
+.panorama-party-score>b{font-size:17px}
+.panorama-party-score small{font-size:11px}
+.panorama-party svg{display:block;width:100%;height:26px;color:#226345}
+.panorama-party svg path{fill:none;stroke:currentColor;stroke-width:1.6}
+.panorama-party svg circle{fill:currentColor}
+.panorama-trend-empty{display:grid;align-items:center;min-height:26px;color:#456454}
+.panorama-directory{grid-template-columns:repeat(auto-fit,minmax(min(100%,135px),1fr))}
+.panorama-directory a{background:#e7f0e5;border-radius:7px;padding:5px 8px;color:#193d2e;font-size:12px}
+.panorama-directory small{display:block;color:#456454;font-size:11px}
+@media(min-width:1200px) and (min-height:700px){
+ body.dashboard-route #impact #panorama-panel-resultados{overflow:auto;scrollbar-gutter:stable}
+}
+@media(max-width:640px){
+ #impact #forecast-lead-results .panorama-snapshot{grid-template-columns:repeat(2,minmax(0,1fr))}
+}

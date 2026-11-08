@@ -27,7 +27,7 @@ function hemi(groups){let dots='',idx=0;const all=groups.flatMap(p=>Array.from({
 function dashboard(){
  // El archivo histórico está disponible en Atlas y Encuestas. La portada se
  // limita al panorama completo en una sola pantalla y a las vistas por pestaña.
- return renderHomeImpact();
+ return renderHomeImpact(references,events);
 }
 function resultsTable(groups,valid){return `<div class="table-wrap"><table><caption>PSOE incluye PSC. Porcentajes sobre votos válidos.</caption><thead><tr><th>Formación</th><th>Votos</th><th>%</th><th>Escaños</th></tr></thead><tbody>${groups.filter(p=>p.votes).map(p=>`<tr><td>${escape(p.label)}</td><td>${fmt(p.votes)}</td><td>${dec(p.votes/valid*100)}</td><td>${p.seats}</td></tr>`).join('')}</tbody></table></div>`;}
 function pollPage(){return renderPollUpdate()+renderBuscadorMicrodatos()+renderEstadoDescargas()+renderCatalogoMicrodatos()+`<div class="notice"><a href="#analisis">Promedios con pesos y proyección experimental de escaños →</a> · <a href="#pronostico">Pronóstico completo del Motor 29N →</a></div>`+'<div id="poll-archive-content">'+renderPollArchive(polls)+'</div>'+renderReferenceDirectory(references);}

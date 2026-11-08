@@ -12,7 +12,10 @@ const signed=(v,d=1)=>(v>0?'+':v<0?'−':'±')+fmt(Math.abs(v),d);
 const CIS_PARTIES=['PP','PSOE','VOX','SUMAR'];
 const state={vista:'voto',ventana:30,cis:true,ponderacion:'igual',base:'archivo'};
 
-export function renderHomeImpact(){
+export function renderHomeImpact(references=[],events=[]){
+ const latest=(items,key)=>[...items].sort((a,b)=>b[key].localeCompare(a[key]))[0];
+ const average=latest(references.filter(r=>r.kind==='aggregate-model'&&r.published),'published');
+ const event=latest(events.filter(e=>e.date),'date');
  return `<section class="impact" id="impact" aria-labelledby="impact-heading">
  <div class="impact-head">
   <div class="impact-intro"><span class="impact-kicker"><i></i> <span id="impact-cut">Cargando corte…</span></span>
@@ -27,6 +30,15 @@ export function renderHomeImpact(){
   <div id="forecast-lead-results" aria-live="polite"><p class="muted">Cargando estimación publicada…</p></div>
  </section>
  <div class="panorama-editorial" id="panorama-editorial" aria-live="polite">Calculando el contraste con las encuestas…</div>
+ <nav class="panorama-directory" aria-label="Explorar el Observatorio">
+  <a href="#analisis"><b>Casas y promedios</b><small>Comparación por partido</small></a>
+  <a href="#encuestas"><b>Encuestas y microdatos</b><small>Archivo y fichas técnicas</small></a>
+  <a href="#cocina"><b>Nuestra cocina</b><small>Ponderaciones y trazabilidad</small></a>
+  <a href="#contexto"><b>Acontecimientos</b><small>${event?h(event.title):'Fechas y trabajo de campo'}</small></a>
+  <a href="#encuestas"><b>Promedios en prensa</b><small>${average?h(average.publisher)+' · '+h(fdate(average.published)):'Referencias publicadas'}</small></a>
+  <a href="#pronostico-evaluacion"><b>Validación</b><small>Retropruebas y errores</small></a>
+  <a href="#atlas"><b>Atlas electoral</b><small>Resultados por circunscripción</small></a>
+ </nav>
  </div>
  <div class="panorama-pane" id="panorama-panel-fuentes" data-panorama-panel="fuentes" role="tabpanel" aria-labelledby="panorama-tab-fuentes" hidden>
  <nav class="impact-links" aria-label="Método y navegación ampliada"><a href="flujograma.html">Cómo se calcula</a><a href="construye-estimacion.html#cocina-secuencia">Cocina electoral</a><a href="como-estimamos.html">Método y validación</a><a href="#contexto">Urda</a></nav>
@@ -66,38 +78,70 @@ export function renderHomeImpact(){
   <p class="muted"><a href="construye-estimacion.html">Construye una estimación, decisión a decisión →</a> · <a href="tutorial-estimacion.html">Tutorial</a> · <a href="metodo-evidencia.html">Por qué cambia la estimación</a> · <a href="#cocina">Cocina electoral →</a> · <a href="#laboratorio">Laboratorio D’Hondt →</a></p></details></div></section>`;
 }
 
-function drawForecastLead(ctx){
- const el=document.querySelector('#forecast-lead-results');if(!el)return;
- const p=ctx.forecast?.principal;
- if(!p?.partidos||!Object.keys(p.partidos).length){
-  el.innerHTML='<p class="empty">No existe una estimación publicada para este corte. No se muestran cifras sustitutas ni resultados de 2023 como pronóstico.</p>';
-  return;
- }
- const parties=Object.entries(p.partidos)
-  .filter(([,v])=>Array.isArray(v?.voto)&&Array.isArray(v?.escanos)&&Number.isFinite(v.voto[0])&&Number.isFinite(v.escanos[0]))
-  .sort((a,b)=>b[1].escanos[0]-a[1].escanos[0]);
- const major=parties.slice(0,8);
- const first=parties[0];
- const second=parties[1];
- const blocks=['PP+VOX','PSOE+SUMAR+PODEMOS'].map(id=>[id,p.bloques?.[id]]).filter(([,b])=>b&&Number.isFinite(b.mediana));
- const bName=id=>BLOCKS.find(b=>b.id===id)?.label||id.replaceAll('+',' + ');
- const caution=new Set(p.sin_encuestas||[]);
- el.innerHTML=`
- <div class="forecast-lead-status"><span>Corte: <b>${h(fdate(ctx.forecast.corte))}</b></span><span>${h(ctx.entradas??'—')} estudios utilizados</span><span>Mayoría absoluta: <b>176 escaños</b></span></div>
- <div class="forecast-lead-content"><div class="forecast-lead-side"><div class="forecast-lead-overview">
-  <div class="forecast-lead-winner"><span class="eyebrow">Primera fuerza · mediana de escaños</span><strong>${h(PARTIES.find(x=>x.id===first?.[0])?.label||first?.[0]||'—')}</strong><div><b>${fmt(first?.[1]?.escanos?.[0]??0,0)}</b> escaños <small>90 %: ${fmt(first?.[1]?.escanos?.[1]??0,0)}–${fmt(first?.[1]?.escanos?.[2]??0,0)}</small></div><p>Estimación de primera fuerza por mediana, no probabilidad de formar Gobierno.</p></div>
-  <div class="forecast-lead-blocs"><h3>Bloques y mayoría absoluta: 176</h3>${blocks.map(([id,b])=>`<div class="forecast-lead-bloc"><span>${h(bName(id))}</span><b>${fmt(b.mediana,0)} <small>escaños</small></b><span class="forecast-lead-prob">${Number.isFinite(b.p_mayoria)?fmt(100*b.p_mayoria,0)+' % de simulaciones con 176 o más':'Probabilidad no disponible'}</span></div>`).join('')||'<p class="muted">Sin estimación de bloques disponible.</p>'}</div>
- </div>
-</div>
- <div class="table-wrap forecast-lead-table-holder"><table class="forecast-lead-table"><caption>Estimación por partido. Mediana e intervalo del 90 % del modelo.</caption><thead><tr><th scope="col">Partido</th><th scope="col">Voto estimado</th><th scope="col">Escaños estimados</th></tr></thead><tbody>${major.map(([id,v])=>`<tr><th scope="row">${h(PARTIES.find(x=>x.id===id)?.label||id)}${caution.has(id)?' <small class="warn">sin encuestas propias</small>':''}</th><td><b>${fmt(v.voto[0])} %</b><small>${fmt(v.voto[1])}–${fmt(v.voto[2])} %</small></td><td><strong>${fmt(v.escanos[0],0)}</strong><small>${fmt(v.escanos[1],0)}–${fmt(v.escanos[2],0)}</small></td></tr>`).join('')}</tbody></table></div>
- <div class="forecast-lead-kpis" aria-label="Indicadores del pronóstico; consultar su explicación">
-  <a href="#pronostico-principal" class="forecast-mini-kpi"><span>Ventaja de la primera fuerza</span><strong>${second?fmt(first[1].escanos[0]-second[1].escanos[0],0):'—'} <small>escaños</small></strong><small>Diferencia entre las medianas de primero y segundo</small></a>
-  <a href="#pronostico-bloques" class="forecast-mini-kpi"><span>PP + Vox respecto a 176</span><strong>${p.bloques?.['PP+VOX']&&Number.isFinite(p.bloques['PP+VOX'].mediana)?signed(p.bloques['PP+VOX'].mediana-176,0):'—'} <small>escaños</small></strong><small>Margen sobre la mayoría en la mediana del bloque</small></a>
-  <a href="#pronostico-evaluacion" class="forecast-mini-kpi"><span>Horquilla de la primera fuerza</span><strong>${first&&Number.isFinite(first[1].escanos?.[1])&&Number.isFinite(first[1].escanos?.[2])?fmt(first[1].escanos[2]-first[1].escanos[1],0):'—'} <small>escaños</small></strong><small>Amplitud del intervalo simulado 90 %; sin calibración demostrada</small></a>
- </div></div>
- <p class="muted forecast-lead-foot">Pronóstico condicionado a las fuentes y supuestos del modelo. ${h(p.n??'—')} simulaciones; los intervalos expresan incertidumbre, no garantías. ${parties.length>major.length?`Se muestran ${major.length} de ${parties.length} candidaturas; <a href="#pronostico">ver todas</a>.`:' '} <a href="#metodologia">Metodología y fuentes</a>.</p>`;
+function seatTrend(cuts,id){
+ const values=cuts.map(c=>c.escanos?.[id]?.[0]);
+ const known=values.filter(Number.isFinite);
+ if(known.length<2)return '<small class="panorama-trend-empty">Historial insuficiente</small>';
+ const lo=Math.min(...known),hi=Math.max(...known);
+ const start=Date.parse(cuts[0].fecha),end=Date.parse(cuts.at(-1).fecha);
+ const x=c=>4+112*(Date.parse(c.fecha)-start)/(end-start);
+ const y=v=>hi===lo?15:25-20*(v-lo)/(hi-lo);
+ let penDown=false;
+ const path=cuts.map((cut,i)=>{
+  if(!Number.isFinite(values[i])){penDown=false;return '';}
+  const command=penDown&&cut.version===cuts[i-1].version?'L':'M';
+  penDown=true;
+  return `${command}${x(cut).toFixed(1)} ${y(values[i]).toFixed(1)}`;
+ }).join(' ');
+ const points=cuts.map((cut,i)=>Number.isFinite(values[i])?
+  `<circle cx="${x(cut).toFixed(1)}" cy="${y(values[i]).toFixed(1)}" r="${i===cuts.length-1?2.8:1.15}"><title>${h(fdate(cut.fecha))} · ${fmt(values[i],0)} escaños</title></circle>`:'').join('');
+ return `<svg viewBox="0 0 120 30" role="img" aria-label="Evolución de escaños. Mínimo ${lo}, máximo ${hi}."><path d="${path}"/>${points}</svg>`;
 }
 
+export function renderForecastOverview(forecast,history,average){
+ const p=forecast?.principal;
+ if(!p?.partidos)return '<p class="empty">Pronóstico no disponible para este corte.</p>';
+ const parties=Object.entries(p.partidos).sort((a,b)=>b[1].escanos[0]-a[1].escanos[0]||b[1].voto[0]-a[1].voto[0]);
+ const [first,second]=parties;
+ const name=id=>PARTIES.find(x=>x.id===id)?.label||id;
+ const cutoff=Date.parse(forecast.corte);
+ const byDate=new Map();
+ for(const cut of history||[]){
+  const day=Date.parse(cut?.fecha);
+  if(day<cutoff&&day>=cutoff-29*86400000)byDate.set(cut.fecha,cut);
+ }
+ byDate.set(forecast.corte,{fecha:forecast.corte,version:forecast.version_modelo,escanos:Object.fromEntries(parties.map(([id,v])=>[id,v.escanos]))});
+ const cuts=[...byDate.values()].sort((a,b)=>a.fecha.localeCompare(b.fecha));
+ const blocks=['PP+VOX','PSOE+SUMAR+PODEMOS'].filter(id=>Number.isFinite(p.bloques?.[id]?.mediana));
+ const caution=new Set(p.sin_encuestas||[]);
+ return `<div class="forecast-lead-content">
+ <div class="panorama-snapshot forecast-lead-kpis">
+  ${first?`<a href="#pronostico-principal"><span>Primera fuerza estimada</span><strong>${h(name(first[0]))} · ${fmt(first[1].escanos[0],0)} escaños</strong>${second?`<small title="Diferencia entre las medianas de escaños">${signed(first[1].escanos[0]-second[1].escanos[0],0)} frente a ${h(name(second[0]))}</small>`:''}</a>`:''}
+  ${blocks.map(id=>{const b=p.bloques[id];return `<a href="#pronostico-bloques"><span>${h(BLOCKS.find(x=>x.id===id).label)}</span><strong>${fmt(b.mediana,0)} escaños</strong>${Number.isFinite(b.p_mayoria)?`<small>${fmt(b.p_mayoria*100,0)} % de simulaciones con mayoría</small>`:''}</a>`;}).join('')}
+  <div><span>Mayoría absoluta</span><strong>176 escaños</strong></div>
+ </div>
+ <div class="panorama-chart-heading"><h3>Evolución de escaños por partido</h3><span>${cuts.length>1?`${h(fdate(cuts[0].fecha))} – ${h(fdate(forecast.corte))} · escala vertical propia por partido`:history===null?'Cargando historial…':'Historial no disponible'} · <a href="#pronostico-evolucion">Ver cortes</a></span></div>
+ <div class="panorama-party-grid">${parties.map(([id,v])=>{
+  const published=average?.partidos[id]?.valor;
+  const previous=cuts.at(-2);
+  const prior=previous?.escanos?.[id]?.[0];
+  const change=Number.isFinite(prior)&&previous.version===forecast.version_modelo?v.escanos[0]-prior:null;
+  return `<article class="panorama-party">
+   <h4>${h(name(id))}</h4>
+   <div class="panorama-party-score"><b>${fmt(v.escanos[0],0)} <small>esc.</small></b><span>${fmt(v.voto[0])} % voto</span></div>
+   ${history===null?'':seatTrend(cuts,id)}
+   <small class="panorama-party-meta">Intervalo 90 % · ${fmt(v.escanos[1],0)}–${fmt(v.escanos[2],0)} esc.</small>
+   ${change!=null?`<small class="panorama-party-meta">${change===0?'Sin cambio':signed(change,0)+' esc.'} desde el corte anterior</small>`:''}
+   <small class="panorama-party-meta">${Number.isFinite(published)?`Promedio publicado · ${fmt(published)} %`:'Promedio publicado sin dato'}${caution.has(id)?' · Sin encuestas propias':''}</small>
+  </article>`;
+ }).join('')}</div>
+ </div>`;
+}
+
+function drawForecastLead(ctx){
+ const el=document.querySelector('#forecast-lead-results');
+ if(el)el.innerHTML=renderForecastOverview(ctx.forecast,ctx.history,ctx.prom);
+}
 
 function drawEditorial(ctx){
  const el=document.querySelector('#panorama-editorial');if(!el)return;
@@ -238,7 +282,7 @@ function bindPanoramaTabs(root){
 export async function bindHomeImpact(polls){
  const root=document.querySelector('#impact');if(!root)return;
  bindPanoramaTabs(root);
- const ctx={polls,corte:new Date().toISOString().slice(0,10),forecast:null,sin:null,con:null,ext:[],entradas:null};
+ const ctx={polls,corte:new Date().toISOString().slice(0,10),forecast:null,history:null,sin:null,con:null,ext:[],entradas:null};
  try{
   const r=await fetch('data/modelo/pronostico.json',{cache:'no-store'});if(!r.ok)throw Error('pronóstico no publicado (HTTP '+r.status+')');
   ctx.forecast=await r.json();
@@ -248,8 +292,17 @@ export async function bindHomeImpact(polls){
   const sub=document.querySelector('#matrix-sub');if(sub)sub.textContent='Motor 29N no disponible: '+err.message+'. Solo se muestra el promedio publicado.';
  }
  if(!root.isConnected)return;
- const redraw=()=>{try{computeLayer1(ctx);drawMatrix(ctx);drawEditorial(ctx);document.querySelector('#home-counts').innerHTML=renderRecuento({forecast:ctx.forecast,archivo:polls.length,seleccion:{estudios:ctx.prom.estudios.filter(e=>e.weight>0).length,institutos:ctx.prom.institutos,detalle:`${state.ventana} días · ${state.base==='archivo'?'archivo verificado':'entradas del motor'}${state.cis?'':' · sin CIS'}`}});}catch(e){document.querySelector('#matrix-table').innerHTML=`<tbody><tr><td role="alert">No se puede calcular: ${h(e.message)}</td></tr></tbody>`;}};
- drawFacts(ctx);drawForecastLead(ctx);redraw();drawBlocks(ctx);drawChanges(ctx);drawCocina(ctx);
+ const redraw=()=>{try{computeLayer1(ctx);drawForecastLead(ctx);drawMatrix(ctx);drawEditorial(ctx);document.querySelector('#home-counts').innerHTML=renderRecuento({forecast:ctx.forecast,archivo:polls.length,seleccion:{estudios:ctx.prom.estudios.filter(e=>e.weight>0).length,institutos:ctx.prom.institutos,detalle:`${state.ventana} días · ${state.base==='archivo'?'archivo verificado':'entradas del motor'}${state.cis?'':' · sin CIS'}`}});}catch(e){document.querySelector('#matrix-table').innerHTML=`<tbody><tr><td role="alert">No se puede calcular: ${h(e.message)}</td></tr></tbody>`;}};
+ drawFacts(ctx);redraw();drawBlocks(ctx);drawChanges(ctx);drawCocina(ctx);
+ if(ctx.forecast){
+  fetch('data/modelo/historial.json',{cache:'no-store'})
+   .then(r=>r.ok?r.json():[])
+   .catch(()=>[])
+   .then(history=>{
+    ctx.history=Array.isArray(history)?history:[];
+    if(root.isConnected)drawForecastLead(ctx);
+   });
+ }
  document.querySelectorAll('input[name=mview]').forEach(i=>i.addEventListener('change',()=>{state.vista=i.value;redraw();}));
  const bindSel=(id,fn)=>{const el=document.querySelector(id);if(!el)return;el.addEventListener('change',()=>{fn(el.value);redraw();});};
  const sync=(id,v)=>{const el=document.querySelector(id);if(el)el.value=String(v);};
