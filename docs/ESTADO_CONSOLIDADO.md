@@ -4,7 +4,7 @@
 
 ## Funciones en el código principal
 
-- **Panorama (`#dashboard`):** cifras del Motor 29N, bloques, KPIs y pestañas de comparación.
+- **Panorama (`#dashboard`):** titular con la estimación de referencia, reparto de escaños y bloques, tabla por partido, evolución, contraste de capas y detalle plegado; sin pestañas ni altura fija.
 - **Promedios (`#analisis`):** encuestas originales comparables por instituto, con fechas, muestras, pesos editables y una proyección territorial experimental separada.
 - **Acontecimientos (`#contexto`):** diferencias descriptivas entre dos oleadas del mismo instituto y enlaces a fuentes; no implica causalidad.
 - **Cocina (`#cocina`):** tabla inicial del CIS 3582, seis partidos, denominadores y prueba de recetas con CIS 3411/3415. No se reconstruye la fórmula interna del CIS.
