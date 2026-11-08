@@ -45,7 +45,8 @@ test('Casas excluidas quedan visibles, pero no se confunden con quienes forman e
 test('Acontecimientos muestra el hecho y las dos encuestas originales con comparabilidad limitada',()=>{
  const reading=analizarAcontecimiento(events[0],polls,{ventana:30});
  const html=renderEventVisual(reading,events[0]);
- assert.equal(reading.fichasPosteriores.length,1);
+ assert.ok(reading.fichasPosteriores.some(p=>p.id==='sigma-dos-2026-11-02'));
+ assert.ok(reading.fichasPosteriores.some(p=>p.id==='celeste-tel-2026-11-04'));
  assert.match(html,/Sigma Dos/);
  assert.match(html,/Datos|Evidencia observada/);
  assert.match(html,/24,6 %/);
