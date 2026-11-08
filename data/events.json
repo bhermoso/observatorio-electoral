@@ -42,5 +42,36 @@
       }
     ],
     "notes": "La marca indica el día de la votación en Estados Unidos. El seguimiento español es descriptivo."
+  },
+  {
+    "id": "debate-rtve-catalunya-2026-11-08",
+    "kind": "documented-event",
+    "date": "2026-11-08",
+    "datePrecision": "day",
+    "title": "Primer debate televisado de la campaña: candidatos catalanes en RTVE",
+    "shortTitle": "Debate RTVE Cataluña",
+    "category": "Campaña electoral",
+    "location": "Estudios de RTVE Catalunya, Sant Cugat del Vallès (Barcelona)",
+    "scope": "Cataluña · seguimiento de campaña",
+    "summary": "Debate organizado por RTVE Catalunya entre seis candidatos catalanes a las generales del 29 de noviembre: Jordi Hereu (PSC), Ernest Urtasun (Comuns-Front Ampli), Gabriel Rufián (ERC), Míriam Nogueras (Junts), Xavier García Albiol (PP) y Juan José Aizcorbe (Vox). Programado a las 22:00, con emisión en La 1 (desconexión para Cataluña), La 2Cat, Ràdio 4 y RTVE Play. Es el primer debate televisado de la campaña y no es un debate de ámbito nacional.",
+    "verified": "2026-11-08",
+    "sources": [
+      {
+        "publisher": "Ara",
+        "published": "2026-11-08",
+        "url": "https://es.ara.cat/politica/elecciones-generales/candidatos-catalanes-29-n-ven-caras-debate-electoral_1_5904326.html"
+      },
+      {
+        "publisher": "The Objective",
+        "published": "2026-11-07",
+        "url": "https://theobjective.com/espana/politica/2026-11-07/pp-debate-electoral-tve-aplazamiento/"
+      },
+      {
+        "publisher": "Agencia EFE (vía Infobae)",
+        "published": "2026-11-08",
+        "url": "https://www.infobae.com/espana/agencias/2026/11/08/temas-del-dia-de-efe-espana-del-domingo-8-de-noviembre-de-2026-1330-hors/"
+      }
+    ],
+    "notes": "Registrado el 8 de noviembre a partir de las informaciones previas a la emisión; las fuentes confirman la convocatoria, la hora y los participantes, no el desarrollo del debate. Según The Objective, RTVE lo aplazó desde el 2 de noviembre tras el accidente de Urda, y el PP, que había anunciado que no acudiría, rectificó. La agenda de EFE del mismo día no incluye a García Albiol entre los participantes; Ara (8 nov) y The Objective (7 nov) sí lo incluyen. No se asigna signo, intensidad ni corrección electoral al acontecimiento."
   }
 ]
