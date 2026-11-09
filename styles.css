@@ -968,3 +968,4 @@ table.portada-tabla{width:100%;border-collapse:collapse;font-size:14px}
 .impact-track{height:9px;background:#eef2ec;border-radius:5px;overflow:hidden}
 .impact-track div{height:100%;background:#2f8263}
 @media(max-width:640px){.impact-line{grid-template-columns:90px minmax(0,1fr) 52px}.impact-line small{grid-column:1/-1}.portada-plegable{padding:0 14px}}
+.fc-estudios td.fc-antiguo{font-weight:700;white-space:nowrap}

@@ -5,6 +5,7 @@ import {renderTrazabilidad,bindTrazabilidad} from './trazabilidad.mjs';
 import {renderInvestidura,bindInvestidura} from './investidura.mjs';
 import {renderValidationDashboard,bindValidationDashboard} from './dashboard-validacion.mjs';
 import {renderRecuento} from './recuento-encuestas.mjs';
+import {recientesPrimero,porTexto,antiguedad} from './orden.mjs';
 import {renderEvaluacion2019,bindEvaluacion2019} from './evaluacion-2019.mjs';
 import {renderHomologacion2019,bindHomologacion2019} from './homologacion-2019.mjs';
 
@@ -113,20 +114,24 @@ function territory(f){
  <p class="muted">La proyección experimental de <a href="#analisis">Promedios</a> es otro cálculo (promedio + ajuste proporcional) y no es este pronóstico.</p>`;
 }
 function sources(f){
- const ent=f.entradas||[],exc=f.excluidas||[];
+ const ent=[...(f.entradas||[])].sort(recientesPrimero({fin:e=>e.campo_fin,pub:e=>e.publicacion,casa:e=>e.casa}));
+ const exc=[...(f.excluidas||[])].sort((a,b)=>porTexto(a.casa,b.casa)||porTexto(a.estudio,b.estudio));
+ const edad=e=>antiguedad(e.campo_fin,f.corte);
+ const antiguos=ent.filter(e=>edad(e).dias>60);
  const sv=f.sensibilidad_fuentes;
  return `<p>${ent.length} estudios entran en el pronóstico (${Object.entries(f.auditoria_fuentes?.por_origen||{}).map(([k,v])=>`${v} ${h(k)}`).join(', ')}). ${exc.length} se excluyen. Criterio: ${h(f.auditoria_fuentes?.criterio||'')}.</p>
  <p class="muted">«verificada» = ficha del archivo del Observatorio con original consultado. «terceros-29n» = registro de un repositorio externo que enlaza la publicación; puede no incluir toda la ficha técnica.</p>
  <p class="muted">Si no consta publicación, el motor supone fin de campo + 2 días para decidir cuándo estaba disponible. Los cargadores históricos usan n=1000 cuando falta muestra; se marca como supuesta en las entradas que conservan ese indicador. La correlación entre bloques (0,5) es un supuesto, no una estimación independiente. La sensibilidad solo verificadas conserva el método, pero usa menos simulaciones y reajusta el inicio a su selección.</p>
- <div class="table-wrap"><table><caption>Estudios usados</caption><thead><tr><th>Casa</th><th>Campo</th><th>Publicación</th><th>Muestra</th><th>Origen</th><th>Contraste con el original</th><th>PP · PSOE · Vox</th><th>Ancla</th></tr></thead><tbody>${ent.map(e=>`<tr><td>${e.url?`<a href="${h(e.url)}" target="_blank" rel="noopener">${h(e.casa)}</a>`:h(e.casa)}</td><td>${h(e.campo_ini?fdate(e.campo_ini)+' – ':'')}${h(fdate(e.campo_fin))}</td><td>${h(fdate(e.publicacion))}</td><td>${fmt(e.n,0)}${e.n_supuesto?' (supuesta)':''}</td><td>${h(e.origen)}</td><td class="${CONTRASTE[e.contraste]?.[1]||'warn'}">${e.contraste_url?`<a href="${h(e.contraste_url)}" target="_blank" rel="noopener">${h(CONTRASTE[e.contraste]?.[0]||e.contraste||'—')}</a>`:h(CONTRASTE[e.contraste]?.[0]||e.contraste||'—')}</td><td>${['PP','PSOE','VOX'].map(p=>fmt(e.voto?.[p])).join(' · ')}</td><td>${e.ancla_privadas?'privadas':'—'}</td></tr>`).join('')}</tbody></table></div>
+ <p>Ordenados del más reciente al más antiguo por el fin del trabajo de campo. «Antigüedad» cuenta los días entre ese fin y el corte del ${h(fdate(f.corte))}. El motor sitúa cada estudio en el día central de su campo y deja que la intención de voto cambie de un día a otro, de modo que un estudio pesa menos en la estimación del corte cuanto más antiguo es.${antiguos.length?` ${antiguos.length===1?'Un estudio tiene':antiguos.length+' estudios tienen'} más de dos meses: ${antiguos.map(e=>`${h(e.casa)} (${h(edad(e).texto)})`).join(', ')}.`:''}</p>
+ <div class="table-wrap"><table class="fc-estudios"><caption>Estudios usados</caption><thead><tr><th>Casa</th><th>Campo</th><th>Antigüedad al corte</th><th>Publicación</th><th>Muestra</th><th>Origen</th><th>Contraste con el original</th><th>PP · PSOE · Vox</th><th>Ancla</th></tr></thead><tbody>${ent.map(e=>`<tr><td>${e.url?`<a href="${h(e.url)}" target="_blank" rel="noopener">${h(e.casa)}</a>`:h(e.casa)}</td><td>${h(e.campo_ini?fdate(e.campo_ini)+' – ':'')}${h(fdate(e.campo_fin))}</td><td class="${edad(e).dias>60?'warn fc-antiguo':''}">${h(edad(e).texto)}</td><td>${h(fdate(e.publicacion))}</td><td>${fmt(e.n,0)}${e.n_supuesto?' (supuesta)':''}</td><td>${h(e.origen)}</td><td class="${CONTRASTE[e.contraste]?.[1]||'warn'}">${e.contraste_url?`<a href="${h(e.contraste_url)}" target="_blank" rel="noopener">${h(CONTRASTE[e.contraste]?.[0]||e.contraste||'—')}</a>`:h(CONTRASTE[e.contraste]?.[0]||e.contraste||'—')}</td><td>${['PP','PSOE','VOX'].map(p=>fmt(e.voto?.[p])).join(' · ')}</td><td>${e.ancla_privadas?'privadas':'—'}</td></tr>`).join('')}</tbody></table></div>
  <div class="table-wrap"><table><caption>Estudios excluidos y motivo</caption><thead><tr><th>Casa</th><th>Registro</th><th>Origen</th><th>Motivo</th></tr></thead><tbody>${exc.map(x=>`<tr><td>${h(x.casa)}</td><td>${x.url?`<a href="${h(x.url)}" target="_blank" rel="noopener">${h(x.estudio)}</a>`:h(x.estudio)}</td><td>${h(x.origen)}</td><td>${h(x.motivo)}</td></tr>`).join('')||'<tr><td colspan="4">Ninguno</td></tr>'}</tbody></table></div>
  ${sv?`<p><b>Sensibilidad a las fuentes de terceros.</b> Con el mismo método y solo los ${sv.n_estudios} registros verificados: ${['PP','PSOE','VOX'].map(p=>`${label(p)} ${fmt(sv.partidos?.[p]?.voto?.[0])} % (${fmt(sv.partidos?.[p]?.escanos?.[0],0)} esc.)`).join(' · ')}; PP + Vox ≥176 en el ${fmt((sv.bloques?.['PP+VOX']?.p_mayoria||0)*100,0)} % de las simulaciones.</p>`:''}`;
 }
 function external(f){
- const x=capasExternas(f);
+ const x=[...capasExternas(f)].sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha))||porTexto(a.nombre,b.nombre));
  if(!x.length)return '<p class="empty">No hay modelos externos registrados.</p>';
  return `<div class="table-wrap"><table><thead><tr><th>Productor</th><th>Fecha</th><th>PP</th><th>PSOE</th><th>Vox</th><th>Sumar</th><th>Escaños publicados</th><th>Método declarado</th><th>Verificación</th></tr></thead><tbody>${x.map(r=>`<tr><td>${r.url?`<a href="${h(r.url)}" target="_blank" rel="noopener">${h(r.nombre)}</a>`:h(r.nombre)}</td><td>${h(fdate(r.fecha))}<small> ${h(r.fecha_tipo||'')}</small></td>${['PP','PSOE','VOX','SUMAR'].map(p=>`<td>${Number.isFinite(r.partidos[p])?fmt(r.partidos[p]):'—'}</td>`).join('')}<td>${Object.entries(r.escanosPartidos).map(([p,v])=>`${h(label(p))} ${v}`).join(' · ')||'—'}</td><td>${h(r.metodo||'No declarado')}</td><td class="${r.verificado?'ok':'warn'}">${r.verificado?'Original consultado':'Original no consultado'}${r.aproximado?' · aproximado':''}<small> ${h(r.notas||'')}</small></td></tr>`).join('')}</tbody></table></div>
- <p class="muted">No se suman a nuestros promedios: sus encuestas pueden coincidir con las nuestras y se contarían dos veces.</p>`;
+ <p class="muted">Del registro más reciente al más antiguo. No se suman a nuestros promedios: sus encuestas pueden coincidir con las nuestras y se contarían dos veces.</p>`;
 }
 export async function bindPronostico(){
  const err=document.querySelector('#fc-error');if(!err)return;
