@@ -37,7 +37,7 @@ test('El catálogo conserva área, originales, estado y formatos sin anunciar ci
  assert.ok(d.estudios.some(s=>s.productor==='icps'&&s.estado==='registro_requerido'));
  assert.ok(d.estudios.some(s=>s.productor==='cis'&&s.estado==='formulario_requerido'));
 });
-test('La vista está integrada en Cocina, Encuestas y la compilación, y no muestra filas individuales',()=>{
+test('La vista está integrada en Cocina y la compilación, y no muestra filas individuales',()=>{
  const html=renderCatalogoMicrodatos();
  assert.match(html,/archivo-microdatos/);
  assert.match(html,/en ampliación/);
@@ -46,8 +46,8 @@ test('La vista está integrada en Cocina, Encuestas y la compilación, y no mues
  const build=read('../scripts/build.mjs');
  assert.ok(cocina.includes('renderCatalogoMicrodatos()'));
  assert.ok(cocina.includes('bindCatalogoMicrodatos()'));
- assert.ok(app.includes('renderCatalogoMicrodatos()'));
- assert.ok(app.includes('bindCatalogoMicrodatos()'));
+ // Menú de seis pestañas: los microdatos viven solo en Cocina.
+ assert.ok(!/function pollPage\(\)\{[^\n]*renderCatalogoMicrodatos/.test(app));
  assert.ok(build.includes("'catalogo-microdatos.mjs'"));
  assert.ok(build.includes("fs.cpSync('data'"));
  for(const forbidden of ['id_entrevistado','record_level','entregas_personales','respuestas_por_persona'])assert.ok(!JSON.stringify(d).includes('"'+forbidden+'"'));

@@ -56,7 +56,8 @@ export function canonicalValues(values){
 /** Convierte las entradas del Motor 29N en registros compatibles con selectStudies. */
 export function pollsFromModelInputs(entradas){
  return (entradas||[]).map(e=>({id:e.estudio,kind:'poll-estimate',institute:e.casa,fieldStart:e.campo_ini||e.campo_fin,fieldEnd:e.campo_fin,
-  published:e.publicacion||new Date(Date.parse(e.campo_fin+'T00:00:00Z')+2*86400000).toISOString().slice(0,10),scope:'España',values:Object.fromEntries(Object.entries(e.voto||{})),origin:e.origen}));
+  published:e.publicacion||new Date(Date.parse(e.campo_fin+'T00:00:00Z')+2*86400000).toISOString().slice(0,10),scope:'España',values:Object.fromEntries(Object.entries(e.voto||{})),origin:e.origen,
+  sample:e.n_supuesto?null:e.n,mode:e.modo||'',source:e.contraste_url||e.url||'',title:e.estudio,publisher:'',seats:null}));
 }
 
 /**
