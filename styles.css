@@ -907,7 +907,7 @@ table.portada-tabla{width:100%;border-collapse:collapse;font-size:14px}
 .series-mark{fill:var(--series-color)}
 .series-mark path{fill:none;stroke:var(--series-color);stroke-width:2.5;stroke-linejoin:round}
 .series-mark.house circle{fill-opacity:.85}
-.series-mark.house-faint circle{fill-opacity:.35}
+.series-mark.house-faint circle{fill-opacity:.5}
 .series-mark.external circle{fill:#fff;stroke:var(--series-color);stroke-width:1.8}
 .series-legend{margin-top:8px}
 .series-legend button[aria-pressed="false"]{opacity:.5;text-decoration:line-through}
@@ -1073,3 +1073,8 @@ table.caso-tabla{border-collapse:collapse;font-size:13px;margin:6px 0;width:auto
 .hub-muestra-marca{width:3px;height:12px;background:#16231e;margin-left:6px}
 .hub-recuento{font-size:14px;margin:-4px 0 12px;color:var(--ink)}
 @media(max-width:520px){.hub-barras li,.hub-barras-cab{grid-template-columns:78px 1fr 58px 52px;gap:6px}}
+.series-final line{stroke:var(--series-color);stroke-width:1;opacity:.5}
+.series-final text{font:700 12px Manrope,system-ui,sans-serif;fill:var(--series-color)}
+.series-final .n{font-weight:500;fill:#3b4a45}
+.series-panel-title{font:700 13px Manrope,system-ui,sans-serif;color:#3b4a45;margin:10px 0 0}
+.portada-grafico svg+svg{margin-top:6px}
