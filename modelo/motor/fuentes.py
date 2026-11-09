@@ -222,22 +222,35 @@ def seleccion_pronostico(encuestas, ciclo="2023-26"):
     3. Registro de terceros cuyo campo se solapa con un registro verificado de la
        misma casa: probable submuestra u oleada acumulada; se evita contar dos veces
        las mismas entrevistas.
-    Los registros de terceros que superan las tres reglas entran con su origen
+    4. Excepción a la regla 3 (decisión de Blas Hermoso, 9 nov 2026): si el registro
+       solapado es una oleada de prensa con el original consultado y su campo termina
+       después que el de la verificada, entra la oleada posterior y sale la anterior.
+       Sigue contándose una sola vez cada entrevista, pero con la medición más reciente.
+    Los registros de terceros que superan las reglas entran con su origen
     marcado; `PROCEDENCIA.md` documenta la fuente y los límites de cada uno.
     """
     del_ciclo = [e for e in encuestas if e["ciclo"] == ciclo]
     verificadas = [e for e in del_ciclo if e["origen"] == "verificada"]
     aptas, excluidas = [], []
+    sustituida_por = {}
+    for e in del_ciclo:
+        if e["origen"] == "prensa-original-consultado" and not e.get("campo_supuesto"):
+            for v in verificadas:
+                if v["casa"] == e["casa"] and _solapa_campo(e, v) and e["campo_fin"] > v["campo_fin"]:
+                    sustituida_por[v["estudio"]] = e["estudio"]
     for e in del_ciclo:
         motivo = None
-        if e["origen"] == "prensa-sin-verificar" and e.get("contraste_url") and e.get("campo_supuesto"):
+        if e["estudio"] in sustituida_por:
+            motivo = f"Sustituida por la oleada posterior {sustituida_por[e['estudio']]} de la misma casa, con campo solapado"
+        elif e["origen"] == "prensa-sin-verificar" and e.get("contraste_url") and e.get("campo_supuesto"):
             motivo = "Original consultado, pero no publica la fecha de fin del trabajo de campo"
         elif e["origen"] == "prensa-sin-verificar":
             motivo = "Cita de prensa sin original ni ficha técnica verificados"
         elif e["origen"] != "verificada" and e.get("campo_supuesto"):
             motivo = "Fecha de campo no publicada (supuesta a partir de la publicación)"
         elif e["origen"] != "verificada":
-            gemela = next((v for v in verificadas if v["casa"] == e["casa"] and _solapa_campo(e, v)), None)
+            gemela = next((v for v in verificadas if v["casa"] == e["casa"] and _solapa_campo(e, v)
+                           and sustituida_por.get(v["estudio"]) != e["estudio"]), None)
             if gemela is not None:
                 motivo = f"Campo solapado con el registro verificado {gemela['estudio']} de la misma casa"
         if motivo:
