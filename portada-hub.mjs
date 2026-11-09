@@ -155,3 +155,13 @@ export function renderAccesos({forecast,polls=[],events=[],references=[]}){
  ];
  return `<nav class="hub-accesos" aria-label="Secciones del Observatorio">${items.map(([href,t,a,b])=>`<a href="${href}"><b>${h(t)}</b><span>${h(a)}</span>${b?`<small>${h(b)}</small>`:''}</a>`).join('')}</nav>`;
 }
+
+/** Todas las encuestas registradas (pronóstico, fuera y pendientes), la más reciente primero. */
+export function renderTodasEncuestas(forecast,polls){
+ const lista=encuestasRecientes(forecast,polls,{limite:1000}).filter(x=>String(x.fin||x.pub)>='2026-01-01');
+ if(!lista.length)return '<p class="empty">Sin encuestas registradas.</p>';
+ const dentro=lista.filter(x=>x.estado[0]==='ok').length;
+ const cel=(x,k)=>Number.isFinite(x.voto[k])?fmt(x.voto[k]):'—';
+ return `<p class="muted">${lista.length} encuestas de 2026 registradas: ${dentro} en el pronóstico y ${lista.length-dentro} fuera o pendientes. Por fecha de publicación, la más reciente primero. «—»: no publicado o no transcrito.</p>
+ <div class="table-wrap"><table class="todas-encuestas"><thead><tr><th>Casa</th><th>Publicación</th><th>Campo</th><th>n</th>${PRINCIPALES.map(k=>`<th class="num">${h(short(k))}</th>`).join('')}<th>Estado</th></tr></thead><tbody>${lista.map(x=>`<tr><th scope="row">${x.url?`<a href="${h(x.url)}" target="_blank" rel="noopener">${h(x.casa)} ↗</a>`:h(x.casa)}</th><td>${h(fday(x.pub))}</td><td>${x.sinFin?(x.ini?'desde '+h(fday(x.ini)):'no publicado'):`${x.ini?h(fday(x.ini))+'–':''}${h(fday(x.fin))}`}</td><td>${x.n?Number(x.n).toLocaleString('es-ES'):'—'}</td>${PRINCIPALES.map(k=>`<td class="num">${cel(x,k)}</td>`).join('')}<td><span class="hub-estado ${x.estado[0]}">${h(x.estado[1])}</span>${x.estado[2]?`<small>${h(x.estado[2])}</small>`:''}</td></tr>`).join('')}</tbody></table></div>`;
+}

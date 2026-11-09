@@ -70,7 +70,9 @@ test('Panorama es un resumen sin pliegues: titular, hemiciclo y promedio, evoluc
  assert.match(html,/<h1 id="impact-heading">Panorama 29N<\/h1>/);
  const app=fs.readFileSync('app.mjs','utf8');
  assert.match(app,/function dashboard\(\)\{[\s\S]*?return renderHomeImpact\(references,events\);/);
- assert.match(app,/classList\.toggle\('dashboard-route',route==='dashboard'\)/);
+ // Portada única: Panorama se monta una vez en #main y las secciones se abren en el visor.
+ assert.match(app,/if\(!portadaLista\)\{\$\('#main'\)\.innerHTML=dashboard\(\);bindHomeImpact\(polls,events\)/);
+ assert.match(app,/\$\('#visor-contenido'\)\.innerHTML=/);
  const css=fs.readFileSync('styles.css','utf8');
  assert.doesNotMatch(css,/body\.dashboard-route\{[^}]*height:100dvh/);
  assert.doesNotMatch(css,/body\.dashboard-route #main\{[^}]*overflow:hidden/);
