@@ -1,4 +1,4 @@
-import {PARTIES,canonicalValues,capasExternas} from './capas.mjs';
+import {PARTIES,canonicalValues,capasExternas,productorExterno} from './capas.mjs';
 
 const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const date=new Intl.DateTimeFormat('es-ES',{day:'numeric',month:'short',timeZone:'UTC'});
@@ -48,7 +48,7 @@ export function collectSeries(polls,forecast,history,cutoff){
  const external=new Map();
  for(const p of capasExternas(forecast)){
   if(p.verificado!==true||p.fecha<'2026-01-01'||p.fecha>cutoff)continue;
-  const label=p.nombre;
+  const label=productorExterno(p);
   if(!external.has(label))external.set(label,[]);
   external.get(label).push({date:p.fecha,values:p.partidos,source:p.url,notes:p.metodo,approximate:p.aproximado});
  }
@@ -76,8 +76,9 @@ export function niceScale(values){
  return {low,high,ticks};
 }
 
-export function renderSeriesChart(series,events,start,end,party,selectedEvent,width=910,scaleSeries=series){
- const left=46,right=width-30,top=29,bottom=width<550?204:267;
+export function renderSeriesChart(series,events,start,end,party,selectedEvent,width=910,scaleSeries=series,{etiquetas=false,alto=null,numeros=true,titulo=''}={}){
+ const left=46,right=width-(etiquetas?(width<550?92:110):30),top=numeros?29:12;
+ const bottom=alto??(width<550?204:267);
  const first=Date.parse(start),last=Date.parse(end);
  const x=d=>left+(Date.parse(d)-first)/Math.max(day,last-first)*(right-left);
  const values=scaleSeries.flatMap(s=>s.points.map(p=>p.value)).filter(Number.isFinite);
@@ -86,7 +87,14 @@ export function renderSeriesChart(series,events,start,end,party,selectedEvent,wi
  const dates=Array.from({length:5},(_,i)=>new Date(first+Math.round((last-first)/day*i/4)*day).toISOString().slice(0,10));
  const axis=ticks.map(v=>`<line x1="${left}" x2="${right}" y1="${y(v)}" y2="${y(v)}"/><text x="${left-7}" y="${y(v)+4}" text-anchor="end">${v.toLocaleString('es-ES')} %</text>`).join('');
  const timeline=dates.map(d=>`<text x="${x(d)}" y="${bottom+23}" text-anchor="middle">${date.format(Date.parse(d))}</text>`).join('');
- const markers=events.map((e,i)=>`<g class="series-event${e.id===selectedEvent?' active':''}"><line x1="${x(e.date)}" x2="${x(e.date)}" y1="${top}" y2="${bottom}"/><circle cx="${x(e.date)}" cy="${i%2===0?12:23}" r="9"/><text x="${x(e.date)}" y="${i%2===0?16:27}" text-anchor="middle">${i+1}</text><title>${escape(e.title)}</title></g>`).join('');
+ const markers=events.map((e,i)=>`<g class="series-event${e.id===selectedEvent?' active':''}"><line x1="${x(e.date)}" x2="${x(e.date)}" y1="${top}" y2="${bottom}"/>${numeros?`<circle cx="${x(e.date)}" cy="${i%2===0?12:23}" r="9"/><text x="${x(e.date)}" y="${i%2===0?16:27}" text-anchor="middle">${i+1}</text>`:''}<title>${escape(e.title)}</title></g>`).join('');
+ // Etiqueta al final de cada línea del modelo: partido y último valor, sin solaparse.
+ let finales='';
+ if(etiquetas){
+  const ult=series.filter(s=>s.type==='model'&&s.points.length).map(s=>{const p=s.points.at(-1);return {s,p,y:y(p.value)};}).sort((a,b)=>a.y-b.y);
+  for(let i=1;i<ult.length;i++)if(ult[i].y-ult[i-1].y<15)ult[i].y=ult[i-1].y+15;
+  finales=ult.map(({s,p,y:yy})=>`<g class="series-final" style="--series-color:${s.color}"><line x1="${x(p.date)+3}" x2="${right+6}" y1="${y(p.value)}" y2="${yy}"/><text x="${right+9}" y="${yy+4}"><tspan class="n">${escape(s.label.replace('Sumar / Frente Amplio','FA').replace('Observatorio · Motor 29N','Motor 29N'))}</tspan> ${fmt(p.value)}</text></g>`).join('');
+ }
  const marks=[...series].reverse().map(s=>{
   // Solo las series del modelo se unen con una línea: entre dos encuestas de una casa no hay medición.
   let previous=null;
@@ -98,7 +106,7 @@ export function renderSeriesChart(series,events,start,end,party,selectedEvent,wi
   const dots=s.points.map(p=>`<circle cx="${x(p.date)}" cy="${y(p.value)}" r="${s.type==='model'?2:s.type==='house-faint'?2.6:4}"><title>${escape(p.house?p.house+' · '+s.label.replace(' · encuestas',''):s.label)} · ${date.format(Date.parse(p.date))} · ${p.approximate?'≈ ':''}${fmt(p.value)} %${p.start&&p.end?' · campo '+date.format(Date.parse(p.start))+'–'+date.format(Date.parse(p.end)):''}</title></circle>`).join('');
   return `<g class="series-mark ${s.type}" style="--series-color:${s.color}">${path?`<path d="${path}"/>`:''}${dots}</g>`;
  }).join('');
- return `<svg viewBox="0 0 ${width} ${bottom+35}" role="img" aria-label="${escape(party)} · evolución del voto estimado y acontecimientos"><g class="series-axis">${axis}${timeline}</g>${markers}${marks}</svg>`;
+ return `<svg viewBox="0 0 ${width} ${bottom+35}" role="img" aria-label="${escape(titulo||party)} · evolución del voto estimado y acontecimientos"><g class="series-axis">${axis}${timeline}</g>${markers}${marks}${finales}</svg>`;
 }
 
 const link=(href,label)=>url(href)?`<a href="${escape(href)}" target="_blank" rel="noopener">${label} ↗</a>`:'';
@@ -128,7 +136,10 @@ export function bindPortadaSeries(root,{polls,forecast,history,events,cutoff}){
  let selectedEvent=null;
  let legendIds='';
  function draw(){
-  const start=period.value>end?end:period.value;
+  const pedido=period.value>end?end:period.value;
+  // El eje empieza en el primer dato del periodo, no en un tramo vacío.
+  const primeros=series.flatMap(s=>s.points.map(p=>p.date)).filter(d=>d>=pedido).sort();
+  const start=primeros.length?new Date(Date.parse(primeros[0])-2*day).toISOString().slice(0,10):pedido;
   const marked=events.filter(e=>e.date>=start&&e.date<=end).sort((a,b)=>a.date.localeCompare(b.date));
   const event=marked.find(e=>e.id===selectedEvent);
   const all=party.value===ALL;
@@ -145,14 +156,21 @@ export function bindPortadaSeries(root,{polls,forecast,history,events,cutoff}){
     })
    :series.map(s=>({...s,points:pick(s,party.value)})).filter(s=>s.points.length);
   find('[data-note]').textContent=all
-   ?'Líneas: estimación del Motor 29N en cada corte. Puntos: encuestas publicadas, en la fecha de publicación. Elige un partido para ver cada casa por separado.'
+   ?'Línea: estimación del Motor 29N en cada corte, con su último valor a la derecha. Puntos: cada encuesta publicada, en su fecha de publicación. Cada panel tiene su propia escala. Elige un partido para ver cada casa por separado.'
    :'Línea: Motor 29N en cada corte. Puntos: cada casa en su fecha de publicación; el detalle indica cuándo se hicieron las entrevistas.';
   const visible=available.filter(s=>!hidden.has(s.owner||s.id));
   const partyLabel=party.selectedOptions[0].textContent;
   drawChart=()=>{
    chartWidth=chart.clientWidth;
-   chart.innerHTML=renderSeriesChart(visible,marked,start,end,partyLabel,selectedEvent,Math.max(280,chartWidth),available)
-   +(visible.length?'':'<p class="series-note">Sin series visibles con datos en este periodo.</p>');
+   const w=Math.max(280,chartWidth);
+   if(all){
+    // Dos paneles con escala propia: con un único eje de 0 a 35 % las líneas parecen planas.
+    const grupo=ids=>s=>ids.includes((s.owner||s.id).replace('modelo-',''));
+    const g1=grupo(['PP','PSOE','VOX']),g2=grupo(['SUMAR','PODEMOS']);
+    chart.innerHTML='<p class="series-panel-title">PP, PSOE y Vox</p>'+renderSeriesChart(visible.filter(g1),marked,start,end,partyLabel,selectedEvent,w,available.filter(g1),{etiquetas:true,titulo:'PP, PSOE y Vox'})
+     +'<p class="series-panel-title">Frente Amplio y Podemos</p>'+renderSeriesChart(visible.filter(g2),marked,start,end,partyLabel,selectedEvent,w,available.filter(g2),{etiquetas:true,alto:w<550?130:160,numeros:false,titulo:'Frente Amplio y Podemos'});
+   }else chart.innerHTML=renderSeriesChart(visible,marked,start,end,partyLabel,selectedEvent,w,available,{etiquetas:true});
+   if(!visible.length)chart.innerHTML+='<p class="series-note">Sin series visibles con datos en este periodo.</p>';
   };
   drawChart();
   find('[data-events]').innerHTML=marked.map((e,i)=>`<button type="button" data-event="${escape(e.id)}" aria-pressed="${event?.id===e.id}"><b>${i+1}</b> ${date.format(Date.parse(e.date))} · ${escape(e.shortTitle||e.title)}</button>`).join('');
