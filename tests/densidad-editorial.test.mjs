@@ -64,8 +64,8 @@ test('Acontecimientos muestra el hecho y las dos encuestas originales con compar
 });
 test('Cifras enlazadas al pronóstico y densidad editorial sin recortar el contenido',()=>{
  const home=fs.readFileSync('home-impact.mjs','utf8');
- assert.match(home,/href="#pronostico-principal"/);
- assert.match(home,/href="#pronostico-bloques"/);
+ assert.match(home,/href="#pronostico"/);
+ assert.match(home,/href="#pronostico-capas"/);
  assert.match(home,/en la estimación central/);
  const css=fs.readFileSync('styles.css','utf8');
  assert.match(css,/body:not\(\.dashboard-route\) #main/);

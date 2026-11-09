@@ -7,6 +7,8 @@ import {renderCatalogoMicrodatos,bindCatalogoMicrodatos} from './catalogo-microd
 import {renderBuscadorMicrodatos,bindBuscadorMicrodatos} from './buscador-microdatos.mjs';
 import {renderEstadoDescargas,bindEstadoDescargas} from './auditoria-microdatos.mjs';
 import {renderPronostico,bindPronostico} from './pronostico-vista.mjs';
+import {renderContraste,bindContraste} from './contraste-capas.mjs';
+import {renderCasosCocina,bindCasosCocina} from './casos-cocina.mjs';
 import {renderAnalysis,bindAnalysis} from './analysis.mjs';
 import {renderEvents,bindEvents} from './events.mjs';
 import {allocate,weightedVotes,simulate} from './engine.mjs';
@@ -53,10 +55,10 @@ function download(obj,name){const url=URL.createObjectURL(new Blob([JSON.stringi
 export const ROUTES=['dashboard','pronostico','encuestas','analisis','contexto','cocina','atlas','laboratorio','metodologia'];
 export function resolveRoute(hash){const full=String(hash||'').replace(/^#/,'')||'dashboard';if(ROUTES.includes(full))return {route:full,anchor:null};const base=full.split('-')[0];return ROUTES.includes(base)?{route:base,anchor:full}:{route:full,anchor:null};}
 let currentRoute=null;
-function render(){const {route,anchor}=resolveRoute(location.hash);const same=route===currentRoute&&anchor&&document.getElementById(anchor);if(same){document.getElementById(anchor).scrollIntoView();return;}disposePollUpdate();currentRoute=route;document.body.classList.toggle('dashboard-route',route==='dashboard');document.querySelectorAll('header nav a').forEach(a=>{a.removeAttribute('aria-current');if(a.hash==='#'+route)a.setAttribute('aria-current','page');});const pages={dashboard,pronostico:renderPronostico,encuestas:pollPage,analisis:()=>renderAnalysis(polls),contexto:()=>renderEvents(events),cocina:renderCocina,atlas:atlasPage,laboratorio:labPage,metodologia:methodsPage};$('#main').innerHTML=(pages[route]||(()=>'<h1>Página no encontrada</h1><a href="#dashboard">Volver al panorama</a>'))();
+function render(){const {route,anchor}=resolveRoute(location.hash);const same=route===currentRoute&&anchor&&document.getElementById(anchor);if(same){document.getElementById(anchor).scrollIntoView();return;}disposePollUpdate();currentRoute=route;document.body.classList.toggle('dashboard-route',route==='dashboard');document.querySelectorAll('header nav a').forEach(a=>{a.removeAttribute('aria-current');if(a.hash==='#'+route)a.setAttribute('aria-current','page');});const pages={dashboard,pronostico:()=>renderPronostico()+renderContraste(),encuestas:pollPage,analisis:()=>renderAnalysis(polls),contexto:()=>renderEvents(events),cocina:()=>renderCocina()+renderCasosCocina(),atlas:atlasPage,laboratorio:labPage,metodologia:methodsPage};$('#main').innerHTML=(pages[route]||(()=>'<h1>Página no encontrada</h1><a href="#dashboard">Volver al panorama</a>'))();
  if(anchor)setTimeout(()=>document.getElementById(anchor)?.scrollIntoView(),400);
  if(route==='dashboard'){bindHomeImpact(polls,events);}
- if(route==='pronostico'){bindPronostico();}
+ if(route==='pronostico'){bindPronostico();bindContraste(polls);}
  if(route==='encuestas'){
   bindBuscadorMicrodatos();
   void bindEstadoDescargas();
@@ -85,7 +87,7 @@ function render(){const {route,anchor}=resolveRoute(location.hash);const same=ro
  }
  if(route==='analisis')bindAnalysis(polls,data);
  if(route==='contexto')bindEvents(events,polls);
- if(route==='cocina')bindCocina();
+ if(route==='cocina'){bindCocina();bindCasosCocina(polls);}
  if(route==='atlas'){$('#atlas-search').oninput=filterAtlas;$('#atlas-order').onchange=filterAtlas;filterAtlas();detail();}
  if(route==='laboratorio'){$('#calculate').onclick=calculate;$('#lab-scope').onchange=calculate;$('#trace-district').onchange=showTrace;$('#reset-lab').onclick=()=>{weights={};render();};$('#export-lab').onclick=()=>{calculate();if(lastScenario)download(lastScenario,'oee-simulacion.json');};calculate();}
  document.title=`${{dashboard:'Panorama',pronostico:'Pronóstico completo',encuestas:'Encuestas',analisis:'Promedios y proyección experimental',contexto:'Acontecimientos',cocina:'Cocina electoral',atlas:'Atlas',laboratorio:'Laboratorio',metodologia:'Métodos y datos'}[route]||'Página'} · Observatorio Electoral Español`;

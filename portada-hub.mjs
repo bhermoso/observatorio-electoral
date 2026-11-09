@@ -130,6 +130,7 @@ export function renderAccesos({forecast,polls=[],events=[],references=[]}){
   ['#analisis','Promedios','Con pesos propios',ext?`${ext.nombre} · ${fday(ext.fecha)}`:''],
   ['#contexto','Acontecimientos',`${events.length} registrados`,ev?`${fday(ev.date)} · ${ev.title}`:''],
   ['#cocina','Cocina','De la intención directa a la estimación','Microdatos del CIS y 40dB'],
+  ['#cocina-caso','Un caso completo','De una encuesta de 40dB a los escaños','Madrid y Jaén, paso a paso'],
   ['#atlas','Atlas','52 circunscripciones','Resultados del 23J'],
   ['#laboratorio','Laboratorio','D’Hondt provincia a provincia','Supuestos propios'],
   ['#metodologia','Método y fuentes','Qué es cada cifra y de dónde sale','Capas, fuentes y límites'],

@@ -1046,7 +1046,7 @@ table.caso-tabla{border-collapse:collapse;font-size:13px;margin:6px 0;width:auto
 .hub-estado.fuera{background:#fff1dd;color:#894208}
 .hub-estado.pend{background:#e9edf7;color:#3f4a80}
 .hub-estado.arch{background:#f0f2ef;color:var(--muted)}
-.hub-accesos{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.hub-accesos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .hub-accesos a{display:flex;flex-direction:column;gap:2px;text-decoration:none;border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:#fafbf8;min-width:0}
 .hub-accesos a:hover{border-color:var(--green)}
 .hub-accesos b{font:700 15px Manrope,system-ui,sans-serif;color:var(--green)}
@@ -1054,3 +1054,10 @@ table.caso-tabla{border-collapse:collapse;font-size:13px;margin:6px 0;width:auto
 .hub-accesos small{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media(max-width:900px){.hub-panel{grid-template-columns:1fr}.hub-accesos{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.hub-caja{padding:16px 14px}.hub-barras li{grid-template-columns:86px 1fr 52px 44px;gap:6px;font-size:13px}.hub-bloques{grid-template-columns:1fr}.hub-accesos{grid-template-columns:1fr}}
+
+/* Contraste de capas (Pronóstico) y caso 40dB (Cocina): antes plegados en Panorama */
+.contraste #matrix-sub{font-size:13px;margin:0 0 10px}
+.contraste .table-wrap table.portada-matriz{min-width:760px}
+.contraste .matrix-reglas{margin:10px 0 4px}
+#cocina-caso .table-wrap table.caso-tabla{min-width:0}
+#pronostico-capas,#pronostico-cambios,#pronostico-procedencia,#cocina-caso,#cocina-experimento-cis{margin-top:22px;scroll-margin-top:20px}

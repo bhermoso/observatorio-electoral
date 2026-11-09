@@ -13,7 +13,7 @@ test('Tutorial paso a paso disponible y publicado desde home y laboratorio',()=>
  assert.match(html,/href="construye-estimacion.html#cocina-secuencia"/);
  assert.match(fs.readFileSync('scripts/build.mjs','utf8'),/tutorial-estimacion.mjs/);
  assert.match(fs.readFileSync('construye-estimacion.html','utf8'),/tutorial-estimacion.html/);
- assert.match(fs.readFileSync('home-impact.mjs','utf8'),/tutorial-estimacion.html/);
+ assert.match(fs.readFileSync('casos-cocina.mjs','utf8'),/tutorial-estimacion.html/);
 });
 test('Ejercicio usa el motor real y conserva denominadores y advertencias',()=>{
  assert.match(js,/calculate\(cube/);

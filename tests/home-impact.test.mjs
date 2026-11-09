@@ -14,8 +14,9 @@ test('Portada publica síntesis visual con cifras reales y dos fuentes separadas
  assert.match(app,/bindHomeImpact\(polls,events\)/);
  assert.match(build,/home-impact.mjs/);
  assert.match(homepage,/data\/modelo\/pronostico.json/);
- assert.match(homepage,/data\/microdatos\/cubo_decisiones_cis.json/);
- assert.match(homepage,/data\/election.json/);
+ const casos=fs.readFileSync('casos-cocina.mjs','utf8');
+ assert.match(casos,/data\/microdatos\/cubo_decisiones_cis.json/);
+ assert.match(casos,/data\/election.json/);
  // La portada muestra la estimación de referencia (capa 3 = principal) y nunca una variante en su lugar.
  assert.match(homepage,/capaModelo\(ctx\.forecast,3\)/);
  assert.doesNotMatch(homepage,/variantes\.consenso_privadas|variants\.consenso_privadas/);
@@ -39,67 +40,53 @@ test('La comparación de recetas utiliza mismo estudio y el mismo traslado terri
  assert.equal(sb.diagnostics.totalSeats,350);
 });
 
-test('Panorama editorial compacto separa encuesta, modelo, microdatos y noticias',async()=>{
- const {renderHomeImpact}=await import('../home-impact.mjs');
- const html=renderHomeImpact();
- assert.ok(html.indexOf('forecast-lead')<html.indexOf('portada-capas'));
- assert.match(html,/id="panorama-editorial"/);
- assert.match(html,/Promedio de encuestas:/);
- assert.match(html,/Pronóstico propio:/);
- assert.match(html,/Cocina sobre microdatos:/);
- assert.match(html,/Noticias y otros modelos:/);
- assert.match(html,/class="portada-plegable"/);
- assert.match(html,/No son respuestas individuales|No son respuestas individuales/i);
- const js=fs.readFileSync('home-impact.mjs','utf8');
+test('El contraste de capas vive en Pronóstico, sin pliegues, con su procedencia',async()=>{
+ const {renderContraste}=await import('../contraste-capas.mjs');
+ const html=renderContraste();
+ for(const id of ['pronostico-capas','matrix-table','matrix-toggle','panorama-editorial','pronostico-cambios','pronostico-procedencia'])assert.match(html,new RegExp('id="'+id+'"'));
+ assert.match(html,/Promedio de encuestas:/);assert.match(html,/Pronóstico propio:/);
+ assert.match(html,/Cocina sobre microdatos:/);assert.match(html,/Noticias y otros modelos:/);
+ assert.doesNotMatch(html,/<details|<summary/);
+ const js=fs.readFileSync('contraste-capas.mjs','utf8');
  assert.match(js,/drawEditorial\(ctx\)/);
  assert.match(js,/ctx\.prom\.partidos\[id\]\?\.valor/);
+ const app=fs.readFileSync('app.mjs','utf8');
+ assert.match(app,/pronostico:\(\)=>renderPronostico\(\)\+renderContraste\(\)/);
+ assert.match(app,/bindContraste\(polls\)/);
  const css=fs.readFileSync('styles.css','utf8');
  assert.match(css,/--oee-body-size:15px/);
  assert.match(css,/\.panorama-source-grid/);
 });
 
-test('Panorama se lee de arriba abajo: titular, escaños, evolución, capas y detalle, sin pestañas ni altura fija',async()=>{
+test('Panorama es un resumen sin pliegues: titular, hemiciclo y promedio, evolución, últimas encuestas y accesos',async()=>{
  const {renderHomeImpact}=await import('../home-impact.mjs');
  const html=renderHomeImpact();
- const order=['id="portada-titular"','id="forecast-lead-results"','id="home-series"','id="portada-capas"','id="portada-cambios"','id="portada-fuentes"','id="portada-microdatos"'];
+ const order=['id="portada-titular"','id="portada-hub"','id="home-series"','id="portada-ultimas"','id="portada-secciones"'];
  for(const id of order)assert.ok(html.includes(id),'Falta '+id);
  for(let i=1;i<order.length;i++)assert.ok(html.indexOf(order[i-1])<html.indexOf(order[i]),order[i-1]+' debe ir antes que '+order[i]);
+ assert.doesNotMatch(html,/<details|<summary/);
  assert.doesNotMatch(html,/role="tab"|role="tabpanel"/);
+ assert.doesNotMatch(html,/id="matrix-table"|id="portada-caso"|id="portada-microdatos"/);
  assert.match(html,/<h1 id="impact-heading">Panorama 29N<\/h1>/);
- assert.match(html,/id="matrix-table"/);
- assert.match(html,/id="matrix-toggle"/);
  const app=fs.readFileSync('app.mjs','utf8');
  assert.match(app,/function dashboard\(\)\{[\s\S]*?return renderHomeImpact\(references,events\);/);
  assert.match(app,/classList\.toggle\('dashboard-route',route==='dashboard'\)/);
  const css=fs.readFileSync('styles.css','utf8');
- // La portada se desplaza con normalidad: sin alto de ventana fijo ni scroll interno.
  assert.doesNotMatch(css,/body\.dashboard-route\{[^}]*height:100dvh/);
  assert.doesNotMatch(css,/body\.dashboard-route #main\{[^}]*overflow:hidden/);
  assert.doesNotMatch(css,/\.panorama-pane/);
- // El gráfico de la portada no hereda el ancho mínimo del de Tendencias.
  assert.match(html+fs.readFileSync('portada-series.mjs','utf8'),/class="portada-grafico"/);
  assert.doesNotMatch(css,/\.portada-grafico\{[^}]*min-width:[1-9]/);
- // Menú en su propia fila en pantallas estrechas.
  assert.match(css,/@media\(max-width:1300px\)\{header>nav\{flex:1 0 100%;order:3\}\}/);
 });
 
-test('La portada dibuja los bloques y la tabla por partido con intervalos',async()=>{
- const {renderForecastOverview,renderTitular}=await import('../home-impact.mjs');
+test('El titular da primera fuerza e intervalo sin valores vacíos',async()=>{
+ const {renderTitular}=await import('../home-impact.mjs');
  const forecast=JSON.parse(fs.readFileSync('modelo/salida/pronostico.json','utf8'));
- const history=JSON.parse(fs.readFileSync('modelo/registro/historial.json','utf8'));
- const html=renderForecastOverview(forecast,history);
- const parties=Object.keys(forecast.principal.partidos).length;
- assert.equal((html.match(/<tr>\s*<th scope="row">/g)||[]).length,parties);
- assert.equal((html.match(/class="portada-bloc"/g)||[]).length,Object.keys(forecast.principal.bloques).length);
- assert.match(html,/href="#pronostico-principal"/);
- assert.match(html,/href="#pronostico-bloques"/);
- assert.doesNotMatch(html,/NaN|undefined/);
- const withoutHistory=renderForecastOverview(forecast,[]);
- assert.match(withoutHistory,/Sin cambio comparable/);
  const titular=renderTitular(forecast);
  assert.match(titular,/primera fuerza estimada/);
  assert.match(titular,/90 % de las simulaciones/);
- assert.match(titular,/no probabilidades de pacto/);
+ assert.match(titular,/en la estimación central/);
  assert.doesNotMatch(titular,/NaN|undefined/);
  assert.match(renderTitular(null),/No hay una estimación publicada/);
 });

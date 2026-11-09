@@ -118,7 +118,8 @@ export function bindPortadaSeries(root,{polls,forecast,history,events,cutoff}){
   <div class="portada-grafico" data-chart></div>
   <div class="series-legend" data-legend aria-label="Series visibles"></div>
   <div data-event-reading></div>
-  <details class="series-details"><summary>Cocina, fichas y cifras por fuente</summary><div data-detail></div></details>`;
+  <p class="series-note" data-detail></p>
+  <p class="series-note">Cifras de cada serie con su ficha y su fuente: <a href="#encuestas">archivo de encuestas</a> · <a href="#pronostico-evolucion">cortes del modelo</a> · <a href="#pronostico-fuentes">estudios usados y excluidos</a>.</p>`;
  const find=s=>root.querySelector(s);
  const party=find('[data-party]'),period=find('[data-period]'),chart=find('[data-chart]');
  let chartWidth=0;
@@ -162,15 +163,13 @@ export function bindPortadaSeries(root,{polls,forecast,history,events,cutoff}){
    find('[data-legend]').innerHTML=legend.map(s=>`<button type="button" data-series="${escape(s.id)}" aria-pressed="${!hidden.has(s.id)}" style="--series-color:${s.color}"><i></i>${escape(s.label)}</button>`).join('');
   }
   const missing=all?[]:series.filter(s=>!available.some(a=>a.id===s.id));
-  find('[data-detail]').innerHTML=`<p class="series-note">${missing.length?'Sin datos para este partido y periodo: '+escape(missing.map(s=>s.label).join(', '))+'. ':''}Las fichas describen el método que cada fuente ha publicado.</p>`
-   +available.filter(s=>s.type!=='house-faint').map(s=>`<details><summary>${escape(s.label)} · ${s.points.length} observaciones</summary>${s.type==='model'?'<p><a href="#cocina">Nuestra cocina</a> · <a href="#pronostico-evolucion">Cortes y versiones del modelo</a></p>':''}
-   <div class="table-wrap"><table><thead><tr><th>Fecha</th><th>Voto</th><th>Campo</th><th>Ficha, fuente y método</th></tr></thead><tbody>${[...s.points].reverse().map(p=>`<tr><td>${date.format(Date.parse(p.date))}</td><td>${p.approximate?'≈ ':''}${fmt(p.value)} %</td><td>${fieldText(p)}</td><td>${[link(p.source,'Original'),link(p.technical,'Ficha técnica'),escape(p.method),escape(p.notes),p.version?'Versión '+escape(p.version):''].filter(Boolean).join(' · ')||'—'}</td></tr>`).join('')}</tbody></table></div></details>`).join('');
+  find('[data-detail]').textContent=missing.length?'Sin datos para este partido y periodo: '+missing.map(x=>x.label).join(', ')+'.':'';
   const comparisons=event?visible.filter(s=>s.type==='model'||s.type==='house').map(s=>({s,...eventComparison(s.points,event.date,s.type)})):[];
   const rows=comparisons.map(({s,before,after,change})=>`<tr><th scope="row">${escape(s.label)}</th><td>${pointText(before)}${before?.start?'<small>Campo: '+fieldText(before)+'</small>':''}</td><td>${pointText(after)}${after?.start?'<small>Campo: '+fieldText(after)+'</small>':''}</td><td>${change==null?'—':(change>0?'+':'')+fmt(change)+' pp'}</td></tr>`).join('');
   find('[data-event-reading]').innerHTML=event?`<section class="series-reading"><h3>${escape(event.title)}</h3><p>${escape(event.summary)} ${event.sources.map(s=>link(s.url,escape(s.publisher))).join(' · ')}</p>
    <p>${all?'La tabla compara, para cada partido, el último corte del modelo anterior al acontecimiento con el primero posterior.':comparisons.some(c=>c.s.type==='house'&&c.after)?'La comparación muestra diferencias observadas. Para interpretarlas importan el método, el escenario y la muestra de cada encuesta.':'Ninguna de las casas visibles tiene aquí una encuesta con trabajo de campo íntegramente posterior.'} La coincidencia temporal por sí sola no establece causalidad.</p>
-   <details><summary>Antes y después · ${escape(all?'principales partidos según el modelo':partyLabel)}</summary><p>Última y primera observación de cada serie a ambos lados del acontecimiento. Para las casas se usan las fechas de campo y se apartan los estudios que coinciden con ese día. Para el modelo se usan cortes de la misma versión para calcular la diferencia.</p>
-   <div class="table-wrap"><table><thead><tr><th>Serie</th><th>Antes</th><th>Después</th><th>Cambio</th></tr></thead><tbody>${rows}</tbody></table></div></details></section>`:'';
+   <h4>Antes y después · ${escape(all?'principales partidos según el modelo':partyLabel)}</h4><p>Última y primera observación de cada serie a ambos lados del acontecimiento. Para las casas se usan las fechas de campo y se apartan los estudios que coinciden con ese día. Para el modelo se usan cortes de la misma versión para calcular la diferencia.</p>
+   <div class="table-wrap"><table><thead><tr><th>Serie</th><th>Antes</th><th>Después</th><th>Cambio</th></tr></thead><tbody>${rows}</tbody></table></div></section>`:'';
  }
  const resize=new ResizeObserver(()=>{
   if(!root.isConnected)resize.disconnect();

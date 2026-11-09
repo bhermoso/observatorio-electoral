@@ -30,10 +30,11 @@ test('Reparte 350 escaños, 37 en Madrid y 5 en Jaén, y la traza coincide con e
 test('La proyección exige una estimación que sume 100',()=>{
  assert.throws(()=>proyectarPorPartido(election,{PP:30,PSOE:30,VOX:10,SUMAR:5,PODEMOS:2,SALF:1,OTROS:10}),/no suma 100/);
 });
-test('El texto del caso no tiene huecos y está en la portada',()=>{
+test('El texto del caso no tiene huecos, está en Cocina y Panorama le da acceso',()=>{
  const html=renderCaso(construirCaso({poll,audit,election}));
  assert.doesNotMatch(html.replace(/<[^>]+>/g,''),/NaN|undefined|null/);
  assert.match(html,/Madrid: 37 escaños/);assert.match(html,/Jaén: 5 escaños/);
- assert.match(fs.readFileSync('home-impact.mjs','utf8'),/id="portada-caso"/);
+ assert.match(fs.readFileSync('casos-cocina.mjs','utf8'),/id="cocina-caso"/);
+ assert.match(fs.readFileSync('portada-hub.mjs','utf8'),/#cocina-caso/);
  assert.match(fs.readFileSync('scripts/build.mjs','utf8'),/'caso-escanos\.mjs'/);
 });

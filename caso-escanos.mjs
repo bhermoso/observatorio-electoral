@@ -186,17 +186,19 @@ export function renderCaso(c){
 }
 
 /** Carga y dibuja el caso la primera vez que se abre el plegable. */
+// Funciona con un <details> (se carga al abrirlo) o con una sección siempre visible.
 export function bindCaso(details,polls){
  if(!details)return;
  const out=details.querySelector('#caso-contenido');
+ const abierto=()=>details.tagName!=='DETAILS'||details.open;
  let cargado=false;
  const cargar=async()=>{
-  if(cargado||!details.open)return;cargado=true;
+  if(cargado||!abierto())return;cargado=true;
   try{
    const [audit,election]=await Promise.all(['data/microdatos/40db-auditoria-2026.json','data/election.json'].map(async u=>{const r=await fetch(u);if(!r.ok)throw Error(u+': HTTP '+r.status);return r.json();}));
    const poll=polls.find(p=>p.id===CASO_ENCUESTA);
    out.innerHTML=renderCaso(construirCaso({poll,audit,election}));
   }catch(e){out.innerHTML=`<p role="alert">No se puede construir el caso: ${h(e.message)}</p>`;cargado=false;}
  };
- details.addEventListener('toggle',cargar);cargar();
+ if(details.tagName==='DETAILS')details.addEventListener('toggle',cargar);cargar();
 }
