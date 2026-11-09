@@ -73,5 +73,31 @@
       }
     ],
     "notes": "Registrado el 8 de noviembre a partir de las informaciones previas a la emisión; las fuentes confirman la convocatoria, la hora y los participantes, no el desarrollo del debate. Según The Objective, RTVE lo aplazó desde el 2 de noviembre tras el accidente de Urda, y el PP, que había anunciado que no acudiría, rectificó. La agenda de EFE del mismo día no incluye a García Albiol entre los participantes; Ara (8 nov) y The Objective (7 nov) sí lo incluyen. No se asigna signo, intensidad ni corrección electoral al acontecimiento."
+  },
+  {
+    "id": "cis-barometro-octubre-2026-10-14",
+    "kind": "documented-event",
+    "date": "2026-10-14",
+    "datePrecision": "day",
+    "title": "El CIS publica su barómetro de octubre (estudio 3582): PSOE 34,0 %, PP 22,2 %",
+    "shortTitle": "Barómetro del CIS",
+    "category": "Publicación de encuesta",
+    "location": "Madrid",
+    "scope": "España · publicación de una encuesta",
+    "summary": "El Centro de Investigaciones Sociológicas publica el barómetro de octubre (estudio 3582), con trabajo de campo del 1 al 6 de octubre y 5.025 entrevistas. Su estimación sitúa al PSOE en el 34,0 %, al PP en el 22,2 %, a Vox en el 17,1 % y a Sumar-Frente Amplio en el 6,1 %: entre 6 y 9 puntos más para el PSOE y entre 8 y 12 menos para el PP que las otras seis casas del Motor 29N con campo terminado entre el 3 y el 8 de octubre (SocioMétrica, NC Report, DYM, IMOP, 40dB. y GAD3).",
+    "verified": "2026-11-09",
+    "sources": [
+      {
+        "publisher": "Centro de Investigaciones Sociológicas",
+        "published": "2026-10-14",
+        "url": "https://www.cis.es/documents/d/guest/3582_estimacion-pdf"
+      },
+      {
+        "publisher": "The Objective",
+        "published": "2026-10-14",
+        "url": "https://theobjective.com/espana/politica/2026-10-14/cis-psoe-hunde-pp-mes-medio/"
+      }
+    ],
+    "notes": "No es un acontecimiento externo a las encuestas: se registra porque su entrada en el Motor 29N explica el principal salto de la serie. En el corte del 14 de octubre, cuyo único estudio nuevo es este, la mediana del PSOE pasa del 27,4 % al 28,4 % y de 112 a 117 escaños, y la del PP del 32,0 % al 30,9 % (registro de cortes del motor). El campo terminó el 6 de octubre, así que el salto refleja cuándo se conoció el estudio, no un cambio de opinión entre el 6 y el 14. La comparación de encuestas anteriores y posteriores de esta página no mide el efecto de publicar una encuesta. Cifras del CIS tomadas de la ficha verificada del archivo del Observatorio y contrastadas con The Objective (14 oct); el PDF del CIS no se ha podido abrir de nuevo desde esta sesión."
   }
 ]
