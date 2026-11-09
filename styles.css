@@ -1023,7 +1023,7 @@ table.caso-tabla{border-collapse:collapse;font-size:13px;margin:6px 0;width:auto
 .hub-barras{list-style:none;padding:0;margin:4px 0 0}
 .hub-barras li{display:grid;grid-template-columns:118px 1fr 58px 52px;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid #eef2ec;font-size:14px}
 .hub-barra-nombre{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hub-barra-pista{height:14px;background:#f0f3ee;border-radius:3px;overflow:hidden}
+.hub-barra-pista{height:14px;background:#f0f3ee;border-radius:3px}
 .hub-barra-pista span{display:block;height:100%;background:var(--c);border-radius:3px}
 .hub-barras b{text-align:right;font-family:Manrope,system-ui,sans-serif}
 .hub-barras small{font-size:12px;color:var(--muted);text-align:right}
@@ -1061,3 +1061,15 @@ table.caso-tabla{border-collapse:collapse;font-size:13px;margin:6px 0;width:auto
 .contraste .matrix-reglas{margin:10px 0 4px}
 #cocina-caso .table-wrap table.caso-tabla{min-width:0}
 #pronostico-capas,#pronostico-cambios,#pronostico-procedencia,#cocina-caso,#cocina-experimento-cis{margin-top:22px;scroll-margin-top:20px}
+.hub-barras-cab{display:grid;grid-template-columns:118px 1fr 70px 70px;gap:10px;font-size:12px;color:var(--muted);padding:0 0 4px;border-bottom:1px solid var(--line)}
+.hub-barras-cab b,.hub-barras-cab span:last-child{text-align:right;font-weight:600}
+.hub-barras li{grid-template-columns:118px 1fr 70px 70px}
+.hub-barras b small{display:block;font:400 11px 'DM Sans',system-ui,sans-serif;color:var(--muted)}
+.hub-barra-pista{position:relative;overflow:visible}
+.hub-marca{position:absolute;top:-4px;bottom:-4px;width:3px;margin-left:-1px;background:#16231e;border-radius:1px}
+.hub-modelo{text-align:right;font-family:Manrope,system-ui,sans-serif;color:#16231e}
+.hub-muestra,.hub-muestra-marca{display:inline-block;vertical-align:middle;margin:0 4px 0 0}
+.hub-muestra{width:14px;height:8px;background:#9aa5a0;border-radius:2px}
+.hub-muestra-marca{width:3px;height:12px;background:#16231e;margin-left:6px}
+.hub-recuento{font-size:14px;margin:-4px 0 12px;color:var(--ink)}
+@media(max-width:520px){.hub-barras li,.hub-barras-cab{grid-template-columns:78px 1fr 58px 52px;gap:6px}}

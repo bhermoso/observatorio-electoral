@@ -57,15 +57,32 @@ export function renderHemiciclo(forecast){
 }
 
 /** Barras del promedio publicado (capa 1): valor y cuántas encuestas publican el partido. */
-export function renderPromedio(prom){
+/** Barras del promedio publicado (capa 1) con una marca en la estimación del Motor 29N (capa 3). */
+export function renderPromedio(prom,forecast=null,baseModelo=false){
  if(!prom)return '<p class="empty">Promedio no disponible.</p>';
  const activos=prom.estudios.filter(e=>e.weight>0);
  const N=activos.length;
+ const modelo=forecast?.principal?.partidos||{};
  const filas=PARTIES.map(p=>[p.id,prom.partidos[p.id]]).filter(([,v])=>v&&Number.isFinite(v.valor)).sort((a,b)=>b[1].valor-a[1].valor).slice(0,8);
- const max=Math.max(35,...filas.map(([,v])=>v.valor));
+ const max=Math.max(35,...filas.map(([id,v])=>Math.max(v.valor,modelo[id]?.voto?.[0]||0)));
  const ultima=activos.map(e=>e.fieldEnd).sort().at(-1);
- return `<ol class="hub-barras">${filas.map(([id,v])=>`<li><span class="hub-barra-nombre">${h(id==='SUMAR'?'Sumar / FA':name(id))}</span><span class="hub-barra-pista"><span style="width:${(v.valor/max*100).toFixed(1)}%;--c:${color(id)}"></span></span><b>${fmt(v.valor)} %</b><small>${v.n} de ${N}</small></li>`).join('')}</ol>
- <p class="hub-nota">Último estudio de cada instituto con fin de campo en los ${prom.ventana} días anteriores al ${h(fday(prom.corte))}; ${N} encuestas de ${prom.institutos} institutos, la última con campo hasta el ${h(fday(ultima))}. «X de ${N}»: cuántas publican ese partido; los ausentes no cuentan como cero.</p>`;
+ const pos=v=>(v/max*100).toFixed(1)+'%';
+ const filasHTML=filas.map(([id,v])=>{
+  const m=modelo[id]?.voto?.[0];
+  return `<li><span class="hub-barra-nombre">${h(id==='SUMAR'?'Sumar / FA':name(id))}</span><span class="hub-barra-pista"><span style="width:${pos(v.valor)};--c:${color(id)}"></span>${Number.isFinite(m)?`<i class="hub-marca" style="left:${pos(m)}" title="Pronóstico ${fmt(m)} %"></i>`:''}</span><b>${fmt(v.valor)} %<small>${v.n} de ${N}</small></b><span class="hub-modelo">${Number.isFinite(m)?fmt(m)+' %':'—'}</span></li>`;
+ }).join('');
+ return `<div class="hub-barras-cab" aria-hidden="true"><span></span><span><i class="hub-muestra"></i>promedio · <i class="hub-muestra-marca"></i>pronóstico</span><b>Promedio</b><span>Pronóstico</span></div>
+ <ol class="hub-barras">${filasHTML}</ol>
+ <p class="hub-nota">Promedio simple del último estudio de cada instituto con fin de campo en los ${prom.ventana} días anteriores al ${h(fday(prom.corte))}: <b>${N} encuestas de ${prom.institutos} institutos</b>${baseModelo?', las mismas que usa el pronóstico':''}; la más reciente, con campo hasta el ${h(fday(ultima))}. «X de ${N}»: cuántas publican ese partido; las ausentes no cuentan como cero. La marca negra y la última columna son la estimación del Motor 29N.</p>`;
+}
+
+/** Cuántas encuestas hay y en qué situación, para leer las tarjetas. */
+export function renderRecuentoEncuestas(forecast,polls=[]){
+ if(!forecast)return '';
+ const dentro=forecast.entradas?.filter(e=>e.campo_fin>='2023-07-24').length??0;
+ const fuera=forecast.excluidas?.length??0;
+ const despues=polls.filter(p=>p.kind==='poll-estimate'&&p.published>forecast.corte).length;
+ return `<b>${dentro}</b> encuestas en el pronóstico · <b>${fuera}</b> registradas fuera de él (sin original consultado, sin fecha de campo o sustituidas)${despues?` · <b>${despues}</b> publicadas después del corte`:''}. Corte del ${h(fday(forecast.corte))}.`;
 }
 
 const ESTADO={
@@ -109,7 +126,7 @@ export function renderTarjetas(lista){
   const [cls,txt,motivo]=x.estado;
   return `<li class="hub-tarjeta">
    <div class="hub-tarjeta-cab"><b>${h(x.casa)}</b><time datetime="${h(x.pub)}">${h(fday(x.pub))}</time></div>
-   <p class="hub-tarjeta-ficha">${x.sinFin?`Campo desde ${x.ini?h(fday(x.ini)):'—'}, sin fecha de fin publicada`:`Campo ${x.ini?h(fday(x.ini))+'–':'hasta '}${h(fday(x.fin))}`}${x.n?` · n=${Number(x.n).toLocaleString('es-ES')}`:''}</p>
+   <p class="hub-tarjeta-ficha">${x.sinFin?(x.ini?`Campo desde ${h(fday(x.ini))}, sin fecha de fin publicada`:'Fechas de campo no publicadas'):`Campo ${x.ini?h(fday(x.ini))+'–':'hasta '}${h(fday(x.fin))}`}${x.n?` · n=${Number(x.n).toLocaleString('es-ES')}`:''}</p>
    <div class="hub-apilada" role="img" aria-label="${h(PRINCIPALES.filter(k=>Number.isFinite(x.voto[k])).map(k=>name(k)+' '+fmt(x.voto[k])+' %').join(', '))}">${segs}<span class="resto" style="flex:${Math.max(0,resto)} 0 0"></span></div>
    <ul class="hub-cifras">${cifras}</ul>
    <p class="hub-estado ${cls}"${motivo?` title="${h(motivo)}"`:''}>${h(txt)}${motivo?`<small>${h(motivo)}</small>`:''}</p>
@@ -126,7 +143,7 @@ export function renderAccesos({forecast,polls=[],events=[],references=[]}){
  const pp=forecast?.principal?.partidos?.PP;
  const items=[
   ['#pronostico','Pronóstico completo',forecast?`Corte del ${fday(forecast.corte)} · ${forecast.entradas?.length??'—'} estudios`:'No disponible',pp?`PP ${fmt(pp.escanos[0],0)} (${fmt(pp.escanos[1],0)}–${fmt(pp.escanos[2],0)})`:''],
-  ['#encuestas','Encuestas',`${archivo.length} fichas en el archivo verificado`,ultimaPub?`Última: ${fday(ultimaPub)}`:''],
+  ['#encuestas','Encuestas',`${forecast?.entradas?.length??'—'} en el pronóstico · ${forecast?.excluidas?.length??'—'} fuera`,`${archivo.length} fichas en el archivo verificado${ultimaPub?' · última: '+fday(ultimaPub):''}`],
   ['#analisis','Promedios','Con pesos propios',ext?`${ext.nombre} · ${fday(ext.fecha)}`:''],
   ['#contexto','Acontecimientos',`${events.length} registrados`,ev?`${fday(ev.date)} · ${ev.title}`:''],
   ['#cocina','Cocina','De la intención directa a la estimación','Microdatos del CIS y 40dB'],

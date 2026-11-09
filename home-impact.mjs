@@ -4,8 +4,8 @@
 // El contraste de capas está en Pronóstico (contraste-capas.mjs); el caso 40dB y el experimento
 // con microdatos del CIS, en Cocina (casos-cocina.mjs).
 import {bindPortadaSeries} from './portada-series.mjs';
-import {renderHemiciclo,renderPromedio,encuestasRecientes,renderTarjetas,renderAccesos} from './portada-hub.mjs';
-import {PARTIES,promedioPublicado,capaModelo} from './capas.mjs';
+import {renderHemiciclo,renderPromedio,encuestasRecientes,renderTarjetas,renderAccesos,renderRecuentoEncuestas} from './portada-hub.mjs';
+import {PARTIES,promedioPublicado,capaModelo,pollsFromModelInputs} from './capas.mjs';
 
 const h=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt=(v,d=1)=>Number(v).toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d});
@@ -29,13 +29,14 @@ export function renderHomeImpact(references=[],events=[]){
 
  <div class="hub-panel" id="portada-hub">
   <section class="hub-caja" aria-labelledby="hub-hemi-t"><div class="portada-bloque-cabeza"><div><span class="eyebrow">Motor 29N · pronóstico propio (capa 3)</span><h2 id="hub-hemi-t">Escaños estimados</h2></div><a class="panel-link" href="#pronostico">Pronóstico completo →</a></div><div id="hub-hemiciclo" aria-live="polite"><p class="muted">Cargando…</p></div></section>
-  <section class="hub-caja" aria-labelledby="hub-prom-t"><div class="portada-bloque-cabeza"><div><span class="eyebrow">Encuestas publicadas · promedio simple (capa 1)</span><h2 id="hub-prom-t">Promedio de encuestas</h2></div><a class="panel-link" href="#pronostico-capas">Promedio frente a pronóstico →</a></div><div id="hub-promedio" aria-live="polite"><p class="muted">Cargando…</p></div></section>
+  <section class="hub-caja" aria-labelledby="hub-prom-t"><div class="portada-bloque-cabeza"><div><span class="eyebrow">Capa 1 · promedio simple frente al pronóstico</span><h2 id="hub-prom-t">Promedio de encuestas</h2></div><a class="panel-link" href="#pronostico-capas">Promedio frente a pronóstico →</a></div><div id="hub-promedio" aria-live="polite"><p class="muted">Cargando…</p></div></section>
  </div>
 
  <section class="portada-bloque" id="home-series" aria-labelledby="series-heading"><h2 id="series-heading">Evolución de las estimaciones</h2><p class="muted">Cargando series…</p></section>
 
  <section class="portada-bloque" id="portada-ultimas" aria-labelledby="hub-ult-t">
   <div class="portada-bloque-cabeza"><div><span class="eyebrow">La más reciente primero · cambio frente a la oleada anterior de cada casa</span><h2 id="hub-ult-t">Últimas encuestas</h2></div><a class="panel-link" href="#encuestas">Archivo completo y fichas →</a></div>
+  <p class="hub-recuento" id="hub-recuento"></p>
   <div id="hub-tarjetas" aria-live="polite"><p class="muted">Cargando…</p></div>
  </section>
 
@@ -82,9 +83,10 @@ function drawHead(ctx){
 function drawHub(ctx){
  const set=(sel,html)=>{const el=document.querySelector(sel);if(el)el.innerHTML=html;};
  set('#hub-hemiciclo',renderHemiciclo(ctx.forecast));
- set('#hub-promedio',renderPromedio(ctx.prom));
- const desde=new Date(Date.parse(ctx.corte+'T12:00:00Z')-21*86400000).toISOString().slice(0,10);
- set('#hub-tarjetas',renderTarjetas(encuestasRecientes(ctx.forecast,ctx.polls,{desde,limite:8})));
+ set('#hub-promedio',renderPromedio(ctx.prom,ctx.forecast,ctx.baseModelo));
+ set('#hub-recuento',renderRecuentoEncuestas(ctx.forecast,ctx.polls));
+ const desde=new Date(Date.parse(ctx.corte+'T12:00:00Z')-14*86400000).toISOString().slice(0,10);
+ set('#hub-tarjetas',renderTarjetas(encuestasRecientes(ctx.forecast,ctx.polls,{desde,limite:12})));
  set('#hub-accesos',renderAccesos({forecast:ctx.forecast,polls:ctx.polls,events:ctx.events,references:refsPortada}));
 }
 
@@ -98,7 +100,12 @@ export async function bindHomeImpact(polls,events=[]){
   capaModelo(ctx.forecast,3);
  }catch(err){ctx.error=err.message;}
  if(!root.isConnected)return;
- try{ctx.prom=promedioPublicado(polls,{corte:ctx.corte,ventana:30,cis:true,ponderacion:'igual'});}catch{ctx.prom=null;}
+ // Promedio con las mismas encuestas que usa el pronóstico. Si la entrada está en el archivo
+ // verificado se toma su ficha completa (incluye partidos territoriales); si no, la del motor.
+ const archivo=new Map(polls.map(p=>[p.id,p]));
+ const base=ctx.forecast?.entradas?.length?pollsFromModelInputs(ctx.forecast.entradas).map(p=>archivo.get(p.id)||p):polls;
+ ctx.baseModelo=!!ctx.forecast?.entradas?.length;
+ try{ctx.prom=promedioPublicado(base,{corte:ctx.corte,ventana:30,cis:true,ponderacion:'igual'});}catch{ctx.prom=null;}
  drawHead(ctx);drawHub(ctx);
  const chart=root.querySelector('#home-series');
  const drawSeries=()=>bindPortadaSeries(chart,{polls,forecast:ctx.forecast,history:ctx.history,events,cutoff:todayMadrid()});
