@@ -33,6 +33,20 @@ class CalidadFuentesTest(unittest.TestCase):
         self.assertEqual(excl[0]["estudio"], "t")
         self.assertIn("v", excl[0]["motivo"])
 
+    def test_oleada_de_prensa_posterior_sustituye_a_la_verificada_solapada(self):
+        v = reg("v", "verificada", casa="Sigma Dos", ini=date(2026, 10, 29), fin=date(2026, 10, 30))
+        p = reg("p", "prensa-original-consultado", casa="Sigma Dos", ini=date(2026, 10, 30), fin=date(2026, 11, 6))
+        aptas, excl = seleccion_pronostico([v, p])
+        self.assertEqual([e["estudio"] for e in aptas], ["p"])
+        self.assertEqual(excl[0]["estudio"], "v")
+        self.assertIn("Sustituida por la oleada posterior p", excl[0]["motivo"])
+
+    def test_terceros_posteriores_no_sustituyen_a_la_verificada(self):
+        v = reg("v", "verificada", casa="Sigma Dos", ini=date(2026, 10, 29), fin=date(2026, 10, 30))
+        t = reg("t", "terceros-29n", casa="Sigma Dos", ini=date(2026, 10, 30), fin=date(2026, 11, 6))
+        aptas, _ = seleccion_pronostico([v, t])
+        self.assertEqual([e["estudio"] for e in aptas], ["v"])
+
     def test_cada_exclusion_tiene_motivo(self):
         _, excl = seleccion_pronostico([reg("p", "prensa-sin-verificar"), reg("t", "terceros-29n", campo_supuesto=True)])
         self.assertTrue(all(x["motivo"] for x in excl))
