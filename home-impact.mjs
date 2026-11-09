@@ -4,6 +4,7 @@
 // El contraste de capas está en Pronóstico (contraste-capas.mjs); el caso 40dB y el experimento
 // con microdatos del CIS, en Cocina (casos-cocina.mjs).
 import {bindPortadaSeries} from './portada-series.mjs';
+import {panelPartido,panelBloque,panelEncuesta,bindPanel} from './portada-panel.mjs';
 import {renderHemiciclo,renderPromedio,encuestasRecientes,renderTarjetas,renderAccesos,renderRecuentoEncuestas} from './portada-hub.mjs';
 import {PARTIES,promedioPublicado,capaModelo,pollsFromModelInputs} from './capas.mjs';
 
@@ -87,6 +88,8 @@ function drawHub(ctx){
  set('#hub-recuento',renderRecuentoEncuestas(ctx.forecast,ctx.polls));
  const desde=new Date(Date.parse(ctx.corte+'T12:00:00Z')-14*86400000).toISOString().slice(0,10);
  set('#hub-tarjetas',renderTarjetas(encuestasRecientes(ctx.forecast,ctx.polls,{desde,limite:12})));
+ // Todas las encuestas registradas, para el panel (la más reciente primero).
+ ctx.recientes=encuestasRecientes(ctx.forecast,ctx.polls,{limite:500});
  set('#hub-accesos',renderAccesos({forecast:ctx.forecast,polls:ctx.polls,events:ctx.events,references:refsPortada}));
 }
 
@@ -107,6 +110,13 @@ export async function bindHomeImpact(polls,events=[]){
  ctx.baseModelo=!!ctx.forecast?.entradas?.length;
  try{ctx.prom=promedioPublicado(base,{corte:ctx.corte,ventana:30,cis:true,ponderacion:'igual'});}catch{ctx.prom=null;}
  drawHead(ctx);drawHub(ctx);
+ bindPanel(root,clave=>{
+  const [tipo,id]=clave.split(/:(.*)/s);
+  if(tipo==='partido')return panelPartido(id,ctx);
+  if(tipo==='bloque')return panelBloque(id,ctx);
+  if(tipo==='encuesta')return panelEncuesta(ctx.recientes.find(x=>x.id===id));
+  return '';
+ });
  const chart=root.querySelector('#home-series');
  const drawSeries=()=>bindPortadaSeries(chart,{polls,forecast:ctx.forecast,history:ctx.history,events,cutoff:todayMadrid()});
  if(ctx.forecast){

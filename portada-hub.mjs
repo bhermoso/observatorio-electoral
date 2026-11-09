@@ -39,7 +39,7 @@ export function hemiciclo(partidos){
  let i=0;const dots=[];
  for(const [id,n] of lista)for(let k=0;k<n&&i<350;k++,i++)dots.push([pts[i],color(id),id]);
  for(;i<350;i++)dots.push([pts[i],'#d9dfdc','resto']);
- const circles=dots.map(([p,c,id])=>`<circle cx="${(cx+p.x*R).toFixed(1)}" cy="${(cy-p.y*R).toFixed(1)}" r="4.6" fill="${c}" data-p="${id}"/>`).join('');
+ const circles=dots.map(([p,c,id])=>`<circle${id==='resto'?'':` data-panel="partido:${id}"`} cx="${(cx+p.x*R).toFixed(1)}" cy="${(cy-p.y*R).toFixed(1)}" r="4.6" fill="${c}" data-p="${id}"/>`).join('');
  const label=lista.map(([id,n])=>`${name(id)} ${n}`).join(', ');
  return {svg:`<svg class="hub-hemiciclo" viewBox="0 0 ${W} ${H}" role="img" aria-label="Hemiciclo de 350 escaños con la mediana de cada partido: ${h(label)}${suma<350?`; ${350-suma} sin asignar porque las medianas no suman 350`:''}.">${circles}<line x1="${cx}" y1="${cy-R-9}" x2="${cx}" y2="${cy-R*0.3}" stroke="#16231e" stroke-width="1.2" stroke-dasharray="3 3"/><text x="${cx}" y="${cy-R-12}" text-anchor="middle" class="hub-176">176</text></svg>`,suma,lista};
 }
@@ -49,10 +49,11 @@ export function renderHemiciclo(forecast){
  if(!p?.partidos)return '<p class="empty">Pronóstico no disponible para este corte.</p>';
  const {svg,suma,lista}=hemiciclo(p.partidos);
  const b=p.bloques||{};
- const bloque=(id,lab)=>b[id]?`<div class="hub-bloque"><span>${lab}</span><strong>${fmt(b[id].mediana,0)}</strong><small>176 o más en ${share(b[id].p_mayoria)} de las simulaciones</small></div>`:'';
- const leyenda=lista.filter(([,n])=>n>0).sort((a,b)=>b[1]-a[1]).map(([id,n])=>`<li><i style="--c:${color(id)}"></i>${h(short(id))} <b>${n}</b></li>`).join('');
+ const bloque=(id,lab)=>b[id]?`<div class="hub-bloque" role="button" tabindex="0" data-panel="bloque:${id}"><span>${lab}</span><strong>${fmt(b[id].mediana,0)}</strong><small>176 o más en ${share(b[id].p_mayoria)} de las simulaciones</small></div>`:'';
+ const leyenda=lista.filter(([,n])=>n>0).sort((a,b)=>b[1]-a[1]).map(([id,n])=>`<li><button type="button" data-panel="partido:${id}"><i style="--c:${color(id)}"></i>${h(short(id))} <b>${n}</b></button></li>`).join('');
  return `${svg}<ul class="hub-leyenda">${leyenda}</ul>
  <div class="hub-bloques">${bloque('PP+VOX','PP + Vox')}${bloque('PSOE+SUMAR+PODEMOS','PSOE + FA + Podemos')}</div>
+ <p class="hub-pista">Pulsa un partido, un bloque, una barra o una encuesta para ver el detalle.</p>
  <p class="hub-nota">Mediana de las simulaciones de cada partido${suma<350?`; las medianas suman ${suma}, los ${350-suma} puntos grises no se asignan`:''}. Las sumas de bloque son aritméticas, no pactos.</p>`;
 }
 
@@ -69,7 +70,7 @@ export function renderPromedio(prom,forecast=null,baseModelo=false){
  const pos=v=>(v/max*100).toFixed(1)+'%';
  const filasHTML=filas.map(([id,v])=>{
   const m=modelo[id]?.voto?.[0];
-  return `<li><span class="hub-barra-nombre">${h(id==='SUMAR'?'Sumar / FA':name(id))}</span><span class="hub-barra-pista"><span style="width:${pos(v.valor)};--c:${color(id)}"></span>${Number.isFinite(m)?`<i class="hub-marca" style="left:${pos(m)}" title="Pronóstico ${fmt(m)} %"></i>`:''}</span><b>${fmt(v.valor)} %<small>${v.n} de ${N}</small></b><span class="hub-modelo">${Number.isFinite(m)?fmt(m)+' %':'—'}</span></li>`;
+  return `<li role="button" tabindex="0" data-panel="partido:${id}" aria-label="${h(name(id))}: detalle"><span class="hub-barra-nombre">${h(id==='SUMAR'?'Sumar / FA':name(id))}</span><span class="hub-barra-pista"><span style="width:${pos(v.valor)};--c:${color(id)}"></span>${Number.isFinite(m)?`<i class="hub-marca" style="left:${pos(m)}" title="Pronóstico ${fmt(m)} %"></i>`:''}</span><b>${fmt(v.valor)} %<small>${v.n} de ${N}</small></b><span class="hub-modelo">${Number.isFinite(m)?fmt(m)+' %':'—'}</span></li>`;
  }).join('');
  return `<div class="hub-barras-cab" aria-hidden="true"><span></span><span><i class="hub-muestra"></i>promedio · <i class="hub-muestra-marca"></i>pronóstico</span><b>Promedio</b><span>Pronóstico</span></div>
  <ol class="hub-barras">${filasHTML}</ol>
@@ -124,7 +125,7 @@ export function renderTarjetas(lista){
   const resto=100-PRINCIPALES.reduce((s,k)=>s+(Number.isFinite(x.voto[k])?x.voto[k]:0),0);
   const cifras=PRINCIPALES.filter(k=>Number.isFinite(x.voto[k])).map(k=>{const c=x.anterior?.cambio?.[k];return `<li><i style="--c:${color(k)}"></i>${h(short(k))} <b>${fmt(x.voto[k])}</b>${Number.isFinite(c)?`<small class="${c>0?'sube':c<0?'baja':''}">${signed(c)}</small>`:''}</li>`;}).join('');
   const [cls,txt,motivo]=x.estado;
-  return `<li class="hub-tarjeta">
+  return `<li class="hub-tarjeta" role="button" tabindex="0" data-panel="encuesta:${h(x.id)}" aria-label="${h(x.casa)}, ${h(fday(x.pub))}: ficha">
    <div class="hub-tarjeta-cab"><b>${h(x.casa)}</b><time datetime="${h(x.pub)}">${h(fday(x.pub))}</time></div>
    <p class="hub-tarjeta-ficha">${x.sinFin?(x.ini?`Campo desde ${h(fday(x.ini))}, sin fecha de fin publicada`:'Fechas de campo no publicadas'):`Campo ${x.ini?h(fday(x.ini))+'–':'hasta '}${h(fday(x.fin))}`}${x.n?` · n=${Number(x.n).toLocaleString('es-ES')}`:''}</p>
    <div class="hub-apilada" role="img" aria-label="${h(PRINCIPALES.filter(k=>Number.isFinite(x.voto[k])).map(k=>name(k)+' '+fmt(x.voto[k])+' %').join(', '))}">${segs}<span class="resto" style="flex:${Math.max(0,resto)} 0 0"></span></div>
