@@ -6,6 +6,7 @@ import {bindPortadaSeries,PARTY_COLORS} from './portada-series.mjs';
 import {calculate} from './cocina-secuencial.mjs';
 import {projection} from './cocina-escanos.mjs';
 import {renderRecuento} from './recuento-encuestas.mjs';
+import {bindCaso} from './caso-escanos.mjs';
 import {LAYERS,PARTIES,BLOCKS,BLOCK_NOTE,promedioPublicado,capaModelo,capasExternas,matriz,diferencias,efectoCocina,pollsFromModelInputs} from './capas.mjs';
 
 const h=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -62,6 +63,9 @@ export function renderHomeImpact(references=[],events=[]){
  </section>
 
  <section class="portada-detalle" aria-label="Detalle y procedencia">
+ <details class="portada-plegable portada-caso" id="portada-caso"><summary>Un caso completo: de una encuesta de 40dB a los escaños de Madrid y Jaén</summary>
+  <div id="caso-contenido" aria-live="polite"><p class="muted">Cargando el caso…</p></div>
+ </details>
  <details class="portada-plegable" id="portada-cambios"><summary>Qué ha cambiado desde el corte anterior y qué añaden nuestros ajustes</summary>
   <div class="portada-dos"><section aria-labelledby="changes-heading"><h3 id="changes-heading">Cambios entre cortes</h3><div id="home-changes">Cargando…</div></section>
   <section aria-labelledby="cocina-heading"><h3 id="cocina-heading">Sin cocina (capa 2) y con cocina (capa 3)</h3><p class="muted">Las variantes del motor cambian la selección de anclas, las correcciones históricas y el error de industria. Ninguna repondera entrevistas individuales.</p><div id="home-cocina">Cargando…</div></section></div>
@@ -308,6 +312,7 @@ export async function bindHomeImpact(polls,events=[]){
  if(!root.isConnected)return;
  const redraw=()=>{try{computeLayer1(ctx);drawForecastLead(ctx);drawMatrix(ctx);drawEditorial(ctx);document.querySelector('#home-counts').innerHTML=renderRecuento({forecast:ctx.forecast,archivo:polls.length,seleccion:{estudios:ctx.prom.estudios.filter(e=>e.weight>0).length,institutos:ctx.prom.institutos,detalle:`${state.ventana} días · ${state.base==='archivo'?'archivo verificado':'entradas del motor'}${state.cis?'':' · sin CIS'}`}});}catch(e){document.querySelector('#matrix-table').innerHTML=`<tbody><tr><td role="alert">No se puede calcular: ${h(e.message)}</td></tr></tbody>`;}};
  drawHead(ctx);redraw();drawChanges(ctx);drawCocina(ctx);
+ bindCaso(root.querySelector('#portada-caso'),polls);
  const chart=root.querySelector('#home-series');
  const cutoff=todayMadrid();
  const drawSeries=()=>bindPortadaSeries(chart,{polls,forecast:ctx.forecast,history:ctx.history,events,cutoff});

@@ -969,3 +969,40 @@ table.portada-tabla{width:100%;border-collapse:collapse;font-size:14px}
 .impact-track div{height:100%;background:#2f8263}
 @media(max-width:640px){.impact-line{grid-template-columns:90px minmax(0,1fr) 52px}.impact-line small{grid-column:1/-1}.portada-plegable{padding:0 14px}}
 .fc-estudios td.fc-antiguo{font-weight:700;white-space:nowrap}
+
+/* Portada · caso completo de una encuesta a los escaños (caso-escanos.mjs) */
+.portada-caso #caso-contenido{font-size:14px;line-height:1.55;max-width:62em}
+.caso-intro{margin:0 0 12px}
+.caso-tag{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:0 6px;margin-right:4px;white-space:nowrap}
+.caso-tag.dato{background:#e3eefa;color:#1f4f86}.caso-tag.nuestro{background:#e5f3ea;color:#1f6b46}.caso-tag.supuesto{background:#fbeedd;color:#8a4a0c}
+.caso-pasos{list-style:none;counter-reset:paso;margin:0;padding:0;display:grid;gap:18px}
+.caso-pasos>li{counter-increment:paso;position:relative;padding-left:38px}
+.caso-pasos>li::before{content:counter(paso);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:#143d32;color:#fff;font-weight:700;font-size:13px;display:grid;place-items:center}
+.caso-pasos h3{margin:2px 0 6px;font-size:15.5px}
+.caso-pasos p{margin:6px 0}
+.caso-barra{display:flex;height:28px;border-radius:5px;overflow:hidden;margin:8px 0;background:#eef2ec}
+.caso-barra span{background:var(--c);color:#fff;font-size:11.5px;display:flex;align-items:center;justify-content:center;min-width:0;overflow:hidden;white-space:nowrap;box-shadow:inset -1px 0 0 #fff}
+.caso-barra span.caso-otros{background:#c9d1cd;color:#2b3a35}
+.caso-barra span.caso-nv{background:repeating-linear-gradient(45deg,#e6e9e4 0 4px,#f6f7f4 4px 8px);color:#46534e}
+.caso-punto{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--c);margin-right:6px}
+.caso-punto.caso-hueco{background:none;border:1.5px solid #9aa5a1;width:7px;height:7px}
+.caso-cifras{display:flex;flex-wrap:wrap;gap:4px 16px;font-weight:600}
+.caso-nota{font-size:12.5px;color:var(--muted)}
+.portada .table-wrap table.caso-tabla{min-width:0}
+table.caso-tabla{border-collapse:collapse;font-size:13px;margin:6px 0;width:auto}
+.caso-tabla caption{text-align:left;font-size:12px;color:var(--muted);padding-bottom:4px}
+.caso-tabla th,.caso-tabla td{padding:4px 10px 4px 0;border-bottom:1px solid #edf1eb;text-align:left;background:none;font-weight:400}
+.caso-tabla thead th{font-size:11.5px;color:var(--muted);font-weight:600}
+.caso-tabla tbody th{font-weight:600;white-space:nowrap}
+.caso-tabla .num{text-align:right;white-space:nowrap}
+.caso-tabla tr.caso-menor th,.caso-tabla tr.caso-menor td{color:var(--muted);font-weight:400}
+.caso-fuera{color:#9a4b0b;font-weight:600}
+.caso-cocientes td.caso-gana{background:#e5f3ea;font-weight:700}
+.caso-cocientes td small{display:block;font-size:10.5px;color:#1f6b46;font-weight:600}
+.caso-secuencia{list-style:none;margin:8px 0;padding:0;display:flex;flex-wrap:wrap;gap:4px}
+.caso-secuencia li{display:inline-flex;align-items:center;gap:4px;border-left:4px solid var(--c);background:#f6f8f4;border-radius:3px;padding:2px 6px;font-size:11.5px}
+.caso-secuencia b{font-size:10.5px;color:var(--muted);font-weight:700}
+.caso-cierre{margin-top:16px}
+@media(max-width:640px){.caso-pasos>li{padding-left:32px}.caso-tabla th,.caso-tabla td{padding-right:6px}}
+.portada-detalle>*,.caso-pasos>li,#caso-contenido{min-width:0}
+.caso-pasos .table-wrap{max-width:100%;overflow-x:auto}
