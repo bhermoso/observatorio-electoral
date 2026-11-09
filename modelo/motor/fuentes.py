@@ -230,7 +230,9 @@ def seleccion_pronostico(encuestas, ciclo="2023-26"):
     aptas, excluidas = [], []
     for e in del_ciclo:
         motivo = None
-        if e["origen"] == "prensa-sin-verificar":
+        if e["origen"] == "prensa-sin-verificar" and e.get("contraste_url") and e.get("campo_supuesto"):
+            motivo = "Original consultado, pero no publica la fecha de fin del trabajo de campo"
+        elif e["origen"] == "prensa-sin-verificar":
             motivo = "Cita de prensa sin original ni ficha técnica verificados"
         elif e["origen"] != "verificada" and e.get("campo_supuesto"):
             motivo = "Fecha de campo no publicada (supuesta a partir de la publicación)"
@@ -240,7 +242,10 @@ def seleccion_pronostico(encuestas, ciclo="2023-26"):
                 motivo = f"Campo solapado con el registro verificado {gemela['estudio']} de la misma casa"
         if motivo:
             excluidas.append(dict(estudio=e["estudio"], casa=e["casa"], origen=e["origen"],
-                                  campo_ini=e.get("campo_ini"), campo_fin=e["campo_fin"], motivo=motivo, url=e.get("url", "")))
+                                  campo_ini=e.get("campo_ini"), campo_fin=e["campo_fin"], motivo=motivo, url=e.get("url", ""),
+                                  publicacion=e.get("publicacion"), n=None if e.get("n_supuesto") else e.get("n"),
+                                  campo_supuesto=bool(e.get("campo_supuesto")),
+                                  voto=dict(e.get("voto") or {})))
         else:
             aptas.append(e)
     return aptas, excluidas

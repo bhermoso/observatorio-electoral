@@ -1006,3 +1006,51 @@ table.caso-tabla{border-collapse:collapse;font-size:13px;margin:6px 0;width:auto
 @media(max-width:640px){.caso-pasos>li{padding-left:32px}.caso-tabla th,.caso-tabla td{padding-right:6px}}
 .portada-detalle>*,.caso-pasos>li,#caso-contenido{min-width:0}
 .caso-pasos .table-wrap{max-width:100%;overflow-x:auto}
+
+/* Portada como centro: hemiciclo, promedio, últimas encuestas y accesos (portada-hub.mjs) */
+.hub-panel{display:grid;grid-template-columns:1.1fr 1fr;gap:18px}
+.hub-caja{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;min-width:0}
+.hub-hemiciclo{display:block;width:100%;max-width:520px;height:auto;margin:4px auto 0}
+.hub-176{font:700 11px Manrope,system-ui,sans-serif;fill:var(--ink)}
+.hub-leyenda{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;padding:0;margin:8px 0 12px;font-size:13px}
+.hub-leyenda i,.hub-cifras i{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--c);margin-right:5px}
+.hub-bloques{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hub-bloque{border:1px solid var(--line);border-radius:9px;padding:10px 12px;background:#fafbf8}
+.hub-bloque span{display:block;font-size:12px;color:var(--muted)}
+.hub-bloque strong{font:600 30px/1.1 Manrope,system-ui,sans-serif;letter-spacing:-1px}
+.hub-bloque small{display:block;font-size:12px;color:var(--muted)}
+.hub-nota{font-size:12px;color:var(--muted);margin:10px 0 0}
+.hub-barras{list-style:none;padding:0;margin:4px 0 0}
+.hub-barras li{display:grid;grid-template-columns:118px 1fr 58px 52px;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid #eef2ec;font-size:14px}
+.hub-barra-nombre{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hub-barra-pista{height:14px;background:#f0f3ee;border-radius:3px;overflow:hidden}
+.hub-barra-pista span{display:block;height:100%;background:var(--c);border-radius:3px}
+.hub-barras b{text-align:right;font-family:Manrope,system-ui,sans-serif}
+.hub-barras small{font-size:12px;color:var(--muted);text-align:right}
+.hub-tarjetas{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.hub-tarjeta{border:1px solid var(--line);border-radius:10px;padding:13px 14px;background:#fff;display:flex;flex-direction:column;gap:6px;min-width:0}
+.hub-tarjeta-cab{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.hub-tarjeta-cab b{font:700 16px Manrope,system-ui,sans-serif}
+.hub-tarjeta-cab time{font-size:13px;color:var(--muted);white-space:nowrap}
+.hub-tarjeta-ficha,.hub-tarjeta-ref{font-size:12px;color:var(--muted);margin:0}
+.hub-apilada{display:flex;height:22px;border-radius:4px;overflow:hidden;background:#eef1ec}
+.hub-apilada span{background:var(--c);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;min-width:0;overflow:hidden}
+.hub-apilada .resto{background:#e3e8e2}
+.hub-cifras{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:2px 12px;font-size:13px}
+.hub-cifras b{font-weight:700}
+.hub-cifras small{margin-left:4px;font-size:11px;color:var(--muted)}
+.hub-cifras small.sube{color:#1f6b3a}.hub-cifras small.baja{color:#a33a1f}
+.hub-estado{margin:2px 0 0;font-size:12px;font-weight:700;border-radius:5px;padding:3px 8px;align-self:flex-start}
+.hub-estado small{display:block;font-weight:400}
+.hub-estado.ok{background:#e4eee8;color:#205f48}
+.hub-estado.fuera{background:#fff1dd;color:#894208}
+.hub-estado.pend{background:#e9edf7;color:#3f4a80}
+.hub-estado.arch{background:#f0f2ef;color:var(--muted)}
+.hub-accesos{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.hub-accesos a{display:flex;flex-direction:column;gap:2px;text-decoration:none;border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:#fafbf8;min-width:0}
+.hub-accesos a:hover{border-color:var(--green)}
+.hub-accesos b{font:700 15px Manrope,system-ui,sans-serif;color:var(--green)}
+.hub-accesos span{font-size:13px}
+.hub-accesos small{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:900px){.hub-panel{grid-template-columns:1fr}.hub-accesos{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.hub-caja{padding:16px 14px}.hub-barras li{grid-template-columns:86px 1fr 52px 44px;gap:6px;font-size:13px}.hub-bloques{grid-template-columns:1fr}.hub-accesos{grid-template-columns:1fr}}
