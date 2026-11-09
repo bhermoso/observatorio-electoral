@@ -37,3 +37,12 @@ test('Las listas de estudios y registros usan los criterios comunes',()=>{
  assert.match(src('cocina-leccion.mjs'),/sort\(menorError\(/);
  assert.match(src('scripts/build.mjs'),/'orden\.mjs'/);
 });
+
+test('regla general: las tablas de acontecimientos y Tendencias listan primero lo más reciente',async()=>{
+ const fs=await import('node:fs');
+ const ev=fs.readFileSync(new URL('../events.mjs',import.meta.url),'utf8');
+ assert.match(ev,/const cells=\[\.\.\.studies\]\.sort\(recientesPrimero/);
+ const te=fs.readFileSync(new URL('../tendencias.mjs',import.meta.url),'utf8');
+ assert.match(te,/const table=\[\.\.\.s\.rows\]\.sort\(\(a,b\)=>b\.published/);
+ assert.match(te,/const history=\[\.\.\.s\.snapshots\]\.sort\(\(a,b\)=>b\.date/);
+});

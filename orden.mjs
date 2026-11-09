@@ -1,13 +1,16 @@
 // Criterios de orden de las listas del Observatorio. Un criterio por tipo de lista, para que
 // la misma relación no aparezca ordenada de forma distinta en cada pantalla.
 //
-// · Estudios (archivo, promedio, pronóstico, algoritmo): el más reciente primero, por fin del
-//   trabajo de campo, que es cuándo se midió la opinión. Desempate: publicación más reciente; casa.
-// · Estudios alrededor de un acontecimiento: cronológico, de antes a después, por fin de campo,
-//   porque es el campo lo que decide si una encuesta es anterior o posterior.
-// · Vistas de «lo que se sabía en cada fecha» (Tendencias, gráfico de la portada): por publicación.
+// Regla general (Blas Hermoso, 9 nov 2026): toda lista de encuestas, promedios o estimaciones
+// se ordena por fecha, con la más reciente al principio. Incluye tablas, tarjetas y leyendas.
+// · Estudios (archivo, promedio, pronóstico, algoritmo, acontecimientos): por fin del trabajo
+//   de campo, que es cuándo se midió la opinión. Desempate: publicación más reciente; casa.
+// · Vistas de «lo que se sabía en cada fecha» (Tendencias): por publicación.
+// · Promedios y modelos externos (capa 4): por fecha; a igual fecha, el consultado en origen.
+// · Registros fechados (cortes del modelo, microdatos): el más reciente primero.
+// Excepciones, porque no son listas sino ejes: los gráficos y líneas temporales dibujan el
+// tiempo de izquierda a derecha; `cronologico` existe solo para esos cálculos.
 // · Errores frente a un resultado: de menor a mayor error absoluto; sin dato, al final.
-// · Registros fechados (cortes del modelo, otros modelos, microdatos): el más reciente primero.
 // · Territorios y listas de consulta: alfabético en español.
 
 export const porTexto=(a,b)=>String(a??'').localeCompare(String(b??''),'es',{sensitivity:'base'});

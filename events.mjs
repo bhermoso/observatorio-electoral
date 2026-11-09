@@ -1,4 +1,4 @@
-import {cronologico,porTexto} from './orden.mjs';
+import {cronologico,recientesPrimero,porTexto} from './orden.mjs';
 import {renderPublishedSeries} from './tendencias.mjs';
 import {analizarAcontecimiento,renderLectura,simularDesplazamiento} from './acontecimiento.mjs';
 import {renderEventVisual} from './eventos-visual.mjs';
@@ -99,7 +99,7 @@ function eventTrend(records,event,party,windowDays){
   +'<text x="'+threshold+'" y="16" text-anchor="middle" font-size="12" fill="#91531e">Acontecimiento · '+format(event.date)+'</text>'
   +place+'<text x="'+l+'" y="'+(h-16)+'" font-size="12" fill="#536960">'+format(new Date(minDay*86400000).toISOString().slice(0,10))+'</text>'
   +'<text x="'+(w-r)+'" y="'+(h-16)+'" text-anchor="end" font-size="12" fill="#536960">'+format(new Date(maxDay*86400000).toISOString().slice(0,10))+'</text></svg>';
- const cells=studies.map(p=>'<tr><td>'+esc(p.institute)+'</td><td>'+esc(p.fieldStart)+'–'+esc(p.fieldEnd)+'</td><td>'+esc(labels[p.relation])+'</td><td class="num">'+fmtNum(eventMeasure(p,party))+' %</td></tr>').join('');
+ const cells=[...studies].sort(recientesPrimero({fin:p=>p.fieldEnd,pub:p=>p.published,casa:p=>p.institute})).map(p=>'<tr><td>'+esc(p.institute)+'</td><td>'+esc(p.fieldStart)+'–'+esc(p.fieldEnd)+'</td><td>'+esc(labels[p.relation])+'</td><td class="num">'+fmtNum(eventMeasure(p,party))+' %</td></tr>').join('');
  let comparison='';
  if(before.length&&after.length){
    comparison='<p><b>Media descriptiva anterior:</b> '+fmtNum(avgBefore)+' % ('+before.length+' estudios). <b>Posterior:</b> '+fmtNum(avgAfter)+' % ('+after.length+' estudios). Diferencia: <b>'+(avgAfter-avgBefore>0?'+':'')+fmtNum(avgAfter-avgBefore)+' pp</b>.</p>'
