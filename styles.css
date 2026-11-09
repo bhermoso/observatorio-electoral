@@ -1078,3 +1078,43 @@ table.caso-tabla{border-collapse:collapse;font-size:13px;margin:6px 0;width:auto
 .series-final .n{font-weight:500;fill:#3b4a45}
 .series-panel-title{font:700 13px Manrope,system-ui,sans-serif;color:#3b4a45;margin:10px 0 0}
 .portada-grafico svg+svg{margin-top:6px}
+
+/* Panel lateral de Panorama (portada-panel.mjs) */
+[data-panel]{cursor:pointer}
+.hub-hemiciclo circle[data-panel]:hover{opacity:.7}
+.hub-leyenda button{all:unset;cursor:pointer;padding:2px 4px;border-radius:5px}
+.hub-leyenda button:hover,.hub-leyenda button:focus-visible{background:#eef3ec;outline:2px solid transparent}
+.hub-barras li[data-panel]:hover,.hub-barras li[data-panel]:focus-visible{background:#f6f8f4}
+.hub-bloque[data-panel]:hover,.hub-tarjeta[data-panel]:hover,.hub-bloque:focus-visible,.hub-tarjeta:focus-visible{border-color:var(--green);box-shadow:0 0 0 2px #dfeee6}
+.hub-pista{font-size:12px;color:var(--green);font-weight:600;margin:10px 0 0}
+body.panel-abierto{overflow:hidden}
+#hub-panel-lateral[hidden]{display:none}
+.panel-fondo{position:fixed;inset:0;background:rgba(15,30,25,.35);z-index:50}
+.panel-lateral{position:fixed;top:0;right:0;bottom:0;width:min(480px,100vw);background:#fff;z-index:51;overflow:auto;padding:22px 22px 30px;box-shadow:-8px 0 30px rgba(0,0,0,.15);outline:none}
+.panel-cerrar{position:absolute;top:10px;right:12px;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:50%;width:34px;height:34px;padding:0;font-size:20px;line-height:1}
+.panel-cab{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-right:40px}
+.panel-cab i{width:14px;height:14px;border-radius:50%;background:var(--c)}
+.panel-cab h2{margin:0;font:700 24px Manrope,system-ui,sans-serif}
+.panel-cab p{flex-basis:100%;margin:0;color:var(--muted);font-size:13px}
+.panel-cifras{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin:14px 0}
+.panel-cifras div{border:1px solid var(--line);border-radius:9px;padding:9px 11px;background:#fafbf8}
+.panel-cifras span,.panel-cifras small{display:block;font-size:12px;color:var(--muted)}
+.panel-cifras strong{font:600 26px/1.15 Manrope,system-ui,sans-serif}
+.panel-lateral h3{font-size:15px;margin:18px 0 6px}
+.panel-nota{font-size:13px;color:var(--muted);margin:6px 0}
+.panel-tabla{font-size:13px}
+.panel-tabla th,.panel-tabla td{padding:7px 6px}
+.panel-tabla th[scope=row]{background:transparent;color:var(--ink);font-weight:500}
+.panel-tabla td small{display:block;color:var(--muted)}
+.panel-lista,.panel-provincias{list-style:none;padding:0;margin:0}
+.panel-lista li{display:grid;grid-template-columns:1fr auto;gap:0 10px;padding:6px 0;border-bottom:1px solid #eef2ec;font-size:14px}
+.panel-lista li small{grid-column:1/-1;font-size:12px;color:var(--muted)}
+.panel-lista .sube,.panel-tabla .sube{color:#1f6b3a}.panel-lista .baja,.panel-tabla .baja{color:#a33a1f}
+.panel-provincias{display:grid;grid-template-columns:1fr 1fr;gap:4px 14px}
+.panel-provincias li{display:flex;gap:6px;align-items:baseline;font-size:13px;border-bottom:1px solid #eef2ec;padding:4px 0}
+.panel-provincias span{flex:1}.panel-provincias small{color:var(--muted)}
+.panel-punto{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--c);margin-right:6px}
+.panel-ficha{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px;margin:14px 0}
+.panel-ficha dt{color:var(--muted)}.panel-ficha dd{margin:0}.panel-ficha dd small{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+.panel-enlaces{display:flex;flex-direction:column;gap:6px;margin-top:20px;border-top:1px solid var(--line);padding-top:12px}
+.panel-enlaces a,.panel-original{color:var(--green);font-weight:700;font-size:14px;text-decoration:none}
