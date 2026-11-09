@@ -7,6 +7,7 @@ import {calculate} from './cocina-secuencial.mjs';
 import {projection} from './cocina-escanos.mjs';
 import {renderRecuento} from './recuento-encuestas.mjs';
 import {bindCaso} from './caso-escanos.mjs';
+import {renderHemiciclo,renderPromedio,encuestasRecientes,renderTarjetas,renderAccesos} from './portada-hub.mjs';
 import {LAYERS,PARTIES,BLOCKS,BLOCK_NOTE,promedioPublicado,capaModelo,capasExternas,matriz,diferencias,efectoCocina,pollsFromModelInputs} from './capas.mjs';
 
 const h=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -21,11 +22,13 @@ const color=id=>PARTY_COLORS[id]||'#7b8784';
 const todayMadrid=()=>new Date().toLocaleDateString('sv-SE',{timeZone:'Europe/Madrid'});
 const CIS_PARTIES=['PP','PSOE','VOX','SUMAR'];
 const MAIN_PARTIES=5; // PP, PSOE, Vox, Sumar y Podemos: filas visibles por defecto en el contraste de capas
+let refsPortada=[];
 const state={vista:'voto',ventana:30,cis:true,ponderacion:'igual',base:'archivo',todos:false};
 
 export function renderHomeImpact(references=[],events=[]){
  const latest=(items,key)=>[...items].sort((a,b)=>b[key].localeCompare(a[key]))[0];
  const average=latest(references.filter(r=>r.kind==='aggregate-model'&&r.published),'published');
+ refsPortada=references;
  return `<section class="impact portada" id="impact" aria-labelledby="impact-heading">
  <div class="portada-cabecera">
   <p class="portada-cuenta" id="portada-cuenta">Elecciones generales · 29 de noviembre de 2026</p>
@@ -34,8 +37,18 @@ export function renderHomeImpact(references=[],events=[]){
   <p class="portada-fechas" id="portada-fechas"></p>
  </div>
 
+ <div class="hub-panel" id="portada-hub">
+  <section class="hub-caja" aria-labelledby="hub-hemi-t"><div class="portada-bloque-cabeza"><div><span class="eyebrow">Motor 29N · pronóstico propio (capa 3)</span><h2 id="hub-hemi-t">Escaños estimados</h2></div><a class="panel-link" href="#pronostico">Pronóstico completo →</a></div><div id="hub-hemiciclo" aria-live="polite"><p class="muted">Cargando…</p></div></section>
+  <section class="hub-caja" aria-labelledby="hub-prom-t"><div class="portada-bloque-cabeza"><div><span class="eyebrow">Encuestas publicadas · promedio simple (capa 1)</span><h2 id="hub-prom-t">Promedio de encuestas</h2></div><a class="panel-link" href="#analisis">Promedios →</a></div><div id="hub-promedio" aria-live="polite"><p class="muted">Cargando…</p></div></section>
+ </div>
+
+ <section class="portada-bloque" id="portada-ultimas" aria-labelledby="hub-ult-t">
+  <div class="portada-bloque-cabeza"><div><span class="eyebrow">La más reciente primero · cambio frente a la oleada anterior de cada casa</span><h2 id="hub-ult-t">Últimas encuestas</h2></div><a class="panel-link" href="#encuestas">Archivo completo y fichas →</a></div>
+  <div id="hub-tarjetas" aria-live="polite"><p class="muted">Cargando…</p></div>
+ </section>
+
  <section class="portada-bloque" id="portada-escanos" aria-labelledby="forecast-lead-title">
-  <div class="portada-bloque-cabeza"><div><span class="eyebrow">Motor 29N · estimación de referencia (capa 3)</span><h2 id="forecast-lead-title">Escaños estimados</h2></div><a class="panel-link" href="#pronostico">Pronóstico completo y circunscripciones →</a></div>
+  <div class="portada-bloque-cabeza"><div><span class="eyebrow">Motor 29N · estimación de referencia (capa 3)</span><h2 id="forecast-lead-title">Por partido y por bloques</h2></div><a class="panel-link" href="#pronostico">Pronóstico completo y circunscripciones →</a></div>
   <div id="forecast-lead-results" class="forecast-lead" aria-live="polite"><p class="muted">Cargando estimación publicada…</p></div>
  </section>
 
@@ -61,6 +74,8 @@ export function renderHomeImpact(references=[],events=[]){
   <div class="panorama-editorial" id="panorama-editorial" aria-live="polite">Calculando el contraste con las encuestas…</div>
   <div id="matrix-notes" class="matrix-notes"></div>
  </section>
+
+ <section class="portada-bloque" id="portada-secciones" aria-labelledby="hub-sec-t"><h2 id="hub-sec-t">Todo el Observatorio</h2><div id="hub-accesos"></div></section>
 
  <section class="portada-detalle" aria-label="Detalle y procedencia">
  <details class="portada-plegable portada-caso" id="portada-caso"><summary>Un caso completo: de una encuesta de 40dB a los escaños de Madrid y Jaén</summary>
@@ -99,21 +114,6 @@ function seatChanges(forecast,history){
   if(Number.isFinite(prior))cambios[id]=v.escanos[0]-prior;
  }
  return {fecha:before.fecha,cambios};
-}
-
-function seatBar(parties){
- const total=parties.reduce((s,[,v])=>s+v.escanos[0],0);
- const rest=350-total;
- const label=parties.map(([id,v])=>`${name(id)} ${fmt(v.escanos[0],0)}`).join(', ');
- const segs=parties.filter(([,v])=>v.escanos[0]>0).map(([id,v])=>{
-  const n=v.escanos[0];
-  return `<span class="portada-seg-partido" style="flex:${n} 0 0;--c:${color(id)}" title="${h(name(id))} · ${fmt(n,0)} escaños">${n>=20?`<b>${h(name(id))}</b> ${fmt(n,0)}`:''}</span>`;
- }).join('');
- const gap=rest>0?`<span class="portada-seg-resto" style="flex:${rest} 0 0" title="${rest} escaños no repartidos en la suma de medianas"></span>`:'';
- const small=parties.filter(([,v])=>v.escanos[0]>0&&v.escanos[0]<20);
- return `<div class="portada-barra" role="img" aria-label="Escaños estimados (mediana de cada partido): ${h(label)}.">${segs}${gap}</div>
- ${small.length?`<p class="portada-leyenda">${small.map(([id,v])=>`<span><i style="--c:${color(id)}"></i>${h(name(id))} ${fmt(v.escanos[0],0)}</span>`).join('')}</p>`:''}
- ${rest!==0?`<p class="portada-nota">Cada barra es la mediana de las simulaciones de ese partido. Las medianas no tienen por qué sumar 350: aquí suman ${fmt(total,0)}.</p>`:''}`;
 }
 
 function blocRows(p){
@@ -161,7 +161,7 @@ export function renderForecastOverview(forecast,history,average){
   .sort((a,b)=>b[1].escanos[0]-a[1].escanos[0]||b[1].voto[0]-a[1].voto[0]);
  const changes=history===null?{fecha:null,cambios:null}:seatChanges(forecast,history);
  return `<div class="forecast-lead-content">
-  <div class="portada-reparto">${seatBar(parties)}${blocRows(p)}</div>
+  <div class="portada-reparto">${blocRows(p)}</div>
   <div class="portada-partidos">${partyTable(parties,average,changes,new Set(p.sin_encuestas||[]))}</div>
  </div>`;
 }
@@ -196,6 +196,14 @@ function renderCuenta(forecast){
  return `Elecciones generales · ${h(flong(eleccion))} · ${when}`;
 }
 
+function drawHub(ctx){
+ const set=(sel,html)=>{const el=document.querySelector(sel);if(el)el.innerHTML=html;};
+ set('#hub-hemiciclo',renderHemiciclo(ctx.forecast));
+ set('#hub-promedio',renderPromedio(ctx.prom));
+ const desde=new Date(Date.parse(ctx.corte+'T12:00:00Z')-21*86400000).toISOString().slice(0,10);
+ set('#hub-tarjetas',renderTarjetas(encuestasRecientes(ctx.forecast,ctx.polls,{desde,limite:8})));
+ set('#hub-accesos',renderAccesos({forecast:ctx.forecast,polls:ctx.polls,events:ctx.events,references:refsPortada}));
+}
 function drawForecastLead(ctx){
  const el=document.querySelector('#forecast-lead-results');
  if(el)el.innerHTML=renderForecastOverview(ctx.forecast,ctx.history,ctx.prom);
@@ -300,7 +308,7 @@ function drawHead(ctx){
 
 export async function bindHomeImpact(polls,events=[]){
  const root=document.querySelector('#impact');if(!root)return;
- const ctx={polls,corte:todayMadrid(),forecast:null,history:null,sin:null,con:null,ext:[],entradas:null};
+ const ctx={polls,events,corte:todayMadrid(),forecast:null,history:null,sin:null,con:null,ext:[],entradas:null};
  try{
   const r=await fetch('data/modelo/pronostico.json',{cache:'no-store'});if(!r.ok)throw Error('pronóstico no publicado (HTTP '+r.status+')');
   ctx.forecast=await r.json();
@@ -310,7 +318,7 @@ export async function bindHomeImpact(polls,events=[]){
   const sub=document.querySelector('#matrix-sub');if(sub)sub.textContent='Motor 29N no disponible: '+err.message+'. Solo se muestra el promedio publicado.';
  }
  if(!root.isConnected)return;
- const redraw=()=>{try{computeLayer1(ctx);drawForecastLead(ctx);drawMatrix(ctx);drawEditorial(ctx);document.querySelector('#home-counts').innerHTML=renderRecuento({forecast:ctx.forecast,archivo:polls.length,seleccion:{estudios:ctx.prom.estudios.filter(e=>e.weight>0).length,institutos:ctx.prom.institutos,detalle:`${state.ventana} días · ${state.base==='archivo'?'archivo verificado':'entradas del motor'}${state.cis?'':' · sin CIS'}`}});}catch(e){document.querySelector('#matrix-table').innerHTML=`<tbody><tr><td role="alert">No se puede calcular: ${h(e.message)}</td></tr></tbody>`;}};
+ const redraw=()=>{try{computeLayer1(ctx);drawHub(ctx);drawForecastLead(ctx);drawMatrix(ctx);drawEditorial(ctx);document.querySelector('#home-counts').innerHTML=renderRecuento({forecast:ctx.forecast,archivo:polls.length,seleccion:{estudios:ctx.prom.estudios.filter(e=>e.weight>0).length,institutos:ctx.prom.institutos,detalle:`${state.ventana} días · ${state.base==='archivo'?'archivo verificado':'entradas del motor'}${state.cis?'':' · sin CIS'}`}});}catch(e){document.querySelector('#matrix-table').innerHTML=`<tbody><tr><td role="alert">No se puede calcular: ${h(e.message)}</td></tr></tbody>`;}};
  drawHead(ctx);redraw();drawChanges(ctx);drawCocina(ctx);
  bindCaso(root.querySelector('#portada-caso'),polls);
  const chart=root.querySelector('#home-series');

@@ -83,7 +83,7 @@ test('Panorama se lee de arriba abajo: titular, escaños, evolución, capas y de
  assert.match(css,/@media\(max-width:1300px\)\{header>nav\{flex:1 0 100%;order:3\}\}/);
 });
 
-test('La portada dibuja el reparto, los bloques y la tabla por partido con intervalos',async()=>{
+test('La portada dibuja los bloques y la tabla por partido con intervalos',async()=>{
  const {renderForecastOverview,renderTitular}=await import('../home-impact.mjs');
  const forecast=JSON.parse(fs.readFileSync('modelo/salida/pronostico.json','utf8'));
  const history=JSON.parse(fs.readFileSync('modelo/registro/historial.json','utf8'));
@@ -91,12 +91,9 @@ test('La portada dibuja el reparto, los bloques y la tabla por partido con inter
  const parties=Object.keys(forecast.principal.partidos).length;
  assert.equal((html.match(/<tr>\s*<th scope="row">/g)||[]).length,parties);
  assert.equal((html.match(/class="portada-bloc"/g)||[]).length,Object.keys(forecast.principal.bloques).length);
- assert.match(html,/class="portada-barra" role="img"/);
  assert.match(html,/href="#pronostico-principal"/);
  assert.match(html,/href="#pronostico-bloques"/);
  assert.doesNotMatch(html,/NaN|undefined/);
- const total=Object.values(forecast.principal.partidos).reduce((s,v)=>s+v.escanos[0],0);
- if(total!==350)assert.match(html,new RegExp('aquí suman '+total));
  const withoutHistory=renderForecastOverview(forecast,[]);
  assert.match(withoutHistory,/Sin cambio comparable/);
  const titular=renderTitular(forecast);
