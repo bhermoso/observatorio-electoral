@@ -392,7 +392,7 @@
     {
       "id": "hallazgo-3821cc0f24b31d84",
       "productor": "40db",
-      "fecha": "2026-11-07",
+      "fecha": "2026-11-08",
       "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/07-barometro/2026_07_barometro_descargables.zip?v=20260706.2",
       "estado": "matriz_detectada_pendiente_homologacion",
       "es_pronostico": false,
@@ -481,12 +481,12 @@
           }
         ]
       },
-      "verificado_en": "2026-11-08T12:04:06+00:00"
+      "verificado_en": "2026-11-09T14:09:25+00:00"
     },
     {
       "id": "hallazgo-fb42daa738873a2a",
       "productor": "40db",
-      "fecha": "2026-11-07",
+      "fecha": "2026-11-08",
       "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/06-barometro-y-Papa/91_Junio_2026_completo.zip",
       "estado": "hoja_descargada_sin_matriz_individual_confirmada",
       "es_pronostico": false,
@@ -575,12 +575,12 @@
           }
         ]
       },
-      "verificado_en": "2026-11-08T12:04:06+00:00"
+      "verificado_en": "2026-11-09T14:09:25+00:00"
     },
     {
       "id": "hallazgo-fb59db5622e60316",
       "productor": "40db",
-      "fecha": "2026-11-07",
+      "fecha": "2026-11-08",
       "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/04-barometro-y-orden-mundial/2026_04_barometro_descargables.zip",
       "estado": "hoja_descargada_sin_matriz_individual_confirmada",
       "es_pronostico": false,
@@ -677,7 +677,7 @@
           }
         ]
       },
-      "verificado_en": "2026-11-08T12:04:06+00:00"
+      "verificado_en": "2026-11-09T14:09:25+00:00"
     },
     {
       "id": "more-in-common-2026-05-01",
