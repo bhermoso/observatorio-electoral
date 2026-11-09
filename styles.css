@@ -1125,3 +1125,51 @@ body.panel-abierto{overflow:hidden}
 .herramientas-destacadas span{font-size:13px;color:var(--muted)}
 .seccion-promedios{margin-top:28px;scroll-margin-top:20px}
 @media(max-width:650px){.herramientas-destacadas{grid-template-columns:1fr}}
+
+/* ===== Portada única: las secciones se abren en el visor, con el estilo de Panorama ===== */
+header>nav{display:none}
+body.visor-abierto{overflow:hidden}
+#visor[hidden]{display:none}
+#visor{position:fixed;inset:0;z-index:40;background:var(--paper);overflow:auto;overscroll-behavior:contain}
+.visor-barra{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:10px 18px;flex-wrap:wrap;padding:12px max(16px,calc((100vw - 1180px)/2));background:#fff;border-bottom:1px solid var(--line);box-shadow:0 2px 10px rgba(16,42,42,.05)}
+.visor-volver{font:700 14px Manrope,system-ui,sans-serif;color:#fff;background:var(--green);text-decoration:none;border-radius:999px;padding:7px 14px;white-space:nowrap}
+.visor-titulo{font:700 18px Manrope,system-ui,sans-serif;color:var(--ink);margin-right:auto}
+.visor-secciones{display:flex;gap:4px;flex-wrap:wrap;flex:0 1 auto;justify-content:flex-end}
+.visor-secciones a{font-size:13px;text-decoration:none;color:var(--muted);padding:5px 10px;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+.visor-secciones a:hover{border-color:var(--line);color:var(--ink)}
+.visor-secciones a[aria-current]{background:#e6f0ea;color:var(--green);font-weight:700}
+.visor-contenido{max-width:1180px;margin:0 auto;padding:22px 16px 60px;outline:none;line-height:1.55}
+/* Cabeceras de sección compactas, como la de Panorama */
+.visor-contenido .hero{display:block;margin:0 0 18px}
+.visor-contenido .hero h1,.visor-contenido>h1,.visor-contenido h1{font:600 clamp(26px,3vw,34px)/1.12 Manrope,system-ui,sans-serif;letter-spacing:-.8px;margin:4px 0 8px}
+.visor-contenido .hero p{max-width:62em;font-size:15px}
+.visor-contenido .hero-aside{text-align:left;margin-top:8px;min-width:0}
+.visor-contenido .eyebrow{font-size:11px;letter-spacing:.12em}
+/* Bloques: tarjetas blancas de Panorama */
+.visor-contenido .panel,.visor-contenido section.panel{border-radius:12px;padding:20px 22px;margin:16px 0;box-shadow:none}
+.visor-contenido .panel h2,.visor-contenido section>h2{font:700 21px/1.25 Manrope,system-ui,sans-serif;letter-spacing:-.3px;margin:2px 0 8px}
+.visor-contenido h3{font:700 16px Manrope,system-ui,sans-serif}
+.visor-contenido p,.visor-contenido li{max-width:72em}
+.visor-contenido .muted{font-size:13px}
+/* Plegables como filas de tarjeta, con flecha */
+.visor-contenido details{border:1px solid var(--line);border-radius:10px;background:#fafbf8;padding:0;margin:10px 0}
+.visor-contenido details>summary{list-style:none;padding:11px 14px;font:700 14px Manrope,system-ui,sans-serif;color:var(--ink);display:flex;gap:8px;align-items:center}
+.visor-contenido details>summary::-webkit-details-marker{display:none}
+.visor-contenido details>summary::before{content:'›';font-size:18px;line-height:1;color:var(--green);transition:transform .15s}
+.visor-contenido details[open]>summary::before{transform:rotate(90deg)}
+.visor-contenido details[open]{background:#fff}
+.visor-contenido details>:not(summary){margin-left:14px;margin-right:14px}
+.visor-contenido details>:last-child{margin-bottom:14px}
+/* Tablas */
+.visor-contenido table{font-size:13.5px}
+.visor-contenido th{background:#f5f7f2;color:#4b5f59;font-weight:600}
+.visor-contenido td,.visor-contenido th{padding:9px 10px}
+/* Subnavegación interna como píldoras */
+.visor-contenido .subnav{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 14px}
+.visor-contenido .subnav a{font-size:13px;text-decoration:none;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;color:var(--green);font-weight:600}
+.visor-contenido .notice{border-radius:8px}
+@media(max-width:760px){.visor-secciones{width:100%;justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}.visor-titulo{font-size:16px}.visor-contenido .panel{padding:16px 14px}}
+.todas-encuestas td small{display:block;font-size:11px;color:var(--muted);max-width:22em}
+.todas-encuestas .num{text-align:right}
+.todas-encuestas th[scope=row]{background:transparent;color:var(--ink);font-weight:600;white-space:nowrap}
+.todas-encuestas th[scope=row] a{color:var(--green);text-decoration:none}

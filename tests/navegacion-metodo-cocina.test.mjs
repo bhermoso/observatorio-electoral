@@ -18,11 +18,13 @@ test('Cocina identifica su alcance experimental',()=>{
  assert.match(cocina,/no cambian automáticamente el Motor 29N/);
  assert.match(cocina,/href="flujograma.html"/);
 });
-test('Menú y metodología usan destinos comprensibles',()=>{
+test('Sin menú de pestañas: el visor ofrece volver a Panorama y saltar entre secciones',()=>{
+ assert.doesNotMatch(nav,/<nav aria-label="Principal">/);
+ assert.match(nav,/class="visor-volver" href="#dashboard">← Panorama/);
  assert.match(nav,/href="#pronostico">Pronóstico completo/);
  assert.match(nav,/href="#encuestas">Encuestas y promedios/);
  assert.match(nav,/href="#metodologia">Método y herramientas/);
- assert.equal((nav.match(/<nav aria-label="Principal">([\s\S]*?)<\/nav>/)[1].match(/<a /g)||[]).length,6);
+ assert.equal((nav.match(/<nav class="visor-secciones" aria-label="Secciones">([\s\S]*?)<\/nav>/)[1].match(/<a /g)||[]).length,5);
  assert.match(nav,/href="#cocina">Cocina/);
  assert.doesNotMatch(nav,/Simulación alternativa/);
  assert.match(method,/Ver las ocho fases del algoritmo/);
@@ -31,5 +33,6 @@ test('Menú y metodología usan destinos comprensibles',()=>{
 test('Las pestañas fusionadas siguen respondiendo a sus enlaces antiguos',async()=>{
  const src=fs.readFileSync('app.mjs','utf8');
  assert.match(src,/ALIAS_RUTA=\{analisis:\['encuestas','encuestas-promedios'\]\}/);
- assert.match(src,/function pollPage\(\)\{return '<div id="poll-archive-content">'\+renderPollArchive\(polls\)/);
+ assert.match(src,/function pollPage\(\)\{return '<section class="panel" id="encuestas-todas">/);
+ assert.match(src,/renderPollArchive\(polls\)/);
 });
