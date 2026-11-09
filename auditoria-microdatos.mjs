@@ -30,7 +30,8 @@ export function renderAuditData(data,storage=null){
  out+='<p class="muted"><strong>Depósito privado recuperable: '+(confirmed?stored+' de '+entries.length+' originales':'sin comprobar (servicio no disponible)')+'</strong>. Un archivo descargado en GitHub Actions no equivale a una copia recuperable en Supabase.</p>';
  out+='<div class="table-wrap"><table class="md-audit-table"><caption>La estructura no significa homologación ni entrada al Motor 29N.</caption>'+
  '<thead><tr><th>Estudio / fuente</th><th>Descarga y estado</th><th>Conservado</th><th>Entrevistas / variables</th><th>Original</th></tr></thead><tbody>';
- out+=entries.slice(0,35).map(r=>{
+ // Del estudio más reciente al más antiguo; sin fecha, al final.
+ out+=[...entries].sort((a,b)=>String(b.fecha||'').localeCompare(String(a.fecha||''))||String(a.id).localeCompare(String(b.id))).slice(0,35).map(r=>{
   const url=safe(r.url),m=r.estructura||{},matrix=(m.tipo==='zip'?m.matrices||[]:[m]).find(x=>x.filas>0);
   const sizes=matrix?Number(matrix.filas).toLocaleString('es-ES')+' filas · '+Number(matrix.columnas||0).toLocaleString('es-ES')+' columnas':m.tipo==='xlsx'?'Excel: comprobar tipo de registro':m.tipo==='zip'?(m.ficheros_tabulares||0)+' ficheros tabulares':'No determinado';
   return '<tr><td><b>'+h(r.id)+'</b><small>'+h(r.productor||'')+' · '+h(r.fecha||'')+'</small></td>'+

@@ -1,3 +1,4 @@
+import {menorError,errorMedioAbsoluto} from './orden.mjs';
 // «La cocina del Observatorio»: qué hemos aprendido y cómo entra en el pronóstico.
 // Todas las cifras se leen de los datos publicados; el texto no contiene números fijos del corte.
 const h=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -14,7 +15,7 @@ export function datosLeccion(forecast,receta,validacion){
  const rec=receta?.pasos?.find(p=>p.id==='recuerdo');
  const corr=forecast?.principal?.correccion_industria;
  if(!rec||!corr?.puntos||!validacion?.resumen)throw Error('Faltan datos de la receta, la validación o la corrección');
- const casas=Object.entries(forecast.error_23j||{}).filter(([,e])=>Number.isFinite(e.PSOE)).map(([c,e])=>({casa:c,psoe:e.PSOE,pp:e.PP})).sort((a,b)=>a.psoe-b.psoe);
+ const casas=Object.entries(forecast.error_23j||{}).filter(([,e])=>Number.isFinite(e.PSOE)).map(([c,e])=>({casa:c,psoe:e.PSOE,pp:e.PP})).sort(menorError(x=>errorMedioAbsoluto([x.psoe,x.pp]),x=>x.casa));
  const privadas=casas.filter(c=>c.casa!=='CIS');
  const sin=forecast.variantes?.[forecast.capas?.sin_cocina?.variante||'consenso_todas'];
  return {recuerdo:{muestra:rec.recuerdo_muestra_pct,oficial:rec.resultado_oficial_pct,factores:rec.factores},
@@ -40,7 +41,7 @@ export function textoLeccion(d){
  <p>Para elegir entre ambas lecturas aplicamos la misma receta a los dos estudios del CIS previos al 23J, con el recuerdo de 2019. El error medio fue de <b>${f(d.mae.peso,2)}</b> puntos con la intención ponderada, <b>${f(d.mae.cis_publicado,2)}</b> en la estimación publicada por el CIS y <b>${f(d.mae.participacion,2)}</b> con la receta completa. La calibración por recuerdo empeoró el acierto. En estos dos estudios, la calibración por recuerdo empeoró el resultado; <b>no permite distinguir por sí sola entre sesgo de muestra y error de recuerdo, ni generalizar a otras elecciones.</b> <a href="#cocina-propia">Ver la receta y el examen →</a></p>
 
  <h3>3. Errores observados por encuestadora en 2023</h3>
- <div class="table-wrap"><table><caption>Error de cada casa en el 23J: última encuesta − resultado oficial (puntos)</caption><thead><tr><th>Casa</th><th>PSOE</th><th>PP</th></tr></thead><tbody>${filasCasas}</tbody></table></div>
+ <div class="table-wrap"><table><caption>Error de cada casa en el 23J: última encuesta − resultado oficial (puntos). De menor a mayor error medio, sin tener en cuenta el signo, entre PSOE y PP.</caption><thead><tr><th>Casa</th><th>PSOE</th><th>PP</th></tr></thead><tbody>${filasCasas}</tbody></table></div>
  <p>${d.mismaDireccion?'Todas las privadas se equivocaron con el PSOE en la misma dirección.':'Las privadas no fallaron todas en la misma dirección.'} En la estimación publicada por el CIS, el PSOE ${(d.casas.find(x=>x.casa==='CIS')?.psoe??-1)>=0?'no quedó infravalorado':'también quedó infravalorado'}. Eso no permite identificar los ajustes internos de cada casa. Cuando todas fallan igual, promediarlas no corrige nada: el error no se compensa, se suma. Por eso un agregador que solo promedia hereda el sesgo de todas.</p>
 
  <h3>4. Nuestra cocina: corregir la mitad del sesgo</h3>

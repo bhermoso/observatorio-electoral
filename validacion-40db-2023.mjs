@@ -28,10 +28,11 @@ export async function bindRetrospectiva40db(){
   const mean=a=>a.reduce((x,y)=>x+y,0)/a.length;
   root.innerHTML=`<p class="validacion40db-lead"><strong>Hallazgo:</strong> la estimación publicada por 40dB tiene menor error que la directa ponderada en los tres estudios. En cambio, el ajuste parcial por recuerdo de 2019 aumenta el error en todos. Esto no identifica cómo cocina 40dB ni avala cambiar nuestro motor.</p>
    <div class="table-wrap"><table class="validacion40db-matrix">
-    <caption>Error absoluto medio (MAE), puntos porcentuales. Cuanto menor, mejor. Las medias de la última columna son solo descriptivas.</caption>
+    <caption>Error absoluto medio (MAE), puntos porcentuales. Cuanto menor, mejor. Ordenado de menor a mayor media. Las medias de la última columna son solo descriptivas.</caption>
     <thead><tr><th>Procedimiento</th>${d.estudios.map(s=>`<th>${esc(s.nombre)}<small>n = ${s.n.toLocaleString('es-ES')}</small></th>`).join('')}<th>Media de las tres</th></tr></thead>
-    <tbody>${rows.map(m=>{
-     const nums=d.estudios.map(s=>m.key==='publicado'?s.mae_publicado:s.mae_metodos[m.index]);
+    <tbody>${rows.map(m=>({...m,nums:d.estudios.map(s=>m.key==='publicado'?s.mae_publicado:s.mae_metodos[m.index])}))
+     .sort((a,b)=>mean(a.nums)-mean(b.nums)||a.label.localeCompare(b.label,'es')).map(m=>{
+     const nums=m.nums;
      return `<tr${m.key==='publicado'?' class="validacion40db-reference"':''}><th scope="row">${esc(m.label)}</th>${nums.map(v=>`<td>${fmt(v)}</td>`).join('')}<td><strong>${fmt(mean(nums))}</strong></td></tr>`;
     }).join('')}</tbody></table></div>
    <div class="validacion40db-notes">

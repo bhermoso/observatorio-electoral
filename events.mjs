@@ -1,3 +1,4 @@
+import {cronologico,porTexto} from './orden.mjs';
 import {renderPublishedSeries} from './tendencias.mjs';
 import {analizarAcontecimiento,renderLectura,simularDesplazamiento} from './acontecimiento.mjs';
 import {renderEventVisual} from './eventos-visual.mjs';
@@ -32,7 +33,7 @@ export function contextPolls(polls,eventDate,windowDays=30){
  const center=day(eventDate);
  return polls.filter(p=>p.kind==='poll-estimate').map(p=>({...p,relation:fieldRelation(p,eventDate)}))
   .filter(p=>day(p.fieldEnd)>=center-windowDays&&day(p.fieldStart)<=center+windowDays)
-  .sort((a,b)=>a.fieldStart.localeCompare(b.fieldStart)||a.id.localeCompare(b.id));
+  .sort(cronologico({fin:p=>p.fieldEnd,pub:p=>p.published,casa:p=>p.institute}));
 }
 export function descriptivePairs(polls,eventDate,windowDays=30){
  const groups=new Map();
@@ -75,7 +76,7 @@ function eventMeasure(p,party){
 }
 function eventTrend(records,event,party,windowDays){
  // Never use publication date for the position of a survey.
- const studies=records.filter(p=>eventMeasure(p,party)!==null).sort((a,b)=>a.fieldEnd.localeCompare(b.fieldEnd));
+ const studies=records.filter(p=>eventMeasure(p,party)!==null).sort(cronologico({fin:p=>p.fieldEnd,pub:p=>p.published,casa:p=>p.institute}));
  const before=studies.filter(p=>p.relation==='before'),after=studies.filter(p=>p.relation==='after');
  const max=Math.max(40,...studies.map(p=>eventMeasure(p,party)+3));
  const w=960,h=325,l=56,r=20,t=25,b=52,plotW=w-l-r,plotH=h-t-b;
@@ -138,7 +139,9 @@ function eventEvidence(records,event,party){
     +(r.pre===null?'<span class="event-no-data">Sin dato anterior</span>':'<span class="event-evidence-bar" style="width:'+Math.max(0,Math.min(100,r.pre/max*100))+'%"><i></i></span>')
     +(r.post===null?'':'<span class="event-after-bar" style="width:'+Math.min(100,r.post/max*100)+'%"></span>')
     +'</div><span>'+ (r.pre===null?'—':f(r.pre)+' %')+'<small>'+r.nPre+' casas</small></span><span>'+(r.post===null?'—':f(r.post)+' %')+'<small>'+r.nPost+' casas</small></span><strong>'+(r.pre!==null&&r.post!==null?(r.post-r.pre>0?'+':'')+f(r.post-r.pre)+' pp':'—')+'</strong></div>').join('');
- const detail=[...new Set([...prior.keys(),...subsequent.keys()])].sort((a,b)=>a.localeCompare(b)).map(name=>{
+ // Cronológico por la oleada anterior de cada instituto (o la posterior, si no hay anterior).
+ const ref=name=>prior.get(name)?.fieldEnd||subsequent.get(name)?.fieldEnd||'';
+ const detail=[...new Set([...prior.keys(),...subsequent.keys()])].sort((a,b)=>ref(a).localeCompare(ref(b))||porTexto(a,b)).map(name=>{
    const p=prior.get(name),posterior=subsequent.get(name);
    const same=p&&posterior&&['scope','universe','mode','scenario'].every(k=>p[k]&&posterior[k]&&p[k]===posterior[k]);
    const first=p?eventMeasure(p,party):null,last=posterior?eventMeasure(posterior,party):null;
