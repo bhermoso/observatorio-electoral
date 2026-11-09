@@ -1,7 +1,6 @@
 // Contraste de capas (promedio publicado, motor sin y con cocina, otros modelos), cambios entre
 // cortes y procedencia de las cifras. Vive en Pronóstico completo; antes estaba plegado en Panorama.
 // Solo presentación: las cifras proceden de capas.mjs y del Motor 29N.
-import {renderRecuento} from './recuento-encuestas.mjs';
 import {LAYERS,PARTIES,BLOCK_NOTE,promedioPublicado,capaModelo,capasExternas,matriz,diferencias,efectoCocina,pollsFromModelInputs} from './capas.mjs';
 
 const h=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -43,7 +42,6 @@ export function renderContraste(){
   <h2 id="fuentes-heading">I. De dónde sale cada cifra</h2>
   <div class="panorama-source-grid"><p><b>Promedio de encuestas:</b> agregamos estimaciones que ya publicaron los institutos. No son respuestas individuales.</p><p><b>Pronóstico propio:</b> tendencia, sesgos, calibración histórica y simulación de escaños; utiliza estimaciones publicadas, no microdatos.</p><p><b>Cocina sobre microdatos:</b> experimentos con respuestas del CIS; no alimentan este pronóstico.</p><p><b>Noticias y otros modelos:</b> pistas para verificar originales y comparadores externos, nunca encuestas añadidas automáticamente.</p></div>
   <ol class="layer-legend" aria-label="Las cuatro capas">${Object.entries(LAYERS).map(([k,l])=>`<li class="layer-${k}"><span class="layer-num" aria-hidden="true">${l.capa}</span><div><b>${h(l.nombre)}</b> <small>${h(l.naturaleza)}</small><p>${h(l.explica)}</p></div></li>`).join('')}</ol>
-  <h3>Recuentos de las fuentes</h3><div id="home-counts"></div>
   <nav class="impact-links" aria-label="Método"><a href="flujograma.html">Cómo se calcula</a><a href="como-estimamos.html">Método y validación</a><a href="#pronostico-evaluacion">Retropruebas y errores</a><a href="construye-estimacion.html#cocina-secuencia">Cocina electoral</a><a href="#encuestas">Archivo de encuestas</a></nav>
  </section>`;
 }
@@ -151,7 +149,7 @@ export async function bindContraste(polls){
   const sub=document.querySelector('#matrix-sub');if(sub)sub.textContent='Motor 29N no disponible: '+err.message+'. Solo se muestra el promedio publicado.';
  }
  if(!root.isConnected)return;
- const redraw=()=>{try{computeLayer1(ctx);drawMatrix(ctx);drawEditorial(ctx);document.querySelector('#home-counts').innerHTML=renderRecuento({forecast:ctx.forecast,archivo:polls.length,seleccion:{estudios:ctx.prom.estudios.filter(e=>e.weight>0).length,institutos:ctx.prom.institutos,detalle:`${state.ventana} días · ${state.base==='archivo'?'archivo verificado':'entradas del motor'}${state.cis?'':' · sin CIS'}`}});}catch(e){document.querySelector('#matrix-table').innerHTML=`<tbody><tr><td role="alert">No se puede calcular: ${h(e.message)}</td></tr></tbody>`;}};
+ const redraw=()=>{try{computeLayer1(ctx);drawMatrix(ctx);drawEditorial(ctx);}catch(e){document.querySelector('#matrix-table').innerHTML=`<tbody><tr><td role="alert">No se puede calcular: ${h(e.message)}</td></tr></tbody>`;}};
  redraw();drawChanges(ctx);drawCocina(ctx);
  const toggle=document.querySelector('#matrix-toggle');
  toggle?.addEventListener('click',()=>{state.todos=!state.todos;const t=document.querySelector('#matrix-table');t.dataset.todos=String(state.todos);toggle.setAttribute('aria-expanded',String(state.todos));redraw();});

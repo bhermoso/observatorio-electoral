@@ -145,7 +145,7 @@ export function renderAccesos({forecast,polls=[],events=[],references=[]}){
  const items=[
   ['#pronostico','Pronóstico completo',forecast?`Corte del ${fday(forecast.corte)} · ${forecast.entradas?.length??'—'} estudios`:'No disponible',pp?`PP ${fmt(pp.escanos[0],0)} (${fmt(pp.escanos[1],0)}–${fmt(pp.escanos[2],0)})`:''],
   ['#encuestas','Encuestas',`${forecast?.entradas?.length??'—'} en el pronóstico · ${forecast?.excluidas?.length??'—'} fuera`,`${archivo.length} fichas en el archivo verificado${ultimaPub?' · última: '+fday(ultimaPub):''}`],
-  ['#analisis','Promedios','Con pesos propios',ext?`${ext.nombre} · ${fday(ext.fecha)}`:''],
+  ['#encuestas-promedios','Promedios','Con pesos propios',ext?`${ext.nombre} · ${fday(ext.fecha)}`:''],
   ['#contexto','Acontecimientos',`${events.length} registrados`,ev?`${fday(ev.date)} · ${ev.title}`:''],
   ['#cocina','Cocina','De la intención directa a la estimación','Microdatos del CIS y 40dB'],
   ['#cocina-caso','Un caso completo','De una encuesta de 40dB a los escaños','Madrid y Jaén, paso a paso'],

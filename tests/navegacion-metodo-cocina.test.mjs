@@ -20,9 +20,16 @@ test('Cocina identifica su alcance experimental',()=>{
 });
 test('Menú y metodología usan destinos comprensibles',()=>{
  assert.match(nav,/href="#pronostico">Pronóstico completo/);
- assert.match(nav,/href="#analisis">Promedios/);
+ assert.match(nav,/href="#encuestas">Encuestas y promedios/);
+ assert.match(nav,/href="#metodologia">Método y herramientas/);
+ assert.equal((nav.match(/<nav aria-label="Principal">([\s\S]*?)<\/nav>/)[1].match(/<a /g)||[]).length,6);
  assert.match(nav,/href="#cocina">Cocina/);
  assert.doesNotMatch(nav,/Simulación alternativa/);
  assert.match(method,/Ver las ocho fases del algoritmo/);
  assert.match(method,/Abrir laboratorio de cocina/);
+});
+test('Las pestañas fusionadas siguen respondiendo a sus enlaces antiguos',async()=>{
+ const src=fs.readFileSync('app.mjs','utf8');
+ assert.match(src,/ALIAS_RUTA=\{analisis:\['encuestas','encuestas-promedios'\]\}/);
+ assert.match(src,/function pollPage\(\)\{return '<div id="poll-archive-content">'\+renderPollArchive\(polls\)/);
 });
