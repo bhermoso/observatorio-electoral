@@ -87,5 +87,59 @@
     },
     "notes": "Media a 7 de noviembre de 2026 consultada en la página original el 8 de noviembre. La página usa la etiqueta «Frente Amplio», que aquí se registra como Sumar / Frente Amplio. Los escaños no son estimación propia de Demócrata: son la media de las proyecciones de 7 institutos. No es una encuesta y no entra en el promedio ni en el Motor 29N.",
     "methodology": "Último sondeo de cada uno de 11 institutos, ponderado por antigüedad (pierde la mitad del peso cada 7 días y sale a los 30) y por muestra (no proporcional). Un partido ausente no cuenta como 0. Excluye el CIS, los sondeos encargados por partidos y los de empresa no identificada. No corrige la tendencia de cada empresa."
+  },
+  {
+    "id": "elpais-promedio-2026-11-07",
+    "kind": "aggregate-model",
+    "name": "Promedio de EL PAÍS · Kiko Llaneras",
+    "publisher": "EL PAÍS",
+    "published": "2026-11-07",
+    "verified": "2026-11-09",
+    "status": "dated-reference",
+    "source": "https://x.com/kikollan/status/2119052476087427170",
+    "values": {
+      "PP": 31.1,
+      "PSOE": 26.6,
+      "VOX": 19.1,
+      "Sumar": 7.2,
+      "SALF": 2.1,
+      "Podemos": 1.9
+    },
+    "modelSeats": {
+      "PP": 129,
+      "PSOE": 106,
+      "VOX": 68,
+      "Sumar": 15,
+      "Podemos": 2
+    },
+    "notes": "Promedio y modelo de escaños de EL PAÍS a 7 de noviembre, publicados por su autor, Kiko Llaneras, en el hilo de X que acompaña a la newsletter «¿Se mueven las encuestas desde la convocatoria y tras el accidente de tren?» (elpais.com, 7 nov, para suscriptores). Cifras leídas en los gráficos originales del hilo el 9 de noviembre. Escaños: estimación central con 20.000 simulaciones; horquillas del 80 %: PP 108–151, PSOE 85–127, Vox 48–86, Frente Amplio 7–24, Podemos 0–3, otros 25–38 (otros, 31 escaños; 12,0 % del voto). No es una encuesta y no entra en nuestros cálculos.",
+    "methodology": "Promedio de encuestas publicadas y modelo de escaños con 20.000 simulaciones (EL PAÍS)."
+  },
+  {
+    "id": "democrata-media-2026-11-09",
+    "kind": "aggregate-model",
+    "name": "Demócrata (13 institutos)",
+    "publisher": "Demócrata",
+    "published": "2026-11-09",
+    "verified": "2026-11-09",
+    "status": "dated-reference",
+    "source": "https://www.democrata.es/elecciones-generales-espana/herramientas/encuestas",
+    "values": {
+      "PP": 31.2,
+      "PSOE": 27.1,
+      "VOX": 19.0,
+      "Sumar": 6.5,
+      "SALF": 1.9,
+      "Podemos": 1.7
+    },
+    "modelSeats": {
+      "PP": 134,
+      "PSOE": 106,
+      "VOX": 68,
+      "Sumar": 9,
+      "Podemos": 1
+    },
+    "notes": "Media a 9 de noviembre de 2026 de 13 institutos, consultada en la página original el 9 de noviembre (incluye ya GAD3 del 3–5 nov y 40dB del 2–4 nov). La página usa la etiqueta «Frente Amplio». Los escaños son la media de las proyecciones de 7 institutos, no una estimación propia. No es una encuesta y no entra en nuestros cálculos.",
+    "methodology": "Último sondeo de cada instituto, ponderado por antigüedad (pierde la mitad del peso cada 7 días y sale a los 30, fechando cada estudio en la mitad de su campo) y por muestra. Excluye el CIS, los sondeos encargados por partidos y los de empresa no identificada."
   }
 ]
