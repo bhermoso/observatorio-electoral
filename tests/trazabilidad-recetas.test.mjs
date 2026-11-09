@@ -27,7 +27,7 @@ test('Cero validaciones independientes: no se publica una receta como ganadora',
 test('La guía de evidencia está integrada en web y build',()=>{
  const html=fs.readFileSync('metodo-evidencia.html','utf8');
  const ui=fs.readFileSync('metodo-evidencia-ui.mjs','utf8');
- const home=fs.readFileSync('home-impact.mjs','utf8');
+ const home=fs.readFileSync('casos-cocina.mjs','utf8');
  const build=fs.readFileSync('scripts/build.mjs','utf8');
  assert.match(html,/id="contabilidad"/);
  assert.match(html,/id="evidencia"/);
