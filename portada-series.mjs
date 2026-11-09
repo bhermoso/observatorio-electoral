@@ -40,7 +40,9 @@ export function collectSeries(polls,forecast,history,cutoff){
  }
  const order=(a,b)=>a.date.localeCompare(b.date);
  const series=[{id:'observatorio',label:'Observatorio · Motor 29N',type:'model',color:'#183e31',points:[...model.values()].sort(order)}];
- for(const [i,[label,points]] of [...houses].sort(([a],[b])=>a.localeCompare(b,'es')).entries()){
+ // Leyenda: la casa con el dato más reciente primero.
+ const ultima=pts=>[...pts.values()].map(p=>p.date).sort().at(-1)||'';
+ for(const [i,[label,points]] of [...houses].sort(([a,pa],[b,pb])=>ultima(pb).localeCompare(ultima(pa))||a.localeCompare(b,'es')).entries()){
   series.push({id:'casa-'+label,label,type:'house',color:colors[i%colors.length],points:[...points.values()].sort(order)});
  }
  const external=new Map();

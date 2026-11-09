@@ -129,15 +129,15 @@ export function capaModelo(forecast,capa){
 export function capasExternas(forecast){
  return [...(forecast?.externos||[])].map(x=>({capa:4,tipo:'externo',...x,partidos:Object.fromEntries(Object.entries(x.voto||{}).map(([k,v])=>[ALIAS[k]||k,v])),
   escanosPartidos:Object.fromEntries(Object.entries(x.escanos||{}).map(([k,v])=>[ALIAS[k]||k,v]))}))
-  // Primero los de original consultado; después, por fecha descendente.
-  .sort((a,b)=>(b.verificado===true)-(a.verificado===true)||String(b.fecha).localeCompare(String(a.fecha))||String(a.nombre).localeCompare(String(b.nombre)));
+  // Por fecha, el más reciente primero; a igual fecha, primero el consultado en origen.
+  .sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha))||(b.verificado===true)-(a.verificado===true)||String(a.nombre).localeCompare(String(b.nombre)));
 }
 
 /** Productor de un registro externo: el nombre sin el paréntesis final («Demócrata (11 institutos)» → «Demócrata»). */
 export const productorExterno=x=>String(x?.nombre||'').replace(/\s*\([^)]*\)\s*$/,'').trim();
 
 /** Para la tabla de capas: el registro más reciente de cada productor, sin repetir productor.
- * Orden: primero los consultados en origen; después, por fecha descendente. */
+ * Orden: por fecha, el más reciente primero; a igual fecha, primero el consultado en origen. */
 export function externosRecientes(externos,n=2){
  const latest=new Map();
  for(const x of externos){
@@ -145,7 +145,7 @@ export function externosRecientes(externos,n=2){
   if(!prev||String(x.fecha)>String(prev.fecha)||(String(x.fecha)===String(prev.fecha)&&x.verificado===true&&prev.verificado!==true))latest.set(k,x);
  }
  return [...latest.values()]
-  .sort((a,b)=>(b.verificado===true)-(a.verificado===true)||String(b.fecha).localeCompare(String(a.fecha))||String(a.nombre).localeCompare(String(b.nombre)))
+  .sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha))||(b.verificado===true)-(a.verificado===true)||String(a.nombre).localeCompare(String(b.nombre)))
   .slice(0,n);
 }
 

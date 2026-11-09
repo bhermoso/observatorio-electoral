@@ -19,7 +19,7 @@ export async function bindSocioMetrica(){
   const resp=await fetch(SRC,{cache:'no-store'});if(!resp.ok)throw Error('HTTP '+resp.status);
   const d=await resp.json();if(!root.isConnected)return;
   if(d.esquema!==1||d.estudios?.length!==4||d.estudios.reduce((n,x)=>n+x.n_filas_sav,0)!==4383)throw Error('Agregados incompletos');
-  const studies=[...d.estudios].sort((a,b)=>a.id.localeCompare(b.id));
+  const studies=[...d.estudios].sort((a,b)=>b.id.localeCompare(a.id));
   const get=(s,k)=>s.partidos_y_categorias_n_20.find(x=>x.etiqueta.toLocaleLowerCase('es')===k.toLocaleLowerCase('es'))?.pct_muestra;
   const cols=studies.map(s=>({s,name:s.id.includes('05-27')?'Mayo':s.id.includes('06-23')?'Junio':s.id.includes('07-28')?'Julio':'Septiembre'}));
   const body=orden.map(p=>`<tr><th scope="row">${esc(p)}</th>${cols.map(({s})=>`<td>${get(s,p)===undefined?'—':fmt(get(s,p))+' %'}</td>`).join('')}</tr>`).join('');

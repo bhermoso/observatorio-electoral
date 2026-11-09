@@ -109,9 +109,9 @@ test('bloques cubiertos por menos de la mitad de los estudios no se publican',()
  const r=promedioPublicado([...polls,P('e','Casa E','2026-10-25',{PP:30,PSOE:27,VOX:18,UPN:0.2})],{corte:'2026-11-01',ventana:30});
  assert.equal(r.bloques['PP+VOX+UPN'].valor,null);assert.match(r.bloques['PP+VOX+UPN'].motivo,/Solo 1 de 4/);
 });
-test('externos: primero los verificados',()=>{
- const x=capasExternas({externos:[{id:'a',nombre:'A',fecha:'2026-11-01',verificado:false},{id:'b',nombre:'B',fecha:'2026-10-01',verificado:true}]});
- assert.equal(x[0].id,'b');
+test('externos: el más reciente primero; a igual fecha, el verificado',()=>{
+ const x=capasExternas({externos:[{id:'a',nombre:'A',fecha:'2026-11-01',verificado:false},{id:'b',nombre:'B',fecha:'2026-10-01',verificado:true},{id:'c',nombre:'C',fecha:'2026-11-01',verificado:true}]});
+ assert.deepEqual(x.map(e=>e.id),['c','a','b']);
 });
 test('pollsFromModelInputs conserva el origen de cada entrada',()=>{
  const p=pollsFromModelInputs([{estudio:'s1',casa:'Casa A',campo_fin:'2026-10-10',voto:{PP:30},origen:'terceros-29n'}]);
@@ -129,7 +129,7 @@ test('el pronóstico publicado del repositorio expone las cuatro capas',()=>{
  assert.equal(f.eventos?.['urda-2026-10-28']?.aplicado_al_pronostico,false);
 });
 
-test('capa 4 en la tabla: un registro por productor, el más reciente, y primero los consultados en origen',async()=>{
+test('capa 4 en la tabla: un registro por productor, el más reciente, ordenados por fecha',async()=>{
  const {externosRecientes,productorExterno}=await import('../capas.mjs');
  assert.equal(productorExterno({nombre:'Demócrata (11 institutos)'}),'Demócrata');
  const x=externosRecientes([
@@ -139,5 +139,5 @@ test('capa 4 en la tabla: un registro por productor, el más reciente, y primero
   {nombre:'Demócrata (11 institutos)',fecha:'2026-11-07',verificado:true},
   {nombre:'Otro',fecha:'2026-10-20',verificado:false}
  ]);
- assert.deepEqual(x.map(e=>[e.nombre,e.fecha]),[['Demócrata (11 institutos)','2026-11-07'],['Promedio de EL PAÍS','2026-11-08']]);
+ assert.deepEqual(x.map(e=>[e.nombre,e.fecha]),[['Promedio de EL PAÍS','2026-11-08'],['Demócrata (11 institutos)','2026-11-07']]);
 });
