@@ -14,8 +14,8 @@ test('La portada distingue cálculo real y cocina experimental con accesos separ
  assert.match(app,/Método y validación/);
 });
 test('Cocina identifica su alcance experimental',()=>{
- assert.match(cocina,/laboratorio de experimentación/);
- assert.match(cocina,/no cambian automáticamente el Motor 29N/);
+ assert.match(cocina,/Regla de entrada\./);
+ assert.match(cocina,/Los experimentos de este capítulo no cambian el Motor 29N/);
  assert.match(cocina,/href="flujograma.html"/);
 });
 test('Sin menú de pestañas: el visor ofrece volver a Panorama y saltar entre secciones',()=>{

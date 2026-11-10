@@ -37,7 +37,7 @@ test('La descarga temporal observada en manifiesto nunca se finge guardada o ana
  assert.equal(d.estudios[0].microdatos.analisis,'pendiente');
  assert.match(microdataState(d.estudios[0]),/Descargado temporalmente/);
 });
-test('El archivo vacío no anuncia descargas ficticias y se integra en Encuestas',()=>{
+test('El archivo vacío no anuncia descargas ficticias y se integra en Cocina',()=>{
  const seed=JSON.parse(read('../data/microdatos/estado-descargas.json'));
  const html=renderAuditData(seed);
  if(seed.archivos.length){
@@ -47,7 +47,7 @@ test('El archivo vacío no anuncia descargas ficticias y se integra en Encuestas
  const ui=renderCatalogoMicrodatos();
  assert.match(ui,/analizado|almacenado/i);
  const app=read('../app.mjs'),build=read('../scripts/build.mjs');
- assert.match(app,/renderEstadoDescargas\(\)/);
+ assert.match(read('../cocina.mjs'),/renderEstadoDescargas\(\)/);
  assert.match(app,/bindEstadoDescargas\(\)/);
  assert.match(build,/'auditoria-microdatos\.mjs'/);
  assert.match(renderEstadoDescargas(),/Almacén de microdatos/);

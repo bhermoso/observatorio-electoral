@@ -13,15 +13,36 @@ const name=id=>PARTIES.find(x=>x.id===id)?.label||id;
 const todayMadrid=()=>new Date().toLocaleDateString('sv-SE',{timeZone:'Europe/Madrid'});
 const CIS_PARTIES=['PP','PSOE','VOX','SUMAR'];
 
-export function renderCasosCocina(){
+export function renderCasoCocina(){
  return `<section class="panel portada-caso" id="cocina-caso" aria-labelledby="caso-heading"><h2 id="caso-heading">Un caso completo: de una encuesta de 40dB a los escaños de Madrid y Jaén</h2>
-  <div id="caso-contenido" aria-live="polite"><p class="muted">Cargando el caso…</p></div></section>
- <section class="panel experiment" id="cocina-experimento-cis" aria-labelledby="exp-heading"><h2 id="exp-heading">Experimento separado: cocina sobre respuestas del CIS</h2>
+  <div id="caso-contenido" aria-live="polite"><p class="muted">Cargando el caso…</p></div></section>`;
+}
+
+export function renderExperimentoCis(){
+ return `<section class="panel experiment" id="cocina-experimento-cis" aria-labelledby="exp-heading"><h2 id="exp-heading">Experimento separado: cocina sobre respuestas del CIS</h2>
   <p class="muted"><span class="badge sim">Microdatos · fuera del pronóstico</span> Cocina aplicada a <b>microdatos individuales</b> de un solo instituto (CIS). No alimenta el Motor 29N ni el contraste de capas. La proyección de escaños es ilustrativa: ajuste proporcional sobre el mapa de 2023 y D’Hondt.</p>
   <div class="toolbar"><label>Estudio <select id="impact-cis"><option value="3411">CIS 3411 · 2023</option><option value="3415">CIS 3415 · 2023</option><option value="3582" selected>CIS 3582 · 2026</option></select></label><label>Procedimiento <select id="impact-recipe"><option value="decided">Ponderación + solo decididos</option><option value="sympathy">Ponderación + voto o simpatía</option><option value="turnout">Ponderación + decididos + participación</option></select></label></div>
   <div id="impact-recipe-output" class="impact-visual" aria-live="polite">Recalculando…</div>
   <p class="muted"><a href="construye-estimacion.html">Construye una estimación, decisión a decisión →</a> · <a href="tutorial-estimacion.html">Tutorial</a> · <a href="metodo-evidencia.html">Por qué cambia la estimación</a> · <a href="#laboratorio">Laboratorio D’Hondt →</a></p>
  </section>`;
+}
+
+// Compatibilidad: caso y experimento juntos.
+export function renderCasosCocina(){return renderCasoCocina()+renderExperimentoCis();}
+
+/** Esquema de la cadena: de las respuestas a la estimación publicada. Cada paso dice si es dato,
+ * cálculo o hipótesis. Texto propio; no reproduce la receta de ninguna casa. */
+export function renderCadenaCocina(){
+ const pasos=[
+  ['Respuestas','dato','Lo que cada persona dice que votaría ahora, más quienes no saben, no contestan o no votarían.'],
+  ['Ponderación','cálculo','Pesos para que la muestra se parezca al electorado en sexo, edad, territorio o estudios.'],
+  ['Recuerdo de voto','hipótesis','Pesos para que lo que la muestra dice haber votado en 2023 cuadre con el resultado real. Supone que el recuerdo es fiable.'],
+  ['Indecisos','hipótesis','Reparto de quienes no eligen partido según su simpatía o su voto anterior.'],
+  ['Participación','hipótesis','Más peso a quien dice que irá seguro a votar; menos a quien duda.'],
+  ['Estimación publicada','resultado','Porcentaje sobre voto válido que publica la encuestadora. Cada casa recorre estos pasos a su manera y casi ninguna publica cómo.'],
+ ];
+ return `<ol class="cocina-cadena" aria-label="De las respuestas a la estimación publicada">${pasos.map(([t,k,x],i)=>`<li class="cadena-${k}"><span class="cadena-n">${i+1}</span><b>${t}</b><small class="cadena-tipo">${k}</small><p>${x}</p></li>`).join('')}</ol>
+ <p class="cocina-cadena-nota">Dato: se observa en la encuesta. Cálculo: operación documentable sobre los datos. Hipótesis: supuesto sobre la gente que solo se comprueba el día de la elección.</p>`;
 }
 
 export async function bindCasosCocina(polls){

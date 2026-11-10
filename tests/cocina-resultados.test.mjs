@@ -41,11 +41,14 @@ test('Datos ilegibles o manipulados se rechazan, sin fabricar estimaciones',()=>
  assert.throws(()=>extraerResultadosCocina({...micro,comparison:[{...micro.comparison[0],direct:110},...micro.comparison.slice(1)]},audit));
  assert.throws(()=>extraerResultadosCocina(micro,{...audit,pruebas_seleccion_y_traslado:[]}));
 });
-test('Resultados visibles antes de lección y tabla técnica desplegada',()=>{
+test('Cocina por capítulos: resultados en el capítulo 4, lección en el 5, sin pliegue general',()=>{
  const html=renderCocina();
  assert.ok(html.indexOf('id="cocina-resultados"')>=0);
  assert.ok(html.indexOf('id="cocina-resultados"')<html.indexOf('id="cocina-observatorio"'));
- assert.match(html,/<details class="kitchen-extended-study">/);
+ assert.doesNotMatch(html,/kitchen-extended-study/);
+ assert.ok(html.indexOf('id="cocina-cap4"')<html.indexOf('id="cocina-resultados"'));
+ assert.ok(html.indexOf('id="cocina-resultados"')<html.indexOf('id="cocina-cap5"'));
+ for(let i=1;i<=6;i++)assert.match(html,new RegExp('id="cocina-cap'+i+'"'));
  assert.match(renderResultadosCocina(),/id="kitchen-results-data"/);
  const build=fs.readFileSync('scripts/build.mjs','utf8');
  assert.match(build,/cocina-resultados\.mjs/);

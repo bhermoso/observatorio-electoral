@@ -75,7 +75,7 @@ function render(){const {route,anchor}=resolveRoute(location.hash);const same=ro
  disposePollUpdate();currentRoute=route;
  document.title=`${TITULOS[route]||'Página'} · Observatorio Electoral Español`;
  if(route==='dashboard'){cerrarVisor();if(anchor)setTimeout(()=>document.getElementById(anchor)?.scrollIntoView(),300);return;}
- const pages={pronostico:()=>renderPronostico()+renderContraste(),encuestas:pollPage,contexto:()=>renderEvents(events),cocina:()=>renderCocina()+renderCasosCocina()+renderBuscadorMicrodatos()+renderEstadoDescargas(),atlas:atlasPage,laboratorio:labPage,metodologia:methodsPage};
+ const pages={pronostico:()=>renderPronostico()+renderContraste(),encuestas:pollPage,contexto:()=>renderEvents(events),cocina:renderCocina,atlas:atlasPage,laboratorio:labPage,metodologia:methodsPage};
  const v=$('#visor');if(v.hidden&&window.scrollY>0)scrollPortada=window.scrollY;v.hidden=false;document.body.classList.add('visor-abierto');v.dataset.ruta=route;
  $('#visor-titulo').textContent=TITULOS[route]||'';
  v.querySelectorAll('.visor-secciones a').forEach(a=>{a.removeAttribute('aria-current');if(a.hash==='#'+({atlas:'metodologia',laboratorio:'metodologia'}[route]||route))a.setAttribute('aria-current','page');});
