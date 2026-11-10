@@ -9,6 +9,7 @@ import {renderBuscadorMicrodatos,bindBuscadorMicrodatos} from './buscador-microd
 import {renderEstadoDescargas,bindEstadoDescargas} from './auditoria-microdatos.mjs';
 import {renderPronostico,bindPronostico} from './pronostico-vista.mjs';
 import {renderContraste,bindContraste} from './contraste-capas.mjs';
+import {bindOrdenPronostico} from './pronostico-orden.mjs';
 import {renderCasosCocina,bindCasosCocina} from './casos-cocina.mjs';
 import {renderAnalysis,bindAnalysis} from './analysis.mjs';
 import {renderEvents,bindEvents} from './events.mjs';
@@ -82,7 +83,7 @@ function render(){const {route,anchor}=resolveRoute(location.hash);const same=ro
  $('#visor-contenido').innerHTML=(pages[route]||(()=>'<h1>Página no encontrada</h1><a href="#dashboard">Volver al panorama</a>'))();
  if(anchor)setTimeout(()=>document.getElementById(anchor)?.scrollIntoView(),400);else{v.scrollTop=0;$('#visor-contenido').focus({preventScroll:true});}
 
- if(route==='pronostico'){bindPronostico();bindContraste(polls);}
+ if(route==='pronostico'){bindOrdenPronostico();bindPronostico();bindContraste(polls);}
  if(route==='encuestas'){
   bindAnalysis(polls,data);
   fetch('data/modelo/pronostico.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null).then(f=>{const el=document.getElementById('encuestas-todas-tabla');if(el)el.innerHTML=f?renderTodasEncuestas(f,polls):'<p class="empty">Pronóstico no disponible.</p>';});

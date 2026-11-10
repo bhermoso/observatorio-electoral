@@ -64,9 +64,9 @@ test('Evaluación muestra evidencia y límites, sin convertirla en validación d
  assert.match(html,/no se altera el Motor/);
  assert.match(renderHomologacion2019(),/id="historical-codes-data"/);
  const page=renderPronostico();
- assert.match(page,/id="pronostico-homologacion"/);
  assert.match(page,/id="pronostico-evaluacion"/);
- const code=fs.readFileSync('pronostico-vista.mjs','utf8');
+ const code=fs.readFileSync('cocina.mjs','utf8');
+ assert.match(code,/renderHomologacion2019\(\)/);
  assert.match(code,/bindHomologacion2019\(\)/);
  const build=fs.readFileSync('scripts/build.mjs','utf8');
  assert.match(build,/'homologacion-2019\.mjs'/);
