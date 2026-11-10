@@ -271,7 +271,8 @@ def aptas_para_pronostico(encuestas, ciclo="2023-26"):
 
 def todas(deduplicar=True):
     """Todas las fuentes. Si una misma casa tiene dos registros con fin de campo a
-    <= 2 días, se conserva el verificado (o el primero cargado)."""
+    <= 2 días, se conserva el verificado (o el primero cargado); entre dos citas de
+    prensa sin verificar, la publicada más tarde."""
     enc = cargar_verificadas() + cargar_23j_complementos() + cargar_29n() + cargar_prensa() + cargar_wikipedia_2023() + cargar_wikipedia()
     if not deduplicar:
         return enc
@@ -285,6 +286,10 @@ def todas(deduplicar=True):
                              and abs((o["campo_fin"] - e["campo_fin"]).days) <= 2))), None)
         if dup is None:
             out.append(e)
+        elif (dup["origen"] == e["origen"] == "prensa-sin-verificar"
+              and (e.get("publicacion") or e["campo_fin"]) > (dup.get("publicacion") or dup["campo_fin"])):
+            # Entregas sucesivas de un tracking sin ficha: se conserva la más reciente.
+            out[out.index(dup)] = e
     return sorted(out, key=lambda e: e["campo_fin"])
 
 

@@ -196,5 +196,31 @@
         }
       ],
       "notes": "Registrado el 10 de noviembre. Hora de comienzo sin confirmar después de la emisión: moncloa.com la anunció a las 21:00 y Demócrata a las 21:30. La Séptima es un canal recién estrenado; su encuesta de SW Demoscopia (7 nov) está registrada como prensa sin verificar. Según moncloa.com, que cita a Libertad Digital con «una fuente única», la cadena encarga su tracking a una empresa vinculada al PSOE; ni la cadena ni el partido lo han confirmado y el artículo no nombra a la empresa. A 10 de noviembre, 04:45, no consta el dato de audiencia. No hay encuestas con campo posterior a la entrevista, así que no se puede medir su efecto."
-    }
+    },
+  {
+    "id": "entrevista-feijoo-cuatro-2026-11-09",
+    "kind": "documented-event",
+    "date": "2026-11-09",
+    "datePrecision": "day",
+    "title": "Feijóo, entrevistado por Nacho Abad en «En boca de todos» (Cuatro)",
+    "shortTitle": "Feijóo en Cuatro",
+    "category": "Campaña electoral",
+    "location": "Cuatro (Mediaset) y Mediaset Infinity",
+    "scope": "España · seguimiento de campaña",
+    "summary": "Alberto Núñez Feijóo, candidato del PP, fue entrevistado por Nacho Abad en «En boca de todos» (Cuatro) el lunes 9 de noviembre, el mismo día que Sánchez en La Séptima y Abascal en «La Revuelta». Según Mediaset, planteó una legislatura de ruptura con las políticas del Gobierno, con la seguridad, la inmigración («La inmigración será regulada o no será»), la vivienda y la regeneración institucional como prioridades.",
+    "verified": "2026-11-10",
+    "sources": [
+      {
+        "publisher": "Mediaset Infinity (vídeo de la entrevista)",
+        "published": "2026-11-09",
+        "url": "https://www.mediasetinfinity.es/programas-tv/en-boca-de-todos/2026/top-videos/nunez-feijoo-entrevista-completo-inmigracion-regulada-40_020543494/player/"
+      },
+      {
+        "publisher": "Electomanía",
+        "published": "2026-11-09",
+        "url": "https://electomania.es/electopanel-9-nov-la-distancia-entre-pp-y-psoe-se-reduce-ligeramente/"
+      }
+    ],
+    "notes": "Registrado el 10 de noviembre. La fecha procede de Electomanía («Hoy mismo se cruzan tres entrevistas…», 9 nov); la página del vídeo de Mediaset no muestra la fecha de emisión. Hora no consta. Sin datos de audiencia ni encuestas con campo posterior."
+  }
 ]
