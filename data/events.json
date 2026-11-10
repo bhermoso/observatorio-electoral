@@ -222,5 +222,31 @@
       }
     ],
     "notes": "Registrado el 10 de noviembre. La fecha procede de Electomanía («Hoy mismo se cruzan tres entrevistas…», 9 nov); la página del vídeo de Mediaset no muestra la fecha de emisión. Hora no consta. Sin datos de audiencia ni encuestas con campo posterior."
+  },
+  {
+    "id": "funeral-victimas-urda-2026-11-10",
+    "kind": "documented-event",
+    "date": "2026-11-10",
+    "datePrecision": "day",
+    "title": "Funeral por las 69 víctimas del accidente ferroviario de Urda en la catedral de Toledo",
+    "shortTitle": "Funeral por Urda",
+    "category": "Accidente de Urda",
+    "location": "Catedral de Toledo",
+    "scope": "España · seguimiento de campaña",
+    "summary": "Funeral por las 69 víctimas de la colisión de dos trenes de alta velocidad en Urda (28 de octubre), oficiado por el arzobispo de Toledo, Francisco Cerro. Según Demócrata (5 nov), estaba prevista la asistencia de los Reyes, de Alberto Núñez Feijóo y de Emiliano García-Page; el Gobierno quedaba representado por Carlos Cuerpo y Milagros Tolón, y Pedro Sánchez no figuraba entre los asistentes.",
+    "verified": "2026-11-10",
+    "sources": [
+      {
+        "publisher": "Demócrata",
+        "published": "2026-11-05",
+        "url": "https://www.democrata.es/politica/cuerpo-y-tolon-acudiran-al-funeral-por-las-victimas-de-urda-mientras-sanchez-no-estara-presente/"
+      },
+      {
+        "publisher": "Infobae (directo del 10 de noviembre)",
+        "published": "2026-11-10",
+        "url": "https://www.infobae.com/espana/2026/11/10/elecciones-generales-29-n-en-directo-ultima-hora-de-los-sondeos-la-huelga-general-y-el-funeral-por-las-victimas-de-urda/"
+      }
+    ],
+    "notes": "Registrado el 10 de noviembre por la tarde. Discrepancia de fechas: el 4 de noviembre Artículo 14 y RTVC daban el 12 de noviembre; Demócrata (5 nov) e Infobae (10 nov) lo sitúan el martes 10, que es la fecha registrada. La asistencia es la anunciada, no comprobada en una crónica del acto. Hora no consta. Sin encuestas con campo posterior."
   }
 ]

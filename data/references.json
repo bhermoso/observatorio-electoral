@@ -141,5 +141,32 @@
     },
     "notes": "Media a 9 de noviembre de 2026 de 13 institutos, consultada en la página original el 9 de noviembre (incluye ya GAD3 del 3–5 nov y 40dB del 2–4 nov). La página usa la etiqueta «Frente Amplio». Los escaños son la media de las proyecciones de 7 institutos, no una estimación propia. No es una encuesta y no entra en nuestros cálculos.",
     "methodology": "Último sondeo de cada instituto, ponderado por antigüedad (pierde la mitad del peso cada 7 días y sale a los 30, fechando cada estudio en la mitad de su campo) y por muestra. Excluye el CIS, los sondeos encargados por partidos y los de empresa no identificada."
+  },
+  {
+    "id": "democrata-media-2026-11-10",
+    "kind": "aggregate-model",
+    "methodology": "Último sondeo de cada instituto, ponderado por antigüedad (pierde la mitad del peso cada 7 días y sale a los 30, fechando cada estudio en la mitad de su campo) y por muestra. Excluye el CIS, los sondeos encargados por partidos y los de empresa no identificada.",
+    "modelSeats": {
+      "PP": 134,
+      "PSOE": 107,
+      "VOX": 67,
+      "Sumar": 9,
+      "Podemos": 1
+    },
+    "name": "Demócrata (15 institutos)",
+    "notes": "Media a 10 de noviembre de 2026 de 15 institutos, consultada en la página original el 10 de noviembre (incluye ya DYM del 4–6 nov). La página usa la etiqueta «Frente Amplio». Los escaños son la media de las proyecciones de 10 institutos, no una estimación propia. No es una encuesta y no entra en nuestros cálculos.",
+    "published": "2026-11-10",
+    "publisher": "Demócrata",
+    "source": "https://www.democrata.es/elecciones-generales-espana/herramientas/encuestas",
+    "status": "dated-reference",
+    "values": {
+      "PP": 31.5,
+      "PSOE": 26.8,
+      "VOX": 19.1,
+      "Sumar": 6.2,
+      "Podemos": 1.8,
+      "SALF": 1.7
+    },
+    "verified": "2026-11-10"
   }
 ]
