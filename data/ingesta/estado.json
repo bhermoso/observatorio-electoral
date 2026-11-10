@@ -1,8 +1,8 @@
 {
  "esquema": 1,
- "generado": "2026-11-09T17:47:40.693869+00:00",
- "ejecucion": "https://github.com/bhermoso/observatorio-electoral/actions/runs/42668017425",
- "ultima_busqueda": "2026-11-09T17:47:33.511717+00:00",
+ "generado": "2026-11-10T15:45:43.179861+00:00",
+ "ejecucion": "https://github.com/bhermoso/observatorio-electoral/actions/runs/42847668130",
+ "ultima_busqueda": "2026-11-10T15:45:34.664867+00:00",
  "candidatos_detectados": 70,
  "naturaleza_candidatos": "Titulares de Google News (RSS). No contienen cifras extraídas ni verificadas.",
  "errores_busqueda": [],
