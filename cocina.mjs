@@ -1,3 +1,5 @@
+import {renderEvaluacion2019,bindEvaluacion2019} from './evaluacion-2019.mjs';
+import {renderHomologacion2019,bindHomologacion2019} from './homologacion-2019.mjs';
 import {renderCocinaPropia,bindCocinaPropia} from './cocina-propia.mjs';
 import {renderLeccion,bindLeccion} from './cocina-leccion.mjs';
 import {renderResultadosCocina,bindResultadosCocina} from './cocina-resultados.mjs';
@@ -72,7 +74,7 @@ export function renderCocina(){
   `${AUDIT()}${renderContraste40db()}${renderMicrodatos40db()}${renderSocioMetrica()}${COMO()}${RECUERDO()}${renderExperimentoCis()}`)}
  ${cap(4,'cocina-cap4','¿Qué receta acierta?','¿Mejora alguna corrección el resultado cuando se prueba contra votos reales?',
   '<p>La única prueba disponible es el 23J de 2023: encuestas hechas antes, comparadas con los votos contados. Es una sola elección, así que los resultados orientan pero no demuestran.</p>'+LAB_INTRO(),
-  `${renderEvidencia40db()}${renderRetrospectiva40db()}${HIST()}${renderCocinaPropia()}${renderResultadosCocina()}${VALID()}${CONTRIB()}`)}
+  `${renderEvidencia40db()}${renderRetrospectiva40db()}${HIST()}${renderEvaluacion2019()}${renderHomologacion2019()}${renderCocinaPropia()}${renderResultadosCocina()}${VALID()}${CONTRIB()}`)}
  ${cap(5,'cocina-cap5','La cocina del Observatorio','¿Qué corrige el Motor 29N, cuánto y con qué riesgo?',
   '<p>El Observatorio no tiene las entrevistas de las encuestadoras privadas y no rehace su cocina. Aplica una sola corrección, a la vista y con su parámetro: la mitad del error común de 2023.</p>',
   renderLeccion().replace('<h2 id="lc-h">La cocina del Observatorio</h2>','<h3 class="vh" id="lc-h">La cocina del Observatorio</h3>'))}
@@ -80,7 +82,7 @@ export function renderCocina(){
   '<p>Catálogo de fuentes, buscador y almacén de los originales descargados. El repositorio guarda agregados y documentación, no entrevistas.</p>',
   `${renderCatalogoMicrodatos()}${renderBuscadorMicrodatos()}${renderEstadoDescargas()}${ORIGEN()}`)}`;
 }
-export async function bindCocina(){void bindSocioMetrica();void bindCatalogoMicrodatos();void bindRetrospectiva40db();void bindMicrodatos40db();void bindResultadosCocina();void bindLeccion();void bindCocinaPropia();
+export async function bindCocina(){void bindEvaluacion2019();void bindHomologacion2019();void bindSocioMetrica();void bindCatalogoMicrodatos();void bindRetrospectiva40db();void bindMicrodatos40db();void bindResultadosCocina();void bindLeccion();void bindCocinaPropia();
  const box=document.querySelector('#kitchen-study'),trans=document.querySelector('#kitchen-transfers'),selector=document.querySelector('#kitchen-party');
  bindHistoricCis();
  bindEvidenceAudit();

@@ -44,8 +44,7 @@ test('El contraste de capas vive en Pronóstico, sin pliegues, con su procedenci
  const {renderContraste}=await import('../contraste-capas.mjs');
  const html=renderContraste();
  for(const id of ['pronostico-capas','matrix-table','matrix-toggle','panorama-editorial','pronostico-cambios','pronostico-procedencia'])assert.match(html,new RegExp('id="'+id+'"'));
- assert.match(html,/Promedio de encuestas:/);assert.match(html,/Pronóstico propio:/);
- assert.match(html,/Cocina sobre microdatos:/);assert.match(html,/Noticias y otros modelos:/);
+ assert.match(html,/class="layer-legend"/);
  assert.doesNotMatch(html,/<details|<summary/);
  const js=fs.readFileSync('contraste-capas.mjs','utf8');
  assert.match(js,/drawEditorial\(ctx\)/);
@@ -55,7 +54,6 @@ test('El contraste de capas vive en Pronóstico, sin pliegues, con su procedenci
  assert.match(app,/bindContraste\(polls\)/);
  const css=fs.readFileSync('styles.css','utf8');
  assert.match(css,/--oee-body-size:15px/);
- assert.match(css,/\.panorama-source-grid/);
 });
 
 test('Panorama es un resumen sin pliegues: titular, hemiciclo y promedio, evolución, últimas encuestas y accesos',async()=>{

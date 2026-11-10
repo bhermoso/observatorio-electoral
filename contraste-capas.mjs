@@ -14,7 +14,7 @@ const state={vista:'voto',ventana:30,cis:true,ponderacion:'igual',base:'archivo'
 
 export function renderContraste(){
  return `<section class="panel contraste" id="pronostico-capas" aria-labelledby="matrix-heading">
-  <h2 id="matrix-heading">G. Promedio, pronóstico y otros modelos</h2>
+  <h2 id="matrix-heading">Promedio, pronóstico y otros modelos, partido a partido</h2>
   <p class="muted" id="matrix-sub">Cargando datos…</p>
   <div class="matrix-controls">
    <fieldset class="portada-seg" id="matrix-view"><legend>Mostrar</legend>
@@ -34,13 +34,13 @@ export function renderContraste(){
   <div id="matrix-notes" class="matrix-notes"></div>
  </section>
  <section class="panel" id="pronostico-cambios" aria-labelledby="changes-heading">
-  <h2 id="changes-heading">H. Qué ha cambiado desde el corte anterior y qué añaden nuestros ajustes</h2>
+  <h2 id="changes-heading">Qué ha cambiado desde el corte anterior y qué añaden nuestros ajustes</h2>
   <div class="portada-dos"><section><h3>Cambios entre cortes</h3><div id="home-changes">Cargando…</div></section>
   <section><h3>Sin cocina (capa 2) y con cocina (capa 3)</h3><p class="muted">Las variantes del motor cambian la selección de anclas, las correcciones históricas y el error de industria. Ninguna repondera entrevistas individuales.</p><div id="home-cocina">Cargando…</div></section></div>
  </section>
  <section class="panel" id="pronostico-procedencia" aria-labelledby="fuentes-heading">
-  <h2 id="fuentes-heading">I. De dónde sale cada cifra</h2>
-  <div class="panorama-source-grid"><p><b>Promedio de encuestas:</b> agregamos estimaciones que ya publicaron los institutos. No son respuestas individuales.</p><p><b>Pronóstico propio:</b> tendencia, sesgos, calibración histórica y simulación de escaños; utiliza estimaciones publicadas, no microdatos.</p><p><b>Cocina sobre microdatos:</b> experimentos con respuestas del CIS; no alimentan este pronóstico.</p><p><b>Noticias y otros modelos:</b> pistas para verificar originales y comparadores externos, nunca encuestas añadidas automáticamente.</p></div>
+  <h2 id="fuentes-heading">Las cuatro capas: de dónde sale cada cifra</h2>
+  
   <ol class="layer-legend" aria-label="Las cuatro capas">${Object.entries(LAYERS).map(([k,l])=>`<li class="layer-${k}"><span class="layer-num" aria-hidden="true">${l.capa}</span><div><b>${h(l.nombre)}</b> <small>${h(l.naturaleza)}</small><p>${h(l.explica)}</p></div></li>`).join('')}</ol>
   <nav class="impact-links" aria-label="Método"><a href="flujograma.html">Cómo se calcula</a><a href="como-estimamos.html">Método y validación</a><a href="#pronostico-evaluacion">Retropruebas y errores</a><a href="construye-estimacion.html#cocina-secuencia">Cocina electoral</a><a href="#encuestas">Archivo de encuestas</a></nav>
  </section>`;
@@ -127,7 +127,7 @@ function drawCocina(ctx){
  const pm=x=>x?.bloques?.['PP+VOX']?.p_mayoria;
  el.innerHTML=`<div class="table-wrap"><table><thead><tr><th>Partido</th><th>Sin cocina (capa 2)</th><th>Con cocina (capa 3)</th><th>Diferencia de voto</th><th>Escaños</th></tr></thead><tbody>${rows}</tbody></table></div>
  <p>PP + Vox con 176 o más: <b>${fmt(pm(ctx.sin)*100,0)} %</b> de las simulaciones sin cocina frente a <b>${fmt(pm(ctx.con)*100,0)} %</b> con cocina. La diferencia principal es nuestra corrección de la mitad del sesgo que tuvieron las encuestadoras en el 23J (${Object.entries(ctx.forecast?.principal?.correccion_industria?.puntos||{}).map(([k,v])=>`${h(name(k))} ${signed(v,2)}`).join(' · ')||'no aplicada'}). <a href="#cocina-observatorio">La cocina del Observatorio, explicada →</a></p>
- <details><summary>Decisiones aplicadas y no aplicadas</summary><p><b>Tipo:</b> ${h(def?.tipo_cocina||'')}</p><ul>${(def?.decisiones||[]).map(d=>`<li>${h(d.descripcion)}${d.valor!=null?' ('+h(String(d.valor))+')':''}</li>`).join('')}</ul><p><b>No se aplica</b> (no hay datos individuales en el motor): ${h((def?.no_aplicado||[]).join(', '))}.</p><p><a href="#pronostico-cocina">Descomposición por variante →</a></p></details>`;
+ <p class="muted">Las decisiones aplicadas y las que no se aplican están en el paso 4 de <a href="#pronostico-cocina">la cadena de cálculo</a>.</p>`;
 }
 function computeLayer1(ctx){
  const polls=state.base==='modelo'?pollsFromModelInputs(ctx.forecast?.entradas):ctx.polls;

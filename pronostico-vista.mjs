@@ -1,13 +1,13 @@
 // Vista «Pronóstico completo» (#pronostico): la salida real del Motor 29N.
 // Lee data/modelo/pronostico.json y data/modelo/historial.json. No recalcula nada.
+import {renderIntervalos} from './pronostico-orden.mjs';
+import {PARTY_COLORS} from './portada-series.mjs';
 import {PARTIES,BLOCKS,BLOCK_NOTE,LAYERS,capaModelo,capasExternas,efectoCocina} from './capas.mjs';
 import {renderTrazabilidad,bindTrazabilidad} from './trazabilidad.mjs';
 import {renderInvestidura,bindInvestidura} from './investidura.mjs';
 import {renderValidationDashboard,bindValidationDashboard} from './dashboard-validacion.mjs';
 import {renderRecuento} from './recuento-encuestas.mjs';
 import {recientesPrimero,porTexto,antiguedad} from './orden.mjs';
-import {renderEvaluacion2019,bindEvaluacion2019} from './evaluacion-2019.mjs';
-import {renderHomologacion2019,bindHomologacion2019} from './homologacion-2019.mjs';
 
 const h=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt=(v,d=1)=>Number.isFinite(Number(v))?Number(v).toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
@@ -27,8 +27,8 @@ export function renderPronostico(){
  <nav class="subnav" aria-label="Secciones del pronóstico"><a href="#pronostico-principal">Principal</a><a href="#pronostico-variantes">Variantes</a><a href="#pronostico-cocina">Cocina y trazabilidad</a><a href="#pronostico-bloques">Bloques</a><a href="#pronostico-evolucion">Evolución</a><a href="#pronostico-territorio">52 circunscripciones</a><a href="#pronostico-fuentes">Estudios usados y excluidos</a><a href="#pronostico-evaluacion">Evaluación 2019 y 23J</a><a href="#pronostico-externos">Otros modelos</a><a href="#pronostico-capas">Promedio frente a pronóstico</a><a href="#pronostico-cambios">Cambios entre cortes</a><a href="#pronostico-procedencia">De dónde sale cada cifra</a></nav>
  <div id="fc-error" role="alert"></div>
  <div id="fc-counts"></div>
- <section class="panel" id="pronostico-principal"><h2>A. Pronóstico principal</h2><div id="fc-main">Cargando…</div></section>
- <section class="panel" id="pronostico-variantes"><h2>B. Variantes del modelo</h2><p class="muted">La diferencia entre variantes es incertidumbre de método: depende de qué casas fijan el «sesgo cero». Ninguna variante sustituye a la estimación de referencia.</p><div id="fc-variants">Cargando…</div></section>
+ <section class="panel" id="pronostico-principal"><h2>Escaños y voto por partido</h2><div id="fc-main">Cargando…</div></section>
+ <section class="panel" id="pronostico-variantes"><h2>Variantes del modelo</h2><p class="muted">La diferencia entre variantes es incertidumbre de método: depende de qué casas fijan el «sesgo cero». Ninguna variante sustituye a la estimación de referencia.</p><div id="fc-variants">Cargando…</div></section>
  <section class="panel" id="pronostico-cocina"><h2>C. Cocina y trazabilidad: del dato al escaño</h2><div id="fc-chain">Cargando…</div></section>
  ${renderTrazabilidad()}
  <section class="panel" id="pronostico-bloques"><h2>D. Bloques</h2><p class="muted">${h(BLOCK_NOTE)}</p><div id="fc-blocks">Cargando…</div></section>
@@ -36,7 +36,7 @@ export function renderPronostico(){
  <section class="panel" id="pronostico-evolucion"><h2>E. Evolución por cortes</h2><p class="muted">Serie retrospectiva recalculada con el método actual y las encuestas disponibles en cada corte; no es un archivo de lo que se publicó entonces. La versión 2 (3-nov-2026) recalculó toda la serie; para recuperar versiones anteriores hay que consultar el historial del repositorio. Las entradas con otra versión del modelo se señalan: su diferencia no es solo cambio en los datos.</p><div id="fc-history">Cargando…</div></section>
  <section class="panel" id="pronostico-territorio"><h2>F. Proyección territorial</h2><div id="fc-territory">Cargando…</div></section>
  <section class="panel" id="pronostico-fuentes"><h2>Estudios usados y excluidos</h2><div id="fc-sources">Cargando…</div></section>
- <section class="panel" id="pronostico-evaluacion"><h2>Evaluación histórica de encuestas y recetas</h2><p class="muted">Separamos dos ejercicios distintos: la auditoría temporal de promedios sobre el 23J y el contraste retrospectivo de tratamientos de microdatos del CIS en 2019. Ninguno calibra las probabilidades de mayoría del Motor 29N.</p><div id="fc-validation-publica"></div>${renderEvaluacion2019()}${renderHomologacion2019()}${renderValidationDashboard()}</section>
+ <section class="panel" id="pronostico-evaluacion"><h2>Evaluación histórica de encuestas y recetas</h2><p class="muted">Separamos dos ejercicios distintos: la auditoría temporal de promedios sobre el 23J y el contraste retrospectivo de tratamientos de microdatos del CIS en 2019. Ninguno calibra las probabilidades de mayoría del Motor 29N.</p><div id="fc-validation-publica"></div>${renderValidationDashboard()}<p class="pr-remite">Los contrastes con microdatos del CIS de abril y noviembre de 2019, y el estado de homologación de esos estudios, están en <a href="#cocina-cap4">Cocina · ¿Qué receta acierta?</a></p></section>
  <section class="panel" id="pronostico-externos"><h2>Capa 4 · Otros observatorios y modelos</h2><p class="muted">${h(LAYERS.externo.explica)}</p><div id="fc-external">Cargando…</div></section>`;
 }
 
@@ -51,11 +51,7 @@ function publicValidation(f){
  ${g?`<p><b>Proyección provincial:</b> ${h(g.mapa_base)}. Las europeas de 2024 tienen <a href="${h(g.fuente_2024)}" target="_blank" rel="noopener">datos públicos oficiales disponibles</a>, pero <b>todavía no se utilizan</b> en el pronóstico. Las candidaturas deben homologarse y la mejora necesita una comprobación fuera de muestra.</p>`:''}`;
 }
 
-function partyTable(f){
- const p=f.principal,sin=new Set(p.sin_encuestas||[]);
- const rows=Object.entries(p.partidos).sort((a,b)=>b[1].escanos[0]-a[1].escanos[0]).map(([id,x])=>`<tr><th scope="row">${h(label(id))}${sin.has(id)?' <small class="warn">sin encuestas · hipótesis 23J</small>':''}</th><td><b>${fmt(x.voto[0])} %</b> <small>${fmt(x.voto[1])}–${fmt(x.voto[2])}</small></td><td><b>${fmt(x.escanos[0],0)}</b> <small>${fmt(x.escanos[1],0)}–${fmt(x.escanos[2],0)}</small></td><td>${x.primero>0?fmt(x.primero*100,0)+' %':'—'}</td></tr>`).join('');
- return `<div class="table-wrap"><table><caption>Mediana e intervalo del 90 % de ${fmt(p.n,0)} simulaciones. Error de industria ${fmt(p.industria,1)} pp para un partido del 25 %.</caption><thead><tr><th>Partido</th><th>Voto</th><th>Escaños</th><th>Primera fuerza en simulaciones</th></tr></thead><tbody>${rows}</tbody></table></div>`;
-}
+function partyTable(f){return renderIntervalos(f);}
 function variantsTable(f){
  const src=id=>id==='principal'?f.principal:f.variantes?.[id];
  const ids=['PP','PSOE','VOX','SUMAR','PODEMOS'];
@@ -82,8 +78,8 @@ function chain(f){
   ${step(6,'Reparto territorial',`Cada simulación traslada el voto nacional a las 52 circunscripciones en proporción a la geografía del 23J, con ruido provincial (lognormal, sd 0,08).`)}
   ${step(7,'Escaños',`D’Hondt provincial en cada simulación: ${ids.map(p=>`${label(p)} ${fmt(con.partidos[p]?.escanos[0],0)}`).join(' · ')} (medianas).`)}
  </ol>
- <p><b>Lo que no hace el motor:</b> ${h((dec?.no_aplicado||[]).join(', '))}. ${h(dec?.tipo_cocina||'')} La cocina propia sobre microdatos del CIS existe y está validada frente al 23J, pero no supera el examen y por eso no entra (<a href="#cocina-propia">ver la receta y su error</a>).</p>
- ${f.sensibilidad_cocina?.experimentos?`<details><summary>Sensibilidad: qué pasa si se retira una decisión (${f.sensibilidad_cocina.experimentos.length} experimentos)</summary><div class="table-wrap"><table><thead><tr><th>Experimento</th><th>PP</th><th>PSOE</th><th>Vox</th><th>PP+Vox (escaños)</th><th>Δ frecuencia ≥176</th></tr></thead><tbody>${f.sensibilidad_cocina.experimentos.map(x=>`<tr><th scope="row">${h(x.nombre)}</th>${['PP','PSOE','VOX'].map(p=>`<td>${signed(x.comparacion?.cambio_voto_pp?.[p],2)} pp</td>`).join('')}<td>${signed(x.comparacion?.bloques?.['PP+VOX']?.cambio_mediana_escanos,0)}</td><td>${signed(x.comparacion?.bloques?.['PP+VOX']?.cambio_frecuencia_umbral_puntos,1)} pts</td></tr>`).join('')}</tbody></table></div><p class="muted">${h(f.sensibilidad_cocina.tipo||'')}. ${fmt(f.sensibilidad_cocina.n_por_variante,0)} simulaciones por variante: diferencias pequeñas pueden ser ruido.</p></details>`:''}`;
+ <p><b>Lo que no hace el motor:</b> ${h((dec?.no_aplicado||[]).join(', '))}. ${h(dec?.tipo_cocina||'')} La cocina propia sobre microdatos del CIS se examinó frente al 23J y no lo supera, por eso no entra (<a href="#cocina-cap5">ver la receta y su error</a>).</p>
+ ${f.sensibilidad_cocina?.experimentos?`<div class="pr-sensibilidad"><h3>Qué pasa si se retira una decisión (${f.sensibilidad_cocina.experimentos.length} experimentos)</h3><div class="table-wrap"><table><thead><tr><th>Experimento</th><th>PP</th><th>PSOE</th><th>Vox</th><th>PP+Vox (escaños)</th><th>Δ frecuencia ≥176</th></tr></thead><tbody>${f.sensibilidad_cocina.experimentos.map(x=>`<tr><th scope="row">${h(x.nombre)}</th>${['PP','PSOE','VOX'].map(p=>`<td>${signed(x.comparacion?.cambio_voto_pp?.[p],2)} pp</td>`).join('')}<td>${signed(x.comparacion?.bloques?.['PP+VOX']?.cambio_mediana_escanos,0)}</td><td>${signed(x.comparacion?.bloques?.['PP+VOX']?.cambio_frecuencia_umbral_puntos,1)} pts</td></tr>`).join('')}</tbody></table></div><p class="muted">${h(f.sensibilidad_cocina.tipo||'')}. ${fmt(f.sensibilidad_cocina.n_por_variante,0)} simulaciones por variante: diferencias pequeñas pueden ser ruido.</p></div>`:''}`;
 }
 function blocks(f){
  const p=f.principal;
@@ -110,7 +106,8 @@ function territory(f){
  const rows=pr.map(x=>`<tr><th scope="row">${h(x.provincia)}</th><td>${x.escanos}</td><td>${Object.entries(x.reparto).sort((a,b)=>b[1]-a[1]).map(([p,v])=>`${h(label(p))} ${fmt(v,1)}`).join(' · ')}</td></tr>`).join('');
  return `<div class="notice"><b>Qué está estimado y qué no.</b> El voto nacional procede del modelo. Su distribución entre provincias reproduce la geografía relativa del 23J con ruido aleatorio; no hay encuestas provinciales en el motor. Los valores son escaños medios de las simulaciones, por eso tienen decimales.</div>
  ${geo?`<p>Sensibilidad al método de traslado: con traslado uniforme (mismos puntos en todas las provincias) PP + Vox llegan a 176 en el ${fmt((geo.p_mayoria?.uniforme||0)*100,0)} % de las simulaciones, frente al ${fmt((geo.p_mayoria?.proporcional||0)*100,0)} % del traslado proporcional usado. ${['PP','PSOE','VOX'].map(p=>`${label(p)}: ${fmt(geo.proporcional?.[p]?.[0],0)} → ${fmt(geo.uniforme?.[p]?.[0],0)}`).join(' · ')}.</p>`:''}
- <details><summary>Ver las ${pr.length} circunscripciones</summary><div class="table-wrap"><table><thead><tr><th>Circunscripción</th><th>Escaños</th><th>Reparto medio simulado</th></tr></thead><tbody>${rows}</tbody></table></div></details>
+ <div class="pr-provincias" aria-label="Escaños medios simulados en las ${pr.length} circunscripciones">${pr.map(x=>{const rep=Object.entries(x.reparto).sort((a,b)=>b[1]-a[1]);const todo=rep.map(([p,v])=>`${label(p)} ${fmt(v,1)}`).join(' · ');return `<div class="pr-prov" title="${h(todo)}"><div class="pr-prov-cab"><b>${h(x.provincia)}</b><span>${x.escanos}</span></div><div class="pr-prov-barra" role="img" aria-label="${h(x.provincia)}: ${h(todo)}">${rep.filter(([,v])=>v>0).map(([p,v])=>`<i style="width:${(v/x.escanos*100).toFixed(2)}%;background:${PARTY_COLORS[p]||'#9aa5a0'}"></i>`).join('')}</div><small>${rep.filter(([,v])=>v>=0.5).map(([p,v])=>`${h(label(p))} ${fmt(v,1)}`).join(' · ')}</small></div>`;}).join('')}</div>
+ <p class="muted">Cada tarjeta: escaños en juego y reparto medio simulado; el texto muestra los partidos con medio escaño o más y el reparto completo aparece al pasar el cursor.</p>
  <p class="muted">La proyección experimental de <a href="#analisis">Promedios</a> es otro cálculo (promedio + ajuste proporcional) y no es este pronóstico.</p>`;
 }
 function sources(f){
@@ -120,12 +117,14 @@ function sources(f){
  const antiguos=ent.filter(e=>edad(e).dias>60);
  const sv=f.sensibilidad_fuentes;
  return `<p>${ent.length} estudios entran en el pronóstico (${Object.entries(f.auditoria_fuentes?.por_origen||{}).map(([k,v])=>`${v} ${h(k)}`).join(', ')}). ${exc.length} se excluyen. Criterio: ${h(f.auditoria_fuentes?.criterio||'')}.</p>
- <p class="muted">«verificada» = ficha del archivo del Observatorio con original consultado. «terceros-29n» = registro de un repositorio externo que enlaza la publicación; puede no incluir toda la ficha técnica.</p>
- <p class="muted">Si no consta publicación, el motor supone fin de campo + 2 días para decidir cuándo estaba disponible. Los cargadores históricos usan n=1000 cuando falta muestra; se marca como supuesta en las entradas que conservan ese indicador. La correlación entre bloques (0,5) es un supuesto, no una estimación independiente. La sensibilidad solo verificadas conserva el método, pero usa menos simulaciones y reajusta el inicio a su selección.</p>
- <p>Ordenados del más reciente al más antiguo por el fin del trabajo de campo. «Antigüedad» cuenta los días entre ese fin y el corte del ${h(fdate(f.corte))}. El motor sitúa cada estudio en el día central de su campo y deja que la intención de voto cambie de un día a otro, de modo que un estudio pesa menos en la estimación del corte cuanto más antiguo es.${antiguos.length?` ${antiguos.length===1?'Un estudio tiene':antiguos.length+' estudios tienen'} más de dos meses: ${antiguos.map(e=>`${h(e.casa)} (${h(edad(e).texto)})`).join(', ')}.`:''}</p>
+ <ul class="pr-notas">
+  <li><b>Orden y antigüedad.</b> Del fin de campo más reciente al más antiguo; «antigüedad» son los días hasta el corte del ${h(fdate(f.corte))}. El motor sitúa cada estudio en el día central de su campo y deja que la intención cambie de un día a otro: cuanto más antiguo, menos pesa.${antiguos.length?` Con más de dos meses: ${antiguos.map(e=>`${h(e.casa)} (${h(edad(e).texto)})`).join(', ')}.`:''}</li>
+  <li><b>Origen.</b> «verificada»: ficha del archivo del Observatorio con original consultado. «terceros-29n»: registro de un repositorio externo que enlaza la publicación; puede no incluir toda la ficha técnica. «prensa-original-consultado»: cifras confirmadas en el original, campo o muestra sin publicar.</li>
+  <li><b>Supuestos.</b> Sin fecha de publicación, fin de campo + 2 días. Sin muestra, n = 1000, marcada «supuesta». La correlación entre bloques (0,5) es un supuesto, no una estimación.</li>
+ </ul>
  <div class="table-wrap"><table class="fc-estudios"><caption>Estudios usados</caption><thead><tr><th>Casa</th><th>Campo</th><th>Antigüedad al corte</th><th>Publicación</th><th>Muestra</th><th>Origen</th><th>Contraste con el original</th><th>PP · PSOE · Vox</th><th>Ancla</th></tr></thead><tbody>${ent.map(e=>`<tr><td>${e.url?`<a href="${h(e.url)}" target="_blank" rel="noopener">${h(e.casa)}</a>`:h(e.casa)}</td><td>${h(e.campo_ini?fdate(e.campo_ini)+' – ':'')}${h(fdate(e.campo_fin))}</td><td class="${edad(e).dias>60?'warn fc-antiguo':''}">${h(edad(e).texto)}</td><td>${h(fdate(e.publicacion))}</td><td>${fmt(e.n,0)}${e.n_supuesto?' (supuesta)':''}</td><td>${h(e.origen)}</td><td class="${CONTRASTE[e.contraste]?.[1]||'warn'}">${e.contraste_url?`<a href="${h(e.contraste_url)}" target="_blank" rel="noopener">${h(CONTRASTE[e.contraste]?.[0]||e.contraste||'—')}</a>`:h(CONTRASTE[e.contraste]?.[0]||e.contraste||'—')}</td><td>${['PP','PSOE','VOX'].map(p=>fmt(e.voto?.[p])).join(' · ')}</td><td>${e.ancla_privadas?'privadas':'—'}</td></tr>`).join('')}</tbody></table></div>
  <div class="table-wrap"><table><caption>Estudios excluidos y motivo</caption><thead><tr><th>Casa</th><th>Registro</th><th>Origen</th><th>Motivo</th></tr></thead><tbody>${exc.map(x=>`<tr><td>${h(x.casa)}</td><td>${x.url?`<a href="${h(x.url)}" target="_blank" rel="noopener">${h(x.estudio)}</a>`:h(x.estudio)}</td><td>${h(x.origen)}</td><td>${h(x.motivo)}</td></tr>`).join('')||'<tr><td colspan="4">Ninguno</td></tr>'}</tbody></table></div>
- ${sv?`<p><b>Sensibilidad a las fuentes de terceros.</b> Con el mismo método y solo los ${sv.n_estudios} registros verificados: ${['PP','PSOE','VOX'].map(p=>`${label(p)} ${fmt(sv.partidos?.[p]?.voto?.[0])} % (${fmt(sv.partidos?.[p]?.escanos?.[0],0)} esc.)`).join(' · ')}; PP + Vox ≥176 en el ${fmt((sv.bloques?.['PP+VOX']?.p_mayoria||0)*100,0)} % de las simulaciones.</p>`:''}`;
+ ${sv?`<p><b>Sensibilidad a las fuentes de terceros.</b> Con el mismo método (menos simulaciones, inicio reajustado a su selección) y solo los ${sv.n_estudios} registros verificados: ${['PP','PSOE','VOX'].map(p=>`${label(p)} ${fmt(sv.partidos?.[p]?.voto?.[0])} % (${fmt(sv.partidos?.[p]?.escanos?.[0],0)} esc.)`).join(' · ')}; PP + Vox ≥176 en el ${fmt((sv.bloques?.['PP+VOX']?.p_mayoria||0)*100,0)} % de las simulaciones.</p>`:''}`;
 }
 function external(f){
  const x=[...capasExternas(f)].sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha))||porTexto(a.nombre,b.nombre));
@@ -149,5 +148,5 @@ export async function bindPronostico(){
  set('#fc-validation-publica',()=>publicValidation(f));
  set('#fc-main',()=>partyTable(f));set('#fc-variants',()=>variantsTable(f));set('#fc-chain',()=>chain(f));set('#fc-blocks',()=>blocks(f));
  set('#fc-history',()=>history(hist));set('#fc-territory',()=>territory(f));set('#fc-sources',()=>sources(f));set('#fc-external',()=>external(f));
- void bindTrazabilidad();void bindInvestidura();void bindValidationDashboard();void bindEvaluacion2019();void bindHomologacion2019();
+ void bindTrazabilidad();void bindInvestidura();void bindValidationDashboard();
 }

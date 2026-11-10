@@ -39,14 +39,14 @@ test('No se ocultan fuentes incompletas ni se inventan resultados',()=>{
  assert.throws(()=>renderResultados2019({studies:{}}),/dos estudios CIS/);
  assert.throws(()=>renderResultados2019({...data,studies:{...data.studies,'3242':{...data.studies['3242'],groups:{INDECISION:{...data.studies['3242'].groups.INDECISION,w:0}}}}}),/asignación excede el grupo/);
 });
-test('El módulo está integrado en Pronóstico y empaquetado en GitHub Pages',()=>{
- const forecast=fs.readFileSync('pronostico-vista.mjs','utf8');
+test('El módulo está integrado en Cocina (cap. 4), Pronóstico remite a él y se empaqueta',()=>{
+ const cocina=fs.readFileSync('cocina.mjs','utf8');
  const build=fs.readFileSync('scripts/build.mjs','utf8');
  const page=renderPronostico();
- assert.match(page,/id="historical-2019-data"/);
- assert.match(forecast,/bindEvaluacion2019\(\)/);
- assert.match(page,/Evaluación histórica de encuestas y recetas/);
+ assert.match(cocina,/renderEvaluacion2019\(\)/);
+ assert.match(cocina,/bindEvaluacion2019\(\)/);
  assert.match(page,/id="pronostico-evaluacion"/);
+ assert.match(page,/href="#cocina-cap4"/);
  assert.ok(build.includes("'evaluacion-2019.mjs'"));
  assert.ok(build.includes("'validacion-2019-retrospectiva.mjs'"));
 });

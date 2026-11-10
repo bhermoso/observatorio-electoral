@@ -1210,3 +1210,51 @@ body.visor-abierto{overflow:hidden}
 @media(max-width:1000px){.cocina-cadena{grid-template-columns:repeat(3,1fr)}.cocina-cadena li:nth-child(3n)::after{display:none}.cocina-indice{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.cocina-cadena{grid-template-columns:1fr}.cocina-cadena li::after{display:none}.cocina-indice{grid-template-columns:1fr}.cocina-cap-cab h2{font-size:22px}}
 .cocina-regla{border-left:3px solid var(--green);background:#f3f7f2;padding:10px 14px;border-radius:0 8px 8px 0;font-size:14.5px;max-width:62em}
+
+/* Pronóstico por capítulos */
+.pr-cifras{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:4px 0 16px}
+.pr-cifras>div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;border-top:4px solid var(--c,#16231e)}
+.pr-cifras span{display:block;font-size:12px;color:var(--muted);font-weight:600}
+.pr-cifras strong{display:block;font:600 34px/1.1 Manrope,system-ui,sans-serif;letter-spacing:-1px}
+.pr-cifras .pr-cifra-fecha{font-size:22px;line-height:1.5}
+.pr-cifras small{font-size:12px;color:var(--muted)}
+.pr-intervalos{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:12px 0}
+.pr-intervalos figcaption{font-size:13px;color:var(--muted);margin-bottom:10px}
+.pr-intervalos ol{list-style:none;padding:0;margin:0;width:100%;max-width:none}
+.pr-int-fila{display:grid;grid-template-columns:170px minmax(0,1fr) 90px 120px 70px;gap:10px;align-items:center;padding:5px 0;border-bottom:1px solid #f0f3ee;font-size:14px;width:100%;max-width:none;box-sizing:border-box}
+.pr-int-eje{border:0;padding:0;font-size:11px;color:var(--muted)}
+.pr-int-marcas{position:relative;height:16px}
+.pr-int-marcas span{position:absolute;transform:translateX(-50%)}
+.pr-int-pista{position:relative;height:16px;background:repeating-linear-gradient(to right,transparent 0,transparent calc(15.625% - 1px),#eef2ec calc(15.625% - 1px),#eef2ec 15.625%)}
+.pr-int-barra{position:absolute;top:5px;height:6px;border-radius:3px;background:var(--c);opacity:.35}
+.pr-int-punto{position:absolute;top:2px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--c);border:2px solid #fff;box-shadow:0 0 0 1px var(--c)}
+.pr-intervalos b{font-family:Manrope,system-ui,sans-serif}
+.pr-int-eje>span:not(.pr-int-marcas){font-weight:600;font-size:12px}
+.pr-int-nombre small{display:block}
+.pr-intervalos small{color:var(--muted);font-size:12px}
+.trace-grupos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.trace-grupo{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff;border-top:4px solid #9aa5a0}
+.trace-grupo h4{margin:0 0 6px;font-size:13px}
+.trace-grupo ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
+.trace-grupo li{font-size:13px;line-height:1.35}
+.trace-grupo li small{display:block;color:var(--muted);font-size:12px}
+.trace-entra{border-top-color:#2e7d5b}.trace-modela{border-top-color:#3f6fb0}.trace-fuera{border-top-color:#c27a1a}
+.pr-capitulo>.panel,.pr-capitulo>section{margin-top:14px}
+@media(max-width:760px){.trace-grupos{grid-template-columns:1fr}
+.pr-int-fila{grid-template-columns:1fr auto;grid-template-areas:"n e" "p p" "v f";row-gap:3px;font-size:13px}
+.pr-int-fila>:nth-child(1){grid-area:n}.pr-int-fila>:nth-child(2){grid-area:p}.pr-int-fila>:nth-child(3){grid-area:e}.pr-int-fila>:nth-child(4){grid-area:v}.pr-int-fila>:nth-child(5){grid-area:f;text-align:right}
+.pr-int-fila>:nth-child(4)::before{content:'Voto '}.pr-int-fila>:nth-child(5)::before{content:'1.ª fuerza: '}
+.pr-int-eje{grid-template-areas:"p p"}.pr-int-eje>:not(.pr-int-marcas){display:none}}
+.trace-columns>div:has(.trace-grupos){grid-column:1/-1}
+.pr-provincias{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px;margin:12px 0}
+.pr-prov{border:1px solid var(--line);border-radius:8px;padding:7px 9px;background:#fff}
+.pr-prov-cab{display:flex;justify-content:space-between;gap:6px;font-size:13px}
+.pr-prov-cab span{color:var(--muted);font-variant-numeric:tabular-nums}
+.pr-prov-barra{display:flex;height:8px;border-radius:4px;overflow:hidden;background:#eef2ec;margin:5px 0}
+.pr-prov small{font-size:11px;line-height:1.3;color:var(--muted);display:block}
+.pr-notas{margin:8px 0 14px;padding-left:18px;font-size:14px;line-height:1.5}
+.pr-notas li{margin-bottom:6px}
+.pr-sensibilidad{margin-top:14px}
+.pr-sensibilidad h3{font-size:16px}
+.pr-remite{margin-top:14px;font-size:14px}
+.visor-contenido .pr-int-fila{max-width:none}
