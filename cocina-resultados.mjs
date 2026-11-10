@@ -57,9 +57,9 @@ export function renderTablaCocina(d){
  </div>
  <div class="table-wrap kitchen-observed-table"><table><caption>Porcentajes publicados o reconstruidos con denominadores distintos; los guiones indican ausencia, nunca cero</caption>
  <thead><tr><th scope="col">Partido</th>${labels}</tr></thead><tbody>${rows}</tbody></table></div>
- <details class="kitchen-measures"><summary>Qué representa cada columna</summary>
+ <div class="kitchen-measures"><h3>Qué representa cada columna</h3>
   <dl>${d.metrics.map(([,name,def])=>`<div><dt>${esc(name)}</dt><dd>${esc(def)}</dd></div>`).join('')}</dl>
- </details>
+ </div>
  <div class="kitchen-validation-head"><div><h3>¿Mejoró la receta al probarla en otro estudio?</h3>
   <p>Dos pruebas con los estudios CIS 3411 y 3415 anteriores al 23J. Se elige la medida con un estudio y se evalúa en el otro.</p></div>
   <p><strong>${d.nMejoras} de ${d.trials.length}</strong> mejoran la referencia publicada por el CIS</p></div>
