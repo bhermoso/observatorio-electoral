@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import {renderCocina} from '../cocina.mjs';
 import {construirCaso,renderCaso,proyectarPorPartido,CASO_ENCUESTA} from '../caso-escanos.mjs';
 const J=f=>JSON.parse(fs.readFileSync(f,'utf8'));
 const poll=J('data/polls.json').find(p=>p.id===CASO_ENCUESTA);
@@ -35,6 +36,10 @@ test('El texto del caso no tiene huecos, está en Cocina y Panorama le da acceso
  assert.doesNotMatch(html.replace(/<[^>]+>/g,''),/NaN|undefined|null/);
  assert.match(html,/Madrid: 37 escaños/);assert.match(html,/Jaén: 5 escaños/);
  assert.match(fs.readFileSync('casos-cocina.mjs','utf8'),/id="cocina-caso"/);
- assert.match(fs.readFileSync('portada-hub.mjs','utf8'),/#cocina-caso/);
+ assert.match(fs.readFileSync('portada-hub.mjs','utf8'),/'#cocina'/);
+ const kitchen=renderCocina();
+ assert.match(kitchen,/href="#cocina-cap2"/);
+ assert.ok(kitchen.indexOf('id="cocina-cap2"')<kitchen.indexOf('id="cocina-caso"'));
+ assert.ok(kitchen.indexOf('id="cocina-caso"')<kitchen.indexOf('id="cocina-cap3"'));
  assert.match(fs.readFileSync('scripts/build.mjs','utf8'),/'caso-escanos\.mjs'/);
 });

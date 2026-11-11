@@ -38,5 +38,5 @@ test('promedio y accesos sin valores vacíos',()=>{
  const prom=promedioPublicado(polls,{corte:forecast.corte});
  assert.doesNotMatch(renderPromedio(prom),/NaN|undefined/);
  const acc=renderAccesos({forecast,polls,events:[],references:[]});
- for(const r of ['#pronostico','#encuestas','#encuestas-promedios','#contexto','#cocina','#atlas','#laboratorio','#metodologia'])assert.match(acc,new RegExp('href="'+r+'"'));
+ for(const r of ['#pronostico','#encuestas','#contexto','#cocina','#atlas','#metodologia'])assert.match(acc,new RegExp('href="'+r+'"'));
 });

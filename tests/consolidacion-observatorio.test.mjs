@@ -25,7 +25,8 @@ test('Los cinco módulos esenciales están enlazados y publicados',()=>{
  const events=renderEvents([]);
  const forecast=renderPronostico();
  assert.match(kitchen,/id="cocina-resultados"/);
- assert.ok(kitchen.indexOf('id="cocina-resultados"')<kitchen.indexOf('id="cocina-observatorio"'));
+ assert.ok(kitchen.indexOf('id="cocina-observatorio"')>=0);
+ assert.ok(kitchen.indexOf('id="cocina-observatorio"')<kitchen.indexOf('id="cocina-resultados"'));
  assert.match(analysis,/id="analysis-compare"/);
  assert.match(events,/Acontecimientos: datos y evolución/);
  assert.match(forecast,/id="fc-validation-publica"/);
