@@ -87,3 +87,12 @@ body>header{background:var(--paper);border-bottom:3px double var(--ink);box-shad
 .hub-accesos a:hover{background:transparent;border-color:var(--ink)}
 @media(max-width:850px){.hub-accesos{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.hub-barras li,.hub-barras-cab{grid-template-columns:65px minmax(62px,1fr) 54px 77px;gap:5px;font-size:12px}.hub-modelo .hub-diferencia{font-size:10px}.hub-accesos{grid-template-columns:1fr}}
+
+/* Cocina: abrir con el método vigente y distinguir los experimentos sin tarjetas densas. */
+#visor .cocina-orientacion{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin:12px 0 24px;padding:15px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+#visor .cocina-orientacion p{margin:0;font-size:13px;line-height:1.6;color:var(--muted)}
+#visor .cocina-orientacion strong{color:var(--ink);font-weight:650}
+#visor .cocina-indice{margin-bottom:26px}
+#visor .cocina-capitulo:first-of-type{margin-top:14px}
+#visor .cocina-capitulo:not([open]) .cocina-cap-cab{padding-bottom:20px}
+@media(max-width:740px){#visor .cocina-orientacion{grid-template-columns:1fr;gap:10px;padding:14px 0}#visor .cocina-orientacion p{font-size:12.5px}}
