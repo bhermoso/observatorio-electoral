@@ -125,7 +125,7 @@ export async function bindHomeImpact(polls,events=[]){
   return '';
  });
  const chart=root.querySelector('#home-series');
- const drawSeries=()=>bindPortadaSeries(chart,{polls,forecast:ctx.forecast,history:ctx.history,events,cutoff:todayMadrid()});
+ const drawSeries=()=>bindPortadaSeries(chart,{polls,forecast:ctx.forecast,history:ctx.history,events,cutoff:todayMadrid(),promedio:ctx.prom});
  if(ctx.forecast){
   fetch('data/modelo/historial.json',{cache:'no-store'}).then(r=>r.ok?r.json():[]).catch(()=>[])
    .then(history=>{ctx.history=Array.isArray(history)?history:[];if(root.isConnected)drawSeries();});
