@@ -1,20 +1,12 @@
-# Búsquedas del Observatorio: operaciones verificables
+# Búsquedas documentales sin backend externo
 
-## Qué hace cada botón
+La web consulta informes versionados generados por GitHub Actions. No utiliza Supabase ni Google News para buscar publicaciones.
 
-**Buscar titulares recientes**: ejecuta Supabase `encuestas?action=scan` y consulta RSS de Google News. Devuelve titulares y fechas candidatos. No lee porcentajes, no incorpora encuestas, no procesa matrices individuales y no actualiza por sí solo el pronóstico.
+- **Novedades de encuestas:** `data/vigilancia/candidatos.json`, con fuentes, estado, errores, fechas y enlaces directos. Un candidato no es una ficha aprobada.
+- **Hallazgos de microdatos:** `data/vigilancia/microdatos.json`, obtenido de páginas de productores del catálogo. Un enlace no acredita que el fichero contenga entrevistas ni que pueda incorporarse al motor.
+- **Catálogo y descargas:** `data/microdatos/catalogo-publico.json` y `data/microdatos/estado-descargas.json`.
+- **Custodia real:** repositorio privado `bhermoso/observatorio-electoral-custodia`. La web solo recibe `data/microdatos/custodia.json`, con commit, fecha de verificación, tamaños y hashes; no contiene entrevistas.
 
-**Buscar enlaces de microdatos ahora**: ejecuta Supabase `microdatos?action=scan`. Examina páginas de productores del catálogo, extrae vínculos HTTPS a ZIP, SAV, DTA, XLSX y CSV y consulta RSS específicamente relacionados con la publicación de microdatos. Presenta recuentos de páginas accesibles, enlaces ya catalogados, enlaces nuevos no auditados, noticias candidatas y errores. No descarga archivos binarios ni agrega entrevistas al motor.
+Los botones de consulta recuperan el informe existente; el enlace «Ejecutar vigilancia en GitHub» abre la tarea para una cuenta autorizada. No se solicitan claves en el navegador. Las fichas se proponen y revisan en GitHub, conservando el historial editorial.
 
-**Recargar encuestas verificadas**: vuelve a consultar el archivo público `data/polls.json` y solo refresca las vistas. No ejecuta una búsqueda de fuentes ni modifica datos.
-
-**Pronóstico Motor 29N**: GitHub Pages recalcula con las encuestas elegibles ya incorporadas a su fuente durante el despliegue. Descubrir un titular o un enlace no justifica revisar los pesos de una casa ni cambiar la estimación.
-
-## Almacenamiento y control
-
-- Archivo de encuestas verificadas: GitHub `data/polls.json`; las fichas editoriales aprobadas pasan por la bandeja Supabase `poll_submissions` y el proceso GitHub Actions de ingesta.
-- Catálogo documental de microdatos: GitHub `data/microdatos/catalogo-publico.json`.
-- Candidatos de microdatos encontrados en búsquedas: tabla Supabase `public.microdata_scan_cache`, con RLS activo y permisos solo para el servicio. El público no consulta directamente la tabla, sino la función Edge `microdatos`.
-- La búsqueda de microdatos está limitada a una nueva ejecución cada cinco minutos por una función de reclamación atómica. Los fallos se muestran. No se persisten entrevistas ni ficheros descargados.
-
-**Regla editorial:** 'enlace encontrado' no significa 'fichero descargado'; 'fichero descargado' no significa 'matriz auditada'; 'matriz auditada' no significa 'receta válida para la predicción'. Las operaciones se mantienen separadas.
+Véase [el circuito completo](actualizacion-observatorio.md). La descripción de la integración retirada está conservada en [el archivo técnico](archivo-tecnico/buscadores-con-supabase.md).

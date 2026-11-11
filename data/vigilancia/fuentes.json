@@ -1,0 +1,8 @@
+[
+ {"id":"elpais","name":"EL PAÍS · España","url":"https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/espana/portada","format":"rss"},
+ {"id":"elmundo","name":"EL MUNDO · España","url":"https://e00-elmundo.uecdn.es/elmundo/rss/espana.xml","format":"rss"},
+ {"id":"elespanol","name":"EL ESPAÑOL · España","url":"https://www.elespanol.com/rss/espana/","format":"rss"},
+ {"id":"gad3","name":"GAD3 · publicaciones","url":"https://www.gad3.com/","format":"html"},
+ {"id":"cis","name":"CIS · estudios","url":"https://www.cis.es/es/estudios","format":"html"},
+ {"id":"mic","name":"More in Common · Pulso electoral","url":"https://moreincommon.es/pulso-electoral.html","format":"html"}
+]

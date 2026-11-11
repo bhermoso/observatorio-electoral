@@ -17,19 +17,11 @@ except ModuleNotFoundError:
 ROOT=Path(__file__).resolve().parents[1]
 INPUT=ROOT/"data/ingesta/validadas.json"
 POLLS=ROOT/"data/polls.json"
-SERVICE="https://gjzihgfzxorpvevrrfkh.supabase.co/functions/v1/encuestas"
-
 def read_service():
-    """Public read of editor-approved records; credentials stay on the service."""
-    try:
-        with urlopen(Request(SERVICE+"?action=approved",headers={"Accept":"application/json"}),timeout=30) as response:
-            raw=response.read(2_000_001)
-    except HTTPError as exc:
-        if exc.code==451:return []  # Same publication blackout as the site.
-        raise
-    if len(raw)>2_000_000:raise ValueError("Respuesta del servicio demasiado grande")
-    records=json.loads(raw)
-    if not isinstance(records,list):raise ValueError("Bandeja del servicio inválida")
+    """Compatibilidad de CLI: bandeja migrada y versionada, sin servicios externos."""
+    path=ROOT/'data/ingesta/bandeja-migrada.json'
+    records=json.loads(path.read_text(encoding='utf-8')) if path.exists() else []
+    if not isinstance(records,list):raise ValueError('Bandeja migrada inválida')
     return records
 
 def integrate(existing, proposals):
@@ -68,11 +60,11 @@ def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--dry-run",action="store_true")
     ap.add_argument("--report",default="actualizacion-output")
-    ap.add_argument("--service",action="store_true",help="Añadir las fichas aprobadas desde el Observatorio")
+    ap.add_argument("--service",action="store_true",help="Compatibilidad: la bandeja migrada se lee siempre")
     args=ap.parse_args()
     existing=json.loads(POLLS.read_text(encoding="utf-8"))
     proposals=json.loads(INPUT.read_text(encoding="utf-8")) if INPUT.exists() else []
-    if args.service:proposals+=read_service()
+    proposals+=read_service()
     updated,added,skipped,rejected=integrate_each(existing,proposals)
     out=ROOT/args.report
     out.mkdir(exist_ok=True,parents=True)

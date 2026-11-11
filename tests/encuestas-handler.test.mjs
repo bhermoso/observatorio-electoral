@@ -4,7 +4,7 @@ after(()=>mock.timers.reset());
 import assert from 'node:assert/strict';
 let handler;
 globalThis.Deno={env:{get:name=>name==='SUPABASE_URL'?'https://database.test':'test-service-role'},serve:fn=>{handler=fn;}};
-await import('../supabase/functions/encuestas/index.ts');
+await import('../docs/archivo-tecnico/supabase/functions/encuestas/index.ts');
 const req=(action,method='GET',extra={})=>new Request('https://edge.test/?action='+action,{method,...extra});
 const response=value=>new Response(JSON.stringify(value),{headers:{'Content-Type':'application/json'}});
 test('Contratos del servicio: status, approved, caché, fallos RSS y edición sin credencial',async()=>{

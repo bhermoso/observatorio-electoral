@@ -46,7 +46,7 @@ export function renderIntervalos(f){
 /** Reordena la página en capítulos. Devuelve el número de secciones colocadas. */
 export function organizarPronostico(root){
  if(!root||root.querySelector('.pr-indice'))return 0;
- const hero=root.querySelector('.hero');
+ const hero=root.querySelector('.editorial-opening')||root.querySelector('.hero');
  const sub=root.querySelector('.subnav');
  const indice=document.createElement('nav');indice.className='cocina-indice pr-indice';indice.setAttribute('aria-label','Capítulos del pronóstico');
  indice.innerHTML=CAPITULOS.map(([id,t,s],i)=>`<a href="#${id}"><b>${i+1}</b><span>${h(t)}</span><small>${h(s)}</small></a>`).join('');
@@ -55,8 +55,8 @@ export function organizarPronostico(root){
  sub?.remove();
  let colocadas=0,ancla=indice;
  CAPITULOS.forEach(([id,t,s,sels],i)=>{
-  const cap=document.createElement('section');cap.className='cocina-capitulo pr-capitulo';cap.id=id;cap.setAttribute('aria-labelledby',id+'-t');
-  cap.innerHTML=`<header class="cocina-cap-cab"><span class="cocina-cap-num">${i+1}</span><div><h2 id="${id}-t">${h(t)}</h2><p class="cocina-cap-pregunta">${h(s)}</p></div></header>`;
+  const cap=document.createElement('details');cap.open=i===0;cap.className='cocina-capitulo pr-capitulo chapter-reading';cap.id=id;cap.setAttribute('aria-labelledby',id+'-t');
+  cap.innerHTML=`<summary class="cocina-cap-cab"><span class="cocina-cap-num">${i+1}</span><div><h2 id="${id}-t">${h(t)}</h2><p class="cocina-cap-pregunta">${h(s)}</p></div></summary>`;
   for(const sel of sels){const el=sel.startsWith('.')?root.querySelector(sel):root.querySelector('#'+sel);if(el){cap.append(el);colocadas++;}}
   ancla.after(cap);ancla=cap;
  });

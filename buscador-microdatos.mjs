@@ -1,16 +1,17 @@
 /** Búsqueda documental real de microdatos. No equivale a descargar entrevistas. */
-export const MICRODATA_ENDPOINT='https://gjzihgfzxorpvevrrfkh.supabase.co/functions/v1/microdatos';
+export const MICRODATA_ENDPOINT='data/vigilancia/microdatos.json';
 const h=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const urlOK=v=>{try{const u=new URL(v);return u.protocol==='https:'&&!u.username&&!u.password?u.href:null}catch{return null}};
 const when=s=>{if(!s)return 'nunca';const d=new Date(s);return Number.isNaN(+d)?String(s):d.toLocaleString('es-ES',{timeZone:'Europe/Madrid'})};
 export async function consultMicrodata(action,{fetcher=fetch,signal}={}){
  if(!['scan','status'].includes(action))throw Error('Acción no permitida');
- const response=await fetcher(MICRODATA_ENDPOINT+'?action='+action,{
-  method:action==='scan'?'POST':'GET',cache:'no-store',
-  signal:signal?AbortSignal.any([signal,AbortSignal.timeout(45000)]):AbortSignal.timeout(45000)});
- let json;try{json=await response.json()}catch{throw Error('Respuesta del servidor ilegible');}
- if(!response.ok)throw Error(json.error||'Fallo al consultar microdatos');
- return json;
+ let last;
+ for(const url of ['https://raw.githubusercontent.com/bhermoso/observatorio-electoral/main/'+MICRODATA_ENDPOINT,MICRODATA_ENDPOINT]){
+  try{const r=await fetcher(url,{method:'GET',cache:'no-store',signal:signal?AbortSignal.any([signal,AbortSignal.timeout(12000)]):AbortSignal.timeout(12000)});
+   if(!r.ok)throw Error('Informe no disponible');const d=await r.json();if(!Array.isArray(d.candidates))throw Error('Informe inválido');return {...d,cached:true};
+  }catch(e){last=e;if(signal?.aborted)throw e;}
+ }
+ throw Error(last.message);
 }
 export function renderMicrodataResults(data){
  if(!data?.checked_at)return '<p class="muted">Aún no se ha ejecutado una búsqueda de microdatos.</p>';
@@ -38,8 +39,8 @@ export function renderMicrodataResults(data){
 export function renderBuscadorMicrodatos(){
  return '<section class="panel poll-microdata-search" aria-labelledby="micro-search-title">'+
   '<h2 id="micro-search-title">Buscar microdatos originales</h2>'+
-  '<p>Consulta páginas de los productores y búsquedas especializadas para localizar nuevos archivos ZIP, SAV y hojas de datos. <b>Guarda candidatos en Supabase, no entrevistas.</b> La lectura y homologación de las matrices sigue siendo un procedimiento separado.</p>'+
-  '<div class="toolbar"><button type="button" id="micro-scan">Buscar enlaces de microdatos ahora</button><a href="#archivo-microdatos">Consultar catálogo de microdatos</a></div>'+
+  '<p>Consulta páginas de los productores y búsquedas especializadas para localizar nuevos archivos ZIP, SAV y hojas de datos. <b>Consulta el informe versionado de vigilancia; no descarga entrevistas.</b> La lectura y homologación de las matrices sigue siendo un procedimiento separado.</p>'+
+  '<div class="toolbar"><button type="button" id="micro-scan">Consultar hallazgos de microdatos</button><a href="https://github.com/bhermoso/observatorio-electoral/actions/workflows/vigilancia-encuestas.yml" target="_blank" rel="noopener noreferrer">Ejecutar vigilancia en GitHub ↗</a><a href="#archivo-microdatos">Consultar catálogo de microdatos</a></div>'+
   '<p id="micro-scan-feedback" role="status" aria-live="polite"></p>'+
   '<div id="micro-scan-results" aria-live="polite">Consultando la última búsqueda…</div></section>';
 }
@@ -51,12 +52,12 @@ export function bindBuscadorMicrodatos(){
  consultMicrodata('status',{signal}).then(data=>display(()=>{result.innerHTML=renderMicrodataResults(data)}))
   .catch(e=>display(()=>{result.textContent='No se pudo consultar el estado de la búsqueda: '+e.message}));
  button.onclick=async()=>{
-  button.disabled=true;feedback.textContent='Consultando páginas originales y fuentes RSS de microdatos…';
+  button.disabled=true;feedback.textContent='Consultando el último informe de páginas originales…';
   try{
    const data=await consultMicrodata('scan',{signal});
    display(()=>{
     result.innerHTML=renderMicrodataResults(data);
-    feedback.textContent=data.cached?'No se ha ejecutado otra búsqueda: resultados recientes reutilizados.':
+    feedback.textContent=data.cached?'Informe consultado. Para iniciar una búsqueda nueva, ejecuta la vigilancia en GitHub.':
      'Búsqueda terminada: '+(data.summary?.enlaces_nuevos_sin_auditar||0)+
      ' enlaces nuevos sin auditar, '+(data.summary?.noticias_sobre_microdatos||0)+
      ' noticias candidatas; ningún microdato incorporado al Motor 29N.';

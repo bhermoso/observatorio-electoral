@@ -40,3 +40,33 @@ jobs:
         with:
           name: auditoria-interiores
           path: work/auditoria-interiores/
+  vigilancia-directa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Probar las fuentes desde GitHub sin publicar ni incorporar
+        run: |
+          python scripts/vigilar_encuestas.py work/vigilancia
+          python scripts/vigilar_microdatos.py
+          python - <<'PY'
+          import json
+          a=json.load(open('data/vigilancia/candidatos.json'))
+          b=json.load(open('data/vigilancia/microdatos.json'))
+          assert a['sources_ok']>0,'Todas las fuentes de encuestas fallaron'
+          assert b['summary']['paginas_accesibles']>0,'Todas las páginas de microdatos fallaron'
+          print('Cobertura de encuestas:',a['sources_ok'],'de',a['searches'])
+          print('Cobertura de microdatos:',b['summary'])
+          PY
+          git diff --exit-code -- data/polls.json modelo
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: prueba-vigilancia-directa
+          path: |
+            work/vigilancia/
+            data/vigilancia/microdatos.json

@@ -40,7 +40,7 @@ def construir(carpeta, previo=None, run_url=None, recalculo=False, ahora=None):
         "ejecucion": run_url,
         "ultima_busqueda": cand.get("checked_at"),
         "candidatos_detectados": len(cand.get("results", [])) if cand else None,
-        "naturaleza_candidatos": "Titulares de Google News (RSS). No contienen cifras extraídas ni verificadas.",
+        "naturaleza_candidatos": "Publicaciones de medios y productores consultados directamente. Candidatos sin cifras verificadas.",
         "errores_busqueda": errores,
         "bandeja_validadas": inc.get("candidates_approved"),
         "incorporadas": added,

@@ -1,0 +1,233 @@
+{
+  "schema": 2,
+  "checked_at": "2026-11-11T10:58:36.043158+00:00",
+  "last_attempt_at": "2026-11-11T10:58:36.043158+00:00",
+  "status": "partial",
+  "candidates": [
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_08_barometro_flash_descargables.zip",
+      "titulo": "Datos completos",
+      "fuente": "40db",
+      "pagina": "https://elpais.com/espana/2026-10-09/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "ya_catalogado"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://moreincommon.es/data/microdatos-2026-10.zip",
+      "titulo": "Descargar (ZIP)",
+      "fuente": "more-in-common",
+      "pagina": "https://moreincommon.es/pulso-electoral.html",
+      "estado": "ya_catalogado"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://moreincommon.es/data/microdatos-2026-09.zip",
+      "titulo": "Descargar (ZIP)",
+      "fuente": "more-in-common",
+      "pagina": "https://moreincommon.es/pulso-electoral.html",
+      "estado": "ya_catalogado"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://moreincommon.es/data/microdatos-2026-07.zip",
+      "titulo": "Descargar (ZIP)",
+      "fuente": "more-in-common",
+      "pagina": "https://moreincommon.es/pulso-electoral.html",
+      "estado": "ya_catalogado"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://moreincommon.es/data/microdatos-2026-05.zip",
+      "titulo": "Descargar (ZIP)",
+      "fuente": "more-in-common",
+      "pagina": "https://moreincommon.es/pulso-electoral.html",
+      "estado": "ya_catalogado"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/od_26sv89/opendata/26sv89.csv",
+      "titulo": "Descargar Fichero de datos _ en formato CSV (665.0 KB ) - Fichero de datos _",
+      "fuente": "sociometro-vasco",
+      "pagina": "https://opendata.euskadi.eus/catalogo/-/informes-estudios/sociometro-89/",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/od_26sv89/opendata/26sv89_etik.sav",
+      "titulo": "Descargar Fichero de datos _ en formato SAV (387.0 KB ) - Fichero de datos _",
+      "fuente": "sociometro-vasco",
+      "pagina": "https://opendata.euskadi.eus/catalogo/-/informes-estudios/sociometro-89/",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/od_26sv89/opendata/26sv89.xlsx",
+      "titulo": "Descargar Colectivos _ en formato XLSX (1.15 MB ) - Colectivos _",
+      "fuente": "sociometro-vasco",
+      "pagina": "https://opendata.euskadi.eus/catalogo/-/informes-estudios/sociometro-89/",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://s2.elespanol.com/upload/redaccion/2025/08/track_sociometrica_elespanol-2_ago25.sav?utm_cmp_rs=linksinline",
+      "titulo": "en un archivo al que el lector puede acceder a través de este enlace",
+      "fuente": "sociometrica",
+      "pagina": "https://www.elespanol.com/espana/politica/20250902/espanol-publica-microdatos-encuesta-electoral-sociometrica-puede-consultarlos/1003743908447_0.html",
+      "estado": "ya_catalogado"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://documents.dadesobertes.gencat.cat/ceo/docs/microdades_anonimitzades_bop_telefonica.sav",
+      "titulo": "Formato spss",
+      "fuente": "ceo",
+      "pagina": "https://web.gencat.cat/es/generalitat/dades-indicadors/centre-estudis-opinio/microdades",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://documents.dadesobertes.gencat.cat/ceo/docs/microdades_anonimitzades_bop_telefonica.csv",
+      "titulo": "Formato csv",
+      "fuente": "ceo",
+      "pagina": "https://web.gencat.cat/es/generalitat/dades-indicadors/centre-estudis-opinio/microdades",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://documents.dadesobertes.gencat.cat/ceo/docs/microdades_anonimitzades_bop_presencial.sav",
+      "titulo": "Formato spss",
+      "fuente": "ceo",
+      "pagina": "https://web.gencat.cat/es/generalitat/dades-indicadors/centre-estudis-opinio/microdades",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://documents.dadesobertes.gencat.cat/ceo/docs/microdades_anonimitzades_bop_presencial.csv",
+      "titulo": "Formato csv",
+      "fuente": "ceo",
+      "pagina": "https://web.gencat.cat/es/generalitat/dades-indicadors/centre-estudis-opinio/microdades",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://documents.dadesobertes.gencat.cat/ceo/docs/microdades_anonimitzades_context.sav",
+      "titulo": "formato spss",
+      "fuente": "ceo",
+      "pagina": "https://web.gencat.cat/es/generalitat/dades-indicadors/centre-estudis-opinio/microdades",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://documents.dadesobertes.gencat.cat/ceo/docs/microdades_anonimitzades_context.csv",
+      "titulo": "formato csv",
+      "fuente": "ceo",
+      "pagina": "https://web.gencat.cat/es/generalitat/dades-indicadors/centre-estudis-opinio/microdades",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://ceo.gencat.cat/web/.content/30_estudis/04_microdades/Taules_estadistiques_acumulada_vdg.xlsx",
+      "titulo": "tablas estadísticas acumuladas",
+      "fuente": "ceo",
+      "pagina": "https://web.gencat.cat/es/generalitat/dades-indicadors/centre-estudis-opinio/microdades",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://documents.dadesobertes.gencat.cat/ceo/docs/microdades_anonimitzades_vdg_telefonica.sav",
+      "titulo": "formato spss",
+      "fuente": "ceo",
+      "pagina": "https://web.gencat.cat/es/generalitat/dades-indicadors/centre-estudis-opinio/microdades",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://documents.dadesobertes.gencat.cat/ceo/docs/microdades_anonimitzades_vdg_telefonica.csv",
+      "titulo": "formato csv",
+      "fuente": "ceo",
+      "pagina": "https://web.gencat.cat/es/generalitat/dades-indicadors/centre-estudis-opinio/microdades",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://documents.dadesobertes.gencat.cat/ceo/docs/microdades_anonimitzades_vdg_presencial.sav",
+      "titulo": "formato spss",
+      "fuente": "ceo",
+      "pagina": "https://web.gencat.cat/es/generalitat/dades-indicadors/centre-estudis-opinio/microdades",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://documents.dadesobertes.gencat.cat/ceo/docs/microdades_anonimitzades_vdg_presencial.csv",
+      "titulo": "formato csv",
+      "fuente": "ceo",
+      "pagina": "https://web.gencat.cat/es/generalitat/dades-indicadors/centre-estudis-opinio/microdades",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://documents.dadesobertes.gencat.cat/ceo/docs/microdades_anonimitzades_vdg_autoadministrada.sav",
+      "titulo": "formato spss",
+      "fuente": "ceo",
+      "pagina": "https://web.gencat.cat/es/generalitat/dades-indicadors/centre-estudis-opinio/microdades",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://documents.dadesobertes.gencat.cat/ceo/docs/microdades_anonimitzades_vdg_autoadministrada.csv",
+      "titulo": "formato csv",
+      "fuente": "ceo",
+      "pagina": "https://web.gencat.cat/es/generalitat/dades-indicadors/centre-estudis-opinio/microdades",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://documents.dadesobertes.gencat.cat/ceo/docs/microdades_anonimitzades_debats.sav",
+      "titulo": "formato spss",
+      "fuente": "ceo",
+      "pagina": "https://web.gencat.cat/es/generalitat/dades-indicadors/centre-estudis-opinio/microdades",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://documents.dadesobertes.gencat.cat/ceo/docs/microdades_anonimitzades_debats.csv",
+      "titulo": "formato csv",
+      "fuente": "ceo",
+      "pagina": "https://web.gencat.cat/es/generalitat/dades-indicadors/centre-estudis-opinio/microdades",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://ceo.gencat.cat/web/.content/30_estudis/04_microdades/Taules-estadistiques_long.xlsx",
+      "titulo": "tablas estadísticas acumuladas",
+      "fuente": "ceo",
+      "pagina": "https://web.gencat.cat/es/generalitat/dades-indicadors/centre-estudis-opinio/microdades",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://documents.dadesobertes.gencat.cat/ceo/docs/microdades_anonimitzades_longitudinal.sav",
+      "titulo": "Matriz en formato spss",
+      "fuente": "ceo",
+      "pagina": "https://web.gencat.cat/es/generalitat/dades-indicadors/centre-estudis-opinio/microdades",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://documents.dadesobertes.gencat.cat/ceo/docs/microdades_anonimitzades_longitudinal.csv",
+      "titulo": "Matriz en formato csv",
+      "fuente": "ceo",
+      "pagina": "https://web.gencat.cat/es/generalitat/dades-indicadors/centre-estudis-opinio/microdades",
+      "estado": "nuevo_enlace_sin_auditar"
+    }
+  ],
+  "errors": [
+    "gad3: ValueError: HTTP 202"
+  ],
+  "summary": {
+    "paginas_consultadas": 9,
+    "paginas_accesibles": 8,
+    "ficheros_descargados": 0,
+    "matrices_analizadas": 0
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "files": [
+    {
+      "study_id": "more-in-common-2026-05-01",
+      "url": "https://moreincommon.es/data/microdatos-2026-05.zip",
+      "sha256": "3a65823bcbd3b94df84f77650755f8bdf47b22e0ab4a4c252136d986a2b5b3f8",
+      "bytes": 286799
+    },
+    {
+      "study_id": "more-in-common-2026-07-01",
+      "url": "https://moreincommon.es/data/microdatos-2026-07.zip",
+      "sha256": "6d369d9d91ccda486cddc64ba7cb80af265b263e12e413696c5c42fb843b0a71",
+      "bytes": 270287
+    },
+    {
+      "study_id": "more-in-common-2026-09-01",
+      "url": "https://moreincommon.es/data/microdatos-2026-09.zip",
+      "sha256": "8f31b4042f7219903ba698d2955bf868ceee2c3ae4a86eea1939ece3c0821b27",
+      "bytes": 293998
+    },
+    {
+      "study_id": "more-in-common-2026-10-01",
+      "url": "https://moreincommon.es/data/microdatos-2026-10.zip",
+      "sha256": "813f5a4f7b8cad45bb4f184b7744e4937d8651b34a09bee93b149513c9ff106f",
+      "bytes": 615299
+    }
+  ]
+}

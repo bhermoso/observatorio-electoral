@@ -1,44 +1,18 @@
-name: Verificar buscador real de microdatos
+name: Comprobar vigilancia directa de microdatos
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "supabase/functions/microdatos/**"
-      - ".github/workflows/probar-busqueda-microdatos.yml"
 permissions:
   contents: read
 jobs:
-  smoke:
-    runs-on: ubuntu-latest
-    timeout-minutes: 4
+  discovery:
+    runs-on: ubuntu-24.04
     steps:
-      - name: Consultar el estado del buscador desplegado
-        run: |
-          curl --fail-with-body -sSL --retry 2 --max-time 25 \
-            -H 'Origin: https://bhermoso.github.io' \
-            'https://gjzihgfzxorpvevrrfkh.supabase.co/functions/v1/microdatos?action=status' \
-            -o /tmp/estado-microdatos.json
-          python - <<'PY'
-          import json
-          d=json.load(open('/tmp/estado-microdatos.json'))
-          assert isinstance(d.get('candidates'),list),d
-          print('Estado leído: candidatos existentes',len(d['candidates']))
-          PY
-      - name: Ejecutar una búsqueda REAL y validar su salida
-        run: |
-          curl --fail-with-body -sSL --retry 1 --max-time 90 -X POST \
-            -H 'Origin: https://bhermoso.github.io' \
-            'https://gjzihgfzxorpvevrrfkh.supabase.co/functions/v1/microdatos?action=scan' \
-            -o /tmp/resultado-microdatos.json
-          python - <<'PY'
-          import json
-          d=json.load(open('/tmp/resultado-microdatos.json'))
-          assert d.get('checked_at'),d
-          summary=d.get('summary',{})
-          assert d.get('cached') or isinstance(summary.get('paginas_consultadas'),int),d
-          print('Búsqueda:', 'caché reciente' if d.get('cached') else 'ejecutada')
-          print('Enlaces:',summary.get('archivos_localizados',0),'nuevos:',summary.get('enlaces_nuevos_sin_auditar',0))
-          print('Noticias candidatas:',summary.get('noticias_sobre_microdatos',0),'errores:',len(d.get('errors',[])))
-          print('Matrices descargadas por este botón:',summary.get('matrices_analizadas',0))
-          PY
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/vigilar_microdatos.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: candidatos-documentales-microdatos
+          path: data/vigilancia/microdatos.json

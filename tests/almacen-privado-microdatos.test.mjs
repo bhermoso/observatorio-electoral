@@ -60,7 +60,7 @@ test('La pantalla presenta custodia separada de descargas y nunca publica acceso
 });
 
 test('La función privada prohíbe URL arbitraria y exige repositorio, rama y OIDC verificados',()=>{
- const src=fs.readFileSync(new URL('../supabase/functions/almacen-microdatos/index.ts',import.meta.url),'utf8');
+ const src=fs.readFileSync(new URL('../docs/archivo-tecnico/supabase/functions/almacen-microdatos/index.ts',import.meta.url),'utf8');
  assert.match(src,/createRemoteJWKSet/);
  assert.match(src,/payload\.repository/);
  assert.match(src,/payload\.workflow_ref/);
