@@ -87,7 +87,20 @@ export function renderCocina(){
   '<p>Catálogo de fuentes, buscador y almacén de los originales descargados. El repositorio guarda agregados y documentación, no entrevistas.</p>',
   `${renderCatalogoMicrodatos()}${renderBuscadorMicrodatos()}${renderEstadoDescargas()}${ORIGEN()}`)}`;
 }
-export async function bindCocina(){void bindEvaluacion2019();void bindHomologacion2019();void bindSocioMetrica();void bindCatalogoMicrodatos();void bindRetrospectiva40db();void bindMicrodatos40db();void bindResultadosCocina();void bindLeccion();void bindCocinaPropia();
+export async function bindCocina(){
+ // Los enlaces del índice abren el capítulo elegido sin ocultar el contenido al navegar.
+ const indice=document.querySelector('.cocina-indice');
+ if(indice){
+  indice.addEventListener('click',ev=>{
+   const link=ev.target.closest('a[href^="#cocina-cap"]');
+   if(!link)return;
+   const panel=document.getElementById(link.getAttribute('href').slice(1));
+   if(panel?.tagName==='DETAILS')panel.open=true;
+  });
+  const current=document.getElementById(location.hash.slice(1));
+  if(current?.matches('details.cocina-capitulo'))current.open=true;
+ }
+ void bindEvaluacion2019();void bindHomologacion2019();void bindSocioMetrica();void bindCatalogoMicrodatos();void bindRetrospectiva40db();void bindMicrodatos40db();void bindResultadosCocina();void bindLeccion();void bindCocinaPropia();
  const box=document.querySelector('#kitchen-study'),trans=document.querySelector('#kitchen-transfers'),selector=document.querySelector('#kitchen-party');
  bindHistoricCis();
  bindEvidenceAudit();
