@@ -246,3 +246,21 @@ body>header{background:var(--paper);border-bottom:3px double var(--ink);box-shad
 .pr-history-item strong{grid-column:2;font:400 25px/1.2 var(--editorial-serif);color:var(--ink)}
 .pr-history-item small{grid-column:2;font-size:11px;color:var(--muted)}
 @media(max-width:520px){.pr-history-summary{gap:8px}.pr-history-item strong{font-size:20px}.pr-history-item span,.pr-history-item small{font-size:10px}}
+
+/* Recorrido por partido: cuatro naturalezas, un único punto de lectura. */
+.ruta-estimacion{margin:20px 0 22px;border-top:1px solid var(--ink);padding-top:15px}
+.ruta-estimacion-titulo{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:12px}
+.ruta-estimacion-titulo h3{font:400 22px/1.2 var(--editorial-serif);color:var(--ink);margin:0}
+.ruta-estimacion-titulo p{max-width:420px;color:var(--muted);font-size:12px;line-height:1.5;margin:0}
+.ruta-estimacion-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.ruta-paso{position:relative;display:flex;flex-direction:column;min-width:0;gap:8px;border-top:2px solid var(--line);padding:13px 12px 14px 0;margin-right:12px;text-decoration:none}
+.ruta-paso:not(:last-child)::after{content:"›";position:absolute;top:15px;right:-4px;color:var(--muted);font-size:17px}
+.ruta-paso-num{font-size:10px;font-weight:700;letter-spacing:.065em;text-transform:uppercase;color:var(--muted)}
+.ruta-paso strong{font:400 clamp(17px,2.1vw,26px)/1.18 var(--editorial-serif);color:var(--ink);overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.ruta-paso>span:not(.ruta-paso-num){font-size:11px;line-height:1.5;color:var(--muted)}
+.ruta-paso small{font-size:11px;color:var(--green);text-decoration:underline;text-underline-offset:3px;margin-top:auto}
+.ruta-paso-activo{border-top-color:var(--green)}
+.ruta-paso-experimental{border-top-style:dashed}
+.ruta-paso:hover small,.ruta-paso:focus-visible small{font-weight:700}
+@media(max-width:950px){.ruta-estimacion-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px}.ruta-paso:nth-child(2)::after{display:none}.ruta-paso strong{font-size:23px}}
+@media(max-width:600px){.ruta-estimacion-titulo{display:block}.ruta-estimacion-titulo p{margin-top:8px}.ruta-estimacion-grid{gap:8px}.ruta-paso{margin-right:0;padding-right:6px}.ruta-paso strong{font-size:18px}.ruta-paso>span:not(.ruta-paso-num),.ruta-paso small{font-size:10px}.ruta-paso:nth-child(1)::after,.ruta-paso:nth-child(3)::after{right:-8px}}
