@@ -54,30 +54,35 @@ export function renderCocina(){
   <summary class="cocina-cap-cab"><span class="cocina-cap-num">${n}</span><div><h2 id="${id}-t">${titulo}</h2><p class="cocina-cap-pregunta">${pregunta}</p></div></summary>
   <div class="cocina-cap-intro">${intro}</div>${cuerpo}</details>`;
  return `<div class="hero cocina-hero"><div><div class="eyebrow">Cocina electoral · microdatos y transparencia metodológica</div><h1>Entender la cocina electoral</h1>
- <p>Una encuesta recoge respuestas; una estimación de voto es una cifra calculada a partir de ellas. Entre una y otra median decisiones: a quién se da más peso, qué se hace con quien no contesta, cuánto se cree lo que la gente recuerda haber votado, quién irá a votar. A ese conjunto de decisiones se le llama cocina. Esta página explica en qué consiste, la aplica a un caso completo, muestra lo que hemos podido comprobar en los datos originales de varias encuestadoras y qué recetas acertaron en 2023, y dice cuál es la cocina del propio Observatorio.</p></div></div>
- <nav class="cocina-indice" aria-label="Capítulos de la cocina">
-  <a href="#cocina-cap1"><b>1</b><span>Qué es cocinar una encuesta</span><small>Respuestas, pesos, recuerdo y participación</small></a>
-  <a href="#cocina-cap2"><b>2</b><span>Un caso completo</span><small>De una encuesta de 40dB a los escaños de Madrid y Jaén</small></a>
-  <a href="#cocina-cap3"><b>3</b><span>Cómo cocinan las encuestadoras</span><small>Lo comprobado en CIS, 40dB y SocioMétrica</small></a>
-  <a href="#cocina-cap4"><b>4</b><span>¿Qué receta acierta?</span><small>El examen de 2023 y sus límites</small></a>
-  <a href="#cocina-cap5"><b>5</b><span>La cocina del Observatorio</span><small>Qué corregimos, cuánto y por qué</small></a>
-  <a href="#cocina-cap6"><b>6</b><span>Archivo de microdatos</span><small>Fuentes, descargas y auditoría</small></a>
+ <p>Una encuesta recoge respuestas; una estimación de voto es una cifra calculada a partir de ellas. Aquí se explica primero cómo calcula el Observatorio su pronóstico, después cómo se transforma una encuesta en una estimación y finalmente qué hemos comprobado con microdatos. Los ensayos de investigación se muestran por separado del modelo publicado.</p></div></div>
+ <div class="cocina-orientacion" aria-label="Cómo se organiza este apartado">
+  <p><strong>Pronóstico vigente:</strong> combina estimaciones publicadas y ajustes propios, pero no reanaliza las entrevistas individuales.</p>
+  <p><strong>Laboratorio de microdatos:</strong> comprueba procedimientos alternativos con datos originales; sus ensayos no cambian el pronóstico.</p>
+  <p><strong>Comprobación:</strong> los resultados de 2023 sirven para estudiar errores, no para garantizar aciertos futuros.</p>
+ </div>
+ <nav class="cocina-indice" aria-label="Recorrido por la cocina">
+  <a href="#cocina-cap5"><b>1</b><span>Cómo estimamos hoy</span><small>Encuestas, correcciones, incertidumbre y escaños</small></a>
+  <a href="#cocina-cap1"><b>2</b><span>Entender una encuesta</span><small>Respuestas, pesos, recuerdo y participación</small></a>
+  <a href="#cocina-cap2"><b>3</b><span>Seguir un ejemplo</span><small>40dB, Madrid y Jaén</small></a>
+  <a href="#cocina-cap3"><b>4</b><span>Examinar microdatos</span><small>CIS, 40dB y SocioMétrica</small></a>
+  <a href="#cocina-cap4"><b>5</b><span>Contrastar métodos</span><small>Resultados de 2023 y limitaciones</small></a>
+  <a href="#cocina-cap6"><b>6</b><span>Consultar las fuentes</span><small>Archivo y auditoría</small></a>
  </nav>
- ${cap(1,'cocina-cap1','Qué es cocinar una encuesta','¿Qué pasos separan lo que la gente responde de la estimación que se publica?',
+ ${cap(1,'cocina-cap5','La cocina del Observatorio','¿Qué corrige el Motor 29N, cuánto y con qué riesgo?',
+  '<p>El Motor 29N combina tres variantes basadas en estimaciones publicadas: consenso privado, consenso general y calibración histórica. Modela tendencias e incertidumbre, traslada el voto al territorio y reparte escaños. No utiliza directamente los microdatos; las correcciones históricas y sus supuestos se documentan.</p>',
+  renderLeccion().replace('<h2 id="lc-h">La cocina del Observatorio</h2>','<h3 class="vh" id="lc-h">La cocina del Observatorio</h3>'))}
+ ${cap(2,'cocina-cap1','Qué es cocinar una encuesta','¿Qué pasos separan lo que la gente responde de la estimación que se publica?',
   '<p>Cada paso del esquema transforma la cifra anterior. Algunos son datos (lo que se respondió), otros cálculos (pesos, repartos) y otros hipótesis (cuánto se cree el recuerdo, quién votará). Distinguirlos es la condición para leer cualquier encuesta.</p>',
   renderCadenaCocina()+NOTICE()+CONCEPTS())}
- ${cap(2,'cocina-cap2','Un caso completo','¿Cómo se llega de las respuestas de una encuesta concreta a los escaños de Madrid y de Jaén?',
+ ${cap(3,'cocina-cap2','Un caso completo','¿Cómo se llega de las respuestas de una encuesta concreta a los escaños de Madrid y de Jaén?',
   '<p>La encuesta flash de 40dB de octubre de 2026, recorrida de principio a fin: respuestas, depuración, ponderación, recuerdo, estimación publicada, traslado a las provincias y reparto D’Hondt.</p>',
   renderCasoCocina().replace(/<h2 id="caso-heading">[^<]*<\/h2>/,'<h3 class="vh" id="caso-heading">Caso 40dB: Madrid y Jaén</h3>'))}
- ${cap(3,'cocina-cap3','Cómo cocinan las encuestadoras','¿Qué se puede comprobar de la cocina de cada casa con sus datos originales?',
-  '<p>Solo el CIS, 40dB y SocioMétrica publican las respuestas individuales. Con ellas se puede reproducir parte del camino hasta su estimación; lo que no se puede reproducir queda señalado como no acreditado.</p>',
+ ${cap(4,'cocina-cap3','Cómo cocinan las encuestadoras','¿Qué se puede comprobar de la cocina de cada casa con sus datos originales?',
+  '<p>En los casos documentados del CIS, 40dB y SocioMétrica se examinan materiales y datos originales disponibles. Puede reconstruirse una parte del cálculo, pero no se presume conocer la fórmula completa de cada instituto.</p>',
   `${AUDIT()}${renderContraste40db()}${renderMicrodatos40db()}${renderSocioMetrica()}${COMO()}${RECUERDO()}${renderExperimentoCis()}`)}
- ${cap(4,'cocina-cap4','¿Qué receta acierta?','¿Mejora alguna corrección el resultado cuando se prueba contra votos reales?',
+ ${cap(5,'cocina-cap4','¿Qué receta acierta?','¿Mejora alguna corrección el resultado cuando se prueba contra votos reales?',
   '<p>La única prueba disponible es el 23J de 2023: encuestas hechas antes, comparadas con los votos contados. Es una sola elección, así que los resultados orientan pero no demuestran.</p>'+LAB_INTRO(),
   `${renderEvidencia40db()}${renderRetrospectiva40db()}${HIST()}${renderEvaluacion2019()}${renderHomologacion2019()}${renderCocinaPropia()}${renderResultadosCocina()}${VALID()}${CONTRIB()}`)}
- ${cap(5,'cocina-cap5','La cocina del Observatorio','¿Qué corrige el Motor 29N, cuánto y con qué riesgo?',
-  '<p>El Observatorio no tiene las entrevistas de las encuestadoras privadas y no rehace su cocina. Aplica una sola corrección, a la vista y con su parámetro: la mitad del error común de 2023.</p>',
-  renderLeccion().replace('<h2 id="lc-h">La cocina del Observatorio</h2>','<h3 class="vh" id="lc-h">La cocina del Observatorio</h3>'))}
  ${cap(6,'cocina-cap6','Archivo de microdatos','¿Dónde están los datos originales y qué se ha auditado?',
   '<p>Catálogo de fuentes, buscador y almacén de los originales descargados. El repositorio guarda agregados y documentación, no entrevistas.</p>',
   `${renderCatalogoMicrodatos()}${renderBuscadorMicrodatos()}${renderEstadoDescargas()}${ORIGEN()}`)}`;
