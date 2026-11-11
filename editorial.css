@@ -68,3 +68,11 @@ body>header{background:var(--paper);border-bottom:3px double var(--ink);box-shad
 .editorial-document .dx-table{max-width:100%;overflow-x:auto}.editorial-document .dx-table table{min-width:520px}
 @media(max-width:600px){.editorial-document #seq-steps{grid-template-columns:repeat(2,minmax(0,1fr))!important}.editorial-document .craft-step{gap:8px}.editorial-document .craft-step i{padding:6px 8px}}
 .editorial-document .craft-mini{overflow-wrap:anywhere}
+
+/* Procedencia del pronóstico: explicación breve, sin otra tarjeta ni código de color. */
+.procedencia-clara{max-width:920px;margin:18px 0 26px;padding:15px 0 12px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);color:var(--ink)}
+.procedencia-clara .procedencia-titulo{display:block;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:9px}
+.procedencia-clara p{margin:5px 0;font-size:13px;line-height:1.55;color:var(--muted)}
+.procedencia-clara strong{color:var(--ink);font-weight:650}
+.procedencia-clara a{display:inline-block;font-size:12px;margin-top:8px;color:var(--green);text-decoration:underline;text-underline-offset:3px}
+@media(max-width:650px){.procedencia-clara{margin:15px 0 22px}.procedencia-clara p{font-size:12px}}
