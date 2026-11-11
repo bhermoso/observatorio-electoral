@@ -1275,3 +1275,5 @@ body.visor-abierto{overflow:hidden}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 .poll-count-grid dd.poll-count-description{font-size:13px;font-weight:400;color:var(--ink);margin:0}.poll-count-grid dd p{font:inherit}
 .poll-scatter circle[role=button]{cursor:pointer}.poll-scatter circle:focus{outline:none;stroke:#173331;stroke-width:3}
+/* Keep section targets visible below the persistent viewer navigation. */
+#visor-contenido [id]{scroll-margin-top:120px}
