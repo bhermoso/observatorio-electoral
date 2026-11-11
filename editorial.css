@@ -178,3 +178,8 @@ body>header{background:var(--paper);border-bottom:3px double var(--ink);box-shad
 .cmp-detail{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
 .cmp-detail summary{font:500 12px system-ui,sans-serif;color:var(--green);cursor:pointer}
 @media(max-width:600px){.cmp-row{grid-template-columns:minmax(70px,105px) minmax(0,1fr) 53px;gap:7px}.cmp-label,.cmp-value{font-size:11px}.cmp-legend{gap:8px 12px;font-size:11px}}
+
+/* Encuestas: conservar el gráfico como lectura inicial y la matriz como auditoría. */
+.house-matrix-detail{margin:14px 0 0;border-top:1px solid var(--line);padding-top:12px;min-width:0}
+.house-matrix-detail>summary{cursor:pointer;color:var(--green);font:500 12px/1.5 system-ui,sans-serif}
+.house-matrix-detail[open]>.table-wrap{margin-top:12px}
