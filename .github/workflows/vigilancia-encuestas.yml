@@ -65,8 +65,8 @@ jobs:
       - name: Registrar que el recálculo se ha solicitado correctamente
         if: success() && steps.request_rebuild.outputs.requested == 'true'
         run: |
-          python scripts/estado_actualizacion.py monitor-output \\
-            --run-url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \\
+          python scripts/estado_actualizacion.py monitor-output \
+            --run-url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
             --recalculo-lanzado true
           git add data/ingesta/estado.json
           git diff --cached --quiet || git commit -m "Vigilancia: recálculo solicitado a Pages"
