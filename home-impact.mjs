@@ -28,15 +28,16 @@ export function renderHomeImpact(references=[],events=[]){
   <h1 id="impact-heading">Panorama 29N</h1>
   <div class="portada-titular" id="portada-titular" aria-live="polite"><p>Cargando la estimación publicada…</p></div>
   <p class="portada-fechas" id="portada-fechas"></p>
-  ${renderTiposEstimacion()}
+  <details class="portada-metodo-desplegable"><summary>¿De dónde salen estas cifras? Cuatro tipos de estimación</summary>${renderTiposEstimacion()}</details>
  </div>
 
+ <section class="portada-bloque" id="home-series" aria-labelledby="series-heading"><h2 id="series-heading">Comparador electoral</h2><p class="muted">Voto estimado, dispersión de las casas y diferencia entre promedio y pronóstico propio. Selecciona un partido para ver su recorrido completo.</p><p class="muted">Cargando comparación visual…</p></section>
  <div class="hub-panel" id="portada-hub">
   <section class="hub-caja" aria-labelledby="hub-hemi-t"><div class="portada-bloque-cabeza"><div><span class="eyebrow">Estimación propia · modelo vigente</span><h2 id="hub-hemi-t">Escaños estimados</h2></div><a class="panel-link" href="#pronostico">Pronóstico completo →</a></div><div id="hub-hemiciclo" aria-live="polite"><p class="muted">Cargando…</p></div></section>
   <section class="hub-caja" aria-labelledby="hub-prom-t"><div class="portada-bloque-cabeza"><div><span class="eyebrow">Promedio de encuestas · referencia comparativa</span><h2 id="hub-prom-t">Promedio de encuestas</h2></div><a class="panel-link" href="#pronostico-capas">Promedio frente a pronóstico →</a></div><div id="hub-promedio" aria-live="polite"><p class="muted">Cargando…</p></div></section>
  </div>
 
- <section class="portada-bloque" id="home-series" aria-labelledby="series-heading"><h2 id="series-heading">Evolución de las estimaciones</h2><p class="muted">Cargando series…</p></section>
+
 
  <section class="portada-bloque" id="portada-ultimas" aria-labelledby="hub-ult-t">
   <div class="portada-bloque-cabeza"><div><span class="eyebrow">La más reciente primero · cambio frente a la oleada anterior de cada casa</span><h2 id="hub-ult-t">Últimas encuestas</h2></div><a class="panel-link" href="#encuestas">Archivo completo y fichas →</a></div>
