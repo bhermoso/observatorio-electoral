@@ -21,6 +21,6 @@ test('Medidas CIS muestran comparación gráfica sin confundir denominadores',()
  const html=renderTablaCocina(d);
  assert.match(html,/cocina-medidas-figura/);
  assert.equal((html.match(/class="cocina-medida-fila"/g)||[]).length,6);
- assert.match(html,/no son etapas acumulativas|No equivalen entre sí/i);
+ assert.match(html,/No se suman ni se interpretan como una secuencia causal/);
  assert.equal((html.match(/class="cocina-datos-detalle"/g)||[]).length,2);
 });
