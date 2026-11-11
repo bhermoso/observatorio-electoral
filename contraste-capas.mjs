@@ -1,7 +1,8 @@
 // Contraste de capas (promedio publicado, motor sin y con cocina, otros modelos), cambios entre
 // cortes y procedencia de las cifras. Vive en Pronóstico completo; antes estaba plegado en Panorama.
 // Solo presentación: las cifras proceden de capas.mjs y del Motor 29N.
-import {LAYERS,PARTIES,BLOCK_NOTE,promedioPublicado,capaModelo,capasExternas,matriz,diferencias,efectoCocina,pollsFromModelInputs} from './capas.mjs';
+import {LAYERS,PARTIES,BLOCK_NOTE,promedioPublicado,capaModelo,capasExternas,matriz,diferencias,efectoCocina} from './capas.mjs';
+import {encuestasDelMotor} from './fuentes-comparacion.mjs';
 
 const h=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt=(v,d=1)=>Number(v).toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d});
@@ -130,7 +131,7 @@ function drawCocina(ctx){
  <p class="muted">Las decisiones aplicadas y las que no se aplican están en el paso 4 de <a href="#pronostico-cocina">la cadena de cálculo</a>.</p>`;
 }
 function computeLayer1(ctx){
- const polls=state.base==='modelo'?pollsFromModelInputs(ctx.forecast?.entradas):ctx.polls;
+ const polls=state.base==='modelo'?encuestasDelMotor(ctx.polls,ctx.forecast):ctx.polls;
  const opts={corte:ctx.corte,ventana:state.ventana,cis:state.cis,ponderacion:state.ponderacion,semivida:14};
  ctx.prom=promedioPublicado(polls,opts);
  const prev=ctx.forecast?.corte_anterior?.fecha;
