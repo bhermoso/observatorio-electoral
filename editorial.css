@@ -76,3 +76,14 @@ body>header{background:var(--paper);border-bottom:3px double var(--ink);box-shad
 .procedencia-clara strong{color:var(--ink);font-weight:650}
 .procedencia-clara a{display:inline-block;font-size:12px;margin-top:8px;color:var(--green);text-decoration:underline;text-underline-offset:3px}
 @media(max-width:650px){.procedencia-clara{margin:15px 0 22px}.procedencia-clara p{font-size:12px}}
+
+/* Comparación rápida: el diferencial se lee debajo del dato del modelo. */
+.hub-modelo .hub-diferencia{display:block;font:400 11px/1.35 system-ui,sans-serif;color:var(--muted);white-space:nowrap}
+.hub-barras li,.hub-barras-cab{grid-template-columns:100px minmax(80px,1fr) 69px 92px;gap:8px}
+.hub-barras-cab span:last-child{text-align:right}
+.hub-barras-cab span:last-child small{font-size:10px;color:var(--muted);font-weight:400}
+.hub-accesos{grid-template-columns:repeat(3,minmax(0,1fr))}
+.hub-accesos a{border-radius:2px;background:transparent;border-width:0 0 1px;padding:13px 6px 14px 0}
+.hub-accesos a:hover{background:transparent;border-color:var(--ink)}
+@media(max-width:850px){.hub-accesos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.hub-barras li,.hub-barras-cab{grid-template-columns:65px minmax(62px,1fr) 54px 77px;gap:5px;font-size:12px}.hub-modelo .hub-diferencia{font-size:10px}.hub-accesos{grid-template-columns:1fr}}
