@@ -113,7 +113,7 @@ const link=(href,label)=>url(href)?`<a href="${escape(href)}" target="_blank" re
 const pointText=p=>p?`${p.approximate?'≈ ':''}${fmt(p.value)} % <small>${date.format(Date.parse(p.date))}</small>`:'—';
 const fieldText=p=>p?.start&&p?.end?`${date.format(Date.parse(p.start))}–${date.format(Date.parse(p.end))}`:'—';
 
-export function bindPortadaSeries(root,{polls,forecast,history,events,cutoff}){
+export function bindPortadaSeries(root,{polls,forecast,history,events,cutoff,promedio=null}){
  const series=collectSeries(polls,forecast,history,cutoff);
  const end=cutoff;
  const recent=new Date(Date.parse(end)-59*day).toISOString().slice(0,10);
@@ -124,12 +124,41 @@ export function bindPortadaSeries(root,{polls,forecast,history,events,cutoff}){
   <p class="series-note" data-note></p>
   <div class="series-events" data-events aria-label="Acontecimientos en el gráfico"></div>
   <div class="portada-grafico" data-chart></div>
+  <section class="series-comparacion" aria-label="Comparación numérica de estimaciones">
+   <div class="series-comparacion-cab"><div><h3>Comparar cifras por partido</h3><p>Un corte del Observatorio, promedio y última encuesta de cada instituto. No son mediciones equivalentes.</p></div>
+    <label>Ordenar institutos <select data-order><option value="desc">Mayor porcentaje</option><option value="asc">Menor porcentaje</option><option value="name">Alfabéticamente</option><option value="recent">Más reciente</option></select></label></div>
+   <div data-comparison role="region" aria-live="polite"></div>
+  </section>
   <div class="series-legend" data-legend aria-label="Series visibles"></div>
   <div data-event-reading></div>
   <p class="series-note" data-detail></p>
   <p class="series-note">Cifras de cada serie con su ficha y su fuente: <a href="#encuestas">archivo de encuestas</a> · <a href="#pronostico-evolucion">cortes del modelo</a> · <a href="#pronostico-fuentes">estudios usados y excluidos</a>.</p>`;
  const find=s=>root.querySelector(s);
- const party=find('[data-party]'),period=find('[data-period]'),chart=find('[data-chart]');
+ const party=find('[data-party]'),period=find('[data-period]'),chart=find('[data-chart]'),order=find('[data-order]');
+ const comparison=find('[data-comparison]');
+ const comparisonCutoff=forecast?.corte||cutoff;
+ const compareFrom=new Date(Date.parse(comparisonCutoff+'T12:00:00Z')-44*day).toISOString().slice(0,10);
+ function renderComparison(){
+  if(party.value===ALL){
+   comparison.innerHTML='<p class="series-note">Elige un partido en el selector superior para comparar las cifras de cada instituto y el promedio.</p>';
+   return;
+  }
+  const id=party.value;
+  const f=n=>Number(n).toLocaleString('es-ES',{minimumFractionDigits:1,maximumFractionDigits:1});
+  const lastPoint=points=>points.filter(p=>p.date<=comparisonCutoff && p.date>=compareFrom && Number.isFinite(p.values?.[id])).sort((a,b)=>b.date.localeCompare(a.date))[0];
+  const houses=series.filter(x=>x.type==='house').map(x=>({name:x.label,type:'Encuesta',p:lastPoint(x.points)})).filter(x=>x.p).map(x=>({...x,value:x.p.values[id]}));
+  const externals=series.filter(x=>x.type==='external').map(x=>({name:x.label,type:'Promedio externo',p:lastPoint(x.points)})).filter(x=>x.p).map(x=>({...x,value:x.p.values[id]}));
+  const sorts={desc:(a,b)=>b.value-a.value,asc:(a,b)=>a.value-b.value,name:(a,b)=>a.name.localeCompare(b.name,'es'),recent:(a,b)=>b.p.date.localeCompare(a.p.date)};
+  houses.sort(sorts[order.value]);externals.sort(sorts[order.value]);
+  const average=promedio?.partidos?.[id];
+  const own=forecast?.principal?.partidos?.[id]?.voto?.[0];
+  const td=(str)=>escape(String(str));
+  const fmtRow=(item)=>`<tr><th scope="row">${td(item.name)}</th><td>${td(item.type)}</td><td class="num">${f(item.value)} %</td><td>${td(date.format(Date.parse(item.p.date)))}</td></tr>`;
+  const anchor=`${Number.isFinite(own)?`<tr class="comparacion-referencia"><th scope="row">Observatorio · pronóstico</th><td>Modelo propio</td><td class="num">${f(own)} %</td><td>${td(date.format(Date.parse(comparisonCutoff)))}</td></tr>`:''}${Number.isFinite(average?.valor)?`<tr class="comparacion-referencia"><th scope="row">Promedio de encuestas</th><td>${average.n} estudios con cifra</td><td class="num">${f(average.valor)} %</td><td>${td(date.format(Date.parse(promedio.corte)))}</td></tr>`:''}`;
+  const found=[...houses,...externals];
+  comparison.innerHTML=`<p class="series-note">Ventana de 45 días hasta el corte del modelo (${td(date.format(Date.parse(comparisonCutoff)))}). Una última cifra por instituto. Orden aplicado a las encuestadoras, no al pronóstico. Los promedios externos se muestran aparte; no se promedian de nuevo.</p><div class="table-wrap"><table class="series-comparacion-tabla"><thead><tr><th>Fuente</th><th>Clase</th><th class="num">Voto estimado</th><th>Publicado</th></tr></thead><tbody>${anchor}${houses.map(fmtRow).join('')}${externals.map(fmtRow).join('')}</tbody></table></div>${found.length?'':'<p class="series-note">No hay otras estimaciones con cifra publicada en esta ventana.</p>'}`;
+ }
+ 
  let chartWidth=0;
  let drawChart;
  const hidden=new Set();
@@ -194,7 +223,8 @@ export function bindPortadaSeries(root,{polls,forecast,history,events,cutoff}){
   else if(chart.clientWidth&&chart.clientWidth!==chartWidth)drawChart();
  });
  resize.observe(chart);
- party.addEventListener('change',draw);
+ party.addEventListener('change',()=>{draw();renderComparison();});
+ order.addEventListener('change',renderComparison);
  period.addEventListener('change',draw);
  root.addEventListener('click',e=>{
   const toggle=e.target.closest('[data-series]');
@@ -212,5 +242,5 @@ export function bindPortadaSeries(root,{polls,forecast,history,events,cutoff}){
    [...find('[data-events]').children].find(b=>b.dataset.event===id)?.focus();
   }
  });
- draw();
+ draw();renderComparison();
 }
