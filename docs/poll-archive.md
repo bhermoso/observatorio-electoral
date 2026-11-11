@@ -84,3 +84,15 @@ El catálogo de GAD3 consultado mantiene el barómetro del 12 de octubre. La por
 ## Revisión del 8 de noviembre de 2026
 
 El archivo reúne 15 estudios de 11 institutos. Se incorpora la segunda ola nacional de Sondaxe para La Voz de Galicia, publicada el 8 de noviembre, con 1.200 entrevistas CATI/CAWI del 2 al 4 de noviembre. El texto y la ficha técnica del comitente documentan ocho porcentajes de voto estimado y no detallan escaños. La ficha conserva la discrepancia entre la fecha visible y la ruta del artículo. Fuente: https://www.lavozdegalicia.es/amp/noticia/espana/2026/11/06/feijoo-adelanta-pedro-sanchez-candidato-preferido-gobernar/00031793992905957222982.htm
+
+
+## Revisión del 11 de noviembre de 2026
+
+El archivo reúne 19 estudios de 11 institutos. Se añaden cuatro encuestas nacionales con originales y ficha técnica verificados:
+
+- GAD3 / ABC-Vocento, publicada el 9 de noviembre. 1.502 entrevistas CATI del 3 al 5 de noviembre. Se conservan los porcentajes redondeados del texto del instituto y sus escaños expresos, que suman 349. La distribución provincial publicada el día 10 comparte muestra y campo, y queda enlazada en la ficha como pendiente de transcripción sin duplicar entrevistas.
+- 40dB. / EL PAÍS-SER, publicada el 9 de noviembre. 2.000 entrevistas CAWI del 2 al 4. Votos sobre válidos y puntos y horquillas del informe original. Frente Amplio se conserva agregado con Compromís-Front Valencià, UPC y Ara Més. La muestra excluye Ceuta y Melilla.
+- Ateneo del Dato / elDiario.es, publicación inicial del 8 de noviembre, actualizada el 9. 2.000 entrevistas CAWI del 2 al 5. Se transcriben cinco porcentajes expresos del texto; escaños ausentes.
+- DYM / 20minutos, publicada el 10 de noviembre. 1.025 entrevistas CAWI del 4 al 6. Se conservan cinco porcentajes y sus horquillas de escaños.
+
+Cada ficha conserva el enlace original, el universo declarado, el escenario, los localizadores y los límites de cobertura. Las comparaciones temporales no se interpretan como efectos causales del accidente ni de la dimisión. Se mantiene el 8 de noviembre como publicación inicial de Ateneo, aunque el artículo se actualizara el 9.

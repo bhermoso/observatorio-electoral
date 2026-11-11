@@ -833,5 +833,254 @@
     "seatNotes": "Sin escaños en el texto verificado.",
     "verification": "Contraste directo del texto y la ficha técnica de La Voz de Galicia el 8 de noviembre de 2026. Solo se transcriben porcentajes de estimación expresos del texto.",
     "sourcePages": "Apartados Estimación de voto y Ficha Técnica."
+  },
+  {
+    "scope": "España",
+    "kind": "poll-estimate",
+    "coverage": "partial",
+    "verified": "2026-11-11",
+    "denominator": "Estimación de voto; el texto consultado no explicita el denominador",
+    "verification": "Texto y ficha técnica originales contrastados el 11 de noviembre de 2026.",
+    "sourcePages": "Apartados de resultados y Ficha técnica.",
+    "id": "gad3-2026-11-09",
+    "institute": "GAD3",
+    "publisher": "ABC / Vocento",
+    "title": "Barómetro ABC · noviembre 2026",
+    "fieldStart": "2026-11-03",
+    "fieldEnd": "2026-11-05",
+    "published": "2026-11-09",
+    "sample": 1502,
+    "mode": "CATI",
+    "universe": "Población general mayor de 18 años con derecho a voto; ámbito nacional",
+    "scenario": "Candidaturas separadas de Frente Amplio, Compromís, Adelante Andalucía y Ara Més; UPN en coalición con PP",
+    "values": {
+      "PP": 32,
+      "PSOE": 26,
+      "VOX": 19,
+      "Frente Amplio": 5,
+      "Compromís": 1.5,
+      "Adelante Andalucía": 1.6,
+      "Ara Més": 0.3,
+      "ERC": 2.7,
+      "Junts": 1.4,
+      "PNV": 0.9,
+      "EH Bildu": 1.5,
+      "BNG": 0.9,
+      "CC": 0.4
+    },
+    "seats": {
+      "PP": {
+        "point": 136
+      },
+      "PSOE": {
+        "point": 103
+      },
+      "VOX": {
+        "point": 63
+      },
+      "Frente Amplio": {
+        "point": 6
+      },
+      "Compromís": {
+        "point": 5
+      },
+      "Adelante Andalucía": {
+        "point": 3
+      },
+      "Ara Més": {
+        "point": 1
+      },
+      "ERC": {
+        "point": 12
+      },
+      "Junts": {
+        "point": 5
+      },
+      "PNV": {
+        "point": 4
+      },
+      "EH Bildu": {
+        "point": 8
+      },
+      "BNG": {
+        "point": 2
+      },
+      "CC": {
+        "point": 1
+      }
+    },
+    "source": "https://www.gad3.com/barometro-abc-i-estimacion-de-voto-nacional-noviembre-2026/",
+    "technical": "https://www.gad3.com/barometro-abc-i-estimacion-de-voto-nacional-noviembre-2026/",
+    "notes": "Transcripción del texto del instituto, incluidos sus porcentajes redondeados. Campo realizado por GAD3 con 1.201 entrevistas a móviles y 301 a fijos. Cuotas por sexo, edad y ámbito geográfico. El desglose provincial del 10 de noviembre corresponde a la misma muestra y campo: https://www.gad3.com/en/barometro-abc-estimacion-de-voto-por-provincias-noviembre-2026/ . Las cifras provinciales quedan pendientes de transcripción verificada.",
+    "seatNotes": "Los puntos expresos del texto suman 349. No se completa el asiento ausente ni se desagrega la coalición PP-UPN."
+  },
+  {
+    "scope": "España",
+    "kind": "poll-estimate",
+    "coverage": "partial",
+    "verified": "2026-11-11",
+    "denominator": "Estimación de voto; el texto consultado no explicita el denominador",
+    "verification": "Texto y ficha técnica originales contrastados el 11 de noviembre de 2026.",
+    "sourcePages": "Apartados de resultados y Ficha técnica.",
+    "id": "dym-2026-11-10",
+    "institute": "DYM",
+    "publisher": "20minutos",
+    "title": "Polibarómetro · noviembre 2026",
+    "fieldStart": "2026-11-04",
+    "fieldEnd": "2026-11-06",
+    "published": "2026-11-10",
+    "sample": 1025,
+    "mode": "CAWI",
+    "universe": "Población con 18 años o más, según la ficha del comitente",
+    "scenario": "Frente Amplio y Podemos separados, con los pactos territoriales descritos por el comitente",
+    "values": {
+      "PP": 33.1,
+      "PSOE": 27.3,
+      "VOX": 18.6,
+      "Frente Amplio": 5.6,
+      "Podemos": 1.9
+    },
+    "seats": {
+      "PP": {
+        "min": 135,
+        "max": 139
+      },
+      "PSOE": {
+        "min": 104,
+        "max": 108
+      },
+      "VOX": {
+        "min": 63,
+        "max": 66
+      },
+      "Frente Amplio": {
+        "min": 8,
+        "max": 10
+      },
+      "Podemos": {
+        "min": 1,
+        "max": 2
+      }
+    },
+    "source": "https://www.20minutos.es/nacional/pp-vox-conservan-mayoria-absoluta-mientras-psoe-apenas-se-deja-un-punto-tras-tragedia-urda_7058765_0.amp.html",
+    "technical": "https://www.20minutos.es/nacional/pp-vox-conservan-mayoria-absoluta-mientras-psoe-apenas-se-deja-un-punto-tras-tragedia-urda_7058765_0.amp.html",
+    "notes": "La ficha publica entrevistas online con cuotas de sexo, edad y ocupación. Se registran las cinco candidaturas con cifras explícitas en el texto. No identifica por separado una empresa de campo.",
+    "seatNotes": "Horquillas publicadas por partido. Los extremos se conservan por separado sin convertirlos en puntos centrales."
+  },
+  {
+    "scope": "España",
+    "kind": "poll-estimate",
+    "coverage": "partial",
+    "verified": "2026-11-11",
+    "denominator": "Estimación de voto; el texto consultado no explicita el denominador",
+    "verification": "Texto y ficha técnica originales contrastados el 11 de noviembre de 2026.",
+    "sourcePages": "Apartados de resultados y Ficha técnica.",
+    "id": "ateneo-2026-11-08",
+    "institute": "Ateneo del Dato",
+    "publisher": "elDiario.es",
+    "title": "Encuesta nacional · noviembre 2026",
+    "fieldStart": "2026-11-02",
+    "fieldEnd": "2026-11-05",
+    "published": "2026-11-08",
+    "sample": 2000,
+    "mode": "CAWI",
+    "universe": "Población residente en España de 18 y más años con nacionalidad española",
+    "scenario": "Frente Amplio y Podemos separados según el texto del comitente",
+    "values": {
+      "PP": 31.5,
+      "PSOE": 28.6,
+      "VOX": 18.6,
+      "Frente Amplio": 6.1,
+      "Podemos": 1.5
+    },
+    "seats": null,
+    "source": "https://www.eldiario.es/politica/psoe-crece-dimision-oscar-puente-pp-vox-mantienen-mayoria-absoluta_1_13643551.html",
+    "technical": "https://www.eldiario.es/politica/psoe-crece-dimision-oscar-puente-pp-vox-mantienen-mayoria-absoluta_1_13643551.html",
+    "notes": "Publicación inicial el 8 de noviembre a las 21:36, actualizada el 9 a las 12:05. Realización por Ateneo del Dato, S. L. Entrevista autoadministrada mediante panel y cuotas de sexo, edad, comunidad, hábitat y clase social. Solo se transcriben estimaciones explícitas del texto.",
+    "seatNotes": "El texto verificado no publica cifras de escaños por candidatura."
+  },
+  {
+    "scope": "España, excepto Ceuta y Melilla",
+    "kind": "poll-estimate",
+    "coverage": "grouped",
+    "verified": "2026-11-11",
+    "denominator": "votos válidos",
+    "verification": "Informe original de 40dB. contrastado con el artículo del comitente y su ficha técnica el 11 de noviembre de 2026.",
+    "sourcePages": "PDF: página física 7 (votos, rotulada 6), 9 (escaños, rotulada 8) y 63 (ficha técnica).",
+    "id": "40db-2026-11-09",
+    "institute": "40dB.",
+    "publisher": "EL PAÍS / Cadena SER",
+    "title": "Encuesta preelectoral · noviembre 2026",
+    "fieldStart": "2026-11-02",
+    "fieldEnd": "2026-11-04",
+    "published": "2026-11-09",
+    "sample": 2000,
+    "mode": "CAWI",
+    "universe": "Población general residente en España, excepto Ceuta y Melilla, a partir de 18 años y con derecho a voto",
+    "scenario": "Frente Amplio agregado con Compromís-Front Valencià, UPC y Ara Més; Podemos por separado",
+    "values": {
+      "PP": 31.9,
+      "PSOE": 29.9,
+      "VOX": 18,
+      "Sumar/FA": 5,
+      "SALF": 2,
+      "Podemos": 1.2,
+      "Otros + blanco": 12
+    },
+    "seats": {
+      "PP": {
+        "point": 129,
+        "min": 124,
+        "max": 137
+      },
+      "PSOE": {
+        "point": 119,
+        "min": 115,
+        "max": 123
+      },
+      "VOX": {
+        "point": 61,
+        "min": 58,
+        "max": 64
+      },
+      "Sumar/FA": {
+        "point": 10,
+        "min": 7,
+        "max": 11
+      },
+      "Podemos": {
+        "point": 0,
+        "min": 0,
+        "max": 1
+      },
+      "ERC": {
+        "point": 10
+      },
+      "EH Bildu": {
+        "point": 7
+      },
+      "Junts": {
+        "point": 3
+      },
+      "PNV": {
+        "point": 3
+      },
+      "Adelante Andalucía": {
+        "point": 3
+      },
+      "BNG": {
+        "point": 2
+      },
+      "UPN-PP": {
+        "point": 2
+      },
+      "CC": {
+        "point": 1
+      }
+    },
+    "source": "https://ep00.epimg.net/infografias/encuestas40db/2026/11-preelectoral/2026_11_preelectoral_informe.pdf",
+    "technical": "https://ep00.epimg.net/infografias/encuestas40db/2026/11-preelectoral/2026_11_preelectoral_informe.pdf",
+    "notes": "El 5% del agregado Frente Amplio incluye 3,4% de FA sin Podemos, 1,1% de Compromís-Front Valencià, 0,3% de UPC y 0,2% de Ara Més. Sus 10 escaños comprenden esos cuatro componentes. La muestra excluye Ceuta y Melilla. UPN-PP conserva la etiqueta de coalición del informe.",
+    "seatNotes": "Puntos y horquillas del informe. Los 31 escaños de Otros se desglosan según la nota del gráfico. No se suman los extremos."
   }
 ]
