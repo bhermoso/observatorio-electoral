@@ -294,17 +294,24 @@ def todas(deduplicar=True):
         # Un identificador de estudio repetido es la única deduplicación global.
         if any(o["estudio"] == e["estudio"] and o["casa"] == e["casa"] for o in out):
             continue
-        # No eliminar fichas verificadas ni registros de otros orígenes antes de
-        # aplicar la puerta de calidad (que registra el motivo de exclusión).
-        if e["origen"] == "verificada" or e["ciclo"] == "2023-26":
+        # Las verificadas y las entregas con original propio han de llegar
+        # intactas al selector: allí se excluye cada oleada reemplazada.
+        if e["origen"] in ("verificada", "prensa-original-consultado"):
             out.append(e)
             continue
-        # En registros históricos secundarios, compactar copias idénticas.
+        # Compactar fuentes secundarias redundantes de una casa. La entrega
+        # más reciente sustituye a otra secundaria de fechas casi iguales,
+        # sin descartar nunca una ficha primaria.
         dup = next((o for o in out if o["casa"] == e["casa"] and
-                    o["origen"] != "verificada" and o["ciclo"] == e["ciclo"] and
-                    o["campo_fin"] == e["campo_fin"] and o["voto"] == e["voto"]), None)
+                    o["origen"] not in ("verificada", "prensa-original-consultado") and
+                    o["ciclo"] == e["ciclo"] and (
+                       (e["ciclo"] == "2023-26" and
+                        abs((o["campo_fin"]-e["campo_fin"]).days) <= 2)
+                       or (o["campo_fin"] == e["campo_fin"] and o["voto"] == e["voto"]))), None)
         if dup is None:
             out.append(e)
+        elif (e.get("publicacion") or e["campo_fin"]) > (dup.get("publicacion") or dup["campo_fin"]):
+            out[out.index(dup)] = e
     return sorted(out, key=lambda e: e["campo_fin"])
 
 
