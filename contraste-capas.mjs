@@ -11,11 +11,11 @@ const signed=(v,d=1)=>(v>0?'+':v<0?'−':'±')+fmt(Math.abs(v),d);
 const name=id=>PARTIES.find(x=>x.id===id)?.label||id;
 const todayMadrid=()=>new Date().toLocaleDateString('sv-SE',{timeZone:'Europe/Madrid'});
 const MAIN_PARTIES=5; // PP, PSOE, Vox, Sumar y Podemos: filas visibles por defecto
-const state={vista:'voto',ventana:30,cis:true,ponderacion:'igual',base:'archivo',todos:false};
+const state={vista:'voto',ventana:30,cis:true,ponderacion:'igual',base:'modelo',todos:false};
 
 export function renderContraste(){
  return `<section class="panel contraste" id="pronostico-capas" aria-labelledby="matrix-heading">
-  <h2 id="matrix-heading">Promedio, pronóstico y otros modelos, partido a partido</h2>
+  <h2 id="matrix-heading">Detalle técnico de la comparación por partido</h2><p class="muted">El <a href="#home-series">gráfico principal de comparación y evolución</a> está en la portada. Aquí puedes modificar las reglas del promedio y auditar las diferencias sin alterar el pronóstico operativo.</p>
   <p class="muted" id="matrix-sub">Cargando datos…</p>
   <div class="matrix-controls">
    <fieldset class="portada-seg" id="matrix-view"><legend>Mostrar</legend>
@@ -26,7 +26,7 @@ export function renderContraste(){
     <label>Ventana de campo<select id="m-window"><option value="30">30 días</option><option value="45">45 días</option><option value="90">90 días</option></select></label>
     <label>CIS<select id="m-cis"><option value="1">Con CIS</option><option value="0">Sin CIS</option></select></label>
     <label>Ponderación<select id="m-weight"><option value="igual">Igual peso por instituto</option><option value="recencia">Por recencia (semivida 14 días)</option></select></label>
-    <label>Estudios<select id="m-base"><option value="archivo">Archivo verificado (data/polls.json)</option><option value="modelo">Mismas entradas que el Motor 29N</option></select></label></div>
+    <label>Estudios<select id="m-base"><option value="modelo">Mismas entradas que el Motor 29N (referencia)</option><option value="archivo">Archivo verificado (exploratorio)</option></select></label></div>
    <p class="muted">Capa 1: último estudio de cada instituto con fin de campo dentro de la ventana y publicado antes del corte. Pesos manuales por instituto en <a href="#analisis">Promedios y proyección experimental</a>.</p>
   </div>
   <div class="table-wrap"><table class="matrix portada-matriz" id="matrix-table" data-todos="false"><caption class="vh">Comparación de capas</caption><tbody><tr><td>Cargando…</td></tr></tbody></table></div>
