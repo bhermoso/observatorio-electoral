@@ -183,3 +183,42 @@ body>header{background:var(--paper);border-bottom:3px double var(--ink);box-shad
 .house-matrix-detail{margin:14px 0 0;border-top:1px solid var(--line);padding-top:12px;min-width:0}
 .house-matrix-detail>summary{cursor:pointer;color:var(--green);font:500 12px/1.5 system-ui,sans-serif}
 .house-matrix-detail[open]>.table-wrap{margin-top:12px}
+
+/* Cocina y validación: primero relaciones gráficas, después datos auditables. */
+.cocina-datos-detalle{margin:14px 0 20px;border-top:1px solid var(--line);padding:12px 0}
+.cocina-datos-detalle>summary{cursor:pointer;color:var(--green);font-size:12px;font-weight:600}
+.cocina-datos-detalle[open]>.table-wrap{margin-top:14px}
+.cocina-error-figure,.cocina-medidas-figura{margin:18px 0;padding:16px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.cocina-error-figure figcaption,.cocina-medidas-figura figcaption{font:400 19px/1.4 var(--editorial-serif);color:var(--ink);margin-bottom:12px}
+.cocina-error-group{padding:12px 0;border-bottom:1px solid var(--line)}
+.cocina-error-group>strong{font-size:12px;display:block;margin-bottom:8px}
+.cocina-error-bar{display:grid;grid-template-columns:120px minmax(0,1fr) 55px;align-items:center;gap:12px;margin:6px 0;font-size:12px}
+.cocina-error-bar>span{color:var(--muted)}
+.cocina-error-bar>b{font-variant-numeric:tabular-nums;text-align:right}
+.cocina-error-track{height:12px;border-left:1px solid var(--muted);background:linear-gradient(90deg,transparent 49.8%,rgba(70,90,81,.08) 50%,transparent 50.2%)}
+.cocina-error-track>i{display:block;height:100%;background:var(--green)}
+.cocina-error-bar.published .cocina-error-track>i{background:var(--editorial-rule)}
+.cocina-diff-head{display:grid;grid-template-columns:190px 1fr 80px;font-size:11px;color:var(--muted);padding-left:0}
+.cocina-diff-head span:first-child{grid-column:2;text-align:left}
+.cocina-diff-head span:last-child{grid-column:3;text-align:right}
+.cocina-diff-row{display:grid;grid-template-columns:190px minmax(0,1fr) 80px;align-items:center;gap:10px;min-height:39px;border-bottom:1px solid var(--line);font-size:12px}
+.cocina-diff-row strong{font-weight:500;line-height:1.4}
+.cocina-diff-row>span{text-align:right;font-variant-numeric:tabular-nums}
+.cocina-diff-row>span small{display:block;font-size:10px;color:var(--muted)}
+.cocina-diff-track{position:relative;height:22px;background:linear-gradient(90deg,rgba(35,93,80,.05),transparent 50%,rgba(152,72,47,.05));border-left:1px solid var(--line);border-right:1px solid var(--line)}
+.cocina-diff-zero{position:absolute;left:50%;top:0;bottom:0;border-left:1px dashed var(--muted)}
+.cocina-diff-dot{position:absolute;top:50%;width:9px;height:9px;border-radius:50%;transform:translate(-50%,-50%);background:var(--ink);border:1px solid var(--paper)}
+.cocina-diff-dot.estudio-1{background:var(--editorial-rule);top:35%}
+.cocina-diff-dot.estudio-2{background:var(--green);top:65%}
+.cocina-medidas-leyenda{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:11px;color:var(--muted);margin:14px 0}
+.cocina-medidas-leyenda span{display:inline-flex;align-items:center;gap:6px}
+.cocina-punto{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--ink)}
+.cocina-punto.tipo-1,.cocina-medida-marca.tipo-1{background:var(--green)}
+.cocina-punto.tipo-2,.cocina-medida-marca.tipo-2{background:var(--editorial-rule)}
+.cocina-punto.tipo-3,.cocina-medida-marca.tipo-3{background:#8d9188}
+.cocina-punto.tipo-4,.cocina-medida-marca.tipo-4{background:#b58a4c}
+.cocina-medida-fila{display:grid;grid-template-columns:85px minmax(0,1fr) 68px;gap:12px;align-items:center;min-height:34px;border-bottom:1px solid var(--line);font-size:12px}
+.cocina-medida-fila>span{color:var(--muted);font-size:10px;text-align:right}
+.cocina-medida-eje{height:22px;position:relative;border-left:1px solid var(--muted);border-right:1px solid var(--line);background:repeating-linear-gradient(90deg,transparent,transparent calc(25% - 1px),rgba(70,90,81,.12) 25%)}
+.cocina-medida-marca{position:absolute;top:50%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;border:1px solid var(--paper);background:var(--ink)}
+@media(max-width:640px){.cocina-diff-row{grid-template-columns:118px minmax(0,1fr) 56px;gap:6px;font-size:11px}.cocina-diff-head{grid-template-columns:118px 1fr 56px}.cocina-error-bar{grid-template-columns:95px minmax(0,1fr) 42px;gap:7px;font-size:11px}.cocina-medida-fila{grid-template-columns:56px minmax(0,1fr) 43px;gap:6px}.cocina-medidas-leyenda{gap:5px 10px}}
