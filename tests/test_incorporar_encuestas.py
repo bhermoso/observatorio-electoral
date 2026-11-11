@@ -59,4 +59,30 @@ class TestEstado(unittest.TestCase):
         self.assertEqual(e['ultima_incorporacion_efectiva'],'P');self.assertIsNone(e['registros_antes'])
         self.assertTrue(any('no generó informe' in x for x in e['errores_busqueda']))
 
+
+class TestTrackingMotor(unittest.TestCase):
+    def test_oleadas_verificadas_llegan_a_seleccion_y_solo_entra_ultima(self):
+        from datetime import date
+        from unittest.mock import patch
+        from modelo.motor import fuentes as F
+        anterior=dict(casa='SW Demoscopia',estudio='sw-demoscopia-2026-11-06',
+                      campo_ini=date(2026,10,26),campo_fin=date(2026,11,5),
+                      publicacion=date(2026,11,6),origen='verificada',
+                      ciclo='2023-26',voto={'PP':28.3,'PSOE':31.0})
+        reciente=dict(anterior,estudio='sw-demoscopia-2026-11-10',
+                      campo_fin=date(2026,11,9),
+                      publicacion=date(2026,11,10),voto={'PP':28.3,'PSOE':31.2})
+        with patch.object(F,'cargar_verificadas',return_value=[anterior,reciente]):
+            with patch.object(F,'cargar_23j_complementos',return_value=[]):
+                with patch.object(F,'cargar_29n',return_value=[]):
+                    with patch.object(F,'cargar_prensa',return_value=[]):
+                        with patch.object(F,'cargar_wikipedia_2023',return_value=[]):
+                            with patch.object(F,'cargar_wikipedia',return_value=[]):
+                                loaded=F.todas()
+        self.assertEqual(len(loaded),2, 'No perder una oleada antes de la puerta de calidad')
+        selected,excluded=F.seleccion_pronostico(loaded)
+        self.assertEqual([x['estudio'] for x in selected],['sw-demoscopia-2026-11-10'])
+        self.assertEqual(len(excluded),1)
+        self.assertIn('Sustituida',excluded[0]['motivo'])
+
 if __name__=='__main__':unittest.main()
