@@ -1,4 +1,4 @@
-import {pollsFromModelInputs} from './capas.mjs';
+import {archivoConEntradas} from './fuentes-comparacion.mjs';
 import {allocate} from './engine.mjs';
 import {renderHouseComparison} from './promedios-comparador.mjs';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -81,7 +81,7 @@ export function bindAnalysis(polls,election){
  const countRoot=$('#analysis-compare');
  void fetch('data/modelo/pronostico.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Pronóstico no disponible');return r.json();}).then(f=>{if(countRoot.isConnected){forecast=f;
   // Mismas encuestas que el Motor 29N: el archivo verificado más las entradas con original consultado.
-  const ids=new Set(polls.map(p=>p.id));polls=[...polls,...pollsFromModelInputs(f.entradas).filter(p=>!ids.has(p.id))];update(true);}}).catch(()=>{});
+  polls=archivoConEntradas(polls,f);update(true);}}).catch(()=>{});
  const controls=['analysis-date','analysis-days','analysis-half'];
  function update(rebuild=false){
   try{
