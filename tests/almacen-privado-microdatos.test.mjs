@@ -53,7 +53,7 @@ test('No se inventa custodia sin manifiesto o con SHA incorrecto',()=>{
 
 test('La pantalla presenta custodia separada de descargas y nunca publica acceso binario',()=>{
  const text=renderAuditData(audit,{stored:[{study_id:'more-in-common-2026-10-01',sha256:hash}]});
- assert.match(text,/Depósito privado recuperable: 1 de 12 originales/);
+ assert.ok(text.includes('Depósito privado recuperable: 1 de '+audit.archivos.length+' originales'));
  assert.match(text,/Sí · depósito privado/);
  assert.doesNotMatch(text,/storage\/v1\/object/);
  assert.match(renderAuditData(audit),/sin comprobar/);
