@@ -3,6 +3,9 @@
     python3 -m modelo [--hoy AAAA-MM-DD] [--n 4000]
 """
 import argparse
+import hashlib
+from pathlib import Path
+from datetime import datetime, timezone
 import json
 import os
 import sys
@@ -109,7 +112,7 @@ def main():
     princ = PR.principal(actuales, inicio, hoy, ELECCION, err, n_por_variante=max(a.n // 2, 500))
     auditoria_cocina = TZ.elaborar(actuales, ajustes, resumen, princ, hoy, excluidas_prensa=len(provisionals), industria=PR.INDUSTRIA_PRINCIPAL)
     sensibilidad_cocina = AB.generar(actuales, inicio, hoy, ELECCION, err, n_por_variante=80)
-    hist = RG.historial(actuales, inicio, a.desde, hoy, ELECCION, err, n_por_variante=a.n_hist)
+    hist = RG.historial(enc, inicio, a.desde, hoy, ELECCION, err, n_por_variante=a.n_hist)
     n_reg = RG.escribir_encuestas([e for e in enc if e["ciclo"] == "2023-26" or
                                    (e["origen"] != "terceros-wikipedia" and e["campo_fin"] >= date(2023, 5, 1))])
     w("## 0. Pronóstico principal\n")
@@ -497,7 +500,9 @@ def main():
 
     os.makedirs(SALIDA, exist_ok=True)
     open(os.path.join(SALIDA, "informe.md"), "w", encoding="utf-8").write("\n".join(L) + "\n")
-    json.dump(dict(corte=hoy.isoformat(), eleccion=ELECCION.isoformat(), version_modelo=RG.VERSION, trazabilidad=auditoria_cocina, sensibilidad_cocina=sensibilidad_cocina, principal={k: princ[k] for k in ('partidos', 'bloques', 'investidura', 'n', 'industria', 'dias', 'sin_encuestas', 'provincias', 'correccion_industria')}, variantes=resumen,
+    json.dump(dict(actualizacion=dict(recalculado=datetime.now(timezone.utc).isoformat(),
+                                      archivo_sha256=hashlib.sha256((Path(F.RAIZ)/"data/polls.json").read_bytes()).hexdigest(),
+                                      dependencias_sha256=RG.firma_dependencias()), corte=hoy.isoformat(), eleccion=ELECCION.isoformat(), version_modelo=RG.VERSION, trazabilidad=auditoria_cocina, sensibilidad_cocina=sensibilidad_cocina, principal={k: princ[k] for k in ('partidos', 'bloques', 'investidura', 'n', 'industria', 'dias', 'sin_encuestas', 'provincias', 'correccion_industria')}, variantes=resumen,
                    auditoria_fuentes=dict(inventario=inventario_encuestas(enc), excluidas_prensa_sin_verificar=len(provisionals), excluidas_total=len(excluidas), incluidas_2023_26=len(actuales),
                                           por_origen={o: sum(1 for e in actuales if e["origen"] == o) for o in sorted({e["origen"] for e in actuales})},
                                           criterio='Puerta de calidad (fuentes.seleccion_pronostico): sin prensa no verificada, sin terceros con campo supuesto, sin terceros solapados con un registro verificado de la misma casa'),

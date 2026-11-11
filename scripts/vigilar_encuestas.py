@@ -106,6 +106,8 @@ def main():
     archive=ROOT/'data/vigilancia/candidatos.json'
     previous=json.loads(archive.read_text()) if archive.exists() else {}
     report=scan(previous)
+    agenda=ROOT/"data/vigilancia/seguimientos.json"
+    report["seguimientos"]=json.loads(agenda.read_text()) if agenda.exists() else []
     for target in (out/'candidates.json',archive):target.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     lines=['# Vigilancia directa de publicaciones','',report['policy'],'','Consultado: '+report['last_attempt_at'],
            'Estado: '+report['status'],'Propuestas: '+str(len(report['results'])),'']

@@ -14,7 +14,7 @@ export function renderEstadoCircuito(estado,publicacion){
   ['Detectar',e.ultima_busqueda,e.candidatos_detectados!=null?`${e.candidatos_detectados} titulares · sin verificar`:'Sin resultado registrado'],
   ['Verificar',null,e.bandeja_validadas!=null?`${e.bandeja_validadas} fichas en la bandeja · fecha individual en cada ficha`:'Sin registro de verificación'],
   ['Incorporar',e.ultima_incorporacion_efectiva,`${e.incorporadas?.length||0} nuevas en la última ejecución`],
-  ['Recalcular',e.ultimo_recalculo_lanzado,e.recalculo_lanzado?'Solicitud registrada · no acredita finalización':'Sin nueva solicitud registrada; consultar publicación'],
+  ['Recalcular',p.recalculado||e.ultimo_recalculo_lanzado,p.recalculado?'Recálculo finalizado y publicado':e.recalculo_lanzado?'Solicitud registrada · no acredita finalización':'Sin nueva solicitud registrada; consultar publicación'],
   ['Publicar',p.construido,p.corte_modelo?`Corte del modelo: ${p.corte_modelo}`:'Sin corte confirmado']
  ];
  return `<ol class="pipeline-steps" aria-label="Circuito de actualización">${stages.map(([label,time,result])=>`<li><strong>${label}</strong>${time?`<time>${safe(fecha(time))}</time>`:'<small>Fecha sin registro</small>'}<small>${safe(result)}</small></li>`).join('')}</ol><details><summary>Auditar fechas, incorporaciones e incidencias</summary><dl class="pipeline-status">${[

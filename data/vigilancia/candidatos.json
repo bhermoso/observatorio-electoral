@@ -1,10 +1,10 @@
 {
   "schema": 2,
-  "checked_at": "2026-11-11T11:29:49.339257+00:00",
-  "last_attempt_at": "2026-11-11T11:29:49.339257+00:00",
-  "status": "complete",
-  "searches": 6,
-  "sources_ok": 6,
+  "checked_at": "2026-11-11T21:57:42.695423+00:00",
+  "last_attempt_at": "2026-11-11T21:57:42.695423+00:00",
+  "status": "partial",
+  "searches": 15,
+  "sources_ok": 13,
   "sources": [
     {
       "id": "elpais",
@@ -22,7 +22,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 5
+      "count": 3
     },
     {
       "id": "elespanol",
@@ -38,9 +38,10 @@
       "name": "GAD3 · publicaciones",
       "url": "https://www.gad3.com/",
       "format": "html",
-      "ok": true,
+      "ok": false,
       "attempts": 1,
-      "count": 9
+      "count": 0,
+      "error": "ValueError: HTTP 202"
     },
     {
       "id": "cis",
@@ -59,17 +60,132 @@
       "ok": true,
       "attempts": 1,
       "count": 11
+    },
+    {
+      "id": "eldiario",
+      "name": "elDiario.es · política",
+      "url": "https://www.eldiario.es/rss/politica/",
+      "format": "rss",
+      "ok": true,
+      "attempts": 1,
+      "count": 0
+    },
+    {
+      "id": "20minutos",
+      "name": "20minutos · nacional",
+      "url": "https://www.20minutos.es/rss/nacional/",
+      "format": "rss",
+      "ok": true,
+      "attempts": 1,
+      "count": 0
+    },
+    {
+      "id": "elconfidencial",
+      "name": "El Confidencial · España",
+      "url": "https://rss.elconfidencial.com/espana/",
+      "format": "rss",
+      "ok": true,
+      "attempts": 1,
+      "count": 1
+    },
+    {
+      "id": "larazon",
+      "name": "La Razón · España",
+      "url": "https://www.larazon.es/rss/espana.xml",
+      "format": "rss",
+      "ok": false,
+      "attempts": 2,
+      "count": 0,
+      "error": "HTTP 503"
+    },
+    {
+      "id": "okdiario",
+      "name": "OKDIARIO · España",
+      "url": "https://okdiario.com/espana/feed",
+      "format": "rss",
+      "ok": true,
+      "attempts": 1,
+      "count": 0
+    },
+    {
+      "id": "electomania",
+      "name": "Electomanía · publicaciones",
+      "url": "https://electomania.es/feed/",
+      "format": "rss",
+      "ok": true,
+      "attempts": 1,
+      "count": 3
+    },
+    {
+      "id": "swdemoscopia",
+      "name": "SW Demoscopia · productor del tracking",
+      "url": "https://swdemoscopia.com/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 25
+    },
+    {
+      "id": "laseptima",
+      "name": "La Séptima · canal del tracking",
+      "url": "https://laseptima.com/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 0
+    },
+    {
+      "id": "cis-novedades",
+      "name": "CIS · novedades y anuncios",
+      "url": "https://www.cis.es/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 4
     }
   ],
   "results": [
     {
-      "title": "Elecciones generales 29-N, en directo | Abascal da plantón a Jordi Wild tras la polémica de 'La Revuelta': Vox exige tener \"derecho\" a editar y publicar las entrevistas",
+      "title": "Tracking SW Demoscopia (11 nov): “PP y Vox pierden la mayoría absoluta”",
+      "url": "https://electomania.es/tracking-sw-demoscopia-11-nov-pp-y-vox-pierden-la-mayoria-absoluta/",
+      "discovery_url": "https://electomania.es/tracking-sw-demoscopia-11-nov-pp-y-vox-pierden-la-mayoria-absoluta/",
+      "published": "2026-11-11T21:43:58+00:00",
+      "publication_raw": "2026-11-11T21:43:58+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Elecciones generales 29-N, en directo | Última hora de la precampaña de Santiago Abascal en Tarragona, encuestas y voto por correo",
       "url": "https://www.elespanol.com/espana/20261111/elecciones-generales-directo-ultima-hora-pedro-sanchez-encuestas-actos-precampana-pp-psoe-vox-espana-2026-partidos-voto-por-correo/1003744453331_10.html",
       "discovery_url": "https://www.elespanol.com/espana/20261111/elecciones-generales-directo-ultima-hora-pedro-sanchez-encuestas-actos-precampana-pp-psoe-vox-espana-2026-partidos-voto-por-correo/1003744453331_10.html",
-      "published": "2026-11-11T06:37:59+00:00",
-      "publication_raw": "2026-11-11T06:37:59+00:00",
+      "published": "2026-11-11T21:30:00+00:00",
+      "publication_raw": "2026-11-11T21:30:00+00:00",
       "topic": "EL ESPAÑOL · España",
       "source_id": "elespanol",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Encuesta Francia Cluster17 para Politico (11 nov): Le Pen lidera y Mélenchon es segundo",
+      "url": "https://electomania.es/encuesta-francia-cluster17-politico-11-nov-le-pen-lidera-melenchon-segundo/",
+      "discovery_url": "https://electomania.es/encuesta-francia-cluster17-politico-11-nov-le-pen-lidera-melenchon-segundo/",
+      "published": "2026-11-11T17:20:47+00:00",
+      "publication_raw": "2026-11-11T17:20:47+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Encuesta Suecia Verian (11 nov): los socialdemócratas lideran y M, SD, KD y L suman 180 escaños",
+      "url": "https://electomania.es/encuesta-suecia-verian-11-nov-socialdemocratas-lideran-m-sd-kd-l-suman-180-escanos/",
+      "discovery_url": "https://electomania.es/encuesta-suecia-verian-11-nov-socialdemocratas-lideran-m-sd-kd-l-suman-180-escanos/",
+      "published": "2026-11-11T15:20:32+00:00",
+      "publication_raw": "2026-11-11T15:20:32+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
@@ -103,72 +219,6 @@
       "publication_raw": "2026-11-09T21:41:47+00:00",
       "topic": "EL MUNDO · España",
       "source_id": "elmundo",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Autohuelga contra las encuestas",
-      "url": "https://www.elmundo.es/espana/2026/11/09/6af0a687e4d4d835568b4591.html",
-      "discovery_url": "https://www.elmundo.es/espana/2026/11/09/6af0a687e4d4d835568b4591.html",
-      "published": "2026-11-08T23:27:26+00:00",
-      "publication_raw": "2026-11-08T23:27:26+00:00",
-      "topic": "EL MUNDO · España",
-      "source_id": "elmundo",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "PP y Vox suman 199 diputados con un 50,4% de los  votos y Sánchez no remonta la tragedia de los trenes",
-      "url": "https://www.elmundo.es/espana/encuestas/2026/11/08/6af066bee85eceae5a8b4598.html",
-      "discovery_url": "https://www.elmundo.es/espana/encuestas/2026/11/08/6af066bee85eceae5a8b4598.html",
-      "published": "2026-11-08T21:43:36+00:00",
-      "publication_raw": "2026-11-08T21:43:36+00:00",
-      "topic": "EL MUNDO · España",
-      "source_id": "elmundo",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Archivo enlazado por el productor",
-      "url": "https://www.gad3.com/barometro-abc-estimacion-de-voto-por-provincias-noviembre-2026/",
-      "discovery_url": "https://www.gad3.com/barometro-abc-estimacion-de-voto-por-provincias-noviembre-2026/",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "GAD3 · publicaciones",
-      "source_id": "gad3",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Archivo enlazado por el productor",
-      "url": "https://www.gad3.com/barometro-abc-i-estimacion-de-voto-nacional-noviembre-2026/",
-      "discovery_url": "https://www.gad3.com/barometro-abc-i-estimacion-de-voto-nacional-noviembre-2026/",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "GAD3 · publicaciones",
-      "source_id": "gad3",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Archivo enlazado por el productor",
-      "url": "https://www.gad3.com/estudio-cgate-iii-barometro-vivienda-y-dignidad/",
-      "discovery_url": "https://www.gad3.com/estudio-cgate-iii-barometro-vivienda-y-dignidad/",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "GAD3 · publicaciones",
-      "source_id": "gad3",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Archivo enlazado por el productor",
-      "url": "https://www.gad3.com/narciso-michavila-en-la-presentacion-del-barometro-del-empresario-2026-en-denia/",
-      "discovery_url": "https://www.gad3.com/narciso-michavila-en-la-presentacion-del-barometro-del-empresario-2026-en-denia/",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "GAD3 · publicaciones",
-      "source_id": "gad3",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
@@ -270,8 +320,146 @@
       "source_id": "mic",
       "original_verified": false,
       "tipo": "enlace_a_archivo"
+    },
+    {
+      "title": "¿Qué dicen las encuestas sobre el 29-N? La carrera hacia la mayoría absoluta, en seis gráficos",
+      "url": "https://www.elconfidencial.com/espana/2026-11-10/encuestas-elecciones-generales-29n-mayoria-absoluta-graficos-cbtr_4460274/",
+      "discovery_url": "https://www.elconfidencial.com/espana/2026-11-10/encuestas-elecciones-generales-29n-mayoria-absoluta-graficos-cbtr_4460274/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Confidencial · España",
+      "source_id": "elconfidencial",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Saltar al contenido",
+      "url": "https://swdemoscopia.com/#main-content",
+      "discovery_url": "https://swdemoscopia.com/#main-content",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "SW Demoscopia · productor del tracking",
+      "source_id": "swdemoscopia",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Archivo enlazado por el productor",
+      "url": "https://swdemoscopia.com/index.html",
+      "discovery_url": "https://swdemoscopia.com/index.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "SW Demoscopia · productor del tracking",
+      "source_id": "swdemoscopia",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Servicios",
+      "url": "https://swdemoscopia.com/servicios.html",
+      "discovery_url": "https://swdemoscopia.com/servicios.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "SW Demoscopia · productor del tracking",
+      "source_id": "swdemoscopia",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Política de Cookies",
+      "url": "https://swdemoscopia.com/cookies.html",
+      "discovery_url": "https://swdemoscopia.com/cookies.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "SW Demoscopia · productor del tracking",
+      "source_id": "swdemoscopia",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Política de Privacidad",
+      "url": "https://swdemoscopia.com/privacidad.html",
+      "discovery_url": "https://swdemoscopia.com/privacidad.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "SW Demoscopia · productor del tracking",
+      "source_id": "swdemoscopia",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Study available 3574 'Barómetro Sanitario 2026 (segunda oleada)'",
+      "url": "https://www.cis.es/en/surveys/barometro-sanitario-2026-segunda-oleada-",
+      "discovery_url": "https://www.cis.es/en/surveys/barometro-sanitario-2026-segunda-oleada-",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "CIS · novedades y anuncios",
+      "source_id": "cis-novedades",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Study available 3582 'Barómetro de octubre 2026'",
+      "url": "https://www.cis.es/en/surveys/barometro-de-octubre-2026",
+      "discovery_url": "https://www.cis.es/en/surveys/barometro-de-octubre-2026",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "CIS · novedades y anuncios",
+      "source_id": "cis-novedades",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Advance on study results 3532 'Barómetro de vivienda 2026'",
+      "url": "https://www.cis.es/en/w/avance-de-resultados-del-estudio-3532-bar%C3%B3metro-de-vivienda-2026-",
+      "discovery_url": "https://www.cis.es/en/w/avance-de-resultados-del-estudio-3532-bar%C3%B3metro-de-vivienda-2026-",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "CIS · novedades y anuncios",
+      "source_id": "cis-novedades",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Access to FAQs",
+      "url": "https://www.cis.es/estudios/preguntas-frecuentes-proceso-encuestacion",
+      "discovery_url": "https://www.cis.es/estudios/preguntas-frecuentes-proceso-encuestacion",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "CIS · novedades y anuncios",
+      "source_id": "cis-novedades",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
     }
   ],
-  "errors": [],
-  "policy": "Solo descubrimiento. Revisar original, campo, muestra, cifras y denominador antes de incorporar."
+  "errors": [
+    {
+      "source": "GAD3 · publicaciones",
+      "detail": "ValueError: HTTP 202"
+    },
+    {
+      "source": "La Razón · España",
+      "detail": "HTTP 503"
+    }
+  ],
+  "policy": "Solo descubrimiento. Revisar original, campo, muestra, cifras y denominador antes de incorporar.",
+  "seguimientos": [
+    {
+      "id": "tracking-laseptima",
+      "titulo": "Tracking diario · La Séptima / SW Demoscopia",
+      "estado": "Seguimiento diario",
+      "ultima_publicacion": "2026-11-11",
+      "detalle": "Informes primarios del 6 y 10 nov incorporados; solo la última oleada entra en cada corte. Entrega del 11 nov registrada como prensa pendiente de contraste: PP 28,1; PSOE 31,4; Vox 17,5; Frente Amplio 7,4. Las entregas comparten muestra; no son encuestas independientes.",
+      "url": "https://electomania.es/tracking-sw-demoscopia-11-nov-pp-y-vox-pierden-la-mayoria-absoluta/"
+    },
+    {
+      "id": "cis-preelectoral",
+      "titulo": "Preelectoral del CIS",
+      "estado": "Publicación pendiente",
+      "fecha_prevista": "2026-11-12",
+      "procedencia_fecha": "Aviso del usuario el 11 de noviembre; fecha pendiente de confirmación en el anuncio oficial.",
+      "detalle": "Previsto para el 12 de noviembre de 2026 según aviso del usuario. Cuando se publique: contrastar estimación, ficha técnica, campo, muestra, cuestionario, tablas y disponibilidad de microdatos. No se anticipan cifras.",
+      "url": "https://www.cis.es/es/estudios"
+    }
+  ]
 }

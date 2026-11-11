@@ -102,16 +102,17 @@ function render(){const {route,anchor}=resolveRoute(location.hash);const same=ro
     polls=next;
     // Rebind all consumers, including the panorama behind the section viewer.
     $('#main').innerHTML=dashboard();
-    bindHomeImpact(polls,events);
     $('#poll-archive-content').innerHTML=renderPollArchive(polls);
     bindPollArchive(polls);
     const analysis=document.getElementById('encuestas-promedios');
     if(analysis){analysis.outerHTML=renderAnalysis(polls);bindAnalysis(polls,data);}
-    const response=await fetch('data/modelo/pronostico.json',{cache:'no-store',signal}).catch(()=>null);
+   }
+   // Un nuevo recálculo o historial puede publicarse sin cambiar las fichas.
+   void bindHomeImpact(polls,events);
+   const response=await fetch('data/modelo/pronostico.json',{cache:'no-store',signal}).catch(()=>null);
     if(response?.ok&&!signal.aborted){const forecast=await response.json();
      const table=document.getElementById('encuestas-todas-tabla');
      if(table)table.innerHTML=renderTodasEncuestas(forecast,polls);
-    }
    }
    const names=added.map(p=>p.institute+' · '+p.published).join(', ');
    return added.length||corrected.length||removed

@@ -233,6 +233,15 @@ def seleccion_pronostico(encuestas, ciclo="2023-26"):
     verificadas = [e for e in del_ciclo if e["origen"] == "verificada"]
     aptas, excluidas = [], []
     sustituida_por = {}
+    # Dos fichas verificadas también pueden compartir entrevistas. Conservar la
+    # oleada más reciente; el archivo documental retiene ambas.
+    retenidas = []
+    for v in sorted(verificadas, key=lambda e: (e["campo_fin"], e.get("publicacion") or e["campo_fin"], e["estudio"]), reverse=True):
+        posterior = next((r for r in retenidas if r["casa"] == v["casa"] and _solapa_campo(r, v)), None)
+        if posterior:
+            sustituida_por[v["estudio"]] = posterior["estudio"]
+        else:
+            retenidas.append(v)
     for e in del_ciclo:
         if e["origen"] == "prensa-original-consultado" and not e.get("campo_supuesto"):
             for v in verificadas:

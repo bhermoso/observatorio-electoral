@@ -33,9 +33,12 @@ export function parsePercentages(text) {
  return values;
 }
 
+export function renderSeguimientos(items=[]){
+ return items.length?`<section aria-label="Publicaciones en seguimiento"><h3>Publicaciones en seguimiento</h3>${items.map(x=>{const url=safe(x.url);return `<article><strong>${esc(x.titulo)}</strong><p>${esc(x.estado)}${x.fecha_prevista?' · '+esc(x.fecha_prevista):''}</p><p>${esc(x.detalle)}</p>${url?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">Consultar fuente ↗</a>`:''}</article>`;}).join('')}</section>`:'';
+}
 export function renderCandidates(data){
  const d=data||{},items=d.results||[],sources=d.sources||[];
- return `<div class="news-status"><span class="news-status-label">${d.status==='failed'?'Búsqueda fallida':d.status==='partial'?'Cobertura parcial':d.checked_at?'Fuentes consultadas':'Sin búsqueda registrada'}</span><p>Última búsqueda útil: <b>${esc(when(d.checked_at))}</b><br>Último intento: ${esc(when(d.last_attempt_at))}</p></div>
+ return `${renderSeguimientos(d.seguimientos)}<div class="news-status"><span class="news-status-label">${d.status==='failed'?'Búsqueda fallida':d.status==='partial'?'Cobertura parcial':d.checked_at?'Fuentes consultadas':'Sin búsqueda registrada'}</span><p>Última búsqueda útil: <b>${esc(when(d.checked_at))}</b><br>Último intento: ${esc(when(d.last_attempt_at))}</p></div>
  <p class="muted">${sources.filter(s=>s.ok).length} de ${sources.length} fuentes accesibles · ${items.length} publicaciones candidatas. Consultar este informe no inicia otra búsqueda ni incorpora encuestas al modelo.</p>
  <details class="news-source-audit"><summary>Comprobar las fuentes y sus incidencias</summary><ul>${sources.map(s=>`<li><b>${esc(s.name)}</b> · ${s.ok?`${s.count} candidatos`:esc(s.error)} · ${s.attempts} intento(s)</li>`).join('')}</ul></details>
  ${d.status==='failed'?'<p role="alert">Las fuentes fallaron. Se conserva la búsqueda anterior y su fecha; no equivale a una búsqueda sin novedades.</p>':''}
@@ -52,6 +55,6 @@ export function bindPollUpdate(onReload){
  }
  button.onclick=refresh;
  reload.onclick=async()=>{reload.disabled=true;const status=$('#poll-reload-status');try{status.textContent=await onReload(signal);}catch(e){if(!signal.aborted)status.textContent='Error al recargar: '+e.message;}finally{reload.disabled=false;}};
- fetchEstadoCircuito().then(({estado,publicacion})=>{const p=$('#pipeline-status');if(!signal.aborted&&p)p.innerHTML=renderEstadoCircuito(estado,publicacion);});
+ fetchEstadoCircuito().then(({estado,publicacion})=>{const p=$('#pipeline-status');if(!signal.aborted&&p)p.innerHTML=renderEstadoCircuito(estado,publicacion);}).catch(()=>{const p=$('#pipeline-status');if(!signal.aborted&&p)p.textContent='Estado del circuito no disponible; consulta la ejecución en GitHub.';});
  void refresh();return ()=>controller.abort();
 }

@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import {createHash} from 'node:crypto';
 import {enVeda, AVISO_VEDA} from './veda.mjs';
 import {validatePolls} from '../schema.mjs';
 import {validateEvents} from '../events.mjs';
@@ -16,6 +17,10 @@ if(enVeda()){
   fs.writeFileSync(path.join(output,'.nojekyll'),'');
   console.log('Veda: artefacto limitado al aviso, sin sondeos ni JSON del modelo.');
 }else{
+// El archivo y el pronóstico se publican como una misma versión coherente.
+const forecast=JSON.parse(fs.readFileSync('modelo/salida/pronostico.json','utf8'));
+const archivoHash=createHash('sha256').update(fs.readFileSync('data/polls.json')).digest('hex');
+if(forecast.actualizacion?.archivo_sha256!==archivoHash)throw Error('Pronóstico desactualizado: ejecutar python -m modelo antes de publicar.');
 const eventCount=validateEvents(JSON.parse(fs.readFileSync('data/events.json')));
 console.log(`Contexto: ${eventCount} acontecimientos documentados.`);
 const coverage=validatePolls(JSON.parse(fs.readFileSync('data/polls.json')),JSON.parse(fs.readFileSync('data/references.json')));
@@ -34,7 +39,7 @@ let corte=null,version=null;
 try{const f=JSON.parse(fs.readFileSync('modelo/salida/pronostico.json'));corte=f.corte;version=f.version_modelo??null;}catch{}
 fs.writeFileSync('dist/data/estado-publicacion.json',JSON.stringify({esquema:1,construido:new Date().toISOString(),commit:process.env.GITHUB_SHA||null,
  ejecucion:process.env.GITHUB_RUN_ID?`${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`:null,
- corte_modelo:corte,version_modelo:version,encuestas_archivo:coverage.polls,veda},null,1)+'\n');
+ corte_modelo:corte,version_modelo:version,encuestas_archivo:coverage.polls,ultima_encuesta:JSON.parse(fs.readFileSync('data/polls.json')).reduce((d,p)=>p.published>d?p.published:d,''),recalculado:forecast.actualizacion.recalculado,archivo_sha256:archivoHash,veda},null,1)+'\n');
 
 // Plataforma de pronóstico (modelo/): la página generada por `python3 -m modelo` es un
 // fragmento HTML; se envuelve en un documento completo y se publica como pronostico.html.

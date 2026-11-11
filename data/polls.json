@@ -1173,5 +1173,345 @@
     "seatNotes": "Puntos y horquillas expresos del texto original. Coalición Canaria aparece con posibilidad de un escaño, sin intervalo numérico explícito en el texto verificado; se deja ausente.",
     "verification": "Texto y ficha técnica del instituto contrastados el 11 de noviembre de 2026.",
     "sourcePages": "Párrafos de estimación y apartado Ficha técnica."
+  },
+  {
+    "scope": "España",
+    "universe": "Población mayor de edad residente en España con derecho a voto",
+    "kind": "poll-estimate",
+    "coverage": "partial",
+    "verified": "2026-11-11",
+    "verification": "Original y ficha técnica consultados el 11 de noviembre de 2026.",
+    "denominator": "Estimación de voto; el original no explicita el denominador",
+    "scenario": "Frente Amplio y Podemos separados",
+    "id": "data10-2026-11-09",
+    "institute": "DATA10",
+    "publisher": "OKDIARIO",
+    "title": "Encuesta nacional · noviembre de 2026",
+    "fieldStart": "2026-11-02",
+    "fieldEnd": "2026-11-03",
+    "published": "2026-11-09",
+    "sample": 1500,
+    "mode": "Panel tabulado + CATI",
+    "source": "https://okdiario.com/espana/psoe-paga-tragedia-urda-hunde-hasta-97-escanos-mientras-pp-vox-suman-203-20728358",
+    "technical": "https://okdiario.com/espana/psoe-paga-tragedia-urda-hunde-hasta-97-escanos-mientras-pp-vox-suman-203-20728358",
+    "values": {
+      "PP": 32.4,
+      "PSOE": 24.7,
+      "VOX": 19.8,
+      "Frente Amplio": 6.9,
+      "Podemos": 3.1,
+      "SALF": 1.5
+    },
+    "seats": {
+      "PP": {
+        "point": 134
+      },
+      "PSOE": {
+        "point": 97
+      },
+      "VOX": {
+        "point": 69
+      },
+      "Frente Amplio": {
+        "point": 14
+      },
+      "Podemos": {
+        "point": 2
+      },
+      "SALF": {
+        "point": 0
+      },
+      "UPN": {
+        "point": 2
+      },
+      "ERC": {
+        "point": 9
+      },
+      "EH Bildu": {
+        "point": 7
+      },
+      "Junts": {
+        "point": 6
+      },
+      "PNV": {
+        "point": 4
+      },
+      "Adelante Andalucía": {
+        "point": 3
+      },
+      "BNG": {
+        "point": 2
+      },
+      "CC": {
+        "point": 1
+      }
+    },
+    "sourcePages": "Texto electoral y párrafo final Ficha técnica.",
+    "notes": "1.500 entrevistas; error declarado ±2,8 % al 95 %. Participación estimada 68,7 %. Escaños transcritos literalmente: los puntos del artículo suman 350. El campo no recoge el efecto posterior de la dimisión de Puente."
+  },
+  {
+    "scope": "España",
+    "universe": "Población mayor de edad residente en España con derecho a voto",
+    "kind": "poll-estimate",
+    "coverage": "partial",
+    "verified": "2026-11-11",
+    "verification": "Original y ficha técnica consultados el 11 de noviembre de 2026.",
+    "denominator": "Estimación del modelo del instituto sobre voto válido",
+    "scenario": "Frente Amplio y Podemos separados",
+    "id": "more-in-common-2026-11-03",
+    "institute": "More in Common",
+    "publisher": "More in Common España",
+    "title": "Pulso electoral de octubre · publicado el 3 de noviembre",
+    "fieldStart": "2026-10-21",
+    "fieldEnd": "2026-10-25",
+    "published": "2026-11-03",
+    "sample": 2210,
+    "mode": "CAWI",
+    "source": "https://moreincommon.es/pdfs/pulso-electoral/pulso-electoral-octubre-2026.pdf",
+    "technical": "https://moreincommon.es/pdfs/pulso-electoral/pulso-electoral-octubre-2026.pdf",
+    "values": {
+      "PP": 28.3,
+      "PSOE": 27.6,
+      "VOX": 20.8,
+      "Frente Amplio": 7.8,
+      "Podemos": 2.6
+    },
+    "seats": null,
+    "sourcePages": "Página 2: fecha efectiva de publicación y ficha técnica. Sección Tendencias de voto de cara al 29N: estimación sobre voto válido.",
+    "notes": "La portada está fechada el 29 de octubre, pero la página 2 documenta el aplazamiento al 3 de noviembre. Campo anterior al accidente de Urda. Estimación propia de la casa basada en su encuesta; no confundir con intención directa. No se infiere SALF de la suma del bloque de derechas. Cuotas por edad/género, CCAA, tamaño municipal e ingresos; pesos incorporan educación y tamaño municipal por edad.",
+    "microdata": "https://moreincommon.es/data/microdatos-2026-10.zip"
+  },
+  {
+    "scope": "España",
+    "universe": "Población mayor de edad residente en España con derecho a voto",
+    "kind": "poll-estimate",
+    "coverage": "partial",
+    "verified": "2026-11-11",
+    "verification": "Original y ficha técnica consultados el 11 de noviembre de 2026.",
+    "denominator": "Estimación de voto; el original no explicita el denominador",
+    "scenario": "Frente Amplio y Podemos separados",
+    "id": "electopanel-2026-11-08",
+    "institute": "ElectoPanel",
+    "publisher": "Electomanía",
+    "title": "ElectoPanel nacional · 8 de noviembre de 2026",
+    "fieldStart": "2026-11-01",
+    "fieldEnd": "2026-11-06",
+    "published": "2026-11-08",
+    "sample": 1860,
+    "mode": "CAWI · tracking (60 % de panelistas fijos)",
+    "source": "https://electomania.es/electopanel-8-nov-el-bipartidismo-cede-terreno-vox-sube-en-escanos-y-eh-bildu-se-distancia-del-pnv/",
+    "technical": "https://electomania.es/electopanel-8-nov-el-bipartidismo-cede-terreno-vox-sube-en-escanos-y-eh-bildu-se-distancia-del-pnv/",
+    "values": {
+      "PP": 31.1,
+      "PSOE": 25.3,
+      "VOX": 19.2,
+      "Frente Amplio": 6.1,
+      "Podemos": 1.8,
+      "SALF": 1.9
+    },
+    "seats": {
+      "PP": {
+        "point": 131
+      },
+      "PSOE": {
+        "point": 108
+      },
+      "VOX": {
+        "point": 66
+      },
+      "Frente Amplio": {
+        "point": 12
+      },
+      "Podemos": {
+        "point": 1
+      },
+      "SALF": {
+        "point": 0
+      }
+    },
+    "sourcePages": "Párrafos iniciales y apartado Ficha técnica.",
+    "notes": "Responsable del análisis: Estudios y Minería de Datos S.L. Error declarado ±2,3 % al 95,5 %. La nota del original incluye Compromís-Front Valencià y UPC dentro de Frente Amplio, pero el texto enumera también Compromís por separado: se conservan los principales porcentajes publicados sin sumarlos ni reconstruir el total. La entrega del 9 nov tiene ficha pública (2.531 cuestionarios, campo 1–8 nov), pero sus cifras son exclusivas para patrones y no se inventan."
+  },
+  {
+    "scope": "España",
+    "universe": "Población mayor de edad residente en España con derecho a voto",
+    "kind": "poll-estimate",
+    "coverage": "partial",
+    "verified": "2026-11-11",
+    "verification": "Original y ficha técnica consultados el 11 de noviembre de 2026.",
+    "denominator": "Estimación de voto sobre voto válido",
+    "scenario": "Frente Amplio incluye Compromís-FV y UPC; PP–UPN separado",
+    "id": "sw-demoscopia-2026-11-06",
+    "institute": "SW Demoscopia",
+    "publisher": "La Séptima",
+    "title": "Barómetro electoral n.º 2 · tracking con datos al 5 de noviembre",
+    "fieldStart": "2026-10-26",
+    "fieldEnd": "2026-11-05",
+    "published": "2026-11-06",
+    "sample": 4000,
+    "mode": "CATI · fijos y móviles (declarado por la ficha)",
+    "source": "https://media.licdn.com/dms/document/media/v2/D4E1FAQGg7xbSrdGpkg/feedshare-document-pdf-analyzed/B4EaGw8W1yIgAc-/0/1793969976552?e=1795046400&t=8IpctmM2_0m4UDTAj-75v3nzr5JpthVu4MZSqSdDO0I&v=beta",
+    "technical": "https://media.licdn.com/dms/document/media/v2/D4E1FAQGg7xbSrdGpkg/feedshare-document-pdf-analyzed/B4EaGw8W1yIgAc-/0/1793969976552?e=1795046400&t=8IpctmM2_0m4UDTAj-75v3nzr5JpthVu4MZSqSdDO0I&v=beta",
+    "values": {
+      "PSOE": 31.0,
+      "PP": 28.3,
+      "VOX": 17.2,
+      "Frente Amplio": 7.6,
+      "ERC": 2.6,
+      "EH Bildu": 1.3,
+      "Junts": 1.2,
+      "PNV": 0.8,
+      "Adelante Andalucía": 1.5,
+      "BNG": 0.9,
+      "CC": 0.4,
+      "PP–UPN (Navarra)": 0.2,
+      "Podemos": 1.2,
+      "SALF": 2.0,
+      "Teruel Existe": 0.1,
+      "Otras candidaturas": 3.7
+    },
+    "seats": {
+      "PSOE": {
+        "point": 127
+      },
+      "PP": {
+        "point": 115
+      },
+      "VOX": {
+        "point": 63
+      },
+      "Frente Amplio": {
+        "point": 13
+      },
+      "ERC": {
+        "point": 11
+      },
+      "EH Bildu": {
+        "point": 7
+      },
+      "Junts": {
+        "point": 4
+      },
+      "PNV": {
+        "point": 3
+      },
+      "Adelante Andalucía": {
+        "point": 3
+      },
+      "BNG": {
+        "point": 2
+      },
+      "CC": {
+        "point": 1
+      },
+      "PP–UPN (Navarra)": {
+        "point": 1
+      },
+      "Podemos": {
+        "point": 0
+      },
+      "SALF": {
+        "point": 0
+      },
+      "Teruel Existe": {
+        "point": 0
+      },
+      "Otras candidaturas": {
+        "point": 0
+      }
+    },
+    "sourcePages": "PDF original: portada, tabla Voto y escaños (página 5), explicación del tracking (página 13) y ficha técnica (página 14).",
+    "notes": "Informe original de SW Demoscopia enlazado por Electográfica (entrega 06/11). Tracking acumulado: 350 entrevistas por jornada hasta el 4 nov y 500 desde el 5. El dato bruto diario NO es la estimación de voto. Se transcriben puntos centrales, no medianas ni horquillas; el informe usa mapa de 2027 (Madrid 38, Cádiz 8) y PP–UPN separado. Las noticias dan en algunos casos PP 28,5 y 116; se conservan PP 28,3 y 115 del informe primario. Esta ficha no verifica las entregas posteriores."
+  },
+  {
+    "scope": "España",
+    "universe": "Población mayor de edad residente en España con derecho a voto",
+    "kind": "poll-estimate",
+    "coverage": "partial",
+    "verified": "2026-11-11",
+    "verification": "Original y ficha técnica consultados el 11 de noviembre de 2026.",
+    "denominator": "Estimación de voto sobre voto válido",
+    "scenario": "Frente Amplio incluye Compromís-FV y UPC; PP–UPN separado",
+    "id": "sw-demoscopia-2026-11-10",
+    "institute": "SW Demoscopia",
+    "publisher": "La Séptima",
+    "title": "Barómetro electoral n.º 6 · tracking con datos al 9 de noviembre",
+    "fieldStart": "2026-10-26",
+    "fieldEnd": "2026-11-09",
+    "published": "2026-11-10",
+    "sample": 6000,
+    "mode": "CATI · fijos y móviles (declarado por la ficha)",
+    "source": "https://media.licdn.com/dms/document/media/v2/D4E1FAQGrRqJGY0nvRw/feedshare-document-sanitized-pdf/B4EaHGkAC2KwA8-/0/1794332690070?e=1794949200&t=Z6pzWyIwCXUFlIPpE0AwgkvrgbdJiHM-Vo6of4kjGj8&v=beta",
+    "technical": "https://media.licdn.com/dms/document/media/v2/D4E1FAQGrRqJGY0nvRw/feedshare-document-sanitized-pdf/B4EaHGkAC2KwA8-/0/1794332690070?e=1794949200&t=Z6pzWyIwCXUFlIPpE0AwgkvrgbdJiHM-Vo6of4kjGj8&v=beta",
+    "values": {
+      "PSOE": 31.2,
+      "PP": 28.3,
+      "VOX": 17.5,
+      "Frente Amplio": 7.5,
+      "ERC": 2.6,
+      "EH Bildu": 1.4,
+      "Junts": 1.3,
+      "PNV": 0.8,
+      "Adelante Andalucía": 1.4,
+      "BNG": 1,
+      "CC": 0.4,
+      "PP–UPN (Navarra)": 0.2,
+      "Podemos": 1.7,
+      "SALF": 2,
+      "Teruel Existe": 0,
+      "Otras candidaturas": 2.7
+    },
+    "seats": {
+      "PSOE": {
+        "point": 129
+      },
+      "PP": {
+        "point": 113
+      },
+      "VOX": {
+        "point": 65
+      },
+      "Frente Amplio": {
+        "point": 11
+      },
+      "ERC": {
+        "point": 10
+      },
+      "EH Bildu": {
+        "point": 7
+      },
+      "Junts": {
+        "point": 4
+      },
+      "PNV": {
+        "point": 3
+      },
+      "Adelante Andalucía": {
+        "point": 3
+      },
+      "BNG": {
+        "point": 2
+      },
+      "CC": {
+        "point": 1
+      },
+      "PP–UPN (Navarra)": {
+        "point": 2
+      },
+      "Podemos": {
+        "point": 0
+      },
+      "SALF": {
+        "point": 0
+      },
+      "Teruel Existe": {
+        "point": 0
+      },
+      "Otras candidaturas": {
+        "point": 0
+      }
+    },
+    "sourcePages": "PDF original: portada; tabla Voto y escaños (página 6); ficha técnica (página 13).",
+    "notes": "Original de SW Demoscopia enlazado desde Electográfica (10/11): 6.000 entrevistas acumuladas del 26 oct al 9 nov. Se añaden 500 entrevistas por jornada desde el 5 nov: las entregas no son muestras independientes. Se transcriben puntos centrales de escaños, no medianas ni horquillas P25–P75 o P10–P90. PP–UPN (Navarra) queda separado del PP, como en el informe, sin sumarle porcentajes automáticamente. Sustituye a la entrega del 6 nov en el pronóstico actual; ambas quedan en el archivo y en sus cortes históricos. La entrega del 11 nov sigue pendiente de informe primario. La ficha declara 6.000 entrevistas totales y 4.300 para las preguntas de opinión; se conserva el total declarado para la estimación, sin presentar ambos tamaños como equivalentes. Frente al informe del 6 nov, el del 10 declara que el recuerdo de voto se usa en el análisis y no en la ponderación."
   }
 ]

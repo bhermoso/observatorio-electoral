@@ -10,6 +10,8 @@ Node.js 22 o posterior. No requiere instalar paquetes.
 
 ```sh
 npm test
+python3 -m modelo --n 1500
+python3 scripts/procesar_microdatos.py
 npm run build
 npm run dev
 ```
@@ -60,3 +62,25 @@ El atlas usa geometría generalizada oficial Eurostat/GISCO NUTS 2024 agrupada e
 ## Actualización
 
 Circuito: buscar → identificar novedades → verificar → incorporar → recalcular → publicar. `vigilancia-encuestas.yml` (diario y manual) detecta titulares por RSS, que **no** son encuestas; incorpora solo las fichas ya verificadas de `data/ingesta/validadas.json` (una ficha inválida se rechaza con su motivo sin bloquear a las demás); registra el resultado en `data/ingesta/estado.json`; si hay altas, lanza `pages.yml`, que ejecuta el Motor 29N y publica. La pantalla de Encuestas muestra última búsqueda, incorporación, recálculo, publicación, rechazos y errores. La verificación de cada ficha sigue siendo humana. En veda electoral no se publican ni `pronostico.html` ni los JSON del modelo.
+
+### Revisión del 11 de noviembre de 2026
+
+- Archivo: 25 fichas verificadas (incluye las históricas), con cinco altas: DATA10 del 9 nov, More in Common del 3 nov, ElectoPanel del 8 nov y dos informes primarios de SW Demoscopia para La Séptima (6 y 10 nov).
+- Tracking: las entregas acumuladas se archivan individualmente, pero el pronóstico selecciona una sola oleada solapada por instituto. El historial vuelve a seleccionar las encuestas conocidas en cada fecha; una publicación posterior no retira datos del pasado. El dato bruto diario no sustituye a la estimación publicada.
+- La entrega de SW del 11 nov está documentada como prensa pendiente de contraste primario. El preelectoral del CIS señalado por el usuario para el 12 nov está en `data/vigilancia/seguimientos.json`, sin anticipar cifras ni dar por confirmada una fecha oficial.
+- Vigilancia: 15 fuentes directas, cuatro consultas diarias. Fallos parciales quedan visibles; la consulta de titulares no verifica fichas.
+- Dependencias: las exportaciones CSV se regeneran antes de publicar; los cambios en el código del motor, datos territoriales y supuestos de microdatos invalidan el historial. La compilación bloquea un pronóstico que no corresponda al SHA-256 del archivo de encuestas actual. El estado muestra el recálculo realmente finalizado.
+
+Comprobación completa antes de publicar:
+
+```sh
+node scripts/export-csv.mjs
+npm test
+python3 -m unittest discover -s tests -p 'test_*.py'
+python3 -m unittest discover -s modelo/tests -t .
+python3 -m modelo --n 1500
+python3 scripts/procesar_microdatos.py
+npm run build
+```
+
+Los microdatos enlazados o en custodia no se convierten automáticamente en nuevas entrevistas procesadas. Solo se regeneran los agregados para los que exista una entrada y una codificación autorizadas.

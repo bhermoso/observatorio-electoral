@@ -12,11 +12,13 @@ import json
 import os
 from datetime import timedelta
 import numpy as np
-from .fuentes import RAIZ, publicada_antes, dia_central
+from .fuentes import RAIZ, publicada_antes, dia_central, seleccion_pronostico
+from pathlib import Path
 from . import pronostico as PR
 
 DIR = os.path.join(RAIZ, "modelo", "registro")
-VERSION = "3"   # cambiar al modificar el modelo invalida el historial guardado
+VERSION = "4"   # cambiar al modificar el modelo invalida el historial guardado
+# 4 (2026-11-11): selección de oleadas observable en cada corte histórico.
 # 2 (2026-11-03): puerta de calidad de fuentes (fuentes.seleccion_pronostico).
 # 3 (2026-11-03): corrección de la mitad del sesgo de industria del 23J (pronostico.correccion_industria).
 PRINCIPALES = ["PP", "PSOE", "VOX", "SUMAR", "PODEMOS"]
@@ -39,11 +41,24 @@ def escribir_encuestas(encuestas):
     return len(filas)
 
 
+def firma_dependencias():
+    """Invalida el historial al cambiar código, geografía o supuestos externos."""
+    root = Path(RAIZ)
+    paths = sorted(set((root / "modelo/motor").glob("*.py")) |
+                   set((root / "modelo/microdatos").glob("*.json")) |
+                   {root / "data" / f for f in ("election.json", "districts.csv", "results.csv", "events.json")})
+    digest = hashlib.sha256()
+    for path in paths:
+        digest.update(str(path.relative_to(root)).encode())
+        digest.update(path.read_bytes())
+    return digest.hexdigest()
+
+
 def _firma(encuestas, fecha, n, industria, inicio=None, eleccion=None, errores_23j=None):
     # Una corrección de muestra o campo cambia la verosimilitud aunque no cambie el voto.
     campos = ("estudio", "casa", "voto", "n", "campo_ini", "campo_fin", "publicacion", "modo", "origen")
     ids = sorted(json.dumps({k: e.get(k) for k in campos}, sort_keys=True, default=str) for e in encuestas)
-    txt = json.dumps([VERSION, str(fecha), n, industria, PR.RHO_BLOQUE, ids,
+    txt = json.dumps([VERSION, firma_dependencias(), str(fecha), n, industria, PR.RHO_BLOQUE, ids,
                       str(inicio), str(eleccion), errores_23j], ensure_ascii=False, sort_keys=True, default=str)
     return hashlib.sha1(txt.encode()).hexdigest()[:16]
 
@@ -66,11 +81,16 @@ def historial(actuales, inicio, desde, hasta, eleccion, errores_23j, n_por_varia
     ruta = os.path.join(DIR, "historial.json")
     previo = {}
     if os.path.exists(ruta):
-        previo = {h["fecha"]: h for h in json.load(open(ruta, encoding="utf-8"))}
+        with open(ruta, encoding="utf-8") as stream:
+            previo = {h["fecha"]: h for h in json.load(stream)}
     out = []
     d = desde
     while d <= hasta:
-        disp = [e for e in actuales if publicada_antes(e, d) and dia_central(e) <= d]
+        # Seleccionar DESPUÉS de filtrar la información conocida ese día. Una
+        # encuesta futura no puede retirar una oleada disponible en el pasado.
+        conocidas = [e for e in actuales if publicada_antes(e, d) and e["campo_fin"] <= d]
+        disp, _ = seleccion_pronostico(conocidas)
+        disp = [e for e in disp if dia_central(e) <= d]
         if len({e["casa"] for e in disp}) >= 2:
             firma = _firma(disp, d, n_por_variante, PR.INDUSTRIA_PRINCIPAL,
                            inicio=inicio, eleccion=eleccion, errores_23j=errores_23j)
@@ -84,5 +104,6 @@ def historial(actuales, inicio, desde, hasta, eleccion, errores_23j, n_por_varia
                                      if (e.get("publicacion") or e["campo_fin"] + timedelta(days=2)) == d)
             out.append(h)
         d += timedelta(days=1)
-    json.dump(out, open(ruta, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    with open(ruta, "w", encoding="utf-8") as stream:
+        json.dump(out, stream, ensure_ascii=False, indent=1)
     return out

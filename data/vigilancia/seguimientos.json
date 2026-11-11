@@ -1,0 +1,19 @@
+[
+  {
+    "id": "tracking-laseptima",
+    "titulo": "Tracking diario · La Séptima / SW Demoscopia",
+    "estado": "Seguimiento diario",
+    "ultima_publicacion": "2026-11-11",
+    "detalle": "Informes primarios del 6 y 10 nov incorporados; solo la última oleada entra en cada corte. Entrega del 11 nov registrada como prensa pendiente de contraste: PP 28,1; PSOE 31,4; Vox 17,5; Frente Amplio 7,4. Las entregas comparten muestra; no son encuestas independientes.",
+    "url": "https://electomania.es/tracking-sw-demoscopia-11-nov-pp-y-vox-pierden-la-mayoria-absoluta/"
+  },
+  {
+    "id": "cis-preelectoral",
+    "titulo": "Preelectoral del CIS",
+    "estado": "Publicación pendiente",
+    "fecha_prevista": "2026-11-12",
+    "procedencia_fecha": "Aviso del usuario el 11 de noviembre; fecha pendiente de confirmación en el anuncio oficial.",
+    "detalle": "Previsto para el 12 de noviembre de 2026 según aviso del usuario. Cuando se publique: contrastar estimación, ficha técnica, campo, muestra, cuestionario, tablas y disponibilidad de microdatos. No se anticipan cifras.",
+    "url": "https://www.cis.es/es/estudios"
+  }
+]
