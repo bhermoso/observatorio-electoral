@@ -380,6 +380,66 @@
       "verificado_en": "2026-11-05T06:45:14+00:00"
     },
     {
+      "id": "40db-2026-10-09",
+      "productor": "40db",
+      "fecha": "2026-10-09",
+      "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_08_barometro_flash_descargables.zip",
+      "estado": "matriz_detectada_pendiente_homologacion",
+      "es_pronostico": false,
+      "bytes": 1800769,
+      "sha256": "905d4ab237b58fc44e6b99944505acb4e99687c02e8894d5cb0e0e410e45a100",
+      "estructura": {
+        "tipo": "zip",
+        "miembros": 6,
+        "ficheros_tabulares": 3,
+        "matrices": [
+          {
+            "tipo": "dta",
+            "filas": 800,
+            "columnas": 33,
+            "variables_clave": []
+          },
+          {
+            "tipo": "sav",
+            "filas": 800,
+            "columnas": 33,
+            "variables_clave": []
+          },
+          {
+            "tipo": "xlsx",
+            "hojas": 1,
+            "resumen_hojas": [
+              {
+                "filas": 801,
+                "columnas": 33
+              }
+            ]
+          }
+        ]
+      },
+      "verificado_en": "2026-11-11T11:26:22+00:00"
+    },
+    {
+      "id": "gad3-2026-01-26",
+      "productor": "gad3",
+      "fecha": "2026-01-26",
+      "url": "https://www.gad3.com/wp-content/uploads/2026/01/GAD3xHOY-ARAGON-Microdatos-estimacion-de-voto.xlsx",
+      "estado": "descarga_fallida",
+      "es_pronostico": false,
+      "error": "RemoteDisconnected",
+      "verificado_en": "2026-11-11T11:26:22+00:00"
+    },
+    {
+      "id": "gad3-2026-02-08",
+      "productor": "gad3",
+      "fecha": "2026-02-08",
+      "url": "https://www.gad3.com/wp-content/uploads/2026/02/GAD3-FORTA-CARTV-8F-Microdatos.xlsx",
+      "estado": "descarga_fallida",
+      "es_pronostico": false,
+      "error": "RemoteDisconnected",
+      "verificado_en": "2026-11-11T11:26:22+00:00"
+    },
+    {
       "id": "gad3-2026-05-11",
       "productor": "gad3",
       "fecha": "2026-05-11",
