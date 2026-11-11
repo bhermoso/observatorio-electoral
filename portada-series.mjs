@@ -1,4 +1,5 @@
 import {PARTIES,canonicalValues,capasExternas,productorExterno} from './capas.mjs';
+import {vistaCuatroEstimaciones} from './ruta-estimaciones.mjs';
 
 const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const date=new Intl.DateTimeFormat('es-ES',{day:'numeric',month:'short',timeZone:'UTC'});
@@ -169,7 +170,8 @@ export function bindPortadaSeries(root,{polls,forecast,history,events,cutoff,pro
   ${houses.length?houses.map(x=>graphRow(x,'casa')).join(''):'<p class="series-note">Sin encuestas verificadas para este partido y periodo.</p>'}
   ${externals.length?`<p class="cmp-group-title">Modelos y promedios externos · contraste</p>${externals.map(x=>graphRow(x,'externo')).join('')}`:''}
   <p class="series-note">Todas las marcas comparten escala. Cada casa se representa una sola vez, con su última cifra disponible en la ventana.</p></div>`;
-  comparison.innerHTML=`${party.value===ALL?'<p class="series-note"><strong>Ejemplo: PP.</strong> Selecciona otro partido arriba para cambiar esta comparación.</p>':''}<p class="series-note">Ventana de 45 días hasta el corte del modelo (${td(date.format(Date.parse(comparisonCutoff)))}). Las referencias externas se muestran aparte y no entran en el pronóstico.</p>${graph}<details class="cmp-detail"><summary>Ver todas las cifras, fechas y naturaleza de cada fuente</summary><div class="table-wrap"><table class="series-comparacion-tabla"><thead><tr><th>Fuente</th><th>Clase</th><th class="num">Voto estimado</th><th>Publicado</th></tr></thead><tbody>${anchor}${houses.map(fmtRow).join('')}${externals.map(fmtRow).join('')}</tbody></table></div></details>`;
+  const ruta=vistaCuatroEstimaciones({partido:PARTIES.find(p=>p.id===id)?.label||id,casas:houses,promedio:average?.valor,modelo:own,corte:comparisonCutoff});
+  comparison.innerHTML=`${party.value===ALL?'<p class="series-note"><strong>Ejemplo: PP.</strong> Selecciona otro partido arriba para cambiar esta comparación.</p>':''}${ruta}<p class="series-note">Ventana de 45 días hasta el corte del modelo (${td(date.format(Date.parse(comparisonCutoff)))}). Las referencias externas se muestran aparte y no entran en el pronóstico.</p>${graph}<details class="cmp-detail"><summary>Ver todas las cifras, fechas y naturaleza de cada fuente</summary><div class="table-wrap"><table class="series-comparacion-tabla"><thead><tr><th>Fuente</th><th>Clase</th><th class="num">Voto estimado</th><th>Publicado</th></tr></thead><tbody>${anchor}${houses.map(fmtRow).join('')}${externals.map(fmtRow).join('')}</tbody></table></div></details>`;
 
  }
  
