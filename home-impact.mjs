@@ -26,13 +26,15 @@ export function renderHomeImpact(references=[],events=[]){
   <h1 id="impact-heading">Panorama 29N</h1>
   <div class="portada-titular" id="portada-titular" aria-live="polite"><p>Cargando la estimación publicada…</p></div>
   <p class="portada-fechas" id="portada-fechas"></p>
-  <div class="procedencia-clara" aria-label="Procedencia de la estimación">
-   <span class="procedencia-titulo">Qué calcula esta estimación</span>
-   <p><strong>Entran:</strong> estimaciones publicadas por las encuestadoras, filtradas y combinadas por un modelo propio.</p>
-   <p><strong>Se comparan, pero no entran:</strong> promedios externos y otros pronósticos.</p>
-   <p><strong>En investigación:</strong> microdatos del CIS y 40dB; sus ensayos no modifican este pronóstico.</p>
-   <a href="#cocina">Ver la cocina y las pruebas con microdatos →</a>
-  </div>
+  <section class="tipos-estimacion" aria-labelledby="tipos-estimacion-t">
+   <div class="tipos-estimacion-cab"><h2 id="tipos-estimacion-t">Cuatro formas de llegar a una cifra</h2><p>No todas son estimaciones del Observatorio, ni todas alimentan su pronóstico.</p></div>
+   <div class="tipos-estimacion-grid">
+    <article><span class="tipo-n">01 · Instituto</span><h3>Estimación de una encuesta</h3><p>Cifra elaborada por una encuestadora a partir de sus entrevistas. Cuando no publica microdatos, no podemos reconstruir su cocina completa.</p><small>Dato publicado por terceros · entra como estimación de la casa, no como respuesta individual</small><a href="#encuestas">Examinar encuestas →</a></article>
+    <article><span class="tipo-n">02 · Agregación</span><h3>Promedio de encuestas</h3><p>Combina estimaciones publicadas, con una regla explícita de selección y ponderación. No reconstruye entrevistas ni es nuestra cocina individual.</p><small>Promedio propio de referencia · se compara, no se añade otra vez al motor</small><a href="#pronostico-capas">Ver comparación →</a></article>
+    <article class="tipo-actual"><span class="tipo-n">03 · Observatorio · vigente</span><h3>Nuestra estimación a partir de otras estimaciones</h3><p>Motor 29N: combina las estimaciones admitidas de las casas, tendencias, calibración histórica e incertidumbre para producir voto y escaños.</p><small>Pronóstico operativo · las estimaciones externas y promedios se muestran como contraste; los promedios externos no son otra entrada</small><a href="#pronostico">Ver pronóstico y trazabilidad →</a></article>
+    <article><span class="tipo-n">04 · Observatorio · investigación</span><h3>Nuestra estimación a partir de microdatos</h3><p>Reconstruimos medidas con respuestas, pesos y ensayos de recuerdo, simpatía, indecisos o participación; contrastamos sus errores antes de adoptar una receta.</p><small>Estimaciones experimentales · todavía no alimentan el pronóstico operativo</small><a href="#cocina-cap4">Ver pruebas y cocina →</a></article>
+   </div>
+  </section>
  </div>
 
  <div class="hub-panel" id="portada-hub">
