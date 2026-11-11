@@ -147,7 +147,7 @@ export function bindPortadaSeries(root,{polls,forecast,history,events,cutoff,pro
   const f=n=>Number(n).toLocaleString('es-ES',{minimumFractionDigits:1,maximumFractionDigits:1});
   const lastPoint=points=>points.filter(p=>p.date<=comparisonCutoff && p.date>=compareFrom && Number.isFinite(p.values?.[id])).sort((a,b)=>b.date.localeCompare(a.date))[0];
   const houses=series.filter(x=>x.type==='house').map(x=>({name:x.label,type:'Encuesta',p:lastPoint(x.points)})).filter(x=>x.p).map(x=>({...x,value:x.p.values[id]}));
-  const externals=series.filter(x=>x.type==='external').map(x=>({name:x.label,type:'Promedio externo',p:lastPoint(x.points)})).filter(x=>x.p).map(x=>({...x,value:x.p.values[id]}));
+  const externals=series.filter(x=>x.type==='external').map(x=>({name:x.label,type:'Modelo o promedio externo',p:lastPoint(x.points)})).filter(x=>x.p).map(x=>({...x,value:x.p.values[id]}));
   const sorts={desc:(a,b)=>b.value-a.value,asc:(a,b)=>a.value-b.value,name:(a,b)=>a.name.localeCompare(b.name,'es'),recent:(a,b)=>b.p.date.localeCompare(a.p.date)};
   houses.sort(sorts[order.value]);externals.sort(sorts[order.value]);
   const average=promedio?.partidos?.[id];
@@ -156,7 +156,7 @@ export function bindPortadaSeries(root,{polls,forecast,history,events,cutoff,pro
   const fmtRow=(item)=>`<tr><th scope="row">${td(item.name)}</th><td>${td(item.type)}</td><td class="num">${f(item.value)} %</td><td>${td(date.format(Date.parse(item.p.date)))}</td></tr>`;
   const anchor=`${Number.isFinite(own)?`<tr class="comparacion-referencia"><th scope="row">Observatorio · pronóstico</th><td>Modelo propio</td><td class="num">${f(own)} %</td><td>${td(date.format(Date.parse(comparisonCutoff)))}</td></tr>`:''}${Number.isFinite(average?.valor)?`<tr class="comparacion-referencia"><th scope="row">Promedio de encuestas</th><td>${average.n} estudios con cifra</td><td class="num">${f(average.valor)} %</td><td>${td(date.format(Date.parse(promedio.corte)))}</td></tr>`:''}`;
   const found=[...houses,...externals];
-  comparison.innerHTML=`<p class="series-note">Ventana de 45 días hasta el corte del modelo (${td(date.format(Date.parse(comparisonCutoff)))}). Una última cifra por instituto. Orden aplicado a las encuestadoras, no al pronóstico. Los promedios externos se muestran aparte; no se promedian de nuevo.</p><div class="table-wrap"><table class="series-comparacion-tabla"><thead><tr><th>Fuente</th><th>Clase</th><th class="num">Voto estimado</th><th>Publicado</th></tr></thead><tbody>${anchor}${houses.map(fmtRow).join('')}${externals.map(fmtRow).join('')}</tbody></table></div>${found.length?'':'<p class="series-note">No hay otras estimaciones con cifra publicada en esta ventana.</p>'}`;
+  comparison.innerHTML=`<p class="series-note">Ventana de 45 días hasta el corte del modelo (${td(date.format(Date.parse(comparisonCutoff)))}). Una última cifra por instituto. Orden aplicado a las encuestadoras, no al pronóstico. Las referencias externas se muestran aparte; no entran en el pronóstico.</p><div class="table-wrap"><table class="series-comparacion-tabla"><thead><tr><th>Fuente</th><th>Clase</th><th class="num">Voto estimado</th><th>Publicado</th></tr></thead><tbody>${anchor}${houses.map(fmtRow).join('')}${externals.map(fmtRow).join('')}</tbody></table></div>${found.length?'':'<p class="series-note">No hay otras estimaciones con cifra publicada en esta ventana.</p>'}`;
  }
  
  let chartWidth=0;
