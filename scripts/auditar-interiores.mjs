@@ -1,4 +1,4 @@
-// Run npm run build and npm run dev first. No scan, submit or workflow dispatch.
+// Run npm run build and npm run dev first. Editorial endpoints are intercepted; no production scan, submit or dispatch.
 import {chromium} from 'playwright';
 import AxeBuilder from '@axe-core/playwright';
 import assert from 'node:assert/strict';
@@ -51,6 +51,9 @@ try{
    await page.route('**/data/polls.json',r=>r.fulfill({status:200,contentType:'application/json',body:JSON.stringify(archive)}));
    await page.click('#reload-polls');await page.waitForFunction(()=>document.querySelector('#poll-reload-status').textContent.includes('1 corregidas'));
    await page.click('#poll-reset');await page.fill('#poll-search',archive[0].id);assert.match(await page.locator('#poll-detail').innerText(),/PRUEBA DE RECARGA/);
+   await page.route('**/functions/v1/encuestas?action=scan',r=>r.fulfill({status:502,contentType:'application/json',body:JSON.stringify({error:'Fallo RSS simulado'})}));
+   await page.click('#dispatch-polls');await page.waitForFunction(()=>document.querySelector('#poll-dispatch-status').textContent.includes('Error en la búsqueda'));
+   assert.match(await page.locator('#poll-dispatch-status').innerText(),/Fallo RSS simulado/);
    await page.goto(base+'#laboratorio');await page.waitForSelector('.seat-change');
    assert.ok((await page.locator('.seat-change b').allTextContents()).every(x=>x==='0'));
    await page.locator('.weight').first().fill('1.2');await page.click('#calculate');assert.ok((await page.locator('.seat-change b').allTextContents()).some(x=>x!=='0'));

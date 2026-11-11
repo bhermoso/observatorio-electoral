@@ -132,6 +132,8 @@ export function bindPollUpdate(onReload){
     analysis.length+' publicaciones de análisis y '+polls.length+' sobre otros sondeos. Ninguna ficha se incorpora por consultar titulares.');
   }catch(error){
    show(note,el=>el.textContent='Error en la búsqueda: '+error.message);
+   // Refresh diagnostics without treating the preserved cache as a new scan.
+   try{const previous=await serviceRequest('status',{signal});show(pending,el=>el.innerHTML=renderCandidates(previous));}catch{}
   }
  }
  async function update(includeSearch){
