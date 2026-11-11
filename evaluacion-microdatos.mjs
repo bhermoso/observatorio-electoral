@@ -53,16 +53,23 @@ export function tablaEvaluacionMicrodatos(d){
   return {id:key,label:d.methodLabels[key],dif,mean};
  });
  const db=metas.map(x=>`<tr><th scope="row">${escape(x.label)}</th>${x.dif.map(v=>`<td class="num">${v>0?'+':''}${format(v)}</td>`).join('')}<td class="num">${x.mean>0?'+':''}${format(x.mean)}</td></tr>`).join('');
+ const signed=v=>(v>0?'+':'')+format(v);
+ const cisMax=Math.max(2.5,...d.cisTrials.flatMap(t=>[t.error,t.reference]));
+ const cisChart=`<figure class="cocina-error-figure"><figcaption>Pruebas CIS · MAE en puntos porcentuales · barras desde cero</figcaption>${d.cisTrials.map(t=>`<div class="cocina-error-group"><strong>${escape(t.selection)} → ${escape(t.test)}</strong><div class="cocina-error-bar"><span>Receta probada</span><div class="cocina-error-track"><i style="width:${(100*t.error/cisMax).toFixed(2)}%"></i></div><b>${format(t.error)}</b></div><div class="cocina-error-bar published"><span>CIS publicado</span><div class="cocina-error-track"><i style="width:${(100*t.reference/cisMax).toFixed(2)}%"></i></div><b>${format(t.reference)}</b></div></div>`).join('')}<p class="muted">Las barras permiten comparar errores descriptivos, no capacidad predictiva independiente.</p></figure>`;
+ const dbMax=Math.max(0.01,...metas.flatMap(m=>m.dif.map(Math.abs)));
+ const point=v=>50+50*v/dbMax;
+ const dbChart=`<figure class="cocina-error-figure"><figcaption>40dB · cambio del error frente a la estimación publicada (pp)</figcaption><div class="cocina-diff-head"><span>Menor error descriptivo</span><span>Mayor error descriptivo</span></div>${metas.map(m=>`<div class="cocina-diff-row"><strong>${escape(m.label)}</strong><div class="cocina-diff-track"><i class="cocina-diff-zero"></i>${m.dif.map((v,i)=>`<i class="cocina-diff-dot estudio-${i}" style="left:${point(v).toFixed(2)}%" title="${escape(d.dbTrials[i].study)}: ${signed(v)} pp"></i>`).join('')}</div><span>${signed(m.mean)} pp<small>media</small></span></div>`).join('')}<p class="muted">Cada punto corresponde a una oleada de 2023 (tres puntos por receta). La línea central representa diferencia cero. La columna derecha es una media descriptiva, no validación externa.</p></figure>`;
+
  return `<div class="evaluacion-microdatos-resumen">
   <p><strong>1 elección independiente</strong><span>23J de 2023. Las cinco oleadas analizadas no equivalen a cinco elecciones.</span></p>
   <p><strong>0 recetas incorporadas</strong><span>Los resultados experimentales no alimentan el pronóstico operativo.</span></p>
  </div>
  <h3>Prueba CIS: seleccionar en una oleada y comprobar en otra</h3>
  <p>MAE de cuatro partidos. Diferencia positiva: mayor error que la estimación CIS publicada. Ambos estudios corresponden a la misma elección.</p>
- <div class="table-wrap"><table><thead><tr><th>Selección → prueba</th><th>Procedimiento</th><th class="num">MAE prueba</th><th class="num">MAE CIS</th><th class="num">Diferencia</th></tr></thead><tbody>${cis}</tbody></table></div>
+ ${cisChart}<details class="cocina-datos-detalle"><summary>Ver cifras exactas de los estudios CIS</summary><div class="table-wrap"><table><thead><tr><th>Selección → prueba</th><th>Procedimiento</th><th class="num">MAE prueba</th><th class="num">MAE CIS</th><th class="num">Diferencia</th></tr></thead><tbody>${cis}</tbody></table></div></details>
  <h3>40dB: distancia de cada receta a la estimación publicada</h3>
  <p>Variación del MAE (pp) frente a la estimación 40dB en cada estudio. Negativo: menor error descriptivo; positivo: mayor. La media no es una validación independiente.</p>
- <div class="table-wrap"><table><thead><tr><th>Procedimiento</th>${d.dbTrials.map(x=>`<th class="num">${escape(x.study)}</th>`).join('')}<th class="num">Media descriptiva</th></tr></thead><tbody>${db}</tbody></table></div>
+ ${dbChart}<details class="cocina-datos-detalle"><summary>Ver matriz numérica completa de 40dB</summary><div class="table-wrap"><table><thead><tr><th>Procedimiento</th>${d.dbTrials.map(x=>`<th class="num">${escape(x.study)}</th>`).join('')}<th class="num">Media descriptiva</th></tr></thead><tbody>${db}</tbody></table></div></details>
  <p class="evaluacion-microdatos-limite"><strong>Conclusión metodológica:</strong> ${escape(d.conclusion)} El estudio del efecto de recuerdo, simpatía, indecisión y participación es necesario, pero sin nuevas elecciones comparables no se puede establecer que una receta mejora el modelo completo ni asignar pesos predictivos fiables.</p>`;
 }
 export async function bindEvaluacionMicrodatos(){
