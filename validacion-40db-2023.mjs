@@ -27,14 +27,15 @@ export async function bindRetrospectiva40db(){
     ...methods.map(([key,label],index)=>({key,label,index}))];
   const mean=a=>a.reduce((x,y)=>x+y,0)/a.length;
   root.innerHTML=`<p class="validacion40db-lead"><strong>Hallazgo:</strong> la estimación publicada por 40dB tiene menor error que la directa ponderada en los tres estudios. En cambio, el ajuste parcial por recuerdo de 2019 aumenta el error en todos. Esto no identifica cómo cocina 40dB ni avala cambiar nuestro motor.</p>
-   <div class="table-wrap"><table class="validacion40db-matrix">
+   <details class="cocina-datos-detalle"><summary>Ver los errores detallados de las ocho recetas en los tres estudios</summary><div class="table-wrap"><table class="validacion40db-matrix">
     <caption>Error absoluto medio (MAE), puntos porcentuales. Cuanto menor, mejor. Ordenado de menor a mayor media. Las medias de la última columna son solo descriptivas.</caption>
     <thead><tr><th>Procedimiento</th>${d.estudios.map(s=>`<th>${esc(s.nombre)}<small>n = ${s.n.toLocaleString('es-ES')}</small></th>`).join('')}<th>Media de las tres</th></tr></thead>
     <tbody>${rows.map(m=>({...m,nums:d.estudios.map(s=>m.key==='publicado'?s.mae_publicado:s.mae_metodos[m.index])}))
      .sort((a,b)=>mean(a.nums)-mean(b.nums)||a.label.localeCompare(b.label,'es')).map(m=>{
      const nums=m.nums;
      return `<tr${m.key==='publicado'?' class="validacion40db-reference"':''}><th scope="row">${esc(m.label)}</th>${nums.map(v=>`<td>${fmt(v)}</td>`).join('')}<td><strong>${fmt(mean(nums))}</strong></td></tr>`;
-    }).join('')}</tbody></table></div>
+    }).join('')}</tbody></table></div></details>
+   <p class="muted">La comparación visual de las ocho recetas frente a la estimación publicada está al principio de «Contrastar métodos». Aquí se conserva la matriz completa y la trazabilidad del original.</p>
    <div class="validacion40db-notes">
     <p><strong>Cómo se ha calculado:</strong> intención de voto y <code>ponde</code> de los archivos originales; voto válido declarado como denominador (incluye voto blanco). Se comparan PP, PSOE+PSC, Vox y Sumar con el escrutinio definitivo del 23J. La propensión declarada, la simpatía y el ajuste del recuerdo son recetas experimentales nuestras, no técnicas atribuidas al instituto.</p>
     <p><strong>Límite esencial:</strong> las tres encuestas predicen <em>la misma elección</em>, con campo entre mayo y junio. No son tres validaciones independientes y parte de la distancia al 23J puede ser cambio real de opinión durante la campaña. Se midió el error retrospectivamente, sin validación fuera de muestra.</p>
