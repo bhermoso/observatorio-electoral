@@ -33,3 +33,22 @@ Una encuesta con entrevistas el mismo día del suceso es «coincidente» y no en
 ## Versiones
 
 `modelo/motor/registro.py · VERSION` cambia cuando cambia el método. Cada entrada del historial guarda su versión; la portada y el pronóstico señalan cuándo una diferencia entre cortes es, en parte, metodológica. Versión 2 (3-nov-2026): puerta de calidad de fuentes; el historial se recalculó entero con ella.
+
+## Puerta de validación de recetas de microdatos (12-nov-2026)
+
+La pantalla **Cocina → Contrastar métodos** presenta una evaluación conjunta calculada a partir de
+`data/microdatos/auditoria_cocina_23j.json` (CIS) y
+`data/microdatos/40db-retrospectiva-2023.json` (40dB).
+`evaluacion-microdatos.mjs` comprueba la concordancia de elección, estructura y errores.
+Su salida es **investigación**: no crea una quinta capa ni se usa como predictor.
+
+**Reglas para considerar una incorporación futura al motor:**
+
+1. Comparar procedimientos sobre el mismo objetivo de voto válido, con un mapa de candidaturas documentado y fechas de campo comparables.
+2. Mantener separados los cambios de denominador, la ponderación, la imputación de indecisos, la simpatía, el recuerdo y la participación. No inferir los coeficientes privados de una encuestadora.
+3. Separar elección/validación de hiperparámetros de la evaluación independiente; todas las encuestas de una misma elección pertenecen al mismo grupo de validación.
+4. Evaluar la alternativa frente a la estimación publicada *y* frente al motor conjunto, sin sumar una transformación del microdato a la propia estimación publicada del mismo estudio: sería doble cómputo.
+5. Exigir varias elecciones independientes, sensibilidad por instituto, intervalos de incertidumbre, registro de decisiones y conservación de la línea base; una mejora retrospectiva aislada no cambia el pronóstico.
+6. Una vez exista evidencia suficiente, introducir el cambio detrás de una variante versionada, con la procedencia exacta y la posibilidad de comparar con el motor sin esa variante.
+
+**Resultado actual:** CIS (dos oleadas) y 40dB (tres oleadas) comparten la misma elección general del 23J. La tabla ofrece errores descriptivos y comprobaciones entre oleadas, pero **una sola unidad electoral independiente**. Por ello no activa ninguna receta en `modelo/motor/pronostico.py`.
