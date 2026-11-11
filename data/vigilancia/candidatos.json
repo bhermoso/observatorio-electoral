@@ -1,0 +1,239 @@
+{
+  "schema": 2,
+  "checked_at": "2026-11-11T11:07:20.021634+00:00",
+  "last_attempt_at": "2026-11-11T11:07:20.021634+00:00",
+  "status": "partial",
+  "searches": 6,
+  "sources_ok": 5,
+  "sources": [
+    {
+      "id": "elpais",
+      "name": "EL PAÍS · España",
+      "url": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/espana/portada",
+      "format": "rss",
+      "ok": true,
+      "attempts": 1,
+      "count": 0
+    },
+    {
+      "id": "elmundo",
+      "name": "EL MUNDO · España",
+      "url": "https://e00-elmundo.uecdn.es/elmundo/rss/espana.xml",
+      "format": "rss",
+      "ok": true,
+      "attempts": 1,
+      "count": 5
+    },
+    {
+      "id": "elespanol",
+      "name": "EL ESPAÑOL · España",
+      "url": "https://www.elespanol.com/rss/espana/",
+      "format": "rss",
+      "ok": true,
+      "attempts": 1,
+      "count": 1
+    },
+    {
+      "id": "gad3",
+      "name": "GAD3 · publicaciones",
+      "url": "https://www.gad3.com/",
+      "format": "html",
+      "ok": false,
+      "attempts": 1,
+      "count": 0,
+      "error": "ValueError: HTTP 202"
+    },
+    {
+      "id": "cis",
+      "name": "CIS · estudios",
+      "url": "https://www.cis.es/es/estudios",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 2
+    },
+    {
+      "id": "mic",
+      "name": "More in Common · Pulso electoral",
+      "url": "https://moreincommon.es/pulso-electoral.html",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 11
+    }
+  ],
+  "results": [
+    {
+      "title": "Elecciones generales 29-N, en directo | Abascal da plantón a Jordi Wild tras la polémica de 'La Revuelta': Vox exige tener \"derecho\" a editar y publicar las entrevistas",
+      "url": "https://www.elespanol.com/espana/20261111/elecciones-generales-directo-ultima-hora-pedro-sanchez-encuestas-actos-precampana-pp-psoe-vox-espana-2026-partidos-voto-por-correo/1003744453331_10.html",
+      "discovery_url": "https://www.elespanol.com/espana/20261111/elecciones-generales-directo-ultima-hora-pedro-sanchez-encuestas-actos-precampana-pp-psoe-vox-espana-2026-partidos-voto-por-correo/1003744453331_10.html",
+      "published": "2026-11-11T06:37:59+00:00",
+      "publication_raw": "2026-11-11T06:37:59+00:00",
+      "topic": "EL ESPAÑOL · España",
+      "source_id": "elespanol",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "No es la encuesta, es el encuestador",
+      "url": "https://www.elmundo.es/espana/2026/11/11/6af36d8afdddffc3368b4570.html",
+      "discovery_url": "https://www.elmundo.es/espana/2026/11/11/6af36d8afdddffc3368b4570.html",
+      "published": "2026-11-10T23:00:31+00:00",
+      "publication_raw": "2026-11-10T23:00:31+00:00",
+      "topic": "EL MUNDO · España",
+      "source_id": "elmundo",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "26 escaños en liza en los duelos clave mientras medio país escapa al 'baile'",
+      "url": "https://www.elmundo.es/espana/encuestas/2026/11/09/6af1f8f1e9cf4ab4658b457b.html",
+      "discovery_url": "https://www.elmundo.es/espana/encuestas/2026/11/09/6af1f8f1e9cf4ab4658b457b.html",
+      "published": "2026-11-09T21:42:36+00:00",
+      "publication_raw": "2026-11-09T21:42:36+00:00",
+      "topic": "EL MUNDO · España",
+      "source_id": "elmundo",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Seis de cada 10 españoles no harán huelga seguro frente al 19,5% que sí",
+      "url": "https://www.elmundo.es/espana/encuestas/2026/11/09/6af1faaffdddff3b5b8b4580.html",
+      "discovery_url": "https://www.elmundo.es/espana/encuestas/2026/11/09/6af1faaffdddff3b5b8b4580.html",
+      "published": "2026-11-09T21:41:47+00:00",
+      "publication_raw": "2026-11-09T21:41:47+00:00",
+      "topic": "EL MUNDO · España",
+      "source_id": "elmundo",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Autohuelga contra las encuestas",
+      "url": "https://www.elmundo.es/espana/2026/11/09/6af0a687e4d4d835568b4591.html",
+      "discovery_url": "https://www.elmundo.es/espana/2026/11/09/6af0a687e4d4d835568b4591.html",
+      "published": "2026-11-08T23:27:26+00:00",
+      "publication_raw": "2026-11-08T23:27:26+00:00",
+      "topic": "EL MUNDO · España",
+      "source_id": "elmundo",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "PP y Vox suman 199 diputados con un 50,4% de los  votos y Sánchez no remonta la tragedia de los trenes",
+      "url": "https://www.elmundo.es/espana/encuestas/2026/11/08/6af066bee85eceae5a8b4598.html",
+      "discovery_url": "https://www.elmundo.es/espana/encuestas/2026/11/08/6af066bee85eceae5a8b4598.html",
+      "published": "2026-11-08T21:43:36+00:00",
+      "publication_raw": "2026-11-08T21:43:36+00:00",
+      "topic": "EL MUNDO · España",
+      "source_id": "elmundo",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Encuesta Social General",
+      "url": "https://www.cis.es/es/esge",
+      "discovery_url": "https://www.cis.es/es/esge",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "CIS · estudios",
+      "source_id": "cis",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Pulso electoral",
+      "url": "https://moreincommon.es/pulso-electoral.html",
+      "discovery_url": "https://moreincommon.es/pulso-electoral.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "More in Common · Pulso electoral",
+      "source_id": "mic",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Abrir la presentación",
+      "url": "https://moreincommon.es/pdfs/pulso-electoral/pulso-electoral-octubre-2026.pdf",
+      "discovery_url": "https://moreincommon.es/pdfs/pulso-electoral/pulso-electoral-octubre-2026.pdf",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "More in Common · Pulso electoral",
+      "source_id": "mic",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Análisis electoral Nuestro artículo detallado donde desgranamos las tendencias, los movimientos entre bloques y lo que revelan las encuestas sobre el panorama electoral español. Leer en Substack →",
+      "url": "https://moreincommones.substack.com/p/rumbo-al-29n-una-radiografia-de-la",
+      "discovery_url": "https://moreincommones.substack.com/p/rumbo-al-29n-una-radiografia-de-la",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "More in Common · Pulso electoral",
+      "source_id": "mic",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Informe metodológico Documento técnico que detalla la metodología de nuestro modelo de estimación: fuentes de datos, ponderación, tratamiento de la incertidumbre y validación. Descargar PDF",
+      "url": "https://moreincommon.es/pdfs/informe-metodologico-electoral.pdf",
+      "discovery_url": "https://moreincommon.es/pdfs/informe-metodologico-electoral.pdf",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "More in Common · Pulso electoral",
+      "source_id": "mic",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Descargar (ZIP)",
+      "url": "https://moreincommon.es/data/microdatos-2026-10.zip",
+      "discovery_url": "https://moreincommon.es/data/microdatos-2026-10.zip",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "More in Common · Pulso electoral",
+      "source_id": "mic",
+      "original_verified": false,
+      "tipo": "enlace_a_archivo"
+    },
+    {
+      "title": "Descargar (ZIP)",
+      "url": "https://moreincommon.es/data/microdatos-2026-09.zip",
+      "discovery_url": "https://moreincommon.es/data/microdatos-2026-09.zip",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "More in Common · Pulso electoral",
+      "source_id": "mic",
+      "original_verified": false,
+      "tipo": "enlace_a_archivo"
+    },
+    {
+      "title": "Descargar (ZIP)",
+      "url": "https://moreincommon.es/data/microdatos-2026-07.zip",
+      "discovery_url": "https://moreincommon.es/data/microdatos-2026-07.zip",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "More in Common · Pulso electoral",
+      "source_id": "mic",
+      "original_verified": false,
+      "tipo": "enlace_a_archivo"
+    },
+    {
+      "title": "Descargar (ZIP)",
+      "url": "https://moreincommon.es/data/microdatos-2026-05.zip",
+      "discovery_url": "https://moreincommon.es/data/microdatos-2026-05.zip",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "More in Common · Pulso electoral",
+      "source_id": "mic",
+      "original_verified": false,
+      "tipo": "enlace_a_archivo"
+    }
+  ],
+  "errors": [
+    {
+      "source": "GAD3 · publicaciones",
+      "detail": "ValueError: HTTP 202"
+    }
+  ],
+  "policy": "Solo descubrimiento. Revisar original, campo, muestra, cifras y denominador antes de incorporar."
+}

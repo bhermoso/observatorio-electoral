@@ -1,14 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {fileLinks,microNews,safeHttp,choosePages,knownLinks,makeCandidates} from '../supabase/functions/microdatos/core.mjs';
+import {fileLinks,microNews,safeHttp,choosePages,knownLinks,makeCandidates} from '../docs/archivo-tecnico/supabase/functions/microdatos/core.mjs';
 import {renderMicrodataResults,renderBuscadorMicrodatos,consultMicrodata,MICRODATA_ENDPOINT} from '../buscador-microdatos.mjs';
 import {renderPollUpdate} from '../encuestas-servicio.mjs';
 const read=p=>fs.readFileSync(new URL(p,import.meta.url),'utf8');
 test('La actualización de encuestas y la búsqueda de microdatos son operaciones distintas',()=>{
  const html=renderPollUpdate()+renderBuscadorMicrodatos();
- assert.match(html,/id="dispatch-polls">Actualizar encuestas/);
- assert.match(html,/Buscar enlaces de microdatos ahora/);
+ assert.match(html,/id="dispatch-polls" type="button">Consultar novedades/);
+ assert.match(html,/Consultar hallazgos de microdatos/);
  assert.match(html,/Las estimaciones contrastadas entran por el proceso editorial/);
  assert.match(read('../app.mjs'),/bindBuscadorMicrodatos\(\)/);
  assert.match(read('../scripts/build.mjs'),/'buscador-microdatos\.mjs'/);
@@ -18,13 +18,13 @@ test('Se consulta la operación real con GET y POST, sin transmitir claves',asyn
  const fetcher=async(u,o)=>{seen.push([u,o]);return {ok:true,json:async()=>({checked_at:'2026-11-05T05:20:00Z',candidates:[]})}};
  await consultMicrodata('status',{fetcher});
  await consultMicrodata('scan',{fetcher});
- assert.equal(seen[0][0],MICRODATA_ENDPOINT+'?action=status');
+ assert.equal(seen[0][0],'https://raw.githubusercontent.com/bhermoso/observatorio-electoral/main/'+MICRODATA_ENDPOINT);
  assert.equal(seen[0][1].method,'GET');
- assert.equal(seen[1][1].method,'POST');
+ assert.equal(seen[1][1].method,'GET');
  assert.equal(seen[1][1].cache,'no-store');
  assert.equal(seen[1][1].headers,undefined);
  await assert.rejects(consultMicrodata('unknown',{fetcher}),/no permitida/);
- await assert.rejects(consultMicrodata('scan',{fetcher:async()=>({ok:false,json:async()=>({error:'Sin fuentes'})})}),/Sin fuentes/);
+ await assert.rejects(consultMicrodata('scan',{fetcher:async()=>({ok:false,json:async()=>({error:'Sin fuentes'})})}),/Informe no disponible/);
 });
 test('Detecta enlaces ZIP/SAV y descarta javascript, datos y http no seguro',()=>{
  const hrefs='<a href="/descargable.sav?x=1">SAV</a><a href="https://casa.es/zip-a.zip">ZIP</a><a href="javascript:alert(1)">x</a><a href="http://no.es/d.csv">x</a><a href="https://casa.es/manual.pdf">PDF</a>';

@@ -35,7 +35,7 @@ ALLOWED = {
     "www.cemopmurcia.es", "cemopmurcia.es",
 }
 SUPPORTED = {".zip", ".sav", ".dta", ".csv", ".xlsx"}
-SCAN_URL = "https://gjzihgfzxorpvevrrfkh.supabase.co/functions/v1/microdatos?action=status"
+SCAN_URL = "https://raw.githubusercontent.com/bhermoso/observatorio-electoral/main/data/vigilancia/microdatos.json"
 VAR_RE = re.compile(r"recuerd|vot|particip|ponder|peso|factor|weight|simpat|indecis|probab", re.I)
 FIELDS = ("id", "productor", "fecha", "archivo")
 CATALOG = Path("data/microdatos/catalogo-publico.json")
@@ -296,12 +296,12 @@ def read_discoveries(catalog):
                 "id": "hallazgo-" + hashlib.sha256(url.split("?")[0].encode()).hexdigest()[:16],
                 "productor": source, "fecha": checked.date().isoformat(),
                 "ambito": "Por verificar", "archivo": url,
-                "estado": "candidato_documental", "origen": "scan_supabase",
+                "estado": "candidato_documental", "origen": "vigilancia_directa",
             })
         return out[:10]
     except (ValueError, KeyError, TimeoutError, OSError, urllib.error.URLError,
             json.JSONDecodeError) as exc:
-        print("Hallazgos Supabase no disponibles; se utiliza catálogo: " + type(exc).__name__)
+        print("Hallazgos de vigilancia no disponibles; se utiliza catálogo: " + type(exc).__name__)
         return []
 
 def build(previous, results, now):

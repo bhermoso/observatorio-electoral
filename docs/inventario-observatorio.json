@@ -207,6 +207,7 @@
       "tipo": "modulo",
       "importa": [],
       "datos_literales": [
+        "data/microdatos/custodia.json",
         "data/microdatos/estado-descargas.json"
       ],
       "enlaces": [],
@@ -220,9 +221,12 @@
       "archivo": "buscador-microdatos.mjs",
       "tipo": "modulo",
       "importa": [],
-      "datos_literales": [],
+      "datos_literales": [
+        "data/vigilancia/microdatos.json"
+      ],
       "enlaces": [
-        "#archivo-microdatos"
+        "#archivo-microdatos",
+        "https://github.com/bhermoso/observatorio-electoral/actions/workflows/vigilancia-encuestas.yml"
       ],
       "anclas": [
         "micro-scan",
@@ -295,6 +299,7 @@
       "importa": [],
       "datos_literales": [
         "data/microdatos/catalogo-publico.json",
+        "data/microdatos/custodia.json",
         "data/microdatos/estado-descargas.json"
       ],
       "enlaces": [
@@ -504,9 +509,11 @@
         "./#analisis",
         "./#cocina",
         "./#dashboard",
+        "./#metodologia",
         "construye-estimacion.html",
         "data/microdatos/auditoria_cocina_23j.json",
         "data/microdatos/contribuciones_cocina_23j.json",
+        "editorial.css",
         "flujograma.html",
         "glosario.mjs",
         "https://github.com/bhermoso/observatorio-electoral/blob/main/modelo/README.md",
@@ -562,6 +569,7 @@
       "enlaces": [
         "./#cocina",
         "./#dashboard",
+        "./#metodologia",
         "cocina-escanos-ui.mjs",
         "cocina-secuencial-ui.mjs",
         "como-estimamos.html",
@@ -572,6 +580,7 @@
         "data/microdatos/cubo_decisiones_cis.json",
         "data/microdatos/validacion_23j.json",
         "diagnostico-cis.html",
+        "editorial.css",
         "flujograma.html",
         "glosario.mjs",
         "https://github.com/bhermoso/observatorio-electoral/blob/main/cocina-escanos.mjs",
@@ -732,9 +741,11 @@
       ],
       "enlaces": [
         "./#dashboard",
+        "./#metodologia",
         "construye-estimacion.html#cocina-secuencia",
         "data/microdatos/diagnostico_muestra_cis.json",
         "diagnostico-cis.mjs",
+        "editorial.css",
         "laboratorio-imputaciones.html",
         "metodo-evidencia.html",
         "styles.css",
@@ -770,19 +781,21 @@
       "importa": [
         "./actualizar-encuestas.mjs"
       ],
-      "datos_literales": [],
+      "datos_literales": [
+        "data/ingesta/validadas.json",
+        "data/vigilancia/candidatos.json"
+      ],
       "enlaces": [
-        "${esc(url)}"
+        "${REVIEW_URL}",
+        "${esc(url)}",
+        "https://github.com/bhermoso/observatorio-electoral/edit/main/data/ingesta/validadas.json"
       ],
       "anclas": [
         "dispatch-polls",
         "pipeline-status",
-        "poll-approved",
         "poll-candidates-list",
         "poll-dispatch-status",
-        "poll-editor",
         "poll-reload-status",
-        "poll-save-status",
         "poll-update-title",
         "reload-polls"
       ]
@@ -890,8 +903,10 @@
       "enlaces": [
         "./#cocina",
         "./#dashboard",
+        "./#metodologia",
         "como-estimamos.html",
         "construye-estimacion.html#craft-seats",
+        "editorial.css",
         "flujograma.mjs?v=20261102fix2",
         "glosario.mjs",
         "pronostico.html",
@@ -951,10 +966,12 @@
         "./#cocina",
         "./#contexto",
         "./#dashboard",
+        "./#metodologia",
         "data/cocinas-evidencia.json",
         "data/microdatos/analisis_3582.json",
         "data/microdatos/validacion_23j.json",
         "docs/analysis.md",
+        "editorial.css",
         "glosario.mjs",
         "https://github.com/bhermoso/observatorio-electoral/blob/main/analysis.mjs",
         "https://github.com/bhermoso/observatorio-electoral/blob/main/modelo/motor/pronostico.py",
@@ -1055,6 +1072,7 @@
         "#pronostico",
         "app.mjs",
         "data:image/svg+xml,%3Csvg xmlns=",
+        "editorial.css",
         "flujograma.html",
         "glosario.mjs",
         "https://github.com/bhermoso/observatorio-electoral",
@@ -1096,6 +1114,7 @@
       ],
       "datos_literales": [],
       "enlaces": [
+        "#dashboard",
         "${target.endsWith("
       ],
       "anclas": []
@@ -1123,8 +1142,10 @@
       "datos_literales": [],
       "enlaces": [
         "./#dashboard",
+        "./#metodologia",
         "construye-estimacion.html",
         "diagnostico-cis.html",
+        "editorial.css",
         "flujograma.html",
         "laboratorio-imputaciones.mjs",
         "metodo-evidencia.html",
@@ -1192,8 +1213,10 @@
         "#decisiones",
         "#evidencia",
         "./#dashboard",
+        "./#metodologia",
         "data/microdatos/ledger_imputacion_cis.json",
         "diagnostico-cis.html",
+        "editorial.css",
         "https://github.com/bhermoso/observatorio-electoral/blob/main/trazabilidad-recetas.mjs",
         "https://www.pollingforecast.com/research/our-reading",
         "https://www.pollingforecast.com/research/raw-or-headline",
@@ -1236,9 +1259,11 @@
         "./#cocina",
         "./#contexto",
         "./#dashboard",
+        "./#metodologia",
         "docs/analysis.md",
         "docs/methodology.md",
         "docs/poll-archive.md",
+        "editorial.css",
         "glosario.mjs",
         "guia-cocina.html",
         "https://aapor.org/polling-accuracy/",
@@ -1627,6 +1652,8 @@
       "enlaces": [
         "./#contexto",
         "./#dashboard",
+        "./#metodologia",
+        "editorial.css",
         "glosario.mjs",
         "pronostico.html"
       ],
@@ -1759,11 +1786,13 @@
         "#paso7",
         "#paso8",
         "./#dashboard",
+        "./#metodologia",
         "./#pronostico-evaluacion",
         "construye-estimacion.html#cocina-secuencia",
         "construye-estimacion.html#comparador-recetas",
         "construye-estimacion.html#seq-seats",
         "diagnostico-cis.html",
+        "editorial.css",
         "flujograma.html",
         "styles.css",
         "tutorial-estimacion.mjs"
@@ -1873,11 +1902,13 @@
       "enlaces": [
         "#vh-table",
         "./#dashboard",
+        "./#metodologia",
         "data/election.json",
         "data/microdatos/diagnostico_2019_original.json",
         "data/microdatos/registro_validacion_elecciones.json",
         "data/microdatos/validacion_23j.json",
         "diagnostico-cis.html",
+        "editorial.css",
         "https://github.com/bhermoso/observatorio-electoral/blob/main/validacion-imputaciones.mjs",
         "https://www.cis.es/documents/d/guest/ft3242-2019",
         "https://www.cis.es/en/surveys/macrobarometro-de-octubre-2019.-preelectoral-elecciones-generales-2019",
@@ -2014,6 +2045,9 @@
     "data/ingesta/estado.json": [
       "actualizar-encuestas.mjs"
     ],
+    "data/ingesta/validadas.json": [
+      "encuestas-servicio.mjs"
+    ],
     "data/microdatos/40db-auditoria-2026.json": [
       "caso-escanos.mjs",
       "microdatos-40db.mjs"
@@ -2065,6 +2099,10 @@
       "comparador-cocina.mjs",
       "construye-estimacion.html",
       "tutorial-estimacion.mjs"
+    ],
+    "data/microdatos/custodia.json": [
+      "auditoria-microdatos.mjs",
+      "catalogo-microdatos.mjs"
     ],
     "data/microdatos/diagnostico_2019_original.json": [
       "evaluacion-2019.mjs",
@@ -2158,6 +2196,12 @@
     ],
     "data/source-hashes.json": [
       "app.mjs"
+    ],
+    "data/vigilancia/candidatos.json": [
+      "encuestas-servicio.mjs"
+    ],
+    "data/vigilancia/microdatos.json": [
+      "buscador-microdatos.mjs"
     ],
     "encuestas-servicio.mjs": [
       "app.mjs"

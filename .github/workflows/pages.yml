@@ -6,6 +6,7 @@ on:
     # no requiere un recálculo: la publicación programada se mantiene.
     paths-ignore:
       - 'data/ingesta/estado.json'
+      - 'data/vigilancia/**'
       - 'data/polls.csv'
       - 'data/poll-results.csv'
   workflow_dispatch:

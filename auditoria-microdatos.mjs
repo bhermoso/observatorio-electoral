@@ -1,6 +1,6 @@
 /* Estado de descargas REALES; no se publican entrevistas individuales. */
 const AUDIT_URL='data/microdatos/estado-descargas.json';
-const PRIVATE_STATUS='https://gjzihgfzxorpvevrrfkh.supabase.co/functions/v1/almacen-microdatos?action=status';
+const PRIVATE_STATUS='data/microdatos/custodia.json';
 const GITHUB='https://github.com/bhermoso/observatorio-electoral/actions/workflows/auditar-catalogo-microdatos.yml';
 const h=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const safe=s=>{try{const u=new URL(s);return u.protocol==='https:'&&!u.username&&!u.password?u.href:null}catch{return null}};
@@ -26,8 +26,8 @@ export function renderAuditData(data,storage=null){
  if(!entries.length)return '<p class="muted">No hay todavía descargas verificadas en este almacén. El proceso automático guardará resultados aquí tras su primera ejecución.</p>';
  const success=entries.filter(downloaded),matrices=entries.filter(r=>r.estado==='matriz_detectada_pendiente_homologacion'),failed=entries.filter(r=>r.estado==='descarga_fallida');
  const latest=entries.map(r=>r.verificado_en).filter(Boolean).sort().at(-1);
- let out='<p class="md-audit-metrics"><strong>'+entries.length+' archivos intentados</strong> · <strong>'+success.length+' descargas comprobadas</strong> · <strong>'+matrices.length+' matrices detectadas</strong> · <strong>'+failed.length+' descarga'+(failed.length===1?' fallida':'s fallidas')+'</strong>. <small>Último cambio: '+h(latest?new Date(latest).toLocaleString('es-ES',{timeZone:'Europe/Madrid'}):'sin registro')+'</small></p>';
- out+='<p class="muted"><strong>Depósito privado recuperable: '+(confirmed?stored+' de '+entries.length+' originales':'sin comprobar (servicio no disponible)')+'</strong>. Un archivo descargado en GitHub Actions no equivale a una copia recuperable en Supabase.</p>';
+ let out=(storage?.provider==='deposito_anterior_pendiente_migracion'?'<p class="notice">Custodia en migración: se conservan los originales del depósito anterior hasta verificar su nueva ubicación privada. Certificado de '+h(storage.verified_at)+'.</p>':'')+'<p class="md-audit-metrics"><strong>'+entries.length+' archivos intentados</strong> · <strong>'+success.length+' descargas comprobadas</strong> · <strong>'+matrices.length+' matrices detectadas</strong> · <strong>'+failed.length+' descarga'+(failed.length===1?' fallida':'s fallidas')+'</strong>. <small>Último cambio: '+h(latest?new Date(latest).toLocaleString('es-ES',{timeZone:'Europe/Madrid'}):'sin registro')+'</small></p>';
+ out+='<p class="muted"><strong>Depósito privado recuperable: '+(confirmed?stored+' de '+entries.length+' originales':'sin comprobar (servicio no disponible)')+'</strong>. Un archivo descargado en GitHub Actions no equivale a una copia recuperable en un depósito privado.</p>';
  out+='<div class="table-wrap"><table class="md-audit-table"><caption>La estructura no significa homologación ni entrada al Motor 29N.</caption>'+
  '<thead><tr><th>Estudio / fuente</th><th>Descarga y estado</th><th>Conservado</th><th>Entrevistas / variables</th><th>Original</th></tr></thead><tbody>';
  // Del estudio más reciente al más antiguo; sin fecha, al final.
@@ -49,7 +49,7 @@ export async function bindEstadoDescargas(){
   try{
     const s=await fetch(PRIVATE_STATUS,{cache:'no-store',signal:AbortSignal.timeout(12000)});
     if(s.ok)storage=await s.json();
-  }catch{/* La auditoría sigue disponible sin la custodia remota. */}
+  }catch{/* La auditoría sigue disponible sin la custodia versionada. */}
   if(root.isConnected)root.innerHTML=renderAuditData(data,storage);
  }catch(e){if(root.isConnected)root.textContent='No se pudo cargar el estado de descargas: '+e.message;}
 }

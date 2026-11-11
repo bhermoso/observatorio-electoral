@@ -1,66 +1,32 @@
-name: Conservar microdatos autorizados en depósito privado
+name: Comprobar certificados públicos de custodia privada
 on:
   workflow_dispatch:
-    inputs:
-      estudio:
-        type: choice
-        required: true
-        default: todos
-        description: 'Estudio a conservar (solo originales aprobados; no publica filas)'
-        options:
-          - todos
-          - more-in-common-2026-10-01
-          - more-in-common-2026-09-01
-          - more-in-common-2026-07-01
-          - more-in-common-2026-05-01
   push:
     branches: [main]
     paths:
-      - '.github/workflows/guardar-microdatos.yml'
-      - 'scripts/guardar_microdatos_privados.py'
-      - 'supabase/functions/almacen-microdatos/**'
+      - 'data/microdatos/custodia.json'
+      - 'data/microdatos/custodia-manifiesto.json'
 permissions:
   contents: read
-  id-token: write
 jobs:
-  conservar:
-    runs-on: ubuntu-latest
-    timeout-minutes: 8
+  certificates:
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Comprobar contrato y permisos del script
-        run: python -m unittest discover -s tests -p 'test_guardar_microdatos_privados.py' -v
-      - name: Conservación de originales con identidad firmada GitHub Actions
-        env:
-          STUDY: ${{ inputs.estudio || 'todos' }}
-        run: python scripts/guardar_microdatos_privados.py --study "$STUDY"
-      - name: Confirmar inventario persistente y denegar descargas públicas
+      - name: Contrastar certificados sin acceder a entrevistas
         run: |
           python - <<'PY'
-          import json, urllib.request
-          base='https://gjzihgfzxorpvevrrfkh.supabase.co'
-          url=base+'/functions/v1/almacen-microdatos?action=status'
-          with urllib.request.urlopen(url,timeout=15) as r:
-              data=json.load(r)
-          wanted=['more-in-common-2026-05-01','more-in-common-2026-07-01',
-                  'more-in-common-2026-09-01','more-in-common-2026-10-01']
-          indexed={x['study_id']:x for x in data.get('stored',[])}
-          for id in wanted:
-              assert id in indexed and len(indexed[id]['sha256'])==64,(id,indexed)
-          assert all(indexed[id]['status']=='conservado_pendiente_homologacion' for id in wanted)
-          print('Verificados los cuatro certificados del inventario privado.')
-          source=indexed['more-in-common-2026-10-01']
-          path='more-in-common-2026-10-01/'+source['sha256']+'.zip'
-          raw=base+'/storage/v1/object/public/oee-microdatos-originales/'+path
-          try:
-              response=urllib.request.urlopen(raw,timeout=15)
-              status=response.status
-              response.close()
-          except urllib.error.HTTPError as e:
-              status=e.code
-          assert status!=200, f'ERROR: archivo privado accesible sin autenticación (HTTP {status})'
-          print('Acceso público directo denegado (HTTP',status,'). No se expusieron entrevistas.')
+          import json
+          d=json.load(open('data/microdatos/custodia.json'))
+          m=json.load(open('data/microdatos/custodia-manifiesto.json'))
+          assert d['provider']=='github_private'
+          assert d['repository']=='bhermoso/observatorio-electoral-custodia'
+          rows={x['study_id']:x for x in d['stored']}
+          for x in m['files']:
+            assert rows[x['study_id']]['sha256']==x['sha256']
+            assert rows[x['study_id']]['bytes']==x['bytes']
+          print('Cuatro certificados contrastados. La recuperación real se verifica en el repositorio privado.')
           PY

@@ -1,4 +1,4 @@
-import {renderInteriorGuide,renderSeatChanges} from './interiores.mjs';
+import {renderInteriorGuide,renderSeatChanges,prepareEditorialContent,revealEditorialTarget} from './interiores.mjs';
 import {renderPollUpdate,bindPollUpdate,fetchPublishedPolls} from './encuestas-servicio.mjs';
 import {validatePolls} from './schema.mjs';
 let disposePollUpdate=()=>{};
@@ -71,7 +71,7 @@ let scrollPortada=0;
 // El navegador lleva la página arriba al cambiar el fragmento: se guarda la posición antes del clic.
 document.addEventListener('click',e=>{if(e.target.closest?.('a[href^="#"]')&&document.getElementById('visor')?.hidden)scrollPortada=window.scrollY;},true);
 function cerrarVisor(){const v=$('#visor');if(!v.hidden){v.hidden=true;document.body.classList.remove('visor-abierto');$('#visor-contenido').innerHTML='';const y=scrollPortada;requestAnimationFrame(()=>window.scrollTo(0,y));setTimeout(()=>window.scrollTo(0,y),60);}}
-function render(){const {route,anchor}=resolveRoute(location.hash);const same=route===currentRoute&&anchor&&document.getElementById(anchor);if(same){document.getElementById(anchor).scrollIntoView();return;}
+function render(){const {route,anchor}=resolveRoute(location.hash);const same=route===currentRoute&&anchor&&document.getElementById(anchor);if(same){revealEditorialTarget(document.getElementById(anchor));return;}
  document.body.classList.add('dashboard-route');
  if(!portadaLista){$('#main').innerHTML=dashboard();bindHomeImpact(polls,events);portadaLista=true;}
  disposePollUpdate();currentRoute=route;
@@ -81,8 +81,8 @@ function render(){const {route,anchor}=resolveRoute(location.hash);const same=ro
  const v=$('#visor');if(v.hidden&&window.scrollY>0)scrollPortada=window.scrollY;v.hidden=false;document.body.classList.add('visor-abierto');v.dataset.ruta=route;
  $('#visor-titulo').textContent=TITULOS[route]||'';
  v.querySelectorAll('.visor-secciones a').forEach(a=>{a.removeAttribute('aria-current');if(a.hash==='#'+({atlas:'metodologia',laboratorio:'metodologia'}[route]||route))a.setAttribute('aria-current','page');});
- $('#visor-contenido').innerHTML=renderInteriorGuide(route)+(pages[route]||(()=>'<h1>Página no encontrada</h1><a href="#dashboard">Volver al panorama</a>'))();
- if(anchor)setTimeout(()=>document.getElementById(anchor)?.scrollIntoView(),400);else{v.scrollTop=0;$('#visor-contenido').focus({preventScroll:true});}
+ $('#visor-contenido').innerHTML=renderInteriorGuide(route,{polls,events})+prepareEditorialContent(route,(pages[route]||(()=>'<h1>Página no encontrada</h1><a href="#dashboard">Volver al panorama</a>'))());
+ if(anchor)setTimeout(()=>{const node=document.getElementById(anchor);if(node)revealEditorialTarget(node);},400);else{v.scrollTop=0;$('#visor-contenido').focus({preventScroll:true});}
 
  if(route==='pronostico'){bindOrdenPronostico();bindPronostico();bindContraste(polls);}
  if(route==='encuestas'){

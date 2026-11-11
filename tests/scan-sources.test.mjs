@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {scanSources} from '../supabase/functions/encuestas/scan.mjs';
+import {scanSources} from '../docs/archivo-tecnico/supabase/functions/encuestas/scan.mjs';
 const xml='<rss><channel><item><title>Sondeo</title><link>https://news.google.com/rss/articles/a</link><pubDate>Wed, 11 Nov 2026 08:00:00 GMT</pubDate></item></channel></rss>';
 const options={queries:['uno','dos'],now:()=> '2026-11-11T10:00:00Z'};
 test('RSS real y duplicación entre consultas; cero resultados es un éxito válido',async()=>{

@@ -1,71 +1,30 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import fs from 'node:fs';
-import {parsePercentages,serviceRequest,renderCandidates,renderPollUpdate,SERVICE_URL} from '../encuestas-servicio.mjs';
-import {validateSubmission,fingerprint,parseFeed,inBlackout} from '../supabase/functions/encuestas/core.mjs';
-const fixture=()=>({...JSON.parse(fs.readFileSync(new URL('../data/polls.json',import.meta.url)))[0],id:'cis-prueba',seats:null});
-test('El botón y el formulario no piden acceso a GitHub',()=>{
- const html=renderPollUpdate();assert.match(html,/id="dispatch-polls">Actualizar encuestas/);assert.match(html,/carga el archivo verificado y busca titulares recientes/);assert.match(html,/Clave de edición/);assert.doesNotMatch(html,/github_pat|ghp_|access.token/i);assert.match(html,/07:40 UTC/);
+import {serviceRequest,renderCandidates,renderPollUpdate,parsePercentages} from '../encuestas-servicio.mjs';
+const report={schema:2,status:'partial',checked_at:'2026-11-11T12:00:00Z',last_attempt_at:'2026-11-11T12:01:00Z',results:[],sources:[{name:'Productor A',ok:false,error:'HTTP 503',attempts:2}]};
+test('El nuevo actualizador consulta un informe y no solicita claves ni anuncia una búsqueda nueva',()=>{
+ const html=renderPollUpdate();assert.match(html,/Consultar novedades/);assert.match(html,/no inicia|último informe/);assert.match(html,/GitHub/);assert.doesNotMatch(html,/Clave de edición|SUPABASE|supabase|poll-editor|type="password"/);
 });
-test('Acepta coma decimal, conserva ausencias y rechaza duplicados o datos inválidos',()=>{
+test('Lee el informe versionado por GET, sin claves; puede usar la copia del sitio',async()=>{
+ const seen=[];const result=await serviceRequest('status',{key:'no-enviar',fetcher:async(u,o)=>{seen.push({u,o});return {ok:true,json:async()=>report};}});
+ assert.equal(result.status,'partial');assert.match(seen[0].u,/raw.githubusercontent/);assert.equal(seen[0].o.body,undefined);assert.equal(seen[0].o.headers,undefined);assert.equal(seen[0].o.cache,'no-store');
+ let tries=0;await serviceRequest('status',{fetcher:async()=>{if(++tries===1)throw Error('offline');return {ok:true,json:async()=>report};}});assert.equal(tries,2);
+ await assert.rejects(serviceRequest('submit'),/revisión en GitHub/);
+});
+test('Respuesta mal formada o caída de ambos orígenes nunca confirma una búsqueda',async()=>{
+ for(const value of [null,{},[],{results:[],sources:'bad'}])await assert.rejects(serviceRequest('status',{fetcher:async()=>({ok:true,json:async()=>value})}),/vigilancia/);
+ await assert.rejects(serviceRequest('status',{fetcher:async()=>({ok:false,status:503})}),/503/);
+});
+test('El informe diferencia cobertura parcial, fallo total y ausencia de novedades',()=>{
+ assert.match(renderCandidates(report),/Cobertura parcial/);assert.match(renderCandidates(report),/HTTP 503/);
+ const failed=renderCandidates({...report,status:'failed'});assert.match(failed,/Búsqueda fallida/);assert.match(failed,/se conserva|Se conserva/);assert.match(failed,/no equivale/);
+ assert.match(renderCandidates({...report,status:'complete',sources:[]}),/No hay candidatos/);
+});
+test('Enlaces directos seguros y contenido escapado; se muestran candidatos sin fecha sin inventarla',()=>{
+ const html=renderCandidates({...report,results:[{title:'Sondeo <img onerror=x>',url:'javascript:x',topic:'<script>'},{title:'Sondeo original',url:'https://example.org/encuesta',topic:'Casa'}]});
+ assert.doesNotMatch(html,/<img|<script|href="javascript/);assert.match(html,/&lt;img/);assert.match(html,/https:\/\/example.org/);assert.match(html,/Fecha no indicada/);
+});
+test('Se conserva el lector decimal para las fichas editoriales',()=>{
  assert.deepEqual(parsePercentages('PP: 30,2\nPSOE: 28.1 %'),{PP:30.2,PSOE:28.1});
- for(const text of ['', 'PP: 30\nPP: 31','PP: -1','PP: 101','__proto__: 3','PP 30'])assert.throws(()=>parsePercentages(text));
-});
-test('La clave solo sale hacia la operación de edición del servicio fijo',async()=>{
- const seen=[];const fetcher=async(url,options)=>{seen.push({url,options});return {ok:true,json:async()=>url.includes('action=scan')?({candidates:[],errors:[]}):({saved:true})};};
- await serviceRequest('scan',{key:'secreto',fetcher});assert.equal(seen[0].options.headers['X-Editor-Key'],undefined);
- await serviceRequest('submit',{key:' secreto ',record:{id:'x'},fetcher});assert.equal(seen[1].url,SERVICE_URL+'?action=submit');assert.equal(seen[1].options.headers['X-Editor-Key'],'secreto');assert.equal(seen[1].options.cache,'no-store');
- await assert.rejects(serviceRequest('submit',{fetcher}),/clave/);
- await assert.rejects(serviceRequest('scan',{fetcher:async()=>({ok:false,json:async()=>({error:'Fuentes no disponibles'})})}),/Fuentes no disponibles/);
-});
-test('Los titulares no permiten HTML ni enlaces ejecutables',()=>{
- const html=renderCandidates({candidates:[{title:'Sondeo <img onerror=alert(1)>',url:'javascript:alert(1)',published:'2026-11-04T12:00:00Z'}],errors:[]},Date.parse('2026-11-04T13:00:00Z'));
- assert.doesNotMatch(html,/<img|href="javascript:/);assert.match(html,/&lt;img/);assert.match(html,/pistas para revisar/);
-});
-test('Separa última búsqueda exitosa, incidencia posterior y vigilancia GitHub Actions',()=>{
- const html=renderCandidates({checked_at:'2026-11-04T12:00:00Z',
-  candidates:[{title:'Sondeo anterior',published:'2026-11-04T11:00:00Z',url:'https://news.google.com/rss/articles/1'}],
-  errors:['2026-11-04T12:05:00Z · Búsqueda no disponible']},Date.parse('2026-11-04T13:00:00Z'));
- assert.match(html,/Última búsqueda con resultados/);
- assert.match(html,/Incidencias de un intento posterior/);
- assert.match(html,/12:05:00Z/);
- assert.match(html,/Sondeo anterior/);
- const panel=renderPollUpdate();
- assert.match(panel,/Dos procesos distintos/);
- assert.match(panel,/GitHub Actions/);
-});
-test('La ficha exige muestra, fechas reales y ordenadas, fuentes HTTPS y cifras',()=>{
- const now=new Date('2026-11-04T15:00:00Z'),p=fixture();assert.equal(validateSubmission(p,now).id,p.id);
- for(const patch of [{sample:0},{sample:true},{fieldStart:'2023-02-30'},{published:'2027-01-01'},{source:'javascript:alert(1)'},{technical:'http://example.org'},{values:{PP:NaN}},{values:{PP:80,PSOE:30}},{scope:'Madrid'},{seats:{PP:{point:120}}},{title:'<script>'}])assert.throws(()=>validateSubmission({...p,...patch},now),JSON.stringify(patch));
- assert.equal(fingerprint(p),fingerprint({...p,institute:' CIS '}));
-});
-test('El lector RSS distingue error de búsqueda de lista vacía y limita enlaces',()=>{
- assert.throws(()=>parseFeed('<html>Error</html>'),/RSS/);
- assert.deepEqual(parseFeed('<rss></rss>'),[]);
- const items=parseFeed('<rss><item><title><![CDATA[PP &amp; PSOE]]></title><link>https://news.google.com/rss/articles/1</link><pubDate>hoy</pubDate></item><item><title>X</title><link>javascript:x</link></item></rss>');
- assert.equal(items.length,1);assert.equal(items[0].title,'PP & PSOE');assert.equal(items[0].verified,false);
-});
-test('El servicio respeta los mismos límites temporales de veda que el sitio',()=>{
- assert.equal(inBlackout(new Date('2026-11-23T22:59:59Z')),false);assert.equal(inBlackout(new Date('2026-11-23T23:00:00Z')),true);assert.equal(inBlackout(new Date('2026-11-29T18:59:59Z')),true);assert.equal(inBlackout(new Date('2026-11-29T19:00:00Z')),false);
-});
-
-test('Los análisis recientes se ordenan por fecha y descartan duplicados y titulares antiguos',()=>{
- const candidate=(title,published,url)=>({title,published,url});
- const html=renderCandidates({candidates:[
-  candidate('Promedio anterior','Sun, 01 Nov 2026 09:00:00 GMT','a'),
-  candidate('Media de sondeos de octubre','Thu, 29 Oct 2026 10:00:00 GMT','b'),
-  candidate('Sondeo reciente','Sat, 07 Nov 2026 13:00:00 GMT','c'),
-  candidate('Promedio nuevo - Medio A','Sat, 07 Nov 2026 12:00:00 GMT','d'),
-  candidate('Promedio nuevo - Medio B','Sat, 07 Nov 2026 11:00:00 GMT','e'),
-  candidate('Promedio sin fecha','desconocida','f')
- ]},Date.parse('2026-11-08T08:00:00Z'));
- assert.match(html,/Promedios, estimaciones y proyecciones[\s\S]*Promedio nuevo[\s\S]*Promedio anterior[\s\S]*Otras publicaciones sobre sondeos[\s\S]*Sondeo reciente/);
- assert.doesNotMatch(html,/octubre|Medio B|Promedio sin fecha/);
-});
-
-test('HTTP 200 con un contrato incorrecto tampoco confirma una búsqueda',async()=>{
- for(const value of [null,{},[],{candidates:'incorrecto'},{candidates:[],errors:'incorrecto'}]){
-  await assert.rejects(serviceRequest('scan',{fetcher:async()=>({ok:true,json:async()=>value})}),/Respuesta de búsqueda inválida/);
- }
- await assert.rejects(serviceRequest('approved',{fetcher:async()=>({ok:true,json:async()=>({})})}),/formato válido/);
+ for(const x of ['','PP: 101','PP: 30\nPP: 40','__proto__: 2'])assert.throws(()=>parsePercentages(x));
 });

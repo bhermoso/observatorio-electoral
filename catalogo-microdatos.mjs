@@ -4,7 +4,7 @@
  * enlaces originales, nivel de verificación y advertencias de cobertura.
  */
 const SOURCE='data/microdatos/catalogo-publico.json';
-const STORAGE_STATUS='https://gjzihgfzxorpvevrrfkh.supabase.co/functions/v1/almacen-microdatos?action=status';
+const STORAGE_STATUS='data/microdatos/custodia.json';
 const h=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const statuses={
  original_auditado:'Examinados y analizados; sin original almacenado',

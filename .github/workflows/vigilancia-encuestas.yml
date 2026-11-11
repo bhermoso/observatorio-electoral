@@ -1,11 +1,10 @@
-name: Vigilancia documental de encuestas
+name: Vigilancia directa de fuentes y fichas verificadas
 on:
   schedule:
-    - cron: '40 7 * * *'
+    - cron: '40 1,7,13,19 * * *'
   workflow_dispatch:
 permissions:
   contents: write
-  issues: write
   actions: write
 concurrency:
   group: vigilancia-encuestas-main
@@ -13,108 +12,60 @@ concurrency:
 jobs:
   discover:
     if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Descubrir noticias y fuentes candidatas
-        run: python scripts/vigilar_encuestas.py monitor-output
-      - name: Actualizar la bandeja del Observatorio
-        id: refresh_service
-        continue-on-error: true
-        run: python scripts/actualizar_servicio.py --report monitor-output
+      - name: Consultar directamente medios y productores
+        run: |
+          python scripts/vigilar_encuestas.py monitor-output
+          python scripts/vigilar_microdatos.py
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Incorporar fichas verificadas, sin duplicados
+      - name: Incorporar únicamente fichas contrastadas y comprobar
         id: incorporate
         run: |
-          # Fichas verificadas en el Observatorio y en data/ingesta/validadas.json.
-          # Una ficha inválida se rechaza con su motivo y no bloquea a las demás.
-          python scripts/incorporar_encuestas.py --service --report monitor-output
-          python -m unittest discover -s tests -p 'test_incorporar_encuestas.py' -v
+          python scripts/incorporar_encuestas.py --report monitor-output
+          python -m unittest discover -s tests -p 'test_*.py' -v
           node scripts/export-csv.mjs
           npm test
-      - name: Publicar datos incorporados (si hay cambios)
+      - name: Distinguir incorporación de una simple búsqueda
         id: publish
         run: |
-          # Solo un cambio en polls.json es una incorporación. Los CSV son derivados:
-          # regenerarlos no significa que haya encuestas nuevas ni justifica un recálculo.
           if git diff --quiet -- data/polls.json; then
             echo 'updated=false' >> "$GITHUB_OUTPUT"
           else
             echo 'updated=true' >> "$GITHUB_OUTPUT"
           fi
-      - name: Registrar el estado de la ejecución
-        if: always()
+      - name: Registrar y guardar el informe versionado
         run: |
           python scripts/estado_actualizacion.py monitor-output \
             --run-url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
             --recalculo-lanzado false
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/ingesta/estado.json
-          if [ "${{ steps.incorporate.outcome }}" = 'success' ] && [ "${{ steps.publish.outputs.updated }}" = 'true' ]; then
-            git add data/polls.json data/polls.csv data/poll-results.csv
-            git commit -m "Datos: incorporar encuestas verificadas y registrar estado de la vigilancia"
-          else
-            if [ "${{ steps.incorporate.outcome }}" = 'success' ]; then
-              git add data/polls.csv data/poll-results.csv
-            fi
-            git diff --cached --quiet || git commit -m "Vigilancia: registrar estado (sin encuestas nuevas; CSV regenerados si estaban desfasados)"
-          fi
-          # Conservar pushes ajenos; si la rebase entra en conflicto, fallar sin forzar.
+          git add data/vigilancia data/ingesta/estado.json data/polls.json data/polls.csv data/poll-results.csv
+          git diff --cached --quiet || git commit -m "Vigilancia: fuentes directas y fichas verificadas"
           git pull --rebase origin main
           git push origin HEAD:main
-      # GITHUB_TOKEN pushes do not trigger push workflows. Explicitly request Pages
-      # only after validated records have been pushed successfully.
-      - name: Publicar y recalcular las nuevas fichas
+      - name: Recalcular y publicar solo tras incorporar encuestas
         if: success() && steps.publish.outputs.updated == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run pages.yml --ref main
-      # Señalar la búsqueda degradada después de tramitar las fichas aprobadas.
-      # El error permanece visible y no convierte un fallo en «sin novedades».
-      - name: Señalar fallo de la búsqueda del servicio
-        if: always() && steps.refresh_service.outcome == 'failure'
-        run: |
-          echo 'La búsqueda del servicio falló; consultar servicio.json. La incorporación independiente se ha intentado.'
-          exit 1
-      - name: Crear o actualizar cola de revisión en Issues
-        if: always()
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          p=Path("monitor-output/report.md")
-          if not p.exists():
-              p.write_text("# Vigilancia de encuestas y modelos\n\nLa búsqueda no generó informe en esta ejecución.\n",encoding="utf-8")
-          inc=Path("monitor-output/actualizacion.json")
-          resumen="\n\n## Incorporación\n\n"
-          if inc.exists():
-              r=json.loads(inc.read_text(encoding="utf-8"))
-              resumen+=f"Registros antes: {r.get('before')} · después: {r.get('after')}\n\nIncorporadas: {', '.join(r.get('added') or []) or 'ninguna'}\n\nRechazadas: {'; '.join(x['id']+': '+x['motivo'] for x in r.get('rejected') or []) or 'ninguna'}\n"
-          else:
-              resumen+="El paso de incorporación falló antes de generar informe.\n"
-          note=("\n\n**Control editorial obligatorio para los candidatos de esta lista:** son titulares detectados por RSS, sin cifras extraídas. "
-                "Para incorporarlos hay que corroborar fuente original, fechas de campo y publicación, muestra, variable, categorías y escenario, "
-                "y añadir la ficha a data/ingesta/validadas.json. Solo esas fichas se incorporan automáticamente y disparan el recálculo del Motor 29N.")
-          p.write_text(p.read_text(encoding="utf-8")+resumen+note+"\n",encoding="utf-8")
-          PY
-          TITLE="[Vigilancia] Encuestas y análisis pendientes de revisión"
-          EXISTING=$(gh issue list --state open --search "in:title [Vigilancia] Encuestas y análisis pendientes de revisión" --json number --jq '.[0].number // empty')
-          if [ -n "$EXISTING" ]; then
-            gh issue edit "$EXISTING" --body-file monitor-output/report.md
-          else
-            gh issue create --title "$TITLE" --body-file monitor-output/report.md
-          fi
-
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: vigilancia-documental
           path: monitor-output/
+      - name: Señalar fallo total sin ocultar las fichas incorporadas
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('data/vigilancia/candidatos.json'))
+          if d['status']=='failed':raise SystemExit('Todas las fuentes fallaron; se conserva la búsqueda anterior.')
+          PY

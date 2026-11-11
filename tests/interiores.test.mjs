@@ -22,11 +22,11 @@ test('Diferencias del laboratorio conservan su signo y no cambian los datos',()=
  assert.match(html,/simétrica ±3/);assert.match(html,/>\+3</);assert.match(html,/>-3</);
 });
 test('Búsqueda parcial no se presenta como un intento posterior al éxito',()=>{
- assert.match(renderCandidates({partial:true,errors:['HTTP 502'],candidates:[]}),/Búsqueda parcial/);
+ assert.match(renderCandidates({status:'partial',sources:[],results:[]}),/Cobertura parcial/);
 });
 test('La vigilancia solicita Pages tras el push y solo con fichas nuevas validadas',()=>{
  const yaml=fs.readFileSync(new URL('../.github/workflows/vigilancia-encuestas.yml',import.meta.url),'utf8');
  assert.ok(yaml.indexOf('git push origin HEAD:main')<yaml.indexOf('gh workflow run pages.yml --ref main'));
  assert.match(yaml,/if: success\(\) && steps.publish.outputs.updated == 'true'/);
- assert.match(yaml,/steps.incorporate.outcome/);assert.match(yaml,/actions: write/);assert.match(yaml,/github.ref == 'refs\/heads\/main'/);
+ assert.match(yaml,/python scripts.vigilar_encuestas.py/);assert.doesNotMatch(yaml,/actualizar_servicio|--service|supabase/);assert.match(yaml,/actions: write/);assert.match(yaml,/github.ref == 'refs\/heads\/main'/);
 });

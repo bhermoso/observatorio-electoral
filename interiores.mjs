@@ -16,9 +16,39 @@ const guides={
  laboratorio:['Experimento · fuera de las cuatro capas','¿Cómo cambia el reparto si cambian los votos?',[
   ['Definir un supuesto','Territorio y multiplicadores por partido','laboratorio-configurar'],['Comparar el reparto','Escaños simulados frente al 23J','laboratorio-resultado'],['Auditar la operación','Cocientes, umbral y empates','laboratorio-auditoria']]]
 };
-export function renderInteriorGuide(route){
- const g=guides[route];if(!g)return '';
- return `<section class="interior-guide" aria-label="Guía de la sección"><span class="eyebrow">${h(g[0])}</span><h2>${h(g[1])}</h2><nav class="interior-paths" aria-label="Niveles de exploración">${g[2].map(([label,desc,target],i)=>`<a href="${target.endsWith('.html')?target:'#'+target}"><span class="interior-step">0${i+1}</span><strong>${h(label)}</strong><span>${h(desc)}</span></a>`).join('')}</nav><details class="layer-key"><summary>Cómo distinguir las cuatro capas y los experimentos</summary><div>${Object.values(LAYERS).map(l=>`<p><b>${l.capa} · ${h(l.nombre)}</b><br>${h(l.explica)}</p>`).join('')}<p><b>Experimentos:</b> cocina de microdatos y simuladores. Sus controles no modifican el pronóstico publicado.</p></div></details></section>`;
+const openings={
+ pronostico:['01','El pronóstico','Lo que sabemos. Lo que puede cambiar.','Una estimación se entiende mejor cuando se ve también su incertidumbre. Lee el resultado, compara las alternativas y sigue cada cifra hasta sus fuentes.'],
+ encuestas:['02','Las encuestas','El pulso de las encuestas.','Una publicación no es una tendencia. Compara institutos, fechas y escenarios; después abre la ficha que sostiene cada punto.'],
+ cocina:['03','La cocina electoral','De una respuesta a una estimación.','Datos, operaciones y supuestos: recorre el camino completo y comprueba qué puede reproducirse, qué se infiere y qué permanece sin identificar.'],
+ contexto:['04','Los acontecimientos','Qué cambia alrededor de un suceso.','Cruza el calendario con los trabajos de campo. La proximidad de dos fechas abre una pregunta; por sí sola no demuestra una causa.'],
+ metodologia:['05','El método','Cada cifra tiene un recorrido.','Conoce las operaciones del Motor 29N, sus fuentes y sus límites. Las herramientas permiten comprobar decisiones, no esconderlas detrás de una cifra.'],
+ atlas:['06','El territorio','Un Congreso. Cincuenta y dos repartos.','El voto se convierte en escaños circunscripción a circunscripción. Explora la base oficial de 2023 antes de ensayar qué ocurriría si cambiara.'],
+ laboratorio:['07','El laboratorio','Cambia el supuesto. Observa el reparto.','Un experimento para comprender D’Hondt: modifica el voto, compara con el 23J y examina los cocientes que deciden cada escaño.']
+};
+export function renderInteriorGuide(route,{polls=[],events=[]}={}){
+ const g=guides[route],o=openings[route];if(!g||!o)return '';
+ const count=new Set(polls.map(p=>p.institute)).size;
+ const stats=route==='encuestas'?[[polls.length,'estudios en el archivo'],[count,'institutos documentados'],['Originales','fichas y fuentes accesibles']]:
+  route==='cocina'?[[6,'capítulos para investigar'],['Datos / cálculo / hipótesis','tres naturalezas distintas'],['Fuera del motor','experimentos separados']]:
+  route==='contexto'?[[events.length,'acontecimientos documentados'],['Campo','antes, durante y después'],['Cautela','asociación no implica causalidad']]:
+  route==='atlas'||route==='laboratorio'?[[52,'circunscripciones'],[350,'escaños en la base oficial'],['23J · 2023','referencia territorial']]:
+  [['4 capas','procedencia diferenciada'],['Motor 29N','estimación de referencia'],['Auditoría abierta','fuentes, método y límites']];
+ return `<section class="editorial-opening interior-guide" aria-label="Guía de la sección"><div class="editorial-kicker"><span>Cuaderno ${o[0]}</span><span>${h(o[1])}</span><a href="#dashboard">Observatorio Electoral Español ↗</a></div><div class="editorial-opening-grid"><div><span class="eyebrow">${h(g[0])}</span><h1>${h(o[2])}</h1><p class="editorial-deck">${h(o[3])}</p></div><aside class="editorial-margin" aria-label="Claves para esta lectura">${stats.map(([value,label])=>`<p><strong>${h(value)}</strong><span>${h(label)}</span></p>`).join('')}</aside></div><nav class="interior-paths editorial-contents" aria-label="Niveles de exploración">${g[2].map(([label,desc,target],i)=>`<a href="${target.endsWith('.html')?target:'#'+target}"><span class="interior-step">0${i+1}</span><strong>${h(label)}</strong><span>${h(desc)}</span></a>`).join('')}</nav><details class="layer-key"><summary>Clave de lectura: cuatro capas y experimentos separados</summary><div>${Object.values(LAYERS).map(l=>`<p><b>${l.capa} · ${h(l.nombre)}</b><br>${h(l.explica)}</p>`).join('')}<p><b>Experimentos:</b> cocina de microdatos y simuladores. Sus controles no modifican el pronóstico publicado.</p></div></details></section>`;
+}
+/** Preserve explanatory copy in a native disclosure, without duplicating a second hero. */
+export function prepareEditorialContent(route,markup){
+ const template=document.createElement('template');template.innerHTML=markup;
+ const hero=template.content.querySelector('.hero');
+ if(hero){const details=document.createElement('details');details.className='editorial-context';
+  const summary=document.createElement('summary');summary.textContent='Contexto de esta lectura · alcance, fechas y advertencias';
+  details.append(summary);hero.querySelectorAll('h1').forEach(h=>{const title=document.createElement('h2');title.innerHTML=h.innerHTML;h.replaceWith(title);});
+  hero.replaceWith(details);details.append(hero);
+ }
+ return template.innerHTML;
+}
+export function revealEditorialTarget(node){
+ for(let parent=node;parent;parent=parent.parentElement)if(parent.tagName==='DETAILS')parent.open=true;
+ node.scrollIntoView({block:'start'});
 }
 /** Shared zero-centred seat change graphic; raw counts remain in the adjacent table. */
 export function renderSeatChanges(groups,baseline){
