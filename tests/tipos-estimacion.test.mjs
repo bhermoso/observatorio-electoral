@@ -10,7 +10,7 @@ test('la portada distingue cuatro tipos sin atribuir microdatos al motor',()=>{
   assert.ok(page.includes(label),label);
  }
  assert.match(page,/todavía no alimentan el pronóstico operativo/);
- assert.match(page,/promedios externos no son otra entrada/);
+ assert.match(page,/los promedios externos sirven de contraste|promedios externos sirven de contraste|no se vuelven a incorporar como entradas/);
 });
 test('el pronóstico identifica su origen y conserva las secciones de auditoría',()=>{
  const page=renderPronostico();
