@@ -1,0 +1,2275 @@
+{
+  "alcance": "HTML y módulos raíz, más plantilla del informe del Motor 29N; dependencias estáticas literales, no ejecución dinámica",
+  "entradas": [
+    {
+      "archivo": "acontecimiento.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./capas.mjs",
+        "./cocina-escanos.mjs",
+        "./events.mjs"
+      ],
+      "datos_literales": [],
+      "enlaces": [
+        "${h(p.source)}",
+        "${h(prev.source)}",
+        "${h(s.url)}"
+      ],
+      "anclas": [
+        "er-h",
+        "er-sim-controls",
+        "er-sim-out",
+        "event-surveys-title",
+        "event-verdict-title"
+      ]
+    },
+    {
+      "archivo": "actualizar-encuestas.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [
+        "data/estado-publicacion.json",
+        "data/ingesta/estado.json",
+        "data/polls.json"
+      ],
+      "enlaces": [
+        "${REVIEW_URL}",
+        "${safe(e.ejecucion)}",
+        "${url}",
+        "https://github.com/bhermoso/observatorio-electoral/issues?q=is%3Aissue+%5BVigilancia%5D",
+        "https://github.com/settings/personal-access-tokens/new"
+      ],
+      "anclas": [
+        "dispatch-polls",
+        "pipeline-status",
+        "poll-auth",
+        "poll-candidates-list",
+        "poll-candidates-panel",
+        "poll-clear-token",
+        "poll-dispatch-status",
+        "poll-reload-status",
+        "poll-review-status",
+        "poll-token",
+        "poll-update-title",
+        "refresh-candidates",
+        "reload-polls"
+      ]
+    },
+    {
+      "archivo": "algoritmo-escanos.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./cocina-escanos.mjs"
+      ],
+      "datos_literales": [
+        "data/election.json",
+        "data/microdatos/analisis_3582.json",
+        "data/microdatos/validacion_23j.json"
+      ],
+      "enlaces": [
+        "construye-estimacion.html#craft-seats"
+      ],
+      "anclas": [
+        "alg-live-inputs",
+        "alg-live-recipe",
+        "alg-live-result",
+        "alg-live-study"
+      ]
+    },
+    {
+      "archivo": "analysis.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./capas.mjs",
+        "./engine.mjs",
+        "./promedios-comparador.mjs"
+      ],
+      "datos_literales": [
+        "data/modelo/pronostico.json"
+      ],
+      "enlaces": [
+        "#encuestas",
+        "${esc(p.source)}",
+        "metodologia-analisis.html"
+      ],
+      "anclas": [
+        "analysis-compare",
+        "analysis-date",
+        "analysis-days",
+        "analysis-half",
+        "analysis-output",
+        "analysis-studies",
+        "encuestas-promedios",
+        "export-analysis"
+      ]
+    },
+    {
+      "archivo": "app.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./analysis.mjs",
+        "./auditoria-microdatos.mjs",
+        "./buscador-microdatos.mjs",
+        "./casos-cocina.mjs",
+        "./catalogo-microdatos.mjs",
+        "./cocina.mjs",
+        "./contraste-capas.mjs",
+        "./encuestas-servicio.mjs",
+        "./engine.mjs",
+        "./events.mjs",
+        "./home-impact.mjs",
+        "./interiores.mjs",
+        "./map.mjs",
+        "./polls.mjs",
+        "./portada-hub.mjs",
+        "./pronostico-orden.mjs",
+        "./pronostico-vista.mjs",
+        "./schema.mjs"
+      ],
+      "datos_literales": [
+        "data/cartography.json",
+        "data/districts.csv",
+        "data/election.json",
+        "data/events.json",
+        "data/modelo/pronostico.json",
+        "data/polls.json",
+        "data/references.json",
+        "data/results.csv",
+        "data/source-hashes.json"
+      ],
+      "enlaces": [
+        "#analisis",
+        "#atlas",
+        "#cocina",
+        "#contexto",
+        "#dashboard",
+        "#laboratorio",
+        "#pronostico",
+        "${data.seatSource}",
+        "${data.source}",
+        "${p.catalog}",
+        "${p.microdata}",
+        "${p.technical}",
+        "como-estimamos.html",
+        "construye-estimacion.html",
+        "data/districts.csv",
+        "data/election.json",
+        "data/results.csv",
+        "data/source-hashes.json",
+        "diagnostico-cis.html",
+        "docs/data-dictionary.md",
+        "docs/events.md",
+        "docs/maintenance.md",
+        "docs/methodology.md",
+        "docs/poll-archive.md",
+        "flujograma.html",
+        "https://github.com/bhermoso/observatorio-electoral",
+        "https://github.com/bhermoso/observatorio-electoral/issues",
+        "https://www.boe.es/buscar/act.php?id=BOE-A-1985-11672#a163",
+        "metodo-evidencia.html",
+        "pronostico.html",
+        "sala-mandos.html"
+      ],
+      "anclas": [
+        "atlas-count",
+        "atlas-detalle",
+        "atlas-explorar",
+        "atlas-grid",
+        "atlas-map",
+        "atlas-order",
+        "atlas-search",
+        "blank-weight",
+        "calculate",
+        "district-detail",
+        "encuestas-actualizar",
+        "encuestas-archivo",
+        "encuestas-todas",
+        "encuestas-todas-tabla",
+        "export-lab",
+        "lab-error",
+        "lab-output",
+        "lab-scope",
+        "laboratorio-auditoria",
+        "laboratorio-configurar",
+        "laboratorio-resultado",
+        "metodologia-fuentes",
+        "poll-archive-content",
+        "reset-lab",
+        "seed",
+        "threshold",
+        "trace",
+        "trace-district",
+        "trace-scope-note"
+      ]
+    },
+    {
+      "archivo": "auditoria-microdatos.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [
+        "data/microdatos/estado-descargas.json"
+      ],
+      "enlaces": [],
+      "anclas": [
+        "md-audit",
+        "md-audit-result",
+        "md-audit-title"
+      ]
+    },
+    {
+      "archivo": "buscador-microdatos.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [],
+      "enlaces": [
+        "#archivo-microdatos"
+      ],
+      "anclas": [
+        "micro-scan",
+        "micro-scan-feedback",
+        "micro-scan-results",
+        "micro-search-title"
+      ]
+    },
+    {
+      "archivo": "capas.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./analysis.mjs"
+      ],
+      "datos_literales": [],
+      "enlaces": [],
+      "anclas": []
+    },
+    {
+      "archivo": "caso-escanos.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./contraste-40db.mjs",
+        "./engine.mjs"
+      ],
+      "datos_literales": [
+        "data/election.json",
+        "data/microdatos/40db-auditoria-2026.json"
+      ],
+      "enlaces": [
+        "#laboratorio",
+        "${h(informe.fuente)}",
+        "${h(poll.source)}"
+      ],
+      "anclas": []
+    },
+    {
+      "archivo": "casos-cocina.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./capas.mjs",
+        "./caso-escanos.mjs",
+        "./cocina-escanos.mjs",
+        "./cocina-secuencial.mjs"
+      ],
+      "datos_literales": [
+        "data/election.json",
+        "data/microdatos/cubo_decisiones_cis.json"
+      ],
+      "enlaces": [
+        "#laboratorio",
+        "construye-estimacion.html",
+        "metodo-evidencia.html",
+        "tutorial-estimacion.html"
+      ],
+      "anclas": [
+        "caso-contenido",
+        "caso-heading",
+        "cocina-caso",
+        "cocina-experimento-cis",
+        "exp-heading",
+        "impact-cis",
+        "impact-recipe",
+        "impact-recipe-output"
+      ]
+    },
+    {
+      "archivo": "catalogo-microdatos.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [
+        "data/microdatos/catalogo-publico.json",
+        "data/microdatos/estado-descargas.json"
+      ],
+      "enlaces": [
+        "${SOURCE}",
+        "${h(f.portal)}",
+        "${h(s.archivo)}",
+        "${h(s.microdatos.resultados_agregados)}",
+        "${h(s.pagina)}"
+      ],
+      "anclas": [
+        "archivo-md-counter",
+        "archivo-md-datos",
+        "archivo-md-more",
+        "archivo-md-progreso",
+        "archivo-md-query",
+        "archivo-md-scope",
+        "archivo-md-source",
+        "archivo-md-status",
+        "archivo-md-table",
+        "archivo-md-title",
+        "archivo-microdatos"
+      ]
+    },
+    {
+      "archivo": "cocina-escanos-ui.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./cocina-escanos.mjs"
+      ],
+      "datos_literales": [
+        "data/election.json",
+        "data/microdatos/agregados_originales_cis.json",
+        "data/microdatos/analisis_3582.json",
+        "data/microdatos/validacion_23j.json"
+      ],
+      "enlaces": [],
+      "anclas": []
+    },
+    {
+      "archivo": "cocina-escanos.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./engine.mjs"
+      ],
+      "datos_literales": [],
+      "enlaces": [],
+      "anclas": []
+    },
+    {
+      "archivo": "cocina-leccion.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./orden.mjs"
+      ],
+      "datos_literales": [
+        "data/microdatos/cocina_cis_3582.json",
+        "data/microdatos/validacion_cocina_cis.json",
+        "data/modelo/pronostico.json"
+      ],
+      "enlaces": [
+        "#cocina-propia",
+        "#pronostico-cocina"
+      ],
+      "anclas": [
+        "cocina-observatorio",
+        "lc-cuerpo",
+        "lc-h"
+      ]
+    },
+    {
+      "archivo": "cocina-propia.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [
+        "data/microdatos/cocina_cis_3582.json",
+        "data/microdatos/validacion_cocina_cis.json"
+      ],
+      "enlaces": [],
+      "anclas": [
+        "cocina-propia",
+        "cp-h",
+        "cp-pasos",
+        "cp-validacion"
+      ]
+    },
+    {
+      "archivo": "cocina-resultados.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [
+        "data/microdatos/analisis_3582.json",
+        "data/microdatos/auditoria_cocina_23j.json"
+      ],
+      "enlaces": [
+        "${source}",
+        "data/microdatos/analisis_3582.json",
+        "data/microdatos/auditoria_cocina_23j.json"
+      ],
+      "anclas": [
+        "cocina-resultados",
+        "kitchen-results-data",
+        "kitchen-results-title"
+      ]
+    },
+    {
+      "archivo": "cocina-secuencial-ui.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./cocina-escanos.mjs",
+        "./cocina-secuencial.mjs"
+      ],
+      "datos_literales": [
+        "data/election.json",
+        "data/microdatos/cubo_decisiones_cis.json"
+      ],
+      "enlaces": [],
+      "anclas": []
+    },
+    {
+      "archivo": "cocina-secuencial.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [],
+      "enlaces": [],
+      "anclas": []
+    },
+    {
+      "archivo": "cocina.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./auditoria-microdatos.mjs",
+        "./buscador-microdatos.mjs",
+        "./casos-cocina.mjs",
+        "./catalogo-microdatos.mjs",
+        "./cocina-leccion.mjs",
+        "./cocina-propia.mjs",
+        "./cocina-resultados.mjs",
+        "./contraste-40db.mjs",
+        "./evaluacion-2019.mjs",
+        "./evidencia-40db.mjs",
+        "./homologacion-2019.mjs",
+        "./microdatos-40db.mjs",
+        "./microdatos-sociometrica.mjs",
+        "./validacion-40db-2023.mjs"
+      ],
+      "datos_literales": [
+        "data/cocinas-evidencia.json",
+        "data/microdatos/analisis_3582.json",
+        "data/microdatos/auditoria_cocina_23j.json",
+        "data/microdatos/contribuciones_cocina_23j.json",
+        "data/microdatos/validacion_23j.json"
+      ],
+      "enlaces": [
+        "#cocina-cap1",
+        "#cocina-cap2",
+        "#cocina-cap3",
+        "#cocina-cap4",
+        "#cocina-cap5",
+        "#cocina-cap6",
+        "construye-estimacion.html",
+        "data/microdatos/analisis_3582.json",
+        "data/microdatos/auditoria_cocina_23j.json",
+        "data/microdatos/contribuciones_cocina_23j.json",
+        "data/microdatos/validacion_23j.json",
+        "flujograma.html",
+        "guia-cocina.html",
+        "https://github.com/bhermoso/observatorio-electoral/blob/main/scripts/analizar_contribuciones.py",
+        "https://github.com/bhermoso/observatorio-electoral/blob/main/scripts/auditar_cocina_23j.py",
+        "https://www.cis.es/es/estudios/barometro-de-octubre-2026",
+        "sala-mandos.html#microdatos"
+      ],
+      "anclas": [
+        "${id}",
+        "${id}-t",
+        "caso-heading",
+        "kitchen-contribution-data",
+        "kitchen-contribution-method",
+        "kitchen-contribution-study",
+        "kitchen-evidence",
+        "kitchen-evidence-house",
+        "kitchen-historic-results",
+        "kitchen-historic-study",
+        "kitchen-history",
+        "kitchen-party",
+        "kitchen-study",
+        "kitchen-transfers",
+        "kitchen-validation",
+        "lc-h"
+      ]
+    },
+    {
+      "archivo": "como-estimamos.html",
+      "tipo": "pagina",
+      "importa": [],
+      "datos_literales": [
+        "data/microdatos/auditoria_cocina_23j.json",
+        "data/microdatos/contribuciones_cocina_23j.json"
+      ],
+      "enlaces": [
+        "#alianzas",
+        "#flujo",
+        "#fuentes",
+        "#incertidumbre",
+        "#modelo",
+        "#pendiente",
+        "#territorio",
+        "./#analisis",
+        "./#cocina",
+        "./#dashboard",
+        "construye-estimacion.html",
+        "data/microdatos/auditoria_cocina_23j.json",
+        "data/microdatos/contribuciones_cocina_23j.json",
+        "flujograma.html",
+        "glosario.mjs",
+        "https://github.com/bhermoso/observatorio-electoral/blob/main/modelo/README.md",
+        "https://github.com/bhermoso/observatorio-electoral/blob/main/modelo/motor/ablaciones.py",
+        "https://github.com/bhermoso/observatorio-electoral/blob/main/modelo/motor/dhondt.py",
+        "https://github.com/bhermoso/observatorio-electoral/blob/main/modelo/motor/escanos.py",
+        "https://github.com/bhermoso/observatorio-electoral/blob/main/modelo/motor/fuentes.py",
+        "https://github.com/bhermoso/observatorio-electoral/blob/main/modelo/motor/pronostico.py",
+        "https://github.com/bhermoso/observatorio-electoral/blob/main/modelo/motor/tendencia.py",
+        "metodologia-analisis.html",
+        "pronostico.html",
+        "styles.css"
+      ],
+      "anclas": [
+        "ablaciones-modelo",
+        "alianzas",
+        "flujo",
+        "fuentes",
+        "incertidumbre",
+        "ingredientes-modelo",
+        "modelo",
+        "pendiente",
+        "sensibilidad-recetas",
+        "territorio",
+        "validacion-cocina"
+      ]
+    },
+    {
+      "archivo": "comparador-cocina.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./cocina-escanos.mjs",
+        "./cocina-secuencial.mjs"
+      ],
+      "datos_literales": [
+        "data/election.json",
+        "data/microdatos/cubo_decisiones_cis.json",
+        "data/microdatos/validacion_23j.json"
+      ],
+      "enlaces": [],
+      "anclas": []
+    },
+    {
+      "archivo": "construye-estimacion.html",
+      "tipo": "pagina",
+      "importa": [],
+      "datos_literales": [
+        "data/election.json",
+        "data/microdatos/analisis_3582.json",
+        "data/microdatos/cubo_decisiones_cis.json",
+        "data/microdatos/validacion_23j.json"
+      ],
+      "enlaces": [
+        "./#cocina",
+        "./#dashboard",
+        "cocina-escanos-ui.mjs",
+        "cocina-secuencial-ui.mjs",
+        "como-estimamos.html",
+        "comparador-cocina.mjs",
+        "construye-estimacion.mjs",
+        "data/election.json",
+        "data/microdatos/analisis_3582.json",
+        "data/microdatos/cubo_decisiones_cis.json",
+        "data/microdatos/validacion_23j.json",
+        "diagnostico-cis.html",
+        "flujograma.html",
+        "glosario.mjs",
+        "https://github.com/bhermoso/observatorio-electoral/blob/main/cocina-escanos.mjs",
+        "https://github.com/bhermoso/observatorio-electoral/blob/main/cocina-secuencial.mjs",
+        "styles.css",
+        "tutorial-estimacion.html"
+      ],
+      "anclas": [
+        "cocina-secuencia",
+        "comparador-recetas",
+        "compare-a",
+        "compare-b",
+        "compare-export",
+        "compare-history",
+        "compare-output",
+        "compare-save",
+        "compare-study",
+        "craft-meta",
+        "craft-party",
+        "craft-seat-download",
+        "craft-seat-error",
+        "craft-seat-inputs",
+        "craft-seat-reset",
+        "craft-seat-result",
+        "craft-seat-source",
+        "craft-seats",
+        "craft-stage",
+        "craft-steps",
+        "craft-study",
+        "raw-reweight",
+        "raw-reweight-alpha",
+        "raw-reweight-output",
+        "raw-reweight-question",
+        "raw-reweight-slider",
+        "seq-alpha",
+        "seq-alpha-value",
+        "seq-decided",
+        "seq-download",
+        "seq-guidance",
+        "seq-inspector",
+        "seq-recall",
+        "seq-reset",
+        "seq-seats",
+        "seq-status",
+        "seq-steps",
+        "seq-study",
+        "seq-sympathy",
+        "seq-weight"
+      ]
+    },
+    {
+      "archivo": "construye-estimacion.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [
+        "data/microdatos/agregados_originales_cis.json",
+        "data/microdatos/analisis_3582.json",
+        "data/microdatos/validacion_23j.json"
+      ],
+      "enlaces": [
+        "data/microdatos/agregados_originales_cis.json"
+      ],
+      "anclas": [
+        "craft-download",
+        "craft-next",
+        "craft-prev",
+        "craft-use-decided"
+      ]
+    },
+    {
+      "archivo": "contraste-40db.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [],
+      "enlaces": [
+        "${OLAS_40DB[0].fuente}",
+        "${OLAS_40DB[1].fuente}",
+        "docs/alta-cocina-40db.md"
+      ],
+      "anclas": [
+        "contraste-40db",
+        "k40-comparison-title"
+      ]
+    },
+    {
+      "archivo": "contraste-capas.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./capas.mjs"
+      ],
+      "datos_literales": [
+        "data/modelo/pronostico.json"
+      ],
+      "enlaces": [
+        "#analisis",
+        "#cocina-observatorio",
+        "#encuestas",
+        "#pronostico",
+        "#pronostico-cocina",
+        "#pronostico-evaluacion",
+        "#pronostico-externos",
+        "como-estimamos.html",
+        "construye-estimacion.html#cocina-secuencia",
+        "flujograma.html"
+      ],
+      "anclas": [
+        "changes-heading",
+        "fuentes-heading",
+        "home-changes",
+        "home-cocina",
+        "m-base",
+        "m-cis",
+        "m-weight",
+        "m-window",
+        "matrix-heading",
+        "matrix-notes",
+        "matrix-sub",
+        "matrix-table",
+        "matrix-toggle",
+        "matrix-view",
+        "panorama-editorial",
+        "pronostico-cambios",
+        "pronostico-capas",
+        "pronostico-procedencia"
+      ]
+    },
+    {
+      "archivo": "dashboard-validacion.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [
+        "data/microdatos/auditoria_cocina_23j.json",
+        "data/modelo/pronostico.json"
+      ],
+      "enlaces": [
+        "#encuestas",
+        "construye-estimacion.html#comparador-recetas",
+        "https://elpais.com/espana/elecciones-generales/2026-10-11/juntos-o-separados-calcula-como-se-moverian-los-escanos-con-distintas-coaliciones.html",
+        "https://elpais.com/espana/elecciones-generales/2026-10-18/que-encuestas-aciertan-mas-compara-los-errores-y-los-sesgos-de-cada-encuestadora.html",
+        "validacion-recetas.html"
+      ],
+      "anclas": [
+        "audit-heading",
+        "audit-houses",
+        "audit-party",
+        "audit-recipes",
+        "audit-retro",
+        "audit-study",
+        "auditoria"
+      ]
+    },
+    {
+      "archivo": "diagnostico-cis.html",
+      "tipo": "pagina",
+      "importa": [],
+      "datos_literales": [
+        "data/microdatos/diagnostico_muestra_cis.json"
+      ],
+      "enlaces": [
+        "./#dashboard",
+        "construye-estimacion.html#cocina-secuencia",
+        "data/microdatos/diagnostico_muestra_cis.json",
+        "diagnostico-cis.mjs",
+        "laboratorio-imputaciones.html",
+        "metodo-evidencia.html",
+        "styles.css",
+        "tutorial-estimacion.html"
+      ],
+      "anclas": [
+        "dx-direct-story",
+        "dx-indecision-turnout",
+        "dx-kpi",
+        "dx-recall",
+        "dx-recall-parties",
+        "dx-recall-story",
+        "dx-responses",
+        "dx-status",
+        "dx-study",
+        "dx-turnout",
+        "dx-uncertainty"
+      ]
+    },
+    {
+      "archivo": "diagnostico-cis.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [
+        "data/microdatos/diagnostico_muestra_cis.json"
+      ],
+      "enlaces": [],
+      "anclas": []
+    },
+    {
+      "archivo": "encuestas-servicio.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./actualizar-encuestas.mjs"
+      ],
+      "datos_literales": [],
+      "enlaces": [
+        "${esc(url)}"
+      ],
+      "anclas": [
+        "dispatch-polls",
+        "pipeline-status",
+        "poll-approved",
+        "poll-candidates-list",
+        "poll-dispatch-status",
+        "poll-editor",
+        "poll-reload-status",
+        "poll-save-status",
+        "poll-update-title",
+        "reload-polls"
+      ]
+    },
+    {
+      "archivo": "encuestas-visual.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [],
+      "enlaces": [],
+      "anclas": []
+    },
+    {
+      "archivo": "engine.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [],
+      "enlaces": [],
+      "anclas": []
+    },
+    {
+      "archivo": "evaluacion-2019.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./validacion-2019-retrospectiva.mjs"
+      ],
+      "datos_literales": [
+        "data/microdatos/diagnostico_2019_original.json"
+      ],
+      "enlaces": [
+        "validacion-recetas.html#vh-2019-retro"
+      ],
+      "anclas": [
+        "evaluacion-2019",
+        "historical-2019-data",
+        "historical-2019-title"
+      ]
+    },
+    {
+      "archivo": "eventos-visual.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [],
+      "enlaces": [
+        "${h(p.anterior.source)}",
+        "${h(p.source)}"
+      ],
+      "anclas": [
+        "event-visual-title"
+      ]
+    },
+    {
+      "archivo": "events.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./acontecimiento.mjs",
+        "./eventos-visual.mjs",
+        "./orden.mjs",
+        "./tendencias.mjs"
+      ],
+      "datos_literales": [
+        "data/election.json",
+        "data/events.json",
+        "data/modelo/pronostico.json"
+      ],
+      "enlaces": [
+        "#laboratorio",
+        "${esc(p.source)}",
+        "${esc(s.url)}",
+        "data/events.json",
+        "docs/events.md"
+      ],
+      "anclas": [
+        "context-event",
+        "context-window",
+        "contexto-explorar",
+        "contexto-metodo",
+        "contexto-resultados",
+        "event-context",
+        "event-party",
+        "event-reading",
+        "export-context"
+      ]
+    },
+    {
+      "archivo": "evidencia-40db.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [],
+      "enlaces": [
+        "${EVIDENCIA_40DB.archivo}",
+        "${EVIDENCIA_40DB.fuente}",
+        "${EVIDENCIA_40DB.metodologia}"
+      ],
+      "anclas": [
+        "evidencia-encuestadoras",
+        "pollster-evidence-title"
+      ]
+    },
+    {
+      "archivo": "flujograma.html",
+      "tipo": "pagina",
+      "importa": [],
+      "datos_literales": [],
+      "enlaces": [
+        "./#cocina",
+        "./#dashboard",
+        "como-estimamos.html",
+        "construye-estimacion.html#craft-seats",
+        "flujograma.mjs?v=20261102fix2",
+        "glosario.mjs",
+        "pronostico.html",
+        "styles.css"
+      ],
+      "anclas": [
+        "alg-detail",
+        "alg-flow",
+        "alg-meta",
+        "alg-party"
+      ]
+    },
+    {
+      "archivo": "flujograma.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [
+        "data/modelo/pronostico.json"
+      ],
+      "enlaces": [
+        "construye-estimacion.html#craft-seats"
+      ],
+      "anclas": [
+        "alg-extra-simulator",
+        "alg-next",
+        "alg-prev"
+      ]
+    },
+    {
+      "archivo": "glosario.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [],
+      "enlaces": [],
+      "anclas": [
+        "glossary-floating"
+      ]
+    },
+    {
+      "archivo": "guia-cocina.html",
+      "tipo": "pagina",
+      "importa": [],
+      "datos_literales": [
+        "data/cocinas-evidencia.json",
+        "data/microdatos/analisis_3582.json",
+        "data/microdatos/validacion_23j.json"
+      ],
+      "enlaces": [
+        "#ejemplo",
+        "#eventos",
+        "#evidencia-encuestadoras",
+        "#fuentes",
+        "#modelos",
+        "#origen",
+        "#receta",
+        "./#analisis",
+        "./#cocina",
+        "./#contexto",
+        "./#dashboard",
+        "data/cocinas-evidencia.json",
+        "data/microdatos/analisis_3582.json",
+        "data/microdatos/validacion_23j.json",
+        "docs/analysis.md",
+        "glosario.mjs",
+        "https://github.com/bhermoso/observatorio-electoral/blob/main/analysis.mjs",
+        "https://github.com/bhermoso/observatorio-electoral/blob/main/modelo/motor/pronostico.py",
+        "https://github.com/bhermoso/observatorio-electoral/blob/main/modelo/motor/tendencia.py",
+        "https://www.cis.es/documents/20117/14396821/3582_Estimacion.pdf",
+        "https://www.cis.es/documents/20117/14396821/FT3582.pdf",
+        "https://www.cis.es/documents/20117/14396821/cues3582.pdf",
+        "https://www.cis.es/es/estudios/barometro-de-octubre-2026",
+        "https://www.cis.es/es/estudios/barometro-de-octubre-2026?showModal=true",
+        "https://www.cis.es/es/estudios/metodologia/muestra-y-ponderacion",
+        "https://www.cis.es/es/estudios/preguntas-frecuentes/informes-tecnicos",
+        "metodologia-analisis.html",
+        "styles.css"
+      ],
+      "anclas": [
+        "ejemplo",
+        "eventos",
+        "evidencia-encuestadoras",
+        "fuentes",
+        "modelos",
+        "origen",
+        "receta"
+      ]
+    },
+    {
+      "archivo": "home-impact.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./capas.mjs",
+        "./portada-hub.mjs",
+        "./portada-panel.mjs",
+        "./portada-series.mjs"
+      ],
+      "datos_literales": [
+        "data/modelo/historial.json",
+        "data/modelo/pronostico.json"
+      ],
+      "enlaces": [
+        "#encuestas",
+        "#pronostico",
+        "#pronostico-capas",
+        "#pronostico-evolucion"
+      ],
+      "anclas": [
+        "home-series",
+        "hub-accesos",
+        "hub-hemi-t",
+        "hub-hemiciclo",
+        "hub-prom-t",
+        "hub-promedio",
+        "hub-recuento",
+        "hub-sec-t",
+        "hub-tarjetas",
+        "hub-ult-t",
+        "impact",
+        "impact-heading",
+        "portada-cuenta",
+        "portada-fechas",
+        "portada-hub",
+        "portada-secciones",
+        "portada-titular",
+        "portada-ultimas",
+        "series-heading"
+      ]
+    },
+    {
+      "archivo": "homologacion-2019.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [
+        "data/microdatos/cotejo_originales_2019.json",
+        "data/microdatos/evidencia_homologacion_2019.json",
+        "data/microdatos/homologacion_2019_pendiente.json",
+        "data/microdatos/transiciones_2019.json"
+      ],
+      "enlaces": [
+        "data/microdatos/evidencia_homologacion_2019.json",
+        "data/microdatos/transiciones_2019.json"
+      ],
+      "anclas": [
+        "historical-codes-data",
+        "historical-codes-title",
+        "pronostico-homologacion"
+      ]
+    },
+    {
+      "archivo": "index.html",
+      "tipo": "pagina",
+      "importa": [],
+      "datos_literales": [],
+      "enlaces": [
+        "#cocina",
+        "#contexto",
+        "#dashboard",
+        "#encuestas",
+        "#main",
+        "#metodologia",
+        "#pronostico",
+        "app.mjs",
+        "data:image/svg+xml,%3Csvg xmlns=",
+        "flujograma.html",
+        "glosario.mjs",
+        "https://github.com/bhermoso/observatorio-electoral",
+        "styles.css"
+      ],
+      "anclas": [
+        "loading",
+        "main",
+        "visor",
+        "visor-contenido",
+        "visor-titulo"
+      ]
+    },
+    {
+      "archivo": "integracion.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [
+        "data/modelo/pronostico.json"
+      ],
+      "enlaces": [
+        "#cocina",
+        "#contexto",
+        "como-estimamos.html",
+        "pronostico.html"
+      ],
+      "anclas": [
+        "integrated-blocks",
+        "integrated-heading",
+        "integrated-meta",
+        "integrated-model"
+      ]
+    },
+    {
+      "archivo": "interiores.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./capas.mjs"
+      ],
+      "datos_literales": [],
+      "enlaces": [
+        "${target.endsWith("
+      ],
+      "anclas": []
+    },
+    {
+      "archivo": "investidura.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [
+        "data/modelo/pronostico.json"
+      ],
+      "enlaces": [
+        "como-estimamos.html#alianzas"
+      ],
+      "anclas": [
+        "invest-data",
+        "invest-heading",
+        "invest-scenario"
+      ]
+    },
+    {
+      "archivo": "laboratorio-imputaciones.html",
+      "tipo": "pagina",
+      "importa": [],
+      "datos_literales": [],
+      "enlaces": [
+        "./#dashboard",
+        "construye-estimacion.html",
+        "diagnostico-cis.html",
+        "flujograma.html",
+        "laboratorio-imputaciones.mjs",
+        "metodo-evidencia.html",
+        "styles.css",
+        "tutorial-estimacion.html"
+      ],
+      "anclas": [
+        "led-export",
+        "led-indecision",
+        "led-limits",
+        "led-nonresponse",
+        "led-overview",
+        "led-results",
+        "led-steps",
+        "led-study",
+        "led-universe"
+      ]
+    },
+    {
+      "archivo": "laboratorio-imputaciones.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./motor-imputacion.mjs"
+      ],
+      "datos_literales": [
+        "data/microdatos/ledger_imputacion_cis.json"
+      ],
+      "enlaces": [],
+      "anclas": []
+    },
+    {
+      "archivo": "map.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [],
+      "enlaces": [
+        "${cartography.terms}"
+      ],
+      "anclas": [
+        "seat-scale"
+      ]
+    },
+    {
+      "archivo": "metodo-evidencia-ui.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./trazabilidad-recetas.mjs"
+      ],
+      "datos_literales": [
+        "data/microdatos/auditoria_cocina_23j.json",
+        "data/microdatos/ledger_imputacion_cis.json"
+      ],
+      "enlaces": [],
+      "anclas": []
+    },
+    {
+      "archivo": "metodo-evidencia.html",
+      "tipo": "pagina",
+      "importa": [],
+      "datos_literales": [
+        "data/microdatos/ledger_imputacion_cis.json"
+      ],
+      "enlaces": [
+        "#contabilidad",
+        "#decisiones",
+        "#evidencia",
+        "./#dashboard",
+        "data/microdatos/ledger_imputacion_cis.json",
+        "diagnostico-cis.html",
+        "https://github.com/bhermoso/observatorio-electoral/blob/main/trazabilidad-recetas.mjs",
+        "https://www.pollingforecast.com/research/our-reading",
+        "https://www.pollingforecast.com/research/raw-or-headline",
+        "https://www.pollingforecast.com/uk/our-method?tab=evidence",
+        "laboratorio-imputaciones.html",
+        "metodo-evidencia-ui.mjs",
+        "styles.css",
+        "validacion-recetas.html"
+      ],
+      "anclas": [
+        "contabilidad",
+        "decisiones",
+        "ev-contributions",
+        "ev-export",
+        "ev-group-info",
+        "ev-indecision",
+        "ev-indicators",
+        "ev-nonresponse",
+        "ev-party",
+        "ev-status",
+        "ev-story",
+        "ev-study",
+        "ev-table",
+        "ev-validation",
+        "evidencia"
+      ]
+    },
+    {
+      "archivo": "metodologia-analisis.html",
+      "tipo": "pagina",
+      "importa": [],
+      "datos_literales": [],
+      "enlaces": [
+        "#auditoria",
+        "#limites",
+        "#promedio",
+        "#receta",
+        "#territorio",
+        "./#analisis",
+        "./#cocina",
+        "./#contexto",
+        "./#dashboard",
+        "docs/analysis.md",
+        "docs/methodology.md",
+        "docs/poll-archive.md",
+        "glosario.mjs",
+        "guia-cocina.html",
+        "https://aapor.org/polling-accuracy/",
+        "https://stat.ethz.ch/R-manual/R-patched/library/stats/html/loglin.html",
+        "styles.css"
+      ],
+      "anclas": [
+        "auditoria",
+        "limites",
+        "promedio",
+        "receta",
+        "territorio"
+      ]
+    },
+    {
+      "archivo": "microdatos-40db.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [
+        "data/microdatos/40db-auditoria-2026.json"
+      ],
+      "enlaces": [
+        "${e(d.microdatos_2023_fuente_potencial)}",
+        "${e(o.zip)}",
+        "data/microdatos/40db-auditoria-2026.json"
+      ],
+      "anclas": [
+        "micro40db-output",
+        "micro40db-receta",
+        "micro40db-title",
+        "microdatos-40db"
+      ]
+    },
+    {
+      "archivo": "microdatos-sociometrica.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [
+        "data/microdatos/sociometrica-2025-agregados.json"
+      ],
+      "enlaces": [
+        "${SRC}",
+        "${esc(s.url_original)}",
+        "docs/archivo-microdatos.md"
+      ],
+      "anclas": [
+        "sm-research-result",
+        "sociometrica-microdatos",
+        "sociometrica-title"
+      ]
+    },
+    {
+      "archivo": "modelo/pagina/plantilla.html",
+      "tipo": "pagina",
+      "importa": [],
+      "datos_literales": [],
+      "enlaces": [
+        "#encuestas",
+        "#evaluacion",
+        "#eventos",
+        "#evolucion",
+        "#limites",
+        "#modelo",
+        "#pronostico",
+        "#provincias",
+        "#recetario",
+        "${esc(d.url)}",
+        "${esc(m.pagina)}",
+        "${esc(o.url)}",
+        "${esc(r.url)}",
+        "${esc(u)}",
+        "${esc(x.fuente||",
+        "https://bhermoso.github.io/observatorio-electoral/",
+        "https://fonts.googleapis.com",
+        "https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap",
+        "https://github.com/bhermoso/observatorio-electoral/tree/main/modelo",
+        "https://github.com/elCanosail/29N",
+        "https://github.com/endikasatu/encuestas_esp"
+      ],
+      "anclas": [
+        "bt-lectura",
+        "c-cas",
+        "c-coc",
+        "c-dh",
+        "c-evo",
+        "c-evo-p",
+        "c-flujo",
+        "c-geo",
+        "c-hist",
+        "c-ses",
+        "c-ten",
+        "cas-lectura",
+        "contraste",
+        "cortes-lectura",
+        "dh-${i}",
+        "dh-expl",
+        "dh-in",
+        "dh-s",
+        "encuestas",
+        "evaluacion",
+        "eventos",
+        "evolucion",
+        "fuentes-seguidas",
+        "geo-expl",
+        "geo-formula",
+        "geo-sens-nota",
+        "hdr-meta",
+        "hdr-sub",
+        "l-evo",
+        "limites",
+        "modelo",
+        "p-ind",
+        "princ-lead",
+        "princ-nota",
+        "pron-lead",
+        "pronostico",
+        "provincias",
+        "recetario",
+        "seg-hist",
+        "seg-inc",
+        "seg-ses",
+        "seg-ten",
+        "sel-cas-p",
+        "sel-coc-p",
+        "sel-geo",
+        "sel-prov",
+        "sel-ses-p",
+        "sel-ten-p",
+        "senales",
+        "sind-intro",
+        "t-bloques",
+        "t-bt",
+        "t-cas",
+        "t-cortes",
+        "t-dh",
+        "t-enc",
+        "t-enc23",
+        "t-err",
+        "t-escenarios",
+        "t-est",
+        "t-evo",
+        "t-geo",
+        "t-geo-sens",
+        "t-inc",
+        "t-micro",
+        "t-otros",
+        "t-pesos",
+        "t-princ",
+        "t-princ-b",
+        "t-pron",
+        "t-prov",
+        "t-receta-propia",
+        "t-recetas",
+        "t-sens",
+        "t-sind",
+        "t-umb",
+        "ul-var",
+        "urda-estado"
+      ]
+    },
+    {
+      "archivo": "motor-imputacion.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [],
+      "enlaces": [],
+      "anclas": []
+    },
+    {
+      "archivo": "orden.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [],
+      "enlaces": [],
+      "anclas": []
+    },
+    {
+      "archivo": "polls.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./encuestas-visual.mjs",
+        "./orden.mjs"
+      ],
+      "datos_literales": [
+        "data/poll-results.csv",
+        "data/polls.csv"
+      ],
+      "enlaces": [
+        "#encuestas",
+        "${esc(p.microdata)}",
+        "${esc(p.source)}",
+        "${esc(p.technical)}",
+        "${esc(r.source)}",
+        "data/poll-results.csv",
+        "data/polls.csv"
+      ],
+      "anclas": [
+        "analisis-externos",
+        "encuestas-visual",
+        "poll-chart",
+        "poll-chart-party",
+        "poll-count",
+        "poll-detail",
+        "poll-from",
+        "poll-institute",
+        "poll-reset",
+        "poll-search",
+        "poll-seats-only",
+        "poll-table",
+        "poll-until",
+        "poll-year"
+      ]
+    },
+    {
+      "archivo": "portada-hub.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./capas.mjs",
+        "./portada-series.mjs"
+      ],
+      "datos_literales": [],
+      "enlaces": [
+        "${h(x.url)}",
+        "${href}"
+      ],
+      "anclas": []
+    },
+    {
+      "archivo": "portada-panel.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./capas.mjs",
+        "./portada-series.mjs"
+      ],
+      "datos_literales": [],
+      "enlaces": [
+        "${h(x.url)}",
+        "${href}"
+      ],
+      "anclas": [
+        "hub-panel-lateral",
+        "panel-titulo"
+      ]
+    },
+    {
+      "archivo": "portada-series.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./capas.mjs"
+      ],
+      "datos_literales": [],
+      "enlaces": [
+        "#encuestas",
+        "#pronostico-evolucion",
+        "#pronostico-fuentes",
+        "${escape(href)}"
+      ],
+      "anclas": [
+        "series-heading"
+      ]
+    },
+    {
+      "archivo": "promedios-comparador.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [],
+      "enlaces": [
+        "${h(poll.source)}"
+      ],
+      "anclas": [
+        "analysis-party"
+      ]
+    },
+    {
+      "archivo": "pronostico-orden.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./capas.mjs",
+        "./portada-series.mjs"
+      ],
+      "datos_literales": [
+        "data/modelo/pronostico.json"
+      ],
+      "enlaces": [
+        "#${id}"
+      ],
+      "anclas": [
+        "${id}-t",
+        "pr-cifras-clave"
+      ]
+    },
+    {
+      "archivo": "pronostico-vista.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./capas.mjs",
+        "./dashboard-validacion.mjs",
+        "./investidura.mjs",
+        "./orden.mjs",
+        "./portada-series.mjs",
+        "./pronostico-orden.mjs",
+        "./recuento-encuestas.mjs",
+        "./trazabilidad.mjs"
+      ],
+      "datos_literales": [
+        "data/modelo/historial.json",
+        "data/modelo/pronostico.json"
+      ],
+      "enlaces": [
+        "#analisis",
+        "#cocina-cap4",
+        "#cocina-cap5",
+        "#cocina-observatorio",
+        "#pronostico-bloques",
+        "#pronostico-cambios",
+        "#pronostico-capas",
+        "#pronostico-cocina",
+        "#pronostico-evaluacion",
+        "#pronostico-evolucion",
+        "#pronostico-externos",
+        "#pronostico-fuentes",
+        "#pronostico-principal",
+        "#pronostico-procedencia",
+        "#pronostico-territorio",
+        "#pronostico-variantes",
+        "${h(e.contraste_url)}",
+        "${h(e.url)}",
+        "${h(g.fuente_2024)}",
+        "${h(r.url)}",
+        "${h(x.url)}",
+        "pronostico.html"
+      ],
+      "anclas": [
+        "fc-blocks",
+        "fc-chain",
+        "fc-counts",
+        "fc-error",
+        "fc-external",
+        "fc-history",
+        "fc-lead",
+        "fc-main",
+        "fc-sources",
+        "fc-territory",
+        "fc-validation-publica",
+        "fc-variants",
+        "pronostico-bloques",
+        "pronostico-cocina",
+        "pronostico-evaluacion",
+        "pronostico-evolucion",
+        "pronostico-externos",
+        "pronostico-fuentes",
+        "pronostico-principal",
+        "pronostico-territorio",
+        "pronostico-variantes"
+      ]
+    },
+    {
+      "archivo": "recuento-encuestas.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [
+        "data/modelo/pronostico.json"
+      ],
+      "enlaces": [
+        "#analisis",
+        "#encuestas",
+        "#pronostico-fuentes",
+        "data/modelo/pronostico.json",
+        "https://github.com/bhermoso/observatorio-electoral/blob/main/modelo/externos/PROCEDENCIA.md"
+      ],
+      "anclas": []
+    },
+    {
+      "archivo": "sala-mandos.html",
+      "tipo": "pagina",
+      "importa": [],
+      "datos_literales": [
+        "data/events.json",
+        "data/microdatos/analisis_3582.json",
+        "data/microdatos/catalogo.json",
+        "data/modelo/historial.json",
+        "data/modelo/pronostico.json",
+        "data/polls.json",
+        "data/references.json"
+      ],
+      "enlaces": [
+        "./#contexto",
+        "./#dashboard",
+        "glosario.mjs",
+        "pronostico.html"
+      ],
+      "anclas": [
+        "automaticMicro",
+        "avgChart",
+        "avgCut",
+        "avgMeta",
+        "avgRows",
+        "cis",
+        "cocinaParty",
+        "cocinaSensitivity",
+        "cocinaTransfers",
+        "contextbar",
+        "days",
+        "eventItems",
+        "eventos",
+        "evoBlocks",
+        "evoMeta",
+        "evoParties",
+        "evoView",
+        "evoWarning",
+        "exportAvg",
+        "exportMicro",
+        "exportSaved",
+        "govtCustomResult",
+        "govtMeta",
+        "govtModel",
+        "govtParties",
+        "govtPresets",
+        "half",
+        "homeApply",
+        "homeAverage",
+        "homeCis",
+        "homeDetail",
+        "homeFrom",
+        "homeKpis",
+        "homePeriod",
+        "homeRecent",
+        "homeTo",
+        "house",
+        "impute",
+        "inicio",
+        "kpis",
+        "matrixHead",
+        "matrixRows",
+        "microFilter",
+        "microInfo",
+        "microResults",
+        "microdatos",
+        "one",
+        "party",
+        "pollCut",
+        "pollRows",
+        "promedios",
+        "quicknav",
+        "recency",
+        "recent",
+        "region",
+        "resumen",
+        "savedCount",
+        "savedMicro",
+        "sectionTitle",
+        "sondeos",
+        "status",
+        "upload",
+        "weights"
+      ]
+    },
+    {
+      "archivo": "schema.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [],
+      "enlaces": [],
+      "anclas": []
+    },
+    {
+      "archivo": "tendencias.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [],
+      "enlaces": [],
+      "anclas": [
+        "series-group"
+      ]
+    },
+    {
+      "archivo": "trazabilidad-recetas.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./motor-imputacion.mjs"
+      ],
+      "datos_literales": [],
+      "enlaces": [],
+      "anclas": []
+    },
+    {
+      "archivo": "trazabilidad.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [
+        "data/modelo/pronostico.json"
+      ],
+      "enlaces": [
+        "#cocina-cap1",
+        "como-estimamos.html"
+      ],
+      "anclas": [
+        "trace-ablation-choice",
+        "trace-ablation-result",
+        "trace-cocina-data",
+        "trace-party",
+        "trace-title"
+      ]
+    },
+    {
+      "archivo": "tutorial-estimacion.html",
+      "tipo": "pagina",
+      "importa": [],
+      "datos_literales": [],
+      "enlaces": [
+        "#ejercicio",
+        "#paso1",
+        "#paso2",
+        "#paso3",
+        "#paso4",
+        "#paso5",
+        "#paso6",
+        "#paso7",
+        "#paso8",
+        "./#dashboard",
+        "./#pronostico-evaluacion",
+        "construye-estimacion.html#cocina-secuencia",
+        "construye-estimacion.html#comparador-recetas",
+        "construye-estimacion.html#seq-seats",
+        "diagnostico-cis.html",
+        "flujograma.html",
+        "styles.css",
+        "tutorial-estimacion.mjs"
+      ],
+      "anclas": [
+        "ejercicio",
+        "paso1",
+        "paso2",
+        "paso3",
+        "paso4",
+        "paso5",
+        "paso6",
+        "paso7",
+        "paso8",
+        "tut-interpretation",
+        "tut-metrics",
+        "tut-scenario",
+        "tut-study",
+        "tut-values"
+      ]
+    },
+    {
+      "archivo": "tutorial-estimacion.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./cocina-secuencial.mjs"
+      ],
+      "datos_literales": [
+        "data/microdatos/cubo_decisiones_cis.json"
+      ],
+      "enlaces": [],
+      "anclas": []
+    },
+    {
+      "archivo": "validacion-2019-retrospectiva.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [],
+      "enlaces": [],
+      "anclas": []
+    },
+    {
+      "archivo": "validacion-40db-2023.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [
+        "data/microdatos/40db-retrospectiva-2023.json"
+      ],
+      "enlaces": [
+        "${JSON_URL}",
+        "docs/alta-cocina-40db.md",
+        "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-18907"
+      ],
+      "anclas": [
+        "validacion-40db-23j",
+        "validacion40db-result",
+        "validacion40db-title"
+      ]
+    },
+    {
+      "archivo": "validacion-cobertura.mjs",
+      "tipo": "modulo",
+      "importa": [],
+      "datos_literales": [],
+      "enlaces": [],
+      "anclas": []
+    },
+    {
+      "archivo": "validacion-imputaciones-ui.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./validacion-2019-retrospectiva.mjs",
+        "./validacion-cobertura.mjs",
+        "./validacion-imputaciones.mjs"
+      ],
+      "datos_literales": [
+        "data/microdatos/diagnostico_2019_original.json",
+        "data/microdatos/ledger_imputacion_cis.json",
+        "data/microdatos/registro_validacion_elecciones.json",
+        "data/microdatos/validacion_23j.json"
+      ],
+      "enlaces": [
+        "metodo-evidencia.html"
+      ],
+      "anclas": []
+    },
+    {
+      "archivo": "validacion-imputaciones.mjs",
+      "tipo": "modulo",
+      "importa": [
+        "./motor-imputacion.mjs"
+      ],
+      "datos_literales": [],
+      "enlaces": [],
+      "anclas": []
+    },
+    {
+      "archivo": "validacion-recetas.html",
+      "tipo": "pagina",
+      "importa": [],
+      "datos_literales": [
+        "data/election.json",
+        "data/microdatos/diagnostico_2019_original.json",
+        "data/microdatos/registro_validacion_elecciones.json",
+        "data/microdatos/validacion_23j.json"
+      ],
+      "enlaces": [
+        "#vh-table",
+        "./#dashboard",
+        "data/election.json",
+        "data/microdatos/diagnostico_2019_original.json",
+        "data/microdatos/registro_validacion_elecciones.json",
+        "data/microdatos/validacion_23j.json",
+        "diagnostico-cis.html",
+        "https://github.com/bhermoso/observatorio-electoral/blob/main/validacion-imputaciones.mjs",
+        "https://www.cis.es/documents/d/guest/ft3242-2019",
+        "https://www.cis.es/en/surveys/macrobarometro-de-octubre-2019.-preelectoral-elecciones-generales-2019",
+        "laboratorio-imputaciones.html",
+        "metodo-evidencia.html",
+        "styles.css",
+        "validacion-imputaciones-ui.mjs"
+      ],
+      "anclas": [
+        "vh-2019-diagnostics",
+        "vh-2019-retro",
+        "vh-coverage",
+        "vh-detail",
+        "vh-election-registry",
+        "vh-historical",
+        "vh-metrics",
+        "vh-order",
+        "vh-party",
+        "vh-published",
+        "vh-study",
+        "vh-table"
+      ]
+    }
+  ],
+  "consumidores": {
+    "acontecimiento.mjs": [
+      "events.mjs"
+    ],
+    "actualizar-encuestas.mjs": [
+      "encuestas-servicio.mjs"
+    ],
+    "analysis.mjs": [
+      "app.mjs",
+      "capas.mjs"
+    ],
+    "auditoria-microdatos.mjs": [
+      "app.mjs",
+      "cocina.mjs"
+    ],
+    "buscador-microdatos.mjs": [
+      "app.mjs",
+      "cocina.mjs"
+    ],
+    "capas.mjs": [
+      "acontecimiento.mjs",
+      "analysis.mjs",
+      "casos-cocina.mjs",
+      "contraste-capas.mjs",
+      "home-impact.mjs",
+      "interiores.mjs",
+      "portada-hub.mjs",
+      "portada-panel.mjs",
+      "portada-series.mjs",
+      "pronostico-orden.mjs",
+      "pronostico-vista.mjs"
+    ],
+    "caso-escanos.mjs": [
+      "casos-cocina.mjs"
+    ],
+    "casos-cocina.mjs": [
+      "app.mjs",
+      "cocina.mjs"
+    ],
+    "catalogo-microdatos.mjs": [
+      "app.mjs",
+      "cocina.mjs"
+    ],
+    "cocina-escanos.mjs": [
+      "acontecimiento.mjs",
+      "algoritmo-escanos.mjs",
+      "casos-cocina.mjs",
+      "cocina-escanos-ui.mjs",
+      "cocina-secuencial-ui.mjs",
+      "comparador-cocina.mjs"
+    ],
+    "cocina-leccion.mjs": [
+      "cocina.mjs"
+    ],
+    "cocina-propia.mjs": [
+      "cocina.mjs"
+    ],
+    "cocina-resultados.mjs": [
+      "cocina.mjs"
+    ],
+    "cocina-secuencial.mjs": [
+      "casos-cocina.mjs",
+      "cocina-secuencial-ui.mjs",
+      "comparador-cocina.mjs",
+      "tutorial-estimacion.mjs"
+    ],
+    "cocina.mjs": [
+      "app.mjs"
+    ],
+    "contraste-40db.mjs": [
+      "caso-escanos.mjs",
+      "cocina.mjs"
+    ],
+    "contraste-capas.mjs": [
+      "app.mjs"
+    ],
+    "dashboard-validacion.mjs": [
+      "pronostico-vista.mjs"
+    ],
+    "data/cartography.json": [
+      "app.mjs"
+    ],
+    "data/cocinas-evidencia.json": [
+      "cocina.mjs",
+      "guia-cocina.html"
+    ],
+    "data/districts.csv": [
+      "app.mjs"
+    ],
+    "data/election.json": [
+      "algoritmo-escanos.mjs",
+      "app.mjs",
+      "caso-escanos.mjs",
+      "casos-cocina.mjs",
+      "cocina-escanos-ui.mjs",
+      "cocina-secuencial-ui.mjs",
+      "comparador-cocina.mjs",
+      "construye-estimacion.html",
+      "events.mjs",
+      "validacion-recetas.html"
+    ],
+    "data/estado-publicacion.json": [
+      "actualizar-encuestas.mjs"
+    ],
+    "data/events.json": [
+      "app.mjs",
+      "events.mjs",
+      "sala-mandos.html"
+    ],
+    "data/ingesta/estado.json": [
+      "actualizar-encuestas.mjs"
+    ],
+    "data/microdatos/40db-auditoria-2026.json": [
+      "caso-escanos.mjs",
+      "microdatos-40db.mjs"
+    ],
+    "data/microdatos/40db-retrospectiva-2023.json": [
+      "validacion-40db-2023.mjs"
+    ],
+    "data/microdatos/agregados_originales_cis.json": [
+      "cocina-escanos-ui.mjs",
+      "construye-estimacion.mjs"
+    ],
+    "data/microdatos/analisis_3582.json": [
+      "algoritmo-escanos.mjs",
+      "cocina-escanos-ui.mjs",
+      "cocina-resultados.mjs",
+      "cocina.mjs",
+      "construye-estimacion.html",
+      "construye-estimacion.mjs",
+      "guia-cocina.html",
+      "sala-mandos.html"
+    ],
+    "data/microdatos/auditoria_cocina_23j.json": [
+      "cocina-resultados.mjs",
+      "cocina.mjs",
+      "como-estimamos.html",
+      "dashboard-validacion.mjs",
+      "metodo-evidencia-ui.mjs"
+    ],
+    "data/microdatos/catalogo-publico.json": [
+      "catalogo-microdatos.mjs"
+    ],
+    "data/microdatos/catalogo.json": [
+      "sala-mandos.html"
+    ],
+    "data/microdatos/cocina_cis_3582.json": [
+      "cocina-leccion.mjs",
+      "cocina-propia.mjs"
+    ],
+    "data/microdatos/contribuciones_cocina_23j.json": [
+      "cocina.mjs",
+      "como-estimamos.html"
+    ],
+    "data/microdatos/cotejo_originales_2019.json": [
+      "homologacion-2019.mjs"
+    ],
+    "data/microdatos/cubo_decisiones_cis.json": [
+      "casos-cocina.mjs",
+      "cocina-secuencial-ui.mjs",
+      "comparador-cocina.mjs",
+      "construye-estimacion.html",
+      "tutorial-estimacion.mjs"
+    ],
+    "data/microdatos/diagnostico_2019_original.json": [
+      "evaluacion-2019.mjs",
+      "validacion-imputaciones-ui.mjs",
+      "validacion-recetas.html"
+    ],
+    "data/microdatos/diagnostico_muestra_cis.json": [
+      "diagnostico-cis.html",
+      "diagnostico-cis.mjs"
+    ],
+    "data/microdatos/estado-descargas.json": [
+      "auditoria-microdatos.mjs",
+      "catalogo-microdatos.mjs"
+    ],
+    "data/microdatos/evidencia_homologacion_2019.json": [
+      "homologacion-2019.mjs"
+    ],
+    "data/microdatos/homologacion_2019_pendiente.json": [
+      "homologacion-2019.mjs"
+    ],
+    "data/microdatos/ledger_imputacion_cis.json": [
+      "laboratorio-imputaciones.mjs",
+      "metodo-evidencia-ui.mjs",
+      "metodo-evidencia.html",
+      "validacion-imputaciones-ui.mjs"
+    ],
+    "data/microdatos/registro_validacion_elecciones.json": [
+      "validacion-imputaciones-ui.mjs",
+      "validacion-recetas.html"
+    ],
+    "data/microdatos/sociometrica-2025-agregados.json": [
+      "microdatos-sociometrica.mjs"
+    ],
+    "data/microdatos/transiciones_2019.json": [
+      "homologacion-2019.mjs"
+    ],
+    "data/microdatos/validacion_23j.json": [
+      "algoritmo-escanos.mjs",
+      "cocina-escanos-ui.mjs",
+      "cocina.mjs",
+      "comparador-cocina.mjs",
+      "construye-estimacion.html",
+      "construye-estimacion.mjs",
+      "guia-cocina.html",
+      "validacion-imputaciones-ui.mjs",
+      "validacion-recetas.html"
+    ],
+    "data/microdatos/validacion_cocina_cis.json": [
+      "cocina-leccion.mjs",
+      "cocina-propia.mjs"
+    ],
+    "data/modelo/historial.json": [
+      "home-impact.mjs",
+      "pronostico-vista.mjs",
+      "sala-mandos.html"
+    ],
+    "data/modelo/pronostico.json": [
+      "analysis.mjs",
+      "app.mjs",
+      "cocina-leccion.mjs",
+      "contraste-capas.mjs",
+      "dashboard-validacion.mjs",
+      "events.mjs",
+      "flujograma.mjs",
+      "home-impact.mjs",
+      "integracion.mjs",
+      "investidura.mjs",
+      "pronostico-orden.mjs",
+      "pronostico-vista.mjs",
+      "recuento-encuestas.mjs",
+      "sala-mandos.html",
+      "trazabilidad.mjs"
+    ],
+    "data/poll-results.csv": [
+      "polls.mjs"
+    ],
+    "data/polls.csv": [
+      "polls.mjs"
+    ],
+    "data/polls.json": [
+      "actualizar-encuestas.mjs",
+      "app.mjs",
+      "sala-mandos.html"
+    ],
+    "data/references.json": [
+      "app.mjs",
+      "sala-mandos.html"
+    ],
+    "data/results.csv": [
+      "app.mjs"
+    ],
+    "data/source-hashes.json": [
+      "app.mjs"
+    ],
+    "encuestas-servicio.mjs": [
+      "app.mjs"
+    ],
+    "encuestas-visual.mjs": [
+      "polls.mjs"
+    ],
+    "engine.mjs": [
+      "analysis.mjs",
+      "app.mjs",
+      "caso-escanos.mjs",
+      "cocina-escanos.mjs"
+    ],
+    "evaluacion-2019.mjs": [
+      "cocina.mjs"
+    ],
+    "eventos-visual.mjs": [
+      "events.mjs"
+    ],
+    "events.mjs": [
+      "acontecimiento.mjs",
+      "app.mjs"
+    ],
+    "evidencia-40db.mjs": [
+      "cocina.mjs"
+    ],
+    "home-impact.mjs": [
+      "app.mjs"
+    ],
+    "homologacion-2019.mjs": [
+      "cocina.mjs"
+    ],
+    "interiores.mjs": [
+      "app.mjs"
+    ],
+    "investidura.mjs": [
+      "pronostico-vista.mjs"
+    ],
+    "map.mjs": [
+      "app.mjs"
+    ],
+    "microdatos-40db.mjs": [
+      "cocina.mjs"
+    ],
+    "microdatos-sociometrica.mjs": [
+      "cocina.mjs"
+    ],
+    "motor-imputacion.mjs": [
+      "laboratorio-imputaciones.mjs",
+      "trazabilidad-recetas.mjs",
+      "validacion-imputaciones.mjs"
+    ],
+    "orden.mjs": [
+      "cocina-leccion.mjs",
+      "events.mjs",
+      "polls.mjs",
+      "pronostico-vista.mjs"
+    ],
+    "polls.mjs": [
+      "app.mjs"
+    ],
+    "portada-hub.mjs": [
+      "app.mjs",
+      "home-impact.mjs"
+    ],
+    "portada-panel.mjs": [
+      "home-impact.mjs"
+    ],
+    "portada-series.mjs": [
+      "home-impact.mjs",
+      "portada-hub.mjs",
+      "portada-panel.mjs",
+      "pronostico-orden.mjs",
+      "pronostico-vista.mjs"
+    ],
+    "promedios-comparador.mjs": [
+      "analysis.mjs"
+    ],
+    "pronostico-orden.mjs": [
+      "app.mjs",
+      "pronostico-vista.mjs"
+    ],
+    "pronostico-vista.mjs": [
+      "app.mjs"
+    ],
+    "recuento-encuestas.mjs": [
+      "pronostico-vista.mjs"
+    ],
+    "schema.mjs": [
+      "app.mjs"
+    ],
+    "tendencias.mjs": [
+      "events.mjs"
+    ],
+    "trazabilidad-recetas.mjs": [
+      "metodo-evidencia-ui.mjs"
+    ],
+    "trazabilidad.mjs": [
+      "pronostico-vista.mjs"
+    ],
+    "validacion-2019-retrospectiva.mjs": [
+      "evaluacion-2019.mjs",
+      "validacion-imputaciones-ui.mjs"
+    ],
+    "validacion-40db-2023.mjs": [
+      "cocina.mjs"
+    ],
+    "validacion-cobertura.mjs": [
+      "validacion-imputaciones-ui.mjs"
+    ],
+    "validacion-imputaciones.mjs": [
+      "validacion-imputaciones-ui.mjs"
+    ]
+  }
+}

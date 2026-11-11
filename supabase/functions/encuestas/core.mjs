@@ -31,7 +31,7 @@ export function validateSubmission(p,now=new Date()) {
 }
 const decode=s=>s.replace(/^<!\[CDATA\[([\s\S]*)\]\]>$/,'$1').replace(/&#(x[0-9a-f]+|\d+);/gi,(_,n)=>{const v=n[0].toLowerCase()==='x'?parseInt(n.slice(1),16):Number(n);return v>0&&v<=0x10ffff?String.fromCodePoint(v):'';}).replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&apos;/g,"'").replace(/&amp;/g,'&');
 export function parseFeed(xml) {
- if(!/<rss\b/i.test(xml))throw Error('La fuente no devolvió RSS.');
+ if(!/<rss\b/i.test(xml)||!(/<\/rss>\s*$/i.test(xml)||/<rss\b[^>]*\/\s*>\s*$/i.test(xml)))throw Error('La fuente no devolvió RSS.');
  return [...xml.matchAll(/<item\b[^>]*>([\s\S]*?)<\/item>/gi)].slice(0,30).flatMap(m=>{
   const get=k=>decode(m[1].match(new RegExp('<'+k+'[^>]*>([\\s\\S]*?)</'+k+'>','i'))?.[1]?.trim()||'');
   const title=get('title'),url=get('link'),date=get('pubDate');

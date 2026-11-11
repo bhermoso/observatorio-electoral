@@ -9,7 +9,7 @@ export function renderRecuento({forecast=null,archivo=null,seleccion=null}={}){
  const admitidas=Array.isArray(entradas)?entradas.length:null;
  const casas=Array.isArray(entradas)?new Set(entradas.map(e=>e.casa)).size:null;
  const excluidas=Array.isArray(forecast?.excluidas)?forecast.excluidas.length:null;
- const ficha=(valor,titulo,detalle)=>`<div><dt>${titulo}</dt><dd>${n(valor)}</dd><p>${detalle}</p></div>`;
+ const ficha=(valor,titulo,detalle)=>`<div><dt>${titulo}</dt><dd>${n(valor)}</dd><dd class="poll-count-description"><p>${detalle}</p></dd></div>`;
  return `<section class="panel poll-counts" aria-label="Cuántas encuestas usa cada cálculo">
  <h2>¿Cuántas encuestas usa cada cálculo?</h2>
  <p class="muted">Pronóstico e histórico: corte ${h(fecha(forecast?.corte))}. El promedio responde a los filtros de esta pantalla.</p>

@@ -17,3 +17,26 @@ jobs:
           node-version: '22'
       - name: Comprobar código e integración sin recalcular el pronóstico
         run: npm test
+
+  interiores:
+    # Playwright 1.56.1 supports Ubuntu 24.04; avoid a moving runner image.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - name: Navegación, responsive, teclado y accesibilidad
+        run: |
+          npm run dev > /tmp/observatorio-server.log 2>&1 &
+          npm run test:browser
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: auditoria-interiores
+          path: work/auditoria-interiores/
