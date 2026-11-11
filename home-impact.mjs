@@ -48,7 +48,7 @@ export function renderHomeImpact(references=[],events=[]){
   <div id="hub-tarjetas" aria-live="polite"><p class="muted">Cargando…</p></div>
  </section>
 
- <section class="portada-bloque" id="portada-secciones" aria-labelledby="hub-sec-t"><h2 id="hub-sec-t">Todo el Observatorio</h2><div id="hub-accesos"></div></section>
+ <section class="portada-bloque" id="portada-secciones" aria-labelledby="hub-sec-t"><h2 id="hub-sec-t">Explorar el Observatorio</h2><div id="hub-accesos"></div></section>
 </section>`;
 }
 
@@ -94,7 +94,7 @@ function drawHub(ctx){
  set('#hub-promedio',renderPromedio(ctx.prom,ctx.forecast,ctx.baseModelo));
  set('#hub-recuento',renderRecuentoEncuestas(ctx.forecast,ctx.polls));
  const desde=new Date(Date.parse(ctx.corte+'T12:00:00Z')-14*86400000).toISOString().slice(0,10);
- set('#hub-tarjetas',renderTarjetas(encuestasRecientes(ctx.forecast,ctx.polls,{desde,limite:12})));
+ set('#hub-tarjetas',renderTarjetas(encuestasRecientes(ctx.forecast,ctx.polls,{desde,limite:6})));
  // Todas las encuestas registradas, para el panel (la más reciente primero).
  ctx.recientes=encuestasRecientes(ctx.forecast,ctx.polls,{limite:500});
  set('#hub-accesos',renderAccesos({forecast:ctx.forecast,polls:ctx.polls,events:ctx.events,references:refsPortada}));
