@@ -70,9 +70,9 @@ export function renderPromedio(prom,forecast=null,baseModelo=false){
  const pos=v=>(v/max*100).toFixed(1)+'%';
  const filasHTML=filas.map(([id,v])=>{
   const m=modelo[id]?.voto?.[0];
-  return `<li role="button" tabindex="0" data-panel="partido:${id}" aria-label="${h(name(id))}: detalle"><span class="hub-barra-nombre">${h(id==='SUMAR'?'Sumar / FA':name(id))}</span><span class="hub-barra-pista"><span style="width:${pos(v.valor)};--c:${color(id)}"></span>${Number.isFinite(m)?`<i class="hub-marca" style="left:${pos(m)}" title="Pronóstico ${fmt(m)} %"></i>`:''}</span><b>${fmt(v.valor)} %<small>${v.n} de ${N}</small></b><span class="hub-modelo">${Number.isFinite(m)?fmt(m)+' %':'—'}</span></li>`;
+  return `<li role="button" tabindex="0" data-panel="partido:${id}" aria-label="${h(name(id))}: detalle"><span class="hub-barra-nombre">${h(id==='SUMAR'?'Sumar / FA':name(id))}</span><span class="hub-barra-pista"><span style="width:${pos(v.valor)};--c:${color(id)}"></span>${Number.isFinite(m)?`<i class="hub-marca" style="left:${pos(m)}" title="Pronóstico ${fmt(m)} %"></i>`:''}</span><b>${fmt(v.valor)} %<small>${v.n} de ${N}</small></b><span class="hub-modelo">${Number.isFinite(m)?`${fmt(m)} %<small class="hub-diferencia" title="Diferencia frente al promedio">${signed(m-v.valor)} pp</small>`:'—'}</span></li>`;
  }).join('');
- return `<div class="hub-barras-cab" aria-hidden="true"><span></span><span><i class="hub-muestra"></i>promedio · <i class="hub-muestra-marca"></i>pronóstico</span><b>Promedio</b><span>Pronóstico</span></div>
+ return `<div class="hub-barras-cab" aria-hidden="true"><span></span><span><i class="hub-muestra"></i>promedio · <i class="hub-muestra-marca"></i>pronóstico</span><b>Promedio</b><span>Pronóstico<br><small>Dif. en pp</small></span></div>
  <ol class="hub-barras">${filasHTML}</ol>
  <p class="hub-nota">Promedio simple del último estudio de cada instituto con fin de campo en los ${prom.ventana} días anteriores al ${h(fday(prom.corte))}: <b>${N} encuestas de ${prom.institutos} institutos</b>${baseModelo?', las mismas que usa el pronóstico':''}; la más reciente, con campo hasta el ${h(fday(ultima))}. «X de ${N}»: cuántas publican ese partido; las ausentes no cuentan como cero. La marca negra y la última columna son la estimación del Motor 29N.</p>`;
 }
@@ -144,13 +144,10 @@ export function renderAccesos({forecast,polls=[],events=[],references=[]}){
  const pp=forecast?.principal?.partidos?.PP;
  const items=[
   ['#pronostico','Pronóstico completo',forecast?`Corte del ${fday(forecast.corte)} · ${forecast.entradas?.length??'—'} estudios`:'No disponible',pp?`PP ${fmt(pp.escanos[0],0)} (${fmt(pp.escanos[1],0)}–${fmt(pp.escanos[2],0)})`:''],
-  ['#encuestas','Encuestas',`${forecast?.entradas?.length??'—'} en el pronóstico · ${forecast?.excluidas?.length??'—'} fuera`,`${archivo.length} fichas en el archivo verificado${ultimaPub?' · última: '+fday(ultimaPub):''}`],
-  ['#encuestas-promedios','Promedios','Con pesos propios',ext?`${ext.nombre} · ${fday(ext.fecha)}`:''],
+  ['#encuestas','Encuestas y promedios',`${forecast?.entradas?.length??'—'} en el pronóstico · ${forecast?.excluidas?.length??'—'} fuera`,`${archivo.length} fichas en el archivo verificado${ultimaPub?' · última: '+fday(ultimaPub):''}`],
   ['#contexto','Acontecimientos',`${events.length} registrados`,ev?`${fday(ev.date)} · ${ev.title}`:''],
   ['#cocina','Cocina','De la intención directa a la estimación','Microdatos del CIS y 40dB'],
-  ['#cocina-caso','Un caso completo','De una encuesta de 40dB a los escaños','Madrid y Jaén, paso a paso'],
-  ['#atlas','Atlas','52 circunscripciones','Resultados del 23J'],
-  ['#laboratorio','Laboratorio','D’Hondt provincia a provincia','Supuestos propios'],
+  ['#atlas','Atlas y simulador','52 circunscripciones','Resultados de 2023 y escenarios D’Hondt'],
   ['#metodologia','Método y fuentes','Qué es cada cifra y de dónde sale','Capas, fuentes y límites'],
  ];
  return `<nav class="hub-accesos" aria-label="Secciones del Observatorio">${items.map(([href,t,a,b])=>`<a href="${href}"><b>${h(t)}</b><span>${h(a)}</span>${b?`<small>${h(b)}</small>`:''}</a>`).join('')}</nav>`;
