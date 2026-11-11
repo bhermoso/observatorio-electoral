@@ -51,21 +51,28 @@ export function renderTablaCocina(d){
  const labels=d.metrics.map(([,name,def])=>`<th scope="col"><span title="${esc(def)}">${esc(name)}</span></th>`).join('');
  const rows=d.rows.map(r=>`<tr><th scope="row">${esc(r.party)}</th>${d.metrics.map(([k])=>`<td>${r[k]==null?'—':f(r[k])+' %'}</td>`).join('')}</tr>`).join('');
  const trials=d.trials.map(t=>`<tr><td>${esc(t.seleccion)} → ${esc(t.evaluacion)}</td><td>${esc(t.metodo)}</td><td>${f(t.error,2)} pp</td><td>${f(t.referencia,2)} pp</td><td>${t.mejora?'Mejora':t.diferencia>0?'Empeora':'Empata'}</td></tr>`).join('');
+ // Mismo estudio, pero medidas no equivalentes: no unir los puntos como etapas.
+ const maxima=Math.max(1,...d.rows.flatMap(r=>d.metrics.map(([k])=>r[k]).filter(Number.isFinite)));
+ const grafico=`<figure class="cocina-medidas-figura"><figcaption>CIS ${esc(d.estudio)} · contraste descriptivo de medidas por partido</figcaption><p class="muted">Cada fila representa un partido; las marcas corresponden a medidas con denominadores o supuestos distintos. No se suman ni se interpretan como una secuencia causal.</p>
+ <div class="cocina-medidas-leyenda">${d.metrics.map(([key,label],i)=>`<span><i class="cocina-punto tipo-${i}"></i>${esc(label)}</span>`).join('')}</div>
+ ${d.rows.map(row=>`<div class="cocina-medida-fila"><strong>${esc(row.party)}</strong><div class="cocina-medida-eje">${d.metrics.map(([key,label],i)=>Number.isFinite(row[key])?`<i class="cocina-medida-marca tipo-${i}" style="left:${(row[key]/maxima*100).toFixed(2)}%" title="${esc(label)}: ${f(row[key])} %" aria-label="${esc(label)}: ${f(row[key])} %"></i>`:'').join('')}</div><span>${f(maxima,0)} % máx.</span></div>`).join('')}
+ </figure>`;
+
  return `<div class="kitchen-observed-meta">
   <p><b>${Number(d.n).toLocaleString('es-ES')}</b> entrevistas · estudio ${esc(d.estudio)} · peso ${esc(d.pesos)}${Number.isFinite(d.efectiva)?' · n efectivo aproximado '+f(d.efectiva,0):''}</p>
   <p><a href="${source}" target="_blank" rel="noopener">Catálogo oficial CIS · buscar estudio 3582 ↗</a> · <a href="data/microdatos/analisis_3582.json" download>Comprobar los cálculos ↓</a></p>
  </div>
- <div class="table-wrap kitchen-observed-table"><table><caption>Porcentajes publicados o reconstruidos con denominadores distintos; los guiones indican ausencia, nunca cero</caption>
- <thead><tr><th scope="col">Partido</th>${labels}</tr></thead><tbody>${rows}</tbody></table></div>
+ ${grafico}<details class="cocina-datos-detalle"><summary>Ver tabla de porcentajes y denominadores</summary><div class="table-wrap kitchen-observed-table"><table><caption>Porcentajes publicados o reconstruidos con denominadores distintos; los guiones indican ausencia, nunca cero</caption>
+ <thead><tr><th scope="col">Partido</th>${labels}</tr></thead><tbody>${rows}</tbody></table></div></details>
  <div class="kitchen-measures"><h3>Qué representa cada columna</h3>
   <dl>${d.metrics.map(([,name,def])=>`<div><dt>${esc(name)}</dt><dd>${esc(def)}</dd></div>`).join('')}</dl>
  </div>
  <div class="kitchen-validation-head"><div><h3>¿Mejoró la receta al probarla en otro estudio?</h3>
   <p>Dos pruebas con los estudios CIS 3411 y 3415 anteriores al 23J. Se elige la medida con un estudio y se evalúa en el otro.</p></div>
   <p><strong>${d.nMejoras} de ${d.trials.length}</strong> mejoran la referencia publicada por el CIS</p></div>
- <div class="table-wrap kitchen-validation-table"><table><thead><tr>
+ <details class="cocina-datos-detalle"><summary>Ver errores exactos de las pruebas CIS</summary><div class="table-wrap kitchen-validation-table"><table><thead><tr>
  <th scope="col">Selección → prueba</th><th scope="col">Método seleccionado</th><th scope="col">Error al probarlo (MAE)</th><th scope="col">Error CIS publicado</th><th scope="col">Resultado</th>
- </tr></thead><tbody>${trials}</tbody></table></div>
+ </tr></thead><tbody>${trials}</tbody></table></div></details>
  <p class="kitchen-limit"><b>Límite decisivo:</b> son dos oleadas de un único instituto y de una misma elección. No prueban calibración electoral independiente ni justifican trasladar la receta al pronóstico. <a href="data/microdatos/auditoria_cocina_23j.json" download>Descargar la auditoría completa ↓</a></p>`;
 }
 export async function bindResultadosCocina(){
