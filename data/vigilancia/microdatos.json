@@ -1,17 +1,9 @@
 {
   "schema": 2,
-  "checked_at": "2026-11-11T10:58:36.043158+00:00",
-  "last_attempt_at": "2026-11-11T10:58:36.043158+00:00",
+  "checked_at": "2026-11-11T11:29:51.252073+00:00",
+  "last_attempt_at": "2026-11-11T11:29:51.252073+00:00",
   "status": "partial",
   "candidates": [
-    {
-      "tipo": "enlace_a_archivo",
-      "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_08_barometro_flash_descargables.zip",
-      "titulo": "Datos completos",
-      "fuente": "40db",
-      "pagina": "https://elpais.com/espana/2026-10-09/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
-      "estado": "ya_catalogado"
-    },
     {
       "tipo": "enlace_a_archivo",
       "url": "https://moreincommon.es/data/microdatos-2026-10.zip",
@@ -67,6 +59,14 @@
       "fuente": "sociometro-vasco",
       "pagina": "https://opendata.euskadi.eus/catalogo/-/informes-estudios/sociometro-89/",
       "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://www.gad3.com/wp-content/uploads/2026/05/GAD3-Microdatos-ABC-Andalucia-2026.xlsx",
+      "titulo": "pinchando aquí.",
+      "fuente": "gad3",
+      "pagina": "https://www.gad3.com/barometro-abc-estimacion-de-voto-autonomico-en-andalucia-mayo/",
+      "estado": "ya_catalogado"
     },
     {
       "tipo": "enlace_a_archivo",
@@ -222,7 +222,7 @@
     }
   ],
   "errors": [
-    "gad3: ValueError: HTTP 202"
+    "40db: HTTP 403"
   ],
   "summary": {
     "paginas_consultadas": 9,
