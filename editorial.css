@@ -96,3 +96,17 @@ body>header{background:var(--paper);border-bottom:3px double var(--ink);box-shad
 #visor .cocina-capitulo:first-of-type{margin-top:14px}
 #visor .cocina-capitulo:not([open]) .cocina-cap-cab{padding-bottom:20px}
 @media(max-width:740px){#visor .cocina-orientacion{grid-template-columns:1fr;gap:10px;padding:14px 0}#visor .cocina-orientacion p{font-size:12.5px}}
+
+/* Comparador integrado en la evolución: misma escala de datos, estilo editorial ligero. */
+.series-comparacion{margin:26px 0 10px;padding:22px 0 6px;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.series-comparacion-cab{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:14px}
+.series-comparacion-cab h3{font:400 24px/1.2 var(--editorial-serif);margin:0 0 5px;color:var(--ink)}
+.series-comparacion-cab p{font-size:12px;color:var(--muted);line-height:1.6;margin:0;max-width:650px}
+.series-comparacion-cab label{font-size:12px;color:var(--muted);white-space:nowrap}
+.series-comparacion-cab select{display:block;margin-top:5px;border:1px solid var(--line);background:transparent;padding:8px;color:var(--ink);font:inherit}
+.series-comparacion-tabla{width:100%;border-collapse:collapse;font-size:13px;min-width:500px}
+.series-comparacion-tabla th,.series-comparacion-tabla td{padding:9px 12px 9px 0;border-bottom:1px solid var(--line);text-align:left}
+.series-comparacion-tabla .num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.series-comparacion-tabla .comparacion-referencia{font-weight:600;background:rgba(27,68,56,.035)}
+.series-comparacion-tabla .comparacion-referencia th{padding-left:8px}
+@media(max-width:650px){.series-comparacion-cab{display:block}.series-comparacion-cab label{display:block;margin-top:14px;white-space:normal}.series-comparacion-cab select{width:100%}}
