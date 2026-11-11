@@ -110,3 +110,17 @@ body>header{background:var(--paper);border-bottom:3px double var(--ink);box-shad
 .series-comparacion-tabla .comparacion-referencia{font-weight:600;background:rgba(27,68,56,.035)}
 .series-comparacion-tabla .comparacion-referencia th{padding-left:8px}
 @media(max-width:650px){.series-comparacion-cab{display:block}.series-comparacion-cab label{display:block;margin-top:14px;white-space:normal}.series-comparacion-cab select{width:100%}}
+
+/* Evaluación de recetas: registro técnico sobrio, sin nueva capa de paneles coloreados. */
+#visor .evaluacion-microdatos{padding-top:25px}
+#visor .evaluacion-microdatos h3{margin:22px 0 5px;font:400 22px/1.3 var(--editorial-serif)}
+#visor .evaluacion-microdatos p{font-size:13px;line-height:1.6}
+.evaluacion-microdatos-resumen{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:18px 0;padding:12px 0}
+.evaluacion-microdatos-resumen p{margin:0}
+.evaluacion-microdatos-resumen strong{display:block;font:400 26px var(--editorial-serif)}
+.evaluacion-microdatos-resumen span{display:block;color:var(--muted);font-size:12px}
+.evaluacion-microdatos table{width:100%;border-collapse:collapse;font-size:12px}
+.evaluacion-microdatos th,.evaluacion-microdatos td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line)}
+.evaluacion-microdatos .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.evaluacion-microdatos-limite{border-top:1px solid var(--ink);padding-top:14px;margin-top:20px}
+@media(max-width:650px){.evaluacion-microdatos-resumen{grid-template-columns:1fr;gap:12px}.evaluacion-microdatos table{min-width:580px}}
