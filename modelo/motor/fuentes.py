@@ -279,26 +279,32 @@ def aptas_para_pronostico(encuestas, ciclo="2023-26"):
 
 
 def todas(deduplicar=True):
-    """Todas las fuentes. Si una misma casa tiene dos registros con fin de campo a
-    <= 2 días, se conserva el verificado (o el primero cargado); entre dos citas de
-    prensa sin verificar, la publicada más tarde."""
+    """Carga todas las fuentes sin perder oleadas verificadas de un tracking.
+
+    La deduplicación temporal solo compacta registros secundarios de la misma
+    casa, nunca fichas primarias diferentes. Las oleadas verificadas deben llegar
+    juntas a seleccion_pronostico, que conserva la última si hay campo solapado.
+    Esto también preserva el archivo histórico de cada fecha.
+    """
     enc = cargar_verificadas() + cargar_23j_complementos() + cargar_29n() + cargar_prensa() + cargar_wikipedia_2023() + cargar_wikipedia()
     if not deduplicar:
         return enc
     out = []
     for e in enc:
-        dup = next((o for o in out if o["casa"] == e["casa"]
-                    and ((e["ciclo"] == "2019-23"
-                          and o["campo_fin"] == e["campo_fin"]
-                          and o["voto"] == e["voto"])
-                         or (e["ciclo"] != "2019-23"
-                             and abs((o["campo_fin"] - e["campo_fin"]).days) <= 2))), None)
+        # Un identificador de estudio repetido es la única deduplicación global.
+        if any(o["estudio"] == e["estudio"] and o["casa"] == e["casa"] for o in out):
+            continue
+        # No eliminar fichas verificadas ni registros de otros orígenes antes de
+        # aplicar la puerta de calidad (que registra el motivo de exclusión).
+        if e["origen"] == "verificada" or e["ciclo"] == "2023-26":
+            out.append(e)
+            continue
+        # En registros históricos secundarios, compactar copias idénticas.
+        dup = next((o for o in out if o["casa"] == e["casa"] and
+                    o["origen"] != "verificada" and o["ciclo"] == e["ciclo"] and
+                    o["campo_fin"] == e["campo_fin"] and o["voto"] == e["voto"]), None)
         if dup is None:
             out.append(e)
-        elif (dup["origen"] == e["origen"] == "prensa-sin-verificar"
-              and (e.get("publicacion") or e["campo_fin"]) > (dup.get("publicacion") or dup["campo_fin"])):
-            # Entregas sucesivas de un tracking sin ficha: se conserva la más reciente.
-            out[out.index(dup)] = e
     return sorted(out, key=lambda e: e["campo_fin"])
 
 
