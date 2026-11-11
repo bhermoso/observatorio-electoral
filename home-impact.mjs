@@ -7,7 +7,8 @@ import {bindPortadaSeries} from './portada-series.mjs';
 import {renderTiposEstimacion} from './tipos-estimacion.mjs';
 import {panelPartido,panelBloque,panelEncuesta,bindPanel} from './portada-panel.mjs';
 import {renderHemiciclo,renderPromedio,encuestasRecientes,renderTarjetas,renderAccesos,renderRecuentoEncuestas} from './portada-hub.mjs';
-import {PARTIES,promedioPublicado,capaModelo,pollsFromModelInputs} from './capas.mjs';
+import {PARTIES,capaModelo} from './capas.mjs';
+import {promedioDeReferencia} from './fuentes-comparacion.mjs';
 
 const h=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt=(v,d=1)=>Number(v).toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d});
@@ -105,12 +106,12 @@ export async function bindHomeImpact(polls,events=[]){
   capaModelo(ctx.forecast,3);
  }catch(err){ctx.error=err.message;}
  if(!root.isConnected)return;
- // Promedio con las mismas encuestas que usa el pronóstico. Si la entrada está en el archivo
- // verificado se toma su ficha completa (incluye partidos territoriales); si no, la del motor.
- const archivo=new Map(polls.map(p=>[p.id,p]));
- const base=ctx.forecast?.entradas?.length?pollsFromModelInputs(ctx.forecast.entradas).map(p=>archivo.get(p.id)||p):polls;
+ // Mismo archivo de entradas y misma definición del promedio que en las vistas técnicas.
  ctx.baseModelo=!!ctx.forecast?.entradas?.length;
- try{ctx.prom=promedioPublicado(base,{corte:ctx.corte,ventana:30,cis:true,ponderacion:'igual'});}catch{ctx.prom=null;}
+ try{
+  const ref=promedioDeReferencia(polls,ctx.forecast,{corte:ctx.corte});
+  ctx.prom=ref.promedio;
+ }catch{ctx.prom=null;}
  drawHead(ctx);drawHub(ctx);
  bindPanel(root,clave=>{
   const [tipo,id]=clave.split(/:(.*)/s);
