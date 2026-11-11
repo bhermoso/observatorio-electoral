@@ -96,3 +96,8 @@ El archivo reúne 19 estudios de 11 institutos. Se añaden cuatro encuestas naci
 - DYM / 20minutos, publicada el 10 de noviembre. 1.025 entrevistas CAWI del 4 al 6. Se conservan cinco porcentajes y sus horquillas de escaños.
 
 Cada ficha conserva el enlace original, el universo declarado, el escenario, los localizadores y los límites de cobertura. Las comparaciones temporales no se interpretan como efectos causales del accidente ni de la dimisión. Se mantiene el 8 de noviembre como publicación inicial de Ateneo, aunque el artículo se actualizara el 9.
+
+
+### Incorporación adicional del 11 de noviembre de 2026
+
+El archivo alcanza 20 estudios de 11 institutos al incorporar Sigma Dos / El Mundo del 9 de noviembre. La fuente institucional declara 4.172 entrevistas CATI/CAWI del 30 de octubre al 6 de noviembre. Se conservan catorce porcentajes y trece puntos u horquillas expresos. Coalición Canaria tiene porcentaje publicado y solo una descripción de posibilidad de representación en el texto verificado; el dato numérico de escaños queda ausente. El campo comparte un día con la ola anterior, por lo que debe mantenerse la selección por instituto y la deduplicación de oleadas. Fuente: https://www.sigmados.com/noticia?id=Zr7XEKTN9GLN00s
