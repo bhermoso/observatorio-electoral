@@ -7,6 +7,8 @@ const fecha=v=>{if(!v)return 'sin registro';const d=new Date(v);return Number.is
 /** Estado auditable del circuito buscar → verificar → incorporar → recalcular → publicar. */
 export function renderEstadoCircuito(estado,publicacion){
  const e=estado||{},p=publicacion||{};
+ const pendienteDePublicar=Number.isFinite(p.encuestas_archivo)&&Number.isFinite(e.registros_despues)
+   &&e.registros_despues>p.encuestas_archivo;
  const list=(a,empty)=>Array.isArray(a)&&a.length?a.map(x=>safe(typeof x==='string'?x:`${x.id}: ${x.motivo}`)).join('; '):empty;
  const row=(k,v)=>`<div><dt>${k}</dt><dd>${v}</dd></div>`;
  const stages=[
@@ -14,8 +16,8 @@ export function renderEstadoCircuito(estado,publicacion){
   ['Detectar',e.ultima_busqueda,e.candidatos_detectados!=null?`${e.candidatos_detectados} titulares · sin verificar`:'Sin resultado registrado'],
   ['Verificar',null,e.bandeja_validadas!=null?`${e.bandeja_validadas} fichas en la bandeja · fecha individual en cada ficha`:'Sin registro de verificación'],
   ['Incorporar',e.ultima_incorporacion_efectiva,`${e.incorporadas?.length||0} nuevas en la última ejecución`],
-  ['Recalcular',p.recalculado||e.ultimo_recalculo_lanzado,p.recalculado?'Recálculo finalizado y publicado':e.recalculo_lanzado?'Solicitud registrada · no acredita finalización':'Sin nueva solicitud registrada; consultar publicación'],
-  ['Publicar',p.construido,p.corte_modelo?`Corte del modelo: ${p.corte_modelo}`:'Sin corte confirmado']
+  ['Recalcular',p.recalculado||e.ultimo_recalculo_lanzado,pendienteDePublicar?'Pendiente: el sitio tiene menos encuestas que el archivo verificado':p.recalculado?'Recálculo finalizado para la versión publicada':e.recalculo_lanzado?'Solicitud registrada · no acredita finalización':'Sin nueva solicitud registrada; consultar publicación'],
+  ['Publicar',p.construido,pendienteDePublicar?`Desactualizada: sitio ${p.encuestas_archivo} fichas, archivo ${e.registros_despues}`:p.corte_modelo?`Corte del modelo: ${p.corte_modelo}`:'Sin corte confirmado']
  ];
  return `<ol class="pipeline-steps" aria-label="Circuito de actualización">${stages.map(([label,time,result])=>`<li><strong>${label}</strong>${time?`<time>${safe(fecha(time))}</time>`:'<small>Fecha sin registro</small>'}<small>${safe(result)}</small></li>`).join('')}</ol><details><summary>Auditar fechas, incorporaciones e incidencias</summary><dl class="pipeline-status">${[
   row('1 · Última búsqueda',safe(fecha(e.ultima_busqueda))+(e.candidatos_detectados!=null?` · ${e.candidatos_detectados} titulares candidatos`:'')),
