@@ -156,7 +156,23 @@ export function bindPortadaSeries(root,{polls,forecast,history,events,cutoff,pro
   const fmtRow=(item)=>`<tr><th scope="row">${td(item.name)}</th><td>${td(item.type)}</td><td class="num">${f(item.value)} %</td><td>${td(date.format(Date.parse(item.p.date)))}</td></tr>`;
   const anchor=`${Number.isFinite(own)?`<tr class="comparacion-referencia"><th scope="row">Observatorio · pronóstico</th><td>Modelo propio</td><td class="num">${f(own)} %</td><td>${td(date.format(Date.parse(comparisonCutoff)))}</td></tr>`:''}${Number.isFinite(average?.valor)?`<tr class="comparacion-referencia"><th scope="row">Promedio de encuestas</th><td>${average.n} estudios con cifra</td><td class="num">${f(average.valor)} %</td><td>${td(date.format(Date.parse(promedio.corte)))}</td></tr>`:''}`;
   const found=[...houses,...externals];
-  comparison.innerHTML=`<p class="series-note">Ventana de 45 días hasta el corte del modelo (${td(date.format(Date.parse(comparisonCutoff)))}). Una última cifra por instituto. Orden aplicado a las encuestadoras, no al pronóstico. Las referencias externas se muestran aparte; no entran en el pronóstico.</p><div class="table-wrap"><table class="series-comparacion-tabla"><thead><tr><th>Fuente</th><th>Clase</th><th class="num">Voto estimado</th><th>Publicado</th></tr></thead><tbody>${anchor}${houses.map(fmtRow).join('')}${externals.map(fmtRow).join('')}</tbody></table></div>${found.length?'':'<p class="series-note">No hay otras estimaciones con cifra publicada en esta ventana.</p>'}`;
+  // Gráfico de dispersión horizontal sobre una escala común; no implica
+  // intervalos de confianza ni que las fechas de campo sean idénticas.
+  const values=[...found.map(x=>x.value),own,average?.valor].filter(Number.isFinite);
+  const xmin=values.length?Math.max(0,Math.floor(Math.min(...values)-1)):0;
+  const xmax=values.length?Math.min(100,Math.ceil(Math.max(...values)+1)):100;
+  const range=Math.max(1,xmax-xmin);
+  const at=v=>((v-xmin)/range*100).toFixed(2)+'%';
+  const mark=(value,kind,title)=>Number.isFinite(value)?`<span class="cmp-marker ${kind}" style="left:${at(value)}" title="${td(title)}: ${f(value)} %" aria-hidden="true"></span>`:'';
+  const graphRow=(item,kind)=>`<div class="cmp-row"><span class="cmp-label" title="${td(item.name)}">${td(item.name)}</span><div class="cmp-track">${mark(own,'modelo','Observatorio')}${mark(average?.valor,'media','Promedio')}${mark(item.value,kind,item.name)}</div><b class="cmp-value">${f(item.value)} %</b></div>`;
+  const graph=`<div class="cmp-graphic" role="group" aria-label="Estimaciones de ${td(party.selectedOptions[0].textContent)} sobre escala común">
+  <div class="cmp-head"><strong>Distribución de estimaciones</strong><span>${f(xmin)} % — ${f(xmax)} %</span></div>
+  <div class="cmp-legend"><span><i class="cmp-key modelo"></i> Observatorio ${Number.isFinite(own)?f(own)+' %':'—'}</span><span><i class="cmp-key media"></i> Promedio ${Number.isFinite(average?.valor)?f(average.valor)+' %':'—'}</span><span><i class="cmp-key casa"></i> Encuestadoras</span></div>
+  ${houses.length?houses.map(x=>graphRow(x,'casa')).join(''):'<p class="series-note">Sin encuestas verificadas para este partido y periodo.</p>'}
+  ${externals.length?`<p class="cmp-group-title">Modelos y promedios externos · contraste</p>${externals.map(x=>graphRow(x,'externo')).join('')}`:''}
+  <p class="series-note">Todas las marcas comparten escala. Cada casa se representa una sola vez, con su última cifra disponible en la ventana.</p></div>`;
+  comparison.innerHTML=`<p class="series-note">Ventana de 45 días hasta el corte del modelo (${td(date.format(Date.parse(comparisonCutoff)))}). Las referencias externas se muestran aparte y no entran en el pronóstico.</p>${graph}<details class="cmp-detail"><summary>Ver todas las cifras, fechas y naturaleza de cada fuente</summary><div class="table-wrap"><table class="series-comparacion-tabla"><thead><tr><th>Fuente</th><th>Clase</th><th class="num">Voto estimado</th><th>Publicado</th></tr></thead><tbody>${anchor}${houses.map(fmtRow).join('')}${externals.map(fmtRow).join('')}</tbody></table></div></details>`;
+
  }
  
  let chartWidth=0;
