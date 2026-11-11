@@ -1,6 +1,7 @@
 // Vista «Pronóstico completo» (#pronostico): la salida real del Motor 29N.
 // Lee data/modelo/pronostico.json y data/modelo/historial.json. No recalcula nada.
 import {renderIntervalos} from './pronostico-orden.mjs';
+import {renderTiposEstimacion} from './tipos-estimacion.mjs';
 import {PARTY_COLORS} from './portada-series.mjs';
 import {PARTIES,BLOCKS,BLOCK_NOTE,LAYERS,capaModelo,capasExternas,efectoCocina} from './capas.mjs';
 import {renderTrazabilidad,bindTrazabilidad} from './trazabilidad.mjs';
@@ -26,6 +27,7 @@ export function renderPronostico(){
  return `<div class="hero"><div><div class="eyebrow">Motor 29N · capa 3 · estimación de referencia</div><h1>Pronóstico completo.</h1><p id="fc-lead">Cargando la salida publicada del Motor 29N…</p></div><div class="hero-aside"><span class="badge sim">Estimación modelizada</span><p>Las cifras son estimaciones condicionadas a los supuestos del modelo, no resultados electorales. Intervalos del 90 % de las simulaciones.</p><a href="pronostico.html">Informe técnico completo ↗</a></div></div>
  <nav class="subnav" aria-label="Secciones principales del pronóstico"><a href="#pronostico-principal">Estimación actual</a><a href="#pronostico-variantes">Otras variantes</a><a href="#pronostico-cocina">Cómo se calcula</a><a href="#pronostico-evolucion">Evolución</a><a href="#pronostico-fuentes">Datos utilizados</a><a href="#pronostico-evaluacion">Validación</a></nav>
  <p class="pr-naturalezas">Estás viendo la <strong>estimación propia del Observatorio basada en estimaciones publicadas</strong>, no una reconstrucción de entrevistas individuales. El <a href="#pronostico-capas">promedio</a> y los <a href="#pronostico-externos">modelos externos</a> sirven de contraste. La <a href="#cocina">cocina experimental con microdatos</a> se estudia por separado.</p>
+ <details class="pr-tipos"><summary>Distinguir las cuatro clases de estimación</summary>${renderTiposEstimacion({compacto:true})}</details>
  <div id="fc-error" role="alert"></div>
  <div id="fc-counts"></div>
  <section class="panel" id="pronostico-principal"><h2>Escaños y voto por partido</h2><div id="fc-main">Cargando…</div></section>
