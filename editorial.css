@@ -222,3 +222,19 @@ body>header{background:var(--paper);border-bottom:3px double var(--ink);box-shad
 .cocina-medida-eje{height:22px;position:relative;border-left:1px solid var(--muted);border-right:1px solid var(--line);background:repeating-linear-gradient(90deg,transparent,transparent calc(25% - 1px),rgba(70,90,81,.12) 25%)}
 .cocina-medida-marca{position:absolute;top:50%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;border:1px solid var(--paper);background:var(--ink)}
 @media(max-width:640px){.cocina-diff-row{grid-template-columns:118px minmax(0,1fr) 56px;gap:6px;font-size:11px}.cocina-diff-head{grid-template-columns:118px 1fr 56px}.cocina-error-bar{grid-template-columns:95px minmax(0,1fr) 42px;gap:7px;font-size:11px}.cocina-medida-fila{grid-template-columns:56px minmax(0,1fr) 43px;gap:6px}.cocina-medidas-leyenda{gap:5px 10px}}
+
+/* Pronóstico: lectura gráfica territorial e historial, con auditoría desplegable. */
+.pr-territory-summary{padding:16px 0 12px;margin:19px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.pr-territory-summary figcaption{font:400 21px/1.35 var(--editorial-serif);color:var(--ink);margin:0 0 12px}
+.pr-territory-legend{display:flex;gap:7px 16px;flex-wrap:wrap;margin:0 0 16px;font-size:11px;color:var(--muted)}
+.pr-territory-legend span{display:inline-flex;align-items:center;gap:5px}
+.pr-territory-legend i{height:9px;width:9px;display:inline-block;border-radius:1px}
+.pr-territory-row{display:grid;grid-template-columns:minmax(100px,170px) minmax(0,1fr) 58px;gap:12px;align-items:center;min-height:31px;border-bottom:1px solid rgba(83,105,99,.14)}
+.pr-territory-row>strong{font-size:12px;font-weight:500;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.pr-territory-track{display:flex;height:17px;overflow:hidden;background:rgba(83,105,99,.08)}
+.pr-territory-track i{height:100%;min-width:0;display:block}
+.pr-territory-row>span{font:12px/1.3 system-ui,sans-serif;text-align:right;font-variant-numeric:tabular-nums}
+.pr-territory-detail,.pr-history-detail{border-top:1px solid var(--line);padding:12px 0;margin:16px 0}
+.pr-territory-detail>summary,.pr-history-detail>summary{font:500 13px/1.5 system-ui,sans-serif;color:var(--green);cursor:pointer}
+.pr-territory-detail[open] .pr-provincias,.pr-history-detail[open] .table-wrap{margin-top:15px}
+@media(max-width:620px){.pr-territory-row{grid-template-columns:minmax(72px,104px) minmax(0,1fr) 44px;gap:6px}.pr-territory-row>strong,.pr-territory-row>span{font-size:11px}.pr-territory-legend{gap:6px 9px}}
