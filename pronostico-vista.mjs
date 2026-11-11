@@ -89,7 +89,7 @@ function blocks(f){
  return `<div class="home-blocks">${BLOCKS.map(b=>{const x=p.bloques?.[b.id];if(!x)return '';const votes=b.parties.map(id=>p.partidos[id]?.voto?.[0]);
   return `<article class="block-card"><h3>${h(b.label)}</h3><div class="block-main"><strong>${fmt(x.mediana,0)}</strong><span>escaños (90 %: ${fmt(x.p5,0)}–${fmt(x.p95,0)})</span></div><div class="block-track" role="img" aria-label="Intervalo ${fmt(x.p5,0)} a ${fmt(x.p95,0)}; mayoría en 176"><span class="iv" style="left:${x.p5/350*100}%;width:${(x.p95-x.p5)/350*100}%"></span><span class="md" style="left:${x.mediana/350*100}%"></span><i style="left:${176/350*100}%"></i></div><small>176 o más en el ${fmt(x.p_mayoria*100,0)} % de las simulaciones${votes.every(Number.isFinite)?` · voto ${fmt(votes.reduce((a,b)=>a+b,0))} % (suma de medianas)`:''}</small></article>`;}).join('')}</div>`;
 }
-function history(hist){
+export function history(hist){
  if(!Array.isArray(hist)||!hist.length)return '<p class="empty">Historial no publicado.</p>';
  const W=900,H=260,L=44,R=16,T=16,B=36,xs=hist.map((_,i)=>L+i*(W-L-R)/Math.max(1,hist.length-1));
  const series=[['PP','#2470a6'],['PSOE','#b8323f'],['VOX','#3d7f3a']];
@@ -100,9 +100,11 @@ function history(hist){
  const versions=hist.map((x,i)=>i&&x.version!==hist[i-1].version?`<line x1="${xs[i]}" x2="${xs[i]}" y1="${T}" y2="${H-B}" stroke="#aa540d" stroke-dasharray="3 3"/>`:'').join('');
  const svg=`<svg viewBox="0 0 ${W} ${H}" class="history-svg" role="img" aria-label="Escaños medianos de PP, PSOE y Vox por día de corte">${[0,50,100,150].map(v=>`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="#e1e9e4"/><text x="${L-6}" y="${y(v)+4}" text-anchor="end" font-size="11" fill="#60736e">${v}</text>`).join('')}${versions}${lines}${marks}<text x="${L}" y="${H-8}" font-size="11" fill="#60736e">${fdate(hist[0].fecha)}</text><text x="${W-R}" y="${H-8}" text-anchor="end" font-size="11" fill="#60736e">${fdate(hist.at(-1).fecha)}</text></svg>`;
  const rows=[...hist].reverse().filter((x,i)=>i===0||x.nuevas?.length).slice(0,15).map((x,i,arr)=>`<tr><td>${h(fdate(x.fecha))}</td><td>${x.n_encuestas}</td><td>${['PP','PSOE','VOX'].map(p=>`${label(p)} ${fmt(x.escanos?.[p]?.[0],0)}`).join(' · ')}</td><td>${fmt(x.bloques?.['PP+VOX']?.mediana,0)} · ${fmt((x.bloques?.['PP+VOX']?.p_mayoria||0)*100,0)} %</td><td>${h((x.nuevas||[]).join(', ')||'—')}</td><td>${h(x.version||'1')}</td></tr>`).join('');
- return `<div class="chart-wrap">${svg}</div><p class="muted">Línea continua PP, discontinua PSOE, punteada Vox. Marcas en el eje: días con estudios nuevos. Línea naranja vertical: cambio de versión del modelo.</p><details class="pr-history-detail"><summary>Consultar cortes, encuestas nuevas y versiones del motor</summary><div class="table-wrap"><table><caption>Días con estudios nuevos (más reciente primero)</caption><thead><tr><th>Corte</th><th>Estudios</th><th>Escaños (mediana)</th><th>PP+Vox · ≥176</th><th>Estudios nuevos</th><th>Versión</th></tr></thead><tbody>${rows}</tbody></table></div></details>`;
+ const ultima=hist.at(-1);
+ const indicador=`<div class="pr-history-summary">${series.map(([p,color])=>`<div class="pr-history-item"><i style="background:${color}"></i><span>${h(label(p))}</span><strong>${fmt(ultima.escanos?.[p]?.[0],0)}</strong><small>escaños · último corte</small></div>`).join('')}</div>`;
+ return `${indicador}<div class="chart-wrap">${svg}</div><p class="muted">Línea continua PP, discontinua PSOE, punteada Vox. Marcas en el eje: días con estudios nuevos. Línea naranja vertical: cambio de versión del modelo. Las variaciones entre versiones del motor no deben interpretarse solo como cambios de opinión.</p><details class="pr-history-detail"><summary>Consultar cortes, encuestas nuevas y versiones del motor</summary><div class="table-wrap"><table><caption>Días con estudios nuevos (más reciente primero)</caption><thead><tr><th>Corte</th><th>Estudios</th><th>Escaños (mediana)</th><th>PP+Vox · ≥176</th><th>Estudios nuevos</th><th>Versión</th></tr></thead><tbody>${rows}</tbody></table></div></details>`;
 }
-function territory(f){
+export function territory(f){
  const pr=f.principal?.provincias;
  if(!Array.isArray(pr))return '<p class="empty">El reparto provincial no está publicado en este corte.</p>';
  const geo=f.geo_sensibilidad;
