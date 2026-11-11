@@ -1,4 +1,4 @@
-import {LAYERS} from './capas.mjs';
+import {renderTiposEstimacion} from './tipos-estimacion.mjs';
 const h=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const guides={
  pronostico:['Estimación propia · Motor 29N','¿Qué resultados son plausibles?',[
@@ -6,7 +6,7 @@ const guides={
  encuestas:['Archivo de estimaciones publicadas','Compara fuentes antes de interpretar cambios.',[
   ['Ver la dispersión','Puntos por estudio y fechas de campo','encuestas-visual'],['Explorar el archivo','Filtra y consulta cada ficha original','encuestas-archivo'],['Seguir la actualización','Titulares, verificación y publicación','encuestas-actualizar']]],
  cocina:['Experimentación · no altera el pronóstico','Sigue el recorrido de la respuesta al escaño.',[
-  ['Entender los pasos','Datos, cálculos e hipótesis','cocina-cap1'],['Probar un caso','De las respuestas al reparto territorial','cocina-cap2'],['Comprobar la evidencia','Contrastes con elecciones reales','cocina-cap4']]],
+  ['Ver el motor vigente','Estimaciones publicadas y sus ajustes','cocina-cap5'],['Explorar los microdatos','Respuestas, cálculo y supuestos','cocina-cap3'],['Contrastar las recetas','Qué muestran las pruebas históricas','cocina-cap4']]],
  contexto:['Contexto documental · asociación temporal','Compara campos, fechas y fuentes.',[
   ['Elegir un suceso','Selecciona el acontecimiento y su ventana','contexto-explorar'],['Investigar cambios','Compara oleadas y su comparabilidad','contexto-resultados'],['Revisar los límites','Una coincidencia temporal no prueba causalidad','contexto-metodo']]],
  metodologia:['Método, fuentes y herramientas','Elige qué quieres comprender o comprobar.',[
@@ -32,8 +32,8 @@ export function renderInteriorGuide(route,{polls=[],events=[]}={}){
   route==='cocina'?[[6,'capítulos para investigar'],['Datos / cálculo / hipótesis','tres naturalezas distintas'],['Fuera del motor','experimentos separados']]:
   route==='contexto'?[[events.length,'acontecimientos documentados'],['Campo','antes, durante y después'],['Cautela','asociación no implica causalidad']]:
   route==='atlas'||route==='laboratorio'?[[52,'circunscripciones'],[350,'escaños en la base oficial'],['23J · 2023','referencia territorial']]:
-  [['4 capas','procedencia diferenciada'],['Motor 29N','estimación de referencia'],['Auditoría abierta','fuentes, método y límites']];
- return `<section class="editorial-opening interior-guide" aria-label="Guía de la sección"><div class="editorial-kicker"><span>Cuaderno ${o[0]}</span><span>${h(o[1])}</span><a href="#dashboard">Observatorio Electoral Español ↗</a></div><div class="editorial-opening-grid"><div><span class="eyebrow">${h(g[0])}</span><h1>${h(o[2])}</h1><p class="editorial-deck">${h(o[3])}</p></div><aside class="editorial-margin" aria-label="Claves para esta lectura">${stats.map(([value,label])=>`<p><strong>${h(value)}</strong><span>${h(label)}</span></p>`).join('')}</aside></div><nav class="interior-paths editorial-contents" aria-label="Niveles de exploración">${g[2].map(([label,desc,target],i)=>`<a href="${target.endsWith('.html')?target:'#'+target}"><span class="interior-step">0${i+1}</span><strong>${h(label)}</strong><span>${h(desc)}</span></a>`).join('')}</nav><details class="layer-key"><summary>Clave de lectura: cuatro capas y experimentos separados</summary><div>${Object.values(LAYERS).map(l=>`<p><b>${l.capa} · ${h(l.nombre)}</b><br>${h(l.explica)}</p>`).join('')}<p><b>Experimentos:</b> cocina de microdatos y simuladores. Sus controles no modifican el pronóstico publicado.</p></div></details></section>`;
+  [['4 tipos','procedencia de cada cifra'],['Motor 29N','pronóstico operativo'],['Auditoría abierta','fuentes, método y límites']];
+ return `<section class="editorial-opening interior-guide" aria-label="Guía de la sección"><div class="editorial-kicker"><span>Cuaderno ${o[0]}</span><span>${h(o[1])}</span><a href="#dashboard">Observatorio Electoral Español ↗</a></div><div class="editorial-opening-grid"><div><span class="eyebrow">${h(g[0])}</span><h1>${h(o[2])}</h1><p class="editorial-deck">${h(o[3])}</p></div><aside class="editorial-margin" aria-label="Claves para esta lectura">${stats.map(([value,label])=>`<p><strong>${h(value)}</strong><span>${h(label)}</span></p>`).join('')}</aside></div><nav class="interior-paths editorial-contents" aria-label="Niveles de exploración">${g[2].map(([label,desc,target],i)=>`<a href="${target.endsWith('.html')?target:'#'+target}"><span class="interior-step">0${i+1}</span><strong>${h(label)}</strong><span>${h(desc)}</span></a>`).join('')}</nav><details class="layer-key"><summary>Qué clase de estimación estoy viendo</summary>${renderTiposEstimacion({compacto:true})}<p class="muted">Las capas técnicas del Motor 29N son variantes de cálculo, no cuatro clases diferentes de fuentes.</p></details></section>`;
 }
 /** Preserve explanatory copy in a native disclosure, without duplicating a second hero. */
 export function prepareEditorialContent(route,markup){
