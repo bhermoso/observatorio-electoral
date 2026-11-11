@@ -26,6 +26,13 @@ export function renderHomeImpact(references=[],events=[]){
   <h1 id="impact-heading">Panorama 29N</h1>
   <div class="portada-titular" id="portada-titular" aria-live="polite"><p>Cargando la estimación publicada…</p></div>
   <p class="portada-fechas" id="portada-fechas"></p>
+  <div class="procedencia-clara" aria-label="Procedencia de la estimación">
+   <span class="procedencia-titulo">Qué calcula esta estimación</span>
+   <p><strong>Entran:</strong> estimaciones publicadas por las encuestadoras, filtradas y combinadas por un modelo propio.</p>
+   <p><strong>Se comparan, pero no entran:</strong> promedios externos y otros pronósticos.</p>
+   <p><strong>En investigación:</strong> microdatos del CIS y 40dB; sus ensayos no modifican este pronóstico.</p>
+   <a href="#cocina">Ver la cocina y las pruebas con microdatos →</a>
+  </div>
  </div>
 
  <div class="hub-panel" id="portada-hub">
