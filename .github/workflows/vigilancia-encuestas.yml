@@ -54,9 +54,24 @@ jobs:
           git push origin HEAD:main
       - name: Recalcular y publicar solo tras incorporar encuestas
         if: success() && steps.publish.outputs.updated == 'true'
+        id: request_rebuild
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh workflow run pages.yml --ref main
+        run: |
+          # Un push realizado con GITHUB_TOKEN no dispara otro workflow por sí mismo.
+          # Es necesario solicitar expresamente el recálculo de Pages.
+          gh workflow run pages.yml --ref main
+          echo 'requested=true' >> "$GITHUB_OUTPUT"
+      - name: Registrar que el recálculo se ha solicitado correctamente
+        if: success() && steps.request_rebuild.outputs.requested == 'true'
+        run: |
+          python scripts/estado_actualizacion.py monitor-output \\
+            --run-url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \\
+            --recalculo-lanzado true
+          git add data/ingesta/estado.json
+          git diff --cached --quiet || git commit -m "Vigilancia: recálculo solicitado a Pages"
+          git pull --rebase origin main
+          git push origin HEAD:main
       - uses: actions/upload-artifact@v4
         if: always()
         with:
