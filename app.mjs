@@ -60,7 +60,7 @@ function download(obj,name){const url=URL.createObjectURL(new Blob([JSON.stringi
 export const ROUTES=['dashboard','pronostico','encuestas','analisis','contexto','cocina','atlas','laboratorio','metodologia'];
 // Pestañas fusionadas (menú de seis): #analisis → Encuestas y promedios; #atlas y #laboratorio siguen
 // existiendo como herramientas enlazadas desde Método y herramientas.
-const ALIAS_RUTA={analisis:['encuestas','encuestas-promedios']};
+const ALIAS_RUTA={analisis:['encuestas','encuestas-promedios'],'home-series':['dashboard','home-series']};
 export function resolveRoute(hash){const full=String(hash||'').replace(/^#/,'')||'dashboard';if(ALIAS_RUTA[full])return {route:ALIAS_RUTA[full][0],anchor:ALIAS_RUTA[full][1]};if(ROUTES.includes(full))return {route:full,anchor:null};const base=full.split('-')[0];if(ALIAS_RUTA[base])return {route:ALIAS_RUTA[base][0],anchor:full.replace(/^analisis/,'encuestas-promedios')};return ROUTES.includes(base)?{route:base,anchor:full}:{route:full,anchor:null};}
 let currentRoute=null;
 // Portada única: Panorama vive siempre en #main y cada sección se abre en el visor, encima.
