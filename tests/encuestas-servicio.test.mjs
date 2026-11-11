@@ -12,7 +12,7 @@ test('Acepta coma decimal, conserva ausencias y rechaza duplicados o datos invá
  for(const text of ['', 'PP: 30\nPP: 31','PP: -1','PP: 101','__proto__: 3','PP 30'])assert.throws(()=>parsePercentages(text));
 });
 test('La clave solo sale hacia la operación de edición del servicio fijo',async()=>{
- const seen=[];const fetcher=async(url,options)=>{seen.push({url,options});return {ok:true,json:async()=>({saved:true})};};
+ const seen=[];const fetcher=async(url,options)=>{seen.push({url,options});return {ok:true,json:async()=>url.includes('action=scan')?({candidates:[],errors:[]}):({saved:true})};};
  await serviceRequest('scan',{key:'secreto',fetcher});assert.equal(seen[0].options.headers['X-Editor-Key'],undefined);
  await serviceRequest('submit',{key:' secreto ',record:{id:'x'},fetcher});assert.equal(seen[1].url,SERVICE_URL+'?action=submit');assert.equal(seen[1].options.headers['X-Editor-Key'],'secreto');assert.equal(seen[1].options.cache,'no-store');
  await assert.rejects(serviceRequest('submit',{fetcher}),/clave/);
@@ -61,4 +61,11 @@ test('Los análisis recientes se ordenan por fecha y descartan duplicados y titu
  ]},Date.parse('2026-11-08T08:00:00Z'));
  assert.match(html,/Promedios, estimaciones y proyecciones[\s\S]*Promedio nuevo[\s\S]*Promedio anterior[\s\S]*Otras publicaciones sobre sondeos[\s\S]*Sondeo reciente/);
  assert.doesNotMatch(html,/octubre|Medio B|Promedio sin fecha/);
+});
+
+test('HTTP 200 con un contrato incorrecto tampoco confirma una búsqueda',async()=>{
+ for(const value of [null,{},[],{candidates:'incorrecto'},{candidates:[],errors:'incorrecto'}]){
+  await assert.rejects(serviceRequest('scan',{fetcher:async()=>({ok:true,json:async()=>value})}),/Respuesta de búsqueda inválida/);
+ }
+ await assert.rejects(serviceRequest('approved',{fetcher:async()=>({ok:true,json:async()=>({})})}),/formato válido/);
 });

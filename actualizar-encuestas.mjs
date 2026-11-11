@@ -9,7 +9,15 @@ export function renderEstadoCircuito(estado,publicacion){
  const e=estado||{},p=publicacion||{};
  const list=(a,empty)=>Array.isArray(a)&&a.length?a.map(x=>safe(typeof x==='string'?x:`${x.id}: ${x.motivo}`)).join('; '):empty;
  const row=(k,v)=>`<div><dt>${k}</dt><dd>${v}</dd></div>`;
- return `<dl class="pipeline-status">${[
+ const stages=[
+  ['Buscar',e.ultima_busqueda,e.errores_busqueda?.length?'Con incidencias registradas':'Última consulta registrada'],
+  ['Detectar',e.ultima_busqueda,e.candidatos_detectados!=null?`${e.candidatos_detectados} titulares · sin verificar`:'Sin resultado registrado'],
+  ['Verificar',null,e.bandeja_validadas!=null?`${e.bandeja_validadas} fichas en la bandeja · fecha individual en cada ficha`:'Sin registro de verificación'],
+  ['Incorporar',e.ultima_incorporacion_efectiva,`${e.incorporadas?.length||0} nuevas en la última ejecución`],
+  ['Recalcular',e.ultimo_recalculo_lanzado,e.recalculo_lanzado?'Solicitud registrada · no acredita finalización':'Sin nueva solicitud registrada; consultar publicación'],
+  ['Publicar',p.construido,p.corte_modelo?`Corte del modelo: ${p.corte_modelo}`:'Sin corte confirmado']
+ ];
+ return `<ol class="pipeline-steps" aria-label="Circuito de actualización">${stages.map(([label,time,result])=>`<li><strong>${label}</strong>${time?`<time>${safe(fecha(time))}</time>`:'<small>Fecha sin registro</small>'}<small>${safe(result)}</small></li>`).join('')}</ol><details><summary>Auditar fechas, incorporaciones e incidencias</summary><dl class="pipeline-status">${[
   row('1 · Última búsqueda',safe(fecha(e.ultima_busqueda))+(e.candidatos_detectados!=null?` · ${e.candidatos_detectados} titulares candidatos`:'')),
   row('2 · Bandeja de fichas verificadas',e.bandeja_validadas!=null?`${e.bandeja_validadas} fichas`:'sin registro'),
   row('3 · Última incorporación efectiva',safe(fecha(e.ultima_incorporacion_efectiva))),
@@ -19,7 +27,7 @@ export function renderEstadoCircuito(estado,publicacion){
   row('4 · Último recálculo lanzado por la vigilancia',safe(fecha(e.ultimo_recalculo_lanzado))),
   row('5 · Última publicación del sitio',safe(fecha(p.construido))+(p.corte_modelo?` · corte del modelo ${safe(p.corte_modelo)}`:'')+(p.veda?' · <b>veda electoral</b>':'')),
   row('Errores',list(e.errores_busqueda,'ninguno registrado'))].join('')}</dl>
- <p class="muted">${safe(e.naturaleza_candidatos||'')} Pendientes de revisión: lista de candidatos más abajo.${e.ejecucion?` <a href="${safe(e.ejecucion)}" target="_blank" rel="noopener noreferrer">Ver la ejecución ↗</a>`:''}${e.nota?' '+safe(e.nota):''}</p>`;
+ <p class="muted">${safe(e.naturaleza_candidatos||'')} Pendientes de revisión: lista de candidatos más abajo.${e.ejecucion?` <a href="${safe(e.ejecucion)}" target="_blank" rel="noopener noreferrer">Ver la ejecución ↗</a>`:''}${e.nota?' '+safe(e.nota):''}</p></details>`;
 }
 export async function fetchEstadoCircuito(fetcher=fetch){
  let estado=null,publicacion=null;

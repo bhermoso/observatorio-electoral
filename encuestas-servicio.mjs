@@ -8,8 +8,10 @@ export async function serviceRequest(action,{key,record,signal,fetcher=fetch}={}
  const headers=record?{'Content-Type':'application/json'}:{};
  if(action==='submit'){if(!key?.trim())throw Error('Introduce tu clave de edición.');headers['X-Editor-Key']=key.trim();}
  const response=await fetcher(SERVICE_URL+'?action='+encodeURIComponent(action),{method,headers,body:record?JSON.stringify(record):undefined,cache:'no-store',signal:signal?AbortSignal.any([signal,AbortSignal.timeout(45000)]):AbortSignal.timeout(45000)});
- let data;try{data=await response.json();}catch{throw Error('El servicio no devolvió una respuesta válida.');}
- if(!response.ok)throw Error(data.error||'No se pudo completar la actualización.');
+ let data;try{data=await response.json();}catch{throw Error(`El servicio no devolvió una respuesta válida${response.status?' (HTTP '+response.status+')':''}.`);}
+ if(!response.ok)throw Error(data?.error||'No se pudo completar la actualización.');
+ if(['scan','status'].includes(action)&&(!data||!Array.isArray(data.candidates)||(data.errors!==undefined&&!Array.isArray(data.errors))))throw Error('Respuesta de búsqueda inválida. No se ha confirmado una búsqueda nueva.');
+ if(action==='approved'&&!Array.isArray(data))throw Error('La bandeja de fichas no tiene un formato válido.');
  return data;
 }
 export function parsePercentages(text) {
@@ -50,6 +52,7 @@ export function selectRecentPollNews(candidates, now=Date.now()) {
 }
 
 export function renderCandidates(data,now=Date.now()) {
+ data=data||{};
  const errors=Array.isArray(data.errors)?data.errors:[];
  const {analysis,polls}=selectRecentPollNews(data.candidates,now);
  function section(label,items,empty){
@@ -64,7 +67,7 @@ export function renderCandidates(data,now=Date.now()) {
   }).join(''):`<p>${empty}</p>`}</section>`;
  }
  return `<p><b>Última búsqueda con resultados</b> · ${esc(when(data.checked_at))}.${data.cached?' Consulta en caché.':''}</p>
- ${errors.length?`<p role="alert"><b>Incidencias de un intento posterior</b> · ${errors.map(esc).join(' · ')}</p>`:''}
+ ${errors.length?`<p role="alert"><b>${data.partial?'Búsqueda parcial · fuentes no disponibles':'Incidencias de un intento posterior'}</b> · ${errors.map(esc).join(' · ')}</p>`:''}
  <p class="muted">Últimos siete días. Hasta cinco publicaciones por apartado, de más reciente a más antigua. Clasificación orientativa por titular. Son pistas para revisar.</p>
  ${section('Promedios, estimaciones y proyecciones',analysis,'La búsqueda no encontró publicaciones recientes de este tipo.')}
  ${section('Otras publicaciones sobre sondeos',polls,'La búsqueda no encontró otros sondeos recientes.')}`;
@@ -125,8 +128,8 @@ export function bindPollUpdate(onReload){
    const data=await serviceRequest('scan',{signal});
    show(pending,el=>el.innerHTML=renderCandidates(data));
    const {analysis,polls}=selectRecentPollNews(data.candidates);
-   show(note,el=>el.textContent=(data.cached?'Búsqueda en caché. ':'Búsqueda completada. ')+
-    analysis.length+' publicaciones de análisis y '+polls.length+' sobre otros sondeos.');
+   show(note,el=>el.textContent=(data.cached?'Búsqueda en caché; no se ha realizado una búsqueda nueva. ':data.partial||data.errors?.length?'Búsqueda parcial; algunas fuentes fallaron. ':'Búsqueda completada. ')+
+    analysis.length+' publicaciones de análisis y '+polls.length+' sobre otros sondeos. Ninguna ficha se incorpora por consultar titulares.');
   }catch(error){
    show(note,el=>el.textContent='Error en la búsqueda: '+error.message);
   }

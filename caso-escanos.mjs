@@ -81,7 +81,7 @@ export function construirCaso({poll,audit,election}){
 const h=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const pc=(v,d=1)=>Number(v).toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d})+' %';
 const n0=v=>Math.round(v).toLocaleString('es-ES');
-const COLOR={PP:'#1f5da6',PSOE:'#c9303d',Vox:'#4f9a2c',Sumar:'#cc3f86','Sumar / Frente Amplio':'#cc3f86',Podemos:'#6a3d9e',SALF:'#7d8590',ERC:'#d99a0b',Junts:'#13a0a0','EH Bildu':'#87b23a',PNV:'#2d7a4c',BNG:'#5fb0dc',CC:'#e0bd15',UPN:'#24375c'};
+const COLOR={PP:'#1f5da6',PSOE:'#c9303d',Vox:'#39751c',Sumar:'#cc3f86','Sumar / Frente Amplio':'#cc3f86',Podemos:'#6a3d9e',SALF:'#7d8590',ERC:'#d99a0b',Junts:'#13a0a0','EH Bildu':'#87b23a',PNV:'#2d7a4c',BNG:'#5fb0dc',CC:'#e0bd15',UPN:'#24375c'};
 const color=n=>COLOR[n]||'#9aa5a1';
 const fecha=s=>new Date(s+'T12:00:00Z').toLocaleDateString('es-ES',{day:'numeric',month:'long',timeZone:'Europe/Madrid'});
 
