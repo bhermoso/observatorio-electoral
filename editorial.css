@@ -154,3 +154,27 @@ body>header{background:var(--paper);border-bottom:3px double var(--ink);box-shad
 #visor .pr-tipos>summary{font-size:13px;color:var(--green);cursor:pointer}
 #visor .layer-key>.tipos-resumen{margin-top:10px}
 @media(max-width:640px){.tipos-resumen{grid-template-columns:1fr}.tipos-resumen-item{padding:10px 0}}
+
+/* Comparación visual de estimaciones: puntos sobre una escala común. */
+.cmp-graphic{margin:15px 0 18px;padding:12px 0;border-top:1px solid var(--line)}
+.cmp-head{display:flex;justify-content:space-between;gap:12px;margin-bottom:10px;font:12px/1.5 system-ui,sans-serif}
+.cmp-head strong{color:var(--ink)}.cmp-head span{color:var(--muted);font-variant-numeric:tabular-nums}
+.cmp-legend{display:flex;flex-wrap:wrap;gap:12px 22px;margin:0 0 14px;font-size:12px;color:var(--muted)}
+.cmp-legend>span{display:inline-flex;align-items:center;gap:6px}
+.cmp-key{display:inline-block;flex:0 0 auto;width:10px;height:10px;border-radius:50%;background:#94a29d}
+.cmp-key.modelo{background:var(--ink);border-radius:1px;width:4px;height:15px}
+.cmp-key.media{background:transparent;border:2px solid var(--editorial-rule)}
+.cmp-key.externo{background:#889c9a}
+.cmp-row{display:grid;grid-template-columns:minmax(100px,165px) minmax(0,1fr) 68px;align-items:center;gap:12px;min-height:29px;border-bottom:1px solid rgba(84,108,95,.14)}
+.cmp-label{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink)}
+.cmp-track{position:relative;height:18px;background:linear-gradient(to right,rgba(83,105,99,.07) 1px,transparent 1px);background-size:25% 100%;border-left:1px solid var(--line);border-right:1px solid var(--line)}
+.cmp-marker{position:absolute;top:50%;transform:translate(-50%,-50%);width:9px;height:9px;background:#889c9a;border-radius:50%;z-index:3}
+.cmp-marker.modelo{width:3px;height:20px;background:var(--ink);border-radius:0;z-index:1}
+.cmp-marker.media{width:11px;height:11px;border:2px solid var(--editorial-rule);background:var(--paper);z-index:2}
+.cmp-marker.casa{background:#5b8b78}
+.cmp-marker.externo{background:#8f9294}
+.cmp-value{font:600 12px system-ui,sans-serif;text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
+.cmp-group-title{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:18px 0 7px}
+.cmp-detail{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+.cmp-detail summary{font:500 12px system-ui,sans-serif;color:var(--green);cursor:pointer}
+@media(max-width:600px){.cmp-row{grid-template-columns:minmax(70px,105px) minmax(0,1fr) 53px;gap:7px}.cmp-label,.cmp-value{font-size:11px}.cmp-legend{gap:8px 12px;font-size:11px}}
