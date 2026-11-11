@@ -238,3 +238,11 @@ body>header{background:var(--paper);border-bottom:3px double var(--ink);box-shad
 .pr-territory-detail>summary,.pr-history-detail>summary{font:500 13px/1.5 system-ui,sans-serif;color:var(--green);cursor:pointer}
 .pr-territory-detail[open] .pr-provincias,.pr-history-detail[open] .table-wrap{margin-top:15px}
 @media(max-width:620px){.pr-territory-row{grid-template-columns:minmax(72px,104px) minmax(0,1fr) 44px;gap:6px}.pr-territory-row>strong,.pr-territory-row>span{font-size:11px}.pr-territory-legend{gap:6px 9px}}
+
+.pr-history-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;border-top:1px solid var(--ink);border-bottom:1px solid var(--line);padding:14px 0;margin:17px 0}
+.pr-history-item{display:grid;grid-template-columns:8px 1fr;column-gap:8px;align-items:center}
+.pr-history-item i{display:block;width:8px;height:8px;border-radius:50%}
+.pr-history-item span{font-size:12px;color:var(--muted)}
+.pr-history-item strong{grid-column:2;font:400 25px/1.2 var(--editorial-serif);color:var(--ink)}
+.pr-history-item small{grid-column:2;font-size:11px;color:var(--muted)}
+@media(max-width:520px){.pr-history-summary{gap:8px}.pr-history-item strong{font-size:20px}.pr-history-item span,.pr-history-item small{font-size:10px}}
