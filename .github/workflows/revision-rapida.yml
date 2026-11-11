@@ -19,7 +19,8 @@ jobs:
         run: npm test
 
   interiores:
-    runs-on: ubuntu-latest
+    # Playwright 1.56.1 supports Ubuntu 24.04; avoid a moving runner image.
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
