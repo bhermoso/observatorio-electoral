@@ -1082,5 +1082,96 @@
     "technical": "https://ep00.epimg.net/infografias/encuestas40db/2026/11-preelectoral/2026_11_preelectoral_informe.pdf",
     "notes": "El 5% del agregado Frente Amplio incluye 3,4% de FA sin Podemos, 1,1% de Compromís-Front Valencià, 0,3% de UPC y 0,2% de Ara Més. Sus 10 escaños comprenden esos cuatro componentes. La muestra excluye Ceuta y Melilla. UPN-PP conserva la etiqueta de coalición del informe.",
     "seatNotes": "Puntos y horquillas del informe. Los 31 escaños de Otros se desglosan según la nota del gráfico. No se suman los extremos."
+  },
+  {
+    "id": "sigma-dos-2026-11-09",
+    "institute": "Sigma Dos",
+    "publisher": "El Mundo",
+    "title": "Sondeo nacional · 9 de noviembre de 2026",
+    "fieldStart": "2026-10-30",
+    "fieldEnd": "2026-11-06",
+    "published": "2026-11-09",
+    "sample": 4172,
+    "mode": "CATI + CAWI",
+    "scope": "España",
+    "universe": "Personas de 18 y más años residentes en España con derecho a voto",
+    "scenario": "Frente Amplio, Front Valencià, UPC, Adelante Andalucía y Podemos separados",
+    "values": {
+      "PP": 31,
+      "PSOE": 25.2,
+      "VOX": 19.4,
+      "Frente Amplio": 6.5,
+      "Podemos": 1.6,
+      "ERC": 2.9,
+      "Adelante Andalucía": 1.6,
+      "EH Bildu": 1.3,
+      "Junts": 1.2,
+      "Front Valencià": 1.2,
+      "BNG": 1,
+      "PNV": 0.9,
+      "UPC": 0.4,
+      "CC": 0.4
+    },
+    "seats": {
+      "PP": {
+        "min": 131,
+        "max": 137
+      },
+      "PSOE": {
+        "min": 101,
+        "max": 106
+      },
+      "VOX": {
+        "min": 62,
+        "max": 70
+      },
+      "Frente Amplio": {
+        "min": 9,
+        "max": 11
+      },
+      "Podemos": {
+        "point": 0
+      },
+      "ERC": {
+        "min": 8,
+        "max": 9
+      },
+      "Adelante Andalucía": {
+        "min": 3,
+        "max": 4
+      },
+      "EH Bildu": {
+        "min": 6,
+        "max": 8
+      },
+      "Junts": {
+        "min": 5,
+        "max": 6
+      },
+      "Front Valencià": {
+        "min": 3,
+        "max": 4
+      },
+      "BNG": {
+        "point": 2
+      },
+      "PNV": {
+        "min": 4,
+        "max": 6
+      },
+      "UPC": {
+        "point": 1
+      }
+    },
+    "source": "https://www.sigmados.com/noticia?id=Zr7XEKTN9GLN00s",
+    "technical": "https://www.sigmados.com/noticia?id=Zr7XEKTN9GLN00s",
+    "coverage": "partial",
+    "kind": "poll-estimate",
+    "denominator": "Estimación de voto; el texto original no explicita el denominador",
+    "verified": "2026-11-11",
+    "notes": "Realización por Sigma Dos SL, con su panel Sigma Dos by Trust Survey para CAWI. Cuotas por sexo y edad y distribución proporcional por comunidad autónoma. Las categorías conservan la desagregación del texto del instituto. El campo comparte el 30 de octubre con la ola anterior; aplicar selección por instituto para evitar duplicar entrevistas.",
+    "seatNotes": "Puntos y horquillas expresos del texto original. Coalición Canaria aparece con posibilidad de un escaño, sin intervalo numérico explícito en el texto verificado; se deja ausente.",
+    "verification": "Texto y ficha técnica del instituto contrastados el 11 de noviembre de 2026.",
+    "sourcePages": "Párrafos de estimación y apartado Ficha técnica."
   }
 ]
