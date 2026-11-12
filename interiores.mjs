@@ -2,7 +2,7 @@ import {renderTiposEstimacion} from './tipos-estimacion.mjs';
 const h=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const guides={
  pronostico:['Estimación propia · Motor 29N','¿Qué resultados son plausibles?',[
-  ['Ver el panorama','Escaños, voto e intervalos del 90 %','pronostico-principal'],['Comparar escenarios','Variantes, bloques y territorio','pronostico-variantes'],['Auditar el resultado','Estudios, exclusiones y evaluación','pronostico-fuentes']]],
+  ['Comprender','El resultado, la incertidumbre y cómo se calcula','pronostico-comprender'],['Comparar','Variantes, promedios, bloques y evolución','pronostico-comparar'],['Auditar','Datos, exclusiones, métodos y evaluación','pronostico-auditar']]],
  encuestas:['Archivo de estimaciones publicadas','Compara fuentes antes de interpretar cambios.',[
   ['Ver la dispersión','Puntos por estudio y fechas de campo','encuestas-visual'],['Explorar el archivo','Filtra y consulta cada ficha original','encuestas-archivo'],['Seguir la actualización','Titulares, verificación y publicación','encuestas-actualizar']]],
  cocina:['Experimentación · no altera el pronóstico','Sigue el recorrido de la respuesta al escaño.',[
