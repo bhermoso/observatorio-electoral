@@ -24,9 +24,9 @@ export const CAPITULOS=[
 export function renderCifrasClave(f){
  const p=f?.principal;if(!p?.partidos)return '';
  const top=Object.entries(p.partidos).filter(([,v])=>v?.escanos?.[0]>0).sort((a,b)=>b[1].escanos[0]-a[1].escanos[0]).slice(0,3);
- const b=p.bloques?.['PP+VOX'];
+ const blocks=Object.entries(p.bloques||{}).filter(([,v])=>Number.isFinite(v?.mediana));
  return `<div class="pr-cifras">${top.map(([id,v])=>`<div style="--c:${PARTY_COLORS[id]||'#7b8784'}"><span>${h(name(id))}</span><strong>${fmt(v.escanos[0],0)}</strong><small>${fmt(v.escanos[1],0)}–${fmt(v.escanos[2],0)} escaños · ${fmt(v.voto[0])} %</small></div>`).join('')}
- ${b?`<div><span>PP + Vox</span><strong>${fmt(b.mediana,0)}</strong><small>176 o más en ${share(b.p_mayoria)} de las simulaciones</small></div>`:''}
+ <div class="pr-focus-block"><label for="pr-bloque-elegido">Bloque a examinar</label><select id="pr-bloque-elegido"><option value="">Sin bloque seleccionado</option>${blocks.map(([id])=>`<option value="${h(id)}">${h(id.replaceAll('+',' + '))}</option>`).join('')}</select><div id="pr-bloque-valor" aria-live="polite"><small>Elige una combinación para consultar sus escaños y probabilidad de mayoría.</small></div></div>
  <div><span>Corte</span><strong class="pr-cifra-fecha">${h(fday(f.corte))}</strong><small>${f.entradas?.length??'—'} encuestas · ${f.excluidas?.length??0} fuera</small></div></div>`;
 }
 
@@ -71,6 +71,6 @@ export async function bindOrdenPronostico(){
  try{
   const r=await fetch('data/modelo/pronostico.json',{cache:'no-store'});if(!r.ok)return;
   const f=await r.json();if(!root.isConnected)return;
-  const c=root.querySelector('#pr-cifras-clave');if(c)c.innerHTML=renderCifrasClave(f);
+  const c=root.querySelector('#pr-cifras-clave');if(c){c.innerHTML=renderCifrasClave(f);const sel=c.querySelector('#pr-bloque-elegido');const out=c.querySelector('#pr-bloque-valor');sel?.addEventListener('change',()=>{const b=f.principal?.bloques?.[sel.value];out.innerHTML=b?`<strong>${fmt(b.mediana,0)} escaños</strong><small>Mayoría absoluta (176): ${share(b.p_mayoria)} de las simulaciones</small>`:'<small>Elige una combinación para consultar sus escaños y probabilidad de mayoría.</small>';});}
  }catch{}
 }
