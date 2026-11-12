@@ -1,0 +1,77 @@
+{
+  "esquema": 1,
+  "fecha": "2026-11-12",
+  "tipo": "auditoria_historica_recuerdo_no_validacion_independiente",
+  "receta": "scripts/cocina_cis.py",
+  "parametros": {
+    "calibracion": "RECUERDO, resultado oficial de la elección anterior",
+    "recorte_factores": [
+      0.2,
+      5
+    ],
+    "indecisos": "transferencias dentro del mismo grupo de recuerdo",
+    "participacion": "probabilidad declarada / 10; NS/NC=0.5"
+  },
+  "ensayo_2023": {
+    "eleccion": "2023-07-23",
+    "estudios": [
+      "3411",
+      "3415"
+    ],
+    "archivo": "data/microdatos/validacion_cocina_cis.json",
+    "recuerdo_objetivo": "2019-11-10",
+    "comparacion": "MAE de PP PSOE VOX Sumar contra voto válido oficial del 23J; 4 partidos, 2 estudios correlacionados",
+    "elegibilidad": "retrospectiva_exploratoria_no_fuera_de_eleccion",
+    "conclusion": "La calibración de recuerdo aumenta el MAE medio respecto a voto+simpatía y la receta completa no mejora la intención directa. Ningún parámetro se ha elegido en una evaluación independiente antes del resultado."
+  },
+  "ensayos_2019": [
+    {
+      "estudio": "3242",
+      "eleccion": "2019-04-28",
+      "recuerdo_anterior": "2016-06-26",
+      "n": 16194,
+      "variable_recuerdo": "RECUERDO",
+      "variable_intencion": "P10R",
+      "variable_simpatia": "VOTOSIMG",
+      "variable_peso": "PESO",
+      "variable_participacion": "P12",
+      "estado": "origenes_cotejados_sin_validacion_homologada",
+      "razones": [
+        "Universo, mapa de candidaturas provinciales y residual sin homologación electoral completa.",
+        "No existe serie de seis tratamientos ejecutada con el mismo código y base que la de 2023/2026."
+      ]
+    },
+    {
+      "estudio": "3263",
+      "eleccion": "2019-11-10",
+      "recuerdo_anterior": "2019-04-28",
+      "n": 17650,
+      "variable_recuerdo": "RECUERDO",
+      "variable_intencion": "P9R",
+      "variable_simpatia": "VOTOSIMG",
+      "variable_peso": "PESO",
+      "variable_participacion": "P11",
+      "estado": "origenes_cotejados_sin_validacion_homologada",
+      "razones": [
+        "Las alianzas provinciales y las categorías de Más País y Unidas Podemos requieren tratamiento específico.",
+        "No existe serie de seis tratamientos ejecutada con el mismo código y base que la de 2023/2026."
+      ]
+    }
+  ],
+  "referencias_2019": [
+    "data/microdatos/cotejo_originales_2019.json",
+    "data/microdatos/diagnostico_2019_original.json",
+    "data/microdatos/homologacion_2019_pendiente.json"
+  ],
+  "condicion_entrada_motor": "NO_ADMITIR",
+  "faltan": [
+    "Homologación electoral y nueva ejecución reproducible sobre originales 2019.",
+    "Parámetros congelados antes de conocer el resultado de una elección de evaluación independiente.",
+    "Comparación fuera de muestra contra intención directa y receta simple con MAE en mismas bases."
+  ],
+  "notas": [
+    "Los dos estudios del 23J no son dos elecciones independientes.",
+    "La discrepancia con una estimación publicada del CIS en 2026 no mide precisión electoral.",
+    "Un error en un solo ciclo no demuestra efecto general; tampoco habilita el método para uso productivo."
+  ]
+}
