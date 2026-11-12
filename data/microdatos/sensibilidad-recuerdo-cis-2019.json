@@ -84,6 +84,12 @@
             "VOX": 7.0138,
             "CS": 15.664
           }
+        },
+        "cuatro_mas_up": {
+          "mae_pp": 1.8188
+        },
+        "cuatro_mas_otros": {
+          "mae_pp": 2.3337
         }
       }
     },
@@ -134,13 +140,20 @@
             "VOX": 10.685,
             "CS": 10.6065
           }
+        },
+        "cuatro_mas_up": {
+          "mae_pp": 2.7417
+        },
+        "cuatro_mas_otros": {
+          "mae_pp": 2.7681
         }
       }
     }
   ],
   "sensibilidad_grupos": {
     "criterio": "solo_pp_psoe_vox_cs compara calibrar exclusivamente cuatro grupos de recuerdo frente a calibrar también UP y OTROS; no separa coaliciones territoriales de otras candidaturas",
-    "precaucion": "La diferencia de MAE entre escenarios no puede atribuirse causalmente a la agrupación territorial, dado que cambia simultáneamente la calibración de UP y OTROS"
+    "precaucion": "La diferencia de MAE entre escenarios no puede atribuirse causalmente a la agrupación territorial, dado que cambia simultáneamente la calibración de UP y OTROS",
+    "descripcion_adicional": "Factorial de cuatro partidos principales + recuerdo de UP, cuatro partidos principales + recuerdo de OTROS y ambos. El residual OTROS no equivale exactamente a voto territorial; contiene candidaturas no homologadas y otras categorías."
   },
   "limitaciones": [
     "No se optimizan parámetros usando el resultado de esta misma elección; valores de la rejilla únicamente diagnósticos.",
@@ -148,5 +161,9 @@
     "Las elecciones de 2019 no aportan validación prospectiva independiente de la selección de modelos.",
     "Los códigos y agrupaciones de recuerdo entre 2019 y 2023 difieren, por lo que la comparación entre ciclos requiere cautela.",
     "Motor 29N protegido: NO_ADMITIR."
+  ],
+  "escenarios_adicionales": [
+    "cuatro_mas_up",
+    "cuatro_mas_otros"
   ]
 }
