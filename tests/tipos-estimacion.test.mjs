@@ -18,5 +18,5 @@ test('el pronóstico identifica su origen y conserva las secciones de auditoría
  for(const id of ['pronostico-principal','pronostico-variantes','pronostico-fuentes','pronostico-evaluacion','pronostico-externos','pronostico-capas']){
   assert.ok(page.includes(id),id);
  }
- assert.equal((page.match(/<nav class="subnav"/g)||[]).length,1);
+ assert.equal((page.match(/<nav class="pr-reading-nav"/g)||[]).length,1);
 });
