@@ -17,7 +17,7 @@ test('el pronóstico tiene tres niveles inequívocos y conserva cada panel origi
  }
  assert.match(html,/15|última encuesta de cada instituto/);
  assert.match(html,/el motor utiliza los estudios históricos/);
- assert.match(html,/no se suma el promedio como entrada/);
+ assert.match(html,/ni se suma el promedio como entrada/);
 });
 test('la guía y la ruta mantienen niveles y anclas accesibles',()=>{
  const guide=renderInteriorGuide('pronostico');
