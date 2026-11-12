@@ -242,6 +242,8 @@ export function bindPortadaSeries(root,{polls,forecast,history,events,cutoff,pro
   else if(chart.clientWidth&&chart.clientWidth!==chartWidth)drawChart();
  });
  resize.observe(chart);
+ const temporal=find('.series-lectura-temporal');
+ temporal?.addEventListener('toggle',()=>{if(temporal.open)requestAnimationFrame(()=>{if(root.isConnected)drawChart();});});
  party.addEventListener('change',()=>{draw();renderComparison();});
  order.addEventListener('change',renderComparison);
  period.addEventListener('change',draw);
