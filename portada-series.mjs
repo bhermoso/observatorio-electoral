@@ -123,15 +123,18 @@ export function bindPortadaSeries(root,{polls,forecast,history,events,cutoff,pro
   <div class="series-controls"><label>Partido <select data-party><option value="${ALL}">Principales partidos (modelo)</option>${PARTIES.map(p=>`<option value="${p.id}">${escape(p.label)}</option>`).join('')}</select></label>
   <label>Periodo <select data-period><option value="${recent}">Últimos 60 días</option><option value="2026-01-01">Desde enero de 2026</option></select></label></div></div>
   <p class="series-note" data-note></p>
-  <div class="series-events" data-events aria-label="Acontecimientos en el gráfico"></div>
-  <div class="portada-grafico" data-chart></div>
   <section class="series-comparacion" aria-label="Comparación numérica de estimaciones">
-   <div class="series-comparacion-cab"><div><h3>Comparar cifras por partido</h3><p>Un corte del Observatorio, promedio y última encuesta de cada instituto. No son mediciones equivalentes.</p></div>
+   <div class="series-comparacion-cab"><div><h3>Qué estima cada fuente para este partido</h3><p>Compara en una misma escala el último sondeo de cada casa, el promedio y nuestro pronóstico. El laboratorio de microdatos se muestra aparte.</p></div>
     <label>Ordenar institutos <select data-order><option value="desc">Mayor porcentaje</option><option value="asc">Menor porcentaje</option><option value="name">Alfabéticamente</option><option value="recent">Más reciente</option></select></label></div>
    <div data-comparison role="region" aria-live="polite"></div>
   </section>
+  <details class="series-lectura-temporal"><summary>Explorar evolución temporal y acontecimientos</summary>
+  <div class="series-events" data-events aria-label="Acontecimientos en el gráfico"></div>
+  <div class="portada-grafico" data-chart></div>
+
   <div class="series-legend" data-legend aria-label="Series visibles"></div>
   <div data-event-reading></div>
+  </details>
   <p class="series-note" data-detail></p>
   <p class="series-note">Cifras de cada serie con su ficha y su fuente: <a href="#encuestas">archivo de encuestas</a> · <a href="#pronostico-evolucion">cortes del modelo</a> · <a href="#pronostico-fuentes">estudios usados y excluidos</a>.</p>`;
  const find=s=>root.querySelector(s);
