@@ -57,7 +57,7 @@ function publicValidation(f){
 function partyTable(f){return renderIntervalos(f);}
 export function variantsTable(f){
  const src=id=>id==='principal'?f.principal:f.variantes?.[id];
- const ids=['PP','PSOE','VOX','SUMAR','PODEMOS'];
+ const ids=Object.entries(f.principal?.partidos||{}).filter(([,v])=>Number.isFinite(v?.voto?.[0])).sort((a,b)=>b[1].voto[0]-a[1].voto[0]).slice(0,5).map(([id])=>id);
  const head=VARIANTS.map(v=>`<th scope="col"${v.id==='principal'?' class="ref"':''}>${h(v.nombre)}</th>`).join('');
  const rows=ids.map(id=>`<tr><th scope="row">${h(label(id))}</th>${VARIANTS.map(v=>{const x=src(v.id)?.partidos?.[id];return `<td${v.id==='principal'?' class="ref"':''}>${x?`${fmt(x.voto[0])} % · <b>${fmt(x.escanos[0],0)}</b> <small>(${fmt(x.escanos[1],0)}–${fmt(x.escanos[2],0)})</small>`:'—'}</td>`;}).join('')}</tr>`).join('');
  const brow=BLOCKS.slice(0,3).map(b=>`<tr class="bloque"><th scope="row">${h(b.label)}</th>${VARIANTS.map(v=>{const x=src(v.id)?.bloques?.[b.id];return `<td${v.id==='principal'?' class="ref"':''}>${x?`<b>${fmt(x.mediana,0)}</b> · ≥176: ${fmt(x.p_mayoria*100,0)} %`:'—'}</td>`;}).join('')}</tr>`).join('');
@@ -87,7 +87,7 @@ export function variantsTable(f){
 export function chain(f){
  const sin=capaModelo(f,2),con=capaModelo(f,3),e=efectoCocina(sin,con);
  const v=id=>f.variantes?.[id]?.partidos;
- const ids=['PP','PSOE','VOX','SUMAR'];
+ const ids=Object.entries(con.partidos||{}).filter(([,v])=>Number.isFinite(v?.voto?.[0])).sort((a,b)=>b[1].voto[0]-a[1].voto[0]).slice(0,4).map(([id])=>id);
  const step=(n,t,d)=>`<li><span class="step-n">${n}</span><div><b>${h(t)}</b><p>${d}</p></div></li>`;
  const ps=f.promedio_simple||{};
  const dec=f.capas?.con_cocina;
