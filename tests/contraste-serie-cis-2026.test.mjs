@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {contrastarSerieCis2026,renderContrasteSerieCis2026,tablaContrasteSerieCis2026} from '../contraste-serie-cis-2026.mjs';
+import {contrastarSerieCis2026,renderContrasteSerieCis2026,tablaContrasteSerieCis2026,auditarEfectosCis2026,tablaEfectosCis2026} from '../contraste-serie-cis-2026.mjs';
 const load=p=>JSON.parse(fs.readFileSync('data/microdatos/'+p,'utf8'));
 const serie=load('serie-cis-2026-experimental.json');
 const official=load('cis-oficiales-2026-referencia.json');
@@ -34,4 +34,24 @@ test('tabla etiqueta cifras como tratamientos no predictivos y preserva tres grÃ
  assert.match(c,/renderContrasteSerieCis2026\(\)/);
  assert.match(c,/bindContrasteSerieCis2026\(\)/);
  assert.match(b,/contraste-serie-cis-2026\.mjs/);
+});
+
+test('descomposiciÃ³n CIS: seis diferencias cierran y recuerdo domina PP y PSOE',()=>{
+ const rows=contrastarSerieCis2026(serie,official);
+ const audit=auditarEfectosCis2026(rows);
+ assert.equal(audit.length,4);
+ for(const x of audit){
+  for(const party of ['PP','PSOE']){
+   const d=x.partidos[party];
+   const sum=Object.values(d.cambios).reduce((a,b)=>a+b,0);
+   assert.ok(Math.abs(sum-d.diferencia_final_pp)<0.006);
+   assert.equal(d.mayor_cambio,'recuerdo');
+  }
+ }
+ assert.equal(audit[3].partidos.PP.cambios.recuerdo,6.523);
+ assert.equal(audit[3].partidos.PSOE.cambios.recuerdo,-7.089);
+ assert.equal(audit[3].partidos.PP.diferencia_final_pp,5.535);
+ const html=tablaEfectosCis2026(rows);
+ assert.match(html,/No son efectos causales independientes/);
+ assert.match(html,/La columna inicial compara directa y CIS/);
 });
