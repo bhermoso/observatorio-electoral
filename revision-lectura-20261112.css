@@ -1,0 +1,61 @@
+/* Observatorio Electoral · revisión de lectura y contraste 2026-11-12.
+   Última hoja: evita conflictos de especificidad y caché con estilos previos.
+   No modifica los colores de las series partidistas ni los cálculos. */
+:root{--oee-lectura-tinta:#17372f;--oee-lectura-secundaria:#405c50;--oee-lectura-borde:#cdd9d0;--oee-lectura-papel:#fffefa}
+#visor .visor-contenido{color:var(--oee-lectura-tinta)}
+#visor .panel,#visor .pr-cifras>div,#visor .pr-chain-node,#visor .pr-variant-row,
+#visor .pr-variant-plot,#visor .pr-int-fila,#visor .pr-focus-block,
+#visor .kitchen-stage,#visor .kitchen-concept,#visor .kitchen-audit-columns>div,
+#visor .trace-kpis>div,#visor .series-stats>div,#visor .invest-frequencies>div,
+#visor .pr-prov,#visor .methods-split>div,
+.multi-lab,.multi-linea,.multi-resumen>div,.multi-party-choice,.hub-caja,.hub-micro-panel,.portada-bloque,
+.lectura-directorio,.lectura-tarjeta{color:var(--oee-lectura-tinta)}
+#visor :is(.pr-cifras>div,.pr-chain-node,.pr-variant-row,.pr-variant-plot,.pr-int-fila,.pr-focus-block,.kitchen-stage,.kitchen-concept,.kitchen-audit-columns>div,.trace-kpis>div,.series-stats>div,.invest-frequencies>div,.pr-prov,.methods-split>div) :is(strong,b,dd,output),
+:is(.multi-linea,.multi-resumen>div,.multi-party-choice,.hub-caja,.hub-micro-panel,.portada-bloque,.lectura-directorio,.lectura-tarjeta) :is(strong,b,dd,output){color:var(--oee-lectura-tinta)}
+#visor :is(.pr-cifras>div,.pr-chain-node,.pr-variant-row,.pr-variant-plot,.pr-int-fila,.pr-focus-block,.kitchen-stage,.kitchen-concept,.kitchen-audit-columns>div,.trace-kpis>div,.series-stats>div,.invest-frequencies>div,.pr-prov,.methods-split>div) :is(small,dt),
+:is(.multi-linea,.multi-resumen>div,.multi-party-choice,.hub-caja,.hub-micro-panel,.portada-bloque,.lectura-directorio,.lectura-tarjeta) :is(small,dt){color:var(--oee-lectura-secundaria)}
+/* Los controles claros nunca heredan blanco de botones o paneles oscuros. */
+#visor :is(.pr-focus-block,.multi-controles,.panel) :is(select,input,textarea),
+.multi-controles :is(select,input,textarea){background:#fff;color:#17372f;border-color:#9eafa5}
+#visor :is(.pr-focus-block,.multi-controles,.panel) :is(select,input,textarea)::placeholder{color:#536c5e}
+#visor :is(.pr-focus-block,.multi-controles,.panel) :is(option){background:#fff;color:#17372f}
+#visor .reading-controls button:not([aria-pressed=true]),.lectura-modo:not(.active){background:#fff;color:#174636}
+#visor .reading-controls button[aria-pressed=true],.lectura-modo.active{background:#193f35;color:#fff}
+/* Jerarquía editorial: lectura progresiva, párrafos cortos y contenido verificable. */
+#visor .editorial-opening h1{max-width:19ch;text-wrap:balance}
+#visor .editorial-deck{max-width:66ch}
+#visor .panel>p,#visor .chapter-reading p,#visor .pr-capitulo>p,
+.editorial-document :is(article,section)>p{max-width:79ch;line-height:1.8}
+#visor .panel h2,#visor .chapter-reading h2,.editorial-document h2{scroll-margin-top:105px;text-wrap:balance}
+#visor .panel :is(h3,h4){max-width:75ch;line-height:1.35}
+#visor .chapter-reading{padding-block:8px}
+#visor .chapter-reading>summary{cursor:pointer}
+#visor :is(.table-wrap,.how-table,.guide-table){overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+#visor :is(.table-wrap,.how-table,.guide-table) table{font-variant-numeric:tabular-nums}
+#visor .table-wrap tbody tr:nth-child(even){background:#f7f8f3}
+#visor .table-wrap tbody tr:hover{background:#ebf2ea}
+#visor .table-wrap th,#visor .table-wrap td{vertical-align:top;line-height:1.5}
+#visor :is(.pr-cifras,.trace-kpis,.series-stats) strong{font-variant-numeric:tabular-nums}
+#visor a:focus-visible,#visor button:focus-visible,#visor select:focus-visible,
+.lectura-tarjeta:focus-visible{outline:3px solid #ad7927;outline-offset:3px}
+/* Evitar que el menú editorial ocupe toda la pantalla en páginas largas. */
+#visor .editorial-contents{gap:0 14px}
+#visor .editorial-contents a{line-height:1.4;min-height:66px}
+.lectura-directorio{border-radius:6px;box-shadow:none;background:#f3f6f0}
+.lectura-tarjeta{border-radius:4px;min-height:145px}
+.lectura-tarjeta.is-current{background:#eaf3e8}
+@media(max-width:850px){
+ #visor .editorial-opening-grid{grid-template-columns:1fr;gap:18px}
+ #visor .editorial-margin{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;border-left:0;border-top:1px solid var(--oee-lectura-borde);padding:18px 0 0}
+ #visor .editorial-contents{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #visor .editorial-contents a{margin-right:0;border-right:0;border-bottom:1px solid var(--oee-lectura-borde)}
+}
+@media(max-width:600px){
+ #visor .editorial-opening h1{font-size:clamp(38px,11vw,56px);letter-spacing:-1px}
+ #visor .editorial-contents{grid-template-columns:1fr}
+ #visor .panel{padding:18px 15px}
+ #visor .editorial-margin{grid-template-columns:1fr}
+ #visor .cocina-indice{grid-template-columns:1fr}
+ .lectura-tarjetas{grid-template-columns:1fr}
+ .lectura-tarjeta{min-height:unset}
+}
