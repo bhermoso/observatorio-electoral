@@ -6,6 +6,7 @@
 import {bindPortadaSeries} from './portada-series.mjs';
 import {renderTiposEstimacion} from './tipos-estimacion.mjs';
 import {renderMicrodatosPortada} from './portada-microdatos.mjs';
+import {renderIndiceMultifuente,bindIndiceMultifuente} from './indice-multifuente.mjs';
 import {panelPartido,panelBloque,panelEncuesta,bindPanel} from './portada-panel.mjs';
 import {renderHemiciclo,renderPromedio,encuestasRecientes,renderTarjetas,renderAccesos,renderRecuentoEncuestas} from './portada-hub.mjs';
 import {PARTIES,capaModelo} from './capas.mjs';
@@ -37,8 +38,9 @@ export function renderHomeImpact(references=[],events=[]){
   <section class="hub-caja" aria-labelledby="hub-hemi-t"><div class="portada-bloque-cabeza"><div><span class="eyebrow">Estimación propia · modelo vigente</span><h2 id="hub-hemi-t">Escaños estimados</h2></div><a class="panel-link" href="#pronostico">Pronóstico completo →</a></div><div id="hub-hemiciclo" aria-live="polite"><p class="muted">Cargando…</p></div></section>
   <section class="hub-caja" aria-labelledby="hub-prom-t"><div class="portada-bloque-cabeza"><div><span class="eyebrow">Promedio de encuestas · referencia comparativa</span><h2 id="hub-prom-t">Promedio de encuestas</h2></div><a class="panel-link" href="#pronostico-capas">Promedio frente a pronóstico →</a></div><div id="hub-promedio" aria-live="polite"><p class="muted">Cargando…</p></div></section>
  </div>
+ ${renderIndiceMultifuente({compacto:true})}
  <section class="portada-bloque hub-micro-panel" id="hub-microdatos" aria-labelledby="hub-micro-t">
-  <div class="portada-bloque-cabeza"><div><span class="eyebrow">Estimación independiente sobre entrevistas · investigación</span><h2 id="hub-micro-t">La estimación del Observatorio a partir de microdatos</h2></div><a class="panel-link" href="#cocina-propia">Receta y validación →</a></div>
+  <div class="portada-bloque-cabeza"><div><span class="eyebrow">Estimación independiente sobre entrevistas · investigación</span><h2 id="hub-micro-t">Caso individual: la receta CIS 3582</h2></div><a class="panel-link" href="#cocina-propia">Receta y validación →</a></div>
   <div id="hub-micro-resultado" aria-live="polite"><p class="muted">Cargando estimación experimental del CIS…</p></div>
  </section>
 
@@ -117,6 +119,7 @@ export async function bindHomeImpact(polls,events=[]){
   ctx.prom=ref.promedio;
  }catch{ctx.prom=null;}
  drawHead(ctx);drawHub(ctx);
+ void bindIndiceMultifuente(root);
  // Independiente del Motor 29N: leer la receta agregada CIS sin alterar el pronóstico.
  const micro=document.querySelector('#hub-micro-resultado');
  if(micro){
