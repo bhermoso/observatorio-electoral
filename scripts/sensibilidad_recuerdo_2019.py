@@ -22,6 +22,8 @@ ESCENARIOS = [
     ('limite_05_2', 1., (.5, 2.), 'todos'),
     ('limite_075_15', 1., (.75, 1.5), 'todos'),
     ('solo_pp_psoe_vox_cs', 1., (.2, 5.), 'cuatro'),
+    ('cuatro_mas_up', 1., (.2, 5.), 'cuatro_up'),
+    ('cuatro_mas_otros', 1., (.2, 5.), 'cuatro_otros'),
 ]
 
 def calcular(rows, eleccion_anterior, eleccion_objetivo, intensidad=1.,
@@ -42,7 +44,7 @@ def calcular(rows, eleccion_anterior, eleccion_objetivo, intensidad=1.,
     }
     pesos = [
         r['w'] * (factores.get(r['rec'], 1.) if
-                  grupos == 'todos' or r['rec'] in PARTIDOS else 1.)
+                  grupos == 'todos' or r['rec'] in PARTIDOS or (grupos == 'cuatro_up' and r['rec'] == 'UP') or (grupos == 'cuatro_otros' and r['rec'] == 'OTROS') else 1.)
         for r in rows
     ]
     cruces = collections.defaultdict(lambda: collections.defaultdict(float))
