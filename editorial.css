@@ -354,3 +354,44 @@ body>header{background:var(--paper);border-bottom:3px double var(--ink);box-shad
 .cp-v-result{margin:17px 0 7px;font-size:13px}
 .cp-validacion-visual>.muted{font-size:12px;line-height:1.6}
 @media(max-width:640px){.cp-validacion-visual{padding:14px 10px}.cp-v-row{grid-template-columns:95px minmax(70px,1fr) 58px;gap:6px;font-size:11px}}
+
+
+/* Panorama · laboratorio multifuente. Una interfaz para comparar, no para privilegiar siglas. */
+.multi-lab{margin:22px 0 32px;padding:clamp(20px,3.3vw,36px);border:1px solid #cfdcd2;background:linear-gradient(160deg,#edf5ed 0%,#f9faf6 62%,#fff 100%);border-radius:23px;color:#1b3831;box-shadow:0 13px 35px #1a482d0c}
+.multi-lab-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.multi-lab-head h2{font-size:clamp(24px,2.8vw,36px);letter-spacing:-.04em;line-height:1.12;margin:8px 0 10px;color:#153a2e}
+.multi-lab-head p{font-size:14px;line-height:1.65;max-width:72ch;color:#52685b}
+.multi-lab-head>a{padding:10px 13px;border:1px solid #cbdccd;border-radius:999px;font-weight:700;white-space:nowrap;font-size:12px;text-decoration:none;background:#fff}
+.multi-controles{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0;padding:12px;background:#fff;border:1px solid #dce7dd;border-radius:14px}
+.multi-controles label{display:flex;flex-direction:column;gap:6px;flex:1 1 190px;font-size:11px;font-weight:800;letter-spacing:.03em;color:#486556}
+.multi-controles select{width:100%;min-width:0;border:1px solid #d0ded2;border-radius:9px;background:#f9fbf8;padding:10px 9px;font:inherit;font-size:13px;color:#173e32;letter-spacing:0}
+.multi-resumen{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:16px 0}
+.multi-resumen>div{display:flex;flex-direction:column;gap:3px;padding:13px 16px;border:1px solid #dce7de;background:#fff;border-radius:12px}
+.multi-resumen b{font-size:23px;letter-spacing:-.05em;color:#194838}
+.multi-resumen span{font-size:11px;color:#64776c}
+.multi-lectura{font-size:13px!important;line-height:1.65;max-width:77ch;color:#516c5e}
+.multi-resultados{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.multi-linea{padding:18px;background:#fff;border:1px solid #d9e5dc;border-radius:15px;min-width:0}
+.multi-linea-cab{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}
+.multi-linea-cab strong{font-size:17px}
+.multi-linea-cab>span{display:flex;flex-direction:column;text-align:right}
+.multi-linea-cab b{font-size:24px;letter-spacing:-.04em;color:#173d32}
+.multi-linea-cab small{font-size:10px;color:#687d6e}
+.multi-track{height:12px;background:#e6ede7;border-radius:20px;overflow:hidden;margin:6px 0 15px}
+.multi-track i{display:block;height:100%;background:linear-gradient(90deg,#286955,#78b48c);border-radius:20px;transition:width .35s}
+.multi-linea-pie{display:flex;flex-wrap:wrap;gap:6px 13px;font-size:11px;color:#5e776a}
+.multi-linea-pie span{white-space:nowrap}.multi-linea-pie b{color:#304d3e}
+.multi-detalle,.multi-metodo{margin-top:16px;border-top:1px solid #dbe6dd;padding-top:12px}
+.multi-detalle summary,.multi-metodo summary{font-size:13px;cursor:pointer;font-weight:800;color:#245a43;padding:7px 0}
+.multi-pasos{padding-left:22px;display:grid;gap:10px;max-width:78ch}
+.multi-pasos li{font-size:13px;line-height:1.65;color:#52665b}
+.multi-fuentes{font-size:12px}
+.multi-parties-overview{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:10px;margin:12px 0}
+.multi-party-choice{appearance:none;display:flex;flex-direction:column;gap:9px;padding:18px;text-align:left;background:#f5f9f5;border:1px solid #dae6db;border-radius:13px;font:inherit;cursor:pointer}
+.multi-party-choice:hover,.multi-party-choice:focus-visible{border-color:#3b8662;box-shadow:0 5px 18px #213a231c}
+.multi-party-choice strong{font-size:17px;color:#164332}
+.multi-party-choice span{display:flex;gap:7px;justify-content:space-between;font-size:12px;width:100%}
+.multi-party-choice small{font-size:11px;font-weight:800;color:#28694e;margin-top:auto}
+@media(max-width:730px){.multi-resultados{grid-template-columns:1fr}.multi-lab-head{flex-direction:column}.multi-lab-head>a{white-space:normal}.multi-resumen{grid-template-columns:repeat(3,minmax(0,1fr))}.multi-resumen>div{padding:9px}.multi-resumen b{font-size:19px}.multi-parties-overview{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:410px){.multi-parties-overview{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.multi-track i{transition:none}}
