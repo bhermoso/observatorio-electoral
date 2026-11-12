@@ -4,9 +4,9 @@ import {renderInteriorGuide,renderSeatChanges} from '../interiores.mjs';
 import {renderPollScatter} from '../encuestas-visual.mjs';
 import {renderCandidates} from '../encuestas-servicio.mjs';
 import fs from 'node:fs';
-test('Las guías separan capas y experimentos sin construir estimaciones nuevas',()=>{
+test('Las guías distinguen cuatro naturalezas y la investigación sin alterar el motor',()=>{
  for(const route of ['pronostico','encuestas','cocina','contexto','metodologia','atlas','laboratorio']){
-  const html=renderInteriorGuide(route);assert.match(html,/Niveles de exploración/);assert.match(html,/Experimentos/);assert.match(html,/4 · Otros/);
+  const html=renderInteriorGuide(route);assert.match(html,/Niveles de exploración/);assert.match(html,/Cuatro naturalezas de estimación/);assert.match(html,/Investigación, no incorporada/);
  }
 });
 test('Dispersión conserva ceros, ausencias y etiquetas originales; no inventa equivalencia de coaliciones',()=>{
