@@ -5,6 +5,7 @@
 // con microdatos del CIS, en Cocina (casos-cocina.mjs).
 import {bindPortadaSeries} from './portada-series.mjs';
 import {renderTiposEstimacion} from './tipos-estimacion.mjs';
+import {renderMicrodatosPortada} from './portada-microdatos.mjs';
 import {panelPartido,panelBloque,panelEncuesta,bindPanel} from './portada-panel.mjs';
 import {renderHemiciclo,renderPromedio,encuestasRecientes,renderTarjetas,renderAccesos,renderRecuentoEncuestas} from './portada-hub.mjs';
 import {PARTIES,capaModelo} from './capas.mjs';
@@ -36,8 +37,10 @@ export function renderHomeImpact(references=[],events=[]){
   <section class="hub-caja" aria-labelledby="hub-hemi-t"><div class="portada-bloque-cabeza"><div><span class="eyebrow">Estimación propia · modelo vigente</span><h2 id="hub-hemi-t">Escaños estimados</h2></div><a class="panel-link" href="#pronostico">Pronóstico completo →</a></div><div id="hub-hemiciclo" aria-live="polite"><p class="muted">Cargando…</p></div></section>
   <section class="hub-caja" aria-labelledby="hub-prom-t"><div class="portada-bloque-cabeza"><div><span class="eyebrow">Promedio de encuestas · referencia comparativa</span><h2 id="hub-prom-t">Promedio de encuestas</h2></div><a class="panel-link" href="#pronostico-capas">Promedio frente a pronóstico →</a></div><div id="hub-promedio" aria-live="polite"><p class="muted">Cargando…</p></div></section>
  </div>
-
-
+ <section class="portada-bloque hub-micro-panel" id="hub-microdatos" aria-labelledby="hub-micro-t">
+  <div class="portada-bloque-cabeza"><div><span class="eyebrow">Estimación independiente sobre entrevistas · investigación</span><h2 id="hub-micro-t">La estimación del Observatorio a partir de microdatos</h2></div><a class="panel-link" href="#cocina-propia">Receta y validación →</a></div>
+  <div id="hub-micro-resultado" aria-live="polite"><p class="muted">Cargando estimación experimental del CIS…</p></div>
+ </section>
 
  <section class="portada-bloque" id="portada-ultimas" aria-labelledby="hub-ult-t">
   <div class="portada-bloque-cabeza"><div><span class="eyebrow">La más reciente primero · cambio frente a la oleada anterior de cada casa</span><h2 id="hub-ult-t">Últimas encuestas</h2></div><a class="panel-link" href="#encuestas">Archivo completo y fichas →</a></div>
@@ -114,6 +117,14 @@ export async function bindHomeImpact(polls,events=[]){
   ctx.prom=ref.promedio;
  }catch{ctx.prom=null;}
  drawHead(ctx);drawHub(ctx);
+ // Independiente del Motor 29N: leer la receta agregada CIS sin alterar el pronóstico.
+ const micro=document.querySelector('#hub-micro-resultado');
+ if(micro){
+  fetch('data/microdatos/cocina_cis_3582.json',{cache:'no-store'})
+   .then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json();})
+   .then(d=>{if(micro.isConnected)micro.innerHTML=renderMicrodatosPortada(d);})
+   .catch(()=>{if(micro.isConnected)micro.innerHTML='<p class="empty">Estimación de microdatos no disponible; no se sustituye por estimaciones de encuestas. <a href="#cocina-propia">Ver el laboratorio</a>.</p>';});
+ }
  bindPanel(root,clave=>{
   const [tipo,id]=clave.split(/:(.*)/s);
   if(tipo==='partido')return panelPartido(id,ctx);
