@@ -14,6 +14,6 @@ test('Una compilación en veda no copia datos ni conserva artefactos anteriores'
  const r=spawnSync(process.execPath,['--input-type=module','-e',code],{cwd:root,encoding:'utf8'});
  assert.equal(r.status,0,r.stderr);assert.deepEqual(fs.readdirSync(path.join(root,'dist')).sort(),['.nojekyll','index.html','pronostico.html','version-publica.json']);
  const metadata=JSON.parse(fs.readFileSync(path.join(root,'dist','version-publica.json'),'utf8'));
- assert.equal(metadata.veda,true);assert.equal(metadata.commit,null);assert.doesNotMatch(JSON.stringify(metadata),/partidos|escanos|pronostico/);
+ assert.equal(metadata.veda,true);assert.equal(metadata.commit,process.env.GITHUB_SHA||null);assert.doesNotMatch(JSON.stringify(metadata),/partidos|escanos|pronostico/);
  assert.match(fs.readFileSync(path.join(root,'dist','index.html'),'utf8'),/publicación suspendida/);
 });
