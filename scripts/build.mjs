@@ -41,6 +41,18 @@ fs.writeFileSync('dist/data/estado-publicacion.json',JSON.stringify({esquema:1,c
  ejecucion:process.env.GITHUB_RUN_ID?`${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`:null,
  corte_modelo:corte,version_modelo:version,encuestas_archivo:coverage.polls,ultima_encuesta:JSON.parse(fs.readFileSync('data/polls.json')).reduce((d,p)=>p.published>d?p.published:d,''),recalculado:forecast.actualizacion.recalculado,archivo_sha256:archivoHash,veda},null,1)+'\n');
 
+// Identificador de compilación visible: distinguir código confirmado en GitHub de
+// versión realmente entregada por Pages. No modifica la fecha de corte electoral.
+const publishedSha=/^[0-9a-f]{40}$/i.test(process.env.GITHUB_SHA||'')?process.env.GITHUB_SHA:null;
+const buildTime=new Date().toISOString();
+if(!veda){
+ const file='dist/index.html';
+ const html=fs.readFileSync(file,'utf8');
+ const tag=`<span class="web-publicacion" title="Compilada el ${buildTime}">Versión web: ${publishedSha?publishedSha.slice(0,8):'local'} · ${buildTime.slice(0,16).replace('T',' ')} UTC</span>`;
+ if(!html.includes('</footer>'))throw Error('No existe pie de página para identificar la publicación');
+ fs.writeFileSync(file,html.replace('</footer>',tag+'</footer>'));
+}
+
 // Plataforma de pronóstico (modelo/): la página generada por `python3 -m modelo` es un
 // fragmento HTML; se envuelve en un documento completo y se publica como pronostico.html.
 const pronostico='modelo/salida/pagina.html';
