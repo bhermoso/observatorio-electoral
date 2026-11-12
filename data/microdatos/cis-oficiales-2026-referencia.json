@@ -1,0 +1,70 @@
+{
+  "esquema": 1,
+  "tipo": "referencia_comparacion_no_ingesta_operativa",
+  "fecha_revision": "2026-11-12",
+  "metodo": "Estimaciones oficiales del CIS de voto válido transcritas de catálogos electorales que enlazan el documento primario. PDF CIS junio/julio/septiembre pendiente de cotejo visual (servidor CIS devuelve 403 en esta sesión). El CIS 3582 ya está verificado en data/polls.json.",
+  "estudios": [
+    {
+      "id": "3567",
+      "mes": "junio 2026",
+      "partidos": {
+        "PP": 27.1,
+        "PSOE": 31.3,
+        "VOX": 15.8,
+        "SUMAR": 6.4,
+        "PODEMOS": 2.8
+      },
+      "fuente": "https://xn--eleccionesespaa-crb.com/encuestadoras/cis",
+      "documento_primario": "https://www.cis.es/es/estudios/barometro-de-junio-2026",
+      "verificacion": "secundaria_con_enlace_primario_pendiente_pdf"
+    },
+    {
+      "id": "3571",
+      "mes": "julio 2026",
+      "partidos": {
+        "PP": 25.1,
+        "PSOE": 33,
+        "VOX": 15.3,
+        "SUMAR": 6.1,
+        "PODEMOS": 2.5
+      },
+      "fuente": "https://www.datoelectoral.es/encuestas",
+      "documento_primario": "https://www.cis.es/documents/20117/14189298/3571_Estimacion.pdf",
+      "verificacion": "secundaria_con_enlace_primario_pendiente_pdf"
+    },
+    {
+      "id": "3577",
+      "mes": "septiembre 2026",
+      "partidos": {
+        "PP": 25.5,
+        "PSOE": 31,
+        "VOX": 16.6,
+        "SUMAR": 5.7,
+        "PODEMOS": 3.7
+      },
+      "fuente": "https://atlasabierto.com/es/politica",
+      "documento_primario": "https://www.cis.es/documents/20117/14250083/3577_Estimacion.pdf",
+      "verificacion": "secundaria_con_enlace_primario_pendiente_pdf"
+    },
+    {
+      "id": "3582",
+      "mes": "octubre 2026",
+      "partidos": {
+        "PP": 22.2,
+        "PSOE": 34,
+        "VOX": 17.1,
+        "SUMAR": 6.1,
+        "PODEMOS": 3.1
+      },
+      "fuente": "data/polls.json#cis-3582",
+      "documento_primario": "https://www.cis.es/documents/d/guest/3582_estimacion-pdf",
+      "verificacion": "primaria_ya_verificada_en_archivo"
+    }
+  ],
+  "limitaciones": [
+    "No son resultados electorales reales ni sirven para estimar errores predictivos.",
+    "Una discrepancia de recetas no demuestra cuál es más acertada.",
+    "Las cuatro encuestas se conservan fuera del promedio del Motor 29N hasta un proceso de ingesta y comprobación separado.",
+    "Las referencias secundarias no sustituyen la revisión del PDF oficial."
+  ]
+}
