@@ -50,7 +50,7 @@ test('El contraste de capas vive en Pronóstico, sin pliegues, con su procedenci
  assert.match(js,/drawEditorial\(ctx\)/);
  assert.match(js,/ctx\.prom\.partidos\[id\]\?\.valor/);
  const app=fs.readFileSync('app.mjs','utf8');
- assert.match(app,/pronostico:\(\)=>renderPronostico\(\)\+renderContraste\(\)/);
+ assert.match(app,/pronostico:\(\)=>renderPronostico\(renderContraste\(\)\)/);
  assert.match(app,/bindContraste\(polls\)/);
  const css=fs.readFileSync('styles.css','utf8');
  assert.match(css,/--oee-body-size:15px/);
