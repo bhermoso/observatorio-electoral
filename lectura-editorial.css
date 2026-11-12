@@ -25,3 +25,21 @@
 @media(max-width:650px){.lectura-directorio{margin:20px 0;padding:18px;border-radius:16px}.lectura-tarjetas{grid-template-columns:1fr 1fr}.lectura-tarjeta{min-height:150px;padding:13px}.lectura-tarjeta.is-current{padding:12px}.lectura-tarjeta small{display:none}.lectura-contador{width:100%;margin:5px 0}}
 @media(max-width:400px){.lectura-tarjetas{grid-template-columns:1fr}.lectura-tarjeta{min-height:110px}}
 @media(prefers-reduced-motion:reduce){.lectura-tarjeta,.lectura-capitulo{animation:none;transition:none}}
+
+/* Modos de lectura integrados en los interiores del Observatorio. */
+.reading-controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:16px 0 19px;margin:0 0 22px;border-bottom:1px solid #d8e2d7}
+.reading-controls>span{font-size:12px;font-weight:750;text-transform:uppercase;letter-spacing:.06em;color:#587065;margin-right:auto}
+.reading-controls button{font:inherit;font-size:12px;font-weight:700;background:#fff;color:#1d6656;border:1px solid #cad9cd;padding:9px 13px;border-radius:999px;cursor:pointer}
+.reading-controls button[aria-pressed="true"]{background:#183f35;color:#fff;border-color:#183f35}
+.reading-controls button:focus-visible{outline:3px solid #b08c34;outline-offset:3px}
+#visor-contenido :is(.pr-capitulo,.cocina-capitulo){scroll-margin-top:85px}
+#visor-contenido.reading-full .chapter-reading{margin-block:17px 32px}
+#visor-contenido.reading-full .chapter-reading>summary{background:#eff5ed}
+#visor-contenido.reading-compact .chapter-reading:not([open]){margin-block:8px}
+#visor-contenido.reading-compact .chapter-reading:not([open])>summary{padding-block:12px}
+#visor-contenido .pr-focus-block{min-width:190px;display:flex;flex-direction:column;gap:6px}
+#visor-contenido .pr-focus-block label{font-size:12px;font-weight:750;color:#37584b}
+#visor-contenido .pr-focus-block select{width:100%;max-width:270px;border:1px solid #adbcaf;border-radius:8px;background:#fff;padding:9px;font:inherit;font-size:13px}
+#visor-contenido .pr-focus-block strong{display:block;font-size:20px;color:#173c32}
+#visor-contenido .pr-focus-block small{display:block;font-size:12px;line-height:1.5;color:#576e62}
+@media(max-width:620px){.reading-controls>span{width:100%}.reading-controls button{flex:1;padding:10px 6px;font-size:11px}.pr-focus-block{width:100%}}
