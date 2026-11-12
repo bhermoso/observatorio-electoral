@@ -30,7 +30,7 @@ test('el informe grafica los errores calculados de las dos oleadas, sin inventar
  assert.match(html,/una sola elección/);
  assert.match(html,/Receta completa: \+1,75 pp de error/);
  assert.match(html,/pasos acumulativos, no efectos causales aislados/);
- assert.equal((html.match(/class="cp-v-row/g)||[]).length,7);
+ assert.equal((html.match(/<li class="cp-v-row(?: cp-v-full)?"/g)||[]).length,7);
  assert.equal((html.match(/class="cp-v-bar"/g)||[]).length,14);
  assert.match(tablaValidacion(val),/cp-validacion-visual/);
  assert.match(tablaValidacion(val),/table-wrap/);
