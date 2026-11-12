@@ -1,10 +1,10 @@
 {
   "schema": 2,
-  "checked_at": "2026-11-12T08:50:14.387312+00:00",
-  "last_attempt_at": "2026-11-12T08:50:14.387312+00:00",
+  "checked_at": "2026-11-12T21:06:20.692286+00:00",
+  "last_attempt_at": "2026-11-12T21:06:20.692286+00:00",
   "status": "partial",
   "searches": 15,
-  "sources_ok": 13,
+  "sources_ok": 14,
   "sources": [
     {
       "id": "elpais",
@@ -13,7 +13,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 0
+      "count": 1
     },
     {
       "id": "elmundo",
@@ -22,7 +22,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 3
+      "count": 1
     },
     {
       "id": "elespanol",
@@ -31,17 +31,16 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 1
+      "count": 2
     },
     {
       "id": "gad3",
       "name": "GAD3 · publicaciones",
       "url": "https://www.gad3.com/",
       "format": "html",
-      "ok": false,
+      "ok": true,
       "attempts": 1,
-      "count": 0,
-      "error": "ValueError: HTTP 202"
+      "count": 9
     },
     {
       "id": "cis",
@@ -68,7 +67,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 0
+      "count": 1
     },
     {
       "id": "20minutos",
@@ -77,7 +76,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 0
+      "count": 1
     },
     {
       "id": "elconfidencial",
@@ -114,7 +113,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 2
+      "count": 3
     },
     {
       "id": "swdemoscopia",
@@ -141,38 +140,93 @@
       "format": "html",
       "ok": true,
       "attempts": 1,
-      "count": 4
+      "count": 3
     }
   ],
   "results": [
     {
-      "title": "Suiza vota el 29N el IVA de la 13.ª pensión, los petardos, el matrimonio y las armas",
-      "url": "https://electomania.es/suiza-referendum-29-noviembre-2026-sondeos-avs-iva-armas/",
-      "discovery_url": "https://electomania.es/suiza-referendum-29-noviembre-2026-sondeos-avs-iva-armas/",
-      "published": "2026-11-12T08:12:07+00:00",
-      "publication_raw": "2026-11-12T08:12:07+00:00",
-      "topic": "Electomanía · publicaciones",
-      "source_id": "electomania",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Elecciones generales del 29-N, en directo | Última hora de los sondeos del PSOE, PP, Vox y Frente Amplio, precampaña electoral, encuestas y voto por correo",
+      "title": "Elecciones generales 29-N, en directo | Abascal carga contra el PSOE por la intervención de Begoña Gómez en el arranque de campaña: \"No tienen vergüenza\"",
       "url": "https://www.elespanol.com/espana/20261112/elecciones-generales-directo-ultima-hora-pedro-sanchez-precampana-electoral-encuestas-sondeos-voto-correo-espana-2026-partidos/1003744454989_10.html",
       "discovery_url": "https://www.elespanol.com/espana/20261112/elecciones-generales-directo-ultima-hora-pedro-sanchez-precampana-electoral-encuestas-sondeos-voto-correo-espana-2026-partidos/1003744454989_10.html",
-      "published": "2026-11-12T06:11:17+00:00",
-      "publication_raw": "2026-11-12T06:11:17+00:00",
+      "published": "2026-11-12T20:32:00+00:00",
+      "publication_raw": "2026-11-12T20:32:00+00:00",
       "topic": "EL ESPAÑOL · España",
       "source_id": "elespanol",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Tracking SW Demoscopia (11 nov): “PP y Vox pierden la mayoría absoluta”",
-      "url": "https://electomania.es/tracking-sw-demoscopia-11-nov-pp-y-vox-pierden-la-mayoria-absoluta/",
-      "discovery_url": "https://electomania.es/tracking-sw-demoscopia-11-nov-pp-y-vox-pierden-la-mayoria-absoluta/",
-      "published": "2026-11-11T21:43:58+00:00",
-      "publication_raw": "2026-11-11T21:43:58+00:00",
+      "title": "Tracking SW Demoscopia (12 nov): “el efecto ‘Jordi Wild’ pasa factura a Vox”",
+      "url": "https://electomania.es/tracking-sw-demoscopia-12-nov-el-efecto-jordi-wild-pasa-factura-a-vox/",
+      "discovery_url": "https://electomania.es/tracking-sw-demoscopia-12-nov-el-efecto-jordi-wild-pasa-factura-a-vox/",
+      "published": "2026-11-12T19:55:00+00:00",
+      "publication_raw": "2026-11-12T19:55:00+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Colau se conjura para “desmentir” las encuestas y se compromete a conformar un Gobierno “contra la especulación”",
+      "url": "https://elpais.com/espana/elecciones-generales/2026-11-12/colau-se-conjura-para-desmentir-las-encuestas-y-se-compromete-a-conformar-un-gobierno-contra-la-especulacion.html",
+      "discovery_url": "https://elpais.com/espana/elecciones-generales/2026-11-12/colau-se-conjura-para-desmentir-las-encuestas-y-se-compromete-a-conformar-un-gobierno-contra-la-especulacion.html",
+      "published": "2026-11-12T19:20:34+00:00",
+      "publication_raw": "2026-11-12T19:20:34+00:00",
+      "topic": "EL PAÍS · España",
+      "source_id": "elpais",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "La última estafa del CIS: publica un sondeo al inicio de campaña con una muestra sesgada en 17 puntos a favor del PSOE",
+      "url": "https://www.elespanol.com/espana/politica/20261112/ultima-estafa-cis-publica-sondeo-inicio-campana-muestra-sesgada-puntos-favor-psoe/1003744456340_0.html",
+      "discovery_url": "https://www.elespanol.com/espana/politica/20261112/ultima-estafa-cis-publica-sondeo-inicio-campana-muestra-sesgada-puntos-favor-psoe/1003744456340_0.html",
+      "published": "2026-11-12T18:30:34+00:00",
+      "publication_raw": "2026-11-12T18:30:34+00:00",
+      "topic": "EL ESPAÑOL · España",
+      "source_id": "elespanol",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Encuesta Francia OpinionWay para Les Echos (12 nov): Le Pen lidera y Mélenchon es segundo",
+      "url": "https://electomania.es/encuesta-francia-opinionway-les-echos-12-nov-le-pen-lidera-melenchon-segundo/",
+      "discovery_url": "https://electomania.es/encuesta-francia-opinionway-les-echos-12-nov-le-pen-lidera-melenchon-segundo/",
+      "published": "2026-11-12T18:08:58+00:00",
+      "publication_raw": "2026-11-12T18:08:58+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "\n         El CIS de Tezanos coloca al PSOE en primer lugar y con ocho puntos sobre el PP en una encuesta que apenas recoge el efecto de Urda \n    ",
+      "url": "https://www.20minutos.es/nacional/cis-tezanos-coloca-psoe-primer-lugar-con-ocho-puntos-sobre-pp-una-encuesta-que-apenas-recoge-efecto-urda_7060413_0.html",
+      "discovery_url": "https://www.20minutos.es/nacional/cis-tezanos-coloca-psoe-primer-lugar-con-ocho-puntos-sobre-pp-una-encuesta-que-apenas-recoge-efecto-urda_7060413_0.html",
+      "published": "2026-11-12T16:45:14+00:00",
+      "publication_raw": "2026-11-12T16:45:14+00:00",
+      "topic": "20minutos · nacional",
+      "source_id": "20minutos",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "El CIS preelectoral se aleja del resto de encuestas y sitúa a la suma de PP y Vox lejos de la mayoría absoluta",
+      "url": "https://www.eldiario.es/politica/cis-preelectoral-aleja-resto-encuestas-situa-suma-pp-vox-lejos-mayoria-absoluta_1_13658236.html",
+      "discovery_url": "https://www.eldiario.es/politica/cis-preelectoral-aleja-resto-encuestas-situa-suma-pp-vox-lejos-mayoria-absoluta_1_13658236.html",
+      "published": "2026-11-12T16:05:40+00:00",
+      "publication_raw": "2026-11-12T16:05:40+00:00",
+      "topic": "elDiario.es · política",
+      "source_id": "eldiario",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Encuesta Polonia IBRiS para Rzeczpospolita (12 nov): la Coalición Cívica lidera y el PiS es segundo",
+      "url": "https://electomania.es/encuesta-polonia-ibris-rzeczpospolita-12-nov-coalicion-civica-lidera-pis-segundo/",
+      "discovery_url": "https://electomania.es/encuesta-polonia-ibris-rzeczpospolita-12-nov-coalicion-civica-lidera-pis-segundo/",
+      "published": "2026-11-12T13:20:42+00:00",
+      "publication_raw": "2026-11-12T13:20:42+00:00",
       "topic": "Electomanía · publicaciones",
       "source_id": "electomania",
       "original_verified": false,
@@ -190,24 +244,46 @@
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "26 escaños en liza en los duelos clave mientras medio país escapa al 'baile'",
-      "url": "https://www.elmundo.es/espana/encuestas/2026/11/09/6af1f8f1e9cf4ab4658b457b.html",
-      "discovery_url": "https://www.elmundo.es/espana/encuestas/2026/11/09/6af1f8f1e9cf4ab4658b457b.html",
-      "published": "2026-11-09T21:42:36+00:00",
-      "publication_raw": "2026-11-09T21:42:36+00:00",
-      "topic": "EL MUNDO · España",
-      "source_id": "elmundo",
+      "title": "Archivo enlazado por el productor",
+      "url": "https://www.gad3.com/barometro-abc-estimacion-de-voto-por-provincias-noviembre-2026/",
+      "discovery_url": "https://www.gad3.com/barometro-abc-estimacion-de-voto-por-provincias-noviembre-2026/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "GAD3 · publicaciones",
+      "source_id": "gad3",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Seis de cada 10 españoles no harán huelga seguro frente al 19,5% que sí",
-      "url": "https://www.elmundo.es/espana/encuestas/2026/11/09/6af1faaffdddff3b5b8b4580.html",
-      "discovery_url": "https://www.elmundo.es/espana/encuestas/2026/11/09/6af1faaffdddff3b5b8b4580.html",
-      "published": "2026-11-09T21:41:47+00:00",
-      "publication_raw": "2026-11-09T21:41:47+00:00",
-      "topic": "EL MUNDO · España",
-      "source_id": "elmundo",
+      "title": "Archivo enlazado por el productor",
+      "url": "https://www.gad3.com/barometro-abc-i-estimacion-de-voto-nacional-noviembre-2026/",
+      "discovery_url": "https://www.gad3.com/barometro-abc-i-estimacion-de-voto-nacional-noviembre-2026/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "GAD3 · publicaciones",
+      "source_id": "gad3",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Archivo enlazado por el productor",
+      "url": "https://www.gad3.com/estudio-cgate-iii-barometro-vivienda-y-dignidad/",
+      "discovery_url": "https://www.gad3.com/estudio-cgate-iii-barometro-vivienda-y-dignidad/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "GAD3 · publicaciones",
+      "source_id": "gad3",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Archivo enlazado por el productor",
+      "url": "https://www.gad3.com/narciso-michavila-en-la-presentacion-del-barometro-del-empresario-2026-en-denia/",
+      "discovery_url": "https://www.gad3.com/narciso-michavila-en-la-presentacion-del-barometro-del-empresario-2026-en-denia/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "GAD3 · publicaciones",
+      "source_id": "gad3",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
@@ -399,17 +475,6 @@
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Advance on study results 3532 'Barómetro de vivienda 2026'",
-      "url": "https://www.cis.es/en/w/avance-de-resultados-del-estudio-3532-bar%C3%B3metro-de-vivienda-2026-",
-      "discovery_url": "https://www.cis.es/en/w/avance-de-resultados-del-estudio-3532-bar%C3%B3metro-de-vivienda-2026-",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "CIS · novedades y anuncios",
-      "source_id": "cis-novedades",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
       "title": "Access to FAQs",
       "url": "https://www.cis.es/estudios/preguntas-frecuentes-proceso-encuestacion",
       "discovery_url": "https://www.cis.es/estudios/preguntas-frecuentes-proceso-encuestacion",
@@ -422,10 +487,6 @@
     }
   ],
   "errors": [
-    {
-      "source": "GAD3 · publicaciones",
-      "detail": "ValueError: HTTP 202"
-    },
     {
       "source": "La Razón · España",
       "detail": "HTTP 503"
