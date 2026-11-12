@@ -27,8 +27,9 @@ test('panorama inicial muestra cuatro partidos sin elección por defecto',()=>{
  assert.match(h,/data-multi-order/);
  const html=pintarIndiceMultifuente(data);
  const positions=data.partidos.slice().sort((a,b)=>data.escenarios.base.valores[b].conjunta-data.escenarios.base.valores[a].conjunta);
+ const etiquetas={PP:'PP',PSOE:'PSOE',VOX:'Vox',SUMAR:'Sumar / FA'};
  for(let i=1;i<positions.length;i++)
-  assert.ok(html.indexOf('<strong>'+positions[i-1])<html.indexOf('<strong>'+positions[i]));
+  assert.ok(html.indexOf('<strong>'+etiquetas[positions[i-1]]+'</strong>')<html.indexOf('<strong>'+etiquetas[positions[i]]+'</strong>'));
  assert.match(html,/Distancia/);
  assert.match(html,/no un intervalo de confianza/);
  assert.doesNotMatch(html,/escaños calculados/);
