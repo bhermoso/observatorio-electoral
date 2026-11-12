@@ -4,6 +4,10 @@ La línea base ordena referencias de casas reconocidas, prácticas documentadas 
 
 Se han leído directamente documentos de 40dB., GAD3, Sigma Dos, IMOP Insights y Metroscopia; también se han consultado DYM y GESOP/ICPS como contraste. La selección inicial responde a presencia en el archivo y documentación accesible, no a una clasificación de prestigio. Puede revisarse contigo. `data/microdatos/base-cocina.json` contiene los documentos, su huella, el alcance de cada afirmación y lo que no permiten reconstruir.
 
+## Propósito y despensa inicial
+
+El objetivo es acertar mediante descubrimiento contrastable de estructuras históricas, sociales y culturales de la democracia española. La despensa inicial acordada es **intención directa, recuerdo, simpatía y participación**. Reconocer esos ingredientes no fija sus dosis ni sus reglas de combinación: ese diseño se discute con el usuario. Cada regla debe expresar un mecanismo observable, reconocer cuándo puede fallar y contrastarse tanto por su interpretación como por su predicción fuera de la elección de ajuste.
+
 ## Referencia de trabajo R0
 
 1. Conservar respuestas, códigos, población y pesos originales del productor.

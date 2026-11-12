@@ -20,6 +20,11 @@
   },
   "ingredientes_para_discutir": [
     {
+      "id": "intencion_directa",
+      "nombre": "Intención directa",
+      "situacion": "Ingrediente inicial; conservar medición, códigos, población elegible y denominadores explícitos."
+    },
+    {
       "id": "peso",
       "nombre": "Ponderación sociodemográfica",
       "situacion": "Comprobar objetivos y pesos publicados por estudio."
@@ -183,5 +188,13 @@
       "http": 200,
       "sha256": "5cf41abea6e3f73d146d47c687c38f618c713752491a7c5d5b62a7cab17a5b81"
     }
-  ]
+  ],
+  "proposito": "Alta cocina electoral: mejorar la predicción mediante descubrimiento contrastable de estructuras históricas, sociales y culturales de la democracia española.",
+  "despensa_inicial_acordada": [
+    "intencion_directa",
+    "recuerdo_de_voto",
+    "simpatia",
+    "participacion"
+  ],
+  "criterios_y_coeficientes": "Su diseño se discute con el usuario; reconocer un ingrediente no fija su dosis ni la regla de combinación."
 }

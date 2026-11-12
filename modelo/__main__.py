@@ -46,7 +46,17 @@ def main():
     ap.add_argument("--desde", type=date.fromisoformat, default=date(2026, 10, 1), help="inicio del historial")
     a = ap.parse_args()
     hoy = a.hoy
-    enc = [e for e in F.todas() if e["campo_fin"] <= hoy and F.publicada_antes(e, hoy, estricta=True)]
+    enc_total = F.todas()
+    enc = [e for e in enc_total if e["campo_fin"] <= hoy and F.publicada_antes(e, hoy, estricta=True)]
+    excluidas_temporales = []
+    for e in enc_total:
+        motivo = ("campo_posterior_al_corte" if e["campo_fin"] > hoy else
+                  "publicacion_no_documentada" if not e.get("publicacion") or e.get("fecha_publicacion_desconocida") else
+                  "campo_imputado" if e.get("campo_supuesto") else
+                  "publicacion_posterior_al_corte" if e["publicacion"] > hoy else None)
+        if motivo:
+            excluidas_temporales.append(dict(estudio=e["estudio"], casa=e["casa"], motivo=motivo,
+                                            campo_fin=str(e["campo_fin"]), publicacion=str(e.get("publicacion")) if e.get("publicacion") else None))
     res23 = F.resultado_23j()
     L = []
     w = L.append
@@ -351,7 +361,7 @@ def main():
     # Archivo descriptivo: la publicación desconocida impide usarlo en un
     # backtest temporal, pero no borra observaciones de campo del diagnóstico
     # retrospectivo de acontecimientos. Nunca entra en el principal.
-    prev_all = [e for e in F.todas() if e["ciclo"] == "2019-23" and e["campo_fin"] <= hoy]
+    prev_all = [e for e in enc_total if e["ciclo"] == "2019-23" and e["campo_fin"] <= hoy]
     w("Archivo de acontecimientos: incluye observaciones históricas sin publicación fechada; "
       "uso descriptivo retrospectivo, excluido de backtests temporales y del principal.\n")
     umbrales = {}
@@ -513,7 +523,7 @@ def main():
                                       dependencias_sha256=RG.firma_dependencias()), corte=hoy.isoformat(), eleccion=ELECCION.isoformat(), version_modelo=RG.VERSION, reproducibilidad=manifiesto_operativo(actuales, hoy, a.n),
                    evaluacion_cientifica=estado_evaluacion(), naturaleza_historial="reconstruccion_retrospectiva",
                    definicion_primero="Frecuencia de primera fuerza exclusiva en escaños; empates excluidos para todas las candidaturas.", trazabilidad=auditoria_cocina, sensibilidad_cocina=sensibilidad_cocina, principal={k: princ[k] for k in ('partidos', 'bloques', 'investidura', 'n', 'industria', 'dias', 'sin_encuestas', 'provincias', 'correccion_industria', 'empate_primero', 'diagnostico_normalizacion')}, variantes=resumen,
-                   auditoria_fuentes=dict(inventario=inventario_encuestas(enc), excluidas_prensa_sin_verificar=len(provisionals), excluidas_total=len(excluidas), incluidas_2023_26=len(actuales),
+                   auditoria_fuentes=dict(inventario=inventario_encuestas(enc), excluidas_temporales=excluidas_temporales, excluidas_prensa_sin_verificar=len(provisionals), excluidas_total=len(excluidas), incluidas_2023_26=len(actuales),
                                           por_origen={o: sum(1 for e in actuales if e["origen"] == o) for o in sorted({e["origen"] for e in actuales})},
                                           criterio='Puerta de calidad (fuentes.seleccion_pronostico): sin prensa no verificada, sin terceros con campo supuesto, sin terceros solapados con un registro verificado de la misma casa'),
                    capas=capas, entradas=entradas, excluidas=excluidas, externos=externos, corte_anterior=corte_anterior,
