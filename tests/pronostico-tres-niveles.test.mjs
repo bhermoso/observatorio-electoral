@@ -21,6 +21,13 @@ test('el pronóstico tiene tres niveles inequívocos y conserva cada panel origi
 });
 test('la guía y la ruta mantienen niveles y anclas accesibles',()=>{
  const guide=renderInteriorGuide('pronostico');
+ assert.ok(guide.indexOf('class="pr-entry"')>=0,'la entrada compacta inicia la página');
+ assert.ok(guide.indexOf('href="#pronostico-comprender"')<guide.indexOf('href="#pronostico-comparar"'));
+ assert.ok(guide.indexOf('href="#pronostico-comparar"')<guide.indexOf('href="#pronostico-auditar"'));
+ const page=renderPronostico(renderContraste());
+ assert.ok(page.indexOf('id="pronostico-comprender"')<page.indexOf('class="hero"'),'cabecera técnica posterior a la lectura principal');
+ assert.ok(page.indexOf('id="pronostico-auditar"')<page.indexOf('class="hero"'),'cabecera técnica reubicada en auditoría');
+
  for(const id of ['pronostico-comprender','pronostico-comparar','pronostico-auditar'])assert.match(guide,new RegExp('href="#'+id+'"'));
  const app=readFileSync(new URL('../app.mjs',import.meta.url),'utf8');
  assert.match(app,/renderPronostico\(renderContraste\(\)\)/);
