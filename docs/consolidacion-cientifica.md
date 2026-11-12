@@ -1,5 +1,9 @@
 # Consolidación científica — 12 de noviembre de 2026
 
+## Criterios de cocina: discusión con el usuario
+
+La línea base documental y técnica se presenta en `docs/linea-base-cocina.md`, `data/microdatos/base-cocina.json` y `linea-base-cocina.html`. Las reglas, ingredientes y coeficientes de la cocina propia se discutirán con el usuario antes de incorporarlos al pronóstico. Los ensayos no son decisiones de receta. Se han corregido atribuciones no demostradas del catálogo tras leer originales de 40dB. y GAD3.
+
 ## Resultado y alcance
 
 Se incorpora un banco reproducible de **seis elecciones generales** (2011, 2015, 2016, abril y noviembre de 2019, 2023), con cortes de **90, 60, 30, 15 y 7 días**, selección temporal estricta y entrenamiento expansivo por convocatoria. Las predicciones no reciben el resultado de la elección objetivo. Los resultados oficiales solo se leen para puntuar después de predecir; las correcciones de casa solo aprenden de resultados anteriores ya publicados en la fecha de corte.
@@ -31,7 +35,7 @@ Se comparan última publicación (si hay empate de fecha, media), última encues
 
 La mezcla histórica es un **comparador nuevo y diferente del principal 29N**: generaliza el entrenamiento a elecciones anteriores, pero no reproduce su calibración fija 23J, desplazamiento de industria, normalización conjunta ni geografía. El principal exacto no puede aplicarse retrospectivamente a 2011 con correcciones y mapa de 2023 sin fuga de información. Tampoco sería una validación independiente usar 23J para calibrarlo y puntuarlo sobre ese mismo 23J.
 
-Los hiperparámetros se fijan para este protocolo antes de consultar sus resultados; no se ejecuta una búsqueda para elegir ganador. **El protocolo se construye en 2026, no está preregistrado antes de esas elecciones**: hay riesgo de selección de diseño retrospectiva. Por eso el ensayo no alcanza validación independiente. Se utiliza entrenamiento cronológico, más estricto temporalmente que un LOEO simétrico que permitiera entrenar con elecciones futuras. El objetivo propio y las elecciones futuras no entran en la corrección. Los tests mutan el resultado de prueba y verifican que las predicciones permanecen iguales.
+Los hiperparámetros se congelan para este protocolo; no se ejecuta una búsqueda para elegir ganador. Se inspeccionó un diagnóstico inicial con la escala heredada 2,2, que se retiró como prueba primaria porque deriva de la calibración 23J. La hipótesis 2,0 del ensayo final no se estima buscando cobertura sobre el objetivo y sigue sin estar calibrada. No se afirma evaluación ciega ni preregistro. **El protocolo se construye en 2026, no está preregistrado antes de esas elecciones**: hay riesgo de selección de diseño retrospectiva. Por eso el ensayo no alcanza validación independiente. Se utiliza entrenamiento cronológico, más estricto temporalmente que un LOEO simétrico que permitiera entrenar con elecciones futuras. El objetivo propio y las elecciones futuras no entran en la corrección. Los tests mutan el resultado de prueba y verifican que las predicciones permanecen iguales.
 
 Las métricas son MAE, RMSE, sesgo, cobertura marginal al 90 %, anchura e interval score. Se guardan por elección, horizonte y candidatura. El intervalo bootstrap de MAE remuestrea elecciones completas (10.000 réplicas, semilla 20261112); con seis unidades su precisión es limitada. No se estiman probabilidades de mayoría calibradas desde dos partidos. El tamaño efectivo por casa se refiere a pesos de recencia y **no** al tamaño efectivo de personas entrevistadas ni al número de elecciones independientes.
 
