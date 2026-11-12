@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "election": "2019-04-28",
+  "source": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2019-8070",
+  "secondary_crosscheck": "https://elecciones.eldiario.es/generales/congreso/28-abril-2019",
+  "valid_votes": 26201371,
+  "parties": {
+    "PP": 4373653,
+    "PSOE": 7513142,
+    "VOX": 2688092,
+    "CIUDADANOS": 4155665
+  },
+  "scope": "Solo cuatro candidaturas inequívocas, sin extrapolar alianzas territoriales de Unidas Podemos ni otros; no confundir con reparto por provincia",
+  "checked_at": "2026-11-12"
+}
