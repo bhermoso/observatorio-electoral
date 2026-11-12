@@ -346,3 +346,14 @@ body>header{background:var(--paper);border-bottom:3px double var(--ink);box-shad
 .pr-reading-group>.panel,.pr-reading-body>.panel{margin-top:14px}
 .pr-reading-group .pr-reading-body .panel h3{margin-top:0}
 @media(max-width:720px){.pr-reading-nav{grid-template-columns:1fr;gap:7px}.pr-reading-nav>a{padding:10px 12px;gap:3px}.pr-reading-heading h2{font-size:26px}.pr-reading-disclosure>summary{gap:9px}.pr-reading-disclosure>summary strong{font-size:24px}.pr-reading-action{min-width:55px}.pr-reading-heading>span,.pr-reading-number{min-width:30px;font-size:23px}}
+
+/* Entrada al pronóstico: los tres niveles son la primera información de la vista. */
+#visor .pr-entry{margin:0 0 18px;padding:7px 0 18px;border-bottom:2px solid var(--ink)}
+#visor .pr-entry-kicker{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:0 0 10px}
+#visor .pr-entry h1{font:400 clamp(32px,4.2vw,54px)/1.14 var(--editorial-serif);letter-spacing:-1px;max-width:860px;margin:0 0 10px}
+#visor .pr-entry-deck{font-size:15px;max-width:790px;color:var(--muted);margin:0 0 17px}
+#visor .pr-entry-levels{margin:0 0 9px}
+#visor .pr-entry .layer-key{margin:4px 0 0}
+#visor .pr-entry-levels a{scroll-margin-top:90px}
+#visor .pr-reading-group{scroll-margin-top:90px}
+@media(max-width:720px){#visor .pr-entry h1{font-size:34px}#visor .pr-entry-deck{font-size:13px}}
