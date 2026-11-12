@@ -1,7 +1,7 @@
 {
   "schema": 2,
-  "checked_at": "2026-11-11T21:57:42.695423+00:00",
-  "last_attempt_at": "2026-11-11T21:57:42.695423+00:00",
+  "checked_at": "2026-11-12T08:50:14.387312+00:00",
+  "last_attempt_at": "2026-11-12T08:50:14.387312+00:00",
   "status": "partial",
   "searches": 15,
   "sources_ok": 13,
@@ -114,7 +114,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 3
+      "count": 2
     },
     {
       "id": "swdemoscopia",
@@ -146,44 +146,33 @@
   ],
   "results": [
     {
-      "title": "Tracking SW Demoscopia (11 nov): “PP y Vox pierden la mayoría absoluta”",
-      "url": "https://electomania.es/tracking-sw-demoscopia-11-nov-pp-y-vox-pierden-la-mayoria-absoluta/",
-      "discovery_url": "https://electomania.es/tracking-sw-demoscopia-11-nov-pp-y-vox-pierden-la-mayoria-absoluta/",
-      "published": "2026-11-11T21:43:58+00:00",
-      "publication_raw": "2026-11-11T21:43:58+00:00",
+      "title": "Suiza vota el 29N el IVA de la 13.ª pensión, los petardos, el matrimonio y las armas",
+      "url": "https://electomania.es/suiza-referendum-29-noviembre-2026-sondeos-avs-iva-armas/",
+      "discovery_url": "https://electomania.es/suiza-referendum-29-noviembre-2026-sondeos-avs-iva-armas/",
+      "published": "2026-11-12T08:12:07+00:00",
+      "publication_raw": "2026-11-12T08:12:07+00:00",
       "topic": "Electomanía · publicaciones",
       "source_id": "electomania",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Elecciones generales 29-N, en directo | Última hora de la precampaña de Santiago Abascal en Tarragona, encuestas y voto por correo",
-      "url": "https://www.elespanol.com/espana/20261111/elecciones-generales-directo-ultima-hora-pedro-sanchez-encuestas-actos-precampana-pp-psoe-vox-espana-2026-partidos-voto-por-correo/1003744453331_10.html",
-      "discovery_url": "https://www.elespanol.com/espana/20261111/elecciones-generales-directo-ultima-hora-pedro-sanchez-encuestas-actos-precampana-pp-psoe-vox-espana-2026-partidos-voto-por-correo/1003744453331_10.html",
-      "published": "2026-11-11T21:30:00+00:00",
-      "publication_raw": "2026-11-11T21:30:00+00:00",
+      "title": "Elecciones generales del 29-N, en directo | Última hora de los sondeos del PSOE, PP, Vox y Frente Amplio, precampaña electoral, encuestas y voto por correo",
+      "url": "https://www.elespanol.com/espana/20261112/elecciones-generales-directo-ultima-hora-pedro-sanchez-precampana-electoral-encuestas-sondeos-voto-correo-espana-2026-partidos/1003744454989_10.html",
+      "discovery_url": "https://www.elespanol.com/espana/20261112/elecciones-generales-directo-ultima-hora-pedro-sanchez-precampana-electoral-encuestas-sondeos-voto-correo-espana-2026-partidos/1003744454989_10.html",
+      "published": "2026-11-12T06:11:17+00:00",
+      "publication_raw": "2026-11-12T06:11:17+00:00",
       "topic": "EL ESPAÑOL · España",
       "source_id": "elespanol",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Encuesta Francia Cluster17 para Politico (11 nov): Le Pen lidera y Mélenchon es segundo",
-      "url": "https://electomania.es/encuesta-francia-cluster17-politico-11-nov-le-pen-lidera-melenchon-segundo/",
-      "discovery_url": "https://electomania.es/encuesta-francia-cluster17-politico-11-nov-le-pen-lidera-melenchon-segundo/",
-      "published": "2026-11-11T17:20:47+00:00",
-      "publication_raw": "2026-11-11T17:20:47+00:00",
-      "topic": "Electomanía · publicaciones",
-      "source_id": "electomania",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Encuesta Suecia Verian (11 nov): los socialdemócratas lideran y M, SD, KD y L suman 180 escaños",
-      "url": "https://electomania.es/encuesta-suecia-verian-11-nov-socialdemocratas-lideran-m-sd-kd-l-suman-180-escanos/",
-      "discovery_url": "https://electomania.es/encuesta-suecia-verian-11-nov-socialdemocratas-lideran-m-sd-kd-l-suman-180-escanos/",
-      "published": "2026-11-11T15:20:32+00:00",
-      "publication_raw": "2026-11-11T15:20:32+00:00",
+      "title": "Tracking SW Demoscopia (11 nov): “PP y Vox pierden la mayoría absoluta”",
+      "url": "https://electomania.es/tracking-sw-demoscopia-11-nov-pp-y-vox-pierden-la-mayoria-absoluta/",
+      "discovery_url": "https://electomania.es/tracking-sw-demoscopia-11-nov-pp-y-vox-pierden-la-mayoria-absoluta/",
+      "published": "2026-11-11T21:43:58+00:00",
+      "publication_raw": "2026-11-11T21:43:58+00:00",
       "topic": "Electomanía · publicaciones",
       "source_id": "electomania",
       "original_verified": false,
@@ -447,9 +436,9 @@
     {
       "id": "tracking-laseptima",
       "titulo": "Tracking diario · La Séptima / SW Demoscopia",
-      "estado": "Seguimiento diario",
+      "estado": "Pendiente de informe primario posterior al 10/11",
       "ultima_publicacion": "2026-11-11",
-      "detalle": "Informes primarios del 6 y 10 nov incorporados; solo la última oleada entra en cada corte. Entrega del 11 nov registrada como prensa pendiente de contraste: PP 28,1; PSOE 31,4; Vox 17,5; Frente Amplio 7,4. Las entregas comparten muestra; no son encuestas independientes.",
+      "detalle": "Corte comprobado e incorporado: informe SW del 10/11, campo hasta el 9/11 (6.000 entrevistas). Entrega de prensa del 11/11 citada con PP 28,1; PSOE 31,4; Vox 17,5; FA 7,4, aún sin ficha original primaria contrastada. En la búsqueda del 12/11 no se ha confirmado un informe primario posterior. No introducir cifras de prensa en el pronóstico ni contar cada día del tracking como muestra independiente.",
       "url": "https://electomania.es/tracking-sw-demoscopia-11-nov-pp-y-vox-pierden-la-mayoria-absoluta/"
     },
     {
