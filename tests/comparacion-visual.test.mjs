@@ -16,5 +16,7 @@ test('la portada ofrece gráfico comparable sin ocultar el detalle de cifras',()
  assert.match(source,/class="cmp-graphic"/);
  assert.match(source,/class="cmp-track"/);
  assert.match(source,/<details class="cmp-detail">/);
- assert.match(source,/party.value===ALL\?'PP':party.value/);
+ assert.match(source,/if\(party.value===ALL\)/);
+ assert.match(source,/data-choose-party/);
+ assert.doesNotMatch(source,/party.value===ALL\?'PP':party.value/);
 });
