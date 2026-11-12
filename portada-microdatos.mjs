@@ -10,7 +10,7 @@ export function renderMicrodatosPortada(d){
  if(last?.id!=='participacion')throw Error('La receta completa no está identificada');
  const final=d.resultado.estimacion;
  for(const [id] of PARTIDOS)if(!Number.isFinite(final[id])||final[id]<0||final[id]>100)throw Error('Cifra experimental inválida: '+id);
- const order=PARTIDOS.slice(0,5);
+ const order=PARTIDOS.slice(0,5).sort((a,b)=>final[b[0]]-final[a[0]]);
  const plot=([id,name])=>`<li class="hub-micro-fila"><span>${esc(name)}</span><div class="hub-micro-pista" aria-hidden="true"><i style="width:${Math.min(100,final[id]/40*100).toFixed(2)}%;--c:${PARTY_COLORS[id]||'#687b72'}"></i></div><b>${fmt(final[id])} %</b></li>`;
  const other=PARTIDOS.slice(5).sort((a,b)=>final[b[0]]-final[a[0]]);
  return `<div class="hub-micro-leyenda"><strong>Reestimación propia · CIS 3582</strong><span>Octubre 2026 · voto válido (%)</span></div>
