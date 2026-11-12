@@ -23,31 +23,24 @@ export const VARIANTS=[
  {id:'calibrada_23j',nombre:'Calibrada con el 23J',def:'Cada casa parte con un sesgo igual a la mitad de su error en el 23J (PP, PSOE, Vox); sin ancla de consenso.'}
 ];
 
-export function renderPronostico(comparacion=''){
- return `
+export function renderPronostico(){
+ return `<div class="hero"><div><div class="eyebrow">Motor 29N · capa 3 · estimación de referencia</div><h1>Pronóstico completo.</h1><p id="fc-lead">Cargando la salida publicada del Motor 29N…</p></div><div class="hero-aside"><span class="badge sim">Estimación modelizada</span><p>Las cifras son estimaciones condicionadas a los supuestos del modelo, no resultados electorales. Intervalos del 90 % de las simulaciones.</p><a href="pronostico.html">Informe técnico completo ↗</a></div></div>
+ <nav class="subnav" aria-label="Secciones principales del pronóstico"><a href="#pronostico-principal">Estimación actual</a><a href="#pronostico-variantes">Otras variantes</a><a href="#pronostico-cocina">Cómo se calcula</a><a href="#pronostico-evolucion">Evolución</a><a href="#pronostico-fuentes">Datos utilizados</a><a href="#pronostico-evaluacion">Validación</a></nav>
+ <p class="pr-naturalezas">Estás viendo la <strong>estimación propia del Observatorio basada en estimaciones publicadas</strong>, no una reconstrucción de entrevistas individuales. El <a href="#pronostico-capas">promedio</a> y los <a href="#pronostico-externos">modelos externos</a> sirven de contraste. La <a href="#cocina">cocina experimental con microdatos</a> se estudia por separado.</p>
+ <details class="pr-tipos"><summary>Distinguir las cuatro clases de estimación</summary>${renderTiposEstimacion({compacto:true})}</details>
  <div id="fc-error" role="alert"></div>
  <div id="fc-counts"></div>
- <section class="pr-reading-group" id="pronostico-comprender" aria-labelledby="pr-heading-comprender"><div class="pr-reading-heading"><span>01</span><div><h2 id="pr-heading-comprender">Comprender el pronóstico</h2><p>Primero, el resultado y el recorrido real del dato publicado al escaño.</p></div></div>
- <section class="panel" id="pronostico-principal"><h3>Escaños y voto por partido</h3><div id="fc-main">Cargando…</div></section>
- <section class="panel" id="pronostico-cocina"><h3>Cómo se calcula: del dato al escaño</h3><div id="fc-chain">Cargando…</div></section>
- </section>
- <details class="pr-reading-group pr-reading-disclosure" id="pronostico-comparar" open><summary><span class="pr-reading-number">02</span><span><strong>Comparar estimaciones y escenarios</strong><small>Variantes de cocina, diferencias con el promedio, bloques, territorio y evolución</small></span><span class="pr-reading-action">Explorar</span></summary><div class="pr-reading-body">
- <section class="panel" id="pronostico-variantes"><h3>Cómo varía el pronóstico con otros supuestos</h3><p class="muted">Las variantes cambian el anclaje estadístico; sus diferencias no son intervalos de probabilidad.</p><div id="fc-variants">Cargando…</div></section>
- <details class="pr-reading-subdetail" open><summary>Contrastar el promedio y los modelos externos, cifra a cifra</summary><p class="muted">El promedio reciente utiliza la última encuesta de cada instituto en su ventana; el motor utiliza los estudios históricos que superan su propia puerta de calidad. No son recuentos equivalentes ni se suma el promedio como entrada.</p>${comparacion}</details>
- <section class="panel" id="pronostico-bloques"><h3>Bloques y mayorías</h3><p class="muted">${h(BLOCK_NOTE)}</p><div id="fc-blocks">Cargando…</div></section>
- ${renderInvestidura()}
- <section class="panel" id="pronostico-evolucion"><h3>Evolución por cortes</h3><p class="muted">Serie retrospectiva recalculada con el método actual y las encuestas conocidas en cada fecha; no equivale a las versiones publicadas entonces. Los cambios de versión del modelo se identifican.</p><div id="fc-history">Cargando…</div></section>
- <section class="panel" id="pronostico-territorio"><h3>Proyección territorial</h3><div id="fc-territory">Cargando…</div></section>
- </div></details>
- <details class="pr-reading-group pr-reading-disclosure" id="pronostico-auditar" open><summary><span class="pr-reading-number">03</span><span><strong>Auditar el resultado</strong><small>Qué datos entran, qué se excluye, parámetros, límites y evaluación histórica</small></span><span class="pr-reading-action">Explorar</span></summary><div class="pr-reading-body">
- <p class="pr-naturalezas">Estás viendo la <strong>estimación propia del Observatorio basada en estimaciones publicadas</strong>, no una reconstrucción de entrevistas individuales. Consulta el <a href="#pronostico-capas">promedio y las capas</a> solo como contraste; la cocina de microdatos se evalúa por separado.</p>
- <details class="pr-tipos"><summary>Distinguir los cuatro tipos de estimación</summary>${renderTiposEstimacion({compacto:true})}</details>
+ <section class="panel" id="pronostico-principal"><h2>Escaños y voto por partido</h2><div id="fc-main">Cargando…</div></section>
+ <section class="panel" id="pronostico-variantes"><h2>Variantes del modelo</h2><p class="muted">La diferencia entre variantes es incertidumbre de método: depende de qué casas fijan el «sesgo cero». Ninguna variante sustituye a la estimación de referencia.</p><div id="fc-variants">Cargando…</div></section>
+ <section class="panel" id="pronostico-cocina"><h2>C. Cocina y trazabilidad: del dato al escaño</h2><div id="fc-chain">Cargando…</div></section>
  ${renderTrazabilidad()}
- <section class="panel" id="pronostico-fuentes"><h3>Estudios usados, excluidos y motivos</h3><div id="fc-sources">Cargando…</div></section>
- <section class="panel" id="pronostico-evaluacion"><h3>Evaluación histórica de encuestas y recetas</h3><p class="muted">La auditoría temporal de promedios sobre el 23J y las pruebas retrospectivas de microdatos CIS en 2019 son ejercicios distintos. Ninguno calibra las probabilidades de mayoría del Motor 29N.</p><div id="fc-validation-publica"></div>${renderValidationDashboard()}<p class="pr-remite">Las comprobaciones con microdatos se documentan también en <a href="#cocina-cap4">Cocina · ¿Qué receta acierta?</a></p></section>
- <section class="panel" id="pronostico-externos"><h3>Otros observatorios y modelos</h3><p class="muted">${h(LAYERS.externo.explica)}</p><div id="fc-external">Cargando…</div></section>
- <div class="hero"><div><div class="eyebrow">Motor 29N · capa 3 · estimación de referencia</div><h1>Pronóstico completo.</h1><p id="fc-lead">Cargando la salida publicada del Motor 29N…</p></div><div class="hero-aside"><span class="badge sim">Estimación modelizada</span><p>Las cifras son estimaciones condicionadas a los supuestos del modelo, no resultados electorales. Intervalos del 90 % de las simulaciones.</p><a href="pronostico.html">Informe técnico completo ↗</a></div></div>
- </div></details>`;
+ <section class="panel" id="pronostico-bloques"><h2>D. Bloques</h2><p class="muted">${h(BLOCK_NOTE)}</p><div id="fc-blocks">Cargando…</div></section>
+ ${renderInvestidura()}
+ <section class="panel" id="pronostico-evolucion"><h2>E. Evolución por cortes</h2><p class="muted">Serie retrospectiva recalculada con el método actual y las encuestas disponibles en cada corte; no es un archivo de lo que se publicó entonces. La versión 2 (3-nov-2026) recalculó toda la serie; para recuperar versiones anteriores hay que consultar el historial del repositorio. Las entradas con otra versión del modelo se señalan: su diferencia no es solo cambio en los datos.</p><div id="fc-history">Cargando…</div></section>
+ <section class="panel" id="pronostico-territorio"><h2>F. Proyección territorial</h2><div id="fc-territory">Cargando…</div></section>
+ <section class="panel" id="pronostico-fuentes"><h2>Estudios usados y excluidos</h2><div id="fc-sources">Cargando…</div></section>
+ <section class="panel" id="pronostico-evaluacion"><h2>Evaluación histórica de encuestas y recetas</h2><p class="muted">Separamos dos ejercicios distintos: la auditoría temporal de promedios sobre el 23J y el contraste retrospectivo de tratamientos de microdatos del CIS en 2019. Ninguno calibra las probabilidades de mayoría del Motor 29N.</p><div id="fc-validation-publica"></div>${renderValidationDashboard()}<p class="pr-remite">Los contrastes con microdatos del CIS de abril y noviembre de 2019, y el estado de homologación de esos estudios, están en <a href="#cocina-cap4">Cocina · ¿Qué receta acierta?</a></p></section>
+ <section class="panel" id="pronostico-externos"><h2>Capa 4 · Otros observatorios y modelos</h2><p class="muted">${h(LAYERS.externo.explica)}</p><div id="fc-external">Cargando…</div></section>`;
 }
 
 function publicValidation(f){
