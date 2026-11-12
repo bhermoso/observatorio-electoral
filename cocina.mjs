@@ -66,7 +66,7 @@ export function renderCocina(){
  const cap=(n,id,titulo,pregunta,intro,cuerpo)=>`<details ${n===1?'open':''} class="cocina-capitulo chapter-reading" id="${id}" aria-labelledby="${id}-t">
   <summary class="cocina-cap-cab"><span class="cocina-cap-num">${n}</span><div><h2 id="${id}-t">${titulo}</h2><p class="cocina-cap-pregunta">${pregunta}</p></div></summary>
   <div class="cocina-cap-intro">${intro}</div>${cuerpo}</details>`;
- return `<div class="hero cocina-hero"><div><div class="eyebrow">Cocina electoral · microdatos y transparencia metodológica</div><h1>Entender la cocina electoral</h1>
+ return `<section id="cocina-base" class="panel"><span class="eyebrow">Alta cocina electoral · base de trabajo</span><h2>La despensa y las preguntas.</h2><p>Intención directa, recuerdo, simpatía y participación. Partimos de prácticas documentadas para investigar los mecanismos que ayudan a explicar y predecir el voto. Las reglas de la receta propia se discuten antes de incorporarlas al pronóstico.</p><div class="base-ingredient-picker" role="group" aria-label="Examinar ingredientes"><button type="button" data-base-ingredient="intencion_directa" aria-pressed="true">Intención directa</button><button type="button" data-base-ingredient="recuerdo" aria-pressed="false">Recuerdo</button><button type="button" data-base-ingredient="simpatia" aria-pressed="false">Simpatía</button><button type="button" data-base-ingredient="participacion" aria-pressed="false">Participación</button></div><div id="cocina-base-descripcion" class="base-ingredient-view" role="status">Cargando referencia documental…</div><div class="cocina-base-grid"><article><h3>Referencia R0</h3><p>Intención y peso originales. Bases y tamaños efectivos explícitos, conservando toda la muestra.</p><a href="linea-base-cocina.html">Examinar referencias de las casas →</a></article><article><h3>Contraste verificable</h3><p>Errores, cobertura y componentes controlados. Cada resultado conserva su población y sus límites.</p><a href="validacion-cientifica.html">Explorar los resultados →</a></article></div></section><div class="hero cocina-hero"><div><div class="eyebrow">Cocina electoral · microdatos y transparencia metodológica</div><h1>Entender la cocina electoral</h1>
  <p>Una encuesta recoge respuestas; una estimación de voto es una cifra calculada a partir de ellas. Aquí se explica primero cómo calcula el Observatorio su pronóstico, después cómo se transforma una encuesta en una estimación y finalmente qué hemos comprobado con microdatos. Los ensayos de investigación se muestran por separado del modelo publicado.</p></div></div>
  <div class="cocina-orientacion" aria-label="Cómo se organiza este apartado">
   <p><strong>Pronóstico vigente:</strong> combina estimaciones publicadas y ajustes propios, pero no reanaliza las entrevistas individuales.</p>
@@ -101,6 +101,14 @@ export function renderCocina(){
   `${renderCatalogoMicrodatos()}${renderBuscadorMicrodatos()}${renderEstadoDescargas()}${ORIGEN()}`)}`;
 }
 export async function bindCocina(){
+ const base=document.querySelector('#cocina-base');if(base){
+  fetch('data/microdatos/base-cocina.json').then(r=>{if(!r.ok)throw Error('Referencia no disponible');return r.json()}).then(d=>{
+   if(!base.isConnected)return;const output=base.querySelector('#cocina-base-descripcion');
+   const choose=id=>{const ingredient=d.ingredientes_para_discutir.find(x=>x.id===id);output.textContent=ingredient?ingredient.situacion:'Referencia pendiente';base.querySelectorAll('[data-base-ingredient]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.baseIngredient===id)));};
+   base.querySelectorAll('[data-base-ingredient]').forEach(b=>b.onclick=()=>choose(b.dataset.baseIngredient));choose('intencion_directa');
+  }).catch(()=>{if(base.isConnected)base.querySelector('#cocina-base-descripcion').textContent='Consulta la línea base documental mediante el enlace de referencia.'});
+ }
+
  void bindEvaluacionMicrodatos();
  // Los enlaces del índice abren el capítulo elegido sin ocultar el contenido al navegar.
  const indice=document.querySelector('.cocina-indice');

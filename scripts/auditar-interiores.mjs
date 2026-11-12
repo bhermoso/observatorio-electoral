@@ -40,20 +40,20 @@ try{
    }
   }
   if(width===1440){
-   await page.goto(base+'#encuestas');await page.waitForSelector('#poll-chart circle');
+   await page.goto(base+'#encuestas');await page.waitForSelector('#poll-chart-party');await page.selectOption('#poll-chart-party','PP');await page.waitForSelector('#poll-chart circle');
    await page.selectOption('#poll-institute',{label:'CIS'});assert.match(await page.locator('#poll-count').innerText(),/1 institutos/);
    assert.ok((await page.locator('#poll-chart circle title').allTextContents()).every(x=>x.startsWith('CIS')));
    await page.fill('#poll-search','no-existe-123');assert.equal(await page.locator('#poll-chart circle').count(),0);
    await page.click('#poll-reset');assert.ok(await page.locator('#poll-chart circle').count()>0);
    const point=page.locator('#poll-chart circle').first(),id=await point.getAttribute('data-poll');
    await point.focus();await page.keyboard.press('Enter');assert.ok((await page.locator('#poll-detail').innerText()).includes(id));
-   await page.locator('a[href="#encuestas-visual"]').first().click();await page.waitForTimeout(250);assert.match(page.url(),/#encuestas-visual$/);
+   await page.locator('.poll-dialog-close').click();await page.goto(base+'#encuestas-visual');await page.waitForTimeout(250);assert.match(page.url(),/#encuestas-visual$/);
    await page.screenshot({path:`${output}/encuestas-grafico.png`});
    // Correct a fixture in the intercepted archive; never write to the service.
    const archive=JSON.parse(fs.readFileSync('data/polls.json','utf8'));archive[0].notes+=' PRUEBA DE RECARGA';
    await page.route('**/data/polls.json',r=>r.fulfill({status:200,contentType:'application/json',body:JSON.stringify(archive)}));
-   await page.click('#reload-polls');await page.waitForFunction(()=>document.querySelector('#poll-reload-status').textContent.includes('1 corregidas'));
-   await page.click('#poll-reset');await page.fill('#poll-search',archive[0].id);assert.match(await page.locator('#poll-detail').innerText(),/PRUEBA DE RECARGA/);
+   await page.goto(base+'#encuestas-actualizar');await page.click('#reload-polls');await page.waitForFunction(()=>document.querySelector('#poll-reload-status').textContent.includes('1 corregidas'));
+   await page.goto(base+'#encuestas-visual');await page.click('#poll-reset');await page.fill('#poll-search',archive[0].id);await page.getByRole('tab',{name:'Tabla y fichas',exact:true}).click();await page.locator('#poll-table [data-poll]').first().click();assert.match(await page.locator('#poll-detail').innerText(),/PRUEBA DE RECARGA/);await page.locator('.poll-dialog-close').click();await page.goto(base+'#encuestas-actualizar');
    await page.route('**/data/vigilancia/candidatos.json',r=>r.fulfill({status:200,contentType:'application/json',body:JSON.stringify({status:'failed',checked_at:'2026-11-10T10:00:00Z',last_attempt_at:'2026-11-11T10:00:00Z',results:[],sources:[]})}));
    await page.click('#dispatch-polls');await page.waitForFunction(()=>document.querySelector('#poll-candidates-list').textContent.includes('Búsqueda fallida'));
    assert.match(await page.locator('#poll-candidates-list').innerText(),/Se conserva la búsqueda anterior/);

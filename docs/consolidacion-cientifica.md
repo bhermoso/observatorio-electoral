@@ -86,3 +86,13 @@ npm run build
 Las variables de BLAS limitan hilos, no alteran el algoritmo. El principal usa 750 simulaciones por variante (2.250 conjuntas) con `--n 1500`; el historial usa 500 por variante y día. Esas cantidades reales se registran, en lugar de llamar «1.500» a toda la mezcla. Las comparaciones nacionales usan solución analítica e intervalos exactos de la mezcla gaussiana, sin ruido Monte Carlo en sus cuantiles.
 
 Las cifras y comprobaciones finales, incluido antes/después, se recogen en `modelo/validacion/comparacion-versiones.json` y en la descripción de la revisión. Los resultados nacionales completos están en `modelo/validacion/multieleccion.md` y `.json`.
+
+## Resultado operativo antes/después y comprobaciones finales
+
+La comparación determinista del corte **12/11/2026**, con **2.250 simulaciones conjuntas** en ambas versiones, conserva 31 entradas en v4 y 29 en v5. Se excluyen `ncreport-2026-09-03` y `sigmados-2026-10-01` por publicación no documentada; sus motivos quedan en la salida operativa. El máximo cambio de mediana de voto entre candidaturas es **0,00514 pp**: no se interpreta como mejora predictiva sin observar el resultado futuro.
+
+La primera fuerza antes se asignaba por posición al empatar; ahora se separa la primera fuerza exclusiva del empate. Hay **1,4667 %** de empates en este corte. La frecuencia de PP pasa de **66,5333 %** bajo la regla anterior a **65,0222 %** de primera fuerza exclusiva. La suma de frecuencias exclusivas más la de empates conserva la masa total.
+
+El diagnóstico de composición muestra residual mínimo/renormalización en **21,2 %**, **18,8 %** y **21,6 %** de las simulaciones de las tres variantes, respectivamente. No se oculta esa transformación ni se presenta la suma de marginales como validación conjunta. El historial v5 contiene **43 cortes reconstruidos**, identificados expresamente; el archivo v4 y la captura de publicación observada se conservan.
+
+Las vistas interactivas, filtros, fichas y lectura completa están comprobados en `docs/exploracion-interactiva.md`. La transformación de interfaz no altera los coeficientes de la receta principal ni incorpora los experimentos de microdatos al modelo.

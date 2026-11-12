@@ -70,7 +70,7 @@ export function renderPromedio(prom,forecast=null,baseModelo=false){
  const pos=v=>(v/max*100).toFixed(1)+'%';
  const filasHTML=filas.map(([id,v])=>{
   const m=modelo[id]?.voto?.[0];
-  return `<li role="button" tabindex="0" data-panel="partido:${id}" aria-label="${h(name(id))}: detalle"><span class="hub-barra-nombre">${h(id==='SUMAR'?'Sumar / FA':name(id))}</span><span class="hub-barra-pista"><span style="width:${pos(v.valor)};--c:${color(id)}"></span>${Number.isFinite(m)?`<i class="hub-marca" style="left:${pos(m)}" title="Pronóstico ${fmt(m)} %"></i>`:''}</span><b>${fmt(v.valor)} %<small>${v.n} de ${N}</small></b><span class="hub-modelo">${Number.isFinite(m)?`${fmt(m)} %<small class="hub-diferencia" title="Diferencia frente al promedio">${signed(m-v.valor)} pp</small>`:'—'}</span></li>`;
+  return `<li><div class="hub-barra-control" role="button" tabindex="0" data-panel="partido:${id}" aria-label="${h(name(id))}: detalle"><span class="hub-barra-nombre">${h(id==='SUMAR'?'Sumar / FA':name(id))}</span><span class="hub-barra-pista"><span style="width:${pos(v.valor)};--c:${color(id)}"></span>${Number.isFinite(m)?`<i class="hub-marca" style="left:${pos(m)}" title="Pronóstico ${fmt(m)} %"></i>`:''}</span><b>${fmt(v.valor)} %<small>${v.n} de ${N}</small></b><span class="hub-modelo">${Number.isFinite(m)?`${fmt(m)} %<small class="hub-diferencia" title="Diferencia frente al promedio">${signed(m-v.valor)} pp</small>`:'—'}</span></div></li>`;
  }).join('');
  return `<div class="hub-barras-cab" aria-hidden="true"><span></span><span><i class="hub-muestra"></i>promedio · <i class="hub-muestra-marca"></i>pronóstico</span><b>Promedio</b><span>Pronóstico<br><small>Dif. en pp</small></span></div>
  <ol class="hub-barras">${filasHTML}</ol>
@@ -125,14 +125,14 @@ export function renderTarjetas(lista){
   const resto=100-PRINCIPALES.reduce((s,k)=>s+(Number.isFinite(x.voto[k])?x.voto[k]:0),0);
   const cifras=PRINCIPALES.filter(k=>Number.isFinite(x.voto[k])).map(k=>{const c=x.anterior?.cambio?.[k];return `<li><i style="--c:${color(k)}"></i>${h(short(k))} <b>${fmt(x.voto[k])}</b>${Number.isFinite(c)?`<small class="${c>0?'sube':c<0?'baja':''}">${signed(c)}</small>`:''}</li>`;}).join('');
   const [cls,txt,motivo]=x.estado;
-  return `<li class="hub-tarjeta" role="button" tabindex="0" data-panel="encuesta:${h(x.id)}" aria-label="${h(x.casa)}, ${h(fday(x.pub))}: ficha">
+  return `<li class="hub-tarjeta"><div class="hub-tarjeta-control" role="button" tabindex="0" data-panel="encuesta:${h(x.id)}" aria-label="${h(x.casa)}, ${h(fday(x.pub))}: ficha">
    <div class="hub-tarjeta-cab"><b>${h(x.casa)}</b><time datetime="${h(x.pub)}">${h(fday(x.pub))}</time></div>
    <p class="hub-tarjeta-ficha">${x.sinFin?(x.ini?`Campo desde ${h(fday(x.ini))}, sin fecha de fin publicada`:'Fechas de campo no publicadas'):`Campo ${x.ini?h(fday(x.ini))+'–':'hasta '}${h(fday(x.fin))}`}${x.n?` · n=${Number(x.n).toLocaleString('es-ES')}`:''}</p>
    <div class="hub-apilada" role="img" aria-label="${h(PRINCIPALES.filter(k=>Number.isFinite(x.voto[k])).map(k=>name(k)+' '+fmt(x.voto[k])+' %').join(', '))}">${segs}<span class="resto" style="flex:${Math.max(0,resto)} 0 0"></span></div>
    <ul class="hub-cifras">${cifras}</ul>
    <p class="hub-estado ${cls}"${motivo?` title="${h(motivo)}"`:''}>${h(txt)}${motivo?`<small>${h(motivo)}</small>`:''}</p>
    ${x.anterior?`<p class="hub-tarjeta-ref">Cambio frente a su oleada anterior (campo hasta el ${h(fday(x.anterior.fin))})</p>`:'<p class="hub-tarjeta-ref">Sin oleada anterior registrada</p>'}
-  </li>`;}).join('')}</ol>`;
+  </div></li>`;}).join('')}</ol>`;
 }
 
 /** Accesos a cada sección con su cifra clave. */

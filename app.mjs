@@ -1,3 +1,4 @@
+import {bindWorkspace,bindDashboardExplorer} from './explorador.mjs';
 import {renderInteriorGuide,renderSeatChanges,prepareEditorialContent,revealEditorialTarget} from './interiores.mjs';
 import {renderPollUpdate,bindPollUpdate,fetchPublishedPolls} from './encuestas-servicio.mjs';
 import {validatePolls} from './schema.mjs';
@@ -73,10 +74,10 @@ document.addEventListener('click',e=>{if(e.target.closest?.('a[href^="#"]')&&doc
 function cerrarVisor(){const v=$('#visor');if(!v.hidden){v.hidden=true;document.body.classList.remove('visor-abierto');$('#visor-contenido').innerHTML='';const y=scrollPortada;requestAnimationFrame(()=>window.scrollTo(0,y));setTimeout(()=>window.scrollTo(0,y),60);}}
 function render(){const {route,anchor}=resolveRoute(location.hash);const same=route===currentRoute&&anchor&&document.getElementById(anchor);if(same){revealEditorialTarget(document.getElementById(anchor));return;}
  document.body.classList.add('dashboard-route');
- if(!portadaLista){$('#main').innerHTML=dashboard();bindHomeImpact(polls,events);portadaLista=true;}
+ if(!portadaLista){$('#main').innerHTML=dashboard();bindHomeImpact(polls,events);bindDashboardExplorer();portadaLista=true;}
  disposePollUpdate();currentRoute=route;
  document.title=`${TITULOS[route]||'Página'} · Observatorio Electoral Español`;
- if(route==='dashboard'){cerrarVisor();if(anchor)setTimeout(()=>document.getElementById(anchor)?.scrollIntoView(),300);return;}
+ if(route==='dashboard'){cerrarVisor();if(anchor)setTimeout(()=>{const node=document.getElementById(anchor);if(node)revealEditorialTarget(node);},300);return;}
  const pages={pronostico:()=>renderPronostico()+renderContraste(),encuestas:pollPage,contexto:()=>renderEvents(events),cocina:renderCocina,atlas:atlasPage,laboratorio:labPage,metodologia:methodsPage};
  const v=$('#visor');if(v.hidden&&window.scrollY>0)scrollPortada=window.scrollY;v.hidden=false;document.body.classList.add('visor-abierto');v.dataset.ruta=route;
  $('#visor-titulo').textContent=TITULOS[route]||'';
@@ -101,7 +102,7 @@ function render(){const {route,anchor}=resolveRoute(location.hash);const same=ro
    if(added.length||corrected.length||removed){
     polls=next;
     // Rebind all consumers, including the panorama behind the section viewer.
-    $('#main').innerHTML=dashboard();
+    $('#main').innerHTML=dashboard();bindDashboardExplorer();
     $('#poll-archive-content').innerHTML=renderPollArchive(polls);
     bindPollArchive(polls);
     const analysis=document.getElementById('encuestas-promedios');
@@ -114,6 +115,7 @@ function render(){const {route,anchor}=resolveRoute(location.hash);const same=ro
      const table=document.getElementById('encuestas-todas-tabla');
      if(table)table.innerHTML=renderTodasEncuestas(forecast,polls);
    }
+   bindWorkspace('encuestas',$('#visor-contenido'));
    const names=added.map(p=>p.institute+' · '+p.published).join(', ');
    return added.length||corrected.length||removed
     ? `Archivo publicado: ${added.length} nuevas, ${corrected.length} corregidas, ${removed} retiradas.${names?' Nuevas: '+names+'.':''}`
@@ -124,7 +126,8 @@ function render(){const {route,anchor}=resolveRoute(location.hash);const same=ro
  if(route==='cocina'){bindCocina();bindCasosCocina(polls);bindBuscadorMicrodatos();void bindEstadoDescargas();}
  if(route==='atlas'){$('#atlas-search').oninput=filterAtlas;$('#atlas-order').onchange=filterAtlas;filterAtlas();detail();}
  if(route==='laboratorio'){$('#calculate').onclick=calculate;$('#lab-scope').onchange=calculate;$('#trace-district').onchange=showTrace;$('#reset-lab').onclick=()=>{weights={};render();};$('#export-lab').onclick=()=>{calculate();if(lastScenario)download(lastScenario,'oee-simulacion.json');};calculate();}
+ bindWorkspace(route,$('#visor-contenido'));
 }
 $('.skip').addEventListener('click',e=>{e.preventDefault();const t=$('#visor').hidden?$('#main'):$('#visor-contenido');t.focus();t.scrollIntoView();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#visor').hidden&&!document.body.classList.contains('panel-abierto')&&!document.querySelector('.glossary-tooltip:not([hidden])'))location.hash='#dashboard';});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!document.querySelector('dialog[open]')&&!$('#visor').hidden&&!document.body.classList.contains('panel-abierto')&&!document.querySelector('.glossary-tooltip:not([hidden])'))location.hash='#dashboard';});
 try {const responses=await Promise.all(['data/election.json','data/polls.json','data/cartography.json','data/references.json','data/events.json'].map(p=>fetch(p)));if(responses.some(r=>!r.ok))throw Error('No se pudieron cargar los archivos de datos.');[data,polls,cartography,references,events]=await Promise.all(responses.map(r=>r.json()));render();window.addEventListener('hashchange',()=>{const before=currentRoute;render();if(currentRoute!==before||!resolveRoute(location.hash).anchor){($('#visor').hidden?$('#main'):$('#visor-contenido')).focus({preventScroll:true});window.scrollTo(0,0);}});}catch(e){$('#main').innerHTML=`<div role="alert" class="error">${escape(e.message)} <a href="https://github.com/bhermoso/observatorio-electoral">Consultar el repositorio</a></div>`;}
