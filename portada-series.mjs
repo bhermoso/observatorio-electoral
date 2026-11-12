@@ -119,9 +119,8 @@ export function bindPortadaSeries(root,{polls,forecast,history,events,cutoff,pro
  const end=cutoff;
  const recent=new Date(Date.parse(end)-59*day).toISOString().slice(0,10);
  root.innerHTML=`
-  <div class="series-head"><div><span class="eyebrow">Voto estimado (%)</span><h2 id="series-heading">Evolución de las estimaciones</h2></div>
-  <div class="series-controls"><label>Partido <select data-party><option value="${ALL}">Principales partidos (modelo)</option>${PARTIES.map(p=>`<option value="${p.id}">${escape(p.label)}</option>`).join('')}</select></label>
-  <label>Periodo <select data-period><option value="${recent}">Últimos 60 días</option><option value="2026-01-01">Desde enero de 2026</option></select></label></div></div>
+  <div class="series-head"><div><span class="eyebrow">Voto estimado (%)</span><h2 id="series-heading">Encuestas, promedio y pronóstico</h2></div>
+  <div class="series-controls"><label>Partido <select data-party><option value="${ALL}">Principales partidos (modelo)</option>${PARTIES.map(p=>`<option value="${p.id}">${escape(p.label)}</option>`).join('')}</select></label></div></div>
   <p class="series-note" data-note></p>
   <section class="series-comparacion" aria-label="Comparación numérica de estimaciones">
    <div class="series-comparacion-cab"><div><h3>Qué estima cada fuente para este partido</h3><p>Compara en una misma escala el último sondeo de cada casa, el promedio y nuestro pronóstico. El laboratorio de microdatos se muestra aparte.</p></div>
@@ -129,6 +128,7 @@ export function bindPortadaSeries(root,{polls,forecast,history,events,cutoff,pro
    <div data-comparison role="region" aria-live="polite"></div>
   </section>
   <details class="series-lectura-temporal"><summary>Explorar evolución temporal y acontecimientos</summary>
+  <label class="series-periodo-label">Periodo del gráfico <select data-period><option value="${recent}">Últimos 60 días</option><option value="2026-01-01">Desde enero de 2026</option></select></label>
   <div class="series-events" data-events aria-label="Acontecimientos en el gráfico"></div>
   <div class="portada-grafico" data-chart></div>
 
