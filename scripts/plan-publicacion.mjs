@@ -20,7 +20,7 @@ async function main(){
  catch{return finish(false,'No se puede comparar el historial de cambios.');}
  // Lista cerrada: el motor no consume estos archivos. Cualquier otro cambio obliga a recalcular.
  const safe=p=>p.startsWith('data/microdatos/')||
- /^(cocina\.mjs|ingesta-cis-2026\.mjs|serie-cis-2026\.mjs|contraste-serie-cis-2026\.mjs|contraste-cis-3582\.mjs|matriz-microdatos\.mjs|homologacion-microdatos-2026\.mjs|scripts\/build\.mjs|\.github\/workflows\/pages\.yml)$/.test(p)||
+ /^(cocina\.mjs|ingesta-cis-2026\.mjs|serie-cis-2026\.mjs|contraste-serie-cis-2026\.mjs|contraste-cis-3582\.mjs|matriz-microdatos\.mjs|homologacion-microdatos-2026\.mjs|scripts\/build\.mjs|scripts\/plan-publicacion\.mjs|\.github\/workflows\/pages\.yml)$/.test(p)||
  /^tests\/(ingesta-cis-2026|serie-cis-2026|contraste-serie-cis-2026|contraste-cis-3582)\.test\.mjs$/.test(p);
  if(!changed.length||changed.some(p=>!safe(p)))return finish(false,'Hay cambios fuera de Cocina/UI: '+changed.filter(p=>!safe(p)).join(', '));
  const origin='https://bhermoso.github.io/observatorio-electoral/';
