@@ -56,13 +56,13 @@ test('El contraste de capas vive en Pronóstico, sin pliegues, con su procedenci
  assert.match(css,/--oee-body-size:15px/);
 });
 
-test('Panorama es un resumen sin pliegues: titular, hemiciclo y promedio, evolución, últimas encuestas y accesos',async()=>{
+test('Panorama prioriza el comparador y conserva las secciones principales',async()=>{
  const {renderHomeImpact}=await import('../home-impact.mjs');
  const html=renderHomeImpact();
- const order=['id="portada-titular"','id="portada-hub"','id="home-series"','id="portada-ultimas"','id="portada-secciones"'];
+ const order=['id="portada-titular"','id="home-series"','id="portada-hub"','id="portada-ultimas"','id="portada-secciones"'];
  for(const id of order)assert.ok(html.includes(id),'Falta '+id);
  for(let i=1;i<order.length;i++)assert.ok(html.indexOf(order[i-1])<html.indexOf(order[i]),order[i-1]+' debe ir antes que '+order[i]);
- assert.doesNotMatch(html,/<details|<summary/);
+ assert.match(html,/<details class="portada-metodo-desplegable">/);
  assert.doesNotMatch(html,/role="tab"|role="tabpanel"/);
  assert.doesNotMatch(html,/id="matrix-table"|id="portada-caso"|id="portada-microdatos"/);
  assert.match(html,/<h1 id="impact-heading">Panorama 29N<\/h1>/);
