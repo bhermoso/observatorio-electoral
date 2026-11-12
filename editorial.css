@@ -334,3 +334,23 @@ body>header{background:var(--paper);border-bottom:3px double var(--ink);box-shad
 .hub-micro-otros p,.hub-micro-panel .hub-nota{font-size:12px;color:var(--muted);line-height:1.65}
 .hub-micro-panel .hub-nota{max-width:920px;margin:17px 0 0}
 @media(max-width:600px){.hub-micro-panel{padding:16px 14px}.hub-micro-fila{grid-template-columns:85px minmax(65px,1fr) 62px;gap:7px;font-size:12px}}
+
+/* Auditoría visual de recetas CIS: dos oleadas, una sola elección. */
+.cp-validacion-visual{margin:18px 0 26px;padding:19px 20px;border:1px solid var(--line);background:#fffefa}
+.cp-validacion-visual figcaption{display:flex;justify-content:space-between;gap:8px 20px;flex-wrap:wrap;margin-bottom:12px}
+.cp-validacion-visual figcaption>b{font-size:16px}
+.cp-validacion-visual figcaption>span,.cp-v-legend{font-size:12px;color:var(--muted)}
+.cp-v-legend{display:flex;gap:18px;flex-wrap:wrap;margin:0 0 14px}
+.cp-v-legend>span{display:flex;align-items:center;gap:6px}
+.cp-v-legend i{height:9px;width:16px;display:inline-block}
+.cp-v-one,.cp-v-fill-1{background:#547e75}.cp-v-two,.cp-v-fill-2{background:#b29660}
+.cp-v-rows{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.cp-v-row{display:grid;grid-template-columns:minmax(130px,190px) minmax(110px,1fr) 74px;align-items:center;gap:9px;font-size:12px}
+.cp-v-row strong{font-variant-numeric:tabular-nums;text-align:right}
+.cp-v-bars{display:grid;gap:3px}
+.cp-v-bar{height:8px;background:rgba(75,110,94,.07)}
+.cp-v-fill{height:100%;display:block}
+.cp-v-full{font-weight:650;border-top:1px solid var(--line);padding-top:10px}
+.cp-v-result{margin:17px 0 7px;font-size:13px}
+.cp-validacion-visual>.muted{font-size:12px;line-height:1.6}
+@media(max-width:640px){.cp-validacion-visual{padding:14px 10px}.cp-v-row{grid-template-columns:95px minmax(70px,1fr) 58px;gap:6px;font-size:11px}}
