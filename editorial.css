@@ -264,3 +264,18 @@ body>header{background:var(--paper);border-bottom:3px double var(--ink);box-shad
 .ruta-paso:hover small,.ruta-paso:focus-visible small{font-weight:700}
 @media(max-width:950px){.ruta-estimacion-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px}.ruta-paso:nth-child(2)::after{display:none}.ruta-paso strong{font-size:23px}}
 @media(max-width:600px){.ruta-estimacion-titulo{display:block}.ruta-estimacion-titulo p{margin-top:8px}.ruta-estimacion-grid{gap:8px}.ruta-paso{margin-right:0;padding-right:6px}.ruta-paso strong{font-size:18px}.ruta-paso>span:not(.ruta-paso-num),.ruta-paso small{font-size:10px}.ruta-paso:nth-child(1)::after,.ruta-paso:nth-child(3)::after{right:-8px}}
+
+/* Nueva portada: el comparador es protagonista; explicación y series largas a demanda. */
+.portada-cabecera .portada-metodo-desplegable{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:17px 0 6px;padding:12px 0}
+.portada-metodo-desplegable>summary{cursor:pointer;color:var(--green);font:600 13px/1.5 system-ui,sans-serif}
+.portada-metodo-desplegable:not([open]){max-width:100%}
+.portada-metodo-desplegable .tipos-estimacion{margin:15px 0 0;padding-top:12px}
+#home-series{border-top:3px solid var(--ink);margin-top:20px;padding-top:12px}
+#home-series>.muted{max-width:760px;font-size:13px}
+#home-series .series-head{margin-bottom:12px}
+#home-series .series-comparacion{border-top:0;margin-top:7px}
+#home-series .ruta-estimacion{margin-top:12px}
+#home-series .series-lectura-temporal{margin:18px 0 6px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0}
+#home-series .series-lectura-temporal>summary{font:600 13px/1.5 system-ui,sans-serif;color:var(--green);cursor:pointer}
+#home-series .series-lectura-temporal[open]>summary{margin-bottom:15px}
+#home-series .series-lectura-temporal .portada-grafico{min-height:160px}
