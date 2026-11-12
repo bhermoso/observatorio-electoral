@@ -1,6 +1,6 @@
 // Puerta histórica: resultados 23J comprobados y límites de homologación 2019.
 // No confundir dos estudios del mismo 23J con elecciones independientes.
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;':'&quot;'}[c]));
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmt=n=>Number(n).toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2});
 const PARTIDOS=['PP','PSOE','VOX','SUMAR'];
 const PASOS=['directa','peso','simpatia','recuerdo','indecisos','participacion','cis_publicado'];
