@@ -41,7 +41,7 @@ export function renderPronostico(comparacion=''){
  <section class="panel" id="pronostico-territorio"><h3>Proyección territorial</h3><div id="fc-territory">Cargando…</div></section>
  </div></details>
  <details class="pr-reading-group pr-reading-disclosure" id="pronostico-auditar"><summary><span class="pr-reading-number">03</span><span><strong>Auditar el resultado</strong><small>Qué datos entran, qué se excluye, parámetros, límites y evaluación histórica</small></span><span class="pr-reading-action">Explorar</span></summary><div class="pr-reading-body">
- <p class="pr-naturalezas">La <strong>estimación propia del Observatorio</strong> parte de estimaciones publicadas, no de entrevistas individuales. Los promedios externos solo sirven de contraste y la cocina sobre microdatos se evalúa de forma separada.</p>
+ <p class="pr-naturalezas">Estás viendo la <strong>estimación propia del Observatorio basada en estimaciones publicadas</strong>, no una reconstrucción de entrevistas individuales. Consulta el <a href="#pronostico-capas">promedio y las capas</a> solo como contraste; la cocina de microdatos se evalúa por separado.</p>
  <details class="pr-tipos"><summary>Distinguir los cuatro tipos de estimación</summary>${renderTiposEstimacion({compacto:true})}</details>
  ${renderTrazabilidad()}
  <section class="panel" id="pronostico-fuentes"><h3>Estudios usados, excluidos y motivos</h3><div id="fc-sources">Cargando…</div></section>
