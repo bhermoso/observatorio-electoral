@@ -69,10 +69,10 @@ jobs:
           # No tomar un despliegue aceptado como prueba de versión publicada.
           for intento in $(seq 1 18); do
             curl --fail --silent --show-error --location --max-time 15 \
-              "${PAGES_URL%/}/data/estado-publicacion.json?verificacion=${EXPECTED_SHA}" \
-              -o estado-publicacion.json || true
-            if [ -s estado-publicacion.json ] && \
-               node -e 'const f=require("./estado-publicacion.json");process.exit(f.commit===process.env.EXPECTED_SHA?0:1)'; then
+              "${PAGES_URL%/}/version-publica.json?verificacion=${EXPECTED_SHA}" \
+              -o version-publica.json || true
+            if [ -s version-publica.json ] && \
+               node -e 'const f=require("./version-publica.json");process.exit(f.commit===process.env.EXPECTED_SHA?0:1)'; then
               echo "Despliegue verificado: ${EXPECTED_SHA}"
               exit 0
             fi
