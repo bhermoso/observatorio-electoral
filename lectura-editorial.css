@@ -43,3 +43,29 @@
 #visor-contenido .pr-focus-block strong{display:block;font-size:20px;color:#173c32}
 #visor-contenido .pr-focus-block small{display:block;font-size:12px;line-height:1.5;color:#576e62}
 @media(max-width:620px){.reading-controls>span{width:100%}.reading-controls button{flex:1;padding:10px 6px;font-size:11px}.pr-focus-block{width:100%}}
+
+/* Corrección de accesibilidad: cifras y etiquetas sobre superficies claras.
+   No afecta a los valores del modelo ni invierte textos de paneles oscuros. */
+:root{--oee-text-light-surface:#173b32;--oee-text-secondary-light:#425e51}
+#visor :is(.pr-cifras>div,.pr-focus-block,.pr-chain-node,.pr-variant-row,.pr-variant-plot,.pr-int-fila,.kitchen-stage,.kitchen-concept,.kitchen-audit-columns>div,.cocina-capitulo .panel),
+:is(.multi-party-choice,.multi-resumen>div,.multi-linea,.hub-caja,.hub-micro-panel,.portada-bloque,.hub-barras li,.lectura-tarjeta,.lectura-directorio){
+ color:var(--oee-text-light-surface);
+}
+#visor .pr-cifras>div :is(strong,b),
+#visor .pr-focus-block :is(strong,b,option),
+#visor .pr-chain-node strong,
+#visor .pr-int-fila b,
+#visor .pr-variant-row strong,
+:is(.multi-party-choice,.multi-resumen>div,.multi-linea,.hub-caja,.hub-micro-panel,.portada-bloque,.lectura-tarjeta) :is(strong,b){
+ color:var(--oee-text-light-surface);
+}
+#visor .pr-cifras>div :is(span,small),
+#visor .pr-focus-block :is(label,small),
+#visor .pr-chain-node :is(span,small),
+:is(.multi-party-choice,.multi-resumen>div,.multi-linea,.hub-caja,.lectura-tarjeta) small{
+ color:var(--oee-text-secondary-light);
+}
+#visor .pr-focus-block select{color:var(--oee-text-light-surface);background:#fff}
+#visor .reading-controls button:not([aria-pressed="true"]){color:#174c3d;background:#fff}
+#visor .reading-controls button[aria-pressed="true"]{color:#fff;background:#183f35}
+#visor .cocina-indice b{color:#833b28;background:transparent}
