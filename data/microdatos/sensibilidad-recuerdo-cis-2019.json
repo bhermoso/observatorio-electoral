@@ -1,0 +1,152 @@
+{
+  "esquema": 1,
+  "fecha_analisis": "2026-11-12",
+  "tipo": "sensibilidad_2019_retrospectiva",
+  "estado": "EXPERIMENTAL_NO_ADMITIR",
+  "fuente_originales": "MD3242.zip y MD3263.zip aportados por usuario y verificados SHA256",
+  "script": "scripts/sensibilidad_recuerdo_2019.py",
+  "partidos_evaluados": [
+    "PP",
+    "PSOE",
+    "VOX",
+    "CS"
+  ],
+  "unidad": "MAE pp calculado contra resultados oficiales, mismos cuatro partidos en ambas elecciones",
+  "parametros": {
+    "fijos": [
+      "PESO",
+      "VOTOSIMG",
+      "imputación indecisos dentro del grupo de recuerdo",
+      "probabilidad declarada de votar",
+      "denominador voto válido"
+    ],
+    "intensidad": "factor efectivo = factor recortado elevado a intensidad (0 a 1)",
+    "limites_base": [
+      0.2,
+      5
+    ],
+    "escenarios_descriptivos": [
+      "sin_calibracion",
+      "calibracion_25",
+      "calibracion_50",
+      "calibracion_75",
+      "calibracion_100",
+      "limite_05_2",
+      "limite_075_15",
+      "solo_pp_psoe_vox_cs"
+    ]
+  },
+  "estudios": [
+    {
+      "id": "3242",
+      "eleccion": "2019-04-28",
+      "n": 16194,
+      "sha256_zip": "24cbdbccf119d1174fb6ed5cd3fc7a23aa8303d8244ca5cdf717d27399f08bbc",
+      "escenarios": {
+        "sin_calibracion": {
+          "mae_pp": 2.8844,
+          "porcentajes": {
+            "PP": 16.263,
+            "PSOE": 34.2436,
+            "VOX": 6.0751,
+            "CS": 14.5055
+          }
+        },
+        "calibracion_25": {
+          "mae_pp": 2.4685
+        },
+        "calibracion_50": {
+          "mae_pp": 2.2703
+        },
+        "calibracion_75": {
+          "mae_pp": 2.0795
+        },
+        "calibracion_100": {
+          "mae_pp": 1.8998,
+          "porcentajes": {
+            "PP": 19.9913,
+            "PSOE": 29.4121,
+            "VOX": 6.9664,
+            "CS": 15.5906
+          }
+        },
+        "limite_05_2": {
+          "mae_pp": 1.8998
+        },
+        "limite_075_15": {
+          "mae_pp": 1.8898
+        },
+        "solo_pp_psoe_vox_cs": {
+          "mae_pp": 1.7816,
+          "porcentajes": {
+            "PP": 20.0995,
+            "PSOE": 28.3972,
+            "VOX": 7.0138,
+            "CS": 15.664
+          }
+        }
+      }
+    },
+    {
+      "id": "3263",
+      "eleccion": "2019-11-10",
+      "n": 17650,
+      "sha256_zip": "efe93eeb74047a677d2cd4c39be0fa5e340c5f7db4ec651fc4e4a6f3bcc3532c",
+      "escenarios": {
+        "sin_calibracion": {
+          "mae_pp": 5.5763,
+          "porcentajes": {
+            "PP": 16.8879,
+            "PSOE": 36.0008,
+            "VOX": 6.628,
+            "CS": 8.7424
+          }
+        },
+        "calibracion_25": {
+          "mae_pp": 4.8929
+        },
+        "calibracion_50": {
+          "mae_pp": 4.1955
+        },
+        "calibracion_75": {
+          "mae_pp": 3.483
+        },
+        "calibracion_100": {
+          "mae_pp": 2.7544,
+          "porcentajes": {
+            "PP": 18.2286,
+            "PSOE": 28.2518,
+            "VOX": 10.5258,
+            "CS": 10.4421
+          }
+        },
+        "limite_05_2": {
+          "mae_pp": 2.7544
+        },
+        "limite_075_15": {
+          "mae_pp": 3.3562
+        },
+        "solo_pp_psoe_vox_cs": {
+          "mae_pp": 2.755,
+          "porcentajes": {
+            "PP": 18.5315,
+            "PSOE": 28.5518,
+            "VOX": 10.685,
+            "CS": 10.6065
+          }
+        }
+      }
+    }
+  ],
+  "sensibilidad_grupos": {
+    "criterio": "solo_pp_psoe_vox_cs compara calibrar exclusivamente cuatro grupos de recuerdo frente a calibrar también UP y OTROS; no separa coaliciones territoriales de otras candidaturas",
+    "precaucion": "La diferencia de MAE entre escenarios no puede atribuirse causalmente a la agrupación territorial, dado que cambia simultáneamente la calibración de UP y OTROS"
+  },
+  "limitaciones": [
+    "No se optimizan parámetros usando el resultado de esta misma elección; valores de la rejilla únicamente diagnósticos.",
+    "Los grupos residuales territoriales no permiten aislar resultados por provincia sin homologación.",
+    "Las elecciones de 2019 no aportan validación prospectiva independiente de la selección de modelos.",
+    "Los códigos y agrupaciones de recuerdo entre 2019 y 2023 difieren, por lo que la comparación entre ciclos requiere cautela.",
+    "Motor 29N protegido: NO_ADMITIR."
+  ]
+}
