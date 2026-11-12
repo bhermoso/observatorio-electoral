@@ -1,0 +1,172 @@
+{
+  "esquema": 1,
+  "fecha_analisis": "2026-11-12",
+  "estado": "EXPLORATORIO_NO_ADMITIR",
+  "procedencia": "Originales MD3242.zip y MD3263.zip aportados por usuario el 12-11-2026; huellas verificadas",
+  "descripcion": "Seis etapas acumulativas adaptadas a 2019; solo MAE de PP, PSOE, Vox y Ciudadanos. No confundir con receta homogénea aprobada ni con muestra independiente prospectiva.",
+  "parametros": {
+    "factores_recuerdo_recortados": [
+      0.2,
+      5
+    ],
+    "indecisos": "N.S., N.C. e indecisión, transferencias observadas del grupo de recuerdo",
+    "participacion": "Escala declarada 0-10; inválida=0.5",
+    "base": "Voto válido con blancos; residual territorial preservado",
+    "calibracion": "PP PSOE VOX CS UP y OTROS; abstención y NS/NC recordado sin calibrar",
+    "referencias_previas": {
+      "3242": "Resultados oficiales 26J 2016, BOE-A-2016-7133",
+      "3263": "Resultados oficiales 28A 2019, BOE-A-2019-8070"
+    }
+  },
+  "estudios": [
+    {
+      "id": "3242",
+      "eleccion": "2019-04-28",
+      "recuerdo_objetivo": "2016-06-26",
+      "n": 16194,
+      "sha256_zip": "24cbdbccf119d1174fb6ed5cd3a23aa8303d8244ca5cdf717d27399f08bbc",
+      "factores_recuerdo": {
+        "PP": 1.2818,
+        "PSOE": 0.72,
+        "VOX": 1,
+        "CS": 1.0682,
+        "UP": 1.6346,
+        "OTROS": 0.5637
+      },
+      "pasos": {
+        "directa": {
+          "mae_pp": 3.1925,
+          "votos_pct": {
+            "PP": 17.2959,
+            "PSOE": 34.6727,
+            "VOX": 7.2047,
+            "CS": 12.7468
+          }
+        },
+        "peso": {
+          "mae_pp": 3.3228,
+          "votos_pct": {
+            "PP": 15.6429,
+            "PSOE": 34.8143,
+            "VOX": 6.9861,
+            "CS": 13.0316
+          }
+        },
+        "simpatia": {
+          "mae_pp": 2.8927,
+          "votos_pct": {
+            "PP": 16.11,
+            "PSOE": 34.2,
+            "VOX": 6.03,
+            "CS": 14.62
+          }
+        },
+        "recuerdo": {
+          "mae_pp": 1.8666,
+          "votos_pct": {
+            "PP": 19.69,
+            "PSOE": 29.55,
+            "VOX": 6.87,
+            "CS": 15.66
+          }
+        },
+        "indecisos": {
+          "mae_pp": 1.826,
+          "votos_pct": {
+            "PP": 19.87,
+            "PSOE": 29.4,
+            "VOX": 6.9,
+            "CS": 15.82
+          }
+        },
+        "participacion": {
+          "mae_pp": 1.8998,
+          "votos_pct": {
+            "PP": 19.99,
+            "PSOE": 29.41,
+            "VOX": 6.97,
+            "CS": 15.59
+          }
+        }
+      }
+    },
+    {
+      "id": "3263",
+      "eleccion": "2019-11-10",
+      "recuerdo_objetivo": "2019-04-28",
+      "n": 17650,
+      "sha256_zip": "efe93eeb74047a677d2cd4c39be0fa5e340c5f7db4ec651fc4e4a6f3bcc3532c",
+      "factores_recuerdo": {
+        "PP": 1.0358,
+        "PSOE": 0.7382,
+        "VOX": 1.876,
+        "CS": 1.2456,
+        "UP": 1.2004,
+        "OTROS": 0.9518
+      },
+      "pasos": {
+        "directa": {
+          "mae_pp": 4.8057,
+          "votos_pct": {
+            "PP": 19.065,
+            "PSOE": 37.3771,
+            "VOX": 7.5926,
+            "CS": 7.4252
+          }
+        },
+        "peso": {
+          "mae_pp": 5.2782,
+          "votos_pct": {
+            "PP": 16.5899,
+            "PSOE": 36.2431,
+            "VOX": 7.2638,
+            "CS": 7.6457
+          }
+        },
+        "simpatia": {
+          "mae_pp": 5.6779,
+          "votos_pct": {
+            "PP": 16.91,
+            "PSOE": 36.15,
+            "VOX": 6.55,
+            "CS": 8.95
+          }
+        },
+        "recuerdo": {
+          "mae_pp": 2.9553,
+          "votos_pct": {
+            "PP": 18.26,
+            "PSOE": 28.62,
+            "VOX": 10.25,
+            "CS": 10.64
+          }
+        },
+        "indecisos": {
+          "mae_pp": 2.9873,
+          "votos_pct": {
+            "PP": 18.34,
+            "PSOE": 28.57,
+            "VOX": 10.26,
+            "CS": 10.9
+          }
+        },
+        "participacion": {
+          "mae_pp": 2.7544,
+          "votos_pct": {
+            "PP": 18.23,
+            "PSOE": 28.25,
+            "VOX": 10.53,
+            "CS": 10.44
+          }
+        }
+      }
+    }
+  ],
+  "observaciones": [
+    "El paso recuerdo mejora MAE en ambas oleadas 2019, distinto de los estudios 3411/3415 ante 23J 2023",
+    "Los códigos territoriales aún no están homologados completamente, por lo que sus partidos se acumulan en OTROS y no se evalúan",
+    "La calibración utiliza resultados anteriores conocidos; esta prueba es retrospectiva, no prospectiva ni validación cruzada de elecciones independientes",
+    "Comparación entre 2019 y 2023 solo sobre partidos equivalentes y definiciones auditables; no fusionar UP con Sumar",
+    "No modifica data/polls.json ni el Motor 29N"
+  ]
+}
