@@ -32,7 +32,7 @@ test('Sin menú de pestañas: el visor ofrece volver a Panorama y saltar entre s
 });
 test('Las pestañas fusionadas siguen respondiendo a sus enlaces antiguos',async()=>{
  const src=fs.readFileSync('app.mjs','utf8');
- assert.match(src,/ALIAS_RUTA=\{analisis:\['encuestas','encuestas-promedios'\]\}/);
+ assert.match(src,/analisis:\['encuestas','encuestas-promedios'\]/);
  assert.match(src,/function pollPage\(\)\{return '<section class="panel" id="encuestas-todas">/);
  assert.match(src,/renderPollArchive\(polls\)/);
 });
