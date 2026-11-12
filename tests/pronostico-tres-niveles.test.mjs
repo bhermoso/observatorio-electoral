@@ -34,3 +34,14 @@ test('la guía y la ruta mantienen niveles y anclas accesibles',()=>{
  const src=readFileSync(new URL('../interiores.mjs',import.meta.url),'utf8');
  assert.match(src,/parent\.tagName==='DETAILS'\)parent\.open=true/);
 });
+
+test('ningún gráfico del pronóstico queda oculto por defecto en niveles plegados',()=>{
+ const page=renderPronostico(renderContraste());
+ for(const id of ['pronostico-comparar','pronostico-auditar']){
+  assert.match(page,new RegExp('<details[^>]+id="'+id+'" open>'),id+' debe abrirse inicialmente');
+ }
+ assert.match(page,/<details class="pr-reading-subdetail" open>/);
+ for(const id of ['fc-main','fc-variants','fc-chain','fc-blocks','fc-history','fc-territory','fc-validation-publica','pronostico-capas']){
+  assert.match(page,new RegExp('id="'+id+'"'),id+' debe mantenerse visible y enlazable');
+ }
+});
