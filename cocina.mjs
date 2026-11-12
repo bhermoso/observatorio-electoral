@@ -5,6 +5,7 @@ import {renderCocinaPropia,bindCocinaPropia} from './cocina-propia.mjs';
 import {renderContrasteCis3582,bindContrasteCis3582} from './contraste-cis-3582.mjs';
 import {renderIngestaCis,bindIngestaCis} from './ingesta-cis-2026.mjs';
 import {renderSerieCis2026,bindSerieCis2026} from './serie-cis-2026.mjs';
+import {renderContrasteSerieCis2026,bindContrasteSerieCis2026} from './contraste-serie-cis-2026.mjs';
 import {renderMatrizFuentes,bindMatrizFuentes} from './matriz-microdatos.mjs';
 import {renderHomologacion2026,bindHomologacion2026} from './homologacion-microdatos-2026.mjs';
 import {renderLeccion,bindLeccion} from './cocina-leccion.mjs';
@@ -88,7 +89,7 @@ export function renderCocina(){
   `${AUDIT()}${renderContraste40db()}${renderMicrodatos40db()}${renderSocioMetrica()}${COMO()}${RECUERDO()}${renderExperimentoCis()}`)}
  ${cap(5,'cocina-cap4','¿Qué receta acierta?','¿Mejora alguna corrección el resultado cuando se prueba contra votos reales?',
   '<p>La única prueba disponible es el 23J de 2023: encuestas hechas antes, comparadas con los votos contados. Es una sola elección, así que los resultados orientan pero no demuestran.</p>'+LAB_INTRO(),
-  `${renderEvaluacionMicrodatos()}${renderEvidencia40db()}${renderRetrospectiva40db()}${HIST()}${renderEvaluacion2019()}${renderHomologacion2019()}${renderCocinaPropia()}${renderContrasteCis3582()}${renderIngestaCis()}${renderSerieCis2026()}${renderMatrizFuentes()}${renderHomologacion2026()}${renderResultadosCocina()}${VALID()}${CONTRIB()}`)}
+  `${renderEvaluacionMicrodatos()}${renderEvidencia40db()}${renderRetrospectiva40db()}${HIST()}${renderEvaluacion2019()}${renderHomologacion2019()}${renderCocinaPropia()}${renderContrasteCis3582()}${renderIngestaCis()}${renderSerieCis2026()}${renderContrasteSerieCis2026()}${renderMatrizFuentes()}${renderHomologacion2026()}${renderResultadosCocina()}${VALID()}${CONTRIB()}`)}
  ${cap(6,'cocina-cap6','Archivo de microdatos','¿Dónde están los datos originales y qué se ha auditado?',
   '<p>Catálogo de fuentes, buscador y almacén de los originales descargados. El repositorio guarda agregados y documentación, no entrevistas.</p>',
   `${renderCatalogoMicrodatos()}${renderBuscadorMicrodatos()}${renderEstadoDescargas()}${ORIGEN()}`)}`;
@@ -107,7 +108,7 @@ export async function bindCocina(){
   const current=document.getElementById(location.hash.slice(1));
   if(current?.matches('details.cocina-capitulo'))current.open=true;
  }
- void bindEvaluacion2019();void bindHomologacion2019();void bindSocioMetrica();void bindCatalogoMicrodatos();void bindRetrospectiva40db();void bindMicrodatos40db();void bindResultadosCocina();void bindLeccion();void bindCocinaPropia();void bindContrasteCis3582();void bindIngestaCis();void bindSerieCis2026();void bindMatrizFuentes();void bindHomologacion2026();
+ void bindEvaluacion2019();void bindHomologacion2019();void bindSocioMetrica();void bindCatalogoMicrodatos();void bindRetrospectiva40db();void bindMicrodatos40db();void bindResultadosCocina();void bindLeccion();void bindCocinaPropia();void bindContrasteCis3582();void bindIngestaCis();void bindSerieCis2026();void bindContrasteSerieCis2026();void bindMatrizFuentes();void bindHomologacion2026();
  const box=document.querySelector('#kitchen-study'),trans=document.querySelector('#kitchen-transfers'),selector=document.querySelector('#kitchen-party');
  bindHistoricCis();
  bindEvidenceAudit();
