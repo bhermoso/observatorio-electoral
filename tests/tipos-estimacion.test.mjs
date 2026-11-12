@@ -2,7 +2,6 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {renderHomeImpact} from '../home-impact.mjs';
 import {renderPronostico} from '../pronostico-vista.mjs';
-import {renderContraste} from '../contraste-capas.mjs';
 
 test('la portada distingue cuatro tipos sin atribuir microdatos al motor',()=>{
  const page=renderHomeImpact();
@@ -14,10 +13,10 @@ test('la portada distingue cuatro tipos sin atribuir microdatos al motor',()=>{
  assert.match(page,/los promedios externos sirven de contraste|promedios externos sirven de contraste|no se vuelven a incorporar como entradas/);
 });
 test('el pronóstico identifica su origen y conserva las secciones de auditoría',()=>{
- const page=renderPronostico(renderContraste());
+ const page=renderPronostico();
  assert.match(page,/estimación propia del Observatorio basada en estimaciones publicadas/);
  for(const id of ['pronostico-principal','pronostico-variantes','pronostico-fuentes','pronostico-evaluacion','pronostico-externos','pronostico-capas']){
   assert.ok(page.includes(id),id);
  }
- assert.equal((page.match(/class="pr-reading-group(?: |")/g)||[]).length,3);
+ assert.equal((page.match(/<nav class="subnav"/g)||[]).length,1);
 });
