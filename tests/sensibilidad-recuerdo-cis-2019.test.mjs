@@ -21,6 +21,9 @@ test('intensidad crecente disminuye MAE en la rejilla observada',()=>{
  }
  assert.ok(rows[0].escenarios.solo_pp_psoe_vox_cs.mae_pp<rows[0].escenarios.calibracion_100.mae_pp);
  assert.ok(rows[1].escenarios.solo_pp_psoe_vox_cs.mae_pp>rows[1].escenarios.calibracion_100.mae_pp);
+ assert.equal(rows[0].escenarios.cuatro_mas_otros.mae_pp,2.3337);
+ assert.equal(rows[1].escenarios.cuatro_mas_otros.mae_pp,2.7681);
+ assert.equal(rows[0].escenarios.cuatro_mas_up.mae_pp,1.8188);
 });
 test('bloqueo motor y cautela sobre confundidores territoriales',()=>{
  const html=tablaSensibilidad2019(d);
