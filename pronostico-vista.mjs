@@ -99,12 +99,11 @@ export function chain(f){
  const numCasas=new Set((f.entradas||[]).map(x=>x.casa)).size;
  const summary=[
   ['01','Fuentes',fmt(f.entradas?.length??0,0)+' estudios',fmt(numCasas,0)+' casas; estimaciones publicadas'],
-  ['02','Promedio',Number.isFinite(ps[main])?fmt(ps[main])+' %':'—',mainLabel+' · referencia descriptiva'],
-  ['03','Modelo temporal',vot(sin),mainLabel+' · tendencias y efectos de casa'],
-  ['04','Cocina de agregados',vot(con),mainLabel+' · estimación operativa'],
-  ['05','Escaños',scan(con),mainLabel+' · mediana de simulaciones']
+  ['02','Modelo temporal',vot(sin),mainLabel+' · tendencias y efectos de casa'],
+  ['03','Cocina de agregados',vot(con),mainLabel+' · estimación operativa'],
+  ['04','Escaños',scan(con),mainLabel+' · mediana de simulaciones']
  ];
- const visual=`<figure class="pr-chain-figure" aria-label="Secuencia metodológica del pronóstico"><figcaption>Del dato publicado al escaño · ejemplo: ${h(mainLabel)}</figcaption><div class="pr-chain-flow">${summary.map(([n,t,value,note])=>`<div class="pr-chain-node"><small>${n} · ${h(t)}</small><strong>${h(value)}</strong><span>${h(note)}</span></div>`).join('')}</div><p class="muted">El ejemplo sigue a ${h(mainLabel)}. El promedio descriptivo no es una entrada adicional: el motor utiliza las estimaciones de las casas. La cocina experimental de entrevistas individuales no alimenta esta secuencia.</p></figure>`;
+ const visual=`<figure class="pr-chain-figure" aria-label="Secuencia metodológica del pronóstico"><figcaption>Del dato publicado al escaño · ejemplo: ${h(mainLabel)}</figcaption><div class="pr-chain-flow">${summary.map(([n,t,value,note])=>`<div class="pr-chain-node"><small>${n} · ${h(t)}</small><strong>${h(value)}</strong><span>${h(note)}</span></div>`).join('')}</div><p class="pr-chain-reference"><b>Comparación externa al flujo:</b> promedio descriptivo de ${h(mainLabel)}, ${Number.isFinite(ps[main])?fmt(ps[main])+' %':'—'}. Se calcula para comparar; <strong>no entra como una encuesta adicional</strong>.</p><p class="muted">El ejemplo sigue a ${h(mainLabel)}. El motor utiliza estimaciones publicadas de las casas, no el promedio como observación independiente. La cocina experimental de entrevistas individuales no alimenta esta secuencia.</p></figure>`;
  return `${visual}<details class="pr-chain-detail"><summary>Desplegar los siete pasos, cálculos y supuestos del motor</summary><ol class="chain">
   ${step(1,'Entrada original',`${f.entradas?.length??'—'} estimaciones publicadas por ${new Set((f.entradas||[]).map(e=>e.casa)).size} casas (<a href="#pronostico-fuentes">lista completa</a>). El motor recibe porcentajes publicados, no entrevistas.`)}
   ${step(2,'Promedio descriptivo',`Última encuesta de cada casa en 30 días, mismo peso: ${ids.map(p=>`${label(p)} ${fmt(ps[p])} %`).join(' · ')}.`)}
