@@ -8,7 +8,8 @@ from collections import Counter
 from datetime import date
 from math import sqrt
 
-PARTIDOS_AUDITADOS = ("PP", "PSOE", "VOX", "SUMAR", "PODEMOS", "SALF")
+from .pronostico import PARTIDOS
+PARTIDOS_AUDITADOS = tuple(PARTIDOS)
 VARIABLES = {
     "intencion_directa": {"estado": "no_ingresa_directamente", "detalle": "El motor recibe estimaciones publicadas por las casas, no la respuesta bruta individual."},
     "intencion_directa_ponderada": {"estado": "no_desagregable", "detalle": "La parte procedente de tabulaciones ponderadas dentro de cada instituto no se identifica con las estimaciones publicadas."},

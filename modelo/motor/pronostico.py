@@ -92,12 +92,19 @@ def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29,
     escanos = np.zeros((n, len(partidos)), dtype=int)
     R = len(base.provincias)
     por_prov = np.zeros((R, len(partidos)))
+    recortados = np.zeros(len(partidos), dtype=int)
+    residual_minimo = 0
+    factores_normalizacion = []
     for k in range(n):
         z = rng.normal()
         ind = sd_ind * (comun * signo * z + propio * rng.normal(0, 1, len(mu)))
-        v = np.clip(mu + rng.normal(0, 1, len(mu)) * sd_resto + ind, 0.01, None)
+        crudo = mu + rng.normal(0, 1, len(mu)) * sd_resto + ind
+        recortados += crudo < 0.01
+        v = np.clip(crudo, 0.01, None)
+        residual_minimo += (100 - BLANCO - v.sum()) < 0.5
         otros = max(100 - BLANCO - v.sum(), 0.5)
         tot = v.sum() + otros
+        factores_normalizacion.append(float((100-BLANCO)/tot))
         v = v * (100 - BLANCO) / tot
         votos[k] = v
         nac = np.append(v, otros * (100 - BLANCO) / tot) / 100
@@ -107,13 +114,31 @@ def simular(ajustes, dias_restantes, n=5000, tau=0.15, sd_prov=0.08, semilla=29,
     return dict(partidos=partidos, votos=votos, escanos=escanos, sd_total=dict(zip(partidos, sd_tot)),
                 sin_encuestas=sin, rho_bloque=rho_bloque, industria=industria,
                 provincias=list(base.provincias), escanos_prov=base.escanos.tolist(),
-                por_provincia=por_prov / n)
+                por_provincia=por_prov / n,
+                diagnostico_normalizacion=dict(n=n, semilla=semilla,
+                    frecuencia_recorte_inferior={p:float(recortados[j]/n) for j,p in enumerate(partidos)},
+                    frecuencia_residual_minimo=float(residual_minimo/n),
+                    factor_media=float(np.mean(factores_normalizacion)), factor_minimo=float(min(factores_normalizacion)),
+                    nota="El recorte y la normalización pueden desplazar medias y dependencias; diagnóstico, no calibración composicional."))
+
+
+def frecuencias_primero(escanos):
+    """Primera fuerza exclusiva y compartida, invariantes al orden de partidos."""
+    e = np.asarray(escanos)
+    if e.ndim != 2 or not e.shape[0] or not e.shape[1]:
+        raise ValueError("Matriz de escaños vacía o incompatible")
+    maxima = e == e.max(axis=1, keepdims=True)
+    empate = maxima.sum(axis=1) > 1
+    return dict(exclusivo=np.mean(maxima & ~empate[:, None], axis=0),
+                compartido=np.mean(maxima, axis=0), empate=float(empate.mean()))
 
 
 def resumir(sim):
     P, V, E = sim["partidos"], sim["votos"], sim["escanos"]
     q = lambda x: (float(np.median(x)), float(np.percentile(x, 5)), float(np.percentile(x, 95)))
-    partidos = {p: dict(voto=q(V[:, j]), escanos=q(E[:, j]), primero=float(np.mean(E.argmax(1) == j)))
+    primera = frecuencias_primero(E)
+    partidos = {p: dict(voto=q(V[:, j]), escanos=q(E[:, j]), primero=float(primera["exclusivo"][j]),
+                        primero_o_empate=float(primera["compartido"][j]))
                 for j, p in enumerate(P)}
     bloques = {}
     for b, m in BLOQUES.items():
@@ -121,7 +146,7 @@ def resumir(sim):
         s = E[:, idx].sum(1)
         bloques[b] = dict(mediana=float(np.median(s)), p5=float(np.percentile(s, 5)),
                           p95=float(np.percentile(s, 95)), p_mayoria=float(np.mean(s >= 176)))
-    return dict(partidos=partidos, bloques=bloques)
+    return dict(partidos=partidos, bloques=bloques, empate_primero=primera["empate"])
 
 
 
@@ -237,6 +262,7 @@ def principal(encuestas, inicio, hoy, eleccion, errores_23j, n_por_variante=2000
     r["provincias"] = [dict(provincia=pr, escanos=sims[0]["escanos_prov"][i],
                             reparto={p: round(float(pp[i, j]), 2) for j, p in enumerate(P) if pp[i, j] >= 0.05})
                        for i, pr in enumerate(sims[0]["provincias"])]
+    r["diagnostico_normalizacion"] = {v:s["diagnostico_normalizacion"] for v,s in zip(nombres,sims)}
     r["n"] = int(E.shape[0])
     r["industria"] = industria
     r["dias"] = dias

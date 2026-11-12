@@ -7,7 +7,7 @@ Cada contraste cambia una decisión de modelización respecto a la referencia.
 from . import pronostico as PR
 from .fuentes import aptas_para_pronostico
 
-PARTIDOS=("PP","PSOE","VOX","SUMAR","PODEMOS")
+PARTIDOS=tuple(PR.PARTIDOS)
 BLOQUES=("PP+VOX","PP+VOX+UPN","PSOE+SUMAR+PODEMOS",
           "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC")
 

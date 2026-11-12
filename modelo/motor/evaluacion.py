@@ -117,7 +117,7 @@ def retroprueba_cortes(encuestas, fecha_eleccion, resultado, partidos, cortes=(3
         limite_legal = fecha_eleccion - timedelta(days=6)
         fecha_disponible = min(corte, limite_legal)
         disp = [e for e in encuestas if e["campo_fin"] < fecha_eleccion
-                and publicada_antes(e, fecha_disponible)]
+                and publicada_antes(e, fecha_disponible, estricta=True)]
         ult = {}
         for e in sorted(disp, key=lambda e: e["campo_fin"]):
             if (corte - e["campo_fin"]).days <= dias_simple:

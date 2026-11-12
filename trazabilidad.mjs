@@ -21,7 +21,7 @@ const ESTADOS={
 };
 export function renderTrazabilidad(){
  return `<section class="panel trace-cocina" aria-labelledby="trace-title"><div class="panel-head"><div><span class="eyebrow">Transparencia del algoritmo · Motor 29N</span><h2 id="trace-title">¿De qué está hecho nuestro pronóstico?</h2><p class="muted">Consulta, para cada partido, qué datos recibe el modelo y qué procedimientos aplica. La proporción atribuible a recuerdo, simpatía o participación dentro de la estimación de cada encuestadora no es observable sin su receta.</p></div><a href="como-estimamos.html">Método completo →</a></div>
- <div class="toolbar"><label>Partido<select id="trace-party"><option value="PP">PP</option><option value="PSOE">PSOE</option><option value="VOX">Vox</option><option value="SUMAR">Sumar / Frente Amplio</option><option value="PODEMOS">Podemos</option><option value="SALF">SALF</option></select></label></div>
+ <div class="toolbar"><label>Partido<select id="trace-party"><option value="">Panorama · todas las candidaturas</option></select></label></div>
  <div id="trace-cocina-data" role="status">Cargando trazabilidad del corte publicado…</div><div class="trace-ablation"><h3>Laboratorio de sensibilidad del pronóstico</h3><p class="muted">Comparación con los mismos parámetros restantes. No son impactos causales ni pesos de ingredientes de encuestadoras.</p><label>Desactivar o cambiar un componente<select id="trace-ablation-choice"></select></label><div id="trace-ablation-result" role="status">Cargando comparaciones…</div></div>
 </section>`;
 }
@@ -37,7 +37,10 @@ export async function bindTrazabilidad(){
    root.innerHTML='<div class="notice">Este corte todavía no contiene una descomposición auditada de entradas. La estimación publicada de cada encuestadora es el dato de entrada; no se puede imputar cuánto corresponde a simpatía, recuerdo o participación sin una receta demostrada.</div>';
    return;
   }
+  selector.innerHTML='<option value="">Panorama · todas las candidaturas</option>'+Object.keys(trace.partidos||{}).sort().map(p=>'<option value="'+e(p)+'">'+e(p)+'</option>').join('');
   function update(){
+   if(!selector.value){root.innerHTML='<div class="table-wrap"><table><caption>Pronóstico y entradas por candidatura. Selecciona cualquiera para auditar sus componentes.</caption><thead><tr><th>Candidatura</th><th>Mediana de voto</th><th>Encuestas</th><th>Institutos</th></tr></thead><tbody>'+Object.entries(trace.partidos||{}).sort(([a],[b])=>a.localeCompare(b)).map(([p,x])=>'<tr><td>'+e(p)+'</td><td>'+(x.pronostico_principal_voto_mediana==null?'—':pct(x.pronostico_principal_voto_mediana)+' %')+'</td><td>'+x.encuestas_con_estimacion+'</td><td>'+x.encuestadoras_distintas+'</td></tr>').join('')+'</tbody></table></div>';return}
+
    const p=trace.partidos?.[selector.value];if(!p){root.textContent='No hay trazabilidad disponible';return}
    const forecast=p.pronostico_principal_voto_mediana;
    const variants=Object.entries(p.variantes_tendencia||{}).map(([key,v])=>'<tr><td>'+e(({consenso_privadas:'Consenso privado',consenso_todas:'Consenso incluyendo CIS',calibrada_23j:'Corrección por error histórico 23J'}[key]||key))+'</td><td>'+pct(v.estimacion_latente_en_corte)+' %</td><td>'+pct(v.sd_estimacion_latente)+' pp</td></tr>').join('');

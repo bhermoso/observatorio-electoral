@@ -67,7 +67,7 @@ def cargar_verificadas():
         fin = _fecha(s["fieldEnd"])
         out.append(dict(casa=casa_canonica(s["institute"]), estudio=s["id"], campo_fin=fin,
                         campo_ini=_fecha(s["fieldStart"]) if s.get("fieldStart") else None,
-                        n=int(s.get("sample") or 1000), modo=s.get("mode") or "",
+                        n=int(s.get("sample") or 1000), n_supuesto=not bool(s.get("sample")), modo=s.get("mode") or "",
                         voto=voto, origen="verificada", url=s.get("source", ""),
                         ciclo=ciclo_de(fin), ambito=s.get("scope", ""),
                         publicacion=_fecha(s["published"]) if s.get("published") else None))
@@ -354,9 +354,13 @@ def referencias_agregadores():
     return out
 
 
-def publicada_antes(e, fecha, retraso=2):
+def publicada_antes(e, fecha, retraso=2, estricta=False):
     """¿Era pública la encuesta en `fecha`? Usa la fecha de publicación si consta; si no,
-    supone que se publicó `retraso` días después del fin de campo (supuesto declarado)."""
+    supone que se publicó `retraso` días después del fin de campo (solo escenario
+    exploratorio legado). Con estricta=True la fecha debe estar documentada; es
+    la regla del pronóstico operativo y de su reconstrucción desde versión 5."""
+    if estricta and (not e.get("publicacion") or e.get("fecha_publicacion_desconocida") or e.get("campo_supuesto")):
+        return False
     pub = e.get("publicacion") or (e["campo_fin"] + timedelta(days=retraso))
     return pub <= fecha
 

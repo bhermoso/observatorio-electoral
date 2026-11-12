@@ -164,14 +164,14 @@ ul.tight{padding-left:20px;margin:6px 0}ul.tight li{margin:3px 0}
 
   <div class="step"><div class="num">2</div><div>
     <h3>Cada encuesta es una medida con error</h3>
-    <p>Una encuesta de 1.000 entrevistas que da al PP un 31 % no dice que el PP tenga un 31 %; dice que, si el método fuera perfecto, el valor real estaría cerca. El error se compone de dos partes:</p>
+    <p>Una encuesta de 1.000 entrevistas que da a una candidatura un 31 % no dice que esa candidatura tenga un 31 %; dice que, si el método fuera perfecto, el valor real estaría cerca. El error se compone de dos partes:</p>
     <div class="formula">varianza = error muestral² + error no muestral²
 
 error muestral = √( p·(1−p) / (n / 1,5) ) × 100
 error no muestral = 1,0 pp × √(p / 25)</div>
     <p>El factor 1,5 (efecto de diseño) reconoce que ninguna encuesta es una muestra aleatoria simple: la ponderación y las cuotas reducen la muestra efectiva. El error no muestral recoge lo que el tamaño no explica (redacción, momento, imputación del indeciso) y se reduce para los partidos pequeños. Las casas que publican trackings diarios no deben pesar más por publicar más: la varianza se multiplica por el número de encuestas propias en los siete días alrededor.</p>
     <p>La tabla muestra las encuestas de los últimos 30 días para el PP. El peso es la proporción de la inversa de la varianza; indica cuánto pesa cada encuesta frente a las demás antes de que entre la tendencia.</p>
-    <div class="tbl"><table id="t-pesos"></table></div>
+    <label>Candidatura para auditar los pesos<select id="sel-pesos-p"></select></label><div class="tbl"><table id="t-pesos"></table></div>
     <p class="note"><span class="tag">supuesto</span>efecto de diseño 1,5 y error no muestral 1,0 pp. Son valores convencionales en la literatura de agregación; aquí no se han estimado con datos propios.</p>
   </div></div>
 
@@ -333,7 +333,7 @@ industria = 1,5 pp × √(p/25) × ( √0,5 · factor de bloque ± √0,5 · err
 <script>
 const D = /*DATOS*/null;
 const $ = s => document.querySelector(s);
-const P5 = ["PP","PSOE","VOX","SUMAR","PODEMOS"];
+const P5 = Object.keys(D.principal?.partidos||{}).sort();
 const NOM = {PP:"PP",PSOE:"PSOE",VOX:"Vox",SUMAR:"Sumar",PODEMOS:"Podemos",SALF:"SALF",ERC:"ERC",JUNTS:"Junts",BILDU:"EH Bildu",PNV:"PNV",BNG:"BNG",CC:"CC",UPN:"UPN",IZQ:"IZQ"};
 const COL = p => ({PP:"var(--pp)",PSOE:"var(--psoe)",VOX:"var(--vox)",SUMAR:"var(--sumar)",PODEMOS:"var(--podemos)"}[p]||"var(--fg2)");
 const VARS = Object.keys(D.variantes);
@@ -347,7 +347,7 @@ function el(tag,attrs={},parent){const e=document.createElementNS(NS,tag);for(co
 function addDays(s,n){const d=new Date(String(s).slice(0,10)+"T00:00:00Z");d.setUTCDate(d.getUTCDate()+n);return d}
 function dayIdx(s,ini){return Math.round((new Date(String(s).slice(0,10)+"T00:00:00Z")-new Date(String(ini).slice(0,10)+"T00:00:00Z"))/864e5)}
 function seg(id,opts,cur,on){const c=$(id);c.innerHTML="";opts.forEach(o=>{const b=document.createElement("button");b.type="button";b.textContent=VNOM[o]||o;b.setAttribute("aria-pressed",o===cur);b.onclick=()=>{[...c.children].forEach(x=>x.setAttribute("aria-pressed",x===b));on(o)};c.appendChild(b)})}
-function fillSel(id,opts,cur){const s=$(id);s.innerHTML=opts.map(o=>`<option value="${o}"${o===cur?" selected":""}>${NOM[o]||o}</option>`).join("")}
+function fillSel(id,opts,cur){const s=$(id);s.innerHTML=(cur===''?'<option value="">Selecciona candidatura</option>':'')+opts.map(o=>`<option value="${o}"${o===cur?" selected":""}>${NOM[o]||o}</option>`).join("")}
 function tip(container){let t=container.querySelector(".tip");if(!t){t=document.createElement("div");t.className="tip";t.hidden=true;container.appendChild(t)}return {show(html,x,y){t.innerHTML=html;t.hidden=false;const w=container.clientWidth;t.style.left=Math.min(Math.max(4,x+12),w-t.offsetWidth-4)+"px";t.style.top=Math.max(4,y-10)+"px"},hide(){t.hidden=true}}}
 
 /* ---------- Cabecera ---------- */
@@ -510,9 +510,10 @@ tablaEnc("#t-enc23",D.finales_23j,["PP","PSOE","VOX","SUMAR"]);
 }
 
 /* ---------- Cocina encuesta a encuesta ---------- */
-let cocP="PP";
+let cocP="";
 function drawCoc(){
   const c=$("#c-coc"); c.innerHTML="";
+  if(!cocP){c.textContent="Selecciona una candidatura para comparar.";return}
   const L=D.encuestas.filter(e=>e.voto[cocP]!=null&&e.corregido[cocP]!=null&&e.campo_fin>=String(addDays(D.corte,-45).toISOString()).slice(0,10)).sort((a,b)=>String(a.campo_fin).localeCompare(String(b.campo_fin)));
   if(!L.length){c.textContent="Sin encuestas recientes";return}
   const W=900,rh=24,m={l:210,r:40,t:26,b:30},H=m.t+m.b+L.length*rh;
@@ -597,16 +598,18 @@ if(D.recetario){
 
 /* ---------- Paso 2: pesos ---------- */
 {
-  let h=`<thead><tr><th>Casa</th><th>Fin campo</th><th class="n">Muestra</th><th class="n">PP publicado</th><th class="n">Error muestral</th><th class="n">Error total</th><th class="n">Encuestas propias ±7 días</th><th class="n">Peso</th><th class="n">Sesgo de casa</th><th class="n">PP corregido</th></tr></thead><tbody>`;
-  D.ejemplo_pp.forEach(f=>{h+=`<tr><td>${esc(f.casa)}</td><td class="n">${fecha(f.campo_fin)}</td><td class="n">${f.n.toLocaleString("es-ES")}</td><td class="n">${fmt(f.valor)}</td><td class="n">±${fmt(f.sd_muestral,2)}</td><td class="n">±${fmt(f.sd_total,2)}</td><td class="n">${f.vecinas}</td><td class="n"><b>${fmt(f.peso)} %</b></td><td class="n">${sg(f.sesgo,2)}</td><td class="n">${fmt(f.corregido,2)}</td></tr>`});
-  $("#t-pesos").innerHTML=h+"</tbody>";
+  const drawPesos=()=>{const partido=$("#sel-pesos-p").value;if(!partido){$("#t-pesos").innerHTML="<caption>Selecciona candidatura para auditar las contribuciones.</caption>";return}
+  let h=`<thead><tr><th>Casa</th><th>Fin campo</th><th class="n">Muestra</th><th class="n">${esc(partido)} publicado</th><th class="n">Error muestral</th><th class="n">Error total</th><th class="n">Encuestas propias ±7 días</th><th class="n">Peso</th><th class="n">Sesgo de casa</th><th class="n">${esc(partido)} corregido</th></tr></thead><tbody>`;
+  (D.ejemplos_pesos[partido]||[]).forEach(f=>{h+=`<tr><td>${esc(f.casa)}</td><td class="n">${fecha(f.campo_fin)}</td><td class="n">${f.n.toLocaleString("es-ES")}</td><td class="n">${fmt(f.valor)}</td><td class="n">±${fmt(f.sd_muestral,2)}</td><td class="n">±${fmt(f.sd_total,2)}</td><td class="n">${f.vecinas}</td><td class="n"><b>${fmt(f.peso)} %</b></td><td class="n">${sg(f.sesgo,2)}</td><td class="n">${fmt(f.corregido,2)}</td></tr>`});
+  $("#t-pesos").innerHTML=h+"</tbody>";};
+  fillSel("#sel-pesos-p",Object.keys(D.ejemplos_pesos).sort(),"");$("#sel-pesos-p").onchange=drawPesos;drawPesos();
 }
 $("#ul-var").innerHTML = VARS.map(v=>`<li><b>${VNOM[v]}</b>: ${esc(D.variantes[v])}</li>`).join("");
 
 /* ---------- Paso 3: sesgos ---------- */
-let sesP="PP", sesV=VARS[0];
+let sesP="", sesV=VARS[0];
 function drawSes(){
-  const c=$("#c-ses"); c.innerHTML=""; const T=D.tendencias[sesV][sesP]; if(!T){c.textContent="Sin datos";return}
+  const c=$("#c-ses"); c.innerHTML=""; const T=D.tendencias[sesV][sesP]; if(!T){c.textContent=sesP?"Sin datos":"Selecciona candidatura";return}
   const rows=Object.entries(T.sesgos).sort((a,b)=>a[1][0]-b[1][0]);
   const W=900,rh=26,m={l:170,r:30,t:24,b:30},H=m.t+m.b+rows.length*rh;
   const ext=Math.max(3,...rows.map(([,s])=>Math.abs(s[0])+s[1]+0.5));
@@ -627,9 +630,9 @@ fillSel("#sel-ses-p",P5,sesP); $("#sel-ses-p").onchange=e=>{sesP=e.target.value;
 seg("#seg-ses",VARS,sesV,v=>{sesV=v;drawSes()}); drawSes();
 
 /* ---------- Paso 4: tendencia ---------- */
-let tenP="PP", tenV=VARS[0];
+let tenP="", tenV=VARS[0];
 function drawTen(){
-  const c=$("#c-ten"); c.innerHTML=""; const T=D.tendencias[tenV][tenP]; if(!T){c.textContent="Sin datos";return}
+  const c=$("#c-ten"); c.innerHTML=""; const T=D.tendencias[tenV][tenP]; if(!T){c.textContent=tenP?"Sin datos":"Selecciona candidatura";return}
   const ini=D.inicio_ciclo, N=T.media.length; const start=Math.max(0,N-150);
   const enc=D.encuestas.filter(e=>e.voto[tenP]!=null&&dayIdx(e.dia_central,ini)>=start);
   const W=900,H=320,m={l:44,r:70,t:16,b:30},iw=W-m.l-m.r,ih=H-m.t-m.b;
@@ -773,11 +776,12 @@ if(D.senales){
   ["PP","PSOE","VOX"].forEach(p=>{const e=C.efectos[p],pa=C.pares[p],d14=e["14"];const dist=d14&&Math.abs(d14[0])>U[p];
     h+=`<tr><td>${NOM[p]}</td><td class="n">${sg(pa[0])} (${pa[2]} casas)</td>${["0","7","14"].map(k=>`<td class="n">${e[k]?`${sg(e[k][0])} ± ${fmt(e[k][1])}`:"—"}</td>`).join("")}<td class="n">±${fmt(U[p])}</td><td>${dist?"sí":"no"}</td></tr>`});
   $("#t-cas").innerHTML=h+"</tbody>";
-  $("#cas-lectura").textContent="El método detecta la subida de Vox y la del PSOE. La caída del PP fue real (de 2 a 4 puntos según la casa: Metroscopia pasó del 23 % al 19 % y ElectoPanel del 21,5 % al 17,4 %), pero no supera el umbral del PP: las casas discreparon en su magnitud y el PP tuvo grandes oscilaciones en todo el ciclo. El caso muestra qué puede esperarse con Urda: solo efectos claros y compartidos por varias casas serán distinguibles.";
+  $("#cas-lectura").textContent="Las diferencias entre encuestas antes y después son asociaciones temporales. No aíslan el efecto de la crisis: pueden intervenir otros acontecimientos, composición muestral y tendencias previas. Los placebos son un diagnóstico, no identificación causal.";
 }
-let casP="PP";
+let casP="";
 function drawCas(){
-  const c=$("#c-cas"); c.innerHTML=""; const S=D.casado.serie, T=S.tendencia[casP], N=T.media.length, ini=S.inicio;
+  const c=$("#c-cas"); c.innerHTML=""; if(!casP){c.textContent="Selecciona una candidatura para explorar la asociación temporal.";return}
+  const S=D.casado.serie, T=S.tendencia[casP];if(!T){c.textContent="Sin datos para esta candidatura";return}const N=T.media.length, ini=S.inicio;
   const W=900,H=300,m={l:44,r:20,t:16,b:30},iw=W-m.l-m.r,ih=H-m.t-m.b;
   const pts=S.encuestas.filter(e=>e.v[casP]!=null);
   const vals=[...pts.map(e=>e.v[casP]),...T.media];let lo=Math.floor(Math.min(...vals)-0.5),hi=Math.ceil(Math.max(...vals)+0.5);

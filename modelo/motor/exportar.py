@@ -8,7 +8,7 @@ from .tendencia import DEFF, S_CASA
 from . import eventos as EV
 from . import pronostico as PR
 
-PRINCIPALES = ["PP", "PSOE", "VOX", "SUMAR", "PODEMOS"]
+PRINCIPALES = PR.PARTIDOS
 
 
 def _r(x, d=2):
@@ -104,7 +104,7 @@ def ejemplo_pesos(lista, partido, hoy, ajuste, dias=30):
             continue
         p = e["voto"][partido] / 100
         n = min(e["n"], 5000) / DEFF
-        muestral = 1e4 * p * (1 - p) / n
+        muestral = 1e4 * max(p * (1 - p), 0.0005) / n
         var = muestral + (S_CASA * esc) ** 2
         vecinas = sum(1 for o in lista if o["casa"] == e["casa"] and partido in o["voto"]
                       and abs((dia_central(o) - dia_central(e)).days) <= 7)
@@ -198,7 +198,7 @@ def datos(enc, actuales, inicio, hoy, dias, ajustes, sims, resumen, simple, casa
         industria_principal=PR.INDUSTRIA_PRINCIPAL, finales_23j=encuestas(finales23, {}),
         tendencias=tendencias(ajustes), incertidumbre=incertidumbre(ajustes, dias),
         resumen=resumen, histogramas=histogramas(sims), promedio_simple=simple, casas_simple=casas_simple,
-        ejemplo_pp=ejemplo_pesos(actuales, "PP", hoy, ref["PP"]),
+        ejemplos_pesos={p:ejemplo_pesos(actuales,p,hoy,r) for p,r in ref.items()},
         resultado_23j={p: _r(v) for p, v in res23.items()},
         error_23j={c: dict(r, error={p: _r(v) for p, v in r["error"].items()}, mae=_r(r["mae"])) for c, r in err.items()},
         industria_23j={p: [_r(m), _r(s), n] for p, (m, s, n) in ind.items()},

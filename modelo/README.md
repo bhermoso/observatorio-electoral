@@ -1,3 +1,7 @@
+# Estado científico (12-11-2026)
+
+Versión operativa 5: publicación documentada, empates simétricos y reconstrucción retrospectiva identificada. **El motor completo es auditable, no está independientemente validado.** La nueva evaluación parcial cubre seis elecciones para PP/PSOE y ampliaciones con soporte propio, sin validar escaños. Véase [auditoría y protocolo](../docs/consolidacion-cientifica.md) y [resultados](validacion/multieleccion.md).
+
 # Motor de pronóstico 29N
 
 Analiza las encuestas, mide el sesgo y la exactitud de cada casa, estima el efecto de los acontecimientos y produce un pronóstico de voto y escaños con su incertidumbre. Python 3.11+ con numpy; sin más dependencias.

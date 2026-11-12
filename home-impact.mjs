@@ -65,7 +65,7 @@ export function renderTitular(forecast){
  const [m,lo,hi]=first[1].escanos;
  const lead=`<p class="portada-titular-cifra">${h(name(first[0]))}, primera fuerza estimada: <strong>${fmt(m,0)} escaños</strong></p>`;
  const range=`Entre ${fmt(lo,0)} y ${fmt(hi,0)} en el 90 % de las simulaciones${second?`; ${fmt(m-second[1].escanos[0],0)} más que ${h(name(second[0]))} en la estimación central`:''}.`;
- const firstShare=Number.isFinite(first[1].primero)?` Queda primero en ${share(first[1].primero)} de las simulaciones.`:'';
+ const firstShare=Number.isFinite(first[1].primero)?` Queda primero sin empate en ${share(first[1].primero)} de las simulaciones.`:'';
  return `${lead}<p class="portada-titular-texto">${range}${firstShare}</p>`;
 }
 

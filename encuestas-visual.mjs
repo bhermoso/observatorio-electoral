@@ -2,6 +2,7 @@ const h=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt
 const day=s=>Date.parse(s+'T12:00:00Z');
 /** Original party labels only: no implicit coalition mapping, imputation or averaging. */
 export function renderPollScatter(polls,party){
+ if(!party)return '<p class="empty">Selecciona una candidatura para explorar las estimaciones publicadas.</p>';
  const rows=polls.filter(p=>Number.isFinite(p.values?.[party])&&Number.isFinite(day(p.fieldEnd)));
  if(!rows.length)return '<p class="empty">No hay cifras publicadas para esta candidatura en la selección.</p>';
  const start=Math.min(...rows.map(p=>day(p.fieldEnd))),end=Math.max(...rows.map(p=>day(p.fieldEnd)));
