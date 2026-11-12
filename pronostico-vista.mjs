@@ -24,7 +24,7 @@ export const VARIANTS=[
 ];
 
 export function renderPronostico(comparacion=''){
- return `<div class="hero"><div><div class="eyebrow">Motor 29N · capa 3 · estimación de referencia</div><h1>Pronóstico completo.</h1><p id="fc-lead">Cargando la salida publicada del Motor 29N…</p></div><div class="hero-aside"><span class="badge sim">Estimación modelizada</span><p>Las cifras son estimaciones condicionadas a los supuestos del modelo, no resultados electorales. Intervalos del 90 % de las simulaciones.</p><a href="pronostico.html">Informe técnico completo ↗</a></div></div>
+ return `
  <div id="fc-error" role="alert"></div>
  <div id="fc-counts"></div>
  <section class="pr-reading-group" id="pronostico-comprender" aria-labelledby="pr-heading-comprender"><div class="pr-reading-heading"><span>01</span><div><h2 id="pr-heading-comprender">Comprender el pronóstico</h2><p>Primero, el resultado y el recorrido real del dato publicado al escaño.</p></div></div>
@@ -46,6 +46,7 @@ export function renderPronostico(comparacion=''){
  <section class="panel" id="pronostico-fuentes"><h3>Estudios usados, excluidos y motivos</h3><div id="fc-sources">Cargando…</div></section>
  <section class="panel" id="pronostico-evaluacion"><h3>Evaluación histórica de encuestas y recetas</h3><p class="muted">La auditoría temporal de promedios sobre el 23J y las pruebas retrospectivas de microdatos CIS en 2019 son ejercicios distintos. Ninguno calibra las probabilidades de mayoría del Motor 29N.</p><div id="fc-validation-publica"></div>${renderValidationDashboard()}<p class="pr-remite">Las comprobaciones con microdatos se documentan también en <a href="#cocina-cap4">Cocina · ¿Qué receta acierta?</a></p></section>
  <section class="panel" id="pronostico-externos"><h3>Otros observatorios y modelos</h3><p class="muted">${h(LAYERS.externo.explica)}</p><div id="fc-external">Cargando…</div></section>
+ <div class="hero"><div><div class="eyebrow">Motor 29N · capa 3 · estimación de referencia</div><h1>Pronóstico completo.</h1><p id="fc-lead">Cargando la salida publicada del Motor 29N…</p></div><div class="hero-aside"><span class="badge sim">Estimación modelizada</span><p>Las cifras son estimaciones condicionadas a los supuestos del modelo, no resultados electorales. Intervalos del 90 % de las simulaciones.</p><a href="pronostico.html">Informe técnico completo ↗</a></div></div>
  </div></details>`;
 }
 
