@@ -19,9 +19,9 @@ async function main(){
  try{changed=execFileSync('git',['diff','--name-only',base,process.env.GITHUB_SHA],{encoding:'utf8'}).trim().split('\n').filter(Boolean);}
  catch{return finish(false,'No se puede comparar el historial de cambios.');}
  // Lista cerrada: el motor no consume estos archivos. Cualquier otro cambio obliga a recalcular.
- const safe=p=>p==='tests/test_verificar_originales_2019.py'||p==='scripts/reproducir_cocina_2019.py'||p.startsWith('data/microdatos/')||
- /^(cocina\.mjs|ingesta-cis-2026\.mjs|serie-cis-2026\.mjs|contraste-serie-cis-2026\.mjs|puerta-recuerdo-historico\.mjs|directa-2019n-retrospectiva\.mjs|directa-2019a-retrospectiva\.mjs|originales-cis-2019-validacion\.mjs|contraste-cis-3582\.mjs|matriz-microdatos\.mjs|homologacion-microdatos-2026\.mjs|scripts\/build\.mjs|scripts\/verificar_originales_2019\.py|scripts\/plan-publicacion\.mjs|\.github\/workflows\/pages\.yml)$/.test(p)||
- /^tests\/(ingesta-cis-2026|serie-cis-2026|contraste-serie-cis-2026|puerta-recuerdo-historico|directa-2019n-retrospectiva|directa-2019a-retrospectiva|originales-cis-2019-validacion|contraste-cis-3582)\.test\.mjs$/.test(p);
+ const safe=p=>p==='tests/test_verificar_originales_2019.py'||p==='scripts/reproducir_cocina_2019.py'||p==='scripts/sensibilidad_recuerdo_2019.py'||p.startsWith('data/microdatos/')||
+ /^(cocina\.mjs|ingesta-cis-2026\.mjs|serie-cis-2026\.mjs|contraste-serie-cis-2026\.mjs|puerta-recuerdo-historico\.mjs|directa-2019n-retrospectiva\.mjs|directa-2019a-retrospectiva\.mjs|originales-cis-2019-validacion\.mjs|sensibilidad-recuerdo-cis-2019\.mjs|contraste-cis-3582\.mjs|matriz-microdatos\.mjs|homologacion-microdatos-2026\.mjs|scripts\/build\.mjs|scripts\/verificar_originales_2019\.py|scripts\/plan-publicacion\.mjs|\.github\/workflows\/pages\.yml)$/.test(p)||
+ /^tests\/(ingesta-cis-2026|serie-cis-2026|contraste-serie-cis-2026|puerta-recuerdo-historico|directa-2019n-retrospectiva|directa-2019a-retrospectiva|originales-cis-2019-validacion|sensibilidad-recuerdo-cis-2019|contraste-cis-3582)\.test\.mjs$/.test(p);
  if(!changed.length||changed.some(p=>!safe(p)))return finish(false,'Hay cambios fuera de Cocina/UI: '+changed.filter(p=>!safe(p)).join(', '));
  const origin='https://bhermoso.github.io/observatorio-electoral/';
  try{
