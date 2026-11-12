@@ -1,0 +1,55 @@
+{
+  "esquema": 1,
+  "fecha_revision": "2026-11-12",
+  "naturaleza": "control_de_ingesta_no_serie_de_estimacion_propia",
+  "criterio": "Fichero de datos enlazado no equivale a original descargado, con SHA256 verificado y variables homologadas.",
+  "estudios": [
+    {
+      "id": "3567",
+      "mes": "junio 2026",
+      "campo": "2026-06-01 / 2026-06-04",
+      "n": 4024,
+      "referencia": "https://www.datoelectoral.es/encuestas",
+      "estado": "original_pendiente_verificacion",
+      "sha256_original": null,
+      "microdatos_procesados": false,
+      "estimacion_propia": null
+    },
+    {
+      "id": "3571",
+      "mes": "julio 2026",
+      "campo": "2026-07-01 / 2026-07-06",
+      "n": 4020,
+      "referencia": "https://www.cis.es/es/estudios/barometro-de-julio-2026?showModal=true",
+      "catalogo": "https://datos.gob.es/es/catalogo/ea0040772-barometro-de-julio-2026",
+      "estado": "enlace_fichero_documentado_original_pendiente",
+      "sha256_original": null,
+      "microdatos_procesados": false,
+      "estimacion_propia": null
+    },
+    {
+      "id": "3577",
+      "mes": "septiembre 2026",
+      "campo": "2026-09-01 / 2026-09-04",
+      "n": 4042,
+      "referencia": "https://www.cis.es/es/estudios/barometro-de-septiembre-2026?showModal=true",
+      "catalogo": "https://datos.gob.es/es/catalogo/ea0040772-barometro-de-septiembre-2026",
+      "estado": "enlace_fichero_documentado_original_pendiente",
+      "sha256_original": null,
+      "microdatos_procesados": false,
+      "estimacion_propia": null
+    },
+    {
+      "id": "3582",
+      "mes": "octubre 2026",
+      "campo": "2026-10-01 / 2026-10-06",
+      "n": 5024,
+      "referencia": "https://www.cis.es/es/estudios/barometro-de-octubre-2026",
+      "estado": "original_procesado_experimental",
+      "sha256_original": "1cfcf43b38ee036bb89dadc7d9b88a70d2098bb2c1a5051921aa517415a00c9f",
+      "microdatos_procesados": true,
+      "estimacion_propia": "data/microdatos/cocina_cis_3582.json"
+    }
+  ],
+  "admisibilidad": "Solo estudios con SHA256, matriz verificada y codificación homologada pueden alimentar una serie propia; el estudio 3582 sigue no validado predictivamente. Ningún tratamiento experimental se incorpora al Motor 29N."
+}
