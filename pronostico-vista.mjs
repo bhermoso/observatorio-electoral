@@ -25,7 +25,6 @@ export const VARIANTS=[
 
 export function renderPronostico(comparacion=''){
  return `<div class="hero"><div><div class="eyebrow">Motor 29N · capa 3 · estimación de referencia</div><h1>Pronóstico completo.</h1><p id="fc-lead">Cargando la salida publicada del Motor 29N…</p></div><div class="hero-aside"><span class="badge sim">Estimación modelizada</span><p>Las cifras son estimaciones condicionadas a los supuestos del modelo, no resultados electorales. Intervalos del 90 % de las simulaciones.</p><a href="pronostico.html">Informe técnico completo ↗</a></div></div>
- <nav class="pr-reading-nav" aria-label="Tres niveles de lectura"><a href="#pronostico-comprender"><b>01 · Comprender</b><span>Qué pronosticamos y cómo llegamos al resultado</span></a><a href="#pronostico-comparar"><b>02 · Comparar</b><span>Variantes, bloques, evolución y proyección</span></a><a href="#pronostico-auditar"><b>03 · Auditar</b><span>Fuentes, decisiones, exclusiones y validación</span></a></nav>
  <div id="fc-error" role="alert"></div>
  <div id="fc-counts"></div>
  <section class="pr-reading-group" id="pronostico-comprender" aria-labelledby="pr-heading-comprender"><div class="pr-reading-heading"><span>01</span><div><h2 id="pr-heading-comprender">Comprender el pronóstico</h2><p>Primero, el resultado y el recorrido real del dato publicado al escaño.</p></div></div>
