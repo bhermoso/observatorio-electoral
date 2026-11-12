@@ -67,6 +67,13 @@ const pronostico='modelo/salida/pagina.html';
 if(veda){
   fs.writeFileSync('dist/pronostico.html',AVISO_VEDA);
   console.log('Veda electoral (LOREG 69.7): pronostico.html sustituido por el aviso.');
+}else if(process.env.REUTILIZAR_MODELO==='true'){
+  // Despliegue editorial: pronóstico técnico completo del último despliegue verificado.
+  // El planificador valida fecha y SHA del archivo de encuestas antes de activarlo.
+  const anterior='modelo/salida/pronostico-publicado.html';
+  if(!fs.existsSync(anterior))throw Error('No existe pronóstico técnico verificado para reutilizar');
+  fs.copyFileSync(anterior,'dist/pronostico.html');
+  console.log('Pronóstico técnico existente reutilizado; no se ha simulado un nuevo pronóstico.');
 }else if(fs.existsSync(pronostico)){
   const fragmento=fs.readFileSync(pronostico,'utf8');
   const corte=fragmento.indexOf('<div class="wrap">');
