@@ -1,0 +1,49 @@
+{
+  "studies": [
+    {
+      "id": "3411",
+      "institute": "CIS",
+      "title": "Preelectoral generales 2023",
+      "published": "2023-07-05",
+      "source": "https://www.cis.es/es/estudios/preelectoral-elecciones-generales-2023?showModal=true",
+      "status": "pendiente",
+      "reason": "No se ha incorporado el fichero de entrevistas"
+    },
+    {
+      "id": "3415",
+      "institute": "CIS",
+      "title": "Flash generales 2023",
+      "published": "2023-07-17",
+      "source": "https://www.cis.es/es/estudios/encuesta-flash-elecciones-generales-2023?showModal=true",
+      "status": "pendiente",
+      "reason": "No se ha incorporado el fichero de entrevistas"
+    },
+    {
+      "id": "cis-3582",
+      "institute": "CIS",
+      "title": "Barómetro de octubre 2026 · estudio 3582",
+      "published": "2026-10-14",
+      "source": "https://www.cis.es/es/estudios/barometro-de-octubre-2026",
+      "status": "pendiente",
+      "reason": "No se ha incorporado el fichero de entrevistas"
+    },
+    {
+      "id": "40db-2026-10-flash",
+      "institute": "40dB.",
+      "title": "Encuesta flash · octubre 2026",
+      "published": "2026-10-09",
+      "source": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_08_barometro_flash_descargables.zip",
+      "status": "pendiente",
+      "reason": "No se ha incorporado el fichero de entrevistas"
+    },
+    {
+      "id": "more-in-common-2026-11-03",
+      "institute": "More in Common",
+      "title": "Pulso electoral de octubre · publicado el 3 de noviembre",
+      "published": "2026-11-03",
+      "source": "https://moreincommon.es/data/microdatos-2026-10.zip",
+      "status": "pendiente",
+      "reason": "No se ha incorporado el fichero de entrevistas"
+    }
+  ]
+}

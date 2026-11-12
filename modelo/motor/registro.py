@@ -17,11 +17,12 @@ from pathlib import Path
 from . import pronostico as PR
 
 DIR = os.path.join(RAIZ, "modelo", "registro")
-VERSION = "4"   # cambiar al modificar el modelo invalida el historial guardado
+VERSION = "5"   # cambiar al modificar el modelo invalida el historial guardado
+# 5 (2026-11-12): publicación documentada, empate de primera fuerza sin privilegio de orden; historial retrospectivo tipado.
 # 4 (2026-11-11): selección de oleadas observable en cada corte histórico.
 # 2 (2026-11-03): puerta de calidad de fuentes (fuentes.seleccion_pronostico).
 # 3 (2026-11-03): corrección de la mitad del sesgo de industria del 23J (pronostico.correccion_industria).
-PRINCIPALES = ["PP", "PSOE", "VOX", "SUMAR", "PODEMOS"]
+PRINCIPALES = PR.PARTIDOS
 
 
 def escribir_encuestas(encuestas):
@@ -66,11 +67,11 @@ def _firma(encuestas, fecha, n, industria, inicio=None, eleccion=None, errores_2
 def _compacto(r, fecha, disp):
     P = r["partidos"]
     return dict(
-        fecha=str(fecha), n_encuestas=len(disp), casas=sorted({e["casa"] for e in disp}),
+        naturaleza="reconstruccion_retrospectiva", fecha=str(fecha), n_encuestas=len(disp), casas=sorted({e["casa"] for e in disp}),
         ultima_encuesta=str(max(e["campo_fin"] for e in disp)),
         voto={p: [round(x, 2) for x in P[p]["voto"]] for p in PRINCIPALES if p in P},
         escanos={p: [round(x, 1) for x in P[p]["escanos"]] for p in P},
-        primero={p: round(P[p]["primero"], 3) for p in ("PP", "PSOE") if p in P},
+        primero={p: round(P[p]["primero"], 3) for p in P},
         bloques={b: dict(mediana=v["mediana"], p5=v["p5"], p95=v["p95"], p_mayoria=round(v["p_mayoria"], 3))
                  for b, v in r["bloques"].items()})
 
@@ -88,7 +89,7 @@ def historial(actuales, inicio, desde, hasta, eleccion, errores_23j, n_por_varia
     while d <= hasta:
         # Seleccionar DESPUÉS de filtrar la información conocida ese día. Una
         # encuesta futura no puede retirar una oleada disponible en el pasado.
-        conocidas = [e for e in actuales if publicada_antes(e, d) and e["campo_fin"] <= d]
+        conocidas = [e for e in actuales if publicada_antes(e, d, estricta=True) and e["campo_fin"] <= d]
         disp, _ = seleccion_pronostico(conocidas)
         disp = [e for e in disp if dia_central(e) <= d]
         if len({e["casa"] for e in disp}) >= 2:

@@ -1,0 +1,434 @@
+{
+  "naturaleza": "comparacion_determinista_de_versiones_no_validacion_predictiva",
+  "corte": "2026-11-12",
+  "version_antes": "4",
+  "version_despues": "5",
+  "n_conjuntas": 2250,
+  "antes_codigo": "9bad6e6e8920e2a15d026997f1c5d2dd88509241",
+  "despues_codigo": "1cd72e6bf5fe957992175500d86e6b571c1d27ee",
+  "comando_antes": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m modelo --hoy 2026-11-12 --n 1500",
+  "hashes": {
+    "antes": "c152be319ab6b9a0342d6f987187adeba3963cec1fb1473c3b921dcceb096584",
+    "despues": "aa02107731fcc8e7d025d15809699b41c1ebdae7c5553f8cd7030f93ca42a21a"
+  },
+  "entradas_antes": [
+    "demoscopia-2025-09-08",
+    "gad3-2026-05-28",
+    "ncreport-2026-09-03",
+    "sigmados-2026-10-01",
+    "sociometrica-2026-10-01",
+    "cis-3582",
+    "ncreport-2026-10-06",
+    "dym-2026-10",
+    "imop-2026-10-05",
+    "40db-2026-10-flash",
+    "gad3-2026-10",
+    "sociometrica-2026-10-10",
+    "imop-2026-10-ola2",
+    "ateneo-2026-10-25",
+    "sigma-dos-2026-10-26",
+    "prensa-ncreport-2026-10-26",
+    "more-in-common-2026-11-03",
+    "sondaxe-2026-11-01",
+    "hamalgama-metrica-2026-11-02",
+    "target-point-2026-11-02",
+    "celeste-tel-2026-11-04",
+    "data10-2026-11-09",
+    "sondaxe-2026-11-08",
+    "40db-2026-11-09",
+    "gad3-2026-11-09",
+    "ateneo-2026-11-08",
+    "prensa-ncreport-2026-11-09",
+    "dym-2026-11-10",
+    "sigma-dos-2026-11-09",
+    "electopanel-2026-11-08",
+    "sw-demoscopia-2026-11-10"
+  ],
+  "entradas_despues": [
+    "demoscopia-2025-09-08",
+    "gad3-2026-05-28",
+    "sociometrica-2026-10-01",
+    "cis-3582",
+    "ncreport-2026-10-06",
+    "dym-2026-10",
+    "imop-2026-10-05",
+    "40db-2026-10-flash",
+    "gad3-2026-10",
+    "sociometrica-2026-10-10",
+    "imop-2026-10-ola2",
+    "ateneo-2026-10-25",
+    "sigma-dos-2026-10-26",
+    "prensa-ncreport-2026-10-26",
+    "more-in-common-2026-11-03",
+    "sondaxe-2026-11-01",
+    "hamalgama-metrica-2026-11-02",
+    "target-point-2026-11-02",
+    "celeste-tel-2026-11-04",
+    "data10-2026-11-09",
+    "sondaxe-2026-11-08",
+    "40db-2026-11-09",
+    "gad3-2026-11-09",
+    "ateneo-2026-11-08",
+    "prensa-ncreport-2026-11-09",
+    "dym-2026-11-10",
+    "sigma-dos-2026-11-09",
+    "electopanel-2026-11-08",
+    "sw-demoscopia-2026-11-10"
+  ],
+  "empate_primera_fuerza": 0.014666666666666666,
+  "partidos": [
+    {
+      "partido": "PP",
+      "voto_antes": [
+        30.252435531847063,
+        25.995711739744984,
+        34.449633035733726
+      ],
+      "voto_despues": [
+        30.257449576436123,
+        26.003657395371576,
+        34.45340047972423
+      ],
+      "delta_mediana_voto": 0.005014044589060518,
+      "escanos_antes": [
+        126.0,
+        108.0,
+        143.0
+      ],
+      "escanos_despues": [
+        126.0,
+        108.0,
+        143.0
+      ],
+      "primero_antes": 0.6653333333333333,
+      "primero_exclusivo_despues": 0.6502222222222223,
+      "primero_o_empate_despues": 0.6648888888888889
+    },
+    {
+      "partido": "PSOE",
+      "voto_antes": [
+        28.474332772030337,
+        24.34711659946753,
+        32.398044790671015
+      ],
+      "voto_despues": [
+        28.472955266896072,
+        24.34557487319607,
+        32.39854843341644
+      ],
+      "delta_mediana_voto": -0.0013775051342648226,
+      "escanos_antes": [
+        117.0,
+        97.0,
+        138.0
+      ],
+      "escanos_despues": [
+        117.0,
+        97.0,
+        138.0
+      ],
+      "primero_antes": 0.33466666666666667,
+      "primero_exclusivo_despues": 0.33511111111111114,
+      "primero_o_empate_despues": 0.3497777777777778
+    },
+    {
+      "partido": "VOX",
+      "voto_antes": [
+        18.67350485856594,
+        15.29550070824301,
+        21.94834385802625
+      ],
+      "voto_despues": [
+        18.66836952558353,
+        15.29132347511925,
+        21.940271290898814
+      ],
+      "delta_mediana_voto": -0.005135332982412422,
+      "escanos_antes": [
+        67.0,
+        53.0,
+        81.0
+      ],
+      "escanos_despues": [
+        67.0,
+        53.0,
+        81.0
+      ],
+      "primero_antes": 0.0,
+      "primero_exclusivo_despues": 0.0,
+      "primero_o_empate_despues": 0.0
+    },
+    {
+      "partido": "SUMAR",
+      "voto_antes": [
+        5.919947621710923,
+        4.006065541884733,
+        7.924993638337933
+      ],
+      "voto_despues": [
+        5.9212947816082835,
+        4.00693883544015,
+        7.926812335680975
+      ],
+      "delta_mediana_voto": 0.0013471598973602283,
+      "escanos_antes": [
+        7.0,
+        4.0,
+        15.0
+      ],
+      "escanos_despues": [
+        7.0,
+        4.0,
+        15.0
+      ],
+      "primero_antes": 0.0,
+      "primero_exclusivo_despues": 0.0,
+      "primero_o_empate_despues": 0.0
+    },
+    {
+      "partido": "PODEMOS",
+      "voto_antes": [
+        2.1288671073086185,
+        1.0007675194183974,
+        3.2508882921228324
+      ],
+      "voto_despues": [
+        2.1270582351383105,
+        0.9998468557805006,
+        3.2477390750461033
+      ],
+      "delta_mediana_voto": -0.0018088721703080068,
+      "escanos_antes": [
+        0.0,
+        0.0,
+        2.0
+      ],
+      "escanos_despues": [
+        0.0,
+        0.0,
+        2.0
+      ],
+      "primero_antes": 0.0,
+      "primero_exclusivo_despues": 0.0,
+      "primero_o_empate_despues": 0.0
+    },
+    {
+      "partido": "SALF",
+      "voto_antes": [
+        1.7764122495096686,
+        0.6728707928962938,
+        2.8514109566296173
+      ],
+      "voto_despues": [
+        1.7764122495096686,
+        0.6728707928962938,
+        2.851359662127827
+      ],
+      "delta_mediana_voto": 0.0,
+      "escanos_antes": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "escanos_despues": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "primero_antes": 0.0,
+      "primero_exclusivo_despues": 0.0,
+      "primero_o_empate_despues": 0.0
+    },
+    {
+      "partido": "ERC",
+      "voto_antes": [
+        2.5962246789503802,
+        1.3642538532322743,
+        3.877906026467445
+      ],
+      "voto_despues": [
+        2.5962246789503802,
+        1.3642253239296247,
+        3.877906026467445
+      ],
+      "delta_mediana_voto": 0.0,
+      "escanos_antes": [
+        11.0,
+        6.0,
+        15.0
+      ],
+      "escanos_despues": [
+        11.0,
+        6.0,
+        15.0
+      ],
+      "primero_antes": 0.0,
+      "primero_exclusivo_despues": 0.0,
+      "primero_o_empate_despues": 0.0
+    },
+    {
+      "partido": "JUNTS",
+      "voto_antes": [
+        1.3140814134000165,
+        0.40842445318666953,
+        2.2102617630151427
+      ],
+      "voto_despues": [
+        1.3140814134000165,
+        0.40842445318666953,
+        2.2102617630151427
+      ],
+      "delta_mediana_voto": 0.0,
+      "escanos_antes": [
+        5.0,
+        0.0,
+        9.0
+      ],
+      "escanos_despues": [
+        5.0,
+        0.0,
+        9.0
+      ],
+      "primero_antes": 0.0,
+      "primero_exclusivo_despues": 0.0,
+      "primero_o_empate_despues": 0.0
+    },
+    {
+      "partido": "BILDU",
+      "voto_antes": [
+        1.3781903799501918,
+        0.4552407379458023,
+        2.3632812318405505
+      ],
+      "voto_despues": [
+        1.37822812774585,
+        0.4552407379458023,
+        2.3632812318405505
+      ],
+      "delta_mediana_voto": 3.774779565812736e-05,
+      "escanos_antes": [
+        7.0,
+        2.0,
+        12.0
+      ],
+      "escanos_despues": [
+        7.0,
+        2.0,
+        12.0
+      ],
+      "primero_antes": 0.0,
+      "primero_exclusivo_despues": 0.0,
+      "primero_o_empate_despues": 0.0
+    },
+    {
+      "partido": "PNV",
+      "voto_antes": [
+        0.8421241929800786,
+        0.07701955860701103,
+        1.6317796767904393
+      ],
+      "voto_despues": [
+        0.8420900695127322,
+        0.07701955860701103,
+        1.6318166365453304
+      ],
+      "delta_mediana_voto": -3.412346734632532e-05,
+      "escanos_antes": [
+        4.0,
+        0.0,
+        8.0
+      ],
+      "escanos_despues": [
+        4.0,
+        0.0,
+        8.0
+      ],
+      "primero_antes": 0.0,
+      "primero_exclusivo_despues": 0.0,
+      "primero_o_empate_despues": 0.0
+    },
+    {
+      "partido": "BNG",
+      "voto_antes": [
+        0.9307834811266168,
+        0.13298549820005443,
+        1.7238283218315835
+      ],
+      "voto_despues": [
+        0.9307834811266168,
+        0.13298549820005443,
+        1.7238333265999912
+      ],
+      "delta_mediana_voto": 0.0,
+      "escanos_antes": [
+        2.0,
+        0.0,
+        6.0
+      ],
+      "escanos_despues": [
+        2.0,
+        0.0,
+        6.0
+      ],
+      "primero_antes": 0.0,
+      "primero_exclusivo_despues": 0.0,
+      "primero_o_empate_despues": 0.0
+    },
+    {
+      "partido": "CC",
+      "voto_antes": [
+        0.44181004104744187,
+        0.01,
+        1.2102783958871304
+      ],
+      "voto_despues": [
+        0.44181004104744187,
+        0.01,
+        1.210257824164662
+      ],
+      "delta_mediana_voto": 0.0,
+      "escanos_antes": [
+        1.0,
+        0.0,
+        4.0
+      ],
+      "escanos_despues": [
+        1.0,
+        0.0,
+        4.0
+      ],
+      "primero_antes": 0.0,
+      "primero_exclusivo_despues": 0.0,
+      "primero_o_empate_despues": 0.0
+    },
+    {
+      "partido": "UPN",
+      "voto_antes": [
+        0.2924255988461555,
+        0.01,
+        1.1211271916538252
+      ],
+      "voto_despues": [
+        0.2924124138023054,
+        0.01,
+        1.1211271916538252
+      ],
+      "delta_mediana_voto": -1.3185043850061362e-05,
+      "escanos_antes": [
+        1.0,
+        0.0,
+        4.0
+      ],
+      "escanos_despues": [
+        1.0,
+        0.0,
+        4.0
+      ],
+      "primero_antes": 0.0,
+      "primero_exclusivo_despues": 0.0,
+      "primero_o_empate_despues": 0.0
+    }
+  ],
+  "max_cambio_mediana_voto": 0.005135332982412422,
+  "nota": "No hay resultado electoral futuro observado. Una corrección de empates/fuentes no equivale a demostrar menor error predictivo. Las recetas experimentales no pasan al principal."
+}

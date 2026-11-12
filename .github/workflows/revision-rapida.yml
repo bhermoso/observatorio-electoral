@@ -48,6 +48,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - run: pip install -r requirements-ciencia.txt
       - run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Probar las fuentes desde GitHub sin publicar ni incorporar
         run: |

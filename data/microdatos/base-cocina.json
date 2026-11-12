@@ -1,0 +1,200 @@
+{
+  "esquema": 1,
+  "fecha": "2026-11-12",
+  "estado": "base_documental_y_tecnica_para_discusion",
+  "decision_receta_propia": "pendiente_de_discusion_con_el_usuario",
+  "entrada_motor": false,
+  "criterio_referentes": "Selección inicial de casas presentes en el archivo y con documentos originales consultables. No es un ranking de prestigio ni una decisión de pesos; la selección de referentes es revisable contigo.",
+  "base_R0": {
+    "nombre": "Línea base trazable",
+    "naturaleza": "referencia técnica de trabajo, no receta propia aprobada",
+    "parametros_nuevos_de_cocina_aprobados": [],
+    "ejecucion_existente": "scripts/generar_linea_base_originales.py · PESO original e intención, sin filtrar por PROBVOTO ni recuerdo",
+    "operaciones": [
+      "Conservar variables y códigos originales.",
+      "Usar el peso del productor donde exista, comprobando qué corrige.",
+      "Mostrar intención directa sobre todas las entrevistas y sobre voto válido por separado, con denominadores y Kish.",
+      "Mantener cada estimación publicada como referencia externa, separada de las reconstrucciones."
+    ],
+    "datos": "data/microdatos/linea-base-originales.json"
+  },
+  "ingredientes_para_discutir": [
+    {
+      "id": "intencion_directa",
+      "nombre": "Intención directa",
+      "situacion": "Ingrediente inicial; conservar medición, códigos, población elegible y denominadores explícitos."
+    },
+    {
+      "id": "peso",
+      "nombre": "Ponderación sociodemográfica",
+      "situacion": "Comprobar objetivos y pesos publicados por estudio."
+    },
+    {
+      "id": "recuerdo",
+      "nombre": "Recuerdo de voto",
+      "situacion": "Distinguir medición, segmentación y calibración; acordar objetivos, recortes y abstención."
+    },
+    {
+      "id": "simpatia",
+      "nombre": "Simpatía",
+      "situacion": "Receta heredada experimental: revisar elegibilidad y sustitución de intención."
+    },
+    {
+      "id": "indecisos",
+      "nombre": "Indecisos",
+      "situacion": "Acordar denominadores, donantes, fracciones y casos sin evidencia."
+    },
+    {
+      "id": "participacion",
+      "nombre": "Participación",
+      "situacion": "Acordar probabilidad declarada, voto ya emitido y NS/NC."
+    },
+    {
+      "id": "otros",
+      "nombre": "Otros ingredientes que propongas",
+      "situacion": "Hipótesis explícitas y contrastables; selección discutida contigo."
+    }
+  ],
+  "recetas_heredadas": {
+    "microdatos": [
+      "PESO",
+      "voto + simpatía",
+      "recuerdo, factores recortados [0.2,5]",
+      "indecisos según donantes del recuerdo",
+      "PROBVOTO/10, NS/NC=0.5"
+    ],
+    "agregacion_operativa": [
+      "Tres variantes de ancla con pesos iguales",
+      "Corrección 0.5 basada en errores de casas del 23J",
+      "Industria 2.2 y correlación de bloque 0.5",
+      "Traslado provincial desde 23J"
+    ],
+    "nota": "Decisiones ya presentes en el repositorio; no son criterios aprobados ahora por el usuario. Los ensayos nuevos no las sustituyen."
+  },
+  "referentes": [
+    {
+      "instituto": "40dB.",
+      "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-barometro/2026_10_informe_voto.pdf",
+      "consultado": "2026-11-12",
+      "http": 200,
+      "sha256": "efce382da05aebb01cb46841c5a0302740703bd85ade366346218f24673f772d",
+      "evidencia": "lectura_directa_documento_original",
+      "observaciones": {
+        "recogida": "CAWI; 2.000 entrevistas, campo 25–28/09/2026.",
+        "diseno": "Cuotas por sexo y edad cruzadas, comunidad autónoma, hábitat y clase social.",
+        "ponderacion": "Preestratificación y ponderación por clase social según parámetros del Marco General de los Medios 2026.",
+        "recuerdo": "Se documenta segmentación por recuerdo del 23J; esto no prueba calibración de pesos por recuerdo."
+      },
+      "no_publicado": [
+        "Algoritmo completo de estimación y todos sus coeficientes",
+        "Regla completa de asignación de indecisos y abstención"
+      ]
+    },
+    {
+      "instituto": "GAD3",
+      "url": "https://www.gad3.com/barometro-abc-estimacion-de-voto-nacional-octubre-2026/",
+      "consultado": "2026-11-12",
+      "http": 200,
+      "sha256": "d8d1b8dbd643e2ae27c3bd7aab5d19dbfd4d2524f4f15836ac2e2d5fbc5cd047",
+      "evidencia": "lectura_directa_documento_original",
+      "observaciones": {
+        "recogida": "CATI; 1.077 entrevistas, 6–8/10/2026.",
+        "diseno": "Cuotas por sexo, edad y ámbito geográfico según censo electoral INE.",
+        "ponderacion": "La ficha consultada no publica los factores finales de ponderación.",
+        "recuerdo": "La ficha no permite reconstruir una corrección por recuerdo."
+      },
+      "no_publicado": [
+        "Algoritmo completo de estimación y todos sus coeficientes",
+        "Regla completa de asignación de indecisos y abstención"
+      ]
+    },
+    {
+      "instituto": "IMOP Insights",
+      "url": "https://www.imop.es/encuesta-pre-electoral-para-el-confidencial-2026/",
+      "consultado": "2026-11-12",
+      "http": 200,
+      "sha256": "a451dc6031bb637762181d64b8aa64a0114f0c108730aa22bbe4e4f4af5f8787",
+      "evidencia": "lectura_directa_documento_original",
+      "observaciones": {
+        "recogida": "CATI y CAWI con panel EMOP; 900 entrevistas en la ficha consultada.",
+        "diseno": "Estratificación por comunidad autónoma y hábitat; cuotas por sexo-edad y estudios.",
+        "ponderacion": "No se publica una fórmula completa de pesos de estimación.",
+        "recuerdo": "Sin regla replicable en el documento consultado."
+      },
+      "no_publicado": [
+        "Algoritmo completo de estimación y todos sus coeficientes",
+        "Regla completa de asignación de indecisos y abstención"
+      ]
+    },
+    {
+      "instituto": "Sigma Dos",
+      "url": "https://www.sigmados.com/noticia?id=OUze2FxEIVfARtu3",
+      "consultado": "2026-11-12",
+      "http": 200,
+      "sha256": "1d3eda902378609344ae11584da0a6c83c38c3b6885293297bc948b9586e695d",
+      "evidencia": "lectura_directa_documento_original",
+      "observaciones": {
+        "recogida": "CATI y CAWI mediante panel Sigma Dos by Trust Survey; 3.122 entrevistas, 8–22/10/2026.",
+        "diseno": "Teléfono: selección aleatoria de hogar y cuotas de sexo/edad. Panel: asignación proporcional por sexo/edad; distribución por comunidad autónoma.",
+        "ponderacion": "No se publican todos los factores de la cocina electoral en esta ficha.",
+        "recuerdo": "La ficha no permite reproducir su eventual uso en la estimación."
+      },
+      "no_publicado": [
+        "Algoritmo completo de estimación y todos sus coeficientes",
+        "Regla completa de asignación de indecisos y abstención"
+      ]
+    },
+    {
+      "instituto": "Metroscopia",
+      "url": "https://metroscopia.org/como-medimos/",
+      "consultado": "2026-11-12",
+      "http": 200,
+      "sha256": "e83d3a5fad80d7ec519f6ef9a1d8a7f7c0a4e6e4c9ea901b8ce4fb2e220db500",
+      "evidencia": "lectura_directa_documento_original",
+      "observaciones": {
+        "recogida": "CATI propio, panel in·pulsa90 y seguimiento continuo.",
+        "diseno": "La página institucional explica técnicas, no una ficha electoral con todos sus parámetros.",
+        "ponderacion": "No se reconstruye una receta electoral completa desde esta página.",
+        "recuerdo": "Sin regla replicable en el documento consultado."
+      },
+      "no_publicado": [
+        "Algoritmo completo de estimación y todos sus coeficientes",
+        "Regla completa de asignación de indecisos y abstención"
+      ]
+    }
+  ],
+  "distinciones": [
+    "Cuotas de selección no son automáticamente factores de ponderación.",
+    "Segmentación por recuerdo no demuestra calibración por recuerdo.",
+    "Publicar transferencias o probabilidad de votar no prueba su uso como coeficiente de cocina.",
+    "Compartir herramienta metodológica no equivale a compartir receta."
+  ],
+  "fuentes_adicionales_consultadas": [
+    {
+      "instituto": "DYM",
+      "url": "https://www.20minutos.es/nacional/psoe-absorbe-intencion-votos-sumar-podemos-mientras-pp-vox-consolidan-su-mayoria_7046598_0.html",
+      "http": 200,
+      "sha256": "d81050a3e92870c131072f2c1a6cf9ed941ee639cbb4ae376af8d98468ade4f6"
+    },
+    {
+      "instituto": "GESOP · Gabinet d’Estudis Socials i Opinió Pública",
+      "url": "https://gesop.net/",
+      "http": 200,
+      "sha256": "5af7dcb7738f511d842123b7e1dafcdfee368fd2d34277a5421269239307d449"
+    },
+    {
+      "instituto": "GESOP · Gabinet d’Estudis Socials i Opinió Pública",
+      "url": "https://www.icps.cat/recerca/sondeigs-i-dades/sondeigs/sondeigs-d-opinio-catalunya",
+      "http": 200,
+      "sha256": "5cf41abea6e3f73d146d47c687c38f618c713752491a7c5d5b62a7cab17a5b81"
+    }
+  ],
+  "proposito": "Alta cocina electoral: mejorar la predicción mediante descubrimiento contrastable de estructuras históricas, sociales y culturales de la democracia española.",
+  "despensa_inicial_acordada": [
+    "intencion_directa",
+    "recuerdo_de_voto",
+    "simpatia",
+    "participacion"
+  ],
+  "criterios_y_coeficientes": "Su diseño se discute con el usuario; reconocer un ingrediente no fija su dosis ni la regla de combinación."
+}

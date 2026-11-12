@@ -30,6 +30,7 @@ jobs:
         id: incorporate
         run: |
           python scripts/incorporar_encuestas.py --report monitor-output
+          pip install lxml==6.1.1
           python -m unittest discover -s tests -p 'test_*.py' -v
           node scripts/export-csv.mjs
           npm test

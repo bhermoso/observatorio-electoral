@@ -1,3 +1,5 @@
+Actualización 12-11-2026: ya existe evaluación nacional parcial de 2011, 2015, 2016, 2019A/2019N y 2023 en `validacion/`. La validación del simulador completo y las bases provinciales históricas homologadas siguen sin estar resueltas; no usar el mapa de 2023 para fingirlas. Véase `docs/consolidacion-cientifica.md`.
+
 # Pendientes de verificación (pistas, no datos)
 
 Localizadas el 31-oct-2026 con el buscador; desde la sesión no se pudo abrir ningún original. No se incorporan a `data/` hasta contrastarlas con el documento del instituto o del medio (`docs/poll-archive.md`).

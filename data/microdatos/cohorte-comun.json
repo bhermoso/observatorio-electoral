@@ -1,0 +1,699 @@
+{
+  "esquema": 1,
+  "naturaleza": "contrastes_controlados_agregados_no_causales",
+  "entrada": "data/microdatos/cubo_decisiones_cis.json",
+  "sha256": "34d9c837bb37c0dcc286c50d12484593df7d47c240314c6bf6eb0879d68fbf5f",
+  "elegibilidad": "Mismas entrevistas con PESO admisible y PROBVOTO explícita 0–10 en cada estudio. Sin filtrar por recuerdo.",
+  "elecciones_con_resultado_observable": 1,
+  "estudios_historicos": [
+    "3411",
+    "3415"
+  ],
+  "estudio_actual_no_evaluable": "3582",
+  "participantes_exactos": null,
+  "n_efectivo": null,
+  "limitaciones": [
+    "El cubo no conserva n de PROBVOTO válida ni suma de pesos cuadrados; no se inventan n ni Kish.",
+    "Directa y voto+simpatía cambian respuestas clasificadas como candidatura; se muestran bases totales, de candidaturas y el término algebraico de denominador.",
+    "Recuerdo, transferencias e indecisos no son aislables con este cubo. Requieren cruces individuales o un cubo ampliado y homologación por ciclo.",
+    "Dos estudios de 2023 no son dos elecciones. La receta adaptada de 2019 no es un contraste de componentes homologado.",
+    "No se incorpora ninguna de estas recetas al pronóstico principal."
+  ],
+  "estudios": {
+    "3411": {
+      "escenarios": {
+        "0_peso": {
+          "base_total": 29103.839,
+          "base_candidaturas": 22950.27,
+          "masa": {
+            "PSOE": 7177.866,
+            "PP": 7388.035,
+            "VOX": 2570.043,
+            "SUMAR": 3694.5339999999997,
+            "OTROS": 2119.792,
+            "NO_CANDIDATURA": 6153.5689999999995
+          },
+          "porcentaje_total": {
+            "PSOE": 24.66295254038479,
+            "PP": 25.385087513712538,
+            "VOX": 8.830597915278462,
+            "SUMAR": 12.694318436822028,
+            "OTROS": 7.2835477134133395,
+            "NO_CANDIDATURA": 21.143495880388834
+          },
+          "porcentaje_candidaturas": {
+            "PSOE": 31.275736625320746,
+            "PP": 32.19149491487464,
+            "VOX": 11.198312699589156,
+            "SUMAR": 16.097997975622942,
+            "OTROS": 9.236457784592512
+          }
+        },
+        "0_participacion": {
+          "base_total": 26526.445,
+          "base_candidaturas": 21728.220999999998,
+          "masa": {
+            "PSOE": 6836.804,
+            "PP": 7068.183,
+            "VOX": 2432.874,
+            "SUMAR": 3496.658,
+            "OTROS": 1893.702,
+            "NO_CANDIDATURA": 4798.224
+          },
+          "porcentaje_total": {
+            "PSOE": 25.773540329282724,
+            "PP": 26.645798183661626,
+            "VOX": 9.171504134836008,
+            "SUMAR": 13.18178142604484,
+            "OTROS": 7.1389211784692606,
+            "NO_CANDIDATURA": 18.088454747705544
+          },
+          "porcentaje_candidaturas": {
+            "PSOE": 31.46508865129824,
+            "PP": 32.52996644318005,
+            "VOX": 11.196839354680716,
+            "SUMAR": 16.092702665349364,
+            "OTROS": 8.71540288549164
+          }
+        },
+        "1_peso": {
+          "base_total": 29103.84,
+          "base_candidaturas": 25861.29,
+          "masa": {
+            "PSOE": 8037.624,
+            "PP": 7930.929,
+            "VOX": 2733.933,
+            "SUMAR": 4378.748,
+            "OTROS": 2780.056,
+            "NO_CANDIDATURA": 3242.55
+          },
+          "porcentaje_total": {
+            "PSOE": 27.617056718288723,
+            "PP": 27.250455609981366,
+            "VOX": 9.39371917932479,
+            "SUMAR": 15.045258632537834,
+            "OTROS": 9.55219654863413,
+            "NO_CANDIDATURA": 11.141313311233157
+          },
+          "porcentaje_candidaturas": {
+            "PSOE": 31.07974892203753,
+            "PP": 30.667182495536764,
+            "VOX": 10.571526014363553,
+            "SUMAR": 16.931668915201055,
+            "OTROS": 10.749873652861089
+          }
+        },
+        "1_participacion": {
+          "base_total": 26526.444000000003,
+          "base_candidaturas": 24138.092000000004,
+          "masa": {
+            "PSOE": 7539.7390000000005,
+            "PP": 7530.3150000000005,
+            "VOX": 2567.0040000000004,
+            "SUMAR": 4085.1600000000003,
+            "OTROS": 2415.874,
+            "NO_CANDIDATURA": 2388.352
+          },
+          "porcentaje_total": {
+            "PSOE": 28.42348186586939,
+            "PP": 28.387955053455332,
+            "VOX": 9.677150846151862,
+            "SUMAR": 15.40033032697485,
+            "OTROS": 9.107417488751977,
+            "NO_CANDIDATURA": 9.003664418796577
+          },
+          "porcentaje_candidaturas": {
+            "PSOE": 31.235853272909885,
+            "PP": 31.196811247550134,
+            "VOX": 10.634659939153433,
+            "SUMAR": 16.92412142600169,
+            "OTROS": 10.008554114384845
+          }
+        }
+      },
+      "comparaciones": [
+        {
+          "componente": "simpatia_peso",
+          "base": "0_peso",
+          "alternativa": "1_peso",
+          "descomposicion": {
+            "PSOE": {
+              "cambio_total_pp": 2.9541041779039325,
+              "cambio_candidaturas_pp": -0.19598770328321535,
+              "termino_numerador_pp": 3.7461781495381095,
+              "termino_denominador_pp": -3.9421658528213284
+            },
+            "PP": {
+              "cambio_total_pp": 1.8653680962688277,
+              "cambio_candidaturas_pp": -1.5243124193378748,
+              "termino_numerador_pp": 2.3655233685703925,
+              "termino_denominador_pp": -3.889835787908268
+            },
+            "VOX": {
+              "cambio_total_pp": 0.5631212640463286,
+              "cambio_candidaturas_pp": -0.6267866852256034,
+              "termino_numerador_pp": 0.7141092457735785,
+              "termino_denominador_pp": -1.3408959309991824
+            },
+            "SUMAR": {
+              "cambio_total_pp": 2.350940195715806,
+              "cambio_candidaturas_pp": 0.8336709395781128,
+              "termino_numerador_pp": 2.981289544741739,
+              "termino_denominador_pp": -2.147618605163626
+            },
+            "OTROS": {
+              "cambio_total_pp": 2.268648835220791,
+              "cambio_candidaturas_pp": 1.5134158682685772,
+              "termino_numerador_pp": 2.876933473985274,
+              "termino_denominador_pp": -1.3635176057166956
+            }
+          }
+        },
+        {
+          "componente": "participacion_directa",
+          "base": "0_peso",
+          "alternativa": "0_participacion",
+          "descomposicion": {
+            "PSOE": {
+              "cambio_total_pp": 1.1105877888979343,
+              "cambio_candidaturas_pp": 0.18935202597749523,
+              "termino_numerador_pp": -1.486091449033061,
+              "termino_denominador_pp": 1.6754434750105514
+            },
+            "PP": {
+              "cambio_total_pp": 1.2607106699490878,
+              "cambio_candidaturas_pp": 0.33847152830541205,
+              "termino_numerador_pp": -1.3936742356408,
+              "termino_denominador_pp": 1.73214576394621
+            },
+            "VOX": {
+              "cambio_total_pp": 0.34090621955754585,
+              "cambio_candidaturas_pp": -0.0014733449084403105,
+              "termino_numerador_pp": -0.5976792429892995,
+              "termino_denominador_pp": 0.5962058980808604
+            },
+            "SUMAR": {
+              "cambio_total_pp": 0.48746298922281106,
+              "cambio_candidaturas_pp": -0.005295310273577769,
+              "termino_numerador_pp": -0.862194649561856,
+              "termino_denominador_pp": 0.8568993392882762
+            },
+            "OTROS": {
+              "cambio_total_pp": -0.14462653494407895,
+              "cambio_candidaturas_pp": -0.5210548991008714,
+              "termino_numerador_pp": -0.9851300224354655,
+              "termino_denominador_pp": 0.4640751233345919
+            }
+          }
+        },
+        {
+          "componente": "participacion_simpatia",
+          "base": "1_peso",
+          "alternativa": "1_participacion",
+          "descomposicion": {
+            "PSOE": {
+              "cambio_total_pp": 0.8064251475806685,
+              "cambio_candidaturas_pp": 0.1561043508723543,
+              "termino_numerador_pp": -1.9252133207585518,
+              "termino_denominador_pp": 2.0813176716309068
+            },
+            "PP": {
+              "cambio_total_pp": 1.137499443473967,
+              "cambio_candidaturas_pp": 0.5296287520133696,
+              "termino_numerador_pp": -1.5490874585142487,
+              "termino_denominador_pp": 2.0787162105276176
+            },
+            "VOX": {
+              "cambio_total_pp": 0.283431666827072,
+              "cambio_candidaturas_pp": 0.06313392478988078,
+              "termino_numerador_pp": -0.6454782418046418,
+              "termino_denominador_pp": 0.7086121665945232
+            },
+            "SUMAR": {
+              "cambio_total_pp": 0.35507169443701514,
+              "cambio_candidaturas_pp": -0.007547489199364321,
+              "termino_numerador_pp": -1.1352411267960696,
+              "termino_denominador_pp": 1.1276936375967013
+            },
+            "OTROS": {
+              "cambio_total_pp": -0.44477905988215305,
+              "cambio_candidaturas_pp": -0.7413195384762439,
+              "termino_numerador_pp": -1.40821281537,
+              "termino_denominador_pp": 0.6668932768937551
+            }
+          }
+        }
+      ]
+    },
+    "3415": {
+      "escenarios": {
+        "0_peso": {
+          "base_total": 8767.253,
+          "base_candidaturas": 6618.639000000001,
+          "masa": {
+            "PSOE": 2225.1639999999998,
+            "PP": 2081.732,
+            "VOX": 747.6850000000001,
+            "SUMAR": 979.2479999999999,
+            "OTROS": 584.81,
+            "NO_CANDIDATURA": 2148.614
+          },
+          "porcentaje_total": {
+            "PSOE": 25.380401364030437,
+            "PP": 23.744404319117972,
+            "VOX": 8.528155854519083,
+            "SUMAR": 11.169382245499245,
+            "OTROS": 6.670390371989948,
+            "NO_CANDIDATURA": 24.507265844843303
+          },
+          "porcentaje_candidaturas": {
+            "PSOE": 33.61966108137941,
+            "PP": 31.452569025142477,
+            "VOX": 11.296657817415332,
+            "SUMAR": 14.79530761535717,
+            "OTROS": 8.83580446070559
+          }
+        },
+        "0_participacion": {
+          "base_total": 8137.096,
+          "base_candidaturas": 6389.7119999999995,
+          "masa": {
+            "PSOE": 2152.239,
+            "PP": 2012.657,
+            "VOX": 722.973,
+            "SUMAR": 953.544,
+            "OTROS": 548.299,
+            "NO_CANDIDATURA": 1747.384
+          },
+          "porcentaje_total": {
+            "PSOE": 26.449718671132796,
+            "PP": 24.734340113475373,
+            "VOX": 8.884901935530808,
+            "SUMAR": 11.718480401361862,
+            "OTROS": 6.738263872025105,
+            "NO_CANDIDATURA": 21.474295006474055
+          },
+          "porcentaje_candidaturas": {
+            "PSOE": 33.68287960396337,
+            "PP": 31.498399301877768,
+            "VOX": 11.31464141106829,
+            "SUMAR": 14.923113905603257,
+            "OTROS": 8.580965777487311
+          }
+        },
+        "1_peso": {
+          "base_total": 8767.252,
+          "base_candidaturas": 7433.1630000000005,
+          "masa": {
+            "PSOE": 2504.711,
+            "PP": 2267.758,
+            "VOX": 810.1610000000001,
+            "SUMAR": 1124.904,
+            "OTROS": 725.629,
+            "NO_CANDIDATURA": 1334.089
+          },
+          "porcentaje_total": {
+            "PSOE": 28.568940415993513,
+            "PP": 25.8662349388383,
+            "VOX": 9.240763240294678,
+            "SUMAR": 12.830747878582706,
+            "OTROS": 8.276584270647177,
+            "NO_CANDIDATURA": 15.216729255643614
+          },
+          "porcentaje_candidaturas": {
+            "PSOE": 33.69643582415722,
+            "PP": 30.508654256606505,
+            "VOX": 10.899276660554868,
+            "SUMAR": 15.13358445119527,
+            "OTROS": 9.762048807486128
+          }
+        },
+        "1_participacion": {
+          "base_total": 8137.096,
+          "base_candidaturas": 7037.987999999999,
+          "masa": {
+            "PSOE": 2371.847,
+            "PP": 2172.7799999999997,
+            "VOX": 765.511,
+            "SUMAR": 1079.229,
+            "OTROS": 648.621,
+            "NO_CANDIDATURA": 1099.108
+          },
+          "porcentaje_total": {
+            "PSOE": 29.14856848192525,
+            "PP": 26.702155166904753,
+            "VOX": 9.407668288539302,
+            "SUMAR": 13.263073214326095,
+            "OTROS": 7.971160718762566,
+            "NO_CANDIDATURA": 13.507374129542038
+          },
+          "porcentaje_candidaturas": {
+            "PSOE": 33.70064001245811,
+            "PP": 30.872175400128558,
+            "VOX": 10.876844348129039,
+            "SUMAR": 15.334339870997225,
+            "OTROS": 9.216000368287073
+          }
+        }
+      },
+      "comparaciones": [
+        {
+          "componente": "simpatia_peso",
+          "base": "0_peso",
+          "alternativa": "1_peso",
+          "descomposicion": {
+            "PSOE": {
+              "cambio_total_pp": 3.188539051963076,
+              "cambio_candidaturas_pp": 0.0767747427778076,
+              "termino_numerador_pp": 4.2236326833960876,
+              "termino_denominador_pp": -4.146857940618282
+            },
+            "PP": {
+              "cambio_total_pp": 2.1218306197203276,
+              "cambio_candidaturas_pp": -0.9439147685359721,
+              "termino_numerador_pp": 2.8106382596180244,
+              "termino_denominador_pp": -3.7545530281539996
+            },
+            "VOX": {
+              "cambio_total_pp": 0.7126073857755948,
+              "cambio_candidaturas_pp": -0.3973811568604635,
+              "termino_numerador_pp": 0.9439402874216284,
+              "termino_denominador_pp": -1.341321444282094
+            },
+            "SUMAR": {
+              "cambio_total_pp": 1.6613656330834612,
+              "cambio_candidaturas_pp": 0.33827683583809964,
+              "termino_numerador_pp": 2.2006941306211147,
+              "termino_denominador_pp": -1.8624172947830178
+            },
+            "OTROS": {
+              "cambio_total_pp": 1.6061938986572288,
+              "cambio_candidaturas_pp": 0.9262443467805372,
+              "termino_numerador_pp": 2.1276126406048137,
+              "termino_denominador_pp": -1.201368293824279
+            }
+          }
+        },
+        {
+          "componente": "participacion_directa",
+          "base": "0_peso",
+          "alternativa": "0_participacion",
+          "descomposicion": {
+            "PSOE": {
+              "cambio_total_pp": 1.0693173071023594,
+              "cambio_candidaturas_pp": 0.06321852258395921,
+              "termino_numerador_pp": -1.1018126234109418,
+              "termino_denominador_pp": 1.1650311459949005
+            },
+            "PP": {
+              "cambio_total_pp": 0.9899357943574003,
+              "cambio_candidaturas_pp": 0.045830276735291164,
+              "termino_numerador_pp": -1.0436435647872626,
+              "termino_denominador_pp": 1.089473841522553
+            },
+            "VOX": {
+              "cambio_total_pp": 0.35674608101172467,
+              "cambio_candidaturas_pp": 0.017983593652958874,
+              "termino_numerador_pp": -0.37336981213207276,
+              "termino_denominador_pp": 0.3913534057850318
+            },
+            "SUMAR": {
+              "cambio_total_pp": 0.5490981558626178,
+              "cambio_candidaturas_pp": 0.12780629024608636,
+              "termino_numerador_pp": -0.3883577877566664,
+              "termino_denominador_pp": 0.5161640780027503
+            },
+            "OTROS": {
+              "cambio_total_pp": 0.06787350003515691,
+              "cambio_candidaturas_pp": -0.2548386832182796,
+              "termino_numerador_pp": -0.5516390907556669,
+              "termino_denominador_pp": 0.2968004075373868
+            }
+          }
+        },
+        {
+          "componente": "participacion_simpatia",
+          "base": "1_peso",
+          "alternativa": "1_participacion",
+          "descomposicion": {
+            "PSOE": {
+              "cambio_total_pp": 0.5796280659317361,
+              "cambio_candidaturas_pp": 0.0042041883008892,
+              "termino_numerador_pp": -1.7874490307827176,
+              "termino_denominador_pp": 1.791653219083607
+            },
+            "PP": {
+              "cambio_total_pp": 0.8359202280664526,
+              "cambio_candidaturas_pp": 0.36352114352205334,
+              "termino_numerador_pp": -1.2777602213216643,
+              "termino_denominador_pp": 1.6412813648437183
+            },
+            "VOX": {
+              "cambio_total_pp": 0.16690504824462415,
+              "cambio_candidaturas_pp": -0.022432312425829437,
+              "termino_numerador_pp": -0.6006864103477899,
+              "termino_denominador_pp": 0.5782540979219616
+            },
+            "SUMAR": {
+              "cambio_total_pp": 0.43232533574338916,
+              "cambio_candidaturas_pp": 0.2007554198019541,
+              "termino_numerador_pp": -0.6144759640007887,
+              "termino_denominador_pp": 0.815231383802742
+            },
+            "OTROS": {
+              "cambio_total_pp": -0.3054235518846111,
+              "cambio_candidaturas_pp": -0.5460484391990548,
+              "termino_numerador_pp": -1.0360058026441776,
+              "termino_denominador_pp": 0.48995736344512447
+            }
+          }
+        }
+      ]
+    },
+    "3582": {
+      "escenarios": {
+        "0_peso": {
+          "base_total": 5007.512,
+          "base_candidaturas": 3504.8419999999996,
+          "masa": {
+            "PSOE": 1269.915,
+            "PP": 735.763,
+            "VOX": 583.316,
+            "SUMAR": 227.891,
+            "OTROS": 687.957,
+            "NO_CANDIDATURA": 1502.67
+          },
+          "porcentaje_total": {
+            "PSOE": 25.360198837266893,
+            "PP": 14.693184958917723,
+            "VOX": 11.648818814612927,
+            "SUMAR": 4.550982603736147,
+            "OTROS": 13.738499278683706,
+            "NO_CANDIDATURA": 30.008315506782612
+          },
+          "porcentaje_candidaturas": {
+            "PSOE": 36.23315972588779,
+            "PP": 20.99275801876376,
+            "VOX": 16.643146823736995,
+            "SUMAR": 6.5021761323334974,
+            "OTROS": 19.62875929927797
+          }
+        },
+        "0_participacion": {
+          "base_total": 4424.829000000001,
+          "base_candidaturas": 3343.9340000000007,
+          "masa": {
+            "PSOE": 1224.1060000000002,
+            "PP": 714.9250000000001,
+            "VOX": 548.3330000000001,
+            "SUMAR": 220.38400000000001,
+            "OTROS": 636.186,
+            "NO_CANDIDATURA": 1080.895
+          },
+          "porcentaje_total": {
+            "PSOE": 27.664481497477077,
+            "PP": 16.157121552041897,
+            "VOX": 12.392185099130385,
+            "SUMAR": 4.9806218500195145,
+            "OTROS": 14.377640356271394,
+            "NO_CANDIDATURA": 24.427949645059726
+          },
+          "porcentaje_candidaturas": {
+            "PSOE": 36.606763171761166,
+            "PP": 21.379758093311647,
+            "VOX": 16.397841584193948,
+            "SUMAR": 6.590560698865467,
+            "OTROS": 19.02507645186777
+          }
+        },
+        "1_peso": {
+          "base_total": 5007.513,
+          "base_candidaturas": 4070.315,
+          "masa": {
+            "PSOE": 1438.363,
+            "PP": 850.9250000000001,
+            "VOX": 615.2629999999999,
+            "SUMAR": 302.133,
+            "OTROS": 863.631,
+            "NO_CANDIDATURA": 937.198
+          },
+          "porcentaje_total": {
+            "PSOE": 28.72409916858928,
+            "PP": 16.99296636873434,
+            "VOX": 12.28679785753926,
+            "SUMAR": 6.033593921773144,
+            "OTROS": 17.246705100915364,
+            "NO_CANDIDATURA": 18.715837582448614
+          },
+          "porcentaje_candidaturas": {
+            "PSOE": 35.33787925504537,
+            "PP": 20.905630153931575,
+            "VOX": 15.115857126536886,
+            "SUMAR": 7.422840738370372,
+            "OTROS": 21.21779272611579
+          }
+        },
+        "1_participacion": {
+          "base_total": 4424.829,
+          "base_candidaturas": 3794.1049999999996,
+          "masa": {
+            "PSOE": 1352.9499999999998,
+            "PP": 818.223,
+            "VOX": 566.7629999999999,
+            "SUMAR": 284.844,
+            "OTROS": 771.325,
+            "NO_CANDIDATURA": 630.7239999999999
+          },
+          "porcentaje_total": {
+            "PSOE": 30.57632283643051,
+            "PP": 18.491629846034726,
+            "VOX": 12.808698370038705,
+            "SUMAR": 6.437401309745529,
+            "OTROS": 17.431747079943655,
+            "NO_CANDIDATURA": 14.254200557806866
+          },
+          "porcentaje_candidaturas": {
+            "PSOE": 35.6592661510422,
+            "PP": 21.565639327324888,
+            "VOX": 14.93798932818148,
+            "SUMAR": 7.507541304207448,
+            "OTROS": 20.329563889243975
+          }
+        }
+      },
+      "comparaciones": [
+        {
+          "componente": "simpatia_peso",
+          "base": "0_peso",
+          "alternativa": "1_peso",
+          "descomposicion": {
+            "PSOE": {
+              "cambio_total_pp": 3.3639003313223874,
+              "cambio_candidaturas_pp": -0.8952804708424154,
+              "termino_numerador_pp": 4.8061510333418775,
+              "termino_denominador_pp": -5.701431504184294
+            },
+            "PP": {
+              "cambio_total_pp": 2.2997814098166174,
+              "cambio_candidaturas_pp": -0.08712786483218338,
+              "termino_numerador_pp": 3.285797191428317,
+              "termino_denominador_pp": -3.3729250562604984
+            },
+            "VOX": {
+              "cambio_total_pp": 0.6379790429263323,
+              "cambio_candidaturas_pp": -1.5272896972001089,
+              "termino_numerador_pp": 0.9115104190146058,
+              "termino_denominador_pp": -2.438800116214711
+            },
+            "SUMAR": {
+              "cambio_total_pp": 1.482611318036997,
+              "cambio_candidaturas_pp": 0.9206646060368744,
+              "termino_numerador_pp": 2.1182695254165522,
+              "termino_denominador_pp": -1.1976049193796787
+            },
+            "OTROS": {
+              "cambio_total_pp": 3.5082058222316572,
+              "cambio_candidaturas_pp": 1.589033426837819,
+              "termino_numerador_pp": 5.012322952076014,
+              "termino_denominador_pp": -3.4232895252381943
+            }
+          }
+        },
+        {
+          "componente": "participacion_directa",
+          "base": "0_peso",
+          "alternativa": "0_participacion",
+          "descomposicion": {
+            "PSOE": {
+              "cambio_total_pp": 2.304282660210184,
+              "cambio_candidaturas_pp": 0.37360344587337835,
+              "termino_numerador_pp": -1.307020402060913,
+              "termino_denominador_pp": 1.6806238479342885
+            },
+            "PP": {
+              "cambio_total_pp": 1.4639365931241741,
+              "cambio_candidaturas_pp": 0.3870000745478883,
+              "termino_numerador_pp": -0.5945489126185993,
+              "termino_denominador_pp": 0.9815489871664881
+            },
+            "VOX": {
+              "cambio_total_pp": 0.7433662845174585,
+              "cambio_candidaturas_pp": -0.24530523954304684,
+              "termino_numerador_pp": -0.9981334393961254,
+              "termino_denominador_pp": 0.7528281998530784
+            },
+            "SUMAR": {
+              "cambio_total_pp": 0.4296392462833678,
+              "cambio_candidaturas_pp": 0.08838456653196936,
+              "termino_numerador_pp": -0.21418939855205962,
+              "termino_denominador_pp": 0.30257396508402884
+            },
+            "OTROS": {
+              "cambio_total_pp": 0.6391410775876878,
+              "cambio_candidaturas_pp": -0.6036828474102016,
+              "termino_numerador_pp": -1.4771279275927407,
+              "termino_denominador_pp": 0.8734450801825359
+            }
+          }
+        },
+        {
+          "componente": "participacion_simpatia",
+          "base": "1_peso",
+          "alternativa": "1_participacion",
+          "descomposicion": {
+            "PSOE": {
+              "cambio_total_pp": 1.8522236678412298,
+              "cambio_candidaturas_pp": 0.3213868959968309,
+              "termino_numerador_pp": -2.098437098848621,
+              "termino_denominador_pp": 2.419823994845458
+            },
+            "PP": {
+              "cambio_total_pp": 1.4986634773003864,
+              "cambio_candidaturas_pp": 0.6600091733933127,
+              "termino_numerador_pp": -0.8034267618108208,
+              "termino_denominador_pp": 1.4634359352041357
+            },
+            "VOX": {
+              "cambio_total_pp": 0.521900512499446,
+              "cambio_candidaturas_pp": -0.17786779835540578,
+              "termino_numerador_pp": -1.191553970638636,
+              "termino_denominador_pp": 1.0136861722832302
+            },
+            "SUMAR": {
+              "cambio_total_pp": 0.40380738797238536,
+              "cambio_candidaturas_pp": 0.08470056583707652,
+              "termino_numerador_pp": -0.424758280378791,
+              "termino_denominador_pp": 0.5094588462158688
+            },
+            "OTROS": {
+              "cambio_total_pp": 0.18504197902829134,
+              "cambio_candidaturas_pp": -0.8882288368718143,
+              "termino_numerador_pp": -2.2677851714179353,
+              "termino_denominador_pp": 1.3795563345461201
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -16,6 +16,7 @@ from .motor.tendencia import ajustar
 from .motor.inventario import resumir as inventario_encuestas
 from .motor.validacion_publica import auditar_historico
 from .motor.geografia_publica import estado_geografico
+from .motor.proveniencia import manifiesto_operativo, estado_evaluacion
 
 ELECCION = date(2026, 11, 29)
 URDA = date(2026, 10, 28)
@@ -45,7 +46,17 @@ def main():
     ap.add_argument("--desde", type=date.fromisoformat, default=date(2026, 10, 1), help="inicio del historial")
     a = ap.parse_args()
     hoy = a.hoy
-    enc = [e for e in F.todas() if e["campo_fin"] <= hoy and F.publicada_antes(e, hoy)]
+    enc_total = F.todas()
+    enc = [e for e in enc_total if e["campo_fin"] <= hoy and F.publicada_antes(e, hoy, estricta=True)]
+    excluidas_temporales = []
+    for e in enc_total:
+        motivo = ("campo_posterior_al_corte" if e["campo_fin"] > hoy else
+                  "publicacion_no_documentada" if not e.get("publicacion") or e.get("fecha_publicacion_desconocida") else
+                  "campo_imputado" if e.get("campo_supuesto") else
+                  "publicacion_posterior_al_corte" if e["publicacion"] > hoy else None)
+        if motivo:
+            excluidas_temporales.append(dict(estudio=e["estudio"], casa=e["casa"], motivo=motivo,
+                                            campo_fin=str(e["campo_fin"]), publicacion=str(e.get("publicacion")) if e.get("publicacion") else None))
     res23 = F.resultado_23j()
     L = []
     w = L.append
@@ -169,7 +180,7 @@ def main():
     otros = []
     por_fecha = {h["fecha"]: h for h in hist}
     for ag in F.otros_agregadores():
-        h = por_fecha.get(str(ag["fecha"])) or (hist[-1] if hist else None)
+        h = por_fecha.get(str(ag["fecha"]))
         otros.append(dict(ag, motor=dict(fecha=h["fecha"], voto={p: h["voto"][p][0] for p in h["voto"]},
                                           escanos={p: h["escanos"][p][0] for p in ("PP", "PSOE", "VOX")}) if h else None))
     if otros:
@@ -214,7 +225,8 @@ def main():
         pv = E_[:, P_.index("PP")] + E_[:, P_.index("VOX")]
         dif = V_[:, P_.index("PP")] - V_[:, P_.index("PSOE")]
         sens.append(dict(rho=rho, p_mayoria=float(np.mean(pv >= 176)),
-                         pp_primero=float(np.mean(E_.argmax(1) == P_.index("PP"))),
+                         primero={p:float(PR.frecuencias_primero(E_)["exclusivo"][j]) for j,p in enumerate(P_)},
+                         pp_primero=float(PR.frecuencias_primero(E_)["exclusivo"][P_.index("PP")]),
                          ppvox=(float(np.median(pv)), float(np.percentile(pv, 5)), float(np.percentile(pv, 95))),
                          dif=(float(np.median(dif)), float(np.percentile(dif, 5)), float(np.percentile(dif, 95)))))
     w("### Sensibilidad: error común entre bloques\n")
@@ -267,7 +279,8 @@ def main():
             P_, E_ = sm["partidos"], sm["escanos"]
             pv = E_[:, P_.index("PP")] + E_[:, P_.index("VOX")]
             sens_ind.append(dict(industria=b, variante=var, p_mayoria=float(np.mean(pv >= 176)),
-                                 pp_primero=float(np.mean(E_.argmax(1) == P_.index("PP"))),
+                                 primero={p:float(PR.frecuencias_primero(E_)["exclusivo"][j]) for j,p in enumerate(P_)},
+                         pp_primero=float(PR.frecuencias_primero(E_)["exclusivo"][P_.index("PP")]),
                                  ppvox=(float(np.median(pv)), float(np.percentile(pv, 5)), float(np.percentile(pv, 95)))))
     w(f"\n**Sensibilidad al tamaño del error de industria.** Para que el intervalo del 90 % hubiera contenido los 16 casos "
       f"de la retroprueba, el error de industria tendría que haber sido de {b23:.1f} pp para un partido del 25 % "
@@ -345,7 +358,12 @@ def main():
       "elegido, cada 14 días; percentil 95 del valor absoluto):\n")
     fechas = [date(2020, 6, 1) + timedelta(days=14 * i) for i in range(60)]
     fechas = [f for f in fechas if abs((f - CASADO).days) > 75 and f < date(2022, 11, 1)]
-    prev_all = [e for e in enc if e["ciclo"] == "2019-23"]
+    # Archivo descriptivo: la publicación desconocida impide usarlo en un
+    # backtest temporal, pero no borra observaciones de campo del diagnóstico
+    # retrospectivo de acontecimientos. Nunca entra en el principal.
+    prev_all = [e for e in enc_total if e["ciclo"] == "2019-23" and e["campo_fin"] <= hoy]
+    w("Archivo de acontecimientos: incluye observaciones históricas sin publicación fechada; "
+      "uso descriptivo retrospectivo, excluido de backtests temporales y del principal.\n")
     umbrales = {}
     for p in ("PP", "PSOE", "VOX"):
         v = EV.placebos(prev_all, p, fechas)
@@ -367,7 +385,7 @@ def main():
               "—" if x["distinguible"] is None else ("sí" if x["distinguible"] else "no, dentro del ruido")]
              for x in esc_urda]))
     w(f"\n«Se notaría» compara el cambio del PSOE con su umbral de detección ({umbrales.get('PSOE', 0):.1f} pp).\n")
-    w("**Validación del método** con un suceso conocido — crisis Casado–Ayuso (17-feb-2022):\n")
+    w("**Diagnóstico descriptivo, no validación causal**, con un suceso conocido — crisis Casado–Ayuso (17-feb-2022):\n")
     m_c, det_c = EV.pares(prev_all, CASADO, ["PP", "PSOE", "VOX"])
     filas = []
     for p in ("PP", "PSOE", "VOX"):
@@ -377,7 +395,7 @@ def main():
                       "sí" if abs(r[14][0]) > umbrales[p] else "no"])
     w(tabla(["Partido", "Pares por casa", "Salto inmediato", "Cambio a 14 días", "Umbral placebo",
              "Distinguible"], filas))
-    w("\nEl método detecta la subida de Vox; la caída del PP (real, de 2 a 4 puntos según la casa) queda en el "
+    w("\nLas diferencias observadas coinciden temporalmente con el suceso; el contraste no identifica su causa. La variación del PP queda en el "
       "límite porque el PP tuvo grandes oscilaciones en ese ciclo, lo que eleva su umbral.\n")
 
     # ---------- Limitaciones ----------
@@ -389,7 +407,7 @@ def main():
         w("Para comparar en igualdad de condiciones, el motor se ejecuta con los datos que existían en la fecha "
           "de cada referencia (encuestas publicadas y con campo terminado hasta ese día), variante `consenso_privadas`.\n")
     for ref in refs:
-        enc_d = [e for e in actuales if e["campo_fin"] <= ref["fecha"] and F.publicada_antes(e, ref["fecha"])]
+        enc_d = [e for e in actuales if e["campo_fin"] <= ref["fecha"] and F.publicada_antes(e, ref["fecha"], estricta=True)]
         if len({e["casa"] for e in enc_d}) < 2:
             continue
         aj_d = PR.estimar(enc_d, inicio, ref["fecha"], "consenso_privadas", errores_23j=err)
@@ -492,7 +510,7 @@ def main():
         externos=dict(capa=4, definicion="Promedios y modelos de otros productores. No entran en el pronóstico ni en los promedios."))
 
     w("## 6. Límites conocidos\n")
-    w("- Un solo precedente evaluado (23J). Faltan 2015, 2016 y 2019 (requieren acceso a Wikipedia o a las fuentes originales).\n"
+    w("- El simulador completo solo tiene diagnóstico retrospectivo 23J. La evaluación nacional parcial de seis elecciones (PP/PSOE) se publica aparte; no valida la geografía ni las mayorías.\n"
       "- Ciclo 2023-26 con pocas encuestas antes de octubre de 2026: la tendencia previa es poco informativa.\n"
       "- Algunas encuestas finales de 2023 están incompletas en la fuente de terceros (marcadas).\n"
       "- Partidos regionales: pocas casas publican su voto; sus sesgos están poco identificados.\n"
@@ -502,8 +520,10 @@ def main():
     open(os.path.join(SALIDA, "informe.md"), "w", encoding="utf-8").write("\n".join(L) + "\n")
     json.dump(dict(actualizacion=dict(recalculado=datetime.now(timezone.utc).isoformat(),
                                       archivo_sha256=hashlib.sha256((Path(F.RAIZ)/"data/polls.json").read_bytes()).hexdigest(),
-                                      dependencias_sha256=RG.firma_dependencias()), corte=hoy.isoformat(), eleccion=ELECCION.isoformat(), version_modelo=RG.VERSION, trazabilidad=auditoria_cocina, sensibilidad_cocina=sensibilidad_cocina, principal={k: princ[k] for k in ('partidos', 'bloques', 'investidura', 'n', 'industria', 'dias', 'sin_encuestas', 'provincias', 'correccion_industria')}, variantes=resumen,
-                   auditoria_fuentes=dict(inventario=inventario_encuestas(enc), excluidas_prensa_sin_verificar=len(provisionals), excluidas_total=len(excluidas), incluidas_2023_26=len(actuales),
+                                      dependencias_sha256=RG.firma_dependencias()), corte=hoy.isoformat(), eleccion=ELECCION.isoformat(), version_modelo=RG.VERSION, reproducibilidad=manifiesto_operativo(actuales, hoy, a.n),
+                   evaluacion_cientifica=estado_evaluacion(), naturaleza_historial="reconstruccion_retrospectiva",
+                   definicion_primero="Frecuencia de primera fuerza exclusiva en escaños; empates excluidos para todas las candidaturas.", trazabilidad=auditoria_cocina, sensibilidad_cocina=sensibilidad_cocina, principal={k: princ[k] for k in ('partidos', 'bloques', 'investidura', 'n', 'industria', 'dias', 'sin_encuestas', 'provincias', 'correccion_industria', 'empate_primero', 'diagnostico_normalizacion')}, variantes=resumen,
+                   auditoria_fuentes=dict(inventario=inventario_encuestas(enc), excluidas_temporales=excluidas_temporales, excluidas_prensa_sin_verificar=len(provisionals), excluidas_total=len(excluidas), incluidas_2023_26=len(actuales),
                                           por_origen={o: sum(1 for e in actuales if e["origen"] == o) for o in sorted({e["origen"] for e in actuales})},
                                           criterio='Puerta de calidad (fuentes.seleccion_pronostico): sin prensa no verificada, sin terceros con campo supuesto, sin terceros solapados con un registro verificado de la misma casa'),
                    capas=capas, entradas=entradas, excluidas=excluidas, externos=externos, corte_anterior=corte_anterior,
