@@ -304,17 +304,17 @@ body>header{background:var(--paper);border-bottom:3px double var(--ink);box-shad
 /* Secuencia de la cocina del modelo: síntesis inicial y auditoría sin pérdida. */
 .pr-chain-figure{margin:15px 0 22px;padding:17px 0 13px;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
 .pr-chain-figure figcaption{font:400 21px/1.35 var(--editorial-serif);margin-bottom:15px;color:var(--ink)}
-.pr-chain-flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
+.pr-chain-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
 .pr-chain-node{position:relative;border-top:3px solid var(--green);padding:12px 9px 8px 0;display:flex;flex-direction:column;gap:7px;min-width:0}
 .pr-chain-node:not(:last-child):after{content:"›";position:absolute;right:-7px;top:9px;color:var(--muted);font-size:22px}
-.pr-chain-node:nth-child(2){border-top-style:dashed;border-top-color:var(--editorial-rule)}
-.pr-chain-node:nth-child(2):after{content:"↝";font-size:16px;opacity:.7}
 .pr-chain-node small{color:var(--muted);font-size:11px;font-weight:650}
 .pr-chain-node strong{color:var(--ink);font:400 clamp(18px,2vw,27px)/1.2 var(--editorial-serif);overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
 .pr-chain-node span{color:var(--muted);font-size:11px;line-height:1.5}
 .pr-chain-figure>.muted{font-size:12px;margin:12px 0 0}
+.pr-chain-reference{padding:10px 12px;border-left:3px dashed var(--editorial-rule);font-size:12px;line-height:1.6;margin:15px 0 8px;color:var(--muted)}
+.pr-chain-reference b,.pr-chain-reference strong{color:var(--ink)}
 .pr-chain-detail{border-top:1px solid var(--line);padding:12px 0;margin:17px 0}
 .pr-chain-detail>summary{cursor:pointer;color:var(--green);font:600 13px/1.5 system-ui,sans-serif}
 .pr-chain-detail[open]>.chain,.pr-chain-detail[open]>div{margin-top:15px}
-@media(max-width:950px){.pr-chain-flow{grid-template-columns:repeat(3,minmax(0,1fr))}.pr-chain-node:nth-child(3):after{display:none}}
-@media(max-width:540px){.pr-chain-flow{grid-template-columns:repeat(2,minmax(0,1fr))}.pr-chain-node:nth-child(2):after,.pr-chain-node:nth-child(4):after{display:none}.pr-chain-node:nth-child(3):after{display:block}.pr-chain-node strong{font-size:20px}}
+@media(max-width:950px){.pr-chain-flow{grid-template-columns:repeat(2,minmax(0,1fr))}.pr-chain-node:nth-child(2):after{display:none}}
+@media(max-width:540px){.pr-chain-node:nth-child(2):after{display:none}.pr-chain-node strong{font-size:20px}}
