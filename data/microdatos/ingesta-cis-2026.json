@@ -2,7 +2,7 @@
   "esquema": 1,
   "fecha_revision": "2026-11-12",
   "naturaleza": "control_de_ingesta_no_serie_de_estimacion_propia",
-  "criterio": "Fichero de datos enlazado no equivale a original descargado, con SHA256 verificado y variables homologadas.",
+  "criterio": "ZIP aportado por usuario, estructura verificada y SHA256 calculado: cuatro estudios con receta común experimental; no implica validación predictiva",
   "estudios": [
     {
       "id": "3567",
@@ -10,10 +10,11 @@
       "campo": "2026-06-01 / 2026-06-04",
       "n": 4024,
       "referencia": "https://www.datoelectoral.es/encuestas",
-      "estado": "original_pendiente_verificacion",
-      "sha256_original": null,
-      "microdatos_procesados": false,
-      "estimacion_propia": null
+      "estado": "original_procesado_experimental",
+      "sha256_original": "2bc9ef65a01cab8c8d4a0964fa9fe1f3d583ff69765cc3c2cabdd7c80a63dc13",
+      "microdatos_procesados": true,
+      "estimacion_propia": "data/microdatos/serie-cis-2026-experimental.json",
+      "verificacion": "ZIP aportado por usuario el 2026-11-12; estructura y variables contrastadas; solo agregados publicados"
     },
     {
       "id": "3571",
@@ -22,10 +23,11 @@
       "n": 4020,
       "referencia": "https://www.cis.es/es/estudios/barometro-de-julio-2026?showModal=true",
       "catalogo": "https://datos.gob.es/es/catalogo/ea0040772-barometro-de-julio-2026",
-      "estado": "enlace_fichero_documentado_original_pendiente",
-      "sha256_original": null,
-      "microdatos_procesados": false,
-      "estimacion_propia": null
+      "estado": "original_procesado_experimental",
+      "sha256_original": "b471e1c42f34f5642ed6ece014f09162803d8c3e145551f8a5cd365045939fca",
+      "microdatos_procesados": true,
+      "estimacion_propia": "data/microdatos/serie-cis-2026-experimental.json",
+      "verificacion": "ZIP aportado por usuario el 2026-11-12; estructura y variables contrastadas; solo agregados publicados"
     },
     {
       "id": "3577",
@@ -34,10 +36,11 @@
       "n": 4042,
       "referencia": "https://www.cis.es/es/estudios/barometro-de-septiembre-2026?showModal=true",
       "catalogo": "https://datos.gob.es/es/catalogo/ea0040772-barometro-de-septiembre-2026",
-      "estado": "enlace_fichero_documentado_original_pendiente",
-      "sha256_original": null,
-      "microdatos_procesados": false,
-      "estimacion_propia": null
+      "estado": "original_procesado_experimental",
+      "sha256_original": "8669fc19f6bc038e823119aacee7a79bc438a7eb95cd6f7206acdce0021f1230",
+      "microdatos_procesados": true,
+      "estimacion_propia": "data/microdatos/serie-cis-2026-experimental.json",
+      "verificacion": "ZIP aportado por usuario el 2026-11-12; estructura y variables contrastadas; solo agregados publicados"
     },
     {
       "id": "3582",
@@ -48,7 +51,8 @@
       "estado": "original_procesado_experimental",
       "sha256_original": "1cfcf43b38ee036bb89dadc7d9b88a70d2098bb2c1a5051921aa517415a00c9f",
       "microdatos_procesados": true,
-      "estimacion_propia": "data/microdatos/cocina_cis_3582.json"
+      "estimacion_propia": "data/microdatos/serie-cis-2026-experimental.json",
+      "verificacion": "ZIP aportado por usuario el 2026-11-12; estructura y variables contrastadas; solo agregados publicados"
     }
   ],
   "admisibilidad": "Solo estudios con SHA256, matriz verificada y codificación homologada pueden alimentar una serie propia; el estudio 3582 sigue no validado predictivamente. Ningún tratamiento experimental se incorpora al Motor 29N."
