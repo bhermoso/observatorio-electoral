@@ -59,3 +59,25 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Comprobar que la versión publicada coincide con este commit
+        env:
+          PAGES_URL: ${{ steps.deployment.outputs.page_url }}
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          # GitHub Pages puede tardar en servir el artefacto nuevo.
+          # No tomar un despliegue aceptado como prueba de versión publicada.
+          for intento in $(seq 1 18); do
+            curl --fail --silent --show-error --location --max-time 15 \
+              "${PAGES_URL%/}/data/estado-publicacion.json?verificacion=${EXPECTED_SHA}" \
+              -o estado-publicacion.json || true
+            if [ -s estado-publicacion.json ] && \
+               node -e 'const f=require("./estado-publicacion.json");process.exit(f.commit===process.env.EXPECTED_SHA?0:1)'; then
+              echo "Despliegue verificado: ${EXPECTED_SHA}"
+              exit 0
+            fi
+            echo "Intento ${intento}: Pages todavía no sirve el commit esperado"
+            sleep 10
+          done
+          echo "::error::Pages no muestra el commit ${EXPECTED_SHA} después de comprobar la URL pública"
+          exit 1
