@@ -25,6 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -37,10 +39,20 @@ jobs:
       # Todas las pruebas Python de scripts (detecta, p. ej., errores de sintaxis en la incorporación).
       - run: python -m unittest discover -s tests -p 'test_*.py' -v
       - run: python -m unittest discover -s modelo/tests -t . -v
-      # Regenera el pronóstico con las encuestas de main y la fecha del día antes de publicar.
-      - run: python -m modelo --n 1500
+      # La puerta rápida solo se abre ante cambios editoriales o de Cocina.
+      # Reutiliza exclusivamente el pronóstico YA PUBLICADO cuando los hashes
+      # de encuestas coinciden y su corte tiene como máximo dos días.
+      # En schedule/manual o ante cualquier duda se recalcula siempre.
+      - name: Comprobar si se puede publicar sin recalcular el motor
+        id: plan
+        run: node scripts/plan-publicacion.mjs
+      - name: Recalcular Motor 29N cuando proceda
+        if: steps.plan.outputs.reuse_model != 'true'
+        run: python -m modelo --n 1500
       - run: python scripts/procesar_microdatos.py
       - run: npm run build
+        env:
+          REUTILIZAR_MODELO: ${{ steps.plan.outputs.reuse_model }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
