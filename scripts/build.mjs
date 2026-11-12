@@ -12,6 +12,14 @@ if(fs.existsSync(output)){
   fs.rmSync(output,{recursive:true,force:true});
 }
 fs.mkdirSync(output,{recursive:true});
+const buildSha=/^[0-9a-f]{40}$/i.test(process.env.GITHUB_SHA||'')?process.env.GITHUB_SHA:null;
+const buildStamp=new Date().toISOString();
+// Solo metadatos de compilación: también están disponibles durante la veda,
+// sin difundir datos electorales ni el pronóstico.
+fs.writeFileSync(path.join(output,'version-publica.json'),JSON.stringify({
+ commit:buildSha,construido:buildStamp,veda:enVeda()
+},null,2)+'\n');
+
 if(enVeda()){
   for(const file of ['index.html','pronostico.html'])fs.writeFileSync(path.join(output,file),AVISO_VEDA);
   fs.writeFileSync(path.join(output,'.nojekyll'),'');
@@ -43,8 +51,8 @@ fs.writeFileSync('dist/data/estado-publicacion.json',JSON.stringify({esquema:1,c
 
 // Identificador de compilación visible: distinguir código confirmado en GitHub de
 // versión realmente entregada por Pages. No modifica la fecha de corte electoral.
-const publishedSha=/^[0-9a-f]{40}$/i.test(process.env.GITHUB_SHA||'')?process.env.GITHUB_SHA:null;
-const buildTime=new Date().toISOString();
+const publishedSha=buildSha;
+const buildTime=buildStamp;
 if(!veda){
  const file='dist/index.html';
  const html=fs.readFileSync(file,'utf8');
