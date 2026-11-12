@@ -16,7 +16,7 @@ test('originales 2019 tienen seis etapas, hashes y muestran mejora de recuerdo',
 test('la entrada al Motor 29N sigue bloqueada y no se publican entrevistas',()=>{
  const html=tablaOriginalesCis2019(data);
  assert.match(html,/NO ADMITIR/);
- assert.match(html,/no constituye validación prospectiva/);
+ assert.match(html,/No es una réplica literal de la receta de 2023/);
  assert.match(renderOriginalesCis2019(),/cocina-originales-2019-tabla/);
  assert.doesNotMatch(JSON.stringify(data),/entrevista_individual/);
  const kitchen=fs.readFileSync('cocina.mjs','utf8');
