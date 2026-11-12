@@ -141,9 +141,10 @@ export function renderAccesos({forecast,polls=[],events=[],references=[]}){
  const ultimaPub=archivo.map(p=>p.published).sort().at(-1);
  const ev=[...events].sort((a,b)=>String(b.date).localeCompare(String(a.date)))[0];
  const ext=[...(forecast?.externos||[])].sort((a,b)=>String(b.fecha).localeCompare(String(a.fecha)))[0];
- const pp=forecast?.principal?.partidos?.PP;
+ const ranking=Object.entries(forecast?.principal?.partidos||{}).filter(([,v])=>Number.isFinite(v?.escanos?.[0])).sort((a,b)=>b[1].escanos[0]-a[1].escanos[0]);
+ const cabeza=ranking[0];
  const items=[
-  ['#pronostico','Pronóstico completo',forecast?`Corte del ${fday(forecast.corte)} · ${forecast.entradas?.length??'—'} estudios`:'No disponible',pp?`PP ${fmt(pp.escanos[0],0)} (${fmt(pp.escanos[1],0)}–${fmt(pp.escanos[2],0)})`:''],
+  ['#pronostico','Pronóstico completo',forecast?`Corte del ${fday(forecast.corte)} · ${forecast.entradas?.length??'—'} estudios`:'No disponible',cabeza?`Primera fuerza estimada: ${name(cabeza[0])} · ${fmt(cabeza[1].escanos[0],0)} escaños`:''],
   ['#encuestas','Encuestas y promedios',`${forecast?.entradas?.length??'—'} en el pronóstico · ${forecast?.excluidas?.length??'—'} fuera`,`${archivo.length} fichas en el archivo verificado${ultimaPub?' · última: '+fday(ultimaPub):''}`],
   ['#contexto','Acontecimientos',`${events.length} registrados`,ev?`${fday(ev.date)} · ${ev.title}`:''],
   ['#cocina','Cocina','De la intención directa a la estimación','Microdatos del CIS y 40dB'],
