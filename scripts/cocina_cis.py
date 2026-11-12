@@ -1,7 +1,8 @@
 """Cocina propia del Observatorio sobre microdatos originales del CIS.
 
 Uso:
-  python -I scripts/cocina_cis.py MD3582.zip [--salida data/microdatos/cocina_cis_3582.json]
+  python -I scripts/cocina_cis.py MD3582.zip [--estudio 3582] [--salida data/microdatos/cocina_cis_3582.json]
+  Estudios compatibles: 3567, 3571, 3577 y 3582 (2026); 3411 y 3415 (2023).
 
 Lee el ZIP oficial del CIS (no se versiona), aplica una receta explícita paso a paso y
 escribe SOLO agregados: ninguna fila de entrevista sale del script.
@@ -18,7 +19,7 @@ Receta (acumulativa; cada paso conserva los anteriores):
      según cómo votan hoy los decididos de su mismo grupo de recuerdo (matriz de transferencias
      observada, con los pesos ya calibrados).
   5. Participación: cada entrevista pesa además PROBVOTO/10 (N.S./N.C. = 0,5).
-El resultado del paso 5 es «CIS 3582 cocinado por el Observatorio».
+El resultado del paso 5 es una serie experimental por estudio, NO pronóstico operativo.
 """
 from __future__ import annotations
 import argparse
@@ -51,6 +52,9 @@ INTENCION_2023 = dict(INTENCION)
 for c in (101, 102, 201, 202, 502, 801, 802, 803, 808, 904, 905, 1502):
     INTENCION_2023[c] = "OTROS"
 ESTUDIOS = {
+    "3567": dict(intencion=INTENCION, recuerdo=RECUERDO, objetivo="2023"),
+    "3571": dict(intencion=INTENCION, recuerdo=RECUERDO, objetivo="2023"),
+    "3577": dict(intencion=INTENCION, recuerdo=RECUERDO, objetivo="2023"),
     "3582": dict(intencion=INTENCION, recuerdo=RECUERDO, objetivo="2023"),
     "3411": dict(intencion=INTENCION_2023, recuerdo=RECUERDO_2019, objetivo="2019"),
     "3415": dict(intencion=INTENCION_2023, recuerdo=RECUERDO_2019, objetivo="2019"),
@@ -218,7 +222,7 @@ def main():
                naturaleza="Cocina propia sobre microdatos individuales. Solo agregados; ninguna entrevista se publica.",
                receta=[p["id"] for p in pasos], pasos=pasos,
                resultado=dict(estimacion=pasos[-1]["estimacion"], n_efectivo=n_eff,
-                              nota="n efectivo de Kish con los pesos finales; es el que se usa como tamaño muestral en el Motor 29N."),
+                              nota="n efectivo de Kish con los pesos finales. Cálculo experimental: NO se introduce en el Motor 29N."),
                limitaciones=["El recuerdo de voto tiene errores propios (olvido, deseabilidad); la calibración los corrige solo en parte.",
                              "La abstención recordada no se calibra: el CIS entrevista a residentes y el censo oficial incluye el CERA.",
                              "Los factores de calibración se recortan a [0,2; 5].",
