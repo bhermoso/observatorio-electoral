@@ -2,6 +2,7 @@ import {renderEvaluacion2019,bindEvaluacion2019} from './evaluacion-2019.mjs';
 import {renderEvaluacionMicrodatos,bindEvaluacionMicrodatos} from './evaluacion-microdatos.mjs';
 import {renderHomologacion2019,bindHomologacion2019} from './homologacion-2019.mjs';
 import {renderCocinaPropia,bindCocinaPropia} from './cocina-propia.mjs';
+import {renderMatrizFuentes,bindMatrizFuentes} from './matriz-microdatos.mjs';
 import {renderLeccion,bindLeccion} from './cocina-leccion.mjs';
 import {renderResultadosCocina,bindResultadosCocina} from './cocina-resultados.mjs';
 import {renderEvidencia40db} from './evidencia-40db.mjs';
@@ -83,7 +84,7 @@ export function renderCocina(){
   `${AUDIT()}${renderContraste40db()}${renderMicrodatos40db()}${renderSocioMetrica()}${COMO()}${RECUERDO()}${renderExperimentoCis()}`)}
  ${cap(5,'cocina-cap4','¿Qué receta acierta?','¿Mejora alguna corrección el resultado cuando se prueba contra votos reales?',
   '<p>La única prueba disponible es el 23J de 2023: encuestas hechas antes, comparadas con los votos contados. Es una sola elección, así que los resultados orientan pero no demuestran.</p>'+LAB_INTRO(),
-  `${renderEvaluacionMicrodatos()}${renderEvidencia40db()}${renderRetrospectiva40db()}${HIST()}${renderEvaluacion2019()}${renderHomologacion2019()}${renderCocinaPropia()}${renderResultadosCocina()}${VALID()}${CONTRIB()}`)}
+  `${renderEvaluacionMicrodatos()}${renderEvidencia40db()}${renderRetrospectiva40db()}${HIST()}${renderEvaluacion2019()}${renderHomologacion2019()}${renderCocinaPropia()}${renderMatrizFuentes()}${renderResultadosCocina()}${VALID()}${CONTRIB()}`)}
  ${cap(6,'cocina-cap6','Archivo de microdatos','¿Dónde están los datos originales y qué se ha auditado?',
   '<p>Catálogo de fuentes, buscador y almacén de los originales descargados. El repositorio guarda agregados y documentación, no entrevistas.</p>',
   `${renderCatalogoMicrodatos()}${renderBuscadorMicrodatos()}${renderEstadoDescargas()}${ORIGEN()}`)}`;
@@ -102,7 +103,7 @@ export async function bindCocina(){
   const current=document.getElementById(location.hash.slice(1));
   if(current?.matches('details.cocina-capitulo'))current.open=true;
  }
- void bindEvaluacion2019();void bindHomologacion2019();void bindSocioMetrica();void bindCatalogoMicrodatos();void bindRetrospectiva40db();void bindMicrodatos40db();void bindResultadosCocina();void bindLeccion();void bindCocinaPropia();
+ void bindEvaluacion2019();void bindHomologacion2019();void bindSocioMetrica();void bindCatalogoMicrodatos();void bindRetrospectiva40db();void bindMicrodatos40db();void bindResultadosCocina();void bindLeccion();void bindCocinaPropia();void bindMatrizFuentes();
  const box=document.querySelector('#kitchen-study'),trans=document.querySelector('#kitchen-transfers'),selector=document.querySelector('#kitchen-party');
  bindHistoricCis();
  bindEvidenceAudit();
