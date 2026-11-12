@@ -92,7 +92,7 @@ export function chain(f){
  const ps=f.promedio_simple||{};
  const dec=f.capas?.con_cocina;
  const delta=(a,b,p)=>a?.[p]&&b?.[p]?signed(a[p].voto[0]-b[p].voto[0],1):'—';
- const main='PP';
+ const main=Object.entries(con.partidos||{}).filter(([,v])=>Number.isFinite(v?.escanos?.[0])).sort((a,b)=>b[1].escanos[0]-a[1].escanos[0])[0]?.[0]||'sin-datos';
  const mainLabel=label(main);
  const vot=id=>Number.isFinite(id?.partidos?.[main]?.voto?.[0])?fmt(id.partidos[main].voto[0])+' %':'—';
  const scan=id=>Number.isFinite(id?.partidos?.[main]?.escanos?.[0])?fmt(id.partidos[main].escanos[0],0):'—';
