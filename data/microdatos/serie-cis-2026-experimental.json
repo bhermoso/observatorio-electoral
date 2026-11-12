@@ -1,0 +1,237 @@
+{
+  "esquema": 1,
+  "fecha_analisis": "2026-11-12",
+  "tipo": "serie_experimental_sin_validacion_predictiva",
+  "fuente": "ZIP oficiales CIS 3567, 3571, 3577 y 3582 aportados por usuario; scripts/cocina_cis.py",
+  "objetivo_recuerdo": "resultado oficial 23J 2023 (data/results.csv y data/districts.csv)",
+  "denominador": "voto válido (incluye blanco); aquí se muestran solo cinco partidos, NO suman 100 %",
+  "regla": "seis etapas acumulativas con idéntica receta y parámetros por oleada; porcentajes redondeados a 0.001",
+  "partidos": [
+    "PP",
+    "PSOE",
+    "VOX",
+    "SUMAR",
+    "PODEMOS"
+  ],
+  "pasos": [
+    "directa",
+    "peso",
+    "simpatia",
+    "recuerdo",
+    "indecisos",
+    "participacion"
+  ],
+  "estudios": [
+    {
+      "id": "3567",
+      "periodo": "junio 2026",
+      "n": 4024,
+      "n_efectivo": 1678.9,
+      "sha256_zip": "2bc9ef65a01cab8c8d4a0964fa9fe1f3d583ff69765cc3c2cabdd7c80a63dc13",
+      "pasos": {
+        "directa": {
+          "PP": 26.776,
+          "PSOE": 30.625,
+          "VOX": 12.763,
+          "SUMAR": 7.007,
+          "PODEMOS": 2.862
+        },
+        "peso": {
+          "PP": 25.745,
+          "PSOE": 30.999,
+          "VOX": 15.958,
+          "SUMAR": 5.675,
+          "PODEMOS": 2.626
+        },
+        "simpatia": {
+          "PP": 24.895,
+          "PSOE": 30.958,
+          "VOX": 14.916,
+          "SUMAR": 6.265,
+          "PODEMOS": 3.031
+        },
+        "recuerdo": {
+          "PP": 29.144,
+          "PSOE": 26.252,
+          "VOX": 16.283,
+          "SUMAR": 6.013,
+          "PODEMOS": 2.936
+        },
+        "indecisos": {
+          "PP": 29.074,
+          "PSOE": 26.312,
+          "VOX": 16.102,
+          "SUMAR": 6.094,
+          "PODEMOS": 2.993
+        },
+        "participacion": {
+          "PP": 29.582,
+          "PSOE": 26.556,
+          "VOX": 16.146,
+          "SUMAR": 6.368,
+          "PODEMOS": 3.106
+        }
+      }
+    },
+    {
+      "id": "3571",
+      "periodo": "julio 2026",
+      "n": 4020,
+      "n_efectivo": 1800,
+      "sha256_zip": "b471e1c42f34f5642ed6ece014f09162803d8c3e145551f8a5cd365045939fca",
+      "pasos": {
+        "directa": {
+          "PP": 24.992,
+          "PSOE": 30.825,
+          "VOX": 13.421,
+          "SUMAR": 7.087,
+          "PODEMOS": 3.042
+        },
+        "peso": {
+          "PP": 24.087,
+          "PSOE": 32.992,
+          "VOX": 14.901,
+          "SUMAR": 5.713,
+          "PODEMOS": 2.377
+        },
+        "simpatia": {
+          "PP": 23.02,
+          "PSOE": 32.963,
+          "VOX": 14.208,
+          "SUMAR": 6.426,
+          "PODEMOS": 2.309
+        },
+        "recuerdo": {
+          "PP": 27.538,
+          "PSOE": 27.19,
+          "VOX": 15.716,
+          "SUMAR": 6.466,
+          "PODEMOS": 2.463
+        },
+        "indecisos": {
+          "PP": 27.663,
+          "PSOE": 27.218,
+          "VOX": 15.645,
+          "SUMAR": 6.437,
+          "PODEMOS": 2.451
+        },
+        "participacion": {
+          "PP": 28.723,
+          "PSOE": 27.616,
+          "VOX": 15.556,
+          "SUMAR": 6.448,
+          "PODEMOS": 2.566
+        }
+      }
+    },
+    {
+      "id": "3577",
+      "periodo": "septiembre 2026",
+      "n": 4042,
+      "n_efectivo": 1804.1,
+      "sha256_zip": "8669fc19f6bc038e823119aacee7a79bc438a7eb95cd6f7206acdce0021f1230",
+      "pasos": {
+        "directa": {
+          "PP": 25.684,
+          "PSOE": 28.453,
+          "VOX": 14.481,
+          "SUMAR": 7.097,
+          "PODEMOS": 3.533
+        },
+        "peso": {
+          "PP": 24.057,
+          "PSOE": 30.695,
+          "VOX": 15.785,
+          "SUMAR": 6.101,
+          "PODEMOS": 3.882
+        },
+        "simpatia": {
+          "PP": 22.785,
+          "PSOE": 31.587,
+          "VOX": 14.975,
+          "SUMAR": 6.569,
+          "PODEMOS": 3.845
+        },
+        "recuerdo": {
+          "PP": 27.498,
+          "PSOE": 26.729,
+          "VOX": 16.941,
+          "SUMAR": 5.922,
+          "PODEMOS": 3.486
+        },
+        "indecisos": {
+          "PP": 27.385,
+          "PSOE": 26.895,
+          "VOX": 16.818,
+          "SUMAR": 5.916,
+          "PODEMOS": 3.483
+        },
+        "participacion": {
+          "PP": 28.584,
+          "PSOE": 27.022,
+          "VOX": 17.071,
+          "SUMAR": 5.841,
+          "PODEMOS": 3.559
+        }
+      }
+    },
+    {
+      "id": "3582",
+      "periodo": "octubre 2026",
+      "n": 5024,
+      "n_efectivo": 1989.4,
+      "sha256_zip": "1cfcf43b38ee036bb89dadc7d9b88a70d2098bb2c1a5051921aa517415a00c9f",
+      "pasos": {
+        "directa": {
+          "PP": 22.416,
+          "PSOE": 31.087,
+          "VOX": 14.121,
+          "SUMAR": 7.893,
+          "PODEMOS": 3.114
+        },
+        "peso": {
+          "PP": 20.104,
+          "PSOE": 34.632,
+          "VOX": 15.895,
+          "SUMAR": 6.21,
+          "PODEMOS": 2.967
+        },
+        "simpatia": {
+          "PP": 20.134,
+          "PSOE": 34,
+          "VOX": 14.524,
+          "SUMAR": 7.132,
+          "PODEMOS": 2.852
+        },
+        "recuerdo": {
+          "PP": 26.657,
+          "PSOE": 26.911,
+          "VOX": 16.733,
+          "SUMAR": 6.694,
+          "PODEMOS": 2.712
+        },
+        "indecisos": {
+          "PP": 26.585,
+          "PSOE": 26.998,
+          "VOX": 16.675,
+          "SUMAR": 6.752,
+          "PODEMOS": 2.739
+        },
+        "participacion": {
+          "PP": 27.735,
+          "PSOE": 27.258,
+          "VOX": 16.735,
+          "SUMAR": 6.912,
+          "PODEMOS": 2.868
+        }
+      }
+    }
+  ],
+  "limitaciones": [
+    "Las cuatro oleadas no son cuatro elecciones independientes ni validan la receta",
+    "La receta completa no mejoró la intención directa en los ensayos retrospectivos del 23J; no debe entrar en el Motor 29N",
+    "Sumar se mantiene como código de los microdatos, no se fusiona automáticamente con otras candidaturas",
+    "La base se convierte en voto válido declarado/imputado: no equivale al porcentaje de intención directa entre todos los entrevistados",
+    "Los originales individuales permanecen fuera del repositorio y de GitHub Pages"
+  ]
+}
