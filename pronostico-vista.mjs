@@ -84,7 +84,7 @@ export function variantsTable(f){
  <div class="table-wrap"><table class="variants"><thead><tr><th>Partido / bloque</th>${head}</tr></thead><tbody>${rows}${brow}</tbody></table></div><dl class="defs">${VARIANTS.map(v=>`<dt>${h(v.nombre)}</dt><dd>${h(v.def)}</dd>`).join('')}</dl>
  <p class="muted">Las variantes se simulan con error de industria de 1,5 pp; la referencia, con ${fmt(f.principal.industria,1)} pp. Por eso la referencia tiene intervalos más anchos y frecuencias de mayoría más prudentes.</p></details>`;
 }
-function chain(f){
+export function chain(f){
  const sin=capaModelo(f,2),con=capaModelo(f,3),e=efectoCocina(sin,con);
  const v=id=>f.variantes?.[id]?.partidos;
  const ids=['PP','PSOE','VOX','SUMAR'];
@@ -92,7 +92,20 @@ function chain(f){
  const ps=f.promedio_simple||{};
  const dec=f.capas?.con_cocina;
  const delta=(a,b,p)=>a?.[p]&&b?.[p]?signed(a[p].voto[0]-b[p].voto[0],1):'—';
- return `<ol class="chain">
+ const main='PP';
+ const mainLabel=label(main);
+ const vot=id=>Number.isFinite(id?.partidos?.[main]?.voto?.[0])?fmt(id.partidos[main].voto[0])+' %':'—';
+ const scan=id=>Number.isFinite(id?.partidos?.[main]?.escanos?.[0])?fmt(id.partidos[main].escanos[0],0):'—';
+ const numCasas=new Set((f.entradas||[]).map(x=>x.casa)).size;
+ const summary=[
+  ['01','Fuentes',fmt(f.entradas?.length??0,0)+' estudios',fmt(numCasas,0)+' casas; estimaciones publicadas'],
+  ['02','Promedio',Number.isFinite(ps[main])?fmt(ps[main])+' %':'—',mainLabel+' · referencia descriptiva'],
+  ['03','Modelo temporal',vot(sin),mainLabel+' · tendencias y efectos de casa'],
+  ['04','Cocina de agregados',vot(con),mainLabel+' · estimación operativa'],
+  ['05','Escaños',scan(con),mainLabel+' · mediana de simulaciones']
+ ];
+ const visual=`<figure class="pr-chain-figure" aria-label="Secuencia metodológica del pronóstico"><figcaption>Del dato publicado al escaño · ejemplo: ${h(mainLabel)}</figcaption><div class="pr-chain-flow">${summary.map(([n,t,value,note])=>`<div class="pr-chain-node"><small>${n} · ${h(t)}</small><strong>${h(value)}</strong><span>${h(note)}</span></div>`).join('')}</div><p class="muted">El ejemplo sigue a ${h(mainLabel)}. El promedio descriptivo no es una entrada adicional: el motor utiliza las estimaciones de las casas. La cocina experimental de entrevistas individuales no alimenta esta secuencia.</p></figure>`;
+ return `${visual}<details class="pr-chain-detail"><summary>Desplegar los siete pasos, cálculos y supuestos del motor</summary><ol class="chain">
   ${step(1,'Entrada original',`${f.entradas?.length??'—'} estimaciones publicadas por ${new Set((f.entradas||[]).map(e=>e.casa)).size} casas (<a href="#pronostico-fuentes">lista completa</a>). El motor recibe porcentajes publicados, no entrevistas.`)}
   ${step(2,'Promedio descriptivo',`Última encuesta de cada casa en 30 días, mismo peso: ${ids.map(p=>`${label(p)} ${fmt(ps[p])} %`).join(' · ')}.`)}
   ${step(3,'Tendencia estadística (capa 2)',`Modelo diario con efecto de casa y ancla en el consenso de todas las casas: ${ids.map(p=>`${label(p)} ${fmt(sin.partidos[p]?.voto[0])} %`).join(' · ')}.`)}
@@ -100,9 +113,9 @@ function chain(f){
   ${step(5,'Estimación resultante (capa 3)',`${ids.map(p=>`${label(p)} ${fmt(con.partidos[p]?.voto[0])} % (${signed(e[p]?.voto,1)} pp frente a la capa 2)`).join(' · ')}.`)}
   ${step(6,'Reparto territorial',`Cada simulación traslada el voto nacional a las 52 circunscripciones en proporción a la geografía del 23J, con ruido provincial (lognormal, sd 0,08).`)}
   ${step(7,'Escaños',`D’Hondt provincial en cada simulación: ${ids.map(p=>`${label(p)} ${fmt(con.partidos[p]?.escanos[0],0)}`).join(' · ')} (medianas).`)}
- </ol>
+ </ol></details>
  <p><b>Lo que no hace el motor:</b> ${h((dec?.no_aplicado||[]).join(', '))}. ${h(dec?.tipo_cocina||'')} La cocina propia sobre microdatos del CIS se examinó frente al 23J y no lo supera, por eso no entra (<a href="#cocina-cap5">ver la receta y su error</a>).</p>
- ${f.sensibilidad_cocina?.experimentos?`<div class="pr-sensibilidad"><h3>Qué pasa si se retira una decisión (${f.sensibilidad_cocina.experimentos.length} experimentos)</h3><div class="table-wrap"><table><thead><tr><th>Experimento</th><th>PP</th><th>PSOE</th><th>Vox</th><th>PP+Vox (escaños)</th><th>Δ frecuencia ≥176</th></tr></thead><tbody>${f.sensibilidad_cocina.experimentos.map(x=>`<tr><th scope="row">${h(x.nombre)}</th>${['PP','PSOE','VOX'].map(p=>`<td>${signed(x.comparacion?.cambio_voto_pp?.[p],2)} pp</td>`).join('')}<td>${signed(x.comparacion?.bloques?.['PP+VOX']?.cambio_mediana_escanos,0)}</td><td>${signed(x.comparacion?.bloques?.['PP+VOX']?.cambio_frecuencia_umbral_puntos,1)} pts</td></tr>`).join('')}</tbody></table></div><p class="muted">${h(f.sensibilidad_cocina.tipo||'')}. ${fmt(f.sensibilidad_cocina.n_por_variante,0)} simulaciones por variante: diferencias pequeñas pueden ser ruido.</p></div>`:''}`;
+ ${f.sensibilidad_cocina?.experimentos?`<details class="pr-chain-detail pr-sensibilidad"><summary>Auditar sensibilidad: qué pasa si se retira una decisión (${f.sensibilidad_cocina.experimentos.length} pruebas)</summary><div><h3>Qué pasa si se retira una decisión (${f.sensibilidad_cocina.experimentos.length} experimentos)</h3><div class="table-wrap"><table><thead><tr><th>Experimento</th><th>PP</th><th>PSOE</th><th>Vox</th><th>PP+Vox (escaños)</th><th>Δ frecuencia ≥176</th></tr></thead><tbody>${f.sensibilidad_cocina.experimentos.map(x=>`<tr><th scope="row">${h(x.nombre)}</th>${['PP','PSOE','VOX'].map(p=>`<td>${signed(x.comparacion?.cambio_voto_pp?.[p],2)} pp</td>`).join('')}<td>${signed(x.comparacion?.bloques?.['PP+VOX']?.cambio_mediana_escanos,0)}</td><td>${signed(x.comparacion?.bloques?.['PP+VOX']?.cambio_frecuencia_umbral_puntos,1)} pts</td></tr>`).join('')}</tbody></table></div><p class="muted">${h(f.sensibilidad_cocina.tipo||'')}. ${fmt(f.sensibilidad_cocina.n_por_variante,0)} simulaciones por variante: diferencias pequeñas pueden ser ruido.</p></div></details>`:''}`;
 }
 function blocks(f){
  const p=f.principal;
