@@ -20,7 +20,7 @@ El soporte primario común es **PP/PSOE**, sin convertir sus porcentajes en una 
 | Normalización conjunta y recortes | Sí: se añaden frecuencias de recorte, residual mínimo y factores de renormalización por variante | Diagnóstico cuantitativo; no sustituye una validación composicional multielectoral |
 | Traslado proporcional/uniforme y D'Hondt legal | Implementados, con sensibilidad existente y pruebas | No se usan provincias de 2023 para simular 2011. Faltan bases provinciales previas homologadas para validar históricamente los escaños |
 | Microdatos y cocina secuencial | Scripts y agregados disponibles, pruebas de códigos/denominadores | Experimentales; no se promueven al motor por MAE sobre una misma elección |
-| Cohorte común de microdatos | Nuevo contraste agregado identificable para 3411, 3415, 3582 | Misma elegibilidad de PROBVOTO válida; n exacto y Kish no recuperables del cubo. Recuerdo/indecisos requieren cruces no conservados |
+| Cohorte común de microdatos | Cubo para 3411/3415/3582 y nueva reproducción desde originales CIS 3411/3415 | En los originales se recuperan n y Kish y se aíslan cinco componentes; una sola elección, sin promover receta |
 | Acontecimientos, campos solapados y placebos | Mecanismos y pruebas existentes; huelga 11/11 documentada | Asociación temporal, no causalidad; sin salto automático ni estimación con campo que incluya el suceso |
 | Primera fuerza y neutralidad | Corregido el empate que favorecía al primer índice; pruebas de permutación | `primero` = primera fuerza exclusiva; `primero_o_empate` conserva el caso compartido |
 | Historial | Reconstrucción tipada/versionada y copia de v4 | No se presenta como registro de predicciones emitidas. Solo las capturas observadas son evidencia de publicación |
@@ -51,7 +51,9 @@ Los resultados proceden de BOE/JEC, cuadros I y II. La corrección BOE-A-2012-66
 
 `data/microdatos/cohorte-comun.json` compara PESO frente a PESO × PROBVOTO/10 **entre las mismas entrevistas con probabilidad explícita válida**. No elimina adicionalmente a quienes carecen de recuerdo. Expone base total, masa de candidatura, base de candidaturas y porcentajes sobre ambas bases. El cambio del porcentaje se descompone algebraicamente en cambio de numerador y efecto del denominador. Eso evita atribuir al peso lo que procede de cambiar la base.
 
-El cubo agregado no conserva el número de participantes con PROBVOTO válida ni la suma de pesos cuadrados. Esos valores se escriben `null`, sin inventar Kish. Tampoco contiene los cruces necesarios para aislar recuerdo, transferencia e indecisión. Los dos estudios 3411/3415 son una sola elección; 3582 aún no tiene resultado futuro observable. La reconstrucción adaptada de 2019 permanece experimental y no se presenta como réplica homologada de los mismos componentes. Los originales de CIS utilizados en trabajos previos no están en este espacio de ejecución; no se han reconstruido entrevistas desde agregados ni cambiado su custodia para simular una validación nueva.
+El cubo agregado no conserva el número de participantes con PROBVOTO válida ni la suma de pesos cuadrados. Esos valores se escriben `null`, sin inventar Kish. Tampoco contiene los cruces necesarios para aislar recuerdo, transferencia e indecisión. Los dos estudios 3411/3415 son una sola elección; 3582 aún no tiene resultado futuro observable. La reconstrucción adaptada de 2019 permanece experimental y no se presenta como réplica homologada de los mismos componentes. Se localizaron posteriormente los enlaces públicos `data-file` en las páginas oficiales del CIS y se descargaron los originales 3411/3415 (HTTP 200, ZIP y huellas verificados). No se ha enviado formulario ni redistribuido entrevistas. `scripts/auditar_componentes_originales.py` reproduce los contrastes desde esos ZIP y solo escribe agregados. Las URLs y SHA-256 están en `data/microdatos/componentes-originales-cohorte.json`.
+
+La cohorte común original es **29.127 de 29.201** entrevistas en 3411 y **8.767 de 8.798** en 3415: PESO finito positivo y PROBVOTO explícita 0–10, igual en todas las variantes. Sobre PP/PSOE/Vox/Sumar y voto válido (incluido blanco), el MAE de intención directa sin ponderar es **1,348 / 1,293 pp**; con PESO, **1,782 / 1,820**; voto+simpatía, **2,541 / 2,234**; añadir solo calibración por recuerdo a esa base, **3,612 / 2,740**; añadir solo indecisos, **2,556 / 2,268**; añadir solo participación, **2,323 / 2,204**. Son dos estudios de una sola elección: **no justifican promover la alternativa de menor MAE**. La calibración usa únicamente el resultado de noviembre de 2019; 23J solo sirve para puntuar. Se guardan n, masa válida, Kish de cohorte y de aportantes, componentes aislados y receta acumulativa por separado. Los escenarios no cambian la población elegible entre pasos. La matriz de transferencias sirve como donante de indecisos; no se inventa un efecto independiente adicional de transferencias.
 
 ## Niveles alcanzados
 
@@ -66,6 +68,8 @@ El cubo agregado no conserva el número de participantes con PROBVOTO válida ni
 python -m pip install -r requirements-ciencia.txt
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python scripts/validar_multieleccion.py
 python scripts/auditar_cohorte_comun.py
+# Con los dos ZIP oficiales en custodia local, solo genera agregados:
+python scripts/auditar_componentes_originales.py /ruta/MD3411.zip /ruta/MD3415.zip
 node scripts/export-csv.mjs
 npm test
 python -m unittest discover -s tests -p 'test_*.py'

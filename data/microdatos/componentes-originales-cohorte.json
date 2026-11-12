@@ -1,0 +1,2594 @@
+{
+  "esquema": 1,
+  "tipo": "ablaciones_originales_misma_cohorte",
+  "elecciones_independientes": 1,
+  "original_no_redistribuido": true,
+  "entrada_motor": false,
+  "advertencias": [
+    "Dos estudios de una elección no equivalen a validación multielectoral.",
+    "Las diferencias algebraicas no son efectos causales ni contribuciones aditivas universales.",
+    "La cohorte con probabilidad válida difiere del universo completo: no se mezclan sus cifras con otras bases.",
+    "Los pesos de recuerdo usan solo noviembre de 2019; el resultado 23J sirve para puntuar, nunca para calibrar estos pesos.",
+    "No se homologa artificialmente la adaptación experimental CIS 2019 con esta receta."
+  ],
+  "estudios": {
+    "3411": {
+      "universo_puntuado": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "resultado_oficial": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "denominador_objetivo": "votos válidos, incluye blanco",
+      "sha256_zip": "bfb6de07d89c58e3266c6a5ca1ad8b44d1f795dc4424200faafaf0e01c2bd681",
+      "n_original": 29201,
+      "n_cohorte": 29127,
+      "n_excluidas": 74,
+      "elegibilidad": "PESO finito positivo y PROBVOTO explícita entera 0–10, igual en todos los escenarios",
+      "objetivo_recuerdo": "BOE noviembre 2019, nunca resultado 23J 2023",
+      "factores_recuerdo": {
+        "PSOE": 0.7884980881207947,
+        "PP": 0.9836338648330928,
+        "VOX": 2.0365068311783885,
+        "UP": 0.9270384036348593,
+        "CS": 0.9069549944152778,
+        "MAS_PAIS": 1.2347485770097133,
+        "ERC": 1.2155812990305288,
+        "JUNTS": 1.7457701138676243,
+        "CUP": 1.8901274663849765,
+        "PNV": 1.1067613177512166,
+        "BILDU": 1.0328576580488908,
+        "BNG": 0.558335249924397,
+        "CC": 1.0781315055446714,
+        "NA_SUMA": 1.0408948209018614,
+        "PRC": 1.8170554032044213,
+        "TERUEL": 1.3676438354237357,
+        "OTROS": 0.844824880393842,
+        "BLANCO_NULO": 0.8768371061306168
+      },
+      "escenarios": {
+        "directa_sin_peso": {
+          "n_cohorte": 29127,
+          "n_aportan": 23391,
+          "peso_total": 29127.0,
+          "denominador_valido": 23391.0,
+          "kish_cohorte": 29127.0,
+          "kish_aportan": 23391.0,
+          "masa": {
+            "PP": 7574.0,
+            "PSOE": 7188.0,
+            "VOX": 2650.0,
+            "SUMAR": 3519.0,
+            "BLANCO": 374.0,
+            "OTROS": 666.0,
+            "CC": 65.0,
+            "JUNTS": 227.0,
+            "ERC": 293.0,
+            "BNG": 281.0,
+            "BILDU": 296.0,
+            "UPN": 28.0,
+            "PNV": 230.0
+          },
+          "porcentaje_total": {
+            "PP": 26.00336457582312,
+            "PSOE": 24.67813369039036,
+            "VOX": 9.09808768496584,
+            "SUMAR": 12.081573797507467,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.0059395062999965,
+            "JUNTS": 0.7793456243348096,
+            "BILDU": 1.016239228207505,
+            "PNV": 0.7896453462423181,
+            "BNG": 0.9647406186699625,
+            "CC": 0.22316064132935076,
+            "UPN": 0.09613073780341264,
+            "OTROS": 2.2865382634668863,
+            "BLANCO": 1.284031997802726
+          },
+          "estimacion": {
+            "PP": 32.37997520413835,
+            "PSOE": 30.729767859433114,
+            "VOX": 11.32914368774315,
+            "SUMAR": 15.044247787610619,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.2526185284938651,
+            "JUNTS": 0.9704587234406395,
+            "BILDU": 1.2654439741781027,
+            "PNV": 0.983284169124877,
+            "BNG": 1.2013167457569152,
+            "CC": 0.2778846564918131,
+            "UPN": 0.11970415971955026,
+            "OTROS": 2.847248941900731,
+            "BLANCO": 1.5989055619682784
+          },
+          "errores_23j": {
+            "PP": -0.6757937584386227,
+            "PSOE": -0.9523871815791765,
+            "VOX": -1.0533467012448678,
+            "SUMAR": 2.7103800399799507
+          },
+          "mae_23j": 1.3479769203106544
+        },
+        "directa_peso": {
+          "n_cohorte": 29127,
+          "n_aportan": 23391,
+          "peso_total": 29103.83948,
+          "denominador_valido": 23312.35803999997,
+          "kish_cohorte": 23622.581873755436,
+          "kish_aportan": 18952.624382273778,
+          "masa": {
+            "PP": 7388.0353399999885,
+            "PSOE": 7177.86638999999,
+            "VOX": 2570.0434099999875,
+            "SUMAR": 3694.5332100000037,
+            "BLANCO": 362.08770999999973,
+            "OTROS": 601.9763600000003,
+            "CC": 79.83020000000002,
+            "JUNTS": 286.03693,
+            "ERC": 370.0832100000005,
+            "BNG": 233.0084199999999,
+            "BILDU": 287.39370999999994,
+            "UPN": 26.738030000000002,
+            "PNV": 234.7251199999997
+          },
+          "porcentaje_total": {
+            "PP": 25.38508826327539,
+            "PSOE": 24.66295347365622,
+            "VOX": 8.830599178387125,
+            "SUMAR": 12.694315513040356,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.2715958327571169,
+            "JUNTS": 0.982815103129479,
+            "BILDU": 0.9874769622664231,
+            "PNV": 0.8065091211120152,
+            "BNG": 0.8006105866551457,
+            "CC": 0.27429439354508156,
+            "UPN": 0.09187114304411359,
+            "OTROS": 2.068374382059368,
+            "BLANCO": 1.2441235124624173
+          },
+          "estimacion": {
+            "PP": 31.691497390883406,
+            "PSOE": 30.789962893002993,
+            "VOX": 11.024382027722112,
+            "SUMAR": 15.847960140543586,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.5874979672369558,
+            "JUNTS": 1.2269755359333885,
+            "BILDU": 1.2327955392023497,
+            "PNV": 1.006869916793711,
+            "BNG": 0.9995060113618613,
+            "CC": 0.3424372595128525,
+            "UPN": 0.11469466089239953,
+            "OTROS": 2.5822199494667726,
+            "BLANCO": 1.5532007074476117
+          },
+          "errores_23j": {
+            "PP": -1.364271571693564,
+            "PSOE": -0.8921921480092969,
+            "VOX": -1.3581083612659057,
+            "SUMAR": 3.514092392912918
+          },
+          "mae_23j": 1.7821661184704212
+        },
+        "simpatia_peso": {
+          "n_cohorte": 29127,
+          "n_aportan": 26294,
+          "peso_total": 29103.83948,
+          "denominador_valido": 26223.378019999975,
+          "kish_cohorte": 23622.581873755436,
+          "kish_aportan": 21326.47048258763,
+          "masa": {
+            "PP": 7930.928930000001,
+            "PSOE": 8037.624399999985,
+            "SUMAR": 4378.748350000001,
+            "VOX": 2733.933149999988,
+            "BLANCO": 362.08770999999973,
+            "OTROS": 963.8527200000005,
+            "CC": 96.15844000000003,
+            "JUNTS": 345.07924000000014,
+            "ERC": 463.0278500000007,
+            "BNG": 273.2836599999999,
+            "BILDU": 325.73868000000004,
+            "UPN": 34.135479999999994,
+            "PNV": 278.7794099999996
+          },
+          "porcentaje_total": {
+            "PP": 27.250455856348754,
+            "PSOE": 27.617058586113345,
+            "VOX": 9.393719862558793,
+            "SUMAR": 15.045260103942825,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.5909510850559456,
+            "JUNTS": 1.1856828726571857,
+            "BILDU": 1.1192292351112159,
+            "PNV": 0.9578784620207079,
+            "BNG": 0.938995214661622,
+            "CC": 0.33039778159194283,
+            "UPN": 0.11728857982280211,
+            "OTROS": 3.311771701676526,
+            "BLANCO": 1.2441235124624173
+          },
+          "estimacion": {
+            "PP": 30.243734899261494,
+            "PSOE": 30.65060646980672,
+            "VOX": 10.425556722382902,
+            "SUMAR": 16.697880595934013,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.765706346630323,
+            "JUNTS": 1.3159221505971352,
+            "BILDU": 1.2421690285346403,
+            "PNV": 1.0630949597240327,
+            "BNG": 1.0421375148219754,
+            "CC": 0.3666897526575797,
+            "UPN": 0.13017194037307336,
+            "OTROS": 3.6755475181911805,
+            "BLANCO": 1.3807821010849313
+          },
+          "errores_23j": {
+            "PP": -2.812034063315476,
+            "PSOE": -1.031548571205569,
+            "VOX": -1.9569336666051154,
+            "SUMAR": 4.364012848303345
+          },
+          "mae_23j": 2.5411322873573763
+        },
+        "solo_recuerdo": {
+          "n_cohorte": 29127,
+          "n_aportan": 26294,
+          "peso_total": 29103.83948,
+          "denominador_valido": 26281.295817376984,
+          "kish_cohorte": 21727.966408386375,
+          "kish_aportan": 19531.54643746471,
+          "masa": {
+            "PP": 8016.881691649783,
+            "PSOE": 6789.7098327112835,
+            "SUMAR": 4115.676839930206,
+            "VOX": 3969.9769130914233,
+            "BLANCO": 341.8806970094306,
+            "OTROS": 1026.353759562943,
+            "CC": 97.6303289359834,
+            "JUNTS": 511.4704280585437,
+            "ERC": 549.0404763666271,
+            "BNG": 197.22871312829426,
+            "BILDU": 331.14564886339855,
+            "UPN": 34.99119679787594,
+            "PNV": 299.3092912711904
+          },
+          "porcentaje_total": {
+            "PP": 27.54578720501445,
+            "PSOE": 23.329258111724865,
+            "VOX": 13.640732576949409,
+            "SUMAR": 14.141353558380079,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.8864881272586895,
+            "JUNTS": 1.7573984642473837,
+            "BILDU": 1.1378074329023153,
+            "PNV": 1.02841857507108,
+            "BNG": 0.6776724880709597,
+            "CC": 0.3354551518986848,
+            "UPN": 0.12022879944043709,
+            "OTROS": 3.5265235718065577,
+            "BLANCO": 1.1746927660330493
+          },
+          "estimacion": {
+            "PP": 30.50413399459963,
+            "PSOE": 25.83476050759256,
+            "VOX": 15.105712217076093,
+            "SUMAR": 15.660098605978757,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 2.0890921063473815,
+            "JUNTS": 1.9461385451183253,
+            "BILDU": 1.260005028536103,
+            "PNV": 1.1388680883584494,
+            "BNG": 0.7504527725679653,
+            "CC": 0.3714821735366298,
+            "UPN": 0.13314106367137363,
+            "OTROS": 3.905263144918167,
+            "BLANCO": 1.3008517516985665
+          },
+          "errores_23j": {
+            "PP": -2.551634967977339,
+            "PSOE": -5.847394533419731,
+            "VOX": 2.723221828088075,
+            "SUMAR": 3.3262308583480884
+          },
+          "mae_23j": 3.6121205469583084
+        },
+        "solo_indecisos": {
+          "n_cohorte": 29127,
+          "n_aportan": 26645,
+          "peso_total": 29103.83948,
+          "denominador_valido": 26585.13629999998,
+          "kish_cohorte": 23622.581873755436,
+          "kish_aportan": 21617.965205306915,
+          "masa": {
+            "PP": 8022.447592916355,
+            "PSOE": 8174.43851944479,
+            "SUMAR": 4444.268812197793,
+            "VOX": 2753.373049077281,
+            "BLANCO": 370.02216812285434,
+            "OTROS": 978.9572093870978,
+            "CC": 98.73130563422319,
+            "JUNTS": 350.1100965788756,
+            "ERC": 472.0202818885877,
+            "BNG": 274.6534038623087,
+            "BILDU": 328.4574785711665,
+            "UPN": 34.36505095908212,
+            "PNV": 283.2913313595669
+          },
+          "porcentaje_total": {
+            "PP": 27.564911490215362,
+            "PSOE": 28.087148175285325,
+            "VOX": 9.46051482646949,
+            "SUMAR": 15.270386628031913,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.6218488361748886,
+            "JUNTS": 1.2029687588796294,
+            "BILDU": 1.1285709529729941,
+            "PNV": 0.9733813009594257,
+            "BNG": 0.9437016172764733,
+            "CC": 0.3392380778559159,
+            "UPN": 0.11807737938734027,
+            "OTROS": 3.363670315938321,
+            "BLANCO": 1.27138609452932
+          },
+          "estimacion": {
+            "PP": 30.176439580324292,
+            "PSOE": 30.748153506532127,
+            "VOX": 10.356813739853886,
+            "SUMAR": 16.717118776621792,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.775504464457412,
+            "JUNTS": 1.3169392574409178,
+            "BILDU": 1.2354929268170303,
+            "PNV": 1.0656004474183085,
+            "BNG": 1.033108879950745,
+            "CC": 0.3713778425661984,
+            "UPN": 0.12926415186023382,
+            "OTROS": 3.682347904257683,
+            "BLANCO": 1.3918385218993765
+          },
+          "errores_23j": {
+            "PP": -2.8793293822526778,
+            "PSOE": -0.9340015344801635,
+            "VOX": -2.025676649134132,
+            "SUMAR": 4.383251028991124
+          },
+          "mae_23j": 2.5555646487145243
+        },
+        "solo_participacion": {
+          "n_cohorte": 29127,
+          "n_aportan": 25776,
+          "peso_total": 26526.444705,
+          "denominador_valido": 24420.729918999972,
+          "kish_cohorte": 22273.40999703628,
+          "kish_aportan": 20488.34875440516,
+          "masa": {
+            "PP": 7530.315501999996,
+            "PSOE": 7539.738193999993,
+            "SUMAR": 4085.1607629999967,
+            "VOX": 2567.0038419999864,
+            "BLANCO": 282.63731499999994,
+            "OTROS": 785.3214230000002,
+            "CC": 88.46435400000003,
+            "JUNTS": 290.651122,
+            "ERC": 420.02431700000034,
+            "BNG": 260.8510089999999,
+            "BILDU": 290.923204,
+            "UPN": 32.320706999999985,
+            "PNV": 247.31816699999973
+          },
+          "porcentaje_total": {
+            "PP": 28.38795619143261,
+            "PSOE": 28.423478071974035,
+            "VOX": 9.67714999332771,
+            "SUMAR": 15.400332794051288,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.5834173092967465,
+            "JUNTS": 1.095703269821209,
+            "BILDU": 1.0967289707887748,
+            "PNV": 0.9323457016212294,
+            "BNG": 0.9833621199558333,
+            "CC": 0.333494951863358,
+            "UPN": 0.12184334297127958,
+            "OTROS": 2.960522722639774,
+            "BLANCO": 1.0654926362850476
+          },
+          "estimacion": {
+            "PP": 30.835751130195383,
+            "PSOE": 30.87433593921318,
+            "VOX": 10.51157705160479,
+            "SUMAR": 16.72825004227918,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.7199498884478892,
+            "JUNTS": 1.1901819600153136,
+            "BILDU": 1.1912961036175012,
+            "PNV": 1.012738635660434,
+            "BNG": 1.0681540226897597,
+            "CC": 0.3622510641304477,
+            "UPN": 0.13234947156454002,
+            "OTROS": 3.215798322182825,
+            "BLANCO": 1.157366368398762
+          },
+          "errores_23j": {
+            "PP": -2.2200178323815862,
+            "PSOE": -0.8078191017991116,
+            "VOX": -1.870913337383227,
+            "SUMAR": 4.39438229464851
+          },
+          "mae_23j": 2.3232831415531088
+        }
+      },
+      "contrastes": [
+        {
+          "componente": "ponderacion",
+          "base": "directa_sin_peso",
+          "alternativa": "directa_peso",
+          "diferencias": {
+            "PP": {
+              "cambio_pp": -0.6884778132549414,
+              "numerador_pp": -0.7950265486726154,
+              "denominador_pp": 0.10654873541767745
+            },
+            "PSOE": {
+              "cambio_pp": 0.06019503356987954,
+              "numerador_pp": -0.0433226882134576,
+              "denominador_pp": 0.1035177217833327
+            },
+            "VOX": {
+              "cambio_pp": -0.3047616600210379,
+              "numerador_pp": -0.3418263007140033,
+              "denominador_pp": 0.037064640692965965
+            },
+            "SUMAR": {
+              "cambio_pp": 0.8037123529329673,
+              "numerador_pp": 0.7504305502116355,
+              "denominador_pp": 0.05328180272133262
+            },
+            "PODEMOS": {
+              "cambio_pp": 0.0,
+              "numerador_pp": 0.0,
+              "denominador_pp": 0.0
+            },
+            "SALF": {
+              "cambio_pp": 0.0,
+              "numerador_pp": 0.0,
+              "denominador_pp": 0.0
+            },
+            "ERC": {
+              "cambio_pp": 0.3348794387430907,
+              "numerador_pp": 0.32954217434056055,
+              "denominador_pp": 0.0053372644025299
+            },
+            "JUNTS": {
+              "cambio_pp": 0.25651681249274894,
+              "numerador_pp": 0.25239164635971095,
+              "denominador_pp": 0.004125166133037849
+            },
+            "BILDU": {
+              "cambio_pp": -0.03264843497575298,
+              "numerador_pp": -0.036793168312599114,
+              "denominador_pp": 0.004144733336846053
+            },
+            "PNV": {
+              "cambio_pp": 0.023585747668833923,
+              "numerador_pp": 0.020200589970500154,
+              "denominador_pp": 0.003385157698333722
+            },
+            "BNG": {
+              "cambio_pp": -0.20181073439505381,
+              "numerador_pp": -0.20517113419691382,
+              "denominador_pp": 0.003360399801860056
+            },
+            "CC": {
+              "cambio_pp": 0.06455260302103938,
+              "numerador_pp": 0.06340130819545987,
+              "denominador_pp": 0.0011512948255794741
+            },
+            "UPN": {
+              "cambio_pp": -0.005009498827150724,
+              "numerador_pp": -0.005395109230045735,
+              "denominador_pp": 0.0003856104028950039
+            },
+            "OTROS": {
+              "cambio_pp": -0.2650289924339586,
+              "numerador_pp": -0.27371057244239094,
+              "denominador_pp": 0.008681580008432483
+            },
+            "BLANCO": {
+              "cambio_pp": -0.04570485452066664,
+              "numerador_pp": -0.050926809456629765,
+              "denominador_pp": 0.005221954935963091
+            }
+          },
+          "cambio_mae_23j": 0.43418919815976675
+        },
+        {
+          "componente": "simpatia",
+          "base": "directa_peso",
+          "alternativa": "simpatia_peso",
+          "diferencias": {
+            "PP": {
+              "cambio_pp": -1.447762491621912,
+              "numerador_pp": 2.328780250665767,
+              "denominador_pp": -3.776542742287671
+            },
+            "PSOE": {
+              "cambio_pp": -0.13935642319627206,
+              "numerador_pp": 3.6879924738835905,
+              "denominador_pp": -3.827348897079858
+            },
+            "VOX": {
+              "cambio_pp": -0.5988253053392096,
+              "numerador_pp": 0.7030165705193534,
+              "denominador_pp": -1.3018418758585601
+            },
+            "SUMAR": {
+              "cambio_pp": 0.8499204553904267,
+              "numerador_pp": 2.934988982350058,
+              "denominador_pp": -2.0850685269596303
+            },
+            "PODEMOS": {
+              "cambio_pp": 0.0,
+              "numerador_pp": 0.0,
+              "denominador_pp": -0.0
+            },
+            "SALF": {
+              "cambio_pp": 0.0,
+              "numerador_pp": 0.0,
+              "denominador_pp": -0.0
+            },
+            "ERC": {
+              "cambio_pp": 0.1782083793933673,
+              "numerador_pp": 0.39869257258542123,
+              "denominador_pp": -0.2204841931920536
+            },
+            "JUNTS": {
+              "cambio_pp": 0.08894661466374676,
+              "numerador_pp": 0.25326614278441406,
+              "denominador_pp": -0.1643195281206669
+            },
+            "BILDU": {
+              "cambio_pp": 0.009373489332290541,
+              "numerador_pp": 0.16448344665180062,
+              "denominador_pp": -0.15510995731950988
+            },
+            "PNV": {
+              "cambio_pp": 0.05622504293032171,
+              "numerador_pp": 0.18897397648238912,
+              "denominador_pp": -0.13274893355206718
+            },
+            "BNG": {
+              "cambio_pp": 0.04263150346011402,
+              "numerador_pp": 0.17276347562479374,
+              "denominador_pp": -0.13013197216467945
+            },
+            "CC": {
+              "cambio_pp": 0.024252493144727216,
+              "numerador_pp": 0.07004113428587351,
+              "denominador_pp": -0.0457886411411462
+            },
+            "UPN": {
+              "cambio_pp": 0.01547727948067383,
+              "numerador_pp": 0.031731882237340595,
+              "denominador_pp": -0.01625460275666673
+            },
+            "OTROS": {
+              "cambio_pp": 1.093327568724408,
+              "numerador_pp": 1.5522941067526632,
+              "denominador_pp": -0.458966538028255
+            },
+            "BLANCO": {
+              "cambio_pp": -0.17241860636268047,
+              "numerador_pp": 0.0,
+              "denominador_pp": -0.1724186063626801
+            }
+          },
+          "cambio_mae_23j": 0.7589661688869551
+        },
+        {
+          "componente": "recuerdo",
+          "base": "simpatia_peso",
+          "alternativa": "solo_recuerdo",
+          "diferencias": {
+            "PP": {
+              "cambio_pp": 0.260399095338137,
+              "numerador_pp": 0.32777150824820306,
+              "denominador_pp": -0.06737241291007467
+            },
+            "PSOE": {
+              "cambio_pp": -4.815845962214162,
+              "numerador_pp": -4.758786477992826,
+              "denominador_pp": -0.057059484221337296
+            },
+            "VOX": {
+              "cambio_pp": 4.6801554946931905,
+              "numerador_pp": 4.713518457266385,
+              "denominador_pp": -0.03336296257319688
+            },
+            "SUMAR": {
+              "cambio_pp": -1.0377819899552563,
+              "numerador_pp": -1.0031945917461729,
+              "denominador_pp": -0.034587398209084394
+            },
+            "PODEMOS": {
+              "cambio_pp": 0.0,
+              "numerador_pp": 0.0,
+              "denominador_pp": -0.0
+            },
+            "SALF": {
+              "cambio_pp": 0.0,
+              "numerador_pp": 0.0,
+              "denominador_pp": -0.0
+            },
+            "ERC": {
+              "cambio_pp": 0.3233857597170584,
+              "numerador_pp": 0.32799979583494754,
+              "denominador_pp": -0.0046140361178891665
+            },
+            "JUNTS": {
+              "cambio_pp": 0.63021639452119,
+              "numerador_pp": 0.634514698799067,
+              "denominador_pp": -0.004298304277877098
+            },
+            "BILDU": {
+              "cambio_pp": 0.017836000001462793,
+              "numerador_pp": 0.020618887693548603,
+              "denominador_pp": -0.002782887692085715
+            },
+            "PNV": {
+              "cambio_pp": 0.07577312863441676,
+              "numerador_pp": 0.0782884693784802,
+              "denominador_pp": -0.002515340744063629
+            },
+            "BNG": {
+              "cambio_pp": -0.2916847422540101,
+              "numerador_pp": -0.2900272680876592,
+              "denominador_pp": -0.001657474166351036
+            },
+            "CC": {
+              "cambio_pp": 0.00479242087905013,
+              "numerador_pp": 0.005612888373346852,
+              "denominador_pp": -0.0008204674942967621
+            },
+            "UPN": {
+              "cambio_pp": 0.0029691232983002636,
+              "numerador_pp": 0.0032631829401357586,
+              "denominador_pp": -0.00029405964183550857
+            },
+            "OTROS": {
+              "cambio_pp": 0.22971562672698642,
+              "numerador_pp": 0.238340916701404,
+              "denominador_pp": -0.008625289974418
+            },
+            "BLANCO": {
+              "cambio_pp": -0.07993034938636479,
+              "numerador_pp": -0.07705724630578752,
+              "denominador_pp": -0.0028731030805773925
+            }
+          },
+          "cambio_mae_23j": 1.0709882596009321
+        },
+        {
+          "componente": "indecisos",
+          "base": "simpatia_peso",
+          "alternativa": "solo_indecisos",
+          "diferencias": {
+            "PP": {
+              "cambio_pp": -0.06729531893720164,
+              "numerador_pp": 0.34899646737561574,
+              "denominador_pp": -0.41629178631282576
+            },
+            "PSOE": {
+              "cambio_pp": 0.09754703672540543,
+              "numerador_pp": 0.5217257644703874,
+              "denominador_pp": -0.42417872774498067
+            },
+            "VOX": {
+              "cambio_pp": -0.06874298252901667,
+              "numerador_pp": 0.07413194082953978,
+              "denominador_pp": -0.1428749233585581
+            },
+            "SUMAR": {
+              "cambio_pp": 0.01923818068777905,
+              "numerador_pp": 0.24985515652415524,
+              "denominador_pp": -0.23061697583637794
+            },
+            "PODEMOS": {
+              "cambio_pp": 0.0,
+              "numerador_pp": 0.0,
+              "denominador_pp": -0.0
+            },
+            "SALF": {
+              "cambio_pp": 0.0,
+              "numerador_pp": 0.0,
+              "denominador_pp": -0.0
+            },
+            "ERC": {
+              "cambio_pp": 0.009798117827088948,
+              "numerador_pp": 0.034291660981772436,
+              "denominador_pp": -0.024493543154683526
+            },
+            "JUNTS": {
+              "cambio_pp": 0.0010171068437825337,
+              "numerador_pp": 0.019184624402845903,
+              "denominador_pp": -0.018167517559063685
+            },
+            "BILDU": {
+              "cambio_pp": -0.006676101717610017,
+              "numerador_pp": 0.010367842652052333,
+              "denominador_pp": -0.017043944369662303
+            },
+            "PNV": {
+              "cambio_pp": 0.002505487694275832,
+              "numerador_pp": 0.01720572138389722,
+              "denominador_pp": -0.014700233689621605
+            },
+            "BNG": {
+              "cambio_pp": -0.00902863487123029,
+              "numerador_pp": 0.005223369244283345,
+              "denominador_pp": -0.014252004115513897
+            },
+            "CC": {
+              "cambio_pp": 0.004688089908618687,
+              "numerador_pp": 0.009811343268822563,
+              "denominador_pp": -0.0051232533602038905
+            },
+            "UPN": {
+              "cambio_pp": -0.0009077885128395413,
+              "numerador_pp": 0.0008754438841061441,
+              "denominador_pp": -0.001783232396945711
+            },
+            "OTROS": {
+              "cambio_pp": 0.006800386066502462,
+              "numerador_pp": 0.057599327499216195,
+              "denominador_pp": -0.05079894143271383
+            },
+            "BLANCO": {
+              "cambio_pp": 0.011056420814445245,
+              "numerador_pp": 0.030257193092374204,
+              "denominador_pp": -0.019200772277929146
+            }
+          },
+          "cambio_mae_23j": 0.014432361357147983
+        },
+        {
+          "componente": "participacion",
+          "base": "simpatia_peso",
+          "alternativa": "solo_participacion",
+          "diferencias": {
+            "PP": {
+              "cambio_pp": 0.5920162309338899,
+              "numerador_pp": -1.527695736584609,
+              "denominador_pp": 2.1197119675184903
+            },
+            "PSOE": {
+              "cambio_pp": 0.22372946940645733,
+              "numerador_pp": -1.898634896008689,
+              "denominador_pp": 2.122364365415143
+            },
+            "VOX": {
+              "cambio_pp": 0.0860203292218884,
+              "numerador_pp": -0.6365667606693859,
+              "denominador_pp": 0.7225870898912726
+            },
+            "SUMAR": {
+              "cambio_pp": 0.030369446345165585,
+              "numerador_pp": -1.1195643321622846,
+              "denominador_pp": 1.1499337785074473
+            },
+            "PODEMOS": {
+              "cambio_pp": 0.0,
+              "numerador_pp": 0.0,
+              "denominador_pp": 0.0
+            },
+            "SALF": {
+              "cambio_pp": 0.0,
+              "numerador_pp": 0.0,
+              "denominador_pp": 0.0
+            },
+            "ERC": {
+              "cambio_pp": -0.0457564581824339,
+              "numerador_pp": -0.1639892959907855,
+              "denominador_pp": 0.11823283780835153
+            },
+            "JUNTS": {
+              "cambio_pp": -0.12574019058182162,
+              "numerador_pp": -0.20755570833966955,
+              "denominador_pp": 0.08181551775784775
+            },
+            "BILDU": {
+              "cambio_pp": -0.05087292491713913,
+              "numerador_pp": -0.13276503116206873,
+              "denominador_pp": 0.08189210624492949
+            },
+            "PNV": {
+              "cambio_pp": -0.05035632406359869,
+              "numerador_pp": -0.11997402842610544,
+              "denominador_pp": 0.06961770436250658
+            },
+            "BNG": {
+              "cambio_pp": 0.02601650786778431,
+              "numerador_pp": -0.04741056240167786,
+              "denominador_pp": 0.07342707026946207
+            },
+            "CC": {
+              "cambio_pp": -0.004438688527131973,
+              "numerador_pp": -0.029340560144966426,
+              "denominador_pp": 0.024901871617834425
+            },
+            "UPN": {
+              "cambio_pp": 0.0021775311914666584,
+              "numerador_pp": -0.006920439459080838,
+              "denominador_pp": 0.009097970650547472
+            },
+            "OTROS": {
+              "cambio_pp": -0.45974919600835573,
+              "numerador_pp": -0.68080968387764,
+              "denominador_pp": 0.22106048786928398
+            },
+            "BLANCO": {
+              "cambio_pp": -0.2234157326861692,
+              "numerador_pp": -0.3029754402327754,
+              "denominador_pp": 0.079559707546606
+            }
+          },
+          "cambio_mae_23j": -0.2178491458042675
+        }
+      ],
+      "receta_acumulativa_misma_cohorte": [
+        {
+          "id": "directa",
+          "titulo": "Intención directa sin ponderar",
+          "regla": "Porcentaje sobre quienes nombran candidatura o voto en blanco",
+          "parametro": "INTENCIONGR; excluye nulo, no votaría, N.S. y N.C.",
+          "estimacion": {
+            "PP": 32.38,
+            "PSOE": 30.73,
+            "VOX": 11.329,
+            "SUMAR": 15.044,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.253,
+            "JUNTS": 0.97,
+            "BILDU": 1.265,
+            "PNV": 0.983,
+            "BNG": 1.201,
+            "CC": 0.278,
+            "UPN": 0.12,
+            "OTROS": 2.847,
+            "BLANCO": 1.599
+          },
+          "variacion_pp": null,
+          "entrevistas": 29127,
+          "entrevistas_validas": 23391
+        },
+        {
+          "id": "peso",
+          "titulo": "Ponderación del CIS",
+          "regla": "Peso sociodemográfico publicado por el CIS",
+          "parametro": "PESO",
+          "estimacion": {
+            "PP": 31.691,
+            "PSOE": 30.79,
+            "VOX": 11.024,
+            "SUMAR": 15.848,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.587,
+            "JUNTS": 1.227,
+            "BILDU": 1.233,
+            "PNV": 1.007,
+            "BNG": 1.0,
+            "CC": 0.342,
+            "UPN": 0.115,
+            "OTROS": 2.582,
+            "BLANCO": 1.553
+          },
+          "variacion_pp": {
+            "PP": -0.689,
+            "PSOE": 0.06,
+            "VOX": -0.305,
+            "SUMAR": 0.804,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 0.334,
+            "JUNTS": 0.257,
+            "BILDU": -0.032,
+            "PNV": 0.024,
+            "BNG": -0.201,
+            "CC": 0.064,
+            "UPN": -0.005,
+            "OTROS": -0.265,
+            "BLANCO": -0.046
+          }
+        },
+        {
+          "id": "simpatia",
+          "titulo": "Voto + simpatía",
+          "regla": "Quien no declara voto pero sí simpatía se asigna a ese partido",
+          "parametro": "VOTOSIMG",
+          "estimacion": {
+            "PP": 30.244,
+            "PSOE": 30.651,
+            "VOX": 10.426,
+            "SUMAR": 16.698,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.766,
+            "JUNTS": 1.316,
+            "BILDU": 1.242,
+            "PNV": 1.063,
+            "BNG": 1.042,
+            "CC": 0.367,
+            "UPN": 0.13,
+            "OTROS": 3.676,
+            "BLANCO": 1.381
+          },
+          "variacion_pp": {
+            "PP": -1.447,
+            "PSOE": -0.139,
+            "VOX": -0.598,
+            "SUMAR": 0.85,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 0.179,
+            "JUNTS": 0.089,
+            "BILDU": 0.009,
+            "PNV": 0.056,
+            "BNG": 0.042,
+            "CC": 0.025,
+            "UPN": 0.015,
+            "OTROS": 1.094,
+            "BLANCO": -0.172
+          }
+        },
+        {
+          "id": "recuerdo",
+          "titulo": "Calibración por recuerdo de voto",
+          "regla": "Entre quienes recuerdan haber votado, el recuerdo ponderado debe reproducir el resultado oficial de esas elecciones",
+          "parametro": "RECUERDO; factores recortados a (0.2, 5.0)",
+          "estimacion": {
+            "PP": 30.504,
+            "PSOE": 25.835,
+            "VOX": 15.106,
+            "SUMAR": 15.66,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 2.089,
+            "JUNTS": 1.946,
+            "BILDU": 1.26,
+            "PNV": 1.139,
+            "BNG": 0.75,
+            "CC": 0.371,
+            "UPN": 0.133,
+            "OTROS": 3.905,
+            "BLANCO": 1.301
+          },
+          "variacion_pp": {
+            "PP": 0.26,
+            "PSOE": -4.816,
+            "VOX": 4.68,
+            "SUMAR": -1.038,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 0.323,
+            "JUNTS": 0.63,
+            "BILDU": 0.018,
+            "PNV": 0.076,
+            "BNG": -0.292,
+            "CC": 0.004,
+            "UPN": 0.003,
+            "OTROS": 0.229,
+            "BLANCO": -0.08
+          },
+          "recuerdo_muestra_pct": {
+            "PSOE": 35.149,
+            "PP": 20.936,
+            "VOX": 7.327,
+            "UP": 13.73,
+            "CS": 7.425,
+            "ERC": 2.937,
+            "MAS_PAIS": 1.924,
+            "JUNTS": 1.239,
+            "BLANCO_NULO": 2.172,
+            "OTROS": 2.182,
+            "PNV": 1.397,
+            "BILDU": 1.097,
+            "CUP": 0.533,
+            "CC": 0.47,
+            "BNG": 0.88,
+            "NA_SUMA": 0.388,
+            "PRC": 0.155,
+            "TERUEL": 0.059
+          },
+          "resultado_oficial_pct": {
+            "PSOE": 27.715,
+            "PP": 20.594,
+            "VOX": 14.922,
+            "UP": 12.728,
+            "CS": 6.734,
+            "ERC": 3.57,
+            "MAS_PAIS": 2.376,
+            "JUNTS": 2.164,
+            "BLANCO_NULO": 1.904,
+            "OTROS": 1.843,
+            "PNV": 1.546,
+            "BILDU": 1.133,
+            "CUP": 1.008,
+            "CC": 0.507,
+            "BNG": 0.492,
+            "NA_SUMA": 0.404,
+            "PRC": 0.281,
+            "TERUEL": 0.081
+          },
+          "factores": {
+            "PSOE": 0.7885,
+            "PP": 0.9836,
+            "VOX": 2.0365,
+            "UP": 0.927,
+            "CS": 0.907,
+            "ERC": 1.2156,
+            "MAS_PAIS": 1.2347,
+            "JUNTS": 1.7458,
+            "BLANCO_NULO": 0.8768,
+            "OTROS": 0.8448,
+            "PNV": 1.1068,
+            "BILDU": 1.0329,
+            "CUP": 1.8901,
+            "CC": 1.0781,
+            "BNG": 0.5583,
+            "NA_SUMA": 1.0409,
+            "PRC": 1.8171,
+            "TERUEL": 1.3676
+          }
+        },
+        {
+          "id": "indecisos",
+          "titulo": "Indecisos según su recuerdo",
+          "regla": "N.S./N.C. que recuerdan voto se reparten como los decididos de su grupo de recuerdo",
+          "parametro": "Matriz de transferencias observada con pesos calibrados",
+          "estimacion": {
+            "PP": 30.445,
+            "PSOE": 25.932,
+            "VOX": 15.002,
+            "SUMAR": 15.69,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 2.103,
+            "JUNTS": 1.95,
+            "BILDU": 1.254,
+            "PNV": 1.143,
+            "BNG": 0.745,
+            "CC": 0.377,
+            "UPN": 0.132,
+            "OTROS": 3.915,
+            "BLANCO": 1.311
+          },
+          "variacion_pp": {
+            "PP": -0.059,
+            "PSOE": 0.097,
+            "VOX": -0.104,
+            "SUMAR": 0.03,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 0.014,
+            "JUNTS": 0.004,
+            "BILDU": -0.006,
+            "PNV": 0.004,
+            "BNG": -0.005,
+            "CC": 0.006,
+            "UPN": -0.001,
+            "OTROS": 0.01,
+            "BLANCO": 0.01
+          },
+          "indecisos_pct": 3.08,
+          "imputados_pct_de_indecisos": 37.3,
+          "transferencias_pct": {
+            "PP": {
+              "PP": 86.1,
+              "VOX": 11.3,
+              "PSOE": 1.0,
+              "OTROS": 0.7
+            },
+            "PSOE": {
+              "PSOE": 74.3,
+              "PP": 10.3,
+              "SUMAR": 9.6,
+              "VOX": 2.1,
+              "OTROS": 1.5,
+              "BLANCO": 1.0
+            },
+            "CS": {
+              "PP": 67.8,
+              "VOX": 10.0,
+              "PSOE": 8.5,
+              "OTROS": 7.4,
+              "SUMAR": 3.1,
+              "BLANCO": 2.6
+            },
+            "UP": {
+              "SUMAR": 74.5,
+              "PSOE": 18.2,
+              "OTROS": 2.2,
+              "VOX": 1.3,
+              "BNG": 0.9,
+              "PP": 0.9,
+              "BILDU": 0.6,
+              "BLANCO": 0.5,
+              "ERC": 0.5
+            },
+            "VOX": {
+              "VOX": 73.6,
+              "PP": 24.1,
+              "OTROS": 0.7,
+              "PSOE": 0.6
+            },
+            "BLANCO_NULO": {
+              "PP": 34.0,
+              "BLANCO": 23.0,
+              "PSOE": 13.5,
+              "SUMAR": 9.9,
+              "OTROS": 9.9,
+              "VOX": 5.5,
+              "ERC": 0.8,
+              "JUNTS": 0.8,
+              "PNV": 0.8,
+              "BILDU": 0.6
+            },
+            "OTROS": {
+              "SUMAR": 38.1,
+              "OTROS": 26.0,
+              "PSOE": 15.1,
+              "PP": 9.1,
+              "VOX": 3.4,
+              "JUNTS": 2.5,
+              "BNG": 1.4,
+              "ERC": 1.3,
+              "BLANCO": 1.2,
+              "BILDU": 1.1
+            },
+            "MAS_PAIS": {
+              "SUMAR": 70.8,
+              "PSOE": 19.5,
+              "PP": 5.4,
+              "OTROS": 1.7,
+              "VOX": 1.6,
+              "BNG": 0.5
+            },
+            "TERUEL": {
+              "OTROS": 60.5,
+              "SUMAR": 20.9,
+              "VOX": 9.5,
+              "PSOE": 9.1
+            },
+            "CC": {
+              "CC": 40.7,
+              "PP": 33.9,
+              "VOX": 8.0,
+              "OTROS": 6.8,
+              "PSOE": 6.4,
+              "SUMAR": 4.3
+            },
+            "PRC": {
+              "PP": 31.3,
+              "PSOE": 28.8,
+              "OTROS": 21.5,
+              "SUMAR": 9.9,
+              "VOX": 8.4
+            },
+            "CUP": {
+              "OTROS": 68.0,
+              "SUMAR": 13.1,
+              "ERC": 12.4,
+              "JUNTS": 6.1
+            },
+            "ERC": {
+              "ERC": 52.6,
+              "PSOE": 15.7,
+              "SUMAR": 10.3,
+              "OTROS": 9.6,
+              "JUNTS": 8.9,
+              "BLANCO": 1.7,
+              "VOX": 1.0
+            },
+            "JUNTS": {
+              "JUNTS": 75.2,
+              "OTROS": 10.8,
+              "PSOE": 3.9,
+              "ERC": 3.8,
+              "VOX": 2.3,
+              "PP": 2.2,
+              "SUMAR": 1.0,
+              "BLANCO": 0.8
+            },
+            "BNG": {
+              "BNG": 74.2,
+              "SUMAR": 11.4,
+              "PSOE": 10.1,
+              "PP": 3.1,
+              "OTROS": 1.2
+            },
+            "BILDU": {
+              "BILDU": 88.8,
+              "SUMAR": 6.1,
+              "OTROS": 2.6,
+              "PSOE": 2.6
+            },
+            "NA_SUMA": {
+              "PP": 71.3,
+              "UPN": 21.4,
+              "VOX": 5.0,
+              "BLANCO": 1.3,
+              "OTROS": 1.1
+            },
+            "PNV": {
+              "PNV": 69.0,
+              "PSOE": 11.1,
+              "BILDU": 6.3,
+              "PP": 5.5,
+              "SUMAR": 4.6,
+              "OTROS": 1.7,
+              "BLANCO": 1.5
+            }
+          }
+        },
+        {
+          "id": "participacion",
+          "titulo": "Probabilidad de votar",
+          "regla": "Cada entrevista pesa además su probabilidad declarada de votar",
+          "parametro": "PROBVOTO/10; N.S./N.C. = 0,5",
+          "estimacion": {
+            "PP": 31.089,
+            "PSOE": 26.036,
+            "VOX": 15.273,
+            "SUMAR": 15.691,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 2.05,
+            "JUNTS": 1.773,
+            "BILDU": 1.205,
+            "PNV": 1.096,
+            "BNG": 0.758,
+            "CC": 0.374,
+            "UPN": 0.135,
+            "OTROS": 3.424,
+            "BLANCO": 1.095
+          },
+          "variacion_pp": {
+            "PP": 0.644,
+            "PSOE": 0.104,
+            "VOX": 0.271,
+            "SUMAR": 0.001,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": -0.053,
+            "JUNTS": -0.177,
+            "BILDU": -0.049,
+            "PNV": -0.047,
+            "BNG": 0.013,
+            "CC": -0.003,
+            "UPN": 0.003,
+            "OTROS": -0.491,
+            "BLANCO": -0.216
+          }
+        }
+      ],
+      "kish_final_receta": 18995.0
+    },
+    "3415": {
+      "universo_puntuado": [
+        "PP",
+        "PSOE",
+        "VOX",
+        "SUMAR"
+      ],
+      "resultado_oficial": {
+        "PP": 33.05576896257697,
+        "PSOE": 31.68215504101229,
+        "VOX": 12.382490388988018,
+        "SUMAR": 12.333867747630668
+      },
+      "denominador_objetivo": "votos válidos, incluye blanco",
+      "sha256_zip": "3f3411dadf451b0122fba61f2fef6a37f5567e262d629749b0212d51add9b58f",
+      "n_original": 8798,
+      "n_cohorte": 8767,
+      "n_excluidas": 31,
+      "elegibilidad": "PESO finito positivo y PROBVOTO explícita entera 0–10, igual en todos los escenarios",
+      "objetivo_recuerdo": "BOE noviembre 2019, nunca resultado 23J 2023",
+      "factores_recuerdo": {
+        "PSOE": 0.8097104253208166,
+        "PP": 0.8979481528892578,
+        "VOX": 1.9165246057962504,
+        "UP": 0.9257865231689645,
+        "CS": 1.124364504370555,
+        "MAS_PAIS": 1.5082245637591751,
+        "ERC": 1.0443348079339496,
+        "JUNTS": 1.2671498651300477,
+        "CUP": 1.7298374468399345,
+        "PNV": 1.096562285661699,
+        "BILDU": 1.4782521330392584,
+        "BNG": 0.5156891907888638,
+        "CC": 1.604878249114706,
+        "NA_SUMA": 0.7681052214846434,
+        "PRC": 2.24841415498345,
+        "TERUEL": 1.0267410192302457,
+        "OTROS": 0.9236315314432673,
+        "BLANCO_NULO": 1.0236188517631057
+      },
+      "escenarios": {
+        "directa_sin_peso": {
+          "n_cohorte": 8767,
+          "n_aportan": 7041,
+          "peso_total": 8767.0,
+          "denominador_valido": 7041.0,
+          "kish_cohorte": 8767.0,
+          "kish_aportan": 7041.0,
+          "masa": {
+            "PP": 2279.0,
+            "SUMAR": 1017.0,
+            "VOX": 798.0,
+            "PSOE": 2324.0,
+            "BLANCO": 77.0,
+            "OTROS": 137.0,
+            "CC": 9.0,
+            "ERC": 103.0,
+            "JUNTS": 63.0,
+            "BNG": 84.0,
+            "BILDU": 65.0,
+            "UPN": 10.0,
+            "PNV": 75.0
+          },
+          "porcentaje_total": {
+            "PP": 25.995209307630887,
+            "PSOE": 26.508497775749973,
+            "VOX": 9.102315501311738,
+            "SUMAR": 11.600319379491275,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.1748602714725676,
+            "JUNTS": 0.7186038553667161,
+            "BILDU": 0.7414166761720087,
+            "PNV": 0.8554807801984715,
+            "BNG": 0.9581384738222881,
+            "CC": 0.10265769362381659,
+            "UPN": 0.11406410402646287,
+            "OTROS": 1.5626782251625413,
+            "BLANCO": 0.8782936010037641
+          },
+          "estimacion": {
+            "PP": 32.367561425933815,
+            "PSOE": 33.00667518818349,
+            "VOX": 11.333617383894333,
+            "SUMAR": 14.443971026842778,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.4628603891492686,
+            "JUNTS": 0.8947592671495527,
+            "BILDU": 0.9231643232495385,
+            "PNV": 1.0651896037494675,
+            "BNG": 1.1930123561994035,
+            "CC": 0.1278227524499361,
+            "UPN": 0.142025280499929,
+            "OTROS": 1.9457463428490271,
+            "BLANCO": 1.0935946598494533
+          },
+          "errores_23j": {
+            "PP": -0.688207536643155,
+            "PSOE": 1.324520147171203,
+            "VOX": -1.048873005093684,
+            "SUMAR": 2.11010327921211
+          },
+          "mae_23j": 1.292925992030038
+        },
+        "directa_peso": {
+          "n_cohorte": 8767,
+          "n_aportan": 7041,
+          "peso_total": 8767.25217,
+          "denominador_valido": 6975.246220000006,
+          "kish_cohorte": 8046.800975130906,
+          "kish_aportan": 6478.419416344213,
+          "masa": {
+            "PP": 2179.4277600000005,
+            "SUMAR": 1034.3985600000012,
+            "VOX": 765.4992300000011,
+            "PSOE": 2319.2368200000033,
+            "BLANCO": 69.40229000000001,
+            "OTROS": 140.67249999999999,
+            "CC": 11.19154,
+            "ERC": 138.11082999999996,
+            "JUNTS": 85.58801,
+            "BNG": 69.28697000000001,
+            "BILDU": 72.30619999999999,
+            "UPN": 10.81848,
+            "PNV": 79.30703000000003
+          },
+          "porcentaje_total": {
+            "PP": 24.858732448207892,
+            "PSOE": 26.45340609610871,
+            "VOX": 8.731347235789627,
+            "SUMAR": 11.798435130445224,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.575303496716919,
+            "JUNTS": 0.9762238879459537,
+            "BILDU": 0.8247304696837526,
+            "PNV": 0.9045825129950611,
+            "BNG": 0.7902928837508276,
+            "CC": 0.1276516265643127,
+            "UPN": 0.12339647349278879,
+            "OTROS": 1.6045221156220033,
+            "BLANCO": 0.7916082331643486
+          },
+          "estimacion": {
+            "PP": 31.24517316322059,
+            "PSOE": 33.24953337632863,
+            "VOX": 10.97451195063334,
+            "SUMAR": 14.82956339281741,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.9800136890364832,
+            "JUNTS": 1.2270249293077988,
+            "BILDU": 1.0366114359186007,
+            "PNV": 1.1369782155159527,
+            "BNG": 0.9933265122790167,
+            "CC": 0.16044652256017408,
+            "UPN": 0.1550981808926021,
+            "OTROS": 2.016738844238245,
+            "BLANCO": 0.994979787251151
+          },
+          "errores_23j": {
+            "PP": -1.8105957993563813,
+            "PSOE": 1.567378335316338,
+            "VOX": -1.407978438354677,
+            "SUMAR": 2.4956956451867427
+          },
+          "mae_23j": 1.8204120545535347
+        },
+        "simpatia_peso": {
+          "n_cohorte": 8767,
+          "n_aportan": 7823,
+          "peso_total": 8767.25217,
+          "denominador_valido": 7789.770670000015,
+          "kish_cohorte": 8046.800975130906,
+          "kish_aportan": 7184.359194684061,
+          "masa": {
+            "PP": 2365.4539100000043,
+            "SUMAR": 1180.0556500000034,
+            "VOX": 827.9747500000016,
+            "PSOE": 2598.7837500000064,
+            "BLANCO": 69.40229000000001,
+            "OTROS": 200.87803999999986,
+            "CC": 15.771269999999998,
+            "ERC": 164.41950999999997,
+            "JUNTS": 108.71045,
+            "BNG": 78.18746999999999,
+            "BILDU": 77.37017999999999,
+            "UPN": 12.760489999999999,
+            "PNV": 90.00291
+          },
+          "porcentaje_total": {
+            "PP": 26.980562029391297,
+            "PSOE": 29.64194139290973,
+            "VOX": 9.443948160099534,
+            "SUMAR": 13.459811889955065,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.8753824666138237,
+            "JUNTS": 1.2399603421011216,
+            "BILDU": 0.8824906424472104,
+            "PNV": 1.0265806007950151,
+            "BNG": 0.8918127194692063,
+            "CC": 0.1798884039627207,
+            "UPN": 0.14554719942542726,
+            "OTROS": 2.291231461179699,
+            "BLANCO": 0.7916082331643486
+          },
+          "estimacion": {
+            "PP": 30.366155952573116,
+            "PSOE": 33.361492399364835,
+            "VOX": 10.629000327168809,
+            "SUMAR": 15.148785503334992,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 2.1107105326375373,
+            "JUNTS": 1.395553920716382,
+            "BILDU": 0.9932279559649712,
+            "PNV": 1.1553987121420586,
+            "BNG": 1.0037197924338874,
+            "CC": 0.2024612876055306,
+            "UPN": 0.16381085580790242,
+            "OTROS": 2.5787413841799203,
+            "BLANCO": 0.8909413760700593
+          },
+          "errores_23j": {
+            "PP": -2.6896130100038533,
+            "PSOE": 1.6793373583525444,
+            "VOX": -1.7534900618192086,
+            "SUMAR": 2.8149177557043235
+          },
+          "mae_23j": 2.2343395464699825
+        },
+        "solo_recuerdo": {
+          "n_cohorte": 8767,
+          "n_aportan": 7823,
+          "peso_total": 8767.252170000002,
+          "denominador_valido": 7795.901458270497,
+          "kish_cohorte": 7463.73608873291,
+          "kish_aportan": 6623.5835325747685,
+          "masa": {
+            "PP": 2329.5983197678383,
+            "SUMAR": 1139.1113820675553,
+            "VOX": 1187.5849823212218,
+            "PSOE": 2262.8091620214127,
+            "BLANCO": 70.9486763875274,
+            "OTROS": 221.4782221167852,
+            "CC": 18.01698241140859,
+            "ERC": 174.9590628165117,
+            "JUNTS": 131.67828262354007,
+            "BNG": 51.79412165463339,
+            "BILDU": 101.24411946762552,
+            "UPN": 10.017318544926011,
+            "PNV": 96.66082606951116
+          },
+          "porcentaje_total": {
+            "PP": 26.57159021545331,
+            "PSOE": 25.809787583894856,
+            "VOX": 13.545692074250233,
+            "SUMAR": 12.992798199251009,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.9955974736895432,
+            "JUNTS": 1.5019333317926002,
+            "BILDU": 1.154798761396018,
+            "PNV": 1.102521339585367,
+            "BNG": 0.590768015454874,
+            "CC": 0.20550318460166508,
+            "UPN": 0.1142583599819738,
+            "OTROS": 2.5261988342783703,
+            "BLANCO": 0.8092464436040898
+          },
+          "estimacion": {
+            "PP": 29.882346925978904,
+            "PSOE": 29.025625505063935,
+            "VOX": 15.23345297112933,
+            "SUMAR": 14.611669839144742,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 2.2442441551246333,
+            "JUNTS": 1.6890706395967274,
+            "BILDU": 1.2986839303903452,
+            "PNV": 1.239892866616033,
+            "BNG": 0.6643762999298326,
+            "CC": 0.23110839083650525,
+            "UPN": 0.12849467888410598,
+            "OTROS": 2.840957178618823,
+            "BLANCO": 0.9100766186860859
+          },
+          "errores_23j": {
+            "PP": -3.1734220365980654,
+            "PSOE": -2.656529535948355,
+            "VOX": 2.850962582141312,
+            "SUMAR": 2.277802091514074
+          },
+          "mae_23j": 2.7396790615504516
+        },
+        "solo_indecisos": {
+          "n_cohorte": 8767,
+          "n_aportan": 8024,
+          "peso_total": 8767.25217,
+          "denominador_valido": 7992.11516000002,
+          "kish_cohorte": 8046.800975130906,
+          "kish_aportan": 7366.301903003808,
+          "masa": {
+            "PP": 2426.2301097331206,
+            "SUMAR": 1210.0635967159922,
+            "VOX": 842.748300185623,
+            "PSOE": 2670.21726164738,
+            "BLANCO": 72.09593658088521,
+            "OTROS": 206.10907972245977,
+            "CC": 16.645993968488384,
+            "ERC": 171.6194737841588,
+            "BNG": 81.49573110064647,
+            "PNV": 91.06429311818724,
+            "BILDU": 77.65790268299517,
+            "JUNTS": 112.92470120371202,
+            "UPN": 13.24277955637131
+          },
+          "porcentaje_total": {
+            "PP": 27.6737803668435,
+            "PSOE": 30.456717907400858,
+            "VOX": 9.612456489723883,
+            "SUMAR": 13.802085000550317,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.957505846260594,
+            "JUNTS": 1.2880284382616545,
+            "BILDU": 0.8857724310557292,
+            "PNV": 1.0386868240176013,
+            "BNG": 0.9295470179300941,
+            "CC": 0.1898655775574479,
+            "UPN": 0.151048233809058,
+            "OTROS": 2.350897130890439,
+            "BLANCO": 0.8223321878157545
+          },
+          "estimacion": {
+            "PP": 30.35779716834203,
+            "PSOE": 33.41064546982045,
+            "VOX": 10.544746707398806,
+            "SUMAR": 15.140717726044242,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 2.147359870927565,
+            "JUNTS": 1.412951376988313,
+            "BILDU": 0.9716814776602265,
+            "PNV": 1.1394266886187736,
+            "BNG": 1.0197016618144708,
+            "CC": 0.20828020661914912,
+            "UPN": 0.16569805728839468,
+            "OTROS": 2.5789052784677247,
+            "BLANCO": 0.9020883100098501
+          },
+          "errores_23j": {
+            "PP": -2.697971794234938,
+            "PSOE": 1.7284904288081613,
+            "VOX": -1.8377436815892114,
+            "SUMAR": 2.806849978413574
+          },
+          "mae_23j": 2.267763970761471
+        },
+        "solo_participacion": {
+          "n_cohorte": 8767,
+          "n_aportan": 7705,
+          "peso_total": 8137.095834,
+          "denominador_valido": 7381.369718000013,
+          "kish_cohorte": 7691.115147866992,
+          "kish_aportan": 6987.764672736091,
+          "masa": {
+            "PP": 2270.343829000002,
+            "SUMAR": 1133.9830270000023,
+            "VOX": 783.3250080000007,
+            "PSOE": 2465.517990000007,
+            "BLANCO": 57.10712799999999,
+            "OTROS": 164.120779,
+            "CC": 15.771269999999998,
+            "ERC": 147.713311,
+            "JUNTS": 98.809497,
+            "BNG": 73.093377,
+            "BILDU": 74.94370599999999,
+            "UPN": 12.760489999999999,
+            "PNV": 83.88030599999998
+          },
+          "porcentaje_total": {
+            "PP": 27.90115632549895,
+            "PSOE": 30.299729047040337,
+            "VOX": 9.626591894456489,
+            "SUMAR": 13.93596745243891,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.8153075005310306,
+            "JUNTS": 1.2143091222685973,
+            "BILDU": 0.9210129452679615,
+            "PNV": 1.0308383692559566,
+            "BNG": 0.8982735178635479,
+            "CC": 0.19381939603195286,
+            "UPN": 0.15681872575079714,
+            "OTROS": 2.0169453862671567,
+            "BLANCO": 0.7018121595838144
+          },
+          "estimacion": {
+            "PP": 30.757757919422488,
+            "PSOE": 33.40190349749939,
+            "VOX": 10.612190391842926,
+            "SUMAR": 15.362772362353038,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 2.00116396608329,
+            "JUNTS": 1.3386336245838732,
+            "BILDU": 1.0153089313118169,
+            "PNV": 1.1363786018664217,
+            "BNG": 0.9902413751441881,
+            "CC": 0.2136631899299204,
+            "UPN": 0.17287428333094612,
+            "OTROS": 2.2234461254498528,
+            "BLANCO": 0.7736657311818437
+          },
+          "errores_23j": {
+            "PP": -2.2980110431544816,
+            "PSOE": 1.7197484564870997,
+            "VOX": -1.7702999971450915,
+            "SUMAR": 3.0289046147223697
+          },
+          "mae_23j": 2.2042410278772606
+        }
+      },
+      "contrastes": [
+        {
+          "componente": "ponderacion",
+          "base": "directa_sin_peso",
+          "alternativa": "directa_peso",
+          "diferencias": {
+            "PP": {
+              "cambio_pp": -1.1223882627132262,
+              "numerador_pp": -1.414177531600618,
+              "denominador_pp": 0.29178926888738493
+            },
+            "PSOE": {
+              "cambio_pp": 0.24285818814513505,
+              "numerador_pp": -0.06764919755711883,
+              "denominador_pp": 0.31050738570224706
+            },
+            "VOX": {
+              "cambio_pp": -0.35910543326099287,
+              "numerador_pp": -0.4615930975713514,
+              "denominador_pp": 0.10248766431035843
+            },
+            "SUMAR": {
+              "cambio_pp": 0.38559236597463276,
+              "numerador_pp": 0.24710353642950186,
+              "denominador_pp": 0.13848882954512978
+            },
+            "PODEMOS": {
+              "cambio_pp": 0.0,
+              "numerador_pp": 0.0,
+              "denominador_pp": 0.0
+            },
+            "SALF": {
+              "cambio_pp": 0.0,
+              "numerador_pp": 0.0,
+              "denominador_pp": 0.0
+            },
+            "ERC": {
+              "cambio_pp": 0.5171532998872146,
+              "numerador_pp": 0.49866254793353165,
+              "denominador_pp": 0.018490751953682508
+            },
+            "JUNTS": {
+              "cambio_pp": 0.33226566215824616,
+              "numerador_pp": 0.32080684561852,
+              "denominador_pp": 0.01145881653972609
+            },
+            "BILDU": {
+              "cambio_pp": 0.11344711266906227,
+              "numerador_pp": 0.10376651043885797,
+              "denominador_pp": 0.009680602230204238
+            },
+            "PNV": {
+              "cambio_pp": 0.07178861176648521,
+              "numerador_pp": 0.06117071438716128,
+              "denominador_pp": 0.010617897379323967
+            },
+            "BNG": {
+              "cambio_pp": -0.1996858439203868,
+              "numerador_pp": -0.20896222127538688,
+              "denominador_pp": 0.009276377354999907
+            },
+            "CC": {
+              "cambio_pp": 0.03262377011023798,
+              "numerador_pp": 0.031125408322681437,
+              "denominador_pp": 0.0014983617875565297
+            },
+            "UPN": {
+              "cambio_pp": 0.013072900392673115,
+              "numerador_pp": 0.011624485158358178,
+              "denominador_pp": 0.0014484152343148989
+            },
+            "OTROS": {
+              "cambio_pp": 0.07099250138921764,
+              "numerador_pp": 0.05215878426359871,
+              "denominador_pp": 0.018833717125618626
+            },
+            "BLANCO": {
+              "cambio_pp": -0.09861487259830226,
+              "numerador_pp": -0.10790668939071145,
+              "denominador_pp": 0.00929181679240897
+            }
+          },
+          "cambio_mae_23j": 0.5274860625234967
+        },
+        {
+          "componente": "simpatia",
+          "base": "directa_peso",
+          "alternativa": "simpatia_peso",
+          "diferencias": {
+            "PP": {
+              "cambio_pp": -0.8790172106474721,
+              "numerador_pp": 2.666947432860708,
+              "denominador_pp": -3.545964643508181
+            },
+            "PSOE": {
+              "cambio_pp": 0.11195902303620642,
+              "numerador_pp": 4.007699817082628,
+              "denominador_pp": -3.89574079404642
+            },
+            "VOX": {
+              "cambio_pp": -0.3455116234645317,
+              "numerador_pp": 0.8956747622881814,
+              "denominador_pp": -1.241186385752714
+            },
+            "SUMAR": {
+              "cambio_pp": 0.31922211051758076,
+              "numerador_pp": 2.0881999775486357,
+              "denominador_pp": -1.768977867031055
+            },
+            "PODEMOS": {
+              "cambio_pp": 0.0,
+              "numerador_pp": 0.0,
+              "denominador_pp": -0.0
+            },
+            "SALF": {
+              "cambio_pp": 0.0,
+              "numerador_pp": 0.0,
+              "denominador_pp": -0.0
+            },
+            "ERC": {
+              "cambio_pp": 0.13069684360105405,
+              "numerador_pp": 0.37717206203510883,
+              "denominador_pp": -0.24647521843405465
+            },
+            "JUNTS": {
+              "cambio_pp": 0.16852899140858324,
+              "numerador_pp": 0.331492814313872,
+              "denominador_pp": -0.1629638229052889
+            },
+            "BILDU": {
+              "cambio_pp": -0.04338347995362957,
+              "numerador_pp": 0.07259930101793591,
+              "denominador_pp": -0.11598278097156552
+            },
+            "PNV": {
+              "cambio_pp": 0.018420496626105898,
+              "numerador_pp": 0.15334053684487664,
+              "denominador_pp": -0.13492004021877063
+            },
+            "BNG": {
+              "cambio_pp": 0.010393280154870732,
+              "numerador_pp": 0.12760123039785642,
+              "denominador_pp": -0.11720795024298573
+            },
+            "CC": {
+              "cambio_pp": 0.042014765045356506,
+              "numerador_pp": 0.06565689375765138,
+              "denominador_pp": -0.023642128712294867
+            },
+            "UPN": {
+              "cambio_pp": 0.008712674915300311,
+              "numerador_pp": 0.027841454462664086,
+              "denominador_pp": -0.019128779547363754
+            },
+            "OTROS": {
+              "cambio_pp": 0.5620025399416755,
+              "numerador_pp": 0.8631313949516727,
+              "denominador_pp": -0.3011288550099969
+            },
+            "BLANCO": {
+              "cambio_pp": -0.1040384111810917,
+              "numerador_pp": 0.0,
+              "denominador_pp": -0.10403841118109165
+            }
+          },
+          "cambio_mae_23j": 0.41392749191644773
+        },
+        {
+          "componente": "recuerdo",
+          "base": "simpatia_peso",
+          "alternativa": "solo_recuerdo",
+          "diferencias": {
+            "PP": {
+              "cambio_pp": -0.4838090265942121,
+              "numerador_pp": -0.46029070368211306,
+              "denominador_pp": -0.023518322912094342
+            },
+            "PSOE": {
+              "cambio_pp": -4.335866894300899,
+              "numerador_pp": -4.313022837405213,
+              "denominador_pp": -0.0228440568956835
+            },
+            "VOX": {
+              "cambio_pp": 4.604452643960521,
+              "numerador_pp": 4.61644183834772,
+              "denominador_pp": -0.011989194387197092
+            },
+            "SUMAR": {
+              "cambio_pp": -0.5371156641902495,
+              "numerador_pp": -0.5256158321853148,
+              "denominador_pp": -0.011499832004934077
+            },
+            "PODEMOS": {
+              "cambio_pp": 0.0,
+              "numerador_pp": 0.0,
+              "denominador_pp": -0.0
+            },
+            "SALF": {
+              "cambio_pp": 0.0,
+              "numerador_pp": 0.0,
+              "denominador_pp": -0.0
+            },
+            "ERC": {
+              "cambio_pp": 0.133533622487096,
+              "numerador_pp": 0.135299911422318,
+              "denominador_pp": -0.0017662889352213238
+            },
+            "JUNTS": {
+              "cambio_pp": 0.29351671888034536,
+              "numerador_pp": 0.2948460692430119,
+              "denominador_pp": -0.0013293503626664108
+            },
+            "BILDU": {
+              "cambio_pp": 0.3054559744253741,
+              "numerador_pp": 0.3064780784827069,
+              "denominador_pp": -0.0010221040573327542
+            },
+            "PNV": {
+              "cambio_pp": 0.08449415447397435,
+              "numerador_pp": 0.0854699881621951,
+              "denominador_pp": -0.0009758336882210242
+            },
+            "BNG": {
+              "cambio_pp": -0.3393434925040548,
+              "numerador_pp": -0.33882060799315605,
+              "denominador_pp": -0.0005228845108985827
+            },
+            "CC": {
+              "cambio_pp": 0.028647103230974663,
+              "numerador_pp": 0.028828992617937865,
+              "denominador_pp": -0.00018188938696318222
+            },
+            "UPN": {
+              "cambio_pp": -0.03531617692379643,
+              "numerador_pp": -0.03521504767320682,
+              "denominador_pp": -0.00010112925058958633
+            },
+            "OTROS": {
+              "cambio_pp": 0.2622157944389025,
+              "numerador_pp": 0.26445171481261714,
+              "denominador_pp": -0.0022359203737141275
+            },
+            "BLANCO": {
+              "cambio_pp": 0.019135242616026615,
+              "numerador_pp": 0.01985150080839785,
+              "denominador_pp": -0.0007162581923710524
+            }
+          },
+          "cambio_mae_23j": 0.5053395150804691
+        },
+        {
+          "componente": "indecisos",
+          "base": "simpatia_peso",
+          "alternativa": "solo_indecisos",
+          "diferencias": {
+            "PP": {
+              "cambio_pp": -0.008358784231084826,
+              "numerador_pp": 0.78020525003615,
+              "denominador_pp": -0.7885640342672299
+            },
+            "PSOE": {
+              "cambio_pp": 0.0491530704556169,
+              "numerador_pp": 0.9170168760227876,
+              "denominador_pp": -0.8678638055671761
+            },
+            "VOX": {
+              "cambio_pp": -0.08425361977000279,
+              "numerador_pp": 0.18965321074877498,
+              "denominador_pp": -0.2739068305187777
+            },
+            "SUMAR": {
+              "cambio_pp": -0.00806777729074959,
+              "numerador_pp": 0.3852224665811462,
+              "denominador_pp": -0.3932902438718964
+            },
+            "PODEMOS": {
+              "cambio_pp": 0.0,
+              "numerador_pp": 0.0,
+              "denominador_pp": -0.0
+            },
+            "SALF": {
+              "cambio_pp": 0.0,
+              "numerador_pp": 0.0,
+              "denominador_pp": -0.0
+            },
+            "ERC": {
+              "cambio_pp": 0.0366493382900277,
+              "numerador_pp": 0.09242844352128804,
+              "denominador_pp": -0.05577910523126005
+            },
+            "JUNTS": {
+              "cambio_pp": 0.01739745627193101,
+              "numerador_pp": 0.05409981092180235,
+              "denominador_pp": -0.036702354649871094
+            },
+            "BILDU": {
+              "cambio_pp": -0.021546478304744654,
+              "numerador_pp": 0.003693596322459905,
+              "denominador_pp": -0.025240074627204533
+            },
+            "PNV": {
+              "cambio_pp": -0.015972023523284973,
+              "numerador_pp": 0.013625344867658793,
+              "denominador_pp": -0.02959736839094384
+            },
+            "BNG": {
+              "cambio_pp": 0.015981869380583325,
+              "numerador_pp": 0.042469300327251734,
+              "denominador_pp": -0.026487430946668153
+            },
+            "CC": {
+              "cambio_pp": 0.005818919013618529,
+              "numerador_pp": 0.011229136332050506,
+              "denominador_pp": -0.005410217318431948
+            },
+            "UPN": {
+              "cambio_pp": 0.001887201480492262,
+              "numerador_pp": 0.0061913190619167545,
+              "denominador_pp": -0.004304117581424475
+            },
+            "OTROS": {
+              "cambio_pp": 0.0001638942878043892,
+              "numerador_pp": 0.0671526793799682,
+              "denominador_pp": -0.06698878509216379
+            },
+            "BLANCO": {
+              "cambio_pp": 0.011146933939790826,
+              "numerador_pp": 0.034579279609077314,
+              "denominador_pp": -0.023432345669286415
+            }
+          },
+          "cambio_mae_23j": 0.03342442429148873
+        },
+        {
+          "componente": "participacion",
+          "base": "simpatia_peso",
+          "alternativa": "solo_participacion",
+          "diferencias": {
+            "PP": {
+              "cambio_pp": 0.39160196684937176,
+              "numerador_pp": -1.2209612455767185,
+              "denominador_pp": 1.6125632124260927
+            },
+            "PSOE": {
+              "cambio_pp": 0.040411098134555345,
+              "numerador_pp": -1.7107789901085633,
+              "denominador_pp": 1.7511900882431188
+            },
+            "VOX": {
+              "cambio_pp": -0.01680993532588282,
+              "numerador_pp": -0.5731842937553484,
+              "denominador_pp": 0.556374358429467
+            },
+            "SUMAR": {
+              "cambio_pp": 0.21398685901804626,
+              "numerador_pp": -0.5914503128755274,
+              "denominador_pp": 0.8054371718935733
+            },
+            "PODEMOS": {
+              "cambio_pp": 0.0,
+              "numerador_pp": 0.0,
+              "denominador_pp": 0.0
+            },
+            "SALF": {
+              "cambio_pp": 0.0,
+              "numerador_pp": 0.0,
+              "denominador_pp": 0.0
+            },
+            "ERC": {
+              "cambio_pp": -0.10954656655424744,
+              "numerador_pp": -0.2144632969021659,
+              "denominador_pp": 0.10491673034791871
+            },
+            "JUNTS": {
+              "cambio_pp": -0.05692029613250882,
+              "numerador_pp": -0.12710198309342505,
+              "denominador_pp": 0.07018168696091634
+            },
+            "BILDU": {
+              "cambio_pp": 0.02208097534684572,
+              "numerador_pp": -0.031149492106935083,
+              "denominador_pp": 0.053230467453780766
+            },
+            "PNV": {
+              "cambio_pp": -0.01902011027563688,
+              "numerador_pp": -0.07859800062637803,
+              "denominador_pp": 0.05957789035074101
+            },
+            "BNG": {
+              "cambio_pp": -0.01347841728969934,
+              "numerador_pp": -0.06539464659233642,
+              "denominador_pp": 0.05191622930263721
+            },
+            "CC": {
+              "cambio_pp": 0.011201902324389806,
+              "numerador_pp": 0.0,
+              "denominador_pp": 0.011201902324389841
+            },
+            "UPN": {
+              "cambio_pp": 0.009063427523043704,
+              "numerador_pp": 0.0,
+              "denominador_pp": 0.009063427523043696
+            },
+            "OTROS": {
+              "cambio_pp": -0.3552952587300675,
+              "numerador_pp": -0.47186576546546505,
+              "denominador_pp": 0.11657050673539746
+            },
+            "BLANCO": {
+              "cambio_pp": -0.11727564488821562,
+              "numerador_pp": -0.15783727815442858,
+              "denominador_pp": 0.04056163326621307
+            }
+          },
+          "cambio_mae_23j": -0.030098518592721835
+        }
+      ],
+      "receta_acumulativa_misma_cohorte": [
+        {
+          "id": "directa",
+          "titulo": "Intención directa sin ponderar",
+          "regla": "Porcentaje sobre quienes nombran candidatura o voto en blanco",
+          "parametro": "INTENCIONGR; excluye nulo, no votaría, N.S. y N.C.",
+          "estimacion": {
+            "PP": 32.368,
+            "PSOE": 33.007,
+            "VOX": 11.334,
+            "SUMAR": 14.444,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.463,
+            "JUNTS": 0.895,
+            "BILDU": 0.923,
+            "PNV": 1.065,
+            "BNG": 1.193,
+            "CC": 0.128,
+            "UPN": 0.142,
+            "OTROS": 1.946,
+            "BLANCO": 1.094
+          },
+          "variacion_pp": null,
+          "entrevistas": 8767,
+          "entrevistas_validas": 7041
+        },
+        {
+          "id": "peso",
+          "titulo": "Ponderación del CIS",
+          "regla": "Peso sociodemográfico publicado por el CIS",
+          "parametro": "PESO",
+          "estimacion": {
+            "PP": 31.245,
+            "PSOE": 33.25,
+            "VOX": 10.975,
+            "SUMAR": 14.83,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 1.98,
+            "JUNTS": 1.227,
+            "BILDU": 1.037,
+            "PNV": 1.137,
+            "BNG": 0.993,
+            "CC": 0.16,
+            "UPN": 0.155,
+            "OTROS": 2.017,
+            "BLANCO": 0.995
+          },
+          "variacion_pp": {
+            "PP": -1.123,
+            "PSOE": 0.243,
+            "VOX": -0.359,
+            "SUMAR": 0.386,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 0.517,
+            "JUNTS": 0.332,
+            "BILDU": 0.114,
+            "PNV": 0.072,
+            "BNG": -0.2,
+            "CC": 0.032,
+            "UPN": 0.013,
+            "OTROS": 0.071,
+            "BLANCO": -0.099
+          }
+        },
+        {
+          "id": "simpatia",
+          "titulo": "Voto + simpatía",
+          "regla": "Quien no declara voto pero sí simpatía se asigna a ese partido",
+          "parametro": "VOTOSIMG",
+          "estimacion": {
+            "PP": 30.366,
+            "PSOE": 33.361,
+            "VOX": 10.629,
+            "SUMAR": 15.149,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 2.111,
+            "JUNTS": 1.396,
+            "BILDU": 0.993,
+            "PNV": 1.155,
+            "BNG": 1.004,
+            "CC": 0.202,
+            "UPN": 0.164,
+            "OTROS": 2.579,
+            "BLANCO": 0.891
+          },
+          "variacion_pp": {
+            "PP": -0.879,
+            "PSOE": 0.111,
+            "VOX": -0.346,
+            "SUMAR": 0.319,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 0.131,
+            "JUNTS": 0.169,
+            "BILDU": -0.044,
+            "PNV": 0.018,
+            "BNG": 0.011,
+            "CC": 0.042,
+            "UPN": 0.009,
+            "OTROS": 0.562,
+            "BLANCO": -0.104
+          }
+        },
+        {
+          "id": "recuerdo",
+          "titulo": "Calibración por recuerdo de voto",
+          "regla": "Entre quienes recuerdan haber votado, el recuerdo ponderado debe reproducir el resultado oficial de esas elecciones",
+          "parametro": "RECUERDO; factores recortados a (0.2, 5.0)",
+          "estimacion": {
+            "PP": 29.882,
+            "PSOE": 29.026,
+            "VOX": 15.233,
+            "SUMAR": 14.612,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 2.244,
+            "JUNTS": 1.689,
+            "BILDU": 1.299,
+            "PNV": 1.24,
+            "BNG": 0.664,
+            "CC": 0.231,
+            "UPN": 0.128,
+            "OTROS": 2.841,
+            "BLANCO": 0.91
+          },
+          "variacion_pp": {
+            "PP": -0.484,
+            "PSOE": -4.335,
+            "VOX": 4.604,
+            "SUMAR": -0.537,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 0.133,
+            "JUNTS": 0.293,
+            "BILDU": 0.306,
+            "PNV": 0.085,
+            "BNG": -0.34,
+            "CC": 0.029,
+            "UPN": -0.036,
+            "OTROS": 0.262,
+            "BLANCO": 0.019
+          },
+          "recuerdo_muestra_pct": {
+            "PSOE": 34.228,
+            "PP": 22.934,
+            "VOX": 7.786,
+            "UP": 13.748,
+            "CS": 5.989,
+            "ERC": 3.418,
+            "MAS_PAIS": 1.575,
+            "JUNTS": 1.707,
+            "BLANCO_NULO": 1.86,
+            "OTROS": 1.995,
+            "PNV": 1.41,
+            "BILDU": 0.766,
+            "CUP": 0.583,
+            "CC": 0.316,
+            "BNG": 0.953,
+            "NA_SUMA": 0.526,
+            "PRC": 0.125,
+            "TERUEL": 0.079
+          },
+          "resultado_oficial_pct": {
+            "PSOE": 27.715,
+            "PP": 20.594,
+            "VOX": 14.922,
+            "UP": 12.728,
+            "CS": 6.734,
+            "ERC": 3.57,
+            "MAS_PAIS": 2.376,
+            "JUNTS": 2.164,
+            "BLANCO_NULO": 1.904,
+            "OTROS": 1.843,
+            "PNV": 1.546,
+            "BILDU": 1.133,
+            "CUP": 1.008,
+            "CC": 0.507,
+            "BNG": 0.492,
+            "NA_SUMA": 0.404,
+            "PRC": 0.281,
+            "TERUEL": 0.081
+          },
+          "factores": {
+            "PSOE": 0.8097,
+            "PP": 0.8979,
+            "VOX": 1.9165,
+            "UP": 0.9258,
+            "CS": 1.1244,
+            "ERC": 1.0443,
+            "MAS_PAIS": 1.5082,
+            "JUNTS": 1.2671,
+            "BLANCO_NULO": 1.0236,
+            "OTROS": 0.9236,
+            "PNV": 1.0966,
+            "BILDU": 1.4783,
+            "CUP": 1.7298,
+            "CC": 1.6049,
+            "BNG": 0.5157,
+            "NA_SUMA": 0.7681,
+            "PRC": 2.2484,
+            "TERUEL": 1.0267
+          }
+        },
+        {
+          "id": "indecisos",
+          "titulo": "Indecisos según su recuerdo",
+          "regla": "N.S./N.C. que recuerdan voto se reparten como los decididos de su grupo de recuerdo",
+          "parametro": "Matriz de transferencias observada con pesos calibrados",
+          "estimacion": {
+            "PP": 29.897,
+            "PSOE": 29.083,
+            "VOX": 15.109,
+            "SUMAR": 14.618,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 2.283,
+            "JUNTS": 1.712,
+            "BILDU": 1.27,
+            "PNV": 1.223,
+            "BNG": 0.672,
+            "CC": 0.242,
+            "UPN": 0.13,
+            "OTROS": 2.838,
+            "BLANCO": 0.922
+          },
+          "variacion_pp": {
+            "PP": 0.015,
+            "PSOE": 0.057,
+            "VOX": -0.124,
+            "SUMAR": 0.006,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 0.039,
+            "JUNTS": 0.023,
+            "BILDU": -0.029,
+            "PNV": -0.017,
+            "BNG": 0.008,
+            "CC": 0.011,
+            "UPN": 0.002,
+            "OTROS": -0.003,
+            "BLANCO": 0.012
+          },
+          "indecisos_pct": 5.59,
+          "imputados_pct_de_indecisos": 40.3,
+          "transferencias_pct": {
+            "PP": {
+              "PP": 86.6,
+              "VOX": 10.3,
+              "PSOE": 2.1
+            },
+            "UP": {
+              "SUMAR": 72.0,
+              "PSOE": 21.4,
+              "OTROS": 1.8,
+              "VOX": 1.1,
+              "BILDU": 1.0,
+              "BLANCO": 0.8,
+              "PP": 0.7,
+              "ERC": 0.7,
+              "BNG": 0.5
+            },
+            "VOX": {
+              "VOX": 77.1,
+              "PP": 21.0,
+              "PSOE": 0.9,
+              "OTROS": 0.6
+            },
+            "PSOE": {
+              "PSOE": 79.8,
+              "PP": 8.4,
+              "SUMAR": 8.3,
+              "VOX": 1.8,
+              "OTROS": 0.6
+            },
+            "CS": {
+              "PP": 73.2,
+              "PSOE": 10.4,
+              "VOX": 8.7,
+              "OTROS": 3.9,
+              "SUMAR": 1.9,
+              "BLANCO": 1.7
+            },
+            "BLANCO_NULO": {
+              "PP": 34.4,
+              "BLANCO": 29.7,
+              "PSOE": 18.7,
+              "SUMAR": 6.9,
+              "VOX": 5.7,
+              "OTROS": 4.6
+            },
+            "OTROS": {
+              "SUMAR": 32.5,
+              "OTROS": 30.2,
+              "PSOE": 18.7,
+              "PP": 10.6,
+              "VOX": 6.3,
+              "BLANCO": 1.1,
+              "BNG": 0.6
+            },
+            "MAS_PAIS": {
+              "SUMAR": 74.1,
+              "PSOE": 21.7,
+              "OTROS": 2.1,
+              "BLANCO": 1.2,
+              "BNG": 0.9
+            },
+            "TERUEL": {
+              "OTROS": 66.9,
+              "PP": 19.5,
+              "SUMAR": 13.6
+            },
+            "JUNTS": {
+              "JUNTS": 73.8,
+              "ERC": 7.7,
+              "PSOE": 4.7,
+              "OTROS": 4.3,
+              "SUMAR": 3.9,
+              "PP": 3.5,
+              "BLANCO": 2.1
+            },
+            "CC": {
+              "PSOE": 37.4,
+              "CC": 26.0,
+              "PP": 17.1,
+              "SUMAR": 8.2,
+              "VOX": 5.8,
+              "OTROS": 5.5
+            },
+            "PNV": {
+              "PNV": 77.5,
+              "PSOE": 9.2,
+              "BILDU": 5.7,
+              "SUMAR": 3.4,
+              "PP": 3.3,
+              "VOX": 0.8
+            },
+            "PRC": {
+              "PSOE": 46.5,
+              "PP": 40.3,
+              "SUMAR": 7.0,
+              "BLANCO": 6.3
+            },
+            "ERC": {
+              "ERC": 55.5,
+              "PSOE": 22.8,
+              "SUMAR": 9.4,
+              "JUNTS": 5.5,
+              "OTROS": 5.3,
+              "PP": 0.9,
+              "VOX": 0.6
+            },
+            "CUP": {
+              "OTROS": 66.5,
+              "ERC": 15.5,
+              "SUMAR": 6.2,
+              "PSOE": 3.6,
+              "JUNTS": 3.2,
+              "PP": 2.5,
+              "BILDU": 2.4
+            },
+            "BNG": {
+              "BNG": 80.8,
+              "PSOE": 9.2,
+              "SUMAR": 5.2,
+              "PP": 4.8
+            },
+            "NA_SUMA": {
+              "PP": 46.5,
+              "UPN": 32.9,
+              "VOX": 18.3,
+              "PSOE": 2.3
+            },
+            "BILDU": {
+              "BILDU": 89.5,
+              "SUMAR": 8.0,
+              "PSOE": 2.5
+            }
+          }
+        },
+        {
+          "id": "participacion",
+          "titulo": "Probabilidad de votar",
+          "regla": "Cada entrevista pesa además su probabilidad declarada de votar",
+          "parametro": "PROBVOTO/10; N.S./N.C. = 0,5",
+          "estimacion": {
+            "PP": 30.267,
+            "PSOE": 29.035,
+            "VOX": 15.252,
+            "SUMAR": 14.817,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": 2.178,
+            "JUNTS": 1.654,
+            "BILDU": 1.3,
+            "PNV": 1.206,
+            "BNG": 0.659,
+            "CC": 0.256,
+            "UPN": 0.137,
+            "OTROS": 2.438,
+            "BLANCO": 0.802
+          },
+          "variacion_pp": {
+            "PP": 0.37,
+            "PSOE": -0.048,
+            "VOX": 0.143,
+            "SUMAR": 0.199,
+            "PODEMOS": 0.0,
+            "SALF": 0.0,
+            "ERC": -0.105,
+            "JUNTS": -0.058,
+            "BILDU": 0.03,
+            "PNV": -0.017,
+            "BNG": -0.013,
+            "CC": 0.014,
+            "UPN": 0.007,
+            "OTROS": -0.4,
+            "BLANCO": -0.12
+          }
+        }
+      ],
+      "kish_final_receta": 6602.6
+    }
+  },
+  "codigo_sha256": "1b31a03a213d97ccaec8eaf9a1ec606bb36ed0d837aa7cc83db62b2c42a0324a",
+  "dependencias_sha256": {
+    "scripts/cocina_cis.py": "221a97a6c15e5454d4d013b551a81482b45126a0d4838fedd67da05e6ee7f12f",
+    "modelo/motor/fuentes.py": "c167ae575151e22edee47cc5cddf9205beed937c9e3839b04ce1d04ffac7ab84",
+    "data/sources/resultados_2019N.json": "23c172495ece77fcbeb35ec15e44ab676e3f0f1021a0f9b931f073a8fbddd419",
+    "data/results.csv": "50f9db8b64d0a7c42c9f14ea855f1e6a645d55c060bb70ceffdedc9c5b58e458",
+    "data/districts.csv": "948513aad7ae79df57477272a9c90bcc7c900f63ecdfaea728f1ec22fa47aad1"
+  },
+  "fuentes_originales": [
+    {
+      "estudio": "3411",
+      "url": "https://www.cis.es/documents/20117/1557956/MD3411.zip/5694a453-285e-1d34-b803-75b4177f0c89?version=1.0&t=1699726161897",
+      "http": 200,
+      "bytes": 14194752,
+      "sha256": "bfb6de07d89c58e3266c6a5ca1ad8b44d1f795dc4424200faafaf0e01c2bd681",
+      "origen": "data-file público en página oficial CIS; sin autenticación ni envío de formulario"
+    },
+    {
+      "estudio": "3415",
+      "url": "https://www.cis.es/documents/20117/1557966/MD3415.zip/ab400480-5113-fd82-fd2c-3047cca869be?version=1.0&t=1700811431535",
+      "http": 200,
+      "bytes": 2812717,
+      "sha256": "3f3411dadf451b0122fba61f2fef6a37f5567e262d629749b0212d51add9b58f",
+      "origen": "data-file público en página oficial CIS; sin autenticación ni envío de formulario"
+    }
+  ]
+}

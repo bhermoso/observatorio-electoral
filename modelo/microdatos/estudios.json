@@ -1,6 +1,6 @@
 {
   "3411": {
-    "estado": "pendiente: fichero no descargado y códigos no verificados",
+    "estado": "Original CIS verificado y agregados retrospectivos disponibles; lector legado sin configurar",
     "pagina_microdatos": "https://www.cis.es/es/estudios/preelectoral-elecciones-generales-2023?showModal=true",
     "intencion": null,
     "recuerdo": null,
@@ -21,10 +21,12 @@
       "UPN",
       "OTROS",
       "BLANCO"
-    ]
+    ],
+    "sha256_original_verificado": "bfb6de07d89c58e3266c6a5ca1ad8b44d1f795dc4424200faafaf0e01c2bd681",
+    "agregados_auditados": "data/microdatos/componentes-originales-cohorte.json"
   },
   "3415": {
-    "estado": "pendiente: fichero no descargado y códigos no verificados",
+    "estado": "Original CIS verificado y agregados retrospectivos disponibles; lector legado sin configurar",
     "pagina_microdatos": "https://www.cis.es/es/estudios/encuesta-flash-elecciones-generales-2023?showModal=true",
     "intencion": null,
     "recuerdo": null,
@@ -45,7 +47,9 @@
       "UPN",
       "OTROS",
       "BLANCO"
-    ]
+    ],
+    "sha256_original_verificado": "3f3411dadf451b0122fba61f2fef6a37f5567e262d629749b0212d51add9b58f",
+    "agregados_auditados": "data/microdatos/componentes-originales-cohorte.json"
   },
   "_instrucciones": "Una entrada por estudio. Variables y códigos copiados del cuestionario y del libro de códigos del instituto; no se adivinan. Mientras un estudio no tenga su fichero en crudos/ ni sus códigos verificados, queda con estado 'pendiente'.",
   "cis-3582": {

@@ -348,7 +348,12 @@ def main():
       "elegido, cada 14 días; percentil 95 del valor absoluto):\n")
     fechas = [date(2020, 6, 1) + timedelta(days=14 * i) for i in range(60)]
     fechas = [f for f in fechas if abs((f - CASADO).days) > 75 and f < date(2022, 11, 1)]
-    prev_all = [e for e in enc if e["ciclo"] == "2019-23"]
+    # Archivo descriptivo: la publicación desconocida impide usarlo en un
+    # backtest temporal, pero no borra observaciones de campo del diagnóstico
+    # retrospectivo de acontecimientos. Nunca entra en el principal.
+    prev_all = [e for e in F.todas() if e["ciclo"] == "2019-23" and e["campo_fin"] <= hoy]
+    w("Archivo de acontecimientos: incluye observaciones históricas sin publicación fechada; "
+      "uso descriptivo retrospectivo, excluido de backtests temporales y del principal.\n")
     umbrales = {}
     for p in ("PP", "PSOE", "VOX"):
         v = EV.placebos(prev_all, p, fechas)
@@ -370,7 +375,7 @@ def main():
               "—" if x["distinguible"] is None else ("sí" if x["distinguible"] else "no, dentro del ruido")]
              for x in esc_urda]))
     w(f"\n«Se notaría» compara el cambio del PSOE con su umbral de detección ({umbrales.get('PSOE', 0):.1f} pp).\n")
-    w("**Validación del método** con un suceso conocido — crisis Casado–Ayuso (17-feb-2022):\n")
+    w("**Diagnóstico descriptivo, no validación causal**, con un suceso conocido — crisis Casado–Ayuso (17-feb-2022):\n")
     m_c, det_c = EV.pares(prev_all, CASADO, ["PP", "PSOE", "VOX"])
     filas = []
     for p in ("PP", "PSOE", "VOX"):
@@ -380,7 +385,7 @@ def main():
                       "sí" if abs(r[14][0]) > umbrales[p] else "no"])
     w(tabla(["Partido", "Pares por casa", "Salto inmediato", "Cambio a 14 días", "Umbral placebo",
              "Distinguible"], filas))
-    w("\nEl método detecta la subida de Vox; la caída del PP (real, de 2 a 4 puntos según la casa) queda en el "
+    w("\nLas diferencias observadas coinciden temporalmente con el suceso; el contraste no identifica su causa. La variación del PP queda en el "
       "límite porque el PP tuvo grandes oscilaciones en ese ciclo, lo que eleva su umbral.\n")
 
     # ---------- Limitaciones ----------
