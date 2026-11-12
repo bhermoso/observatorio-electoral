@@ -27,6 +27,17 @@ const openings={
 };
 export function renderInteriorGuide(route,{polls=[],events=[]}={}){
  const g=guides[route],o=openings[route];if(!g||!o)return '';
+ if(route==='pronostico')return `<section class="pr-entry" aria-label="Entrada al pronóstico">
+ <p class="pr-entry-kicker">Observatorio Electoral Español · Motor 29N · pronóstico vigente</p>
+ <h1>Entender el resultado. Compararlo. Auditarlo.</h1>
+ <p class="pr-entry-deck">Tres lecturas de la misma estimación, sin repetir las tablas del modelo ni confundir encuestas publicadas con microdatos.</p>
+ <nav class="interior-paths editorial-contents pr-entry-levels" aria-label="Niveles de exploración">
+ <a href="#pronostico-comprender"><span class="interior-step">01</span><strong>Comprender</strong><span>El resultado y cómo se calcula</span></a>
+ <a href="#pronostico-comparar"><span class="interior-step">02</span><strong>Comparar</strong><span>Promedios, variantes, evolución y territorio</span></a>
+ <a href="#pronostico-auditar"><span class="interior-step">03</span><strong>Auditar</strong><span>Datos, exclusiones, decisiones y validación</span></a>
+ </nav>
+ <details class="layer-key"><summary>Qué es cada cifra · cuatro naturalezas de estimación</summary>${renderTiposEstimacion({compacto:true})}<p class="muted">Las capas del Motor 29N son tratamientos estadísticos distintos. Los microdatos se investigan por separado.</p></details>
+ </section>`;
  const count=new Set(polls.map(p=>p.institute)).size;
  const stats=route==='encuestas'?[[polls.length,'estudios en el archivo'],[count,'institutos documentados'],['Originales','fichas y fuentes accesibles']]:
   route==='cocina'?[[6,'capítulos para investigar'],['Datos / cálculo / hipótesis','tres naturalezas distintas'],['Fuera del motor','experimentos separados']]:
