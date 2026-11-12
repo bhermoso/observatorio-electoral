@@ -55,14 +55,34 @@ function publicValidation(f){
 }
 
 function partyTable(f){return renderIntervalos(f);}
-function variantsTable(f){
+export function variantsTable(f){
  const src=id=>id==='principal'?f.principal:f.variantes?.[id];
  const ids=['PP','PSOE','VOX','SUMAR','PODEMOS'];
  const head=VARIANTS.map(v=>`<th scope="col"${v.id==='principal'?' class="ref"':''}>${h(v.nombre)}</th>`).join('');
  const rows=ids.map(id=>`<tr><th scope="row">${h(label(id))}</th>${VARIANTS.map(v=>{const x=src(v.id)?.partidos?.[id];return `<td${v.id==='principal'?' class="ref"':''}>${x?`${fmt(x.voto[0])} % · <b>${fmt(x.escanos[0],0)}</b> <small>(${fmt(x.escanos[1],0)}–${fmt(x.escanos[2],0)})</small>`:'—'}</td>`;}).join('')}</tr>`).join('');
  const brow=BLOCKS.slice(0,3).map(b=>`<tr class="bloque"><th scope="row">${h(b.label)}</th>${VARIANTS.map(v=>{const x=src(v.id)?.bloques?.[b.id];return `<td${v.id==='principal'?' class="ref"':''}>${x?`<b>${fmt(x.mediana,0)}</b> · ≥176: ${fmt(x.p_mayoria*100,0)} %`:'—'}</td>`;}).join('')}</tr>`).join('');
- return `<div class="table-wrap"><table class="variants"><thead><tr><th>Partido / bloque</th>${head}</tr></thead><tbody>${rows}${brow}</tbody></table></div><dl class="defs">${VARIANTS.map(v=>`<dt>${h(v.nombre)}</dt><dd>${h(v.def)}</dd>`).join('')}</dl>
- <p class="muted">Las variantes se simulan con error de industria de 1,5 pp; la referencia, con ${fmt(f.principal.industria,1)} pp. Por eso la referencia tiene intervalos más anchos y frecuencias de mayoría más prudentes.</p>`;
+ const labelMetric={voto:'Porcentaje de voto',escanos:'Escaños estimados (valor central)'};
+ const plot=metric=>{
+  const current=ids.flatMap(id=>VARIANTS.map(v=>src(v.id)?.partidos?.[id]?.[metric]?.[0]).filter(Number.isFinite));
+  if(!current.length)return '<p class="muted">Sin cifras comparables de variantes.</p>';
+  const min=Math.max(0,Math.floor(Math.min(...current)-(metric==='voto'?1:5)));
+  const max=Math.ceil(Math.max(...current)+(metric==='voto'?1:5));
+  const span=Math.max(1,max-min);
+  const at=n=>Math.max(0,Math.min(100,(n-min)/span*100)).toFixed(2)+'%';
+  const details=ids.map(id=>{
+   const values=VARIANTS.map(v=>({v,value:src(v.id)?.partidos?.[id]?.[metric]?.[0]})).filter(x=>Number.isFinite(x.value));
+   const own=values.find(x=>x.v.id==='principal')?.value;
+   const others=values.filter(x=>x.v.id!=='principal');
+   const extrema=others.length?[Math.min(...others.map(x=>x.value)),Math.max(...others.map(x=>x.value))]:null;
+   const tip=others.map(x=>x.v.nombre+': '+fmt(x.value,metric==='voto'?1:0)).join(' · ');
+   return `<div class="pr-variant-row"><strong>${h(label(id))}</strong><div class="pr-variant-track" role="img" aria-label="${h(label(id))}: ${metric==='voto'?'porcentaje de voto':'escaños'} principal ${Number.isFinite(own)?fmt(own,metric==='voto'?1:0):'no disponible'}; otras variantes: ${h(tip||'sin datos')}">${extrema?`<span class="pr-variant-span" style="left:${at(extrema[0])};width:${Math.max(.5,(extrema[1]-extrema[0])/span*100).toFixed(2)}%"></span>`:''}${others.map(x=>`<i class="pr-variant-point" style="left:${at(x.value)}" title="${h(x.v.nombre)}: ${fmt(x.value,metric==='voto'?1:0)}"></i>`).join('')}${Number.isFinite(own)?`<b class="pr-variant-main-mark" style="left:${at(own)}" title="Estimación de referencia: ${fmt(own,metric==='voto'?1:0)}"></b>`:''}</div><span>${Number.isFinite(own)?fmt(own,metric==='voto'?1:0)+(metric==='voto'?' %':' esc.'):'—'}</span></div>`;
+  }).join('');
+  return `<figure class="pr-variant-plot"><figcaption>${labelMetric[metric]}</figcaption><div class="pr-variant-scale"><span>${fmt(min,metric==='voto'?1:0)}${metric==='voto'?' %':''}</span><span>${fmt(max,metric==='voto'?1:0)}${metric==='voto'?' %':''}</span></div>${details}</figure>`;
+ };
+ return `<div class="pr-variants-visual"><p class="pr-variants-legend"><span><i class="pr-variant-key-main"></i> Referencia vigente</span><span><i class="pr-variant-key-other"></i> Variantes alternativas</span></p>${plot('voto')}${plot('escanos')}<p class="muted">La banda horizontal abarca solo los valores centrales de las tres variantes alternativas. <b>No es un intervalo de confianza ni de probabilidad.</b> La marca oscura representa el pronóstico vigente. Los resultados de voto y escaños utilizan escalas diferentes.</p></div>
+ <details class="pr-variants-detail"><summary>Ver matriz completa, intervalos y supuestos de las variantes</summary>
+ <div class="table-wrap"><table class="variants"><thead><tr><th>Partido / bloque</th>${head}</tr></thead><tbody>${rows}${brow}</tbody></table></div><dl class="defs">${VARIANTS.map(v=>`<dt>${h(v.nombre)}</dt><dd>${h(v.def)}</dd>`).join('')}</dl>
+ <p class="muted">Las variantes se simulan con error de industria de 1,5 pp; la referencia, con ${fmt(f.principal.industria,1)} pp. Por eso la referencia tiene intervalos más anchos y frecuencias de mayoría más prudentes.</p></details>`;
 }
 function chain(f){
  const sin=capaModelo(f,2),con=capaModelo(f,3),e=efectoCocina(sin,con);
