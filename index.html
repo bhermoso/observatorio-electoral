@@ -1,6 +1,18 @@
 <!doctype html>
 <html lang="es">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#102a2a"><meta name="description" content="Estimaciones de encuestadoras, promedio comparativo, pronóstico propio basado en estimaciones publicadas y laboratorio experimental de microdatos, con fuentes y métodos separados."><title>Observatorio Electoral Español</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23102a2a'/%3E%3Cpath d='M14 45V30h8v15m7 0V18h8v27m7 0V25h8v20' stroke='%23b9e36e' stroke-width='4'/%3E%3C/svg%3E"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="editorial.css"><link rel="stylesheet" href="lectura-editorial.css"><script type="module" src="app.mjs"></script><script type="module" src="glosario.mjs"></script></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#102a2a"><meta name="description" content="Estimaciones de encuestadoras, promedio comparativo, pronóstico propio basado en estimaciones publicadas y laboratorio experimental de microdatos, con fuentes y métodos separados."><title>Observatorio Electoral Español</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23102a2a'/%3E%3Cpath d='M14 45V30h8v15m7 0V18h8v27m7 0V25h8v20' stroke='%23b9e36e' stroke-width='4'/%3E%3C/svg%3E"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="editorial.css"><link rel="stylesheet" href="lectura-editorial.css?v=contraste-20261112b"><script type="module" src="app.mjs"></script><script type="module" src="glosario.mjs"></script><style id="oee-contraste-critico">
+/* Colores de primer pintado: las cifras sobre tarjetas claras no dependen de CSS cacheado. */
+#visor .pr-cifras>div{background:#fffefa;color:#173b32}
+#visor .pr-cifras>div strong,#visor .pr-cifras>div b{color:#173b32}
+#visor .pr-cifras>div small,#visor .pr-cifras>div span{color:#415d50}
+#visor .pr-focus-block select{background:#fff;color:#173b32}
+#visor .reading-controls button:not([aria-pressed="true"]){background:#fff;color:#174c3d}
+#visor .reading-controls button[aria-pressed="true"]{background:#183f35;color:#fff}
+#visor .pr-chain-node,#visor .pr-variant-row,#visor .pr-int-fila{color:#173b32}
+#visor .pr-chain-node strong,#visor .pr-variant-row strong,#visor .pr-int-fila b{color:#173b32}
+.portada-bloque,.hub-caja,.multi-party-choice{color:#173b32}
+.portada-bloque :is(strong,b),.hub-caja :is(strong,b),.multi-party-choice :is(strong,b){color:#173b32}
+</style></head>
 <body><a class="skip" href="#main">Saltar al contenido</a>
 <header><a class="brand" href="#dashboard"><span class="brand-icon">▥</span><span>OBSERVATORIO<br><b>ELECTORAL ESPAÑOL</b></span></a><a class="repo" href="https://github.com/bhermoso/observatorio-electoral">Código ↗</a></header>
 <div id="visor" hidden><div class="visor-barra"><a class="visor-volver" href="#dashboard">← Panorama</a><span class="visor-titulo" id="visor-titulo"></span><nav class="visor-secciones" aria-label="Secciones"><a href="#pronostico">Pronóstico completo</a><a href="#encuestas">Encuestas y promedios</a><a href="#contexto">Acontecimientos</a><a href="#cocina">Cocina</a><a href="#metodologia">Método y herramientas</a></nav></div><div class="visor-contenido" id="visor-contenido" tabindex="-1"></div></div>
