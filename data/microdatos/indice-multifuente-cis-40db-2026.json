@@ -1,0 +1,120 @@
+{
+  "esquema": 1,
+  "fecha_analisis": "2026-11-12",
+  "tipo": "indice_experimental_multifuente_no_operativo",
+  "titulo": "Estimación propia multifuente · CIS y 40dB.",
+  "descripcion": "Dos escenarios deterministas de síntesis entre agregados de microdatos verificados, sin ponderar por n para no convertir una muestra de mayor tamaño en mayor peso de casa.",
+  "uso": "INVESTIGACION_NO_MOTOR_29N",
+  "partidos": [
+    "PP",
+    "PSOE",
+    "VOX",
+    "SUMAR"
+  ],
+  "fuentes": [
+    {
+      "id": "cis",
+      "instituto": "CIS",
+      "estudio": "3582",
+      "mes": "octubre 2026",
+      "muestra": 5024,
+      "n_efectivo": 1989.4,
+      "sha256_zip": "1cfcf43b38ee036bb89dadc7d9b88a70d2098bb2c1a5051921aa517415a00c9f",
+      "ruta": "data/microdatos/serie-cis-2026-experimental.json",
+      "notas": "PESO = intención directa ponderada; recuerdo = simpatía más calibración por recuerdo de 2023"
+    },
+    {
+      "id": "40db",
+      "instituto": "40dB.",
+      "estudio": "flash de octubre de 2026",
+      "mes": "8 octubre 2026",
+      "muestra": 800,
+      "n_efectivo": 784.96,
+      "sha256_zip": "905d4ab237b58fc44e6b99944505acb4e99687c02e8894d5cb0e0e410e45a100",
+      "ruta": "data/microdatos/40db-auditoria-2026.json",
+      "notas": "directa = tabulación con ponde; recuerdo_calibrado = calibración experimental del recuerdo entre cuatro partidos"
+    }
+  ],
+  "escenarios": {
+    "base": {
+      "etiqueta": "Base ponderada · sin corrección por recuerdo",
+      "metodo": "Media aritmética con igual peso por instituto de CIS 3582 etapa peso y 40dB flash etapa directa. No son idénticos los instrumentos ni las categorías de voto.",
+      "valores": {
+        "PP": {
+          "cis": 20.104,
+          "40db": 24.661,
+          "conjunta": 22.383,
+          "distancia_fuentes_pp": 4.557
+        },
+        "PSOE": {
+          "cis": 34.632,
+          "40db": 27.68,
+          "conjunta": 31.156,
+          "distancia_fuentes_pp": 6.952
+        },
+        "VOX": {
+          "cis": 15.895,
+          "40db": 24.164,
+          "conjunta": 20.03,
+          "distancia_fuentes_pp": 8.269
+        },
+        "SUMAR": {
+          "cis": 6.21,
+          "40db": 5.107,
+          "conjunta": 5.659,
+          "distancia_fuentes_pp": 1.103
+        }
+      }
+    },
+    "recuerdo": {
+      "etiqueta": "Sensibilidad al recuerdo",
+      "metodo": "Media aritmética con igual peso por instituto de CIS 3582 etapa recuerdo y 40dB flash etapa recuerdo_calibrado. Dos ajustes no equivalentes, no se presenta como pronóstico.",
+      "valores": {
+        "PP": {
+          "cis": 26.657,
+          "40db": 28.388,
+          "conjunta": 27.523,
+          "distancia_fuentes_pp": 1.731
+        },
+        "PSOE": {
+          "cis": 26.911,
+          "40db": 25.043,
+          "conjunta": 25.977,
+          "distancia_fuentes_pp": 1.868
+        },
+        "VOX": {
+          "cis": 16.733,
+          "40db": 20.122,
+          "conjunta": 18.428,
+          "distancia_fuentes_pp": 3.389
+        },
+        "SUMAR": {
+          "cis": 6.694,
+          "40db": 6.854,
+          "conjunta": 6.774,
+          "distancia_fuentes_pp": 0.16
+        }
+      }
+    }
+  },
+  "protocolo": {
+    "ponderacion_entre_institutos": "CIS 0,5 / 40dB 0,5",
+    "calculo": "valor conjunto = (tabulación CIS + tabulación 40dB)/2",
+    "intervalos": "No se publican intervalos de confianza: solo distancia entre fuentes y diferencia entre escenarios; no estiman error predictivo.",
+    "sin_inferencia_de_escanos": true,
+    "fecha_corte_representatividad": "Últimos estudios de microdatos comparables disponibles, no última encuesta publicada en el mercado",
+    "exclusiones": [
+      "Otras oleadas del mismo instituto, para no duplicar su representación; en especial 40dB octubre mensual y flash.",
+      "Podemos y partidos territoriales: 40dB no dispone aquí de cifra publicada comparable para este esquema.",
+      "No se incluyen estimaciones publicadas por las casas en el cálculo; se muestran solo como referencias externas.",
+      "No se aplica mezcla con datos del Motor 29N."
+    ]
+  },
+  "limitaciones": [
+    "La base es una síntesis de porcentajes de voto declarado ponderado, no una cocina demoscópica plenamente homogénea entre institutos.",
+    "La distancia entre dos fuentes no es un intervalo estadístico.",
+    "Las olas se realizaron en fechas diferentes; no se corrige efecto de fecha ni de modo de encuesta.",
+    "La calibración por recuerdo no superó pruebas retrospectivas consistentes entre 2019 y 2023.",
+    "No hay validación prospectiva independiente para admitir la síntesis en el pronóstico operativo."
+  ]
+}
