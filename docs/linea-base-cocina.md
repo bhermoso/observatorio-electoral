@@ -7,9 +7,11 @@ Se han leído directamente documentos de 40dB., GAD3, Sigma Dos, IMOP Insights y
 ## Referencia de trabajo R0
 
 1. Conservar respuestas, códigos, población y pesos originales del productor.
-2. Mostrar intención directa con el peso publicado, comprobando qué corrige ese peso. Es el escenario `directa_peso` ya reproducido desde los originales; no se añaden factores nuevos.
+2. Mostrar intención directa con el peso publicado, comprobando qué corrige ese peso. Se reproduce en `scripts/generar_linea_base_originales.py`; no se añaden factores nuevos ni se filtra por PROBVOTO o recuerdo. Los ensayos controlados de componentes usan otra cohorte elegible y se identifican aparte.
 3. Separar porcentajes sobre todas las entrevistas y sobre voto válido; identificar blanco, nulo, abstención, NS/NC, aportantes y tamaño efectivo.
 4. Mantener las estimaciones publicadas de cada casa como referencia externa. No llamar «receta reconstruida de GAD3» a un algoritmo propio que solo reproduzca algunas herramientas habituales.
+
+R0 conserva las **29.201** entrevistas originales de 3411 y las **8.798** de 3415: los tamaños efectivos de Kish con PESO son **23.672,53** y **8.076,29**, respectivamente. No elimina respuestas por PROBVOTO ni recuerdo. Los ensayos de componentes usan otra cohorte común, identificada aparte.
 
 R0 es una base técnica para comparar y conversar. No equivale a la cocina completa de ninguna casa y no se convierte en pronóstico operativo por estar implementada.
 

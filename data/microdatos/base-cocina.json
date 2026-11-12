@@ -9,13 +9,14 @@
     "nombre": "Línea base trazable",
     "naturaleza": "referencia técnica de trabajo, no receta propia aprobada",
     "parametros_nuevos_de_cocina_aprobados": [],
-    "ejecucion_existente": "scripts/auditar_componentes_originales.py · escenario directa_peso, sobre cohorte elegible declarada",
+    "ejecucion_existente": "scripts/generar_linea_base_originales.py · PESO original e intención, sin filtrar por PROBVOTO ni recuerdo",
     "operaciones": [
       "Conservar variables y códigos originales.",
       "Usar el peso del productor donde exista, comprobando qué corrige.",
       "Mostrar intención directa sobre todas las entrevistas y sobre voto válido por separado, con denominadores y Kish.",
       "Mantener cada estimación publicada como referencia externa, separada de las reconstrucciones."
-    ]
+    ],
+    "datos": "data/microdatos/linea-base-originales.json"
   },
   "ingredientes_para_discutir": [
     {

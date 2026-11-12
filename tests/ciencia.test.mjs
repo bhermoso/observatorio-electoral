@@ -17,3 +17,8 @@ test('la base documental separa recetas heredadas y decisión pendiente del usua
  assert.ok(d.referentes.length>=5);for(const x of d.referentes){assert.equal(x.evidencia,'lectura_directa_documento_original');assert.match(x.sha256,/^[0-9a-f]{64}$/);assert.ok(x.no_publicado.length)}
  assert.match(d.referentes.find(x=>x.instituto==='40dB.').observaciones.recuerdo,/no prueba calibración/);
 });
+test('R0 conserva la muestra original y no hereda el filtro de participación de las ablaciones',()=>{
+ const r0=JSON.parse(fs.readFileSync('data/microdatos/linea-base-originales.json'));
+ const lab=JSON.parse(fs.readFileSync('data/microdatos/componentes-originales-cohorte.json'));
+ assert.equal(r0.entrada_motor,false);for(const [id,s] of Object.entries(r0.estudios)){assert.equal(s.n_cohorte,s.n_original);assert.ok(s.n_cohorte>lab.estudios[id].n_cohorte);assert.ok(s.kish_cohorte<=s.n_cohorte);assert.ok(Math.abs(Object.values(s.porcentaje_todas_categorias).reduce((a,b)=>a+b,0)-100)<1e-8)}
+});
