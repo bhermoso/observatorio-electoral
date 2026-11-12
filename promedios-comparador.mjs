@@ -10,8 +10,21 @@ export function houseValue(p,key){
  }
  return Number.isFinite(p.values?.[key])?p.values[key]:null;
 }
-export function renderHouseComparison(studies,summary,selected='PP'){
- if(!VISIBLE_PARTIES.includes(selected))selected='PP';
+export function renderHouseComparison(studies,summary,selected='todos'){
+ if(selected==='todos'){
+  const rows=summary.rows;
+  const cards=VISIBLE_PARTIES.map(id=>{
+   const v=summary.average?.[id];
+   return {id,value:Number.isFinite(v?.value)?v.value:null,n:v?.count||0};
+  }).sort((a,b)=>(b.value??-1)-(a.value??-1));
+  const sourceTable=rows.map(({poll,weight})=>'<tr><th scope="row"><a href="'+h(poll.source)+'" target="_blank" rel="noopener">'+h(poll.institute)+'</a>'+(weight===0?' · excluida':'')+'</th>'+
+   VISIBLE_PARTIES.map(k=>{const v=houseValue(poll,k);return '<td>'+(v===null?'—':fmt(v)+' %')+'</td>'}).join('')+'</tr>').join('');
+  const options='<option value="todos" selected>Todos los partidos · panorama</option>'+VISIBLE_PARTIES.map(k=>'<option value="'+h(k)+'">'+h(k)+'</option>').join('');
+  return '<div class="house-head"><div><h2>Qué publica cada encuestadora</h2><p>Todos los partidos en paralelo: ordenados por promedio disponible. Elige uno solo para explorar sus diferencias entre institutos.</p></div><label>Partido del gráfico<select id="analysis-party">'+options+'</select></label></div>'+
+   '<div class="house-comparison-body"><div class="house-chart" role="group" aria-label="Panorama de todos los partidos"><div class="multi-parties-overview">'+cards.map(c=>'<div class="multi-party-choice"><strong>'+h(c.id)+'</strong><span>Promedio <b>'+(c.value===null?'Sin dato':fmt(c.value)+' %')+'</b></span><small>'+c.n+' estudios con cifra</small></div>').join('')+'</div><p class="house-chart-note">No se preselecciona ninguna candidatura. Cada promedio utiliza solo casas con dato de ese partido; la cobertura puede diferir.</p></div>'+
+   '<details class="house-matrix-detail"><summary>Consultar tabla completa de institutos y fuentes</summary><div class="table-wrap house-matrix"><table><thead><tr><th>Instituto / fuente</th>'+VISIBLE_PARTIES.map(p=>'<th>'+h(p)+'</th>').join('')+'</tr></thead><tbody>'+sourceTable+'</tbody></table></div></details></div>';
+ }
+ if(!VISIBLE_PARTIES.includes(selected))throw Error('Partido de comparación desconocido');
  const rows=summary.rows,avg=summary.average[selected];
  const measured=rows.map(r=>({r,value:houseValue(r.poll,selected)})).filter(o=>o.value!==null);
  const mean=Number.isFinite(avg?.value)?avg.value:null;
