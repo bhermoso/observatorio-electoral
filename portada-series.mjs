@@ -143,9 +143,18 @@ export function bindPortadaSeries(root,{polls,forecast,history,events,cutoff,pro
  const comparisonCutoff=forecast?.corte||cutoff;
  const compareFrom=new Date(Date.parse(comparisonCutoff+'T12:00:00Z')-44*day).toISOString().slice(0,10);
  function renderComparison(){
-  // En la visión general se muestra PP como ejemplo, sin esconder el comparador.
-  // Al seleccionar un partido, esta misma figura se actualiza.
-  const id=party.value===ALL?'PP':party.value;
+  if(party.value===ALL){
+   const ids=['PSOE','PP','VOX','SUMAR','PODEMOS'].filter(id=>Number.isFinite(forecast?.principal?.partidos?.[id]?.voto?.[0])||Number.isFinite(promedio?.partidos?.[id]?.valor));
+   const rows=ids.map(id=>{
+    const model=forecast?.principal?.partidos?.[id]?.voto?.[0],avg=promedio?.partidos?.[id]?.valor;
+    return {id,model,avg,estimate:Number.isFinite(model)?model:avg};
+   }).sort((x,y)=>y.estimate-x.estimate);
+   const n=v=>Number.isFinite(v)?Number(v).toLocaleString('es-ES',{minimumFractionDigits:1,maximumFractionDigits:1})+' %':'—';
+   comparison.innerHTML='<p class="series-note"><b>Panorama de partidos sin selección previa.</b> Ordenados por la cifra disponible, no por una candidatura predeterminada. Elige un partido para comparar fuentes.</p>'+
+    '<div class="multi-parties-overview">'+rows.map(x=>'<button type="button" data-choose-party="'+escape(x.id)+'" class="multi-party-choice"><strong>'+escape(PARTIES.find(p=>p.id===x.id)?.label||x.id)+'</strong><span>Motor 29N <b>'+n(x.model)+'</b></span><span>Promedio de casas <b>'+n(x.avg)+'</b></span><small>Comparar fuentes</small></button>').join('')+'</div>';
+   return;
+  }
+  const id=party.value;
   const f=n=>Number(n).toLocaleString('es-ES',{minimumFractionDigits:1,maximumFractionDigits:1});
   const lastPoint=points=>points.filter(p=>p.date<=comparisonCutoff && p.date>=compareFrom && Number.isFinite(p.values?.[id])).sort((a,b)=>b.date.localeCompare(a.date))[0];
   const houses=series.filter(x=>x.type==='house').map(x=>({name:x.label,type:'Encuesta',p:lastPoint(x.points)})).filter(x=>x.p).map(x=>({...x,value:x.p.values[id]}));
@@ -167,14 +176,14 @@ export function bindPortadaSeries(root,{polls,forecast,history,events,cutoff,pro
   const at=v=>((v-xmin)/range*100).toFixed(2)+'%';
   const mark=(value,kind,title)=>Number.isFinite(value)?`<span class="cmp-marker ${kind}" style="left:${at(value)}" title="${td(title)}: ${f(value)} %" aria-hidden="true"></span>`:'';
   const graphRow=(item,kind)=>`<div class="cmp-row"><span class="cmp-label" title="${td(item.name)}">${td(item.name)}</span><div class="cmp-track">${mark(own,'modelo','Observatorio')}${mark(average?.valor,'media','Promedio')}${mark(item.value,kind,item.name)}</div><b class="cmp-value">${f(item.value)} %</b></div>`;
-  const graph=`<div class="cmp-graphic" role="group" aria-label="Estimaciones de ${td(party.value===ALL?'PP':party.selectedOptions[0].textContent)} sobre escala común">
+  const graph=`<div class="cmp-graphic" role="group" aria-label="Estimaciones de ${td(party.selectedOptions[0].textContent)} sobre escala común">
   <div class="cmp-head"><strong>Distribución de estimaciones</strong><span>${f(xmin)} % — ${f(xmax)} %</span></div>
   <div class="cmp-legend"><span><i class="cmp-key modelo"></i> Observatorio ${Number.isFinite(own)?f(own)+' %':'—'}</span><span><i class="cmp-key media"></i> Promedio ${Number.isFinite(average?.valor)?f(average.valor)+' %':'—'}</span><span><i class="cmp-key casa"></i> Encuestadoras</span></div>
   ${houses.length?houses.map(x=>graphRow(x,'casa')).join(''):'<p class="series-note">Sin encuestas verificadas para este partido y periodo.</p>'}
   ${externals.length?`<p class="cmp-group-title">Modelos y promedios externos · contraste</p>${externals.map(x=>graphRow(x,'externo')).join('')}`:''}
   <p class="series-note">Todas las marcas comparten escala. Cada casa se representa una sola vez, con su última cifra disponible en la ventana.</p></div>`;
   const ruta=vistaCuatroEstimaciones({partido:PARTIES.find(p=>p.id===id)?.label||id,casas:houses,promedio:average?.valor,modelo:own,corte:comparisonCutoff});
-  comparison.innerHTML=`${party.value===ALL?'<p class="series-note"><strong>Ejemplo: PP.</strong> Selecciona otro partido arriba para cambiar esta comparación.</p>':''}${ruta}<p class="series-note">Ventana de 45 días hasta el corte del modelo (${td(date.format(Date.parse(comparisonCutoff)))}). Las referencias externas se muestran aparte y no entran en el pronóstico.</p>${graph}<details class="cmp-detail"><summary>Ver todas las cifras, fechas y naturaleza de cada fuente</summary><div class="table-wrap"><table class="series-comparacion-tabla"><thead><tr><th>Fuente</th><th>Clase</th><th class="num">Voto estimado</th><th>Publicado</th></tr></thead><tbody>${anchor}${houses.map(fmtRow).join('')}${externals.map(fmtRow).join('')}</tbody></table></div></details>`;
+  comparison.innerHTML=`${ruta}<p class="series-note">Ventana de 45 días hasta el corte del modelo (${td(date.format(Date.parse(comparisonCutoff)))}). Las referencias externas se muestran aparte y no entran en el pronóstico.</p>${graph}<details class="cmp-detail"><summary>Ver todas las cifras, fechas y naturaleza de cada fuente</summary><div class="table-wrap"><table class="series-comparacion-tabla"><thead><tr><th>Fuente</th><th>Clase</th><th class="num">Voto estimado</th><th>Publicado</th></tr></thead><tbody>${anchor}${houses.map(fmtRow).join('')}${externals.map(fmtRow).join('')}</tbody></table></div></details>`;
 
  }
  
@@ -244,6 +253,13 @@ export function bindPortadaSeries(root,{polls,forecast,history,events,cutoff,pro
  resize.observe(chart);
  const temporal=find('.series-lectura-temporal');
  temporal?.addEventListener('toggle',()=>{if(temporal.open)requestAnimationFrame(()=>{if(root.isConnected)drawChart();});});
+ root.addEventListener('click',event=>{
+  const choice=event.target.closest('[data-choose-party]');
+  if(!choice)return;
+  party.value=choice.dataset.chooseParty;
+  draw();
+  renderComparison();
+ });
  party.addEventListener('change',()=>{draw();renderComparison();});
  order.addEventListener('change',renderComparison);
  period.addEventListener('change',draw);
