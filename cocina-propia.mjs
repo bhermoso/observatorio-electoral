@@ -7,6 +7,7 @@ const P=[['PP','PP'],['PSOE','PSOE'],['VOX','Vox'],['SUMAR','Sumar'],['PODEMOS',
 export function renderCocinaPropia(){
  return `<section class="panel cocina-propia" id="cocina-propia" aria-labelledby="cp-h"><span class="eyebrow">Cocina propia · microdatos individuales</span><h2 id="cp-h">Cocinamos el CIS y comprobamos si acierta</h2>
  <p>Aplicamos a las entrevistas originales del CIS una receta explícita, paso a paso, y la sometemos a examen: la misma receta, sin tocar ni un parámetro, sobre los dos estudios del CIS previos al 23J, comparada con el resultado oficial.</p>
+ <p><a class="button secondary" href="misma-muestra.html">Comparar tratamientos A/B con el CIS oficial →</a></p>
  <div id="cp-pasos">Cargando…</div><div id="cp-validacion">Cargando…</div></section>`;
 }
 export function tablaPasos(d){

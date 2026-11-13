@@ -37,6 +37,7 @@ export function renderComparisonChart(rows,party,{houses,top,start,end}){
 }
 export async function bindComparator(){
  const $=id=>document.getElementById(id),response=await fetch('data/polls.json');if(!response.ok)throw Error('No se pudo cargar el archivo de encuestas.');const polls=await response.json();
+ const cis=polls.find(p=>p.id==='cis-3584'&&p.institute==='CIS');
  const houses=housesOf(polls),parties=partiesOf(polls);let state=readSelection(polls,location.search),selected=[];
  const message=text=>{$('compare-message').textContent=text;};
  $('compare-houses').innerHTML+=houses.map((h,i)=>`<label><input type="checkbox" value="${esc(h)}"><span style="color:${palette[i%palette.length]}">●</span> ${esc(h)}</label>`).join('');
@@ -66,7 +67,8 @@ export async function bindComparator(){
   const options={houses,top:Math.max(10,Math.ceil(Math.max(0,...values)/10)*10),start:Math.min(...selected.map(p=>day(p.fieldEnd))),end:Math.max(...selected.map(p=>day(p.fieldEnd)))};
   $('compare-charts').innerHTML=!state.parties.length?'<p class="compare-empty">Elige entre una y cuatro candidaturas para empezar la comparación.</p>':!selected.length?'<p class="compare-empty">No hay estudios con estos filtros. Amplía las fechas o selecciona otros institutos.</p>':state.parties.map(p=>renderComparisonChart(selected,p,options)).join('');
   $('compare-legend').innerHTML=houses.filter(h=>selected.some(p=>p.institute===h)).map(h=>`<span><i style="background:${palette[houses.indexOf(h)%palette.length]}"></i>${esc(h)}</span>`).join('');
-  const optionList=selected.map(p=>`<option value="${esc(p.id)}">${esc(p.institute)} · ${esc(p.fieldEnd)} · ${esc(p.id)}</option>`).join('');
+  const optionList=selected.map(p=>`<option value="${esc(p.id)}">${esc(p.institute)} · publicada ${esc(p.published)} · ${esc(p.title||p.id)}</option>`).join('');
+  if(cis)$('compare-cis-state').textContent=selected.some(p=>p.id===cis.id)?'Incluido en la selección. En el gráfico está situado el '+cis.fieldEnd+', por fin de campo.':'Los filtros actuales lo excluyen. Usa «Mostrar en el gráfico» para abrirlo directamente.';
   const oldA=state.a,oldB=state.b;
   for(const id of ['compare-a','compare-b']){$(id).innerHTML=optionList;$(id).disabled=!selected.length;}
   $('compare-a').value=selected.some(p=>p.id===oldA)?oldA:selected[0]?.id||'';
@@ -84,6 +86,10 @@ export async function bindComparator(){
  $('compare-export').onclick=()=>{const url=URL.createObjectURL(new Blob(['\ufeff'+selectionCSV(selected,state.parties)],{type:'text/csv;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download='comparacion-encuestas.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
  $('compare-share').onclick=async()=>{try{await navigator.clipboard.writeText(location.href);message('Enlace copiado: conserva institutos, candidaturas, fechas y los dos estudios.');}catch{$('compare-link').hidden=false;$('compare-link').value=location.href;$('compare-link').focus();$('compare-link').select();message('Copia este enlace para compartir la selección.');}};
  window.addEventListener('popstate',()=>{state=readSelection(polls,location.search);sync();render();});
+ if(cis){
+  $('compare-cis').hidden=false;$('compare-cis').innerHTML=`<div><p class="eyebrow">Preelectoral · estudio 3584</p><h2>CIS · ${num(cis.sample)} entrevistas</h2><p><b>Publicado: ${esc(cis.published)}</b> · campo ${esc(cis.fieldStart)}–${esc(cis.fieldEnd)}.</p><p id="compare-cis-state"></p></div><div class="compare-actions"><button id="compare-cis-show" class="secondary">Mostrar en el gráfico</button><button id="compare-cis-detail" class="secondary">Abrir ficha y desglose</button><a href="misma-muestra.html?estudio=3584">Mismos datos, distintas recetas →</a></div>`;
+  $('compare-cis-detail').onclick=()=>show(cis.id);$('compare-cis-show').onclick=()=>{state={...state,houses:['CIS'],parties:['PP','PSOE','VOX'],from:cis.fieldEnd,until:cis.fieldEnd,mode:'all',a:cis.id,b:cis.id};sync();render();message('CIS 3584 seleccionado: las tres candidaturas mostradas tienen cifras comparables. El eje usa fin de campo, no publicación.');$('compare-count').scrollIntoView({block:'center',behavior:'smooth'});};
+ }
  if(matchMedia('(max-width:540px)').matches)document.querySelectorAll('.compare-filter').forEach(d=>d.open=false);
  sync();render();$('compare-loading').hidden=true;$('comparison').hidden=false;
 }

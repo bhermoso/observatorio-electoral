@@ -37,6 +37,7 @@ jobs:
           npm run test:browser
           node scripts/auditar-comparador.mjs
           node scripts/auditar-encuestas-resultados.mjs
+          node scripts/auditar-misma-muestra.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
