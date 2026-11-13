@@ -1,8 +1,8 @@
 {
  "esquema": 1,
- "generado": "2026-11-12T21:06:29.884055+00:00",
- "ejecucion": "https://github.com/bhermoso/observatorio-electoral/actions/runs/43306870553",
- "ultima_busqueda": "2026-11-12T21:06:20.692286+00:00",
+ "generado": "2026-11-13T08:46:17.459180+00:00",
+ "ejecucion": "https://github.com/bhermoso/observatorio-electoral/actions/runs/43395780728",
+ "ultima_busqueda": "2026-11-13T08:46:07.438989+00:00",
  "candidatos_detectados": 31,
  "naturaleza_candidatos": "Publicaciones de medios y productores consultados directamente. Candidatos sin cifras verificadas.",
  "errores_busqueda": [
@@ -18,8 +18,8 @@
   "sw-demoscopia-2026-11-10"
  ],
  "rechazadas": [],
- "registros_antes": 25,
- "registros_despues": 25,
+ "registros_antes": 26,
+ "registros_despues": 26,
  "ultima_incorporacion_efectiva": "2026-11-11T21:59:19.082108+00:00",
  "recalculo_lanzado": false,
  "ultimo_recalculo_lanzado": "2026-11-03T14:19:39.208246+00:00"
