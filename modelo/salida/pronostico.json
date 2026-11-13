@@ -1,21 +1,21 @@
 {
  "actualizacion": {
-  "recalculado": "2026-11-12T15:04:40.244703+00:00",
-  "archivo_sha256": "672d5109d546711f5cbc20b7ed7cd16e84b9493b1cacf2442074871076f8e7d4",
+  "recalculado": "2026-11-13T03:01:39.375310+00:00",
+  "archivo_sha256": "40f981d44548b5f624e268118e08919c71fa73c47ecc634e5f86ce1e539a1f56",
   "dependencias_sha256": "9ae9b89576b935c886a853bf50c225a08b5a4f8cb0eb2239e36541899ca3ffc8"
  },
- "corte": "2026-11-12",
+ "corte": "2026-11-13",
  "eleccion": "2026-11-29",
  "version_modelo": "5",
  "reproducibilidad": {
   "esquema": 1,
-  "commit": "1cd72e6bf5fe957992175500d86e6b571c1d27ee",
+  "commit": "749bcabe4d1b836d7370e310b6cb9ab30aecc3bf",
   "arbol_con_cambios": true,
   "sha256": {
    "data/districts.csv": "948513aad7ae79df57477272a9c90bcc7c900f63ecdfaea728f1ec22fa47aad1",
    "data/election.json": "ffbd74fa60a80da433e6838c8cb33809b35dbc1cd73813a54e206c0b2db85d76",
    "data/events.json": "a00d073b817b83ae3d037918f36cbe657e8a4ed35117fa4ae25d456fe59478e0",
-   "data/polls.json": "672d5109d546711f5cbc20b7ed7cd16e84b9493b1cacf2442074871076f8e7d4",
+   "data/polls.json": "40f981d44548b5f624e268118e08919c71fa73c47ecc634e5f86ce1e539a1f56",
    "data/references.json": "033137f1a932451af539c6e4c35ed088409c9f1a1aa65b303d56b9cc995a4953",
    "data/results.csv": "50f9db8b64d0a7c42c9f14ea855f1e6a645d55c060bb70ceffdedc9c5b58e458",
    "modelo/__main__.py": "ac4fc15ff11922e3b68823e48aab59cdf38eb7d09c870564e79ba767e92f083a",
@@ -49,7 +49,7 @@
    "modelo/motor/validacion_multieleccion.py": "fd1f6d9d73282a500393cff84fa1518ff9ccfcf423a5dec1d16bdce1133b020c",
    "modelo/motor/validacion_publica.py": "c7a4d043e64603e16fa72088efb6f1b6f3d54cd5523b13ada523822813f7275f"
   },
-  "corte": "2026-11-12",
+  "corte": "2026-11-13",
   "estudios_admitidos": [
    "40db-2026-10-flash",
    "40db-2026-11-09",
@@ -57,6 +57,7 @@
    "ateneo-2026-11-08",
    "celeste-tel-2026-11-04",
    "cis-3582",
+   "cis-3584",
    "data10-2026-11-09",
    "demoscopia-2025-09-08",
    "dym-2026-10",
@@ -84,9 +85,9 @@
   "n_solicitado": 1500,
   "n_por_variante_principal": 750,
   "semillas": {
-   "consenso_privadas": 741757,
-   "consenso_todas": 741438,
-   "calibrada_23j": 741149
+   "consenso_privadas": 741758,
+   "consenso_todas": 741439,
+   "calibrada_23j": 741150
   },
   "parametros": {
    "tau": 0.15,
@@ -118,14 +119,14 @@
  "definicion_primero": "Frecuencia de primera fuerza exclusiva en escaños; empates excluidos para todas las candidaturas.",
  "trazabilidad": {
   "esquema": 1,
-  "corte": "2026-11-12",
+  "corte": "2026-11-13",
   "definicion": "Trazabilidad de datos y etapas; NO porcentajes de autoría de cada variable de cocina.",
   "fuentes": {
-   "estudios_actuales_incluidos": 29,
+   "estudios_actuales_incluidos": 30,
    "casas_actuales": 18,
    "origenes": {
     "terceros-29n": 6,
-    "verificada": 21,
+    "verificada": 22,
     "prensa-original-consultado": 2
    },
    "registros_prensa_sin_verificar_excluidos": 4,
@@ -192,7 +193,7 @@
   },
   "partidos": {
    "PP": {
-    "encuestas_con_estimacion": 29,
+    "encuestas_con_estimacion": 30,
     "encuestadoras_distintas": 18,
     "casas": [
      "40dB.",
@@ -216,7 +217,7 @@
     ],
     "origenes": {
      "terceros-29n": 6,
-     "verificada": 21,
+     "verificada": 22,
      "prensa-original-consultado": 2
     },
     "observaciones": [
@@ -339,6 +340,16 @@
       "origen": "verificada",
       "url": "https://www.eldebate.com/espana/20261102/accidente-frena-psoe-amplia-apoyo-pp-mayoria-absolutisima-derecha_475640.html",
       "muestra": 1024
+     },
+     {
+      "casa": "CIS",
+      "estudio": "cis-3584",
+      "campo_fin": "2026-10-30",
+      "publicacion": "2026-11-12",
+      "voto_publicado": 25.5,
+      "origen": "verificada",
+      "url": "https://www.cis.es/documents/d/guest/3584_estimacion-pdf",
+      "muestra": 45074
      },
      {
       "casa": "Sondaxe",
@@ -513,8 +524,8 @@
     ],
     "variantes_tendencia": {
      "consenso_privadas": {
-      "estimacion_latente_en_corte": 31.16379,
-      "sd_estimacion_latente": 0.69147,
+      "estimacion_latente_en_corte": 31.19192,
+      "sd_estimacion_latente": 0.70937,
       "casas_ancla": [
        "40dB.",
        "Ateneo del Dato",
@@ -535,8 +546,8 @@
       ]
      },
      "consenso_todas": {
-      "estimacion_latente_en_corte": 30.70811,
-      "sd_estimacion_latente": 0.69178,
+      "estimacion_latente_en_corte": 30.79679,
+      "sd_estimacion_latente": 0.70588,
       "casas_ancla": [
        "40dB.",
        "Ateneo del Dato",
@@ -558,8 +569,8 @@
       ]
      },
      "calibrada_23j": {
-      "estimacion_latente_en_corte": 30.13131,
-      "sd_estimacion_latente": 0.81769,
+      "estimacion_latente_en_corte": 30.14807,
+      "sd_estimacion_latente": 0.82818,
       "casas_ancla": [
        "40dB.",
        "CIS",
@@ -577,15 +588,15 @@
       ]
      }
     },
-    "pronostico_principal_voto_mediana": 30.257449576436123,
+    "pronostico_principal_voto_mediana": 30.31784751999819,
     "pronostico_principal_voto_p5_p95": [
-     26.003657395371576,
-     34.45340047972423
+     26.23231387358701,
+     34.26854161148421
     ],
-    "escala_industria_pp": 2.4203
+    "escala_industria_pp": 2.42271
    },
    "PSOE": {
-    "encuestas_con_estimacion": 29,
+    "encuestas_con_estimacion": 30,
     "encuestadoras_distintas": 18,
     "casas": [
      "40dB.",
@@ -609,7 +620,7 @@
     ],
     "origenes": {
      "terceros-29n": 6,
-     "verificada": 21,
+     "verificada": 22,
      "prensa-original-consultado": 2
     },
     "observaciones": [
@@ -732,6 +743,16 @@
       "origen": "verificada",
       "url": "https://www.eldebate.com/espana/20261102/accidente-frena-psoe-amplia-apoyo-pp-mayoria-absolutisima-derecha_475640.html",
       "muestra": 1024
+     },
+     {
+      "casa": "CIS",
+      "estudio": "cis-3584",
+      "campo_fin": "2026-10-30",
+      "publicacion": "2026-11-12",
+      "voto_publicado": 33.3,
+      "origen": "verificada",
+      "url": "https://www.cis.es/documents/d/guest/3584_estimacion-pdf",
+      "muestra": 45074
      },
      {
       "casa": "Sondaxe",
@@ -906,8 +927,8 @@
     ],
     "variantes_tendencia": {
      "consenso_privadas": {
-      "estimacion_latente_en_corte": 26.89025,
-      "sd_estimacion_latente": 0.64631,
+      "estimacion_latente_en_corte": 26.89539,
+      "sd_estimacion_latente": 0.66642,
       "casas_ancla": [
        "40dB.",
        "Ateneo del Dato",
@@ -928,8 +949,8 @@
       ]
      },
      "consenso_todas": {
-      "estimacion_latente_en_corte": 27.23866,
-      "sd_estimacion_latente": 0.64686,
+      "estimacion_latente_en_corte": 27.25406,
+      "sd_estimacion_latente": 0.66321,
       "casas_ancla": [
        "40dB.",
        "Ateneo del Dato",
@@ -951,8 +972,8 @@
       ]
      },
      "calibrada_23j": {
-      "estimacion_latente_en_corte": 28.46076,
-      "sd_estimacion_latente": 0.77543,
+      "estimacion_latente_en_corte": 28.54508,
+      "sd_estimacion_latente": 0.7882,
       "casas_ancla": [
        "40dB.",
        "CIS",
@@ -970,15 +991,15 @@
       ]
      }
     },
-    "pronostico_principal_voto_mediana": 28.472955266896072,
+    "pronostico_principal_voto_mediana": 28.529591211699312,
     "pronostico_principal_voto_p5_p95": [
-     24.34557487319607,
-     32.39854843341644
+     24.54125886964994,
+     32.56173430007794
     ],
-    "escala_industria_pp": 2.34784
+    "escala_industria_pp": 2.35018
    },
    "VOX": {
-    "encuestas_con_estimacion": 29,
+    "encuestas_con_estimacion": 30,
     "encuestadoras_distintas": 18,
     "casas": [
      "40dB.",
@@ -1002,7 +1023,7 @@
     ],
     "origenes": {
      "terceros-29n": 6,
-     "verificada": 21,
+     "verificada": 22,
      "prensa-original-consultado": 2
     },
     "observaciones": [
@@ -1125,6 +1146,16 @@
       "origen": "verificada",
       "url": "https://www.eldebate.com/espana/20261102/accidente-frena-psoe-amplia-apoyo-pp-mayoria-absolutisima-derecha_475640.html",
       "muestra": 1024
+     },
+     {
+      "casa": "CIS",
+      "estudio": "cis-3584",
+      "campo_fin": "2026-10-30",
+      "publicacion": "2026-11-12",
+      "voto_publicado": 18.4,
+      "origen": "verificada",
+      "url": "https://www.cis.es/documents/d/guest/3584_estimacion-pdf",
+      "muestra": 45074
      },
      {
       "casa": "Sondaxe",
@@ -1299,8 +1330,8 @@
     ],
     "variantes_tendencia": {
      "consenso_privadas": {
-      "estimacion_latente_en_corte": 19.07076,
-      "sd_estimacion_latente": 0.54854,
+      "estimacion_latente_en_corte": 19.08227,
+      "sd_estimacion_latente": 0.56322,
       "casas_ancla": [
        "40dB.",
        "Ateneo del Dato",
@@ -1321,8 +1352,8 @@
       ]
      },
      "consenso_todas": {
-      "estimacion_latente_en_corte": 18.98036,
-      "sd_estimacion_latente": 0.5483,
+      "estimacion_latente_en_corte": 19.01545,
+      "sd_estimacion_latente": 0.55985,
       "casas_ancla": [
        "40dB.",
        "Ateneo del Dato",
@@ -1344,8 +1375,8 @@
       ]
      },
      "calibrada_23j": {
-      "estimacion_latente_en_corte": 18.9364,
-      "sd_estimacion_latente": 0.68501,
+      "estimacion_latente_en_corte": 18.96646,
+      "sd_estimacion_latente": 0.69334,
       "casas_ancla": [
        "40dB.",
        "CIS",
@@ -1363,12 +1394,12 @@
       ]
      }
     },
-    "pronostico_principal_voto_mediana": 18.66836952558353,
+    "pronostico_principal_voto_mediana": 18.696895365984588,
     "pronostico_principal_voto_p5_p95": [
-     15.29132347511925,
-     21.940271290898814
+     15.435994304166119,
+     22.20027142928656
     ],
-    "escala_industria_pp": 1.9011
+    "escala_industria_pp": 1.90256
    },
    "SUMAR": {
     "encuestas_con_estimacion": 28,
@@ -1683,7 +1714,7 @@
     "variantes_tendencia": {
      "consenso_privadas": {
       "estimacion_latente_en_corte": 6.32171,
-      "sd_estimacion_latente": 0.32491,
+      "sd_estimacion_latente": 0.33345,
       "casas_ancla": [
        "40dB.",
        "Ateneo del Dato",
@@ -1705,7 +1736,7 @@
      },
      "consenso_todas": {
       "estimacion_latente_en_corte": 6.31298,
-      "sd_estimacion_latente": 0.32421,
+      "sd_estimacion_latente": 0.33277,
       "casas_ancla": [
        "40dB.",
        "Ateneo del Dato",
@@ -1728,7 +1759,7 @@
      },
      "calibrada_23j": {
       "estimacion_latente_en_corte": 6.32171,
-      "sd_estimacion_latente": 0.32491,
+      "sd_estimacion_latente": 0.33345,
       "casas_ancla": [
        "40dB.",
        "Ateneo del Dato",
@@ -1749,12 +1780,12 @@
       ]
      }
     },
-    "pronostico_principal_voto_mediana": 5.9212947816082835,
+    "pronostico_principal_voto_mediana": 5.951375774073116,
     "pronostico_principal_voto_p5_p95": [
-     4.00693883544015,
-     7.926812335680975
+     4.0591296150962055,
+     7.928489214633065
     ],
-    "escala_industria_pp": 1.07068
+    "escala_industria_pp": 1.0734
    },
    "PODEMOS": {
     "encuestas_con_estimacion": 20,
@@ -1985,7 +2016,7 @@
     "variantes_tendencia": {
      "consenso_privadas": {
       "estimacion_latente_en_corte": 2.10589,
-      "sd_estimacion_latente": 0.20897,
+      "sd_estimacion_latente": 0.21425,
       "casas_ancla": [
        "40dB.",
        "Ateneo del Dato",
@@ -2003,7 +2034,7 @@
      },
      "consenso_todas": {
       "estimacion_latente_en_corte": 2.1432,
-      "sd_estimacion_latente": 0.20824,
+      "sd_estimacion_latente": 0.21353,
       "casas_ancla": [
        "40dB.",
        "Ateneo del Dato",
@@ -2022,7 +2053,7 @@
      },
      "calibrada_23j": {
       "estimacion_latente_en_corte": 2.10589,
-      "sd_estimacion_latente": 0.20897,
+      "sd_estimacion_latente": 0.21425,
       "casas_ancla": [
        "40dB.",
        "Ateneo del Dato",
@@ -2039,15 +2070,15 @@
       ]
      }
     },
-    "pronostico_principal_voto_mediana": 2.1270582351383105,
+    "pronostico_principal_voto_mediana": 2.1157568115899625,
     "pronostico_principal_voto_p5_p95": [
-     0.9998468557805006,
-     3.2477390750461033
+     0.953945564142366,
+     3.2908517188891597
     ],
-    "escala_industria_pp": 0.64172
+    "escala_industria_pp": 0.64001
    },
    "SALF": {
-    "encuestas_con_estimacion": 7,
+    "encuestas_con_estimacion": 8,
     "encuestadoras_distintas": 6,
     "casas": [
      "40dB.",
@@ -2058,7 +2089,7 @@
      "SW Demoscopia"
     ],
     "origenes": {
-     "verificada": 7
+     "verificada": 8
     },
     "observaciones": [
      {
@@ -2112,6 +2143,16 @@
       "muestra": 1500
      },
      {
+      "casa": "CIS",
+      "estudio": "cis-3584",
+      "campo_fin": "2026-10-30",
+      "publicacion": "2026-11-12",
+      "voto_publicado": 1.4,
+      "origen": "verificada",
+      "url": "https://www.cis.es/documents/d/guest/3584_estimacion-pdf",
+      "muestra": 45074
+     },
+     {
       "casa": "40dB.",
       "estudio": "40db-2026-10-flash",
       "campo_fin": "2026-10-08",
@@ -2134,8 +2175,8 @@
     ],
     "variantes_tendencia": {
      "consenso_privadas": {
-      "estimacion_latente_en_corte": 1.79822,
-      "sd_estimacion_latente": 0.23123,
+      "estimacion_latente_en_corte": 1.78569,
+      "sd_estimacion_latente": 0.23233,
       "casas_ancla": [
        "40dB.",
        "Celeste-Tel",
@@ -2145,8 +2186,8 @@
       ]
      },
      "consenso_todas": {
-      "estimacion_latente_en_corte": 1.8,
-      "sd_estimacion_latente": 0.22061,
+      "estimacion_latente_en_corte": 1.75655,
+      "sd_estimacion_latente": 0.216,
       "casas_ancla": [
        "40dB.",
        "CIS",
@@ -2157,8 +2198,8 @@
       ]
      },
      "calibrada_23j": {
-      "estimacion_latente_en_corte": 1.79822,
-      "sd_estimacion_latente": 0.23123,
+      "estimacion_latente_en_corte": 1.78569,
+      "sd_estimacion_latente": 0.23233,
       "casas_ancla": [
        "40dB.",
        "Celeste-Tel",
@@ -2168,12 +2209,12 @@
       ]
      }
     },
-    "pronostico_principal_voto_mediana": 1.7764122495096686,
+    "pronostico_principal_voto_mediana": 1.7662880058072563,
     "pronostico_principal_voto_p5_p95": [
-     0.6728707928962938,
-     2.851359662127827
+     0.6779987526355122,
+     2.8234837929628593
     ],
-    "escala_industria_pp": 0.58644
+    "escala_industria_pp": 0.58477
    },
    "ERC": {
     "encuestas_con_estimacion": 9,
@@ -2287,7 +2328,7 @@
     "variantes_tendencia": {
      "consenso_privadas": {
       "estimacion_latente_en_corte": 2.57221,
-      "sd_estimacion_latente": 0.27021,
+      "sd_estimacion_latente": 0.27436,
       "casas_ancla": [
        "Celeste-Tel",
        "GAD3",
@@ -2299,7 +2340,7 @@
      },
      "consenso_todas": {
       "estimacion_latente_en_corte": 2.62795,
-      "sd_estimacion_latente": 0.26206,
+      "sd_estimacion_latente": 0.26634,
       "casas_ancla": [
        "CIS",
        "Celeste-Tel",
@@ -2312,7 +2353,7 @@
      },
      "calibrada_23j": {
       "estimacion_latente_en_corte": 2.57221,
-      "sd_estimacion_latente": 0.27021,
+      "sd_estimacion_latente": 0.27436,
       "casas_ancla": [
        "Celeste-Tel",
        "GAD3",
@@ -2323,15 +2364,15 @@
       ]
      }
     },
-    "pronostico_principal_voto_mediana": 2.5962246789503802,
+    "pronostico_principal_voto_mediana": 2.584472863287618,
     "pronostico_principal_voto_p5_p95": [
-     1.3642253239296247,
-     3.877906026467445
+     1.292981814053202,
+     3.8593773701642324
     ],
-    "escala_industria_pp": 0.70896
+    "escala_industria_pp": 0.70736
    },
    "JUNTS": {
-    "encuestas_con_estimacion": 6,
+    "encuestas_con_estimacion": 7,
     "encuestadoras_distintas": 5,
     "casas": [
      "CIS",
@@ -2341,7 +2382,7 @@
      "Sigma Dos"
     ],
     "origenes": {
-     "verificada": 6
+     "verificada": 7
     },
     "observaciones": [
      {
@@ -2383,6 +2424,16 @@
       "origen": "verificada",
       "url": "https://www.celeste-tel.es/wp-content/uploads/2026/11/Bar%C3%B3metro-Electoral-Elecciones-29-N-4-Noviembre-2026-1.pdf",
       "muestra": 1100
+     },
+     {
+      "casa": "CIS",
+      "estudio": "cis-3584",
+      "campo_fin": "2026-10-30",
+      "publicacion": "2026-11-12",
+      "voto_publicado": 1.2,
+      "origen": "verificada",
+      "url": "https://www.cis.es/documents/d/guest/3584_estimacion-pdf",
+      "muestra": 45074
      },
      {
       "casa": "Sigma Dos",
@@ -2407,8 +2458,8 @@
     ],
     "variantes_tendencia": {
      "consenso_privadas": {
-      "estimacion_latente_en_corte": 1.32399,
-      "sd_estimacion_latente": 0.20825,
+      "estimacion_latente_en_corte": 1.32581,
+      "sd_estimacion_latente": 0.21002,
       "casas_ancla": [
        "Celeste-Tel",
        "GAD3",
@@ -2417,8 +2468,8 @@
       ]
      },
      "consenso_todas": {
-      "estimacion_latente_en_corte": 1.28852,
-      "sd_estimacion_latente": 0.19586,
+      "estimacion_latente_en_corte": 1.29641,
+      "sd_estimacion_latente": 0.19188,
       "casas_ancla": [
        "CIS",
        "Celeste-Tel",
@@ -2428,8 +2479,8 @@
       ]
      },
      "calibrada_23j": {
-      "estimacion_latente_en_corte": 1.32399,
-      "sd_estimacion_latente": 0.20825,
+      "estimacion_latente_en_corte": 1.32581,
+      "sd_estimacion_latente": 0.21002,
       "casas_ancla": [
        "Celeste-Tel",
        "GAD3",
@@ -2438,15 +2489,15 @@
       ]
      }
     },
-    "pronostico_principal_voto_mediana": 1.3140814134000165,
+    "pronostico_principal_voto_mediana": 1.3066641785026505,
     "pronostico_principal_voto_p5_p95": [
-     0.40842445318666953,
-     2.2102617630151427
+     0.40336451978365395,
+     2.2228145462616795
     ],
-    "escala_industria_pp": 0.50439
+    "escala_industria_pp": 0.50296
    },
    "BILDU": {
-    "encuestas_con_estimacion": 6,
+    "encuestas_con_estimacion": 7,
     "encuestadoras_distintas": 5,
     "casas": [
      "CIS",
@@ -2456,7 +2507,7 @@
      "Sigma Dos"
     ],
     "origenes": {
-     "verificada": 6
+     "verificada": 7
     },
     "observaciones": [
      {
@@ -2500,6 +2551,16 @@
       "muestra": 1100
      },
      {
+      "casa": "CIS",
+      "estudio": "cis-3584",
+      "campo_fin": "2026-10-30",
+      "publicacion": "2026-11-12",
+      "voto_publicado": 1.8,
+      "origen": "verificada",
+      "url": "https://www.cis.es/documents/d/guest/3584_estimacion-pdf",
+      "muestra": 45074
+     },
+     {
       "casa": "Sigma Dos",
       "estudio": "sigma-dos-2026-10-26",
       "campo_fin": "2026-10-22",
@@ -2522,8 +2583,8 @@
     ],
     "variantes_tendencia": {
      "consenso_privadas": {
-      "estimacion_latente_en_corte": 1.3933,
-      "sd_estimacion_latente": 0.21405,
+      "estimacion_latente_en_corte": 1.40028,
+      "sd_estimacion_latente": 0.21911,
       "casas_ancla": [
        "Celeste-Tel",
        "GAD3",
@@ -2532,8 +2593,8 @@
       ]
      },
      "consenso_todas": {
-      "estimacion_latente_en_corte": 1.42784,
-      "sd_estimacion_latente": 0.2031,
+      "estimacion_latente_en_corte": 1.45471,
+      "sd_estimacion_latente": 0.20178,
       "casas_ancla": [
        "CIS",
        "Celeste-Tel",
@@ -2543,8 +2604,8 @@
       ]
      },
      "calibrada_23j": {
-      "estimacion_latente_en_corte": 1.3933,
-      "sd_estimacion_latente": 0.21405,
+      "estimacion_latente_en_corte": 1.40028,
+      "sd_estimacion_latente": 0.21911,
       "casas_ancla": [
        "Celeste-Tel",
        "GAD3",
@@ -2553,15 +2614,15 @@
       ]
      }
     },
-    "pronostico_principal_voto_mediana": 1.37822812774585,
+    "pronostico_principal_voto_mediana": 1.4156104160934975,
     "pronostico_principal_voto_p5_p95": [
-     0.4552407379458023,
-     2.3632812318405505
+     0.4713608142917378,
+     2.339758440127566
     ],
-    "escala_industria_pp": 0.51655
+    "escala_industria_pp": 0.52351
    },
    "PNV": {
-    "encuestas_con_estimacion": 9,
+    "encuestas_con_estimacion": 10,
     "encuestadoras_distintas": 8,
     "casas": [
      "CIS",
@@ -2575,7 +2636,7 @@
     ],
     "origenes": {
      "terceros-29n": 2,
-     "verificada": 7
+     "verificada": 8
     },
     "observaciones": [
      {
@@ -2629,6 +2690,16 @@
       "muestra": 1100
      },
      {
+      "casa": "CIS",
+      "estudio": "cis-3584",
+      "campo_fin": "2026-10-30",
+      "publicacion": "2026-11-12",
+      "voto_publicado": 0.7,
+      "origen": "verificada",
+      "url": "https://www.cis.es/documents/d/guest/3584_estimacion-pdf",
+      "muestra": 45074
+     },
+     {
       "casa": "Sigma Dos",
       "estudio": "sigma-dos-2026-10-26",
       "campo_fin": "2026-10-22",
@@ -2671,8 +2742,8 @@
     ],
     "variantes_tendencia": {
      "consenso_privadas": {
-      "estimacion_latente_en_corte": 0.84203,
-      "sd_estimacion_latente": 0.15727,
+      "estimacion_latente_en_corte": 0.8441,
+      "sd_estimacion_latente": 0.15845,
       "casas_ancla": [
        "Celeste-Tel",
        "GAD3",
@@ -2683,8 +2754,8 @@
       ]
      },
      "consenso_todas": {
-      "estimacion_latente_en_corte": 0.81351,
-      "sd_estimacion_latente": 0.15157,
+      "estimacion_latente_en_corte": 0.81972,
+      "sd_estimacion_latente": 0.14995,
       "casas_ancla": [
        "CIS",
        "Celeste-Tel",
@@ -2696,8 +2767,8 @@
       ]
      },
      "calibrada_23j": {
-      "estimacion_latente_en_corte": 0.84203,
-      "sd_estimacion_latente": 0.15727,
+      "estimacion_latente_en_corte": 0.8441,
+      "sd_estimacion_latente": 0.15845,
       "casas_ancla": [
        "Celeste-Tel",
        "GAD3",
@@ -2708,15 +2779,15 @@
       ]
      }
     },
-    "pronostico_principal_voto_mediana": 0.8420900695127322,
+    "pronostico_principal_voto_mediana": 0.8274228075911829,
     "pronostico_principal_voto_p5_p95": [
-     0.07701955860701103,
-     1.6318166365453304
+     0.05209926268082102,
+     1.6259611826423028
     ],
     "escala_industria_pp": 0.44
    },
    "BNG": {
-    "encuestas_con_estimacion": 10,
+    "encuestas_con_estimacion": 11,
     "encuestadoras_distintas": 8,
     "casas": [
      "CIS",
@@ -2730,7 +2801,7 @@
     ],
     "origenes": {
      "terceros-29n": 2,
-     "verificada": 8
+     "verificada": 9
     },
     "observaciones": [
      {
@@ -2782,6 +2853,16 @@
       "origen": "verificada",
       "url": "https://www.celeste-tel.es/wp-content/uploads/2026/11/Bar%C3%B3metro-Electoral-Elecciones-29-N-4-Noviembre-2026-1.pdf",
       "muestra": 1100
+     },
+     {
+      "casa": "CIS",
+      "estudio": "cis-3584",
+      "campo_fin": "2026-10-30",
+      "publicacion": "2026-11-12",
+      "voto_publicado": 1.0,
+      "origen": "verificada",
+      "url": "https://www.cis.es/documents/d/guest/3584_estimacion-pdf",
+      "muestra": 45074
      },
      {
       "casa": "Sondaxe",
@@ -2836,8 +2917,8 @@
     ],
     "variantes_tendencia": {
      "consenso_privadas": {
-      "estimacion_latente_en_corte": 0.93598,
-      "sd_estimacion_latente": 0.16489,
+      "estimacion_latente_en_corte": 0.93909,
+      "sd_estimacion_latente": 0.16738,
       "casas_ancla": [
        "Celeste-Tel",
        "GAD3",
@@ -2848,8 +2929,8 @@
       ]
      },
      "consenso_todas": {
-      "estimacion_latente_en_corte": 0.93297,
-      "sd_estimacion_latente": 0.15937,
+      "estimacion_latente_en_corte": 0.94203,
+      "sd_estimacion_latente": 0.15881,
       "casas_ancla": [
        "CIS",
        "Celeste-Tel",
@@ -2861,8 +2942,8 @@
       ]
      },
      "calibrada_23j": {
-      "estimacion_latente_en_corte": 0.93598,
-      "sd_estimacion_latente": 0.16489,
+      "estimacion_latente_en_corte": 0.93909,
+      "sd_estimacion_latente": 0.16738,
       "casas_ancla": [
        "Celeste-Tel",
        "GAD3",
@@ -2873,10 +2954,10 @@
       ]
      }
     },
-    "pronostico_principal_voto_mediana": 0.9307834811266168,
+    "pronostico_principal_voto_mediana": 0.9355252304201871,
     "pronostico_principal_voto_p5_p95": [
-     0.13298549820005443,
-     1.7238333265999912
+     0.1542555986723901,
+     1.7200459956151708
     ],
     "escala_industria_pp": 0.44
    },
@@ -2970,7 +3051,7 @@
     "variantes_tendencia": {
      "consenso_privadas": {
       "estimacion_latente_en_corte": 0.43756,
-      "sd_estimacion_latente": 0.12691,
+      "sd_estimacion_latente": 0.12867,
       "casas_ancla": [
        "Celeste-Tel",
        "GAD3",
@@ -2981,7 +3062,7 @@
      },
      "consenso_todas": {
       "estimacion_latente_en_corte": 0.40415,
-      "sd_estimacion_latente": 0.12076,
+      "sd_estimacion_latente": 0.12261,
       "casas_ancla": [
        "CIS",
        "Celeste-Tel",
@@ -2993,7 +3074,7 @@
      },
      "calibrada_23j": {
       "estimacion_latente_en_corte": 0.43756,
-      "sd_estimacion_latente": 0.12691,
+      "sd_estimacion_latente": 0.12867,
       "casas_ancla": [
        "Celeste-Tel",
        "GAD3",
@@ -3003,10 +3084,10 @@
       ]
      }
     },
-    "pronostico_principal_voto_mediana": 0.44181004104744187,
+    "pronostico_principal_voto_mediana": 0.41900425338305625,
     "pronostico_principal_voto_p5_p95": [
      0.01,
-     1.210257824164662
+     1.1722563395800647
     ],
     "escala_industria_pp": 0.44
    },
@@ -3045,14 +3126,14 @@
     "variantes_tendencia": {
      "consenso_privadas": {
       "estimacion_latente_en_corte": 0.32308,
-      "sd_estimacion_latente": 0.2463,
+      "sd_estimacion_latente": 0.24722,
       "casas_ancla": [
        "Celeste-Tel"
       ]
      },
      "consenso_todas": {
       "estimacion_latente_en_corte": 0.23764,
-      "sd_estimacion_latente": 0.17912,
+      "sd_estimacion_latente": 0.18037,
       "casas_ancla": [
        "CIS",
        "Celeste-Tel"
@@ -3060,16 +3141,16 @@
      },
      "calibrada_23j": {
       "estimacion_latente_en_corte": 0.32308,
-      "sd_estimacion_latente": 0.2463,
+      "sd_estimacion_latente": 0.24722,
       "casas_ancla": [
        "Celeste-Tel"
       ]
      }
     },
-    "pronostico_principal_voto_mediana": 0.2924124138023054,
+    "pronostico_principal_voto_mediana": 0.29230083994801304,
     "pronostico_principal_voto_p5_p95": [
      0.01,
-     1.1211271916538252
+     1.137615265225547
     ],
     "escala_industria_pp": 0.44
    }
@@ -3081,7 +3162,7 @@
   ]
  },
  "sensibilidad_cocina": {
-  "corte": "2026-11-12",
+  "corte": "2026-11-13",
   "eleccion": "2026-11-29",
   "tipo": "Sensibilidad del modelo, no efecto observado sobre votantes",
   "metodo": "Semillas fijas y misma muestra de simulaciones por variante; cada escenario altera una decisión explícita.",
@@ -3099,66 +3180,66 @@
     },
     "comparacion": {
      "cambio_voto_pp": {
-      "PP": 0.105,
-      "PSOE": -0.038,
-      "VOX": -0.06,
-      "SUMAR": 0.197,
-      "PODEMOS": 0.006,
-      "SALF": 0.028,
-      "ERC": 0.111,
-      "JUNTS": -0.002,
-      "BILDU": 0.004,
-      "PNV": -0.034,
-      "BNG": 0.005,
-      "CC": -0.042,
-      "UPN": -0.067
+      "PP": 0.096,
+      "PSOE": -0.163,
+      "VOX": 0.038,
+      "SUMAR": -0.102,
+      "PODEMOS": -0.015,
+      "SALF": 0.074,
+      "ERC": 0.071,
+      "JUNTS": 0.035,
+      "BILDU": 0.071,
+      "PNV": 0.013,
+      "BNG": 0.036,
+      "CC": -0.003,
+      "UPN": 0.019
      },
      "cambio_mediana_escanos": {
       "PP": 1.0,
-      "PSOE": 2.0,
-      "VOX": -1.0,
-      "SUMAR": 0.0,
+      "PSOE": -1.0,
+      "VOX": 1.0,
+      "SUMAR": -1.0,
       "PODEMOS": 0.0,
       "SALF": 0.0,
       "ERC": 1.0,
       "JUNTS": 0.0,
       "BILDU": 0.0,
-      "PNV": -0.5,
+      "PNV": -1.0,
       "BNG": 0.0,
       "CC": 0.0,
       "UPN": 0.0
      },
      "bloques": {
       "PP+VOX": {
-       "cambio_mediana_escanos": 0.0,
-       "cambio_frecuencia_umbral_puntos": 16.25,
+       "cambio_mediana_escanos": 2.0,
+       "cambio_frecuencia_umbral_puntos": 12.08,
        "intervalo_escanos": [
-        186.0,
-        200.0
-       ]
-      },
-      "PP+VOX+UPN": {
-       "cambio_mediana_escanos": 0.0,
-       "cambio_frecuencia_umbral_puntos": 14.58,
-       "intervalo_escanos": [
-        186.95,
+        185.95,
         201.0
        ]
       },
+      "PP+VOX+UPN": {
+       "cambio_mediana_escanos": 2.5,
+       "cambio_frecuencia_umbral_puntos": 11.25,
+       "intervalo_escanos": [
+        187.0,
+        202.0
+       ]
+      },
       "PSOE+SUMAR+PODEMOS": {
-       "cambio_mediana_escanos": 0.5,
+       "cambio_mediana_escanos": -2.0,
        "cambio_frecuencia_umbral_puntos": 0.0,
        "intervalo_escanos": [
-        117.0,
-        134.0
+        118.0,
+        133.0
        ]
       },
       "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
-       "cambio_mediana_escanos": 0.0,
-       "cambio_frecuencia_umbral_puntos": -12.5,
+       "cambio_mediana_escanos": -2.0,
+       "cambio_frecuencia_umbral_puntos": -7.92,
        "intervalo_escanos": [
-        149.0,
-        163.04999999999998
+        148.0,
+        163.0
        ]
       }
      }
@@ -3172,66 +3253,66 @@
     },
     "comparacion": {
      "cambio_voto_pp": {
-      "PP": -0.106,
-      "PSOE": -0.083,
-      "VOX": -0.005,
-      "SUMAR": -0.024,
-      "PODEMOS": -0.017,
-      "SALF": -0.006,
+      "PP": -0.002,
+      "PSOE": -0.176,
+      "VOX": 0.021,
+      "SUMAR": -0.07,
+      "PODEMOS": 0.002,
+      "SALF": 0.0,
       "ERC": -0.013,
       "JUNTS": 0.0,
-      "BILDU": -0.009,
-      "PNV": -0.002,
-      "BNG": -0.006,
-      "CC": -0.006,
-      "UPN": 0.003
+      "BILDU": -0.006,
+      "PNV": -0.001,
+      "BNG": -0.005,
+      "CC": -0.002,
+      "UPN": -0.056
      },
      "cambio_mediana_escanos": {
-      "PP": 0.0,
-      "PSOE": 2.0,
-      "VOX": -1.0,
-      "SUMAR": 0.0,
+      "PP": 1.0,
+      "PSOE": -1.0,
+      "VOX": 1.0,
+      "SUMAR": -1.0,
       "PODEMOS": 0.0,
       "SALF": 0.0,
       "ERC": 0.0,
       "JUNTS": 0.0,
       "BILDU": 0.0,
-      "PNV": -0.5,
+      "PNV": 0.0,
       "BNG": 0.0,
       "CC": 0.0,
-      "UPN": 1.0
+      "UPN": 0.0
      },
      "bloques": {
       "PP+VOX": {
-       "cambio_mediana_escanos": -0.5,
-       "cambio_frecuencia_umbral_puntos": 10.42,
+       "cambio_mediana_escanos": 1.0,
+       "cambio_frecuencia_umbral_puntos": 8.33,
        "intervalo_escanos": [
-        174.0,
-        209.04999999999998
+        178.95,
+        206.0
        ]
       },
       "PP+VOX+UPN": {
-       "cambio_mediana_escanos": 0.0,
-       "cambio_frecuencia_umbral_puntos": 10.42,
+       "cambio_mediana_escanos": 0.5,
+       "cambio_frecuencia_umbral_puntos": 8.33,
        "intervalo_escanos": [
-        177.0,
-        210.0
+        180.0,
+        207.04999999999998
        ]
       },
       "PSOE+SUMAR+PODEMOS": {
-       "cambio_mediana_escanos": 0.5,
+       "cambio_mediana_escanos": -1.0,
        "cambio_frecuencia_umbral_puntos": 0.0,
        "intervalo_escanos": [
-        108.0,
-        143.0
+        111.0,
+        142.04999999999998
        ]
       },
       "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
        "cambio_mediana_escanos": 0.0,
-       "cambio_frecuencia_umbral_puntos": -9.58,
+       "cambio_frecuencia_umbral_puntos": -5.0,
        "intervalo_escanos": [
-        140.0,
-        173.0
+        142.95,
+        170.0
        ]
       }
      }
@@ -3260,51 +3341,51 @@
       "UPN": 0.0
      },
      "cambio_mediana_escanos": {
-      "PP": 0.5,
-      "PSOE": 1.0,
-      "VOX": -2.0,
+      "PP": 0.0,
+      "PSOE": -1.0,
+      "VOX": 0.5,
       "SUMAR": 0.0,
       "PODEMOS": 0.0,
       "SALF": 0.0,
       "ERC": 0.0,
       "JUNTS": 0.0,
       "BILDU": 0.0,
-      "PNV": -0.5,
+      "PNV": 0.0,
       "BNG": 0.0,
       "CC": 0.0,
-      "UPN": 0.5
+      "UPN": 0.0
      },
      "bloques": {
       "PP+VOX": {
-       "cambio_mediana_escanos": 0.0,
-       "cambio_frecuencia_umbral_puntos": 2.5,
+       "cambio_mediana_escanos": 1.0,
+       "cambio_frecuencia_umbral_puntos": 0.0,
        "intervalo_escanos": [
-        168.0,
+        168.95,
         212.04999999999998
        ]
       },
       "PP+VOX+UPN": {
-       "cambio_mediana_escanos": 0.5,
-       "cambio_frecuencia_umbral_puntos": 2.08,
+       "cambio_mediana_escanos": 1.5,
+       "cambio_frecuencia_umbral_puntos": -0.83,
        "intervalo_escanos": [
-        168.95,
-        215.09999999999997
+        169.9,
+        216.0
        ]
       },
       "PSOE+SUMAR+PODEMOS": {
-       "cambio_mediana_escanos": -0.5,
+       "cambio_mediana_escanos": -1.0,
        "cambio_frecuencia_umbral_puntos": 0.0,
        "intervalo_escanos": [
-        102.0,
-        152.04999999999998
+        105.0,
+        152.0
        ]
       },
       "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
        "cambio_mediana_escanos": -1.0,
-       "cambio_frecuencia_umbral_puntos": -0.83,
+       "cambio_frecuencia_umbral_puntos": 2.5,
        "intervalo_escanos": [
-        134.9,
-        181.04999999999998
+        134.0,
+        180.09999999999997
        ]
       }
      }
@@ -3334,15 +3415,15 @@
      },
      "cambio_mediana_escanos": {
       "PP": 0.0,
-      "PSOE": -0.5,
-      "VOX": 1.0,
+      "PSOE": -1.0,
+      "VOX": 2.0,
       "SUMAR": 1.0,
-      "PODEMOS": 0.5,
+      "PODEMOS": 1.0,
       "SALF": 0.0,
       "ERC": 0.0,
       "JUNTS": 0.0,
       "BILDU": 0.0,
-      "PNV": -0.5,
+      "PNV": -1.0,
       "BNG": 0.0,
       "CC": 0.0,
       "UPN": 0.0
@@ -3350,34 +3431,34 @@
      "bloques": {
       "PP+VOX": {
        "cambio_mediana_escanos": 1.0,
-       "cambio_frecuencia_umbral_puntos": -0.42,
+       "cambio_frecuencia_umbral_puntos": 0.83,
        "intervalo_escanos": [
-        169.95,
-        217.0
+        167.95,
+        214.04999999999998
        ]
       },
       "PP+VOX+UPN": {
-       "cambio_mediana_escanos": 1.0,
-       "cambio_frecuencia_umbral_puntos": -0.42,
+       "cambio_mediana_escanos": 0.5,
+       "cambio_frecuencia_umbral_puntos": 0.42,
        "intervalo_escanos": [
-        169.95,
-        219.0
+        168.0,
+        217.0
        ]
       },
       "PSOE+SUMAR+PODEMOS": {
-       "cambio_mediana_escanos": -0.5,
+       "cambio_mediana_escanos": -1.0,
        "cambio_frecuencia_umbral_puntos": 0.0,
        "intervalo_escanos": [
-        103.9,
-        152.0
+        105.0,
+        151.0
        ]
       },
       "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
        "cambio_mediana_escanos": -1.0,
-       "cambio_frecuencia_umbral_puntos": 0.42,
+       "cambio_frecuencia_umbral_puntos": 1.25,
        "intervalo_escanos": [
-        131.0,
-        180.04999999999998
+        132.95,
+        182.0
        ]
       }
      }
@@ -3393,66 +3474,66 @@
     },
     "comparacion": {
      "cambio_voto_pp": {
-      "PP": -0.316,
-      "PSOE": 0.159,
-      "VOX": -0.208,
-      "SUMAR": -0.048,
-      "PODEMOS": -0.012,
-      "SALF": -0.096,
-      "ERC": -0.033,
-      "JUNTS": 0.114,
-      "BILDU": 0.104,
-      "PNV": -0.018,
-      "BNG": 0.015,
-      "CC": -0.02,
-      "UPN": 0.02
+      "PP": 0.411,
+      "PSOE": -0.112,
+      "VOX": 0.08,
+      "SUMAR": -0.169,
+      "PODEMOS": -0.245,
+      "SALF": 0.088,
+      "ERC": 0.118,
+      "JUNTS": -0.044,
+      "BILDU": -0.073,
+      "PNV": -0.019,
+      "BNG": -0.057,
+      "CC": -0.013,
+      "UPN": 0.054
      },
      "cambio_mediana_escanos": {
-      "PP": -0.5,
-      "PSOE": 0.5,
-      "VOX": -1.5,
-      "SUMAR": 0.0,
+      "PP": 2.0,
+      "PSOE": 0.0,
+      "VOX": 0.5,
+      "SUMAR": -1.5,
       "PODEMOS": 0.0,
       "SALF": 0.0,
-      "ERC": 0.0,
+      "ERC": 1.0,
       "JUNTS": 0.0,
-      "BILDU": 1.0,
-      "PNV": -0.5,
-      "BNG": 0.5,
+      "BILDU": 0.0,
+      "PNV": 0.0,
+      "BNG": 0.0,
       "CC": 0.0,
       "UPN": 0.5
      },
      "bloques": {
       "PP+VOX": {
-       "cambio_mediana_escanos": 0.0,
-       "cambio_frecuencia_umbral_puntos": 1.25,
+       "cambio_mediana_escanos": 3.0,
+       "cambio_frecuencia_umbral_puntos": 2.08,
        "intervalo_escanos": [
-        171.9,
-        208.0
+        172.95,
+        217.05
        ]
       },
       "PP+VOX+UPN": {
-       "cambio_mediana_escanos": 1.0,
-       "cambio_frecuencia_umbral_puntos": -0.42,
+       "cambio_mediana_escanos": 3.5,
+       "cambio_frecuencia_umbral_puntos": 1.25,
        "intervalo_escanos": [
-        172.0,
-        209.05
+        173.95,
+        219.05
        ]
       },
       "PSOE+SUMAR+PODEMOS": {
-       "cambio_mediana_escanos": -0.5,
+       "cambio_mediana_escanos": -1.5,
        "cambio_frecuencia_umbral_puntos": 0.0,
        "intervalo_escanos": [
-        104.95,
-        151.05
+        102.75,
+        151.0
        ]
       },
       "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
-       "cambio_mediana_escanos": -1.0,
-       "cambio_frecuencia_umbral_puntos": 1.25,
+       "cambio_mediana_escanos": -3.0,
+       "cambio_frecuencia_umbral_puntos": -1.67,
        "intervalo_escanos": [
-        140.95,
-        178.0
+        130.95,
+        176.05
        ]
       }
      }
@@ -3468,66 +3549,66 @@
     },
     "comparacion": {
      "cambio_voto_pp": {
-      "PP": 0.563,
-      "PSOE": -0.026,
-      "VOX": -0.009,
-      "SUMAR": -0.225,
-      "PODEMOS": -0.151,
-      "SALF": -0.028,
-      "ERC": 0.033,
-      "JUNTS": -0.055,
-      "BILDU": 0.015,
-      "PNV": 0.072,
-      "BNG": -0.049,
-      "CC": -0.066,
-      "UPN": 0.058
+      "PP": -0.239,
+      "PSOE": 0.549,
+      "VOX": -0.108,
+      "SUMAR": -0.016,
+      "PODEMOS": 0.054,
+      "SALF": 0.004,
+      "ERC": -0.05,
+      "JUNTS": 0.003,
+      "BILDU": 0.019,
+      "PNV": -0.006,
+      "BNG": 0.013,
+      "CC": 0.011,
+      "UPN": -0.046
      },
      "cambio_mediana_escanos": {
-      "PP": 2.0,
-      "PSOE": -1.0,
-      "VOX": -1.0,
+      "PP": -1.5,
+      "PSOE": 1.5,
+      "VOX": 0.0,
       "SUMAR": -1.0,
       "PODEMOS": 0.0,
       "SALF": 0.0,
-      "ERC": 0.0,
-      "JUNTS": 0.0,
+      "ERC": 1.0,
+      "JUNTS": -1.0,
       "BILDU": 0.0,
-      "PNV": 0.5,
+      "PNV": 0.0,
       "BNG": 0.0,
       "CC": 0.0,
-      "UPN": 1.0
+      "UPN": 0.0
      },
      "bloques": {
       "PP+VOX": {
-       "cambio_mediana_escanos": 1.0,
-       "cambio_frecuencia_umbral_puntos": 3.75,
+       "cambio_mediana_escanos": -1.0,
+       "cambio_frecuencia_umbral_puntos": -2.92,
        "intervalo_escanos": [
-        171.95,
-        217.0
+        165.95,
+        212.14999999999998
        ]
       },
       "PP+VOX+UPN": {
-       "cambio_mediana_escanos": 3.0,
-       "cambio_frecuencia_umbral_puntos": 3.33,
+       "cambio_mediana_escanos": -2.5,
+       "cambio_frecuencia_umbral_puntos": -3.75,
        "intervalo_escanos": [
-        171.95,
-        219.1
+        165.95,
+        215.0
        ]
       },
       "PSOE+SUMAR+PODEMOS": {
-       "cambio_mediana_escanos": -1.5,
+       "cambio_mediana_escanos": 2.0,
        "cambio_frecuencia_umbral_puntos": 0.0,
        "intervalo_escanos": [
-        98.9,
-        151.05
+        104.0,
+        153.05
        ]
       },
       "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
-       "cambio_mediana_escanos": -3.0,
-       "cambio_frecuencia_umbral_puntos": -2.5,
+       "cambio_mediana_escanos": 2.5,
+       "cambio_frecuencia_umbral_puntos": 3.33,
        "intervalo_escanos": [
-        130.9,
-        178.05
+        135.0,
+        184.05
        ]
       }
      }
@@ -3544,66 +3625,66 @@
     },
     "comparacion": {
      "cambio_voto_pp": {
-      "PP": 0.398,
-      "PSOE": 0.042,
-      "VOX": -0.202,
-      "SUMAR": -0.154,
-      "PODEMOS": -0.049,
-      "SALF": -0.073,
-      "ERC": 0.004,
-      "JUNTS": -0.008,
-      "BILDU": 0.047,
-      "PNV": 0.012,
-      "BNG": -0.02,
-      "CC": -0.052,
-      "UPN": 0.025
+      "PP": -0.068,
+      "PSOE": 0.058,
+      "VOX": 0.037,
+      "SUMAR": -0.106,
+      "PODEMOS": -0.054,
+      "SALF": 0.079,
+      "ERC": 0.083,
+      "JUNTS": -0.015,
+      "BILDU": -0.004,
+      "PNV": -0.008,
+      "BNG": -0.033,
+      "CC": -0.004,
+      "UPN": 0.003
      },
      "cambio_mediana_escanos": {
-      "PP": 1.0,
-      "PSOE": 0.0,
-      "VOX": -1.0,
+      "PP": 0.5,
+      "PSOE": 1.0,
+      "VOX": 0.0,
       "SUMAR": -1.0,
       "PODEMOS": 0.0,
       "SALF": 0.0,
-      "ERC": 0.0,
+      "ERC": 1.0,
       "JUNTS": 0.0,
       "BILDU": 0.0,
-      "PNV": 0.5,
+      "PNV": 0.0,
       "BNG": 0.0,
       "CC": 0.0,
-      "UPN": 1.0
+      "UPN": 0.0
      },
      "bloques": {
       "PP+VOX": {
-       "cambio_mediana_escanos": 0.0,
-       "cambio_frecuencia_umbral_puntos": 2.5,
+       "cambio_mediana_escanos": 0.5,
+       "cambio_frecuencia_umbral_puntos": -0.42,
        "intervalo_escanos": [
-        171.95,
-        215.04999999999998
+        168.9,
+        215.0
        ]
       },
       "PP+VOX+UPN": {
-       "cambio_mediana_escanos": 1.0,
-       "cambio_frecuencia_umbral_puntos": 1.46,
+       "cambio_mediana_escanos": 0.5,
+       "cambio_frecuencia_umbral_puntos": -1.25,
        "intervalo_escanos": [
-        172.0,
-        217.09999999999997
+        168.9,
+        219.0
        ]
       },
       "PSOE+SUMAR+PODEMOS": {
-       "cambio_mediana_escanos": -1.0,
+       "cambio_mediana_escanos": 0.5,
        "cambio_frecuencia_umbral_puntos": 0.0,
        "intervalo_escanos": [
-        100.95,
+        103.95,
         151.04999999999998
        ]
       },
       "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
-       "cambio_mediana_escanos": -1.5,
-       "cambio_frecuencia_umbral_puntos": -0.63,
+       "cambio_mediana_escanos": 0.0,
+       "cambio_frecuencia_umbral_puntos": 0.83,
        "intervalo_escanos": [
-        132.9,
-        178.0
+        131.0,
+        181.09999999999997
        ]
       }
      }
@@ -3621,41 +3702,41 @@
   "partidos": {
    "PP": {
     "voto": [
-     30.257449576436123,
-     26.003657395371576,
-     34.45340047972423
+     30.31784751999819,
+     26.23231387358701,
+     34.26854161148421
     ],
     "escanos": [
-     126.0,
+     125.0,
      108.0,
      143.0
     ],
-    "primero": 0.6502222222222223,
-    "primero_o_empate": 0.6648888888888889
+    "primero": 0.6506666666666666,
+    "primero_o_empate": 0.6653333333333333
    },
    "PSOE": {
     "voto": [
-     28.472955266896072,
-     24.34557487319607,
-     32.39854843341644
+     28.529591211699312,
+     24.54125886964994,
+     32.56173430007794
     ],
     "escanos": [
      117.0,
      97.0,
-     138.0
+     139.0
     ],
-    "primero": 0.33511111111111114,
-    "primero_o_empate": 0.3497777777777778
+    "primero": 0.33466666666666667,
+    "primero_o_empate": 0.34933333333333333
    },
    "VOX": {
     "voto": [
-     18.66836952558353,
-     15.29132347511925,
-     21.940271290898814
+     18.696895365984588,
+     15.435994304166119,
+     22.20027142928656
     ],
     "escanos": [
      67.0,
-     53.0,
+     52.0,
      81.0
     ],
     "primero": 0.0,
@@ -3663,23 +3744,23 @@
    },
    "SUMAR": {
     "voto": [
-     5.9212947816082835,
-     4.00693883544015,
-     7.926812335680975
+     5.951375774073116,
+     4.0591296150962055,
+     7.928489214633065
     ],
     "escanos": [
      7.0,
      4.0,
-     15.0
+     14.0
     ],
     "primero": 0.0,
     "primero_o_empate": 0.0
    },
    "PODEMOS": {
     "voto": [
-     2.1270582351383105,
-     0.9998468557805006,
-     3.2477390750461033
+     2.1157568115899625,
+     0.953945564142366,
+     3.2908517188891597
     ],
     "escanos": [
      0.0,
@@ -3691,9 +3772,9 @@
    },
    "SALF": {
     "voto": [
-     1.7764122495096686,
-     0.6728707928962938,
-     2.851359662127827
+     1.7662880058072563,
+     0.6779987526355122,
+     2.8234837929628593
     ],
     "escanos": [
      0.0,
@@ -3705,9 +3786,9 @@
    },
    "ERC": {
     "voto": [
-     2.5962246789503802,
-     1.3642253239296247,
-     3.877906026467445
+     2.584472863287618,
+     1.292981814053202,
+     3.8593773701642324
     ],
     "escanos": [
      11.0,
@@ -3719,9 +3800,9 @@
    },
    "JUNTS": {
     "voto": [
-     1.3140814134000165,
-     0.40842445318666953,
-     2.2102617630151427
+     1.3066641785026505,
+     0.40336451978365395,
+     2.2228145462616795
     ],
     "escanos": [
      5.0,
@@ -3733,9 +3814,9 @@
    },
    "BILDU": {
     "voto": [
-     1.37822812774585,
-     0.4552407379458023,
-     2.3632812318405505
+     1.4156104160934975,
+     0.4713608142917378,
+     2.339758440127566
     ],
     "escanos": [
      7.0,
@@ -3747,9 +3828,9 @@
    },
    "PNV": {
     "voto": [
-     0.8420900695127322,
-     0.07701955860701103,
-     1.6318166365453304
+     0.8274228075911829,
+     0.05209926268082102,
+     1.6259611826423028
     ],
     "escanos": [
      4.0,
@@ -3761,9 +3842,9 @@
    },
    "BNG": {
     "voto": [
-     0.9307834811266168,
-     0.13298549820005443,
-     1.7238333265999912
+     0.9355252304201871,
+     0.1542555986723901,
+     1.7200459956151708
     ],
     "escanos": [
      2.0,
@@ -3775,9 +3856,9 @@
    },
    "CC": {
     "voto": [
-     0.44181004104744187,
+     0.41900425338305625,
      0.01,
-     1.210257824164662
+     1.1722563395800647
     ],
     "escanos": [
      1.0,
@@ -3789,9 +3870,9 @@
    },
    "UPN": {
     "voto": [
-     0.2924124138023054,
+     0.29230083994801304,
      0.01,
-     1.1211271916538252
+     1.137615265225547
     ],
     "escanos": [
      1.0,
@@ -3806,26 +3887,26 @@
    "PP+VOX": {
     "mediana": 193.0,
     "p5": 170.0,
-    "p95": 215.0,
-    "p_mayoria": 0.8822222222222222
+    "p95": 214.0,
+    "p_mayoria": 0.8897777777777778
    },
    "PP+VOX+UPN": {
     "mediana": 194.0,
     "p5": 170.0,
     "p95": 217.0,
-    "p_mayoria": 0.8893333333333333
+    "p_mayoria": 0.8977777777777778
    },
    "PSOE+SUMAR+PODEMOS": {
     "mediana": 125.0,
-    "p5": 102.0,
-    "p95": 150.0,
-    "p_mayoria": 0.0
+    "p5": 103.0,
+    "p95": 151.0,
+    "p_mayoria": 0.0008888888888888889
    },
    "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
     "mediana": 156.0,
     "p5": 133.0,
     "p95": 180.0,
-    "p_mayoria": 0.09777777777777778
+    "p_mayoria": 0.08622222222222223
    }
   },
   "investidura": {
@@ -3843,9 +3924,9 @@
     "mediana_abstenciones": 0.0,
     "mediana_no": 157.0,
     "p5_si": 170.0,
-    "p95_si": 215.0,
-    "frecuencia_primera": 0.8822222222222222,
-    "frecuencia_segunda": 0.8822222222222222
+    "p95_si": 214.0,
+    "frecuencia_primera": 0.8897777777777778,
+    "frecuencia_segunda": 0.8897777777777778
    },
    "pp_vox_upn_primera": {
     "disponible": true,
@@ -3863,8 +3944,8 @@
     "mediana_no": 156.0,
     "p5_si": 170.0,
     "p95_si": 217.0,
-    "frecuencia_primera": 0.8893333333333333,
-    "frecuencia_segunda": 0.8893333333333333
+    "frecuencia_primera": 0.8977777777777778,
+    "frecuencia_segunda": 0.8977777777777778
    },
    "pp_vox_segunda_abst_otros": {
     "disponible": true,
@@ -3883,9 +3964,9 @@
     "mediana_abstenciones": 3.0,
     "mediana_no": 154.0,
     "p5_si": 170.0,
-    "p95_si": 215.0,
-    "frecuencia_primera": 0.8822222222222222,
-    "frecuencia_segunda": 0.8995555555555556
+    "p95_si": 214.0,
+    "frecuencia_primera": 0.8897777777777778,
+    "frecuencia_segunda": 0.908
    },
    "psoe_sumar_podemos_primera": {
     "disponible": true,
@@ -3901,10 +3982,10 @@
     "mediana_si": 125.0,
     "mediana_abstenciones": 0.0,
     "mediana_no": 225.0,
-    "p5_si": 102.0,
-    "p95_si": 150.0,
-    "frecuencia_primera": 0.0,
-    "frecuencia_segunda": 0.0
+    "p5_si": 103.0,
+    "p95_si": 151.0,
+    "frecuencia_primera": 0.0008888888888888889,
+    "frecuencia_segunda": 0.0008888888888888889
    },
    "psoe_sumar_segunda_abst_territoriales": {
     "disponible": true,
@@ -3927,10 +4008,10 @@
     "mediana_si": 125.0,
     "mediana_abstenciones": 31.0,
     "mediana_no": 194.0,
-    "p5_si": 102.0,
-    "p95_si": 150.0,
-    "frecuencia_primera": 0.0,
-    "frecuencia_segunda": 0.010666666666666666
+    "p5_si": 103.0,
+    "p95_si": 151.0,
+    "frecuencia_primera": 0.0008888888888888889,
+    "frecuencia_segunda": 0.008444444444444444
    },
    "psoe_apoyos_territoriales_primera": {
     "disponible": true,
@@ -3954,21 +4035,21 @@
     "mediana_no": 194.0,
     "p5_si": 133.0,
     "p95_si": 180.0,
-    "frecuencia_primera": 0.09777777777777778,
-    "frecuencia_segunda": 0.09777777777777778
+    "frecuencia_primera": 0.08622222222222223,
+    "frecuencia_segunda": 0.08622222222222223
    }
   },
   "n": 2250,
   "industria": 2.2,
-  "dias": 17,
+  "dias": 16,
   "sin_encuestas": [],
   "provincias": [
    {
     "provincia": "Albacete",
     "escanos": 4,
     "reparto": {
-     "PP": 1.8,
-     "PSOE": 1.2,
+     "PP": 1.81,
+     "PSOE": 1.19,
      "VOX": 1.0
     }
    },
@@ -3976,18 +4057,18 @@
     "provincia": "Alicante/Alacant",
     "escanos": 12,
     "reparto": {
-     "PP": 4.58,
+     "PP": 4.56,
      "PSOE": 3.85,
      "VOX": 3.21,
-     "SUMAR": 0.36
+     "SUMAR": 0.38
     }
    },
    {
     "provincia": "Almería",
     "escanos": 6,
     "reparto": {
-     "PP": 2.4,
-     "PSOE": 1.56,
+     "PP": 2.39,
+     "PSOE": 1.57,
      "VOX": 2.04
     }
    },
@@ -3996,8 +4077,8 @@
     "escanos": 4,
     "reparto": {
      "PP": 0.95,
-     "PSOE": 1.49,
-     "BILDU": 1.06,
+     "PSOE": 1.48,
+     "BILDU": 1.07,
      "PNV": 0.5
     }
    },
@@ -4005,19 +4086,18 @@
     "provincia": "Asturias",
     "escanos": 7,
     "reparto": {
-     "PP": 2.88,
-     "PSOE": 2.69,
-     "VOX": 1.38,
-     "SUMAR": 0.05
+     "PP": 2.89,
+     "PSOE": 2.68,
+     "VOX": 1.38
     }
    },
    {
     "provincia": "Ávila",
     "escanos": 3,
     "reparto": {
-     "PP": 1.24,
+     "PP": 1.25,
      "PSOE": 0.89,
-     "VOX": 0.86
+     "VOX": 0.87
     }
    },
    {
@@ -4025,7 +4105,7 @@
     "escanos": 5,
     "reparto": {
      "PP": 1.99,
-     "PSOE": 2.01,
+     "PSOE": 2.02,
      "VOX": 1.0
     }
    },
@@ -4033,10 +4113,10 @@
     "provincia": "Balears (Illes)",
     "escanos": 8,
     "reparto": {
-     "PP": 3.14,
-     "PSOE": 2.53,
+     "PP": 3.16,
+     "PSOE": 2.52,
      "VOX": 2.06,
-     "SUMAR": 0.27
+     "SUMAR": 0.26
     }
    },
    {
@@ -4044,11 +4124,11 @@
     "escanos": 32,
     "reparto": {
      "PP": 4.47,
-     "PSOE": 12.1,
-     "VOX": 4.03,
-     "SUMAR": 2.4,
-     "PODEMOS": 0.3,
-     "ERC": 6.1,
+     "PSOE": 12.13,
+     "VOX": 4.04,
+     "SUMAR": 2.39,
+     "PODEMOS": 0.32,
+     "ERC": 6.05,
      "JUNTS": 2.57
     }
    },
@@ -4057,10 +4137,10 @@
     "escanos": 8,
     "reparto": {
      "PP": 1.0,
-     "PSOE": 2.63,
+     "PSOE": 2.62,
      "SUMAR": 0.08,
-     "BILDU": 2.23,
-     "PNV": 2.06
+     "BILDU": 2.25,
+     "PNV": 2.04
     }
    },
    {
@@ -4076,8 +4156,8 @@
     "provincia": "Cáceres",
     "escanos": 4,
     "reparto": {
-     "PP": 1.53,
-     "PSOE": 1.55,
+     "PP": 1.54,
+     "PSOE": 1.53,
      "VOX": 0.92
     }
    },
@@ -4085,18 +4165,18 @@
     "provincia": "Cádiz",
     "escanos": 9,
     "reparto": {
-     "PP": 3.43,
-     "PSOE": 3.18,
+     "PP": 3.42,
+     "PSOE": 3.21,
      "VOX": 2.3,
-     "SUMAR": 0.09
+     "SUMAR": 0.07
     }
    },
    {
     "provincia": "Cantabria",
     "escanos": 5,
     "reparto": {
-     "PP": 2.21,
-     "PSOE": 1.78,
+     "PP": 2.19,
+     "PSOE": 1.79,
      "VOX": 1.02
     }
    },
@@ -4106,7 +4186,7 @@
     "reparto": {
      "PP": 2.0,
      "PSOE": 1.83,
-     "VOX": 1.17
+     "VOX": 1.18
     }
    },
    {
@@ -4114,16 +4194,16 @@
     "escanos": 5,
     "reparto": {
      "PP": 2.06,
-     "PSOE": 1.85,
-     "VOX": 1.09
+     "PSOE": 1.86,
+     "VOX": 1.08
     }
    },
    {
     "provincia": "Córdoba",
     "escanos": 6,
     "reparto": {
-     "PP": 2.66,
-     "PSOE": 2.08,
+     "PP": 2.64,
+     "PSOE": 2.09,
      "VOX": 1.26
     }
    },
@@ -4132,28 +4212,28 @@
     "escanos": 8,
     "reparto": {
      "PP": 4.1,
-     "PSOE": 2.45,
-     "VOX": 0.2,
-     "BNG": 1.21
+     "PSOE": 2.46,
+     "VOX": 0.19,
+     "BNG": 1.22
     }
    },
    {
     "provincia": "Cuenca",
     "escanos": 3,
     "reparto": {
-     "PP": 1.05,
+     "PP": 1.04,
      "PSOE": 1.05,
-     "VOX": 0.9
+     "VOX": 0.91
     }
    },
    {
     "provincia": "Gipuzkoa",
     "escanos": 6,
     "reparto": {
-     "PP": 0.22,
+     "PP": 0.2,
      "PSOE": 1.76,
-     "BILDU": 2.74,
-     "PNV": 1.28
+     "BILDU": 2.77,
+     "PNV": 1.26
     }
    },
    {
@@ -4161,19 +4241,19 @@
     "escanos": 6,
     "reparto": {
      "PP": 0.28,
-     "PSOE": 2.22,
-     "VOX": 0.74,
-     "ERC": 1.6,
-     "JUNTS": 1.16
+     "PSOE": 2.23,
+     "VOX": 0.76,
+     "ERC": 1.58,
+     "JUNTS": 1.14
     }
    },
    {
     "provincia": "Granada",
     "escanos": 7,
     "reparto": {
-     "PP": 2.82,
+     "PP": 2.8,
      "PSOE": 2.29,
-     "VOX": 1.89
+     "VOX": 1.91
     }
    },
    {
@@ -4189,8 +4269,8 @@
     "provincia": "Huelva",
     "escanos": 5,
     "reparto": {
-     "PP": 2.01,
-     "PSOE": 1.96,
+     "PP": 2.0,
+     "PSOE": 1.97,
      "VOX": 1.03
     }
    },
@@ -4198,8 +4278,8 @@
     "provincia": "Huesca",
     "escanos": 3,
     "reparto": {
-     "PP": 1.26,
-     "PSOE": 1.08,
+     "PP": 1.25,
+     "PSOE": 1.09,
      "VOX": 0.66
     }
    },
@@ -4208,7 +4288,7 @@
     "escanos": 5,
     "reparto": {
      "PP": 2.01,
-     "PSOE": 1.97,
+     "PSOE": 1.96,
      "VOX": 1.03
     }
    },
@@ -4216,18 +4296,18 @@
     "provincia": "León",
     "escanos": 4,
     "reparto": {
-     "PP": 1.75,
+     "PP": 1.74,
      "PSOE": 1.31,
-     "VOX": 0.94
+     "VOX": 0.95
     }
    },
    {
     "provincia": "Lleida",
     "escanos": 4,
     "reparto": {
-     "PP": 0.24,
-     "PSOE": 1.56,
-     "VOX": 0.07,
+     "PP": 0.25,
+     "PSOE": 1.57,
+     "VOX": 0.06,
      "ERC": 1.47,
      "JUNTS": 0.65
     }
@@ -4238,27 +4318,27 @@
     "reparto": {
      "PP": 2.49,
      "PSOE": 1.17,
-     "BNG": 0.34
+     "BNG": 0.33
     }
    },
    {
     "provincia": "Madrid",
     "escanos": 37,
     "reparto": {
-     "PP": 15.26,
-     "PSOE": 10.14,
-     "VOX": 8.49,
+     "PP": 15.25,
+     "PSOE": 10.16,
+     "VOX": 8.51,
      "SUMAR": 2.67,
-     "PODEMOS": 0.39
+     "PODEMOS": 0.38
     }
    },
    {
     "provincia": "Málaga",
     "escanos": 11,
     "reparto": {
-     "PP": 4.46,
-     "PSOE": 3.34,
-     "VOX": 3.02,
+     "PP": 4.47,
+     "PSOE": 3.36,
+     "VOX": 3.0,
      "SUMAR": 0.18
     }
    },
@@ -4267,27 +4347,27 @@
     "escanos": 10,
     "reparto": {
      "PP": 4.12,
-     "PSOE": 2.3,
-     "VOX": 3.57
+     "PSOE": 2.29,
+     "VOX": 3.59
     }
    },
    {
     "provincia": "Navarra",
     "escanos": 5,
     "reparto": {
-     "PP": 0.81,
-     "PSOE": 1.63,
+     "PP": 0.8,
+     "PSOE": 1.64,
      "VOX": 0.1,
-     "BILDU": 0.99,
-     "UPN": 1.46
+     "BILDU": 1.0,
+     "UPN": 1.45
     }
    },
    {
     "provincia": "Ourense",
     "escanos": 4,
     "reparto": {
-     "PP": 2.53,
-     "PSOE": 1.17,
+     "PP": 2.52,
+     "PSOE": 1.18,
      "BNG": 0.3
     }
    },
@@ -4304,10 +4384,10 @@
     "provincia": "Palmas (Las)",
     "escanos": 8,
     "reparto": {
-     "PP": 2.36,
-     "PSOE": 3.12,
-     "VOX": 2.15,
-     "CC": 0.37
+     "PP": 2.34,
+     "PSOE": 3.15,
+     "VOX": 2.16,
+     "CC": 0.35
     }
    },
    {
@@ -4315,44 +4395,44 @@
     "escanos": 7,
     "reparto": {
      "PP": 3.41,
-     "PSOE": 2.55,
-     "BNG": 0.98
+     "PSOE": 2.54,
+     "BNG": 0.99
     }
    },
    {
     "provincia": "Rioja (La)",
     "escanos": 4,
     "reparto": {
-     "PP": 2.12,
-     "PSOE": 1.6,
-     "VOX": 0.28
+     "PP": 2.1,
+     "PSOE": 1.59,
+     "VOX": 0.3
     }
    },
    {
     "provincia": "Salamanca",
     "escanos": 4,
     "reparto": {
-     "PP": 1.99,
+     "PP": 2.0,
      "PSOE": 1.02,
-     "VOX": 0.99
+     "VOX": 0.98
     }
    },
    {
     "provincia": "Santa Cruz de Tenerife",
     "escanos": 7,
     "reparto": {
-     "PP": 3.01,
-     "PSOE": 2.76,
-     "CC": 1.22
+     "PP": 3.05,
+     "PSOE": 2.77,
+     "CC": 1.17
     }
    },
    {
     "provincia": "Segovia",
     "escanos": 3,
     "reparto": {
-     "PP": 1.45,
+     "PP": 1.43,
      "PSOE": 0.97,
-     "VOX": 0.59
+     "VOX": 0.6
     }
    },
    {
@@ -4362,7 +4442,7 @@
      "PP": 4.24,
      "PSOE": 4.57,
      "VOX": 2.61,
-     "SUMAR": 0.57
+     "SUMAR": 0.58
     }
    },
    {
@@ -4378,10 +4458,10 @@
     "escanos": 6,
     "reparto": {
      "PP": 0.9,
-     "PSOE": 2.29,
-     "VOX": 1.02,
-     "ERC": 1.46,
-     "JUNTS": 0.33
+     "PSOE": 2.3,
+     "VOX": 1.03,
+     "ERC": 1.43,
+     "JUNTS": 0.34
     }
    },
    {
@@ -4389,8 +4469,8 @@
     "escanos": 3,
     "reparto": {
      "PP": 1.1,
-     "PSOE": 1.02,
-     "VOX": 0.88
+     "PSOE": 1.01,
+     "VOX": 0.89
     }
    },
    {
@@ -4399,17 +4479,17 @@
     "reparto": {
      "PP": 2.14,
      "PSOE": 1.92,
-     "VOX": 1.94
+     "VOX": 1.95
     }
    },
    {
     "provincia": "Valencia/València",
     "escanos": 16,
     "reparto": {
-     "PP": 5.6,
-     "PSOE": 5.23,
-     "VOX": 4.04,
-     "SUMAR": 1.11
+     "PP": 5.59,
+     "PSOE": 5.22,
+     "VOX": 4.08,
+     "SUMAR": 1.09
     }
    },
    {
@@ -4417,8 +4497,8 @@
     "escanos": 5,
     "reparto": {
      "PP": 2.16,
-     "PSOE": 1.78,
-     "VOX": 1.06
+     "PSOE": 1.77,
+     "VOX": 1.07
     }
    },
    {
@@ -4427,7 +4507,7 @@
     "reparto": {
      "PP": 1.57,
      "PSOE": 1.0,
-     "VOX": 0.43
+     "VOX": 0.42
     }
    },
    {
@@ -4444,7 +4524,7 @@
     "escanos": 1,
     "reparto": {
      "PP": 0.45,
-     "PSOE": 0.14,
+     "PSOE": 0.13,
      "VOX": 0.42
     }
    },
@@ -4473,30 +4553,7 @@
   "diagnostico_normalizacion": {
    "consenso_privadas": {
     "n": 750,
-    "semilla": 741757,
-    "frecuencia_recorte_inferior": {
-     "PP": 0.0,
-     "PSOE": 0.0,
-     "VOX": 0.0,
-     "SUMAR": 0.0,
-     "PODEMOS": 0.0,
-     "SALF": 0.004,
-     "ERC": 0.0,
-     "JUNTS": 0.012,
-     "BILDU": 0.010666666666666666,
-     "PNV": 0.03333333333333333,
-     "BNG": 0.03866666666666667,
-     "CC": 0.184,
-     "UPN": 0.30133333333333334
-    },
-    "frecuencia_residual_minimo": 0.212,
-    "factor_media": 0.9960367306918982,
-    "factor_minimo": 0.9282390568449778,
-    "nota": "El recorte y la normalización pueden desplazar medias y dependencias; diagnóstico, no calibración composicional."
-   },
-   "consenso_todas": {
-    "n": 750,
-    "semilla": 741438,
+    "semilla": 741758,
     "frecuencia_recorte_inferior": {
      "PP": 0.0,
      "PSOE": 0.0,
@@ -4504,22 +4561,22 @@
      "SUMAR": 0.0,
      "PODEMOS": 0.0,
      "SALF": 0.005333333333333333,
-     "ERC": 0.0,
-     "JUNTS": 0.008,
-     "BILDU": 0.009333333333333334,
-     "PNV": 0.04533333333333334,
-     "BNG": 0.025333333333333333,
-     "CC": 0.20666666666666667,
-     "UPN": 0.2946666666666667
+     "ERC": 0.0013333333333333333,
+     "JUNTS": 0.013333333333333334,
+     "BILDU": 0.008,
+     "PNV": 0.052,
+     "BNG": 0.03333333333333333,
+     "CC": 0.18666666666666668,
+     "UPN": 0.2866666666666667
     },
-    "frecuencia_residual_minimo": 0.188,
-    "factor_media": 0.9962422636928427,
-    "factor_minimo": 0.9079742579251908,
+    "frecuencia_residual_minimo": 0.208,
+    "factor_media": 0.9954742328367099,
+    "factor_minimo": 0.9022998440158525,
     "nota": "El recorte y la normalización pueden desplazar medias y dependencias; diagnóstico, no calibración composicional."
    },
-   "calibrada_23j": {
+   "consenso_todas": {
     "n": 750,
-    "semilla": 741149,
+    "semilla": 741439,
     "frecuencia_recorte_inferior": {
      "PP": 0.0,
      "PSOE": 0.0,
@@ -4528,16 +4585,39 @@
      "PODEMOS": 0.0013333333333333333,
      "SALF": 0.004,
      "ERC": 0.0,
-     "JUNTS": 0.014666666666666666,
-     "BILDU": 0.010666666666666666,
-     "PNV": 0.036,
-     "BNG": 0.025333333333333333,
-     "CC": 0.176,
-     "UPN": 0.268
+     "JUNTS": 0.006666666666666667,
+     "BILDU": 0.0026666666666666666,
+     "PNV": 0.037333333333333336,
+     "BNG": 0.029333333333333333,
+     "CC": 0.21333333333333335,
+     "UPN": 0.32666666666666666
     },
-    "frecuencia_residual_minimo": 0.216,
-    "factor_media": 0.9959317122887228,
-    "factor_minimo": 0.9200451987586321,
+    "frecuencia_residual_minimo": 0.22133333333333333,
+    "factor_media": 0.9956455068728686,
+    "factor_minimo": 0.9330248672223115,
+    "nota": "El recorte y la normalización pueden desplazar medias y dependencias; diagnóstico, no calibración composicional."
+   },
+   "calibrada_23j": {
+    "n": 750,
+    "semilla": 741150,
+    "frecuencia_recorte_inferior": {
+     "PP": 0.0,
+     "PSOE": 0.0,
+     "VOX": 0.0,
+     "SUMAR": 0.0,
+     "PODEMOS": 0.0013333333333333333,
+     "SALF": 0.0013333333333333333,
+     "ERC": 0.0013333333333333333,
+     "JUNTS": 0.005333333333333333,
+     "BILDU": 0.006666666666666667,
+     "PNV": 0.042666666666666665,
+     "BNG": 0.02,
+     "CC": 0.18666666666666668,
+     "UPN": 0.276
+    },
+    "frecuencia_residual_minimo": 0.20666666666666667,
+    "factor_media": 0.995672171832838,
+    "factor_minimo": 0.9030756205858016,
     "nota": "El recorte y la normalización pueden desplazar medias y dependencias; diagnóstico, no calibración composicional."
    }
   }
@@ -4547,9 +4627,9 @@
    "partidos": {
     "PP": {
      "voto": [
-      31.184863170267157,
-      28.048905446868172,
-      34.275627288862715
+      31.20735792093891,
+      28.07778071768265,
+      34.30302900054352
      ],
      "escanos": [
       130.0,
@@ -4557,27 +4637,27 @@
       144.0
      ],
      "primero": 0.9126666666666666,
-     "primero_o_empate": 0.92
+     "primero_o_empate": 0.9213333333333333
     },
     "PSOE": {
      "voto": [
-      26.830765772232528,
-      24.050355412910616,
-      29.758789071274855
+      26.834274635041325,
+      24.048330428262354,
+      29.752900799932718
      ],
      "escanos": [
       109.0,
       96.0,
       123.0
      ],
-     "primero": 0.08,
+     "primero": 0.07866666666666666,
      "primero_o_empate": 0.08733333333333333
     },
     "VOX": {
      "voto": [
-      19.01373141337308,
-      16.68622757868135,
-      21.494109922495152
+      19.025399017275646,
+      16.69737534497535,
+      21.50183946000672
      ],
      "escanos": [
       68.0,
@@ -4589,9 +4669,9 @@
     },
     "SUMAR": {
      "voto": [
-      6.347443282002045,
-      4.800902374564876,
-      7.821868901712575
+      6.3474432820020805,
+      4.798165049735624,
+      7.818635372059307
      ],
      "escanos": [
       8.0,
@@ -4603,9 +4683,9 @@
     },
     "PODEMOS": {
      "voto": [
-      2.1099399677257624,
-      1.246415419791485,
-      2.9610535183202433
+      2.1097235773528613,
+      1.2464154197915254,
+      2.959855065612007
      ],
      "escanos": [
       0.0,
@@ -4617,9 +4697,9 @@
     },
     "SALF": {
      "voto": [
-      1.8015960564735196,
-      0.9369205301998371,
-      2.588274950287814
+      1.7887588304113815,
+      0.9302218533474154,
+      2.5699996487613626
      ],
      "escanos": [
       0.0,
@@ -4631,9 +4711,9 @@
     },
     "ERC": {
      "voto": [
-      2.5464414202171097,
-      1.5882808646895923,
-      3.5202269744892902
+      2.5464414202170476,
+      1.5882808646895406,
+      3.520226974489219
      ],
      "escanos": [
       11.0,
@@ -4645,9 +4725,9 @@
     },
     "JUNTS": {
      "voto": [
-      1.3351494064669143,
-      0.6348424375262545,
-      2.0143549160994914
+      1.3370658187089552,
+      0.6366095118730836,
+      2.017781924284351
      ],
      "escanos": [
       5.0,
@@ -4659,9 +4739,9 @@
     },
     "BILDU": {
      "voto": [
-      1.383628982331147,
-      0.6796399007941611,
-      2.130476895263597
+      1.390681965427881,
+      0.683745316512365,
+      2.1403769847237304
      ],
      "escanos": [
       7.0,
@@ -4673,9 +4753,9 @@
     },
     "PNV": {
      "voto": [
-      0.8646850437837844,
-      0.27510382149875134,
-      1.4632008558351044
+      0.8672112971058819,
+      0.27744607892690776,
+      1.4639567562584654
      ],
      "escanos": [
       4.0,
@@ -4687,9 +4767,9 @@
     },
     "BNG": {
      "voto": [
-      0.923714475500045,
-      0.36273481488222725,
-      1.5345040628923263
+      0.9268140735626552,
+      0.365499086237586,
+      1.5372942707475825
      ],
      "escanos": [
       2.0,
@@ -4701,9 +4781,9 @@
     },
     "CC": {
      "voto": [
-      0.42337885097362,
+      0.4233788509736182,
       0.01,
-      0.9848435244284353
+      0.9848435244284324
      ],
      "escanos": [
       1.0,
@@ -4715,9 +4795,9 @@
     },
     "UPN": {
      "voto": [
-      0.31431620030838425,
+      0.31431620030838525,
       0.01,
-      1.0290777806378593
+      1.0290777806378604
      ],
      "escanos": [
       1.0,
@@ -4737,7 +4817,7 @@
     },
     "PP+VOX+UPN": {
      "mediana": 200.0,
-     "p5": 183.95,
+     "p5": 184.0,
      "p95": 216.0,
      "p_mayoria": 0.99
     },
@@ -4750,47 +4830,47 @@
     "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
      "mediana": 150.0,
      "p5": 134.0,
-     "p95": 166.04999999999995,
-     "p_mayoria": 0.009333333333333334
+     "p95": 166.0,
+     "p_mayoria": 0.008666666666666666
     }
    },
-   "empate_primero": 0.007333333333333333
+   "empate_primero": 0.008666666666666666
   },
   "consenso_todas": {
    "partidos": {
     "PP": {
      "voto": [
-      30.735506186591827,
-      27.60895237597184,
-      33.82651339587624
+      30.823718190736756,
+      27.700042403997326,
+      33.91263248231171
      ],
      "escanos": [
       128.0,
       116.0,
       142.0
      ],
-     "primero": 0.8633333333333333,
-     "primero_o_empate": 0.8766666666666667
+     "primero": 0.8666666666666667,
+     "primero_o_empate": 0.8813333333333333
     },
     "PSOE": {
      "voto": [
-      27.191178972961666,
-      24.406326448228643,
-      30.13826974217859
+      27.196895674606964,
+      24.420968132798993,
+      30.13306395900185
      ],
      "escanos": [
       111.0,
-      98.0,
+      97.0,
       126.0
      ],
-     "primero": 0.12333333333333334,
-     "primero_o_empate": 0.13666666666666666
+     "primero": 0.11866666666666667,
+     "primero_o_empate": 0.13333333333333333
     },
     "VOX": {
      "voto": [
-      18.92672341435545,
-      16.600736278023238,
-      21.414813222063874
+      18.958925092960094,
+      16.635246580784166,
+      21.44984386299025
      ],
      "escanos": [
       68.0,
@@ -4802,9 +4882,9 @@
     },
     "SUMAR": {
      "voto": [
-      6.340162838563748,
-      4.800556803385643,
-      7.812181708302037
+      6.339653710688,
+      4.795975853134805,
+      7.812114631030028
      ],
      "escanos": [
       8.0,
@@ -4816,9 +4896,9 @@
     },
     "PODEMOS": {
      "voto": [
-      2.1466981720606846,
-      1.2777400167131394,
-      3.004445640646342
+      2.1466981720607814,
+      1.27774001671322,
+      3.002140500936286
      ],
      "escanos": [
       0.0,
@@ -4830,9 +4910,9 @@
     },
     "SALF": {
      "voto": [
-      1.8032892529645328,
-      0.9476045058832322,
-      2.5825177309397214
+      1.7592229823286245,
+      0.9215234589225679,
+      2.527517024516258
      ],
      "escanos": [
       0.0,
@@ -4844,9 +4924,9 @@
     },
     "ERC": {
      "voto": [
-      2.6014290959551727,
-      1.6390953707932987,
-      3.5765045917495923
+      2.6014290959551802,
+      1.6390953707933036,
+      3.576424262597652
      ],
      "escanos": [
       11.0,
@@ -4858,9 +4938,9 @@
     },
     "JUNTS": {
      "voto": [
-      1.2978592141714236,
-      0.6185030441693778,
-      1.9665935778988868
+      1.3044801134275101,
+      0.6284247008421888,
+      1.9667034313921798
      ],
      "escanos": [
       5.0,
@@ -4872,13 +4952,13 @@
     },
     "BILDU": {
      "voto": [
-      1.4194003541613758,
-      0.7210279490782037,
-      2.169045712240631
+      1.4441116245453127,
+      0.7467964826978714,
+      2.1976030422977613
      ],
      "escanos": [
       7.0,
-      3.0,
+      4.0,
       11.0
      ],
      "primero": 0.0,
@@ -4886,13 +4966,13 @@
     },
     "PNV": {
      "voto": [
-      0.8375969476271403,
-      0.24791604900440642,
-      1.4305377428901302
+      0.8433597245481044,
+      0.2563554578362918,
+      1.4329448759030066
      ],
      "escanos": [
       4.0,
-      0.0,
+      0.9500000000000028,
       7.0
      ],
      "primero": 0.0,
@@ -4900,9 +4980,9 @@
     },
     "BNG": {
      "voto": [
-      0.9211452956928214,
-      0.36042278840446024,
-      1.5255520965787004
+      0.9307486149526405,
+      0.3687354409940685,
+      1.5328992498012117
      ],
      "escanos": [
       2.0,
@@ -4914,9 +4994,9 @@
     },
     "CC": {
      "voto": [
-      0.39081483673984174,
+      0.39057502288254864,
       0.01,
-      0.9488469589191173
+      0.9488469589191165
      ],
      "escanos": [
       1.0,
@@ -4928,9 +5008,9 @@
     },
     "UPN": {
      "voto": [
-      0.22553654787369606,
+      0.22539379432131806,
       0.01,
-      0.8607498747478113
+      0.8598289557729564
      ],
      "escanos": [
       1.0,
@@ -4945,14 +5025,14 @@
     "PP+VOX": {
      "mediana": 197.0,
      "p5": 181.0,
-     "p95": 212.04999999999995,
-     "p_mayoria": 0.9813333333333333
+     "p95": 213.0,
+     "p_mayoria": 0.9826666666666667
     },
     "PP+VOX+UPN": {
      "mediana": 198.0,
-     "p5": 181.0,
-     "p95": 214.0,
-     "p_mayoria": 0.982
+     "p5": 182.0,
+     "p95": 214.04999999999995,
+     "p_mayoria": 0.984
     },
     "PSOE+SUMAR+PODEMOS": {
      "mediana": 121.0,
@@ -4962,48 +5042,48 @@
     },
     "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
      "mediana": 152.0,
-     "p5": 136.0,
-     "p95": 168.04999999999995,
-     "p_mayoria": 0.014
+     "p5": 135.0,
+     "p95": 168.0,
+     "p_mayoria": 0.013333333333333334
     }
    },
-   "empate_primero": 0.013333333333333334
+   "empate_primero": 0.014666666666666666
   },
   "calibrada_23j": {
    "partidos": {
     "PP": {
      "voto": [
-      30.09832362524837,
-      26.97021598084273,
-      33.24096307976794
+      30.1148051665391,
+      26.989700190207397,
+      33.24211116725397
      ],
      "escanos": [
       124.0,
       111.0,
       138.0
      ],
-     "primero": 0.686,
-     "primero_o_empate": 0.7053333333333334
+     "primero": 0.6773333333333333,
+     "primero_o_empate": 0.696
     },
     "PSOE": {
      "voto": [
-      28.378484875295626,
-      25.5453466357568,
-      31.395687459238793
+      28.460632138851025,
+      25.62459403759749,
+      31.483742245841693
      ],
      "escanos": [
       116.0,
       102.0,
       131.0
      ],
-     "primero": 0.2946666666666667,
-     "primero_o_empate": 0.314
+     "primero": 0.304,
+     "primero_o_empate": 0.32266666666666666
     },
     "VOX": {
      "voto": [
-      18.872285161198405,
-      16.47002245373885,
-      21.382121690173605
+      18.898250455398628,
+      16.500308790527214,
+      21.409993690645344
      ],
      "escanos": [
       68.0,
@@ -5015,9 +5095,9 @@
     },
     "SUMAR": {
      "voto": [
-      6.347443282002045,
-      4.777329927910317,
-      7.790629203245398
+      6.3474432820020805,
+      4.777047017217123,
+      7.781332151681135
      ],
      "escanos": [
       8.0,
@@ -5029,9 +5109,9 @@
     },
     "PODEMOS": {
      "voto": [
-      2.108119584046514,
-      1.246415419791485,
-      2.9446579680733436
+      2.1081195840465616,
+      1.2464154197915254,
+      2.9446579680734
      ],
      "escanos": [
       0.0,
@@ -5043,9 +5123,9 @@
     },
     "SALF": {
      "voto": [
-      1.7986763250514695,
-      0.9369205301998371,
-      2.57998076401306
+      1.786309466479063,
+      0.9302218533474154,
+      2.5650185379198347
      ],
      "escanos": [
       0.0,
@@ -5057,9 +5137,9 @@
     },
     "ERC": {
      "voto": [
-      2.544039822206879,
-      1.5882808646895923,
-      3.5202269744892902
+      2.5418599563698963,
+      1.5882808646895406,
+      3.520226974489219
      ],
      "escanos": [
       10.0,
@@ -5071,9 +5151,9 @@
     },
     "JUNTS": {
      "voto": [
-      1.3351494064669143,
-      0.6348424375262545,
-      2.0143549160994914
+      1.3366310515015694,
+      0.6366095118730836,
+      2.017781924284351
      ],
      "escanos": [
       5.0,
@@ -5085,9 +5165,9 @@
     },
     "BILDU": {
      "voto": [
-      1.3802415102217938,
-      0.6796399007941611,
-      2.1271560662580504
+      1.3872828096368688,
+      0.683745316512365,
+      2.1359505919530113
      ],
      "escanos": [
       7.0,
@@ -5099,9 +5179,9 @@
     },
     "PNV": {
      "voto": [
-      0.8639842354012204,
-      0.27353981895452745,
-      1.4632008558351044
+      0.8664123413407252,
+      0.27504073340182866,
+      1.4620895409142236
      ],
      "escanos": [
       4.0,
@@ -5113,9 +5193,9 @@
     },
     "BNG": {
      "voto": [
-      0.923714475500045,
-      0.36273481488222725,
-      1.5307591267721803
+      0.9268140735626552,
+      0.365499086237586,
+      1.5339485828450343
      ],
      "escanos": [
       2.0,
@@ -5127,9 +5207,9 @@
     },
     "CC": {
      "voto": [
-      0.42337885097362,
+      0.4233788509736182,
       0.01,
-      0.9848435244284353
+      0.9848435244284324
      ],
      "escanos": [
       1.0,
@@ -5141,9 +5221,9 @@
     },
     "UPN": {
      "voto": [
-      0.31431620030838425,
+      0.31431620030838525,
       0.01,
-      1.0290777806378593
+      1.0290777806378604
      ],
      "escanos": [
       1.0,
@@ -5156,48 +5236,48 @@
    },
    "bloques": {
     "PP+VOX": {
-     "mediana": 193.0,
+     "mediana": 192.5,
      "p5": 176.0,
      "p95": 208.0,
-     "p_mayoria": 0.9546666666666667
+     "p_mayoria": 0.9533333333333334
     },
     "PP+VOX+UPN": {
      "mediana": 194.0,
      "p5": 177.0,
-     "p95": 210.04999999999995,
+     "p95": 210.0,
      "p_mayoria": 0.9613333333333334
     },
     "PSOE+SUMAR+PODEMOS": {
      "mediana": 125.0,
      "p5": 108.0,
-     "p95": 143.04999999999995,
+     "p95": 144.0,
      "p_mayoria": 0.0
     },
     "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
      "mediana": 156.0,
-     "p5": 139.95,
+     "p5": 140.0,
      "p95": 173.0,
-     "p_mayoria": 0.03333333333333333
+     "p_mayoria": 0.034666666666666665
     }
    },
-   "empate_primero": 0.019333333333333334
+   "empate_primero": 0.018666666666666668
   }
  },
  "auditoria_fuentes": {
   "inventario": {
-   "total": 283,
+   "total": 284,
    "historicas": 238,
-   "ciclo_actual": 45,
+   "ciclo_actual": 46,
    "wikipedia": 221,
    "wikipedia_desde": "2023-02-02",
    "wikipedia_hasta": "2023-07-22",
-   "archivo_verificado": 25,
+   "archivo_verificado": 26,
    "por_origen": {
     "prensa-original-consultado": 9,
     "prensa-sin-verificar": 4,
     "terceros-29n": 24,
     "terceros-wikipedia": 221,
-    "verificada": 25
+    "verificada": 26
    }
   },
   "excluidas_temporales": [
@@ -9796,11 +9876,11 @@
   ],
   "excluidas_prensa_sin_verificar": 4,
   "excluidas_total": 16,
-  "incluidas_2023_26": 29,
+  "incluidas_2023_26": 30,
   "por_origen": {
    "prensa-original-consultado": 2,
    "terceros-29n": 6,
-   "verificada": 21
+   "verificada": 22
   },
   "criterio": "Puerta de calidad (fuentes.seleccion_pronostico): sin prensa no verificada, sin terceros con campo supuesto, sin terceros solapados con un registro verificado de la misma casa"
  },
@@ -10284,6 +10364,31 @@
    "contraste": "original",
    "contraste_url": null,
    "ancla_privadas": true
+  },
+  {
+   "estudio": "cis-3584",
+   "casa": "CIS",
+   "origen": "verificada",
+   "campo_ini": "2026-10-07",
+   "campo_fin": "2026-10-30",
+   "publicacion": "2026-11-12",
+   "n": 45074,
+   "n_supuesto": false,
+   "modo": "CATI",
+   "url": "https://www.cis.es/documents/d/guest/3584_estimacion-pdf",
+   "voto": {
+    "PSOE": 33.3,
+    "PP": 25.5,
+    "VOX": 18.4,
+    "BILDU": 1.8,
+    "JUNTS": 1.2,
+    "BNG": 1.0,
+    "PNV": 0.7,
+    "SALF": 1.4
+   },
+   "contraste": "original",
+   "contraste_url": null,
+   "ancla_privadas": false
   },
   {
    "estudio": "celeste-tel-2026-11-04",
@@ -11101,46 +11206,46 @@
   }
  ],
  "corte_anterior": {
-  "fecha": "2026-11-11",
-  "fecha_actual": "2026-11-12",
-  "firma_anterior": "625c0bc8d66e26f8",
-  "firma_actual": "8e3b55be19a0422f",
+  "fecha": "2026-11-12",
+  "fecha_actual": "2026-11-13",
+  "firma_anterior": "40275365620fee95",
+  "firma_actual": "60b19123fde8b8b4",
   "version_anterior": "5",
   "version_actual": "5",
   "cambio_metodo": false,
   "nuevas": [],
   "voto": {
-   "PP": 0.0,
-   "PSOE": -0.02,
-   "VOX": -0.15,
-   "SUMAR": -0.09,
-   "PODEMOS": 0.05,
-   "SALF": 0.03,
-   "ERC": -0.02,
-   "JUNTS": 0.0,
-   "BILDU": 0.0,
-   "PNV": 0.01,
-   "BNG": -0.01,
-   "CC": 0.02,
+   "PP": -0.05,
+   "PSOE": 0.09,
+   "VOX": 0.07,
+   "SUMAR": 0.05,
+   "PODEMOS": -0.01,
+   "SALF": 0.01,
+   "ERC": -0.01,
+   "JUNTS": -0.03,
+   "BILDU": -0.01,
+   "PNV": -0.01,
+   "BNG": -0.02,
+   "CC": -0.02,
    "UPN": 0.0
   },
   "escanos": {
-   "PP": 1.0,
+   "PP": -1.0,
    "PSOE": 0.0,
-   "VOX": -1.0,
+   "VOX": 1.0,
    "SUMAR": 0.0,
    "PODEMOS": 0.0,
    "SALF": 0.0,
-   "ERC": 0.0,
+   "ERC": -1.0,
    "JUNTS": 0.0,
    "BILDU": 0.0,
-   "PNV": -1.0,
+   "PNV": 1.0,
    "BNG": 0.0,
    "CC": 0.0,
    "UPN": 0.0
   },
   "bloques": {
-   "PP+VOX": 1.0,
+   "PP+VOX": 0.0,
    "PP+VOX+UPN": 0.0,
    "PSOE+SUMAR+PODEMOS": 0.0,
    "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": 0.0
@@ -11374,7 +11479,7 @@
  },
  "sensibilidad_fuentes": {
   "descripcion": "Mismo método que el principal usando solo data/polls.json (registros verificados)",
-  "n_estudios": 21,
+  "n_estudios": 22,
   "casas": [
    "40dB.",
    "Ateneo del Dato",
@@ -11395,57 +11500,57 @@
   "partidos": {
    "PP": {
     "voto": [
-     29.963446502392888,
-     25.47061699997324,
-     34.1205390950012
+     29.937084854261705,
+     26.091678303356197,
+     34.05187346818695
     ],
     "escanos": [
      124.0,
-     105.0,
-     142.0
+     107.0,
+     141.0
     ]
    },
    "PSOE": {
     "voto": [
-     28.906765671357515,
-     24.473503154254978,
-     32.77198300638504
+     28.897166991412302,
+     24.734540702658013,
+     32.75295513906617
     ],
     "escanos": [
-     118.0,
-     98.0,
+     119.0,
+     99.0,
      139.0
     ]
    },
    "VOX": {
     "voto": [
-     18.694291252644526,
-     15.461462209797654,
-     22.007301629285596
+     18.764083430240927,
+     15.601866329883036,
+     21.892868394016705
     ],
     "escanos": [
      67.0,
-     53.0,
-     81.0
+     54.0,
+     81.04999999999995
     ]
    },
    "SUMAR": {
     "voto": [
-     5.897982171001422,
-     3.964791799947482,
-     7.928911648323443
+     6.06812836794437,
+     4.190211806404921,
+     7.868791611605285
     ],
     "escanos": [
      7.0,
      4.0,
-     15.0
+     14.0
     ]
    },
    "PODEMOS": {
     "voto": [
-     2.026986642738124,
-     0.9627427323847799,
-     3.1721625790156027
+     2.033436079281371,
+     0.9152412899560068,
+     3.185851592163011
     ],
     "escanos": [
      0.0,
@@ -11455,45 +11560,45 @@
    },
    "SALF": {
     "voto": [
-     1.7884212333212877,
-     0.6737449826601078,
-     2.8284116331031575
+     1.7633615879956723,
+     0.6261233089769414,
+     2.747381693991372
     ],
     "escanos": [
      0.0,
      0.0,
-     1.0
+     0.049999999999954525
     ]
    },
    "ERC": {
     "voto": [
-     2.669049266669318,
-     1.4049677091451833,
-     3.953463758883467
+     2.647906924252364,
+     1.3490720759846293,
+     3.9592723425262633
     ],
     "escanos": [
      11.0,
      6.0,
-     15.049999999999955
+     16.0
     ]
    },
    "JUNTS": {
     "voto": [
-     1.342704962000181,
-     0.4214863174864474,
-     2.2263685251615817
+     1.2835458372444155,
+     0.40462858078537906,
+     2.1824878892504804
     ],
     "escanos": [
-     5.0,
+     4.0,
      0.0,
-     9.0
+     8.0
     ]
    },
    "BILDU": {
     "voto": [
-     1.4011512250803007,
-     0.4582409392383133,
-     2.4034321845342097
+     1.3740932132975576,
+     0.5004067920069895,
+     2.285184127388039
     ],
     "escanos": [
      7.0,
@@ -11503,9 +11608,9 @@
    },
    "PNV": {
     "voto": [
-     0.8293723023039372,
-     0.08253357729450024,
-     1.6345783222044419
+     0.8088162595297146,
+     0.050579885671074375,
+     1.5990441601495315
     ],
     "escanos": [
      3.0,
@@ -11515,9 +11620,9 @@
    },
    "BNG": {
     "voto": [
-     0.9339436095296775,
-     0.11868250178232008,
-     1.7083905094340317
+     0.884371253651872,
+     0.11386372453639254,
+     1.6791131958292083
     ],
     "escanos": [
      2.0,
@@ -11527,9 +11632,9 @@
    },
    "CC": {
     "voto": [
-     0.4170458324571005,
+     0.3900077065117696,
      0.01,
-     1.189941869521602
+     1.1209263495390434
     ],
     "escanos": [
      1.0,
@@ -11539,9 +11644,9 @@
    },
    "UPN": {
     "voto": [
-     0.28773234735075576,
-     0.00996791121847527,
-     1.0346960079334675
+     0.27674814316948926,
+     0.01,
+     1.0732003679275792
     ],
     "escanos": [
      1.0,
@@ -11553,51 +11658,51 @@
   "bloques": {
    "PP+VOX": {
     "mediana": 191.0,
-    "p5": 168.0,
-    "p95": 213.04999999999995,
-    "p_mayoria": 0.8533333333333334
+    "p5": 170.0,
+    "p95": 212.0,
+    "p_mayoria": 0.8733333333333333
    },
    "PP+VOX+UPN": {
     "mediana": 192.0,
-    "p5": 168.0,
-    "p95": 216.0,
-    "p_mayoria": 0.8655555555555555
+    "p5": 170.0,
+    "p95": 215.0,
+    "p_mayoria": 0.8811111111111111
    },
    "PSOE+SUMAR+PODEMOS": {
-    "mediana": 126.0,
-    "p5": 103.0,
-    "p95": 152.0,
-    "p_mayoria": 0.0022222222222222222
+    "mediana": 127.0,
+    "p5": 105.0,
+    "p95": 151.04999999999995,
+    "p_mayoria": 0.0
    },
    "PSOE+SUMAR+PODEMOS+ERC+JUNTS+BILDU+PNV+BNG+CC": {
     "mediana": 158.0,
-    "p5": 134.0,
-    "p95": 181.04999999999995,
-    "p_mayoria": 0.12333333333333334
+    "p5": 135.0,
+    "p95": 180.0,
+    "p_mayoria": 0.09888888888888889
    }
   }
  },
  "geo_sensibilidad": {
   "proporcional": {
    "PP": [
-    126.0,
+    125.0,
     108.0,
     143.0
    ],
    "PSOE": [
     117.0,
     97.0,
-    138.0
+    139.0
    ],
    "VOX": [
     67.0,
-    53.0,
+    52.0,
     81.0
    ],
    "SUMAR": [
     7.0,
     4.0,
-    15.0
+    14.0
    ],
    "PODEMOS": [
     0.0,
@@ -11647,34 +11752,34 @@
   },
   "uniforme": {
    "PP": [
-    125.5,
-    106.0,
-    142.04999999999995
+    125.0,
+    107.0,
+    142.0
    ],
    "PSOE": [
-    116.0,
-    96.0,
+    115.5,
+    98.0,
     137.0
    ],
    "VOX": [
-    68.0,
-    50.0,
+    69.0,
+    52.0,
     82.0
    ],
    "SUMAR": [
-    8.0,
+    9.0,
     5.0,
-    15.0
+    14.0
    ],
    "PODEMOS": [
-    1.0,
+    0.0,
     0.0,
     2.0
    ],
    "SALF": [
     0.0,
     0.0,
-    1.0
+    0.0
    ],
    "ERC": [
     10.0,
@@ -11684,7 +11789,7 @@
    "JUNTS": [
     5.0,
     1.0,
-    9.0
+    8.0
    ],
    "BILDU": [
     7.0,
@@ -11713,22 +11818,22 @@
    ]
   },
   "p_mayoria": {
-   "proporcional": 0.8822222222222222,
-   "uniforme": 0.8591666666666666
+   "proporcional": 0.8897777777777778,
+   "uniforme": 0.8925
   }
  },
  "promedio_simple": {
-  "PP": 31.04,
-  "PSOE": 26.89333333333333,
-  "VOX": 19.186666666666667,
+  "PP": 30.69375,
+  "PSOE": 27.293750000000003,
+  "VOX": 19.1375,
   "SUMAR": 6.378571428571427,
   "PODEMOS": 1.97,
-  "SALF": 1.8,
+  "SALF": 1.7333333333333334,
   "ERC": 2.6599999999999997,
-  "JUNTS": 1.3499999999999999,
-  "BILDU": 1.4,
-  "PNV": 0.8400000000000001,
-  "BNG": 0.9199999999999999,
+  "JUNTS": 1.3199999999999998,
+  "BILDU": 1.48,
+  "PNV": 0.8166666666666665,
+  "BNG": 0.9333333333333335,
   "CC": 0.42500000000000004,
   "UPN": 0.4
  },
