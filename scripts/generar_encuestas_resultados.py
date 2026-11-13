@@ -40,13 +40,13 @@ def generar():
     # IDs must identify a source study; never silently replace another record.
     ids=[r['id'] for r in rows]
     if len(ids)!=len(set(ids)):raise ValueError('Identificadores repetidos')
-    files=[path,ROOT/'data/election.json',ROOT/'data/polls.json',ROOT/'data/results.csv',ROOT/'data/districts.csv',ROOT/'modelo/motor/fuentes.py',Path(__file__)]+sorted((ROOT/'modelo/externos').glob('*.*'))
+    files=[path,ROOT/'data/election.json',ROOT/'data/polls.json',ROOT/'data/results.csv',ROOT/'data/districts.csv',ROOT/'modelo/motor/fuentes.py',Path(__file__)]+sorted((ROOT/'modelo/externos').glob('*.*'),key=lambda p:p.as_posix())
     return dict(esquema=1,tipo='archivo_retrospectivo_descriptivo',soporte_comun=['PP','PSOE'],
         calidad=d['calidad'],reglas=dict(horizontes=[90,60,30,15,7],ventana_campo_dias=180,
         seleccion='Última publicación documentada de cada casa disponible al corte; desempate por fin de campo e identificador. Todas las candidaturas seleccionadas deben estar presentes.',
         deduplicacion='Misma casa, campo y voto sobre el soporte seleccionado: primera publicación conocida al corte.',
         error='Estimación menos resultado oficial, en puntos porcentuales. MAE: media del valor absoluto sobre las candidaturas seleccionadas.'),
         elecciones=cycles,encuestas=rows,excluidas_por_fechas=excluded,fuentes_conservadas=d['fuentes'],
-        reproducibilidad=dict(comando='python scripts/generar_encuestas_resultados.py',sha256={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in files}))
+        reproducibilidad=dict(comando='python scripts/generar_encuestas_resultados.py',sha256={p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in files}))
 if __name__=='__main__':
     out=ROOT/'data/historico/encuestas-resultados.json';data=generar();out.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n');print(f"{len(data['elecciones'])} elecciones; {len(data['encuestas'])} registros fechados; {data['excluidas_por_fechas']} excluidos por fechas.")

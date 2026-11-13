@@ -26352,7 +26352,7 @@
       "data/results.csv": "50f9db8b64d0a7c42c9f14ea855f1e6a645d55c060bb70ceffdedc9c5b58e458",
       "data/districts.csv": "948513aad7ae79df57477272a9c90bcc7c900f63ecdfaea728f1ec22fa47aad1",
       "modelo/motor/fuentes.py": "c167ae575151e22edee47cc5cddf9205beed937c9e3839b04ce1d04ffac7ab84",
-      "scripts/generar_encuestas_resultados.py": "5757c249cf3ab778650d4dd1cd29ef2a558a548e2594b26add3a7903e6d33bec",
+      "scripts/generar_encuestas_resultados.py": "df1b7ef37714f566ceeafc699360cfdfe9823fb18c8e2545389c9ac024c594d5",
       "modelo/externos/23j_complementos.json": "747b827d686ffe446eabbe58aca45e373d51f6da1f1c8628e728c02257a4c008",
       "modelo/externos/29n_encuestadores.jsonl": "8ea4fb8cc534fb149cc857657a97ac85a87e6b633eca11529b3db6177c4bf9ce",
       "modelo/externos/PROCEDENCIA.md": "f68a8cd776d8ea5eede9ca03d2d4d57aad7f3c67ed76e9c04902930f138d1303",
