@@ -28,6 +28,7 @@ export function renderHomeImpact(references=[],events=[]){
  <div class="portada-cabecera">
   <p class="portada-cuenta" id="portada-cuenta">Elecciones generales · 29 de noviembre de 2026</p>
   <h1 id="impact-heading">Panorama 29N</h1>
+  <p id="portada-archivo" class="portada-archivo"></p>
   <div class="portada-titular" id="portada-titular" aria-live="polite"><p>Cargando la estimación publicada…</p></div>
   <p class="portada-fechas" id="portada-fechas"></p>
   <details class="portada-metodo-desplegable"><summary>¿De dónde salen estas cifras? Cuatro tipos de estimación</summary>${renderTiposEstimacion()}</details>
@@ -50,6 +51,7 @@ export function renderHomeImpact(references=[],events=[]){
   <div id="hub-tarjetas" aria-live="polite"><p class="muted">Cargando…</p></div>
  </section>
 
+ <section class="portada-bloque" id="portada-institutos"><div class="portada-bloque-cabeza"><h2>Institutos del archivo</h2><a href="institutos.html">Directorio y métodos →</a></div><div id="hub-institutos" class="institute-links"></div></section>
  <section class="portada-bloque" id="portada-secciones" aria-labelledby="hub-sec-t"><h2 id="hub-sec-t">Explorar el Observatorio</h2><div id="hub-accesos"></div></section>
 </section>`;
 }
@@ -94,6 +96,8 @@ function drawHub(ctx){
  const set=(sel,html)=>{const el=document.querySelector(sel);if(el)el.innerHTML=html;};
  set('#hub-hemiciclo',renderHemiciclo(ctx.forecast));
  set('#hub-promedio',renderPromedio(ctx.prom,ctx.forecast,ctx.baseModelo));
+ set('#portada-archivo',`<a href="#encuestas"><b>${ctx.polls.length} encuestas · archivo y fichas</b></a> · <a href="institutos.html"><b>${new Set(ctx.polls.map(p=>p.institute)).size} institutos con encuestas</b></a>`);
+ set('#hub-institutos',[...new Set(ctx.polls.map(p=>p.institute))].sort((a,b)=>a.localeCompare(b,'es')).map(i=>`<a href="?instituto=${encodeURIComponent(i)}#encuestas">${h(i)} <small>${ctx.polls.filter(p=>p.institute===i).length}</small></a>`).join(''));
  set('#hub-recuento',renderRecuentoEncuestas(ctx.forecast,ctx.polls));
  const desde=new Date(Date.parse(ctx.corte+'T12:00:00Z')-14*86400000).toISOString().slice(0,10);
  set('#hub-tarjetas',renderTarjetas(encuestasRecientes(ctx.forecast,ctx.polls,{desde,limite:6})));
