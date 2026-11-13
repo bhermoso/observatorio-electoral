@@ -40,7 +40,7 @@ try{
    }
   }
   if(width===1440){
-   await page.goto(base+'#encuestas');await page.waitForSelector('#poll-chart-party');await page.selectOption('#poll-chart-party','PP');await page.waitForSelector('#poll-chart circle');
+   await page.goto(base+'#encuestas');await page.getByRole('tab',{name:'Gráfico',exact:true}).click();await page.waitForSelector('#poll-chart-party');await page.selectOption('#poll-chart-party','PP');await page.waitForSelector('#poll-chart circle');
    await page.selectOption('#poll-institute',{label:'CIS'});assert.match(await page.locator('#poll-count').innerText(),/1 institutos/);
    assert.ok((await page.locator('#poll-chart circle title').allTextContents()).every(x=>x.startsWith('CIS')));
    await page.fill('#poll-search','no-existe-123');assert.equal(await page.locator('#poll-chart circle').count(),0);

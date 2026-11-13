@@ -75,15 +75,15 @@ export function bindWorkspace(route,root){
   if(controller)controller.select(Math.min(previous,controller.count-1));
   root.classList.add('interactive-workspace');
   if(route==='pronostico'){const cap=get('#pronostico-cap1');mountExplorer(cap,[{label:'Voto y escaños',nodes:[get('#pronostico-principal')]},{label:'Bloques',nodes:[get('#pronostico-bloques')]},{label:'Investidura',nodes:[get('.investidura')]}],{id:'resultado',label:'Formas de examinar el resultado'});}
-  if(route==='encuestas'){const archive=get('#poll-archive-content');if(archive)mountExplorer(archive,[{label:'Gráfico',nodes:[get('#encuestas-visual')]},{label:'Tabla y fichas',nodes:[get('#poll-table')?.closest('details')]}],{id:'archivo',label:'Explorar el archivo'});}
+  if(route==='encuestas'){const archive=get('#poll-archive-content');if(archive)mountExplorer(archive,[{label:'Tabla y fichas',nodes:[get('#poll-table')?.closest('details')]},{label:'Gráfico',nodes:[get('#encuestas-visual')]}],{id:'archivo',label:'Explorar el archivo'});}
  }
 }
 export function bindDashboardExplorer(){
  const root=document.querySelector('#impact');if(!root)return;controllers.get(root)?.destroy();
- const ids=[['Panorama','portada-hub'],['Evolución','home-series'],['Cocina y microdatos','hub-microdatos'],['Últimas encuestas','portada-ultimas'],['Explorar herramientas','portada-secciones']];
+ const ids=[['Panorama','portada-hub'],['Evolución','home-series'],['Cocina y microdatos','hub-microdatos']];
  const used=new Set();const groups=ids.map(([label,id])=>{const node=document.getElementById(id);if(node)used.add(node);return {label,nodes:[node]};});
- const extras=[...root.children].filter(n=>!used.has(n)&&!n.matches('.portada-cabecera,.explorer-tabs,.explorer-body'));
+ const extras=[...root.children].filter(n=>!used.has(n)&&!n.matches('.portada-cabecera,#portada-ultimas,#portada-institutos,#portada-secciones,.explorer-tabs,.explorer-body'));
  if(extras.length)groups.push({label:'Fuentes y referencias',nodes:extras});
- mountExplorer(root,groups,{label:'Vistas del panorama',id:'dashboard'});
+ mountExplorer(root,groups,{label:'Vistas del panorama',id:'dashboard',before:root.querySelector('#portada-ultimas')});
  root.classList.add('interactive-dashboard');
 }
