@@ -29,7 +29,7 @@ try{for(const width of [390,768,1440]){
  if(width===1440){const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze();assert.deepEqual(result.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})),[]);}
  await page.keyboard.press('Escape');assert.equal(await page.locator('#compare-detail[open]').count(),0);
  const downloadPromise=page.waitForEvent('download');await page.click('#compare-export');const download=await downloadPromise;await download.saveAs(`${output}/comparador-${width}.csv`);const csv=fs.readFileSync(`${output}/comparador-${width}.csv`,'utf8');assert.ok(csv.includes(a.id)&&csv.includes(b.id));assert.equal(csv.trim().split('\r\n').length,3);
- await page.click('#compare-share');assert.match(await page.locator('#compare-message').innerText(),/Enlace copiado|Copia este enlace/);
+ await page.click('#compare-share');await page.waitForFunction(()=>/Enlace copiado|Copia este enlace/.test(document.getElementById('compare-message').textContent));assert.match(await page.locator('#compare-message').innerText(),/Enlace copiado|Copia este enlace/);
  const url=page.url();await page.reload();await page.waitForSelector('#comparison:not([hidden])');assert.equal(page.url(),url);assert.equal(await page.locator('#compare-a').inputValue(),a.id);assert.equal(await page.locator('#compare-b').inputValue(),b.id);
  for(const d of await page.locator('.compare-filter').all())await d.evaluate(n=>n.open=true);
  await page.fill('#compare-from','2026-11-20');await page.locator('#compare-from').dispatchEvent('change');await page.fill('#compare-until','2026-10-01');await page.locator('#compare-until').dispatchEvent('change');assert.match(await page.locator('#compare-count').innerText(),/Periodo no válido/);
