@@ -46,7 +46,7 @@ export function renderHomeImpact(references=[],events=[]){
  </section>
 
  <section class="portada-bloque" id="portada-ultimas" aria-labelledby="hub-ult-t">
-  <div class="portada-bloque-cabeza"><div><span class="eyebrow">La más reciente primero · cambio frente a la oleada anterior de cada casa</span><h2 id="hub-ult-t">Últimas encuestas</h2></div><a class="panel-link" href="#encuestas">Archivo completo y fichas →</a></div>
+  <div class="portada-bloque-cabeza"><div><span class="eyebrow">Estimaciones publicadas</span><h2 id="hub-ult-t">Últimas encuestas</h2></div><a class="panel-link" href="#encuestas">Ver todas →</a></div>
   <p class="hub-recuento" id="hub-recuento"></p>
   <div id="hub-tarjetas" aria-live="polite"><p class="muted">Cargando…</p></div>
  </section>
@@ -75,7 +75,7 @@ function renderFechas(forecast,polls){
  if(!forecast?.corte)return '';
  const later=polls.filter(p=>p.kind==='poll-estimate'&&p.published>forecast.corte).sort((a,b)=>b.published.localeCompare(a.published));
  const pending=later.length?` Después se ${later.length===1?'ha publicado 1 encuesta que el modelo aún no incorpora':`han publicado ${later.length} encuestas que el modelo aún no incorpora`}: ${later.map(p=>`${h(p.institute)} (${h(fday(p.published))})`).join(', ')}.`:'';
- return `Motor 29N, corte del ${h(fdate(forecast.corte))}: usa las encuestas publicadas hasta ese día.${pending} <a href="#pronostico-evolucion">Cortes anteriores</a>`;
+ return `Actualizado el ${h(fdate(forecast.corte))}.${pending} <a href="#pronostico-evolucion">Cortes anteriores</a>`;
 }
 
 function renderCuenta(forecast){
@@ -96,11 +96,11 @@ function drawHub(ctx){
  const set=(sel,html)=>{const el=document.querySelector(sel);if(el)el.innerHTML=html;};
  set('#hub-hemiciclo',renderHemiciclo(ctx.forecast));
  set('#hub-promedio',renderPromedio(ctx.prom,ctx.forecast,ctx.baseModelo));
- set('#portada-archivo',`<a href="#encuestas"><b>${ctx.polls.length} encuestas · archivo y fichas</b></a> · <a href="comparador-encuestas.html"><b>Comparar encuestas</b></a> · <a href="misma-muestra.html"><b>Mismos datos, distintas recetas</b></a> · <a href="encuestas-resultados.html"><b>Encuestas frente a resultados</b></a> · <a href="institutos.html"><b>${new Set(ctx.polls.map(p=>p.institute)).size} institutos con encuestas</b></a>`);
+ set('#portada-archivo',`<a href="#encuestas">${ctx.polls.length} encuestas · ${new Set(ctx.polls.map(p=>p.institute)).size} institutos · abrir archivo →</a>`);
  set('#hub-institutos',[...new Set(ctx.polls.map(p=>p.institute))].sort((a,b)=>a.localeCompare(b,'es')).map(i=>`<a href="?instituto=${encodeURIComponent(i)}#encuestas">${h(i)} <small>${ctx.polls.filter(p=>p.institute===i).length}</small></a>`).join(''));
- set('#hub-recuento',renderRecuentoEncuestas(ctx.forecast,ctx.polls));
+ set('#hub-recuento','Las tres publicaciones más recientes. Las cifras pertenecen a cada instituto.');
  const desde=new Date(Date.parse(ctx.corte+'T12:00:00Z')-14*86400000).toISOString().slice(0,10);
- set('#hub-tarjetas',renderTarjetas(encuestasRecientes(ctx.forecast,ctx.polls,{desde,limite:6})));
+ set('#hub-tarjetas',renderTarjetas(encuestasRecientes(ctx.forecast,ctx.polls,{desde,limite:3,deduplicate:true}),{compacto:true}));
  // Todas las encuestas registradas, para el panel (la más reciente primero).
  ctx.recientes=encuestasRecientes(ctx.forecast,ctx.polls,{limite:500});
  set('#hub-accesos',renderAccesos({forecast:ctx.forecast,polls:ctx.polls,events:ctx.events,references:refsPortada}));

@@ -95,7 +95,7 @@ const ESTADO={
 
 /** Lista de encuestas recientes, la más reciente primero, a partir de las entradas y exclusiones
  * del Motor 29N y del archivo verificado (lo publicado después del corte aún no está en el motor). */
-export function encuestasRecientes(forecast,polls,{desde=null,limite=8}={}){
+export function encuestasRecientes(forecast,polls,{desde=null,limite=8,deduplicate=false}={}){
  const vistos=new Set(),out=[];
  const add=x=>{if(!x.id||vistos.has(x.id))return;vistos.add(x.id);out.push(x);};
  for(const e of forecast?.entradas||[])add({id:e.estudio,casa:e.casa,pub:e.publicacion||e.campo_fin,ini:e.campo_ini,fin:e.campo_fin,n:e.n_supuesto?null:e.n,voto:e.voto||{},estado:ESTADO[e.origen]||['ok','En el pronóstico'],url:e.url});
@@ -107,7 +107,10 @@ export function encuestasRecientes(forecast,polls,{desde=null,limite=8}={}){
   const pendiente=forecast?.corte&&p.published>forecast.corte;
   add({id:p.id,casa:p.institute,pub:p.published,ini:p.fieldStart,fin:p.fieldEnd,n:p.sample??null,voto,estado:pendiente?['pend','Pendiente del próximo corte']:['arch','Archivo verificado'],url:p.source});
  }
- const lista=out.filter(x=>x.pub&&(!desde||x.pub>=desde)&&Object.keys(x.voto).length)
+ // Presentation-only duplicates: the model and its complete audit retain all IDs.
+ const fingerprint=x=>JSON.stringify([String(x.casa).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(),x.ini||'',x.fin||'',x.n||null,Object.entries(x.voto).sort(([a],[b])=>a.localeCompare(b))]);
+ const seen=new Set();const displayed=deduplicate?out.filter(x=>{const key=fingerprint(x);if(seen.has(key))return false;seen.add(key);return true;}):out;
+ const lista=displayed.filter(x=>x.pub&&(!desde||x.pub>=desde)&&Object.keys(x.voto).length)
   .sort((a,b)=>String(b.pub).localeCompare(String(a.pub))||String(b.fin).localeCompare(String(a.fin))||String(a.casa).localeCompare(String(b.casa),'es'));
  // Cambio frente a la oleada anterior de la misma casa (por fin de campo), dentro de todo lo registrado.
  const todas=[...out].sort((a,b)=>String(b.fin).localeCompare(String(a.fin)));
@@ -118,20 +121,20 @@ export function encuestasRecientes(forecast,polls,{desde=null,limite=8}={}){
  return lista.slice(0,limite);
 }
 
-export function renderTarjetas(lista){
+export function renderTarjetas(lista,{compacto=false}={}){
  if(!lista.length)return '<p class="empty">No hay encuestas recientes registradas.</p>';
- return `<ol class="hub-tarjetas">${lista.map(x=>{
-  const segs=PRINCIPALES.filter(k=>Number.isFinite(x.voto[k])).map(k=>`<span style="flex:${x.voto[k]} 0 0;--c:${color(k)}" title="${h(name(k))} ${fmt(x.voto[k])} %">${x.voto[k]>=9?fmt(x.voto[k]):''}</span>`).join('');
+ return `<ol class="hub-tarjetas${compacto?' hub-tarjetas-compactas':''}">${lista.map(x=>{
+  const segs=PRINCIPALES.filter(k=>Number.isFinite(x.voto[k])).map(k=>`<span style="flex:${x.voto[k]} 0 0;--c:${color(k)}" title="${h(name(k))} ${fmt(x.voto[k])} %">${!compacto&&x.voto[k]>=9?fmt(x.voto[k]):''}</span>`).join('');
   const resto=100-PRINCIPALES.reduce((s,k)=>s+(Number.isFinite(x.voto[k])?x.voto[k]:0),0);
-  const cifras=PRINCIPALES.filter(k=>Number.isFinite(x.voto[k])).map(k=>{const c=x.anterior?.cambio?.[k];return `<li><i style="--c:${color(k)}"></i>${h(short(k))} <b>${fmt(x.voto[k])}</b>${Number.isFinite(c)?`<small class="${c>0?'sube':c<0?'baja':''}">${signed(c)}</small>`:''}</li>`;}).join('');
+  const cifras=(compacto?PRINCIPALES.slice(0,3):PRINCIPALES).filter(k=>Number.isFinite(x.voto[k])).map(k=>{const c=compacto?null:x.anterior?.cambio?.[k];return `<li><i style="--c:${color(k)}"></i>${h(short(k))} <b>${fmt(x.voto[k])}</b>${Number.isFinite(c)?`<small class="${c>0?'sube':c<0?'baja':''}">${signed(c)}</small>`:''}</li>`;}).join('');
   const [cls,txt,motivo]=x.estado;
   return `<li class="hub-tarjeta"><div class="hub-tarjeta-control" role="button" tabindex="0" data-panel="encuesta:${h(x.id)}" aria-label="${h(x.casa)}, ${h(fday(x.pub))}: ficha">
    <div class="hub-tarjeta-cab"><b>${h(x.casa)}</b><time datetime="${h(x.pub)}">${h(fday(x.pub))}</time></div>
    <p class="hub-tarjeta-ficha">${x.sinFin?(x.ini?`Campo desde ${h(fday(x.ini))}, sin fecha de fin publicada`:'Fechas de campo no publicadas'):`Campo ${x.ini?h(fday(x.ini))+'–':'hasta '}${h(fday(x.fin))}`}${x.n?` · n=${Number(x.n).toLocaleString('es-ES')}`:''}</p>
    <div class="hub-apilada" role="img" aria-label="${h(PRINCIPALES.filter(k=>Number.isFinite(x.voto[k])).map(k=>name(k)+' '+fmt(x.voto[k])+' %').join(', '))}">${segs}<span class="resto" style="flex:${Math.max(0,resto)} 0 0"></span></div>
    <ul class="hub-cifras">${cifras}</ul>
-   <p class="hub-estado ${cls}"${motivo?` title="${h(motivo)}"`:''}>${h(txt)}${motivo?`<small>${h(motivo)}</small>`:''}</p>
-   ${x.anterior?`<p class="hub-tarjeta-ref">Cambio frente a su oleada anterior (campo hasta el ${h(fday(x.anterior.fin))})</p>`:'<p class="hub-tarjeta-ref">Sin oleada anterior registrada</p>'}
+   ${compacto?'':`<p class="hub-estado ${cls}"${motivo?` title="${h(motivo)}"`:''}>${h(txt)}${motivo?`<small>${h(motivo)}</small>`:''}</p>`}
+   ${compacto?'':x.anterior?`<p class="hub-tarjeta-ref">Cambio frente a su oleada anterior (campo hasta el ${h(fday(x.anterior.fin))})</p>`:'<p class="hub-tarjeta-ref">Sin oleada anterior registrada</p>'}
   </div></li>`;}).join('')}</ol>`;
 }
 
