@@ -24,7 +24,7 @@ test('Sin menú de pestañas: el visor ofrece volver a Panorama y saltar entre s
  assert.match(nav,/href="#pronostico">Pronóstico completo/);
  assert.match(nav,/href="#encuestas">Encuestas y promedios/);
  assert.match(nav,/href="#metodologia">Método y herramientas/);
- assert.equal((nav.match(/<nav class="visor-secciones" aria-label="Secciones">([\s\S]*?)<\/nav>/)[1].match(/<a /g)||[]).length,7);
+ assert.equal((nav.match(/<nav class="visor-secciones" aria-label="Secciones">([\s\S]*?)<\/nav>/)[1].match(/<a /g)||[]).length,8);
  assert.match(nav,/href="#cocina">Cocina/);
  assert.doesNotMatch(nav,/Simulación alternativa/);
  assert.match(method,/Ver las ocho fases del algoritmo/);
