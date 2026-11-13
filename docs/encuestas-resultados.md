@@ -6,7 +6,7 @@ Vista descriptiva `encuestas-resultados.html`. Ofrece seis convocatorias (2011, 
 
 `python scripts/generar_encuestas_resultados.py` exporta `data/historico/encuestas-resultados.json` desde la importación histórica congelada y las series de 2023 del cargador existente. Incluye 921 registros fechados. Descarta 28 entradas sin cronología admisible, con fechas supuestas o publicadas el día electoral. No convierte muestras desconocidas en entrevistas observadas. La salida conserva nombres, procedencias, referencias bibliográficas y huellas de los archivos utilizados.
 
-Los resultados proceden del BOE. En 2011 se conserva la corrección de IU Lugo y del denominador de votos válidos de mayo de 2012. Las encuestas antiguas incluyen **transcripciones secundarias con referencia fechada**: no se afirma que todos sus originales hayan sido contrastados. Las fechas bibliográficas reconstruidas tampoco son capturas de pronósticos publicados entonces por el Observatorio.
+Tres registros atribuidos a partidos (PP, PSOE y Podemos) se conservan identificados como sondeos internos, sin presentarlos como institutos. Los resultados proceden del BOE. En 2011 se conserva la corrección de IU Lugo y del denominador de votos válidos de mayo de 2012. Las encuestas antiguas incluyen **transcripciones secundarias con referencia fechada**: no se afirma que todos sus originales hayan sido contrastados. Las fechas bibliográficas reconstruidas tampoco son capturas de pronósticos publicados entonces por el Observatorio.
 
 ## Selección y cálculo
 
