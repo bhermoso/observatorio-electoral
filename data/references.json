@@ -168,5 +168,17 @@
       "SALF": 1.7
     },
     "verified": "2026-11-10"
+  },
+  {
+    "id": "ateneo-reestimacion-cis-3584-2026-11-12",
+    "kind": "editorial-analysis",
+    "name": "Ateneo del Dato · reestimación del CIS 3584",
+    "publisher": "elDiario.es",
+    "published": "2026-11-12",
+    "verified": "2026-11-13",
+    "status": "referencia-external",
+    "source": "https://www.eldiario.es/politica/calculo-alternativo-cis-preelectoral-da-mayoria-absoluta-pp-vox-psoe-seria-primera-fuerza_1_13659317.html",
+    "notes": "Reestimación externa de la muestra del CIS 3584, no otra encuesta ni entrevistas adicionales. Publicada el 12 de noviembre a las 20:48. No se añade al promedio ni al Motor 29N. El texto agrupa PP y UPN; no se transcriben porcentajes de gráficos no verificados ni se convierten horquillas en puntos. Localizadores: entradilla y apartado «Nota metodológica de Ateneo del Dato».",
+    "methodology": "Según la nota original, ajusta las transferencias por recuerdo a los resultados de 2023, distribuye indecisos dentro de cada origen y corrige la participación de antiguos abstencionistas. Proyecta territorialmente con patrones de 2023 y asigna escaños mediante D’Hondt y umbral del 3 %. Son supuestos del modelo externo, sin validación independiente incorporada al Observatorio."
   }
 ]
