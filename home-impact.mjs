@@ -96,7 +96,7 @@ function drawHub(ctx){
  const set=(sel,html)=>{const el=document.querySelector(sel);if(el)el.innerHTML=html;};
  set('#hub-hemiciclo',renderHemiciclo(ctx.forecast));
  set('#hub-promedio',renderPromedio(ctx.prom,ctx.forecast,ctx.baseModelo));
- set('#portada-archivo',`<a href="#encuestas"><b>${ctx.polls.length} encuestas · archivo y fichas</b></a> · <a href="institutos.html"><b>${new Set(ctx.polls.map(p=>p.institute)).size} institutos con encuestas</b></a>`);
+ set('#portada-archivo',`<a href="#encuestas"><b>${ctx.polls.length} encuestas · archivo y fichas</b></a> · <a href="comparador-encuestas.html"><b>Comparar encuestas</b></a> · <a href="institutos.html"><b>${new Set(ctx.polls.map(p=>p.institute)).size} institutos con encuestas</b></a>`);
  set('#hub-institutos',[...new Set(ctx.polls.map(p=>p.institute))].sort((a,b)=>a.localeCompare(b,'es')).map(i=>`<a href="?instituto=${encodeURIComponent(i)}#encuestas">${h(i)} <small>${ctx.polls.filter(p=>p.institute===i).length}</small></a>`).join(''));
  set('#hub-recuento',renderRecuentoEncuestas(ctx.forecast,ctx.polls));
  const desde=new Date(Date.parse(ctx.corte+'T12:00:00Z')-14*86400000).toISOString().slice(0,10);
