@@ -101,3 +101,8 @@ Cada ficha conserva el enlace original, el universo declarado, el escenario, los
 ### Incorporación adicional del 11 de noviembre de 2026
 
 El archivo alcanza 20 estudios de 11 institutos al incorporar Sigma Dos / El Mundo del 9 de noviembre. La fuente institucional declara 4.172 entrevistas CATI/CAWI del 30 de octubre al 6 de noviembre. Se conservan catorce porcentajes y trece puntos u horquillas expresos. Coalición Canaria tiene porcentaje publicado y solo una descripción de posibilidad de representación en el texto verificado; el dato numérico de escaños queda ausente. El campo comparte un día con la ola anterior, por lo que debe mantenerse la selección por instituto y la deduplicación de oleadas. Fuente: https://www.sigmados.com/noticia?id=Zr7XEKTN9GLN00s
+
+
+## Referencia metodológica revisada el 13 de noviembre de 2026
+
+Se incorpora a `data/references.json` la [reestimación de Ateneo del Dato del CIS 3584](https://www.eldiario.es/politica/calculo-alternativo-cis-preelectoral-da-mayoria-absoluta-pp-vox-psoe-seria-primera-fuerza_1_13659317.html), publicada el 12 de noviembre. La nota del productor está al final del original. Es un tratamiento alternativo de la misma muestra: no aumenta las 26 encuestas ni los 15 institutos, no duplica entrevistas y no entra en el promedio ni en el pronóstico. Se conserva como referencia metodológica, sin transcribir cifras de gráficos no comprobados.
