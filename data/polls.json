@@ -1513,5 +1513,130 @@
     },
     "sourcePages": "PDF original: portada; tabla Voto y escaños (página 6); ficha técnica (página 13).",
     "notes": "Original de SW Demoscopia enlazado desde Electográfica (10/11): 6.000 entrevistas acumuladas del 26 oct al 9 nov. Se añaden 500 entrevistas por jornada desde el 5 nov: las entregas no son muestras independientes. Se transcriben puntos centrales de escaños, no medianas ni horquillas P25–P75 o P10–P90. PP–UPN (Navarra) queda separado del PP, como en el informe, sin sumarle porcentajes automáticamente. Sustituye a la entrega del 6 nov en el pronóstico actual; ambas quedan en el archivo y en sus cortes históricos. La entrega del 11 nov sigue pendiente de informe primario. La ficha declara 6.000 entrevistas totales y 4.300 para las preguntas de opinión; se conserva el total declarado para la estimación, sin presentar ambos tamaños como equivalentes. Frente al informe del 6 nov, el del 10 declara que el recuerdo de voto se usa en el análisis y no en la ponderación."
+  },
+  {
+    "id": "cis-3584",
+    "institute": "CIS",
+    "publisher": "CIS",
+    "title": "Preelectoral elecciones generales 2026 · estudio 3584",
+    "fieldStart": "2026-10-07",
+    "fieldEnd": "2026-10-30",
+    "published": "2026-11-12",
+    "sample": 45074,
+    "mode": "CATI",
+    "scope": "España",
+    "universe": "Población española de 18 años y más con derecho a voto en elecciones generales y residente en España",
+    "scenario": "Candidaturas desglosadas: Frente Amplio, ERC-Podemos, Compromís: Front Valencià, Adelante Andalucía, Podemos, UPC y Ara Més-Front Ampli; sin suma automática a Sumar/FA, ERC o Podemos nacional.",
+    "values": {
+      "PSOE": 33.3,
+      "PP": 25.5,
+      "VOX": 18.4,
+      "Frente Amplio (sin candidaturas territoriales)": 4.7,
+      "ERC-Podemos": 3.1,
+      "EH Bildu": 1.8,
+      "Compromís: Front Valencià": 1.6,
+      "Adelante Andalucía": 1.5,
+      "Junts": 1.2,
+      "Podemos (fuera de ERC-Podemos)": 1.1,
+      "BNG": 1.0,
+      "PNV": 0.7,
+      "UPC": 0.4,
+      "Ara Més-Front Ampli": 0.2,
+      "SALF": 1.4,
+      "CC-Municipalistas Primero Canarias": 0.2,
+      "Blanco": 0.5,
+      "Otros": 3.4
+    },
+    "seats": {
+      "PSOE": {
+        "min": 134,
+        "max": 143
+      },
+      "PP": {
+        "min": 98,
+        "max": 106
+      },
+      "VOX": {
+        "min": 57,
+        "max": 65
+      },
+      "Frente Amplio (sin candidaturas territoriales)": {
+        "min": 7,
+        "max": 11
+      },
+      "ERC-Podemos": {
+        "min": 10,
+        "max": 14
+      },
+      "EH Bildu": {
+        "min": 7,
+        "max": 10
+      },
+      "Compromís: Front Valencià": {
+        "min": 4,
+        "max": 6
+      },
+      "Adelante Andalucía": {
+        "min": 3,
+        "max": 4
+      },
+      "Junts": {
+        "min": 2,
+        "max": 4
+      },
+      "Podemos (fuera de ERC-Podemos)": {
+        "min": 0,
+        "max": 1
+      },
+      "BNG": {
+        "min": 2,
+        "max": 3
+      },
+      "PNV": {
+        "min": 2,
+        "max": 4
+      },
+      "UPC": {
+        "min": 0,
+        "max": 2
+      },
+      "Ara Més-Front Ampli": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "source": "https://www.cis.es/documents/d/guest/3584_estimacion-pdf",
+    "technical": "https://www.cis.es/documents/d/guest/es3584mar_A-pdf",
+    "publicationSource": "https://www.cis.es/es/w/avance-de-resultados-del-estudio-3584-preelectoral-elecciones-generales-2026-",
+    "weight": "PESO (nacional), PESOPROV (provincia), PESOCCAA (comunidad)",
+    "kind": "poll-estimate",
+    "coverage": "full",
+    "denominator": "votos válidos",
+    "verified": "2026-11-13",
+    "verification": "PDFs originales del CIS descargados; tabla nacional y ficha técnica cotejadas visualmente. Publicación contrastada con el anuncio oficial del 12 de noviembre.",
+    "sourcePages": "Estimación: página 2 (tabla nacional), páginas 3–4 (52 circunscripciones y metodología). Ficha técnica: páginas 3–6 del avance.",
+    "seatNotes": "Horquillas nacionales originales, percentiles 5–95. No son sumas de extremos provinciales. Para SALF y CC-Municipalistas Primero Canarias el CIS muestra un guion: no se convierte en cero.",
+    "notes": "Se mantienen cifras y candidaturas de la fuente. Las etiquetas de Frente Amplio y Podemos se precisan para distinguir los ámbitos que este estudio publica por separado; no se homologan al espacio completo Sumar/FA o Podemos de otros sondeos. ERC-Podemos no es una coalición formal según la nota del CIS: campaña conjunta en Cataluña. Los nombres literales, voto directo, desglose provincial y huellas se conservan en el JSON de procedencia. El campo termina el 30 de octubre: solapa Urda y es anterior a la huelga general del 11 de noviembre; la publicación posterior no constituye medición de sus efectos.",
+    "sourceLabels": {
+      "PSOE": "PSOE",
+      "PP": "PP",
+      "VOX": "VOX",
+      "Frente Amplio (sin candidaturas territoriales)": "Frente Amplio",
+      "ERC-Podemos": "ERC-Podemos",
+      "EH Bildu": "EH-Bildu",
+      "Compromís: Front Valencià": "Compromís: Front Valencià",
+      "Adelante Andalucía": "Adelante Andalucía",
+      "Junts": "Junts",
+      "Podemos (fuera de ERC-Podemos)": "Podemos",
+      "BNG": "BNG",
+      "PNV": "EAJ-PNV",
+      "UPC": "UPC",
+      "Ara Més-Front Ampli": "Ara Més-Front Ampli",
+      "SALF": "SALF",
+      "CC-Municipalistas Primero Canarias": "CC-Municipalistas Primero Canarias",
+      "Blanco": "En blanco",
+      "Otros": "Otros partidos"
+    },
+    "dataFile": "data/sources/cis-3584.json"
   }
 ]
