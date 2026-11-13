@@ -39,6 +39,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install -r requirements-ciencia.txt
+      - name: Regenerar archivo retrospectivo y procedencia
+        run: python scripts/generar_encuestas_resultados.py
       # Todas las pruebas Python de scripts (detecta, p. ej., errores de sintaxis en la incorporación).
       - run: python -m unittest discover -s tests -p 'test_*.py' -v
       - run: python -m unittest discover -s modelo/tests -t . -v
