@@ -1,9 +1,17 @@
 {
   "schema": 2,
-  "checked_at": "2026-11-13T08:46:10.646357+00:00",
-  "last_attempt_at": "2026-11-13T08:46:10.646357+00:00",
-  "status": "partial",
+  "checked_at": "2026-11-13T20:40:23.062883+00:00",
+  "last_attempt_at": "2026-11-13T20:40:23.062883+00:00",
+  "status": "complete",
   "candidates": [
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_08_barometro_flash_descargables.zip",
+      "titulo": "Datos completos",
+      "fuente": "40db",
+      "pagina": "https://elpais.com/espana/2026-10-09/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "ya_catalogado"
+    },
     {
       "tipo": "enlace_a_archivo",
       "url": "https://moreincommon.es/data/microdatos-2026-10.zip",
@@ -221,12 +229,10 @@
       "estado": "nuevo_enlace_sin_auditar"
     }
   ],
-  "errors": [
-    "40db: HTTP 403"
-  ],
+  "errors": [],
   "summary": {
     "paginas_consultadas": 9,
-    "paginas_accesibles": 8,
+    "paginas_accesibles": 9,
     "ficheros_descargados": 0,
     "matrices_analizadas": 0
   }

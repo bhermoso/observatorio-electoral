@@ -1,7 +1,7 @@
 {
   "schema": 2,
-  "checked_at": "2026-11-13T08:46:07.438989+00:00",
-  "last_attempt_at": "2026-11-13T08:46:07.438989+00:00",
+  "checked_at": "2026-11-13T20:40:20.098269+00:00",
+  "last_attempt_at": "2026-11-13T20:40:20.098269+00:00",
   "status": "partial",
   "searches": 15,
   "sources_ok": 14,
@@ -13,7 +13,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 1
+      "count": 0
     },
     {
       "id": "elmundo",
@@ -22,7 +22,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 1
+      "count": 0
     },
     {
       "id": "elespanol",
@@ -31,7 +31,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 2
+      "count": 1
     },
     {
       "id": "gad3",
@@ -76,7 +76,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 1
+      "count": 0
     },
     {
       "id": "elconfidencial",
@@ -145,101 +145,57 @@
   ],
   "results": [
     {
-      "title": "Encuesta Alemania FGW (13 nov): la AfD amplía a seis puntos su ventaja sobre la CDU/CSU",
-      "url": "https://electomania.es/encuesta-alemania-fgw-13-nov-la-afd-amplia-a-seis-puntos-su-ventaja-sobre-la-cdu-csu/",
-      "discovery_url": "https://electomania.es/encuesta-alemania-fgw-13-nov-la-afd-amplia-a-seis-puntos-su-ventaja-sobre-la-cdu-csu/",
-      "published": "2026-11-13T08:26:26+00:00",
-      "publication_raw": "2026-11-13T08:26:26+00:00",
+      "title": "Encuesta Países Bajos (Peil 13 nov): PRO sube a 32 escaños",
+      "url": "https://electomania.es/encuesta-paises-bajos-peil-13-nov-pro-sube-a-32-escanos/",
+      "discovery_url": "https://electomania.es/encuesta-paises-bajos-peil-13-nov-pro-sube-a-32-escanos/",
+      "published": "2026-11-13T20:15:21+00:00",
+      "publication_raw": "2026-11-13T20:15:21+00:00",
       "topic": "Electomanía · publicaciones",
       "source_id": "electomania",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Elecciones generales 29-N, en directo | Jordi Wild marca el primer día de campaña con las entrevistas a Colau, Feijóo y Sánchez",
+      "title": "Elecciones generales 29-N, en directo | Última hora de Pedro Sánchez, encuestas, actos de campaña de PP, PSOE y Vox, y entrevistas de Jordi Wild",
       "url": "https://www.elespanol.com/espana/20261113/elecciones-generales-directo-ultima-hora-campana-electoral-pedro-sanchez-encuestas-sondeos-voto-correo-espana-partidos-2026/1003744456597_10.html",
       "discovery_url": "https://www.elespanol.com/espana/20261113/elecciones-generales-directo-ultima-hora-campana-electoral-pedro-sanchez-encuestas-sondeos-voto-correo-espana-partidos-2026/1003744456597_10.html",
-      "published": "2026-11-13T06:10:21+00:00",
-      "publication_raw": "2026-11-13T06:10:21+00:00",
+      "published": "2026-11-13T20:09:00+00:00",
+      "publication_raw": "2026-11-13T20:09:00+00:00",
       "topic": "EL ESPAÑOL · España",
       "source_id": "elespanol",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Tracking SW Demoscopia (12 nov): “el efecto ‘Jordi Wild’ pasa factura a Vox”",
-      "url": "https://electomania.es/tracking-sw-demoscopia-12-nov-el-efecto-jordi-wild-pasa-factura-a-vox/",
-      "discovery_url": "https://electomania.es/tracking-sw-demoscopia-12-nov-el-efecto-jordi-wild-pasa-factura-a-vox/",
-      "published": "2026-11-12T19:55:00+00:00",
-      "publication_raw": "2026-11-12T19:55:00+00:00",
+      "title": "Tracking SW Demoscopia (13 nov): “el PSOE ganaría pero no podría gobernar”",
+      "url": "https://electomania.es/tracking-sw-demoscopia-13-nov-el-psoe-ganaria-pero-no-podria-gobernar/",
+      "discovery_url": "https://electomania.es/tracking-sw-demoscopia-13-nov-el-psoe-ganaria-pero-no-podria-gobernar/",
+      "published": "2026-11-13T19:00:00+00:00",
+      "publication_raw": "2026-11-13T19:00:00+00:00",
       "topic": "Electomanía · publicaciones",
       "source_id": "electomania",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Colau se conjura para “desmentir” las encuestas y se compromete a conformar un Gobierno “contra la especulación”",
-      "url": "https://elpais.com/espana/elecciones-generales/2026-11-12/colau-se-conjura-para-desmentir-las-encuestas-y-se-compromete-a-conformar-un-gobierno-contra-la-especulacion.html",
-      "discovery_url": "https://elpais.com/espana/elecciones-generales/2026-11-12/colau-se-conjura-para-desmentir-las-encuestas-y-se-compromete-a-conformar-un-gobierno-contra-la-especulacion.html",
-      "published": "2026-11-12T19:20:34+00:00",
-      "publication_raw": "2026-11-12T19:20:34+00:00",
-      "topic": "EL PAÍS · España",
-      "source_id": "elpais",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "La última estafa del CIS: publica un sondeo al inicio de campaña con una muestra sesgada en 17 puntos a favor del PSOE",
-      "url": "https://www.elespanol.com/espana/politica/20261112/ultima-estafa-cis-publica-sondeo-inicio-campana-muestra-sesgada-puntos-favor-psoe/1003744456340_0.html",
-      "discovery_url": "https://www.elespanol.com/espana/politica/20261112/ultima-estafa-cis-publica-sondeo-inicio-campana-muestra-sesgada-puntos-favor-psoe/1003744456340_0.html",
-      "published": "2026-11-12T18:30:34+00:00",
-      "publication_raw": "2026-11-12T18:30:34+00:00",
-      "topic": "EL ESPAÑOL · España",
-      "source_id": "elespanol",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Encuesta Francia OpinionWay para Les Echos (12 nov): Le Pen lidera y Mélenchon es segundo",
-      "url": "https://electomania.es/encuesta-francia-opinionway-les-echos-12-nov-le-pen-lidera-melenchon-segundo/",
-      "discovery_url": "https://electomania.es/encuesta-francia-opinionway-les-echos-12-nov-le-pen-lidera-melenchon-segundo/",
-      "published": "2026-11-12T18:08:58+00:00",
-      "publication_raw": "2026-11-12T18:08:58+00:00",
+      "title": "Encuesta Portugal (Aximage 11 nov): el PS lidera y AD se deja más de 12 puntos",
+      "url": "https://electomania.es/encuesta-portugal-aximage-11-nov-el-ps-lidera-y-ad-se-deja-mas-de-12-puntos/",
+      "discovery_url": "https://electomania.es/encuesta-portugal-aximage-11-nov-el-ps-lidera-y-ad-se-deja-mas-de-12-puntos/",
+      "published": "2026-11-13T16:42:37+00:00",
+      "publication_raw": "2026-11-13T16:42:37+00:00",
       "topic": "Electomanía · publicaciones",
       "source_id": "electomania",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "\n         El CIS de Tezanos coloca al PSOE en primer lugar y con ocho puntos sobre el PP en una encuesta que apenas recoge el efecto de Urda \n    ",
-      "url": "https://www.20minutos.es/nacional/cis-tezanos-coloca-psoe-primer-lugar-con-ocho-puntos-sobre-pp-una-encuesta-que-apenas-recoge-efecto-urda_7060413_0.html",
-      "discovery_url": "https://www.20minutos.es/nacional/cis-tezanos-coloca-psoe-primer-lugar-con-ocho-puntos-sobre-pp-una-encuesta-que-apenas-recoge-efecto-urda_7060413_0.html",
-      "published": "2026-11-12T16:45:14+00:00",
-      "publication_raw": "2026-11-12T16:45:14+00:00",
-      "topic": "20minutos · nacional",
-      "source_id": "20minutos",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "El CIS preelectoral se aleja del resto de encuestas y sitúa a la suma de PP y Vox lejos de la mayoría absoluta",
-      "url": "https://www.eldiario.es/politica/cis-preelectoral-aleja-resto-encuestas-situa-suma-pp-vox-lejos-mayoria-absoluta_1_13658236.html",
-      "discovery_url": "https://www.eldiario.es/politica/cis-preelectoral-aleja-resto-encuestas-situa-suma-pp-vox-lejos-mayoria-absoluta_1_13658236.html",
-      "published": "2026-11-12T16:05:40+00:00",
-      "publication_raw": "2026-11-12T16:05:40+00:00",
+      "title": "La media de encuestas en el arranque de la campaña: el PSOE crece, pero la derecha mantiene una amplia ventaja",
+      "url": "https://www.eldiario.es/politica/media-encuestas-arranque-campana-psoe-crece-derecha-mantiene-amplia-ventaja_1_13660672.html",
+      "discovery_url": "https://www.eldiario.es/politica/media-encuestas-arranque-campana-psoe-crece-derecha-mantiene-amplia-ventaja_1_13660672.html",
+      "published": "2026-11-13T09:36:57+00:00",
+      "publication_raw": "2026-11-13T09:36:57+00:00",
       "topic": "elDiario.es · política",
       "source_id": "eldiario",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "No es la encuesta, es el encuestador",
-      "url": "https://www.elmundo.es/espana/2026/11/11/6af36d8afdddffc3368b4570.html",
-      "discovery_url": "https://www.elmundo.es/espana/2026/11/11/6af36d8afdddffc3368b4570.html",
-      "published": "2026-11-10T23:00:31+00:00",
-      "publication_raw": "2026-11-10T23:00:31+00:00",
-      "topic": "EL MUNDO · España",
-      "source_id": "elmundo",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
