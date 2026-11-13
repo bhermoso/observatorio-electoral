@@ -21,11 +21,11 @@ test('Cocina identifica su alcance experimental',()=>{
 test('Sin menú de pestañas: el visor ofrece volver a Panorama y saltar entre secciones',()=>{
  assert.doesNotMatch(nav,/<nav aria-label="Principal">/);
  assert.match(nav,/class="visor-volver" href="#dashboard">← Panorama/);
- assert.match(nav,/href="#pronostico">Pronóstico completo/);
- assert.match(nav,/href="#encuestas">Encuestas y promedios/);
- assert.match(nav,/href="#metodologia">Método y herramientas/);
- assert.equal((nav.match(/<nav class="visor-secciones" aria-label="Secciones">([\s\S]*?)<\/nav>/)[1].match(/<a /g)||[]).length,9);
- assert.match(nav,/href="#cocina">Cocina/);
+ assert.match(nav,/href="#dashboard">Panorama/);
+ assert.match(nav,/href="#encuestas">Encuestas/);
+ assert.match(nav,/href="#metodologia">Método/);
+ assert.equal((nav.match(/<nav class="visor-secciones" aria-label="Secciones">([\s\S]*?)<\/nav>/)[1].match(/<a /g)||[]).length,4);
+ assert.match(nav,/href="misma-muestra.html">Cocina/);
  assert.doesNotMatch(nav,/Simulación alternativa/);
  assert.match(method,/Ver las ocho fases del algoritmo/);
  assert.match(method,/Abrir laboratorio de cocina/);
@@ -33,6 +33,6 @@ test('Sin menú de pestañas: el visor ofrece volver a Panorama y saltar entre s
 test('Las pestañas fusionadas siguen respondiendo a sus enlaces antiguos',async()=>{
  const src=fs.readFileSync('app.mjs','utf8');
  assert.match(src,/analisis:\['encuestas','encuestas-promedios'\]/);
- assert.match(src,/function pollPage\(\)\{return '<section class="panel" id="encuestas-todas">/);
+ assert.match(src,/function pollPage\(\)\{return surveyNavigation\(''\)\+'<section class="panel" id="encuestas-todas">/);
  assert.match(src,/renderPollArchive\(polls\)/);
 });

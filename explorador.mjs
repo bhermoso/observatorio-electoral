@@ -66,7 +66,7 @@ export function bindWorkspace(route,root){
   group('Directorio completo',['.tools-index'],'metodologia');
  }
  if(groups.length){
-  const extras=[...root.children].filter(n=>!used.has(n)&&!n.matches('.interior-guide,.pr-cifras,.notice,.error,[role=alert]'));
+  const extras=[...root.children].filter(n=>!used.has(n)&&!n.matches('.interior-guide,.section-tools,.pr-cifras,.notice,.error,[role=alert]'));
   // The compact model figures stay above the selected forecast view.
   const metrics=get('#pr-cifras-clave');
   const documentary=extras.filter(n=>n!==metrics);
@@ -80,10 +80,11 @@ export function bindWorkspace(route,root){
 }
 export function bindDashboardExplorer(){
  const root=document.querySelector('#impact');if(!root)return;controllers.get(root)?.destroy();
- const ids=[['Panorama','portada-hub'],['Evolución','home-series'],['Cocina y microdatos','hub-microdatos']];
- const used=new Set();const groups=ids.map(([label,id])=>{const node=document.getElementById(id);if(node)used.add(node);return {label,nodes:[node]};});
- const extras=[...root.children].filter(n=>!used.has(n)&&!n.matches('.portada-cabecera,#portada-ultimas,#portada-institutos,#portada-secciones,.explorer-tabs,.explorer-body'));
- if(extras.length)groups.push({label:'Fuentes y referencias',nodes:extras});
- mountExplorer(root,groups,{label:'Vistas del panorama',id:'dashboard',before:root.querySelector('#portada-ultimas')});
- root.classList.add('interactive-dashboard');
+ const hub=root.querySelector('#portada-hub');
+ if(hub){controllers.get(hub)?.destroy();const boxes=[...hub.querySelectorAll('.hub-caja')];mountExplorer(hub,[{label:'Escaños',nodes:[boxes[0]]},{label:'Voto',nodes:[boxes[1]]}],{label:'Ver resultado',id:'resultado-portada'});}
+ let more=root.querySelector(':scope > .home-more');
+ if(!more){more=document.createElement('details');more.className='home-more';more.innerHTML='<summary>Más análisis y documentación</summary>';root.append(more);}
+ for(const selector of ['#home-series','#hub-microdatos','#portada-institutos','#portada-secciones','.portada-metodo-desplegable']){const node=root.querySelector(selector);if(node&&!more.contains(node))more.append(node);}
+ for(const node of [...root.children])if(!node.matches('.portada-cabecera,#portada-hub,#portada-ultimas,.home-more'))more.append(node);
+ root.classList.add('interactive-dashboard','simple-dashboard');
 }
