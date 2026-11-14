@@ -426,8 +426,8 @@
       "url": "https://www.gad3.com/wp-content/uploads/2026/01/GAD3xHOY-ARAGON-Microdatos-estimacion-de-voto.xlsx",
       "estado": "descarga_fallida",
       "es_pronostico": false,
-      "error": "RemoteDisconnected",
-      "verificado_en": "2026-11-11T11:26:22+00:00"
+      "error": "respuesta_html_no_archivo",
+      "verificado_en": "2026-11-14T12:23:20+00:00"
     },
     {
       "id": "gad3-2026-02-08",
@@ -436,8 +436,8 @@
       "url": "https://www.gad3.com/wp-content/uploads/2026/02/GAD3-FORTA-CARTV-8F-Microdatos.xlsx",
       "estado": "descarga_fallida",
       "es_pronostico": false,
-      "error": "RemoteDisconnected",
-      "verificado_en": "2026-11-11T11:26:22+00:00"
+      "error": "respuesta_html_no_archivo",
+      "verificado_en": "2026-11-14T12:23:20+00:00"
     },
     {
       "id": "gad3-2026-05-11",
@@ -446,8 +446,8 @@
       "url": "https://www.gad3.com/wp-content/uploads/2026/05/GAD3-Microdatos-ABC-Andalucia-2026.xlsx",
       "estado": "descarga_fallida",
       "es_pronostico": false,
-      "error": "RemoteDisconnected",
-      "verificado_en": "2026-11-05T06:45:14+00:00"
+      "error": "respuesta_html_no_archivo",
+      "verificado_en": "2026-11-14T12:23:20+00:00"
     },
     {
       "id": "hallazgo-3821cc0f24b31d84",
