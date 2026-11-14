@@ -175,10 +175,242 @@
     "name": "Ateneo del Dato · reestimación del CIS 3584",
     "publisher": "elDiario.es",
     "published": "2026-11-12",
-    "verified": "2026-11-13",
+    "verified": "2026-11-14",
     "status": "referencia-external",
     "source": "https://www.eldiario.es/politica/calculo-alternativo-cis-preelectoral-da-mayoria-absoluta-pp-vox-psoe-seria-primera-fuerza_1_13659317.html",
-    "notes": "Reestimación externa de la muestra del CIS 3584, no otra encuesta ni entrevistas adicionales. Publicada el 12 de noviembre a las 20:48. No se añade al promedio ni al Motor 29N. El texto agrupa PP y UPN; no se transcriben porcentajes de gráficos no verificados ni se convierten horquillas en puntos. Localizadores: entradilla y apartado «Nota metodológica de Ateneo del Dato».",
-    "methodology": "Según la nota original, ajusta las transferencias por recuerdo a los resultados de 2023, distribuye indecisos dentro de cada origen y corrige la participación de antiguos abstencionistas. Proyecta territorialmente con patrones de 2023 y asigna escaños mediante D’Hondt y umbral del 3 %. Son supuestos del modelo externo, sin validación independiente incorporada al Observatorio."
+    "notes": "Reestimación de la misma muestra del CIS 3584, no otra encuesta. El 14 de noviembre se verifican el CSV original enlazado por los gráficos, sus porcentajes y horquillas. El texto presenta PP junto a UPN; Frente Amplio y Otros tienen agrupaciones propias. El CSV reproduce para Frente Amplio un comparador CIS 6,9 % y 11–20 que no es la categoría nacional 4,7 % y 7–11 del original: no se homologan ni se utilizan esos valores como cifras oficiales del CIS. Las horquillas y porcentajes de Ateneo se conservan como propios, sin sumar extremos ni elegir puntos medios. No se añade al promedio ni al Motor 29N.",
+    "methodology": "Según la nota original, ajusta las transferencias por recuerdo a los resultados de 2023, distribuye indecisos dentro de cada origen y corrige la participación de antiguos abstencionistas. Proyecta territorialmente con patrones de 2023 y asigna escaños mediante D’Hondt y umbral del 3 %. Son supuestos del modelo externo, sin validación independiente incorporada al Observatorio.",
+    "sampleStudyId": "cis-3584",
+    "measurementType": "reestimate",
+    "dataSource": "https://datos.eldiario.es/encuestas/ateneodeldato/reestimacion_cis_nov_2026.csv",
+    "values": {
+      "PSOE": 30.14,
+      "PP / UPN (agrupación de la fuente)": 27.59,
+      "Vox": 21.66,
+      "Frente Amplio (agrupación de Ateneo)": 6.34,
+      "Podemos": 1.11,
+      "ERC": 3.04,
+      "EH Bildu": 1.63,
+      "EAJ-PNV": 0.94,
+      "BNG": 0.89,
+      "Junts": 1.07,
+      "Otros": 3.89,
+      "SALF": 1.7
+    },
+    "modelSeatRanges": {
+      "PSOE": {
+        "min": 113,
+        "max": 133
+      },
+      "PP / UPN (agrupación de la fuente)": {
+        "min": 103,
+        "max": 117
+      },
+      "Vox": {
+        "min": 72,
+        "max": 84
+      },
+      "Frente Amplio (agrupación de Ateneo)": {
+        "min": 6,
+        "max": 8
+      },
+      "Podemos": {
+        "min": 0,
+        "max": 0
+      },
+      "ERC": {
+        "min": 13,
+        "max": 13
+      },
+      "EH Bildu": {
+        "min": 7,
+        "max": 8
+      },
+      "EAJ-PNV": {
+        "min": 3,
+        "max": 4
+      },
+      "BNG": {
+        "min": 2,
+        "max": 2
+      },
+      "Junts": {
+        "min": 3,
+        "max": 3
+      },
+      "Otros": {
+        "min": 3,
+        "max": 3
+      },
+      "SALF": {
+        "min": 0,
+        "max": 0
+      }
+    }
+  },
+  {
+    "id": "elpais-promedio-2026-11-14",
+    "kind": "aggregate-model",
+    "name": "Promedio de EL PAÍS · Kiko Llaneras · 14 noviembre",
+    "publisher": "EL PAÍS",
+    "published": "2026-11-14",
+    "verified": "2026-11-14",
+    "status": "dated-reference",
+    "source": "https://elpais.com/espana/elecciones-generales/2026-11-14/que-dice-el-promedio-de-encuestas-consulta-todos-los-sondeos-en-tiempo-real.html",
+    "approximateValues": {
+      "PP": 31.1,
+      "PSOE": 27.1,
+      "VOX": 19.0,
+      "Frentes (coaliciones territoriales incluidas)": 6.8,
+      "Podemos (donde concurre en solitario)": 1.6
+    },
+    "notes": "Instantánea del texto publicado el 14 de noviembre, no actualización automática. Vox se describe «alrededor del 19 %» y aquí conserva ese carácter aproximado. Frentes agrega Frente Amplio y coaliciones con Podemos, Compromís, Ara Més o UPC; no se equipara sin más a la etiqueta nacional del CIS. Es un promedio externo, no entrevistas adicionales ni una corrección de nuestro pronóstico.",
+    "methodology": "Promedio central: pesos por casa, muestra y antigüedad; semivida de diez días y corte a treinta, una última encuesta por casa. Ofrece ritmos agresivo y cauto y una corrección histórica separada, no aplicada al promedio central. Sus criterios y resultados retrospectivos son afirmaciones del productor, no parámetros adoptados por el Observatorio."
+  },
+  {
+    "id": "eldiario-promedio-2026-11-13",
+    "kind": "aggregate-model",
+    "name": "Promedio y modelo de elDiario.es · 13 noviembre",
+    "publisher": "elDiario.es",
+    "published": "2026-11-13",
+    "verified": "2026-11-14",
+    "status": "dated-reference",
+    "source": "https://www.eldiario.es/politica/media-encuestas-arranque-campana-psoe-crece-derecha-mantiene-amplia-ventaja_1_13660672.html",
+    "values": {
+      "PP": 31.4,
+      "PSOE": 26.9,
+      "VOX": 19.0,
+      "Frente Amplio": 6.9,
+      "Podemos": 1.9,
+      "SALF": 1.8
+    },
+    "modelSeats": {
+      "PP": 129,
+      "PSOE": 107,
+      "VOX": 66,
+      "Frente Amplio + Podemos": 13
+    },
+    "notes": "Valores expresos del texto del 13 de noviembre. Los 13 escaños de Frente Amplio y Podemos se publican juntos: no se reparten entre ambos. Se transcribe una proyección parcial, no un Congreso completo. El productor comunica mayoría PP+Vox en 9 de 10 simulaciones; no se atribuye esa probabilidad al Observatorio. Promedio externo, sin entrevistas nuevas ni entrada en el promedio propio.",
+    "methodology": "Promedio de sondeos y 10.000 simulaciones; reparto territorial ligado a patrones provinciales de 2023. Para series anteriores traslada Sumar a Frente Amplio y parte de Podemos valenciano a Compromís-FV, según su explicación. Estas homologaciones pertenecen al productor y no se adoptan como equivalencias de nuestros datos."
+  },
+  {
+    "id": "democrata-media-2026-11-14",
+    "kind": "aggregate-model",
+    "name": "Demócrata · media de 15 institutos · 14 noviembre",
+    "publisher": "Demócrata",
+    "published": "2026-11-14",
+    "verified": "2026-11-14",
+    "status": "dated-reference",
+    "source": "https://www.democrata.es/elecciones-generales-espana/herramientas/encuestas",
+    "values": {
+      "PP": 31.5,
+      "PSOE": 26.8,
+      "VOX": 19.1,
+      "Frente Amplio": 6.4,
+      "ERC": 2.5,
+      "Podemos": 1.7,
+      "SALF": 1.7,
+      "Adelante Andalucía": 1.7,
+      "Junts": 1.4,
+      "EH Bildu": 1.4,
+      "BNG": 1.0,
+      "PNV": 0.8,
+      "CC": 0.4
+    },
+    "modelSeats": {
+      "PP": 135,
+      "PSOE": 106,
+      "VOX": 67,
+      "Frente Amplio": 10,
+      "Podemos": 1,
+      "ERC": 9,
+      "EH Bildu": 7,
+      "BNG": 2,
+      "PNV": 4,
+      "Junts": 5,
+      "CC": 1,
+      "Adelante Andalucía": 3
+    },
+    "notes": "Instantánea de la cabecera «Media a 14 de noviembre de 2026 · 15 institutos». Cada candidatura tiene su propio número de casas con dato: las ausentes no cuentan como cero. El Congreso mostrado suma 350 y es una media de proyecciones de diez institutos, no una simulación propia de Demócrata ni del Observatorio. Datos derivados de Wikipedia con enlaces a originales; la consulta secundaria ha detectado diferencias que aquí se resuelven con las fuentes primarias.",
+    "methodology": "Último estudio por empresa; fecha por mitad del campo o una semana antes del cierre si dura más de siete días. Semivida de siete días, exclusión a treinta, peso por raíz de muestra limitada a 2.500. Excluye CIS, paneles, reestimaciones, agregadores, encargos de partido y empresas no identificadas. No corrige efectos de casa ni calcula su propio modelo de escaños."
+  },
+  {
+    "id": "nc-report-estimacion-2026-11-09-ficha-incompleta",
+    "kind": "editorial-analysis",
+    "measurementType": "published-estimate",
+    "name": "NC Report / La Razón · estimación publicada · ficha incompleta",
+    "publisher": "La Razón",
+    "published": "2026-11-09",
+    "verified": "2026-11-14",
+    "status": "methodology-incomplete",
+    "source": "https://www.larazon.es/espana/gana-7-puntos-psoe-que-cae-100-escanos_202611096af1319903bbf30bb045239e.html",
+    "values": {
+      "PP": 32.6,
+      "PSOE": 25.6,
+      "VOX": 19.3,
+      "Frente Amplio": 6.9,
+      "Podemos": 2.4,
+      "ERC": 2.0,
+      "Junts": 1.8,
+      "EH Bildu": 1.4,
+      "PNV": 0.9,
+      "Adelante Andalucía": 1.2,
+      "BNG": 0.8,
+      "UPN": 0.4,
+      "CC": 0.4
+    },
+    "modelSeatRanges": {
+      "PP": {
+        "min": 136,
+        "max": 138
+      },
+      "PSOE": {
+        "min": 99,
+        "max": 101
+      },
+      "VOX": {
+        "min": 67,
+        "max": 69
+      },
+      "Frente Amplio": {
+        "min": 9,
+        "max": 10
+      },
+      "Podemos": {
+        "min": 0,
+        "max": 1
+      },
+      "ERC": {
+        "min": 7,
+        "max": 8
+      },
+      "Junts": {
+        "min": 8,
+        "max": 9
+      },
+      "EH Bildu": {
+        "min": 6,
+        "max": 7
+      },
+      "PNV": {
+        "min": 4,
+        "max": 5
+      },
+      "Adelante Andalucía": {
+        "min": 2,
+        "max": 3
+      },
+      "BNG": {
+        "point": 2
+      },
+      "UPN": {
+        "point": 2
+      },
+      "CC": {
+        "point": 1
+      }
+    },
+    "notes": "Cifras contrastadas con el texto y el gráfico original de La Razón, no con el recopilador: PP 32,6 % y 136–138, frente a otros valores secundarios. El artículo se publica el 9 y el gráfico está fechado el 8 de noviembre. El texto sitúa el campo del 2 al 5. No se han verificado muestra, modo y ficha completa: se conserva como estimación documentada, fuera del archivo de encuestas verificadas. Esta referencia no añade una observación al motor: el estudio ya figuraba en la serie de prensa con tamaño supuesto explícito, que aquí no se transforma en muestra verificada.",
+    "methodology": "Encuesta atribuida a NC Report. La publicación accesible no permite reconstruir la ficha completa; no se supone el tamaño de 1.000 entrevistas de la recopilación secundaria."
   }
 ]

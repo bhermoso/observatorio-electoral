@@ -95,7 +95,7 @@ const ESTADO={
 
 /** Lista de encuestas recientes, la más reciente primero, a partir de las entradas y exclusiones
  * del Motor 29N y del archivo verificado (lo publicado después del corte aún no está en el motor). */
-export function encuestasRecientes(forecast,polls,{desde=null,limite=8,deduplicate=false}={}){
+export function encuestasRecientes(forecast,polls,{desde=null,limite=8,deduplicate=false,latestPerHouse=false}={}){
  const vistos=new Set(),out=[];
  const add=x=>{if(!x.id||vistos.has(x.id))return;vistos.add(x.id);out.push(x);};
  for(const e of forecast?.entradas||[])add({id:e.estudio,casa:e.casa,pub:e.publicacion||e.campo_fin,ini:e.campo_ini,fin:e.campo_fin,n:e.n_supuesto?null:e.n,voto:e.voto||{},estado:ESTADO[e.origen]||['ok','En el pronóstico'],url:e.url});
@@ -110,8 +110,9 @@ export function encuestasRecientes(forecast,polls,{desde=null,limite=8,deduplica
  // Presentation-only duplicates: the model and its complete audit retain all IDs.
  const fingerprint=x=>JSON.stringify([String(x.casa).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(),x.ini||'',x.fin||'',x.n||null,Object.entries(x.voto).sort(([a],[b])=>a.localeCompare(b))]);
  const seen=new Set();const displayed=deduplicate?out.filter(x=>{const key=fingerprint(x);if(seen.has(key))return false;seen.add(key);return true;}):out;
- const lista=displayed.filter(x=>x.pub&&(!desde||x.pub>=desde)&&Object.keys(x.voto).length)
+ let lista=displayed.filter(x=>x.pub&&(!desde||x.pub>=desde)&&Object.keys(x.voto).length)
   .sort((a,b)=>String(b.pub).localeCompare(String(a.pub))||String(b.fin).localeCompare(String(a.fin))||String(a.casa).localeCompare(String(b.casa),'es'));
+ if(latestPerHouse){const houses=new Set();lista=lista.filter(x=>{const key=String(x.casa).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();if(houses.has(key))return false;houses.add(key);return true;});}
  // Cambio frente a la oleada anterior de la misma casa (por fin de campo), dentro de todo lo registrado.
  const todas=[...out].sort((a,b)=>String(b.fin).localeCompare(String(a.fin)));
  for(const x of lista){

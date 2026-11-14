@@ -106,3 +106,7 @@ El archivo alcanza 20 estudios de 11 institutos al incorporar Sigma Dos / El Mun
 ## Referencia metodológica revisada el 13 de noviembre de 2026
 
 Se incorpora a `data/references.json` la [reestimación de Ateneo del Dato del CIS 3584](https://www.eldiario.es/politica/calculo-alternativo-cis-preelectoral-da-mayoria-absoluta-pp-vox-psoe-seria-primera-fuerza_1_13659317.html), publicada el 12 de noviembre. La nota del productor está al final del original. Es un tratamiento alternativo de la misma muestra: no aumenta las 26 encuestas ni los 15 institutos, no duplica entrevistas y no entra en el promedio ni en el pronóstico. Se conserva como referencia metodológica, sin transcribir cifras de gráficos no comprobados.
+
+## Revisión del 14 de noviembre de 2026
+
+El archivo alcanza 29 encuestas de 15 institutos: se añaden el tracking día 1 de 40dB. (13 de noviembre) y las dos entregas de Sigma Dos del 12 y 13. Se contrastan originales y fichas, se conservan las candidaturas territoriales desglosadas y se identifican los campos acumulados. Se añaden tres promedios externos fechados, se cuantifica la referencia de Ateneo sobre CIS 3584 y se conserva la estimación de NC Report con ficha incompleta fuera del archivo de encuestas. Detalles y discrepancias primario/secundario en [la revisión documentada](revision-publicaciones-2026-11-14.md).

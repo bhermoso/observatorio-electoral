@@ -98,9 +98,9 @@ function drawHub(ctx){
  set('#hub-promedio',renderPromedio(ctx.prom,ctx.forecast,ctx.baseModelo));
  set('#portada-archivo',`<a href="#encuestas">${ctx.polls.length} encuestas · ${new Set(ctx.polls.map(p=>p.institute)).size} institutos · abrir archivo →</a>`);
  set('#hub-institutos',[...new Set(ctx.polls.map(p=>p.institute))].sort((a,b)=>a.localeCompare(b,'es')).map(i=>`<a href="?instituto=${encodeURIComponent(i)}#encuestas">${h(i)} <small>${ctx.polls.filter(p=>p.institute===i).length}</small></a>`).join(''));
- set('#hub-recuento','Las tres publicaciones más recientes. Las cifras pertenecen a cada instituto.');
+ set('#hub-recuento','La última publicación de tres institutos. Las cifras pertenecen a cada fuente.');
  const desde=new Date(Date.parse(ctx.corte+'T12:00:00Z')-14*86400000).toISOString().slice(0,10);
- set('#hub-tarjetas',renderTarjetas(encuestasRecientes(ctx.forecast,ctx.polls,{desde,limite:3,deduplicate:true}),{compacto:true}));
+ set('#hub-tarjetas',renderTarjetas(encuestasRecientes(ctx.forecast,ctx.polls,{desde,limite:3,deduplicate:true,latestPerHouse:true}),{compacto:true}));
  // Todas las encuestas registradas, para el panel (la más reciente primero).
  ctx.recientes=encuestasRecientes(ctx.forecast,ctx.polls,{limite:500});
  set('#hub-accesos',renderAccesos({forecast:ctx.forecast,polls:ctx.polls,events:ctx.events,references:refsPortada}));
