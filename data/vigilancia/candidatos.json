@@ -1,7 +1,7 @@
 {
   "schema": 2,
-  "checked_at": "2026-11-14T18:51:48.885875+00:00",
-  "last_attempt_at": "2026-11-14T18:51:48.885875+00:00",
+  "checked_at": "2026-11-14T23:23:27.387315+00:00",
+  "last_attempt_at": "2026-11-14T23:23:27.387315+00:00",
   "status": "partial",
   "searches": 15,
   "sources_ok": 14,
@@ -22,7 +22,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 0
+      "count": 1
     },
     {
       "id": "elespanol",
@@ -67,7 +67,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 2
+      "count": 1
     },
     {
       "id": "20minutos",
@@ -113,7 +113,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 2
+      "count": 3
     },
     {
       "id": "swdemoscopia",
@@ -145,13 +145,35 @@
   ],
   "results": [
     {
+      "title": "Encuesta YouGov (14 nov): “el fuerte ascenso de Vox garantiza una mayoría de derechas”",
+      "url": "https://electomania.es/encuesta-yougov-14-nov-el-fuerte-ascenso-de-vox-garantiza-una-mayoria-de-derechas/",
+      "discovery_url": "https://electomania.es/encuesta-yougov-14-nov-el-fuerte-ascenso-de-vox-garantiza-una-mayoria-de-derechas/",
+      "published": "2026-11-14T22:32:39+00:00",
+      "publication_raw": "2026-11-14T22:32:39+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
       "title": "Elecciones generales del 29-N, en directo | El PP cierra filas con Echeverría y denuncia un intento de los violentos por \"amedrentar\" al PP vasco",
       "url": "https://www.elespanol.com/espana/20261114/elecciones-generales-directo-ultima-hora-campana-pedro-sanchez-encuestas-actos-pp-psoe-vox-sondeos-voto-correo-espana-partidos-2026-frente-amplio-electoral/1003744458244_10.html",
       "discovery_url": "https://www.elespanol.com/espana/20261114/elecciones-generales-directo-ultima-hora-campana-pedro-sanchez-encuestas-actos-pp-psoe-vox-sondeos-voto-correo-espana-partidos-2026-frente-amplio-electoral/1003744458244_10.html",
-      "published": "2026-11-14T18:30:00+00:00",
-      "publication_raw": "2026-11-14T18:30:00+00:00",
+      "published": "2026-11-14T21:16:00+00:00",
+      "publication_raw": "2026-11-14T21:16:00+00:00",
       "topic": "EL ESPAÑOL · España",
       "source_id": "elespanol",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Tracking SW Demoscopia (14 nov): “PP y Vox en 173 escaños”",
+      "url": "https://electomania.es/tracking-sw-demoscopia-14-nov-pp-y-vox-en-173-escanos/",
+      "discovery_url": "https://electomania.es/tracking-sw-demoscopia-14-nov-pp-y-vox-en-173-escanos/",
+      "published": "2026-11-14T16:09:33+00:00",
+      "publication_raw": "2026-11-14T16:09:33+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
@@ -167,13 +189,13 @@
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Encuesta YouGov para generales en Cataluña (14 nov): “ERC se acerca al PSC y Vox supera a PP, Junts y FA”",
-      "url": "https://electomania.es/encuesta-yougov-para-generales-en-cataluna-14-nov-erc-se-acerca-al-psc-y-vox-supera-a-pp-junts-y-fa/",
-      "discovery_url": "https://electomania.es/encuesta-yougov-para-generales-en-cataluna-14-nov-erc-se-acerca-al-psc-y-vox-supera-a-pp-junts-y-fa/",
-      "published": "2026-11-14T09:46:04+00:00",
-      "publication_raw": "2026-11-14T09:46:04+00:00",
-      "topic": "Electomanía · publicaciones",
-      "source_id": "electomania",
+      "title": "Un Pedro Sánchez muy confiado pese a las encuestas en contra pide a Feijóo que \"respete el resultado de las elecciones\"",
+      "url": "https://www.elmundo.es/elecciones/elecciones-generales/2026/11/14/6af8563be85ece10768b4595.html",
+      "discovery_url": "https://www.elmundo.es/elecciones/elecciones-generales/2026/11/14/6af8563be85ece10768b4595.html",
+      "published": "2026-11-14T13:59:49+00:00",
+      "publication_raw": "2026-11-14T13:59:49+00:00",
+      "topic": "EL MUNDO · España",
+      "source_id": "elmundo",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
@@ -183,17 +205,6 @@
       "discovery_url": "https://www.eldiario.es/politica/sanchez-busca-movilizacion-historica-izquierda-pp-vox-vuelva-echar-tierra-sondeos_1_13662791.html",
       "published": "2026-11-13T21:53:28+00:00",
       "publication_raw": "2026-11-13T21:53:28+00:00",
-      "topic": "elDiario.es · política",
-      "source_id": "eldiario",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "La media de encuestas en el arranque de la campaña: el PSOE crece, pero la derecha mantiene una amplia ventaja",
-      "url": "https://www.eldiario.es/politica/media-encuestas-arranque-campana-psoe-crece-derecha-mantiene-amplia-ventaja_1_13660672.html",
-      "discovery_url": "https://www.eldiario.es/politica/media-encuestas-arranque-campana-psoe-crece-derecha-mantiene-amplia-ventaja_1_13660672.html",
-      "published": "2026-11-13T09:36:57+00:00",
-      "publication_raw": "2026-11-13T09:36:57+00:00",
       "topic": "elDiario.es · política",
       "source_id": "eldiario",
       "original_verified": false,
