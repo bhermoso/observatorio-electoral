@@ -1,7 +1,7 @@
 {
   "schema": 2,
-  "checked_at": "2026-11-14T08:00:15.669276+00:00",
-  "last_attempt_at": "2026-11-14T08:00:15.669276+00:00",
+  "checked_at": "2026-11-14T18:51:48.885875+00:00",
+  "last_attempt_at": "2026-11-14T18:51:48.885875+00:00",
   "status": "partial",
   "searches": 15,
   "sources_ok": 14,
@@ -85,7 +85,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 1
+      "count": 0
     },
     {
       "id": "larazon",
@@ -113,7 +113,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 3
+      "count": 2
     },
     {
       "id": "swdemoscopia",
@@ -145,13 +145,35 @@
   ],
   "results": [
     {
-      "title": "Elecciones generales del 29-N, en directo | Última hora de la campaña y Pedro Sánchez, encuestas, actos de PP, PSOE y Vox, sondeos y voto por correo",
+      "title": "Elecciones generales del 29-N, en directo | El PP cierra filas con Echeverría y denuncia un intento de los violentos por \"amedrentar\" al PP vasco",
       "url": "https://www.elespanol.com/espana/20261114/elecciones-generales-directo-ultima-hora-campana-pedro-sanchez-encuestas-actos-pp-psoe-vox-sondeos-voto-correo-espana-partidos-2026-frente-amplio-electoral/1003744458244_10.html",
       "discovery_url": "https://www.elespanol.com/espana/20261114/elecciones-generales-directo-ultima-hora-campana-pedro-sanchez-encuestas-actos-pp-psoe-vox-sondeos-voto-correo-espana-partidos-2026-frente-amplio-electoral/1003744458244_10.html",
-      "published": "2026-11-14T06:20:30+00:00",
-      "publication_raw": "2026-11-14T06:20:30+00:00",
+      "published": "2026-11-14T18:30:00+00:00",
+      "publication_raw": "2026-11-14T18:30:00+00:00",
       "topic": "EL ESPAÑOL · España",
       "source_id": "elespanol",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Encuesta Italia (Only Numbers 14 nov): FdI lidera y Futuro Nazionale supera a la Lega",
+      "url": "https://electomania.es/encuesta-italia-only-numbers-14-nov-fdi-lidera-y-futuro-nazionale-supera-a-la-lega/",
+      "discovery_url": "https://electomania.es/encuesta-italia-only-numbers-14-nov-fdi-lidera-y-futuro-nazionale-supera-a-la-lega/",
+      "published": "2026-11-14T15:17:25+00:00",
+      "publication_raw": "2026-11-14T15:17:25+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Encuesta YouGov para generales en Cataluña (14 nov): “ERC se acerca al PSC y Vox supera a PP, Junts y FA”",
+      "url": "https://electomania.es/encuesta-yougov-para-generales-en-cataluna-14-nov-erc-se-acerca-al-psc-y-vox-supera-a-pp-junts-y-fa/",
+      "discovery_url": "https://electomania.es/encuesta-yougov-para-generales-en-cataluna-14-nov-erc-se-acerca-al-psc-y-vox-supera-a-pp-junts-y-fa/",
+      "published": "2026-11-14T09:46:04+00:00",
+      "publication_raw": "2026-11-14T09:46:04+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
@@ -163,39 +185,6 @@
       "publication_raw": "2026-11-13T21:53:28+00:00",
       "topic": "elDiario.es · política",
       "source_id": "eldiario",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Encuesta Países Bajos (Peil 13 nov): PRO sube a 32 escaños",
-      "url": "https://electomania.es/encuesta-paises-bajos-peil-13-nov-pro-sube-a-32-escanos/",
-      "discovery_url": "https://electomania.es/encuesta-paises-bajos-peil-13-nov-pro-sube-a-32-escanos/",
-      "published": "2026-11-13T20:15:21+00:00",
-      "publication_raw": "2026-11-13T20:15:21+00:00",
-      "topic": "Electomanía · publicaciones",
-      "source_id": "electomania",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Tracking SW Demoscopia (13 nov): “el PSOE ganaría pero no podría gobernar”",
-      "url": "https://electomania.es/tracking-sw-demoscopia-13-nov-el-psoe-ganaria-pero-no-podria-gobernar/",
-      "discovery_url": "https://electomania.es/tracking-sw-demoscopia-13-nov-el-psoe-ganaria-pero-no-podria-gobernar/",
-      "published": "2026-11-13T19:00:00+00:00",
-      "publication_raw": "2026-11-13T19:00:00+00:00",
-      "topic": "Electomanía · publicaciones",
-      "source_id": "electomania",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Encuesta Portugal (Aximage 11 nov): el PS lidera y AD se deja más de 12 puntos",
-      "url": "https://electomania.es/encuesta-portugal-aximage-11-nov-el-ps-lidera-y-ad-se-deja-mas-de-12-puntos/",
-      "discovery_url": "https://electomania.es/encuesta-portugal-aximage-11-nov-el-ps-lidera-y-ad-se-deja-mas-de-12-puntos/",
-      "published": "2026-11-13T16:42:37+00:00",
-      "publication_raw": "2026-11-13T16:42:37+00:00",
-      "topic": "Electomanía · publicaciones",
-      "source_id": "electomania",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
@@ -352,17 +341,6 @@
       "source_id": "mic",
       "original_verified": false,
       "tipo": "enlace_a_archivo"
-    },
-    {
-      "title": "¿Qué dicen las encuestas sobre el 29-N? La carrera hacia la mayoría absoluta, en seis gráficos",
-      "url": "https://www.elconfidencial.com/espana/2026-11-10/encuestas-elecciones-generales-29n-mayoria-absoluta-graficos-cbtr_4460274/",
-      "discovery_url": "https://www.elconfidencial.com/espana/2026-11-10/encuestas-elecciones-generales-29n-mayoria-absoluta-graficos-cbtr_4460274/",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "El Confidencial · España",
-      "source_id": "elconfidencial",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
     },
     {
       "title": "Saltar al contenido",
