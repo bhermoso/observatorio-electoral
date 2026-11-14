@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 KEYS = ['peso', 'simpatia', 'recuerdo', 'indecisos', 'participacion']
 
 
-def calculate(rows, flags, official):
+def calculate(rows, flags, official, valids=VALIDOS):
     weights = [r['peso'] if flags['peso'] else 1.0 for r in rows]
     field = 'votosim' if flags['simpatia'] else 'intencion'
     recalled = {g: sum(w for r, w in zip(rows, weights) if r['recuerdo'] == g) for g in official}
@@ -26,7 +26,7 @@ def calculate(rows, flags, official):
         weights = [w * factors.get(r['recuerdo'], 1) for r, w in zip(rows, weights)]
     trans = defaultdict(lambda: defaultdict(float))
     for r, w in zip(rows, weights):
-        if r[field] in VALIDOS and r['recuerdo'] in official:
+        if r[field] in valids and r['recuerdo'] in official:
             trans[r['recuerdo']][r[field]] += w
     matrix = {g: {p: v / sum(ps.values()) for p, v in ps.items()} for g, ps in trans.items() if sum(ps.values())}
     masses = defaultdict(float)
@@ -35,11 +35,19 @@ def calculate(rows, flags, official):
     counts = defaultdict(int)
     contributors = []
     imputation_groups = defaultdict(lambda: dict(mass=0.0, interviews=0))
-    for r, w in zip(rows, weights):
+    classification = defaultdict(lambda: dict(n=0, mass=0.0))
+    recall_ledger = defaultdict(lambda: defaultdict(lambda: dict(n=0, before=0.0, after=0.0)))
+    before_recall = [r['peso'] if flags['peso'] else 1.0 for r in rows]
+    for r, w, original_w in zip(rows, weights, before_recall):
         if flags['participacion']:
             w *= r['prob']
         p = r[field]
-        if p in VALIDOS:
+        classification[p]['n'] += 1
+        classification[p]['mass'] += w
+        recall_ledger[p][r['recuerdo']]['n'] += 1
+        recall_ledger[p][r['recuerdo']]['before'] += original_w
+        recall_ledger[p][r['recuerdo']]['after'] += w
+        if p in valids:
             masses[p] += w
             observed[p] += w
             counts[p] += 1
@@ -52,13 +60,17 @@ def calculate(rows, flags, official):
                 imputed[dest] += w * probability
             contributors.append(w)
     denominator = sum(masses.values())
+    after_rec={g:sum(w for r,w in zip(rows,weights) if r['recuerdo']==g) for g in official}
+    after_total=sum(after_rec.values())
     return dict(flags=flags, denominator=denominator, contributors=len(contributors),
                 neff=sum(contributors)**2 / sum(w*w for w in contributors),
-                masses={p: masses[p] for p in VALIDOS}, observed={p: observed[p] for p in VALIDOS},
-                imputed={p: imputed[p] for p in VALIDOS}, counts={p: counts[p] for p in VALIDOS},
-                shares={p: 100*masses[p]/denominator for p in VALIDOS},
+                masses={p: masses[p] for p in valids}, observed={p: observed[p] for p in valids},
+                imputed={p: imputed[p] for p in valids}, counts={p: counts[p] for p in valids},
+                shares={p: 100*masses[p]/denominator for p in valids},
                 recall_sample={g: 100*v for g, v in sample.items()}, recall_official={g: 100*v for g, v in official.items()},
-                factors=factors, transfers=matrix, imputation_groups=dict(imputation_groups))
+                factors=factors, transfers=matrix, imputation_groups=dict(imputation_groups),
+                recall_after={g:100*v/after_total for g,v in after_rec.items()},
+                classification=dict(classification), recall_ledger={p:dict(gs) for p,gs in recall_ledger.items()})
 
 
 def main():
