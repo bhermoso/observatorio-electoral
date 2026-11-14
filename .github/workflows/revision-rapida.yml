@@ -39,6 +39,7 @@ jobs:
           node scripts/auditar-encuestas-resultados.mjs
           node scripts/auditar-misma-muestra.mjs
           node scripts/auditar-estructura-simple.mjs
+          node scripts/auditar-actualizacion-14nov.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:

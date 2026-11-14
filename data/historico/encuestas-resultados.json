@@ -26348,7 +26348,7 @@
     "sha256": {
       "data/historico/multieleccion.json": "0a73005e782d389275a4b10b612f87b0ff730ecb4273b6807dfec0bb4e5e2a64",
       "data/election.json": "ffbd74fa60a80da433e6838c8cb33809b35dbc1cd73813a54e206c0b2db85d76",
-      "data/polls.json": "40f981d44548b5f624e268118e08919c71fa73c47ecc634e5f86ce1e539a1f56",
+      "data/polls.json": "cc3dd34d79350612aef11fdc5333228057399886a0120135bc43987023079655",
       "data/results.csv": "50f9db8b64d0a7c42c9f14ea855f1e6a645d55c060bb70ceffdedc9c5b58e458",
       "data/districts.csv": "948513aad7ae79df57477272a9c90bcc7c900f63ecdfaea728f1ec22fa47aad1",
       "modelo/motor/fuentes.py": "c167ae575151e22edee47cc5cddf9205beed937c9e3839b04ce1d04ffac7ab84",
