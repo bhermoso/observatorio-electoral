@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {journey,seatScenario} from '../viaje-sondeo-motor.mjs';
+import {journey,seatScenario,recipeComparison} from '../viaje-sondeo-motor.mjs';
 import {explainStep,accountHTML,diagnosticRows} from '../viaje-sondeo-explicaciones.mjs';
 const registry=JSON.parse(fs.readFileSync('data/microdatos/maquina/index.json'));
 const sources=registry.studies.map(s=>JSON.parse(fs.readFileSync(s.file)));
@@ -52,4 +52,19 @@ test('Frente Amplio y coaliciones territoriales permanecen separadas en el dato 
  assert.equal(d.meta.fourth,'FA');
  for(const p of ['FA','COMPROMIS','ARA_MES','UPC','UPN_PP'])assert.ok(Object.hasOwn(d.scenarios['00000'].shares,p));
  assert.equal(d.n,1500);assert.equal(d.scenarios['00000'].counts.PSOE,422);assert.equal(d.scenarios['00000'].counts.PP,300);assert.equal(d.scenarios['00000'].counts.VOX,281);
+});
+
+test('Los interruptores actualizan la receta completa aunque esté abierto un paso anterior',()=>{
+ const before={peso:true,simpatia:false,recuerdo:false,indecisos:false,participacion:false};
+ const after={...before,participacion:true,recuerdo:true};
+ for(const data of sources){
+  const a=journey(data,before),b=journey(data,after);
+  assert.equal(a[2].outcome,b[2].outcome,'El paso Peso no incorpora operaciones posteriores');
+  const live=recipeComparison(data,after,before);
+  assert.equal(live.before,a[6].outcome);assert.equal(live.after,b[6].outcome);
+  assert.ok(Object.values(live.delta).some(x=>Math.abs(x)>.001),'El resultado completo debe mostrar la nueva receta');
+  for(const p of Object.keys(live.delta))near(live.delta[p],b[6].outcome.shares[p]-a[6].outcome.shares[p]);
+  const unchanged=recipeComparison(data,after,after);
+  assert.ok(Object.values(unchanged.delta).every(x=>x===0));
+ }
 });

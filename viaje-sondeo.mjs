@@ -1,4 +1,4 @@
-import {journey,INGREDIENTS,scenarioKey,seatScenario} from './viaje-sondeo-motor.mjs';
+import {journey,INGREDIENTS,scenarioKey,seatScenario,recipeComparison} from './viaje-sondeo-motor.mjs';
 import {explainStep,accountHTML,diagnosticRows} from './viaje-sondeo-explicaciones.mjs';
 const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const f=(x,d=2)=>Number(x).toLocaleString('es-ES',{useGrouping:'always',minimumFractionDigits:d,maximumFractionDigits:d}),delta=x=>{const v=Math.abs(x)<.005?0:x;return (v>0?'+':'')+f(v)};
@@ -20,6 +20,8 @@ const descriptions=[
 ];
 let data,election,registry,stages,projected,loadToken=0,step=2,flags=Object.fromEntries(INGREDIENTS.map(k=>[k,true])),playing=null,awarding=null,seatCount=0,party='PSOE';
 const fourth=()=>data.meta.fourth;
+let comparisonFlags=Object.fromEntries(INGREDIENTS.map(k=>[k,false])),lastAction='Comparación inicial con IDV sobre voto válido',liveInitial=true;
+const projectionCache=new Map();
 const allParties=()=>Object.keys(data.scenarios['00000'].shares);
 const value=(o,p)=>p==='OTRAS'?Object.entries(o.shares).reduce((s,[k,v])=>s+(!['PP','PSOE','VOX',fourth(),'BLANCO'].includes(k)?v:0),0):o.shares[p]||0;
 const stop=()=>{clearInterval(playing);playing=null;$('play').textContent='▶ Reproducir'};
@@ -49,11 +51,36 @@ function redraw(){
  const max=Math.max(40,...keys.map(cv),...keys.map(pv))*1.05;
  $('chart').innerHTML=keys.map(p=>`<div class="bar-row"><strong>${labels[p]||p}</strong><div class="bar-track" style="--party:${colors[p]}"><span class="bar-before" style="width:${100*pv(p)/max}%"></span><span class="bar-now" data-width="${100*cv(p)/max}" style="width:0%"></span></div><span class="bar-number">${f(cv(p))} %</span><span class="delta">${prev&&step!==7?delta(cv(p)-pv(p))+' pp':'—'}</span></div>`).join('');
  requestAnimationFrame(()=>requestAnimationFrame(()=>document.querySelectorAll('[data-width]').forEach(el=>el.style.width=el.dataset.width+'%')));
- renderOperation();renderTables();
+ renderLiveResult();renderOperation();renderTables();
  $('territorial').hidden=step===0;
  if(step>0){projected=seatScenario(election,o,{fourth:fourth()});renderTerritory();}
  document.querySelectorAll('[data-preset]').forEach(b=>b.classList.toggle('chosen',b.dataset.preset===scenarioKey(flags)));
  const q=new URLSearchParams({sondeo:data.study,receta:scenarioKey(flags),paso:String(step)});history.replaceState(null,'','?'+q);
+}
+function recipeProjection(outcome){
+ const key=scenarioKey(outcome.flags);if(!projectionCache.has(key))projectionCache.set(key,seatScenario(election,outcome,{fourth:fourth()}));return projectionCache.get(key);
+}
+function renderLiveResult(){
+ const {before,after}=recipeComparison(data,flags,comparisonFlags),aSeats=recipeProjection(before),bSeats=recipeProjection(after);
+ const keys=['PSOE','PP','VOX',fourth(),'OTRAS','BLANCO'];
+ const group=p=>p===fourth()?'SUMAR':p==='OTRAS'?'OTROS':p;
+ const active=INGREDIENTS.filter(k=>flags[k]).length;
+ $('live-recipe-count').textContent=active+' de 5 operaciones';
+ $('live-before-label').textContent=liveInitial?'IDV':'Antes';
+ $('live-change').textContent=lastAction+'. Resultado de todas las operaciones marcadas.';
+ for(const p of keys){
+  let row=$('live-rows').querySelector('[data-live-party="'+p+'"]');
+  if(!row){row=document.createElement('div');row.className='live-row';row.dataset.liveParty=p;$('live-rows').append(row);}
+  const old=value(before,p),now=value(after,p),change=now-old;
+  const seat=p==='BLANCO'?null:bSeats.seats[group(p)],oldSeat=p==='BLANCO'?null:aSeats.seats[group(p)];
+  const changed=Math.abs(change)>=.0005||seat!==oldSeat;
+  row.style.setProperty('--party',colors[p]||colors.SUMAR);
+  row.classList.toggle('has-change',changed);
+  row.innerHTML=`<strong>${esc(labels[p]||p)}</strong><span class="live-old">${f(old)}</span><span class="live-current">${f(now)}<small>%</small></span><span class="live-delta">${delta(change)}</span><span class="live-seat">${seat===null?'—':seat}<small>${seat===null?'':(seat-oldSeat>0?'+':'')+(seat-oldSeat)}</small></span><div class="live-track"><i style="width:${Math.min(100,old*2)}%"></i><b style="width:${Math.min(100,old*2)}%"></b></div>`;
+  // La animación se reinicia incluso si se pulsa dos veces la misma receta.
+  row.classList.remove('value-updated');requestAnimationFrame(()=>{row.querySelector('.live-track b').style.width=Math.min(100,now*2)+'%';if(changed)row.classList.add('value-updated')});
+ }
+ $('live-basis').innerHTML=`<span>Base válida: <b>${f(before.denominator)} → ${f(after.denominator)}</b></span><span>Casos con asignación: <b>${f(before.contributors,0)} → ${f(after.contributors,0)}</b></span>`;
 }
 function renderOperation(){
  const r=explainStep(data,stages,step,party);
@@ -91,10 +118,14 @@ function renderDistrict(){
  $('quotients').innerHTML=table(['Candidatura',...Array.from({length:d.seats},(_,i)=>'÷ '+(i+1))],eligible.map(id=>[esc(label(id)),...Array.from({length:d.seats},(_,i)=>{const win=awarded.find(t=>t.party===id&&t.divisor===i+1),next=d.trace[seatCount];return `<span class="${win?'won':''} ${next?.party===id&&next.divisor===i+1?'next-seat':''}" style="display:block;padding:4px">${f(d.votes[id]/(i+1),2)}${win?' · #'+win.seat:''}</span>`;})]),d.singleMember?'Circunscripción uninominal: se compara el voto sin división.':'Cocientes de candidaturas que superan el umbral; resaltados los escaños ya adjudicados.');
  $('district-votes').innerHTML=table(['Candidatura','Votos 2023','Votos escenario','% válido','Supera umbral','Escaños'],Object.keys(d.votes).sort((a,b)=>d.votes[b]-d.votes[a]).map(id=>[esc(label(id)),f(d.originalVotes[id],0),f(d.votes[id],0),f(100*d.votes[id]/d.valid,3),d.eligible.includes(id)?'Sí':'No',awarded.filter(x=>x.party===id).length]),`Blanco mantenido: ${f(d.blank,0)}. Votos válidos = candidaturas + blanco. Los votos de escenario se redondean a enteros antes de repartir.`);
 }
+function keepWorkshopVisible(){
+ const board=$('maquina'),r=board.getBoundingClientRect();
+ if(r.top<0||r.bottom>innerHeight-8)board.scrollIntoView({block:'start',behavior:'instant'});
+}
 function bind(){
  $('ingredients').innerHTML=INGREDIENTS.map((id,i)=>`<label class="ingredient"><span class="number">${String(i+1).padStart(2,'0')}</span><input type="checkbox" data-ingredient="${id}" ${flags[id]?'checked':''}><strong>${ingredients[i][0]}</strong><small>${ingredients[i][1]}</small></label>`).join('');
- $('ingredients').onchange=e=>{if(!e.target.dataset.ingredient)return;stop();flags[e.target.dataset.ingredient]=e.target.checked;redraw()};
- document.querySelectorAll('[data-preset]').forEach(b=>b.onclick=()=>{stop();INGREDIENTS.forEach((k,i)=>flags[k]=b.dataset.preset[i]==='1');document.querySelectorAll('[data-ingredient]').forEach(i=>i.checked=flags[i.dataset.ingredient]);redraw()});
+ $('ingredients').onchange=e=>{if(!e.target.dataset.ingredient)return;stop();comparisonFlags={...flags};liveInitial=false;lastAction=(e.target.checked?'Activado: ':'Desactivado: ')+ingredients[INGREDIENTS.indexOf(e.target.dataset.ingredient)][0];flags[e.target.dataset.ingredient]=e.target.checked;redraw();keepWorkshopVisible()};
+ document.querySelectorAll('[data-preset]').forEach(b=>b.onclick=()=>{stop();comparisonFlags={...flags};liveInitial=false;lastAction='Aplicada: '+b.textContent;INGREDIENTS.forEach((k,i)=>flags[k]=b.dataset.preset[i]==='1');document.querySelectorAll('[data-ingredient]').forEach(i=>i.checked=flags[i.dataset.ingredient]);redraw();keepWorkshopVisible()});
  $('steps').onclick=e=>{const b=e.target.closest('[data-step]');if(b){stop();step=Number(b.dataset.step);redraw()}};
  $('timeline').oninput=()=>{stop();step=Number($('timeline').value);redraw()};
  $('back').onclick=()=>{stop();step=Math.max(0,step-1);redraw()};$('next').onclick=()=>{stop();step=Math.min(8,step+1);redraw()};
@@ -112,7 +143,7 @@ async function loadJSON(path){if(!cache.has(path))cache.set(path,fetch(path).the
 async function selectStudy(id){
  stop();stopSeats();const token=++loadToken,meta=registry.studies.find(x=>x.id===id);if(!meta)throw Error('Sondeo no incorporado');
  $('status').textContent='Cargando '+meta.house+' · '+meta.title+'…';$('app').setAttribute('aria-busy','true');
- try{const next=await loadJSON(meta.file);if(token!==loadToken)return;data=next;projected=null;
+ try{const next=await loadJSON(meta.file);if(token!==loadToken)return;data=next;projected=null;projectionCache.clear();comparisonFlags=Object.fromEntries(INGREDIENTS.map(k=>[k,false]));liveInitial=true;lastAction='Comparación inicial con IDV sobre voto válido';
   Object.assign(labels,next.labels||{}, {PP:'PP',PSOE:'PSOE',VOX:'Vox',FA:'Frente Amplio',SUMAR:'Sumar',BLANCO:'Blanco',OTROS:'Otros',NS:'No sabe',NC:'No contesta',NO_VOTARIA:'No votaría',NULO:'Nulo'});
   if(!allParties().includes(party))party='PSOE';
   $('study-select').value=id;$('source-house').textContent=meta.house+' · '+meta.title;$('source-n').innerHTML=f(meta.n,0)+' <small>entrevistas</small>';

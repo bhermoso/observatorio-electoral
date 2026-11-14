@@ -1,6 +1,12 @@
 import {projection} from './cocina-escanos.mjs';
 export const INGREDIENTS=['peso','simpatia','recuerdo','indecisos','participacion'];
 export function scenarioKey(flags){return INGREDIENTS.map(k=>flags[k]?'1':'0').join('')}
+// El resultado de una receta completa es independiente del paso didáctico abierto.
+export function recipeComparison(data,flags,beforeFlags){
+ const after=data.scenarios[scenarioKey(flags)],before=data.scenarios[scenarioKey(beforeFlags)];
+ if(!after||!before)throw Error('Combinación no disponible');
+ return {before,after,delta:Object.fromEntries(Object.keys(after.shares).map(p=>[p,after.shares[p]-before.shares[p]]))};
+}
 export function journey(data,flags){
  if(!data.study||!data.scenarios)throw Error('Fuente del recorrido no disponible');
  const partial=Object.fromEntries(INGREDIENTS.map(k=>[k,false]));
