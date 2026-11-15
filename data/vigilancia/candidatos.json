@@ -1,10 +1,10 @@
 {
   "schema": 2,
-  "checked_at": "2026-11-15T19:27:47.659351+00:00",
-  "last_attempt_at": "2026-11-15T19:27:47.659351+00:00",
+  "checked_at": "2026-11-15T23:31:15.768167+00:00",
+  "last_attempt_at": "2026-11-15T23:31:15.768167+00:00",
   "status": "partial",
   "searches": 15,
-  "sources_ok": 14,
+  "sources_ok": 13,
   "sources": [
     {
       "id": "elpais",
@@ -22,7 +22,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 1
+      "count": 0
     },
     {
       "id": "elespanol",
@@ -38,9 +38,10 @@
       "name": "GAD3 · publicaciones",
       "url": "https://www.gad3.com/",
       "format": "html",
-      "ok": true,
+      "ok": false,
       "attempts": 1,
-      "count": 9
+      "count": 0,
+      "error": "ValueError: HTTP 202"
     },
     {
       "id": "cis",
@@ -113,7 +114,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 2
+      "count": 4
     },
     {
       "id": "swdemoscopia",
@@ -145,6 +146,39 @@
   ],
   "results": [
     {
+      "title": "Encuesta Alemania INSA (14 nov): la AfD aventaja en nueve puntos a la CDU/CSU",
+      "url": "https://electomania.es/encuesta-alemania-insa-14-nov-la-afd-aventaja-en-nueve-puntos-a-la-cdu-csu/",
+      "discovery_url": "https://electomania.es/encuesta-alemania-insa-14-nov-la-afd-aventaja-en-nueve-puntos-a-la-cdu-csu/",
+      "published": "2026-11-15T20:40:29+00:00",
+      "publication_raw": "2026-11-15T20:40:29+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Encuesta Sociométrica (15 nov): “el PSOE recorta medio punto al PP pero la derecha se mantiene en 198”",
+      "url": "https://electomania.es/encuesta-sociometrica-15-nov-el-psoe-recorta-medio-punto-al-pp-pero-la-derecha-se-mantiene-en-198/",
+      "discovery_url": "https://electomania.es/encuesta-sociometrica-15-nov-el-psoe-recorta-medio-punto-al-pp-pero-la-derecha-se-mantiene-en-198/",
+      "published": "2026-11-15T20:01:24+00:00",
+      "publication_raw": "2026-11-15T20:01:24+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Tracking SW Demoscopia (15 nov): “La suma de PP y Vox, por debajo de la absoluta”",
+      "url": "https://electomania.es/tracking-sw-demoscopia-15-nov-la-suma-de-pp-y-vox-por-debajo-de-la-absoluta/",
+      "discovery_url": "https://electomania.es/tracking-sw-demoscopia-15-nov-la-suma-de-pp-y-vox-por-debajo-de-la-absoluta/",
+      "published": "2026-11-15T19:35:00+00:00",
+      "publication_raw": "2026-11-15T19:35:00+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
       "title": "Elecciones generales 29-N, en directo | El PSOE recorta medio punto al PP pero la derecha mantiene la mayoría absoluta, según el sondeo de SocioMétrica",
       "url": "https://www.elespanol.com/espana/20261115/elecciones-generales-directo-ultima-hora-campana-electoral-pedro-sanchez-encuestas-sondeos-psoe-pp-vox-voto-correo-espana-partidos-2026/1003744458767_10.html",
       "discovery_url": "https://www.elespanol.com/espana/20261115/elecciones-generales-directo-ultima-hora-campana-electoral-pedro-sanchez-encuestas-sondeos-psoe-pp-vox-voto-correo-espana-partidos-2026/1003744458767_10.html",
@@ -156,7 +190,7 @@
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Sondeo a dos semanas del 29-N: el PSOE recorta medio punto al PP pero la derecha se mantiene en 198 escaños frente a 148 de Sánchez y todos sus socios",
+      "title": "Sondeo a dos semanas del 29-N: el PSOE recorta medio punto al PP pero la derecha se mantiene en 199 escaños frente a 148 de Sánchez y todos sus socios",
       "url": "https://www.elespanol.com/espana/politica/20261115/sondeo-semanas-psoe-recorta-medio-punto-pp-derecha-mantiene-escanos-frente-sanchez-socios/1003744459132_0.html",
       "discovery_url": "https://www.elespanol.com/espana/politica/20261115/sondeo-semanas-psoe-recorta-medio-punto-pp-derecha-mantiene-escanos-frente-sanchez-socios/1003744459132_0.html",
       "published": "2026-11-15T18:12:50+00:00",
@@ -178,28 +212,6 @@
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Taiwán vota el 28N: seis grandes ciudades, China de fondo y 2028 en el horizonte",
-      "url": "https://electomania.es/elecciones-locales-taiwan-2026-sondeos-mapas-taipei-china/",
-      "discovery_url": "https://electomania.es/elecciones-locales-taiwan-2026-sondeos-mapas-taipei-china/",
-      "published": "2026-11-15T11:55:00+00:00",
-      "publication_raw": "2026-11-15T11:55:00+00:00",
-      "topic": "Electomanía · publicaciones",
-      "source_id": "electomania",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Un Pedro Sánchez muy confiado pese a las encuestas en contra pide a Feijóo que \"respete el resultado de las elecciones\"",
-      "url": "https://www.elmundo.es/elecciones/elecciones-generales/2026/11/14/6af8563be85ece10768b4595.html",
-      "discovery_url": "https://www.elmundo.es/elecciones/elecciones-generales/2026/11/14/6af8563be85ece10768b4595.html",
-      "published": "2026-11-14T13:59:49+00:00",
-      "publication_raw": "2026-11-14T13:59:49+00:00",
-      "topic": "EL MUNDO · España",
-      "source_id": "elmundo",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
       "title": "Sánchez busca una movilización histórica de la izquierda contra el PP y Vox que vuelva a echar por tierra los sondeos",
       "url": "https://www.eldiario.es/politica/sanchez-busca-movilizacion-historica-izquierda-pp-vox-vuelva-echar-tierra-sondeos_1_13662791.html",
       "discovery_url": "https://www.eldiario.es/politica/sanchez-busca-movilizacion-historica-izquierda-pp-vox-vuelva-echar-tierra-sondeos_1_13662791.html",
@@ -207,50 +219,6 @@
       "publication_raw": "2026-11-13T21:53:28+00:00",
       "topic": "elDiario.es · política",
       "source_id": "eldiario",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Archivo enlazado por el productor",
-      "url": "https://www.gad3.com/barometro-abc-estimacion-de-voto-por-provincias-noviembre-2026/",
-      "discovery_url": "https://www.gad3.com/barometro-abc-estimacion-de-voto-por-provincias-noviembre-2026/",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "GAD3 · publicaciones",
-      "source_id": "gad3",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Archivo enlazado por el productor",
-      "url": "https://www.gad3.com/barometro-abc-i-estimacion-de-voto-nacional-noviembre-2026/",
-      "discovery_url": "https://www.gad3.com/barometro-abc-i-estimacion-de-voto-nacional-noviembre-2026/",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "GAD3 · publicaciones",
-      "source_id": "gad3",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Archivo enlazado por el productor",
-      "url": "https://www.gad3.com/estudio-cgate-iii-barometro-vivienda-y-dignidad/",
-      "discovery_url": "https://www.gad3.com/estudio-cgate-iii-barometro-vivienda-y-dignidad/",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "GAD3 · publicaciones",
-      "source_id": "gad3",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Archivo enlazado por el productor",
-      "url": "https://www.gad3.com/narciso-michavila-en-la-presentacion-del-barometro-del-empresario-2026-en-denia/",
-      "discovery_url": "https://www.gad3.com/narciso-michavila-en-la-presentacion-del-barometro-del-empresario-2026-en-denia/",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "GAD3 · publicaciones",
-      "source_id": "gad3",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
@@ -465,6 +433,10 @@
     }
   ],
   "errors": [
+    {
+      "source": "GAD3 · publicaciones",
+      "detail": "ValueError: HTTP 202"
+    },
     {
       "source": "La Razón · España",
       "detail": "HTTP 503"
