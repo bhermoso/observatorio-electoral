@@ -1,11 +1,12 @@
 {
  "esquema": 1,
- "generado": "2026-11-14T23:23:38.218574+00:00",
- "ejecucion": "https://github.com/bhermoso/observatorio-electoral/actions/runs/43652990001",
- "ultima_busqueda": "2026-11-14T23:23:27.387315+00:00",
- "candidatos_detectados": 27,
+ "generado": "2026-11-15T08:28:07.206704+00:00",
+ "ejecucion": "https://github.com/bhermoso/observatorio-electoral/actions/runs/43694600859",
+ "ultima_busqueda": "2026-11-15T08:27:50.481482+00:00",
+ "candidatos_detectados": 23,
  "naturaleza_candidatos": "Publicaciones de medios y productores consultados directamente. Candidatos sin cifras verificadas.",
  "errores_busqueda": [
+  "GAD3 · publicaciones: ValueError: HTTP 202",
   "La Razón · España: HTTP 503"
  ],
  "bandeja_validadas": 5,
