@@ -110,3 +110,8 @@ Se incorpora a `data/references.json` la [reestimación de Ateneo del Dato del C
 ## Revisión del 14 de noviembre de 2026
 
 El archivo alcanza 29 encuestas de 15 institutos: se añaden el tracking día 1 de 40dB. (13 de noviembre) y las dos entregas de Sigma Dos del 12 y 13. Se contrastan originales y fichas, se conservan las candidaturas territoriales desglosadas y se identifican los campos acumulados. Se añaden tres promedios externos fechados, se cuantifica la referencia de Ateneo sobre CIS 3584 y se conserva la estimación de NC Report con ficha incompleta fuera del archivo de encuestas. Detalles y discrepancias primario/secundario en [la revisión documentada](revision-publicaciones-2026-11-14.md).
+
+
+## Revisión del 16 de noviembre de 2026
+
+Se incorporan los días 2 y 3 del tracking de 40dB., publicados el 14 y el 15: 1.500 entrevistas hasta el 13 y 2.000 hasta el 14, ambas desde el 10 de noviembre, CAWI. El archivo alcanza 31 fichas de 15 institutos. Son oleadas acumuladas, no muestras independientes: la selección operativa excluye las anteriores solapadas. Se mantienen categorías territoriales, puntos, ceros y horquillas del original, sin inferir escaños provinciales. Fuentes, huellas y localizadores en `data/sources/tracking-40db-14-15nov.json`. La discrepancia del margen de error del día 2 entre noticia y PDF queda anotada; prevalece la ficha técnica.

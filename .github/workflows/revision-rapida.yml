@@ -30,6 +30,23 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx playwright install --with-deps chromium
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-ciencia.txt
+      - name: Sincronizar el pronóstico de prueba si cambia el archivo
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+          OMP_NUM_THREADS: '1'
+        run: |
+          python - <<'PY'
+          import hashlib, json, subprocess, sys
+          from pathlib import Path
+          digest = hashlib.sha256(Path('data/polls.json').read_bytes()).hexdigest()
+          forecast = json.loads(Path('modelo/salida/pronostico.json').read_text())
+          if forecast.get('actualizacion', {}).get('archivo_sha256') != digest:
+              subprocess.run([sys.executable, '-m', 'modelo', '--n', '1500'], check=True)
+          PY
       - run: npm run build
       - name: Navegación, responsive, teclado y accesibilidad
         run: |

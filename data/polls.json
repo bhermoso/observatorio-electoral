@@ -1896,5 +1896,219 @@
     "sourcePages": "Texto del original: estimación nacional y horquillas; apartado final FICHA TÉCNICA (muestra, modo, selección, universo y campo).",
     "notes": "Tracking acumulado: base de 3.120 entrevistas y 750 por jornada; esta entrega declara 4,620 entrevistas del 3 al 12 de noviembre. Se conservan ambas entregas en el archivo, pero la posterior sustituye a la anterior con campo solapado en el pronóstico. No se suman sus muestras como independientes. La última jornada de campo es el 12 de noviembre: el estudio no es íntegramente posterior a la huelga. La descripción periodística de un efecto nulo no se incorpora como conclusión causal.",
     "seatNotes": "Solo puntos o rangos expresos. No se inventan porcentajes regionales a partir de escaños. El texto no da una cifra numérica de escaños de Coalición Canaria: queda ausente, no cero. Los extremos de las horquillas por partido no se suman como un único Congreso."
+  },
+  {
+    "kind": "poll-estimate",
+    "coverage": "partial",
+    "verified": "2026-11-16",
+    "scope": "España, excepto Ceuta y Melilla",
+    "universe": "Población general residente en España, excepto Ceuta y Melilla, de 18 años o más con derecho a voto",
+    "denominator": "Estimación de voto sobre voto válido",
+    "verification": "PDF original y ficha técnica cotejados por extracción y revisión visual el 16 de noviembre de 2026.",
+    "id": "40db-2026-11-14-tracking-dia02",
+    "institute": "40dB.",
+    "publisher": "EL PAÍS / Cadena SER",
+    "title": "Tracking 29-N · día 2",
+    "fieldStart": "2026-11-10",
+    "fieldEnd": "2026-11-13",
+    "published": "2026-11-14",
+    "sample": 1500,
+    "mode": "CAWI",
+    "source": "https://elpais.com/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia02.pdf",
+    "technical": "https://elpais.com/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia02.pdf",
+    "publicationSource": "https://elpais.com/espana/elecciones-generales/2026-11-14/la-diferencia-entre-pp-y-psoe-se-estrecha-segun-el-tracking-diario-de-40db.html",
+    "scenario": "Frente Amplio nacional separado de Compromís: Front Valencià, Ara Més y UPC; Podemos fuera de las coaliciones territoriales; UPN-PP separado en escaños.",
+    "values": {
+      "PP": 31.1,
+      "PSOE": 29.8,
+      "VOX": 18.5,
+      "Frente Amplio (sin candidaturas territoriales)": 3.5,
+      "SALF": 1.6,
+      "Podemos (fuera de candidaturas territoriales)": 1.3,
+      "Compromís: Front Valencià": 1.2,
+      "Ara Més-Front Ampli": 0.2,
+      "UPC": 0.3,
+      "Otro + Blanco": 12.5
+    },
+    "sourceLabels": {
+      "Frente Amplio (sin candidaturas territoriales)": "Frente Amplio",
+      "Podemos (fuera de candidaturas territoriales)": "Podemos"
+    },
+    "seats": {
+      "PP": {
+        "point": 126,
+        "min": 121,
+        "max": 132
+      },
+      "PSOE": {
+        "point": 119,
+        "min": 116,
+        "max": 123
+      },
+      "VOX": {
+        "point": 63,
+        "min": 61,
+        "max": 67
+      },
+      "Frente Amplio (sin candidaturas territoriales)": {
+        "point": 5,
+        "min": 4,
+        "max": 6
+      },
+      "Podemos (fuera de candidaturas territoriales)": {
+        "point": 1,
+        "min": 0,
+        "max": 1
+      },
+      "Compromís: Front Valencià": {
+        "point": 3,
+        "min": 3,
+        "max": 3
+      },
+      "Ara Més-Front Ampli": {
+        "point": 1,
+        "min": 0,
+        "max": 1
+      },
+      "UPC": {
+        "point": 1,
+        "min": 0,
+        "max": 1
+      },
+      "ERC": {
+        "point": 10
+      },
+      "EH Bildu": {
+        "point": 7
+      },
+      "Junts": {
+        "point": 3
+      },
+      "PNV": {
+        "point": 3
+      },
+      "Adelante Andalucía": {
+        "point": 3
+      },
+      "BNG": {
+        "point": 2
+      },
+      "UPN-PP (Navarra)": {
+        "point": 2
+      },
+      "CC": {
+        "point": 1
+      }
+    },
+    "sourcePages": "Informe original: portada (fecha); página 6 (voto y nota de coaliciones); página 8 (puntos y horquillas de escaños); página 24 (ficha técnica).",
+    "notes": "Oleada acumulada y solapada con las entregas anteriores: no son muestras independientes ni se suman sus entrevistas. Se conservan candidaturas territoriales separadas y solo las equivalencias ya admitidas por el motor. Campo según página 24; los rótulos abreviados de la serie de página 7 no sustituyen la ficha. No permite atribuir efectos causales al 11N. Margen declarado en PDF: ±2,5 % (95 %); la noticia indica ±2,2 %, discrepancia conservada.",
+    "seatNotes": "Puntos y horquillas de página 8. Los puntos desglosados suman 350; Otros (31; 30–33) y el grupo territorial (5; 3–5) no se duplican con sus componentes. El cero de Podemos fuera de coaliciones es explícito en el día 3; no se extiende a sus candidatos en coaliciones."
+  },
+  {
+    "kind": "poll-estimate",
+    "coverage": "partial",
+    "verified": "2026-11-16",
+    "scope": "España, excepto Ceuta y Melilla",
+    "universe": "Población general residente en España, excepto Ceuta y Melilla, de 18 años o más con derecho a voto",
+    "denominator": "Estimación de voto sobre voto válido",
+    "verification": "PDF original y ficha técnica cotejados por extracción y revisión visual el 16 de noviembre de 2026.",
+    "id": "40db-2026-11-15-tracking-dia03",
+    "institute": "40dB.",
+    "publisher": "EL PAÍS / Cadena SER",
+    "title": "Tracking 29-N · día 3",
+    "fieldStart": "2026-11-10",
+    "fieldEnd": "2026-11-14",
+    "published": "2026-11-15",
+    "sample": 2000,
+    "mode": "CAWI",
+    "source": "https://ep00.epimg.net/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia03.pdf",
+    "technical": "https://ep00.epimg.net/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia03.pdf",
+    "publicationSource": "https://elpais.com/espana/elecciones-generales/2026-11-15/el-psoe-gana-por-la-izquierda-lo-que-pierde-por-la-derecha-segun-el-tercer-tracking-de-la-campana.html",
+    "scenario": "Frente Amplio nacional separado de Compromís: Front Valencià, Ara Més y UPC; Podemos fuera de las coaliciones territoriales; UPN-PP separado en escaños.",
+    "values": {
+      "PP": 31.4,
+      "PSOE": 29.9,
+      "VOX": 18.3,
+      "Frente Amplio (sin candidaturas territoriales)": 3.7,
+      "SALF": 1.8,
+      "Podemos (fuera de candidaturas territoriales)": 1.3,
+      "Compromís: Front Valencià": 1.2,
+      "Ara Més-Front Ampli": 0.2,
+      "UPC": 0.3,
+      "Otro + Blanco": 11.9
+    },
+    "sourceLabels": {
+      "Frente Amplio (sin candidaturas territoriales)": "Frente Amplio",
+      "Podemos (fuera de candidaturas territoriales)": "Podemos"
+    },
+    "seats": {
+      "PP": {
+        "point": 128,
+        "min": 123,
+        "max": 134
+      },
+      "PSOE": {
+        "point": 119,
+        "min": 117,
+        "max": 123
+      },
+      "VOX": {
+        "point": 62,
+        "min": 59,
+        "max": 65
+      },
+      "Frente Amplio (sin candidaturas territoriales)": {
+        "point": 5,
+        "min": 5,
+        "max": 6
+      },
+      "Podemos (fuera de candidaturas territoriales)": {
+        "point": 0,
+        "min": 0,
+        "max": 1
+      },
+      "Compromís: Front Valencià": {
+        "point": 3,
+        "min": 3,
+        "max": 3
+      },
+      "Ara Més-Front Ampli": {
+        "point": 1,
+        "min": 0,
+        "max": 1
+      },
+      "UPC": {
+        "point": 1,
+        "min": 0,
+        "max": 1
+      },
+      "ERC": {
+        "point": 10
+      },
+      "EH Bildu": {
+        "point": 7
+      },
+      "Junts": {
+        "point": 3
+      },
+      "PNV": {
+        "point": 3
+      },
+      "Adelante Andalucía": {
+        "point": 3
+      },
+      "BNG": {
+        "point": 2
+      },
+      "UPN-PP (Navarra)": {
+        "point": 2
+      },
+      "CC": {
+        "point": 1
+      }
+    },
+    "sourcePages": "Informe original: portada (fecha); página 6 (voto y nota de coaliciones); página 8 (puntos y horquillas de escaños); página 24 (ficha técnica).",
+    "notes": "Oleada acumulada y solapada con las entregas anteriores: no son muestras independientes ni se suman sus entrevistas. Se conservan candidaturas territoriales separadas y solo las equivalencias ya admitidas por el motor. Campo según página 24; los rótulos abreviados de la serie de página 7 no sustituyen la ficha. No permite atribuir efectos causales al 11N. Margen declarado en PDF: ±2,2 % (95 %).",
+    "seatNotes": "Puntos y horquillas de página 8. Los puntos desglosados suman 350; Otros (31; 30–33) y el grupo territorial (5; 3–5) no se duplican con sus componentes. El cero de Podemos fuera de coaliciones es explícito en el día 3; no se extiende a sus candidatos en coaliciones."
   }
 ]
