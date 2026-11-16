@@ -8,6 +8,9 @@ try{for(const width of [390,1440]){
  const context=await browser.newContext({viewport:{width,height:1000},ignoreHTTPSErrors:true}),page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(base+'#encuestas',{waitUntil:'domcontentloaded'});await page.waitForSelector('#poll-table [data-poll]');await page.fill('#poll-search','40db-2026-11-13-tracking-dia01');await page.locator('#poll-table [data-poll]').click();
  assert.match(await page.locator('#poll-detail').innerText(),/122–135/);assert.match(await page.locator('#poll-detail').innerText(),/3,5 %/);assert.match(await page.locator('#poll-detail').innerText(),/territorial/);await page.keyboard.press('Escape');
+ for(const [id,range,n] of [['40db-2026-11-14-tracking-dia02','121–132','1.500'],['40db-2026-11-15-tracking-dia03','123–134','2.000']]){
+  await page.fill('#poll-search',id);await page.locator('#poll-table [data-poll]').click();const detail=await page.locator('#poll-detail').innerText();assert.ok(detail.includes(range));assert.ok(detail.includes(n));assert.match(detail,/solapada/);await page.keyboard.press('Escape');
+ }
  await page.click('#poll-reset');await page.fill('#poll-search','sigma-dos-2026-11-13-tracking');await page.locator('#poll-table [data-poll]').click();assert.match(await page.locator('#poll-detail').innerText(),/4.620/);assert.match(await page.locator('#poll-detail').innerText(),/104–109/);await page.keyboard.press('Escape');
  await page.getByRole('tab',{name:'Promedios y fuentes',exact:true}).click();await page.waitForSelector('#analisis-externos');assert.match(await page.locator('#analisis-externos h2').innerText(),/Promedios y otras estimaciones/);
  const llaneras=page.locator('#analisis-externos article').filter({has:page.getByRole('heading',{name:'Promedio de EL PAÍS · Kiko Llaneras · 14 noviembre',exact:true})});await llaneras.locator('summary').click();assert.match(await llaneras.locator('table').innerText(),/31,1 %/);
