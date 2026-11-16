@@ -1,7 +1,7 @@
 {
   "schema": 2,
-  "checked_at": "2026-11-16T08:36:05.372017+00:00",
-  "last_attempt_at": "2026-11-16T08:36:05.372017+00:00",
+  "checked_at": "2026-11-16T23:02:08.421538+00:00",
+  "last_attempt_at": "2026-11-16T23:02:08.421538+00:00",
   "status": "partial",
   "searches": 15,
   "sources_ok": 14,
@@ -113,7 +113,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 7
+      "count": 3
     },
     {
       "id": "swdemoscopia",
@@ -145,90 +145,57 @@
   ],
   "results": [
     {
-      "title": "Elecciones generales 29-N, en directo | Encuestas y sondeos, última hora de la campaña del PP, PSOE y Vox",
+      "title": "Encuesta Reino Unido (Deltapoll 16 nov): el Labour lidera y Reform UK es segundo",
+      "url": "https://electomania.es/encuesta-reino-unido-deltapoll-16-nov/",
+      "discovery_url": "https://electomania.es/encuesta-reino-unido-deltapoll-16-nov/",
+      "published": "2026-11-16T20:32:45+00:00",
+      "publication_raw": "2026-11-16T20:32:45+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Tracking SW Demoscopia (16 nov): “PP y Vox tendrían que incorporar a Junts para conseguir la mayoría”",
+      "url": "https://electomania.es/tracking-sw-demoscopia-16-nov-pp-y-vox-tendrian-que-incorporar-a-junts-para-conseguir-la-mayoria/",
+      "discovery_url": "https://electomania.es/tracking-sw-demoscopia-16-nov-pp-y-vox-tendrian-que-incorporar-a-junts-para-conseguir-la-mayoria/",
+      "published": "2026-11-16T19:00:00+00:00",
+      "publication_raw": "2026-11-16T19:00:00+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Encuesta Dinamarca (Voxmeter 16 nov): los socialdemócratas lideran y Dansk Folkeparti es segundo",
+      "url": "https://electomania.es/encuesta-dinamarca-voxmeter-16-nov/",
+      "discovery_url": "https://electomania.es/encuesta-dinamarca-voxmeter-16-nov/",
+      "published": "2026-11-16T17:05:27+00:00",
+      "publication_raw": "2026-11-16T17:05:27+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Elecciones generales 29-N, en directo | Última hora de la entrevista a Pedro Sánchez, encuestas y la campaña electoral de PP, PSOE y Vox",
       "url": "https://www.elespanol.com/espana/20261116/elecciones-generales-directo-encuestas-sondeos-ultima-hora-campana-pp-psoe-vox/1003744459294_10.html",
       "discovery_url": "https://www.elespanol.com/espana/20261116/elecciones-generales-directo-encuestas-sondeos-ultima-hora-campana-pp-psoe-vox/1003744459294_10.html",
-      "published": "2026-11-16T06:11:22+00:00",
-      "publication_raw": "2026-11-16T06:11:22+00:00",
+      "published": "2026-11-16T14:39:00+00:00",
+      "publication_raw": "2026-11-16T14:39:00+00:00",
       "topic": "EL ESPAÑOL · España",
       "source_id": "elespanol",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Encuesta IMOP (16 nov): “La derecha consolida su ventaja y las izquierdas territoriales se comen a Frente Amplio y Podemos”",
-      "url": "https://electomania.es/encuesta-imop-16-nov-la-derecha-consolida-su-ventaja-y-las-izquierdas-territoriales-se-comen-a-frente-amplio-y-podemos/",
-      "discovery_url": "https://electomania.es/encuesta-imop-16-nov-la-derecha-consolida-su-ventaja-y-las-izquierdas-territoriales-se-comen-a-frente-amplio-y-podemos/",
-      "published": "2026-11-16T06:00:00+00:00",
-      "publication_raw": "2026-11-16T06:00:00+00:00",
-      "topic": "Electomanía · publicaciones",
-      "source_id": "electomania",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Encuesta NC Report (16 nov): “La mayoría de PP y Vox resiste en el arranque de campaña”",
-      "url": "https://electomania.es/encuesta-nc-report-16-nov-la-mayoria-de-pp-y-vox-resiste-en-el-arranque-de-campana/",
-      "discovery_url": "https://electomania.es/encuesta-nc-report-16-nov-la-mayoria-de-pp-y-vox-resiste-en-el-arranque-de-campana/",
-      "published": "2026-11-16T05:39:00+00:00",
-      "publication_raw": "2026-11-16T05:39:00+00:00",
-      "topic": "Electomanía · publicaciones",
-      "source_id": "electomania",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Encuesta El Debate (16 nov): “El PSOE activa a medio millón de votantes”",
-      "url": "https://electomania.es/encuesta-el-debate-16-nov-el-psoe-activa-a-medio-millon-de-votantes/",
-      "discovery_url": "https://electomania.es/encuesta-el-debate-16-nov-el-psoe-activa-a-medio-millon-de-votantes/",
-      "published": "2026-11-16T05:30:00+00:00",
-      "publication_raw": "2026-11-16T05:30:00+00:00",
-      "topic": "Electomanía · publicaciones",
-      "source_id": "electomania",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Encuesta Alemania INSA (14 nov): la AfD aventaja en nueve puntos a la CDU/CSU",
-      "url": "https://electomania.es/encuesta-alemania-insa-14-nov-la-afd-aventaja-en-nueve-puntos-a-la-cdu-csu/",
-      "discovery_url": "https://electomania.es/encuesta-alemania-insa-14-nov-la-afd-aventaja-en-nueve-puntos-a-la-cdu-csu/",
-      "published": "2026-11-15T20:40:29+00:00",
-      "publication_raw": "2026-11-15T20:40:29+00:00",
-      "topic": "Electomanía · publicaciones",
-      "source_id": "electomania",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Encuesta data10 (16 nov): “El PSOE se queda en 104 escaños frente a la holgada mayoría de PP y Vox”",
-      "url": "https://electomania.es/encuesta-data10-16-nov-el-psoe-se-queda-en-104-escanos-frente-a-la-holgada-mayoria-de-pp-y-vox/",
-      "discovery_url": "https://electomania.es/encuesta-data10-16-nov-el-psoe-se-queda-en-104-escanos-frente-a-la-holgada-mayoria-de-pp-y-vox/",
-      "published": "2026-11-15T20:02:00+00:00",
-      "publication_raw": "2026-11-15T20:02:00+00:00",
-      "topic": "Electomanía · publicaciones",
-      "source_id": "electomania",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Encuesta Sociométrica (15 nov): “el PSOE recorta medio punto al PP pero la derecha se mantiene en 198”",
-      "url": "https://electomania.es/encuesta-sociometrica-15-nov-el-psoe-recorta-medio-punto-al-pp-pero-la-derecha-se-mantiene-en-198/",
-      "discovery_url": "https://electomania.es/encuesta-sociometrica-15-nov-el-psoe-recorta-medio-punto-al-pp-pero-la-derecha-se-mantiene-en-198/",
-      "published": "2026-11-15T20:01:24+00:00",
-      "publication_raw": "2026-11-15T20:01:24+00:00",
-      "topic": "Electomanía · publicaciones",
-      "source_id": "electomania",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Tracking SW Demoscopia (15 nov): “La suma de PP y Vox, por debajo de la absoluta”",
-      "url": "https://electomania.es/tracking-sw-demoscopia-15-nov-la-suma-de-pp-y-vox-por-debajo-de-la-absoluta/",
-      "discovery_url": "https://electomania.es/tracking-sw-demoscopia-15-nov-la-suma-de-pp-y-vox-por-debajo-de-la-absoluta/",
-      "published": "2026-11-15T19:35:00+00:00",
-      "publication_raw": "2026-11-15T19:35:00+00:00",
-      "topic": "Electomanía · publicaciones",
-      "source_id": "electomania",
+      "title": "La media de encuestas: la izquierda crece y la derecha cae, pero mantiene la mayoría",
+      "url": "https://www.eldiario.es/politica/media-encuestas-izquierda-crece-derecha-cae-mantiene-mayoria_1_13666796.html",
+      "discovery_url": "https://www.eldiario.es/politica/media-encuestas-izquierda-crece-derecha-cae-mantiene-mayoria_1_13666796.html",
+      "published": "2026-11-16T10:44:24+00:00",
+      "publication_raw": "2026-11-16T10:44:24+00:00",
+      "topic": "elDiario.es · política",
+      "source_id": "eldiario",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
@@ -240,17 +207,6 @@
       "publication_raw": "2026-11-15T18:12:50+00:00",
       "topic": "EL ESPAÑOL · España",
       "source_id": "elespanol",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Sánchez busca una movilización histórica de la izquierda contra el PP y Vox que vuelva a echar por tierra los sondeos",
-      "url": "https://www.eldiario.es/politica/sanchez-busca-movilizacion-historica-izquierda-pp-vox-vuelva-echar-tierra-sondeos_1_13662791.html",
-      "discovery_url": "https://www.eldiario.es/politica/sanchez-busca-movilizacion-historica-izquierda-pp-vox-vuelva-echar-tierra-sondeos_1_13662791.html",
-      "published": "2026-11-13T21:53:28+00:00",
-      "publication_raw": "2026-11-13T21:53:28+00:00",
-      "topic": "elDiario.es · política",
-      "source_id": "eldiario",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
