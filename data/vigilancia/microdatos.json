@@ -1,8 +1,8 @@
 {
   "schema": 2,
-  "checked_at": "2026-11-15T23:31:18.167094+00:00",
-  "last_attempt_at": "2026-11-15T23:31:18.167094+00:00",
-  "status": "partial",
+  "checked_at": "2026-11-16T08:36:08.048398+00:00",
+  "last_attempt_at": "2026-11-16T08:36:08.048398+00:00",
+  "status": "complete",
   "candidates": [
     {
       "tipo": "enlace_a_archivo",
@@ -67,6 +67,14 @@
       "fuente": "sociometro-vasco",
       "pagina": "https://opendata.euskadi.eus/catalogo/-/informes-estudios/sociometro-89/",
       "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://www.gad3.com/wp-content/uploads/2026/05/GAD3-Microdatos-ABC-Andalucia-2026.xlsx",
+      "titulo": "pinchando aquí.",
+      "fuente": "gad3",
+      "pagina": "https://www.gad3.com/barometro-abc-estimacion-de-voto-autonomico-en-andalucia-mayo/",
+      "estado": "ya_catalogado"
     },
     {
       "tipo": "enlace_a_archivo",
@@ -221,12 +229,10 @@
       "estado": "nuevo_enlace_sin_auditar"
     }
   ],
-  "errors": [
-    "gad3: ValueError: HTTP 202"
-  ],
+  "errors": [],
   "summary": {
     "paginas_consultadas": 9,
-    "paginas_accesibles": 8,
+    "paginas_accesibles": 9,
     "ficheros_descargados": 0,
     "matrices_analizadas": 0
   }
