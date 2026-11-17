@@ -40,11 +40,11 @@
       "kind": "institute-reference",
       "name": "GESOP · Gabinet d’Estudis Socials i Opinió Pública",
       "publisher": "GESOP",
-      "source": "https://www.icps.cat/recerca/sondeigs-i-dades/sondeigs/sondeigs-d-opinio-catalunya",
-      "methodology": "https://gesop.net/",
+      "source": "https://gesop.net/es/2026/10/12/encuesta-elecciones-generales-29n-para-el-periodico/",
+      "methodology": "https://gesop-1937-epe-octubre.share.connect.posit.cloud/",
       "status": "pending-electoral-record",
-      "notes": "Empresa de investigación y trabajo de campo identificada en las fichas oficiales del ICPS. Se sigue por separado del ICPS: realizar las entrevistas no convierte ambos nombres en dos encuestas. El sondeo para El Periódico localizado queda pendiente de contrastar el informe original antes de incorporar sus cifras.",
-      "verified": "2026-10-29"
+      "notes": "Publicación institucional del 12 de octubre contrastada: estudio nacional para El Periódico, 1.000 entrevistas del 6 al 8 de octubre. El informe enlazado en Posit agotó el tiempo de acceso. Universo, modo y ficha completa siguen sin verificar; no se completa desde recopiladores ni se añade al archivo o al motor. La identidad de GESOP como empresa de campo de otros estudios del ICPS se mantiene separada de este estudio.",
+      "verified": "2026-11-17"
     },
     {
       "id": "icps",
