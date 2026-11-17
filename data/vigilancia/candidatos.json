@@ -1,7 +1,7 @@
 {
   "schema": 2,
-  "checked_at": "2026-11-16T23:02:08.421538+00:00",
-  "last_attempt_at": "2026-11-16T23:02:08.421538+00:00",
+  "checked_at": "2026-11-17T09:43:59.303600+00:00",
+  "last_attempt_at": "2026-11-17T09:43:59.303600+00:00",
   "status": "partial",
   "searches": 15,
   "sources_ok": 14,
@@ -13,7 +13,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 0
+      "count": 1
     },
     {
       "id": "elmundo",
@@ -31,7 +31,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 2
+      "count": 1
     },
     {
       "id": "gad3",
@@ -113,7 +113,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 3
+      "count": 4
     },
     {
       "id": "swdemoscopia",
@@ -144,6 +144,39 @@
     }
   ],
   "results": [
+    {
+      "title": "Elecciones generales 29-N, en directo | Encuestas, candidatos y última hora de la campaña electoral del PP, PSOE y Vox, y Pedro Sánchez",
+      "url": "https://www.elespanol.com/espana/20261117/elecciones-generales-directo-ultima-hora-campana-electoral-pp-psoe-vox-encuestas-pedro-sanchez/1003744460739_10.html",
+      "discovery_url": "https://www.elespanol.com/espana/20261117/elecciones-generales-directo-ultima-hora-campana-electoral-pp-psoe-vox-encuestas-pedro-sanchez/1003744460739_10.html",
+      "published": "2026-11-17T09:13:00+00:00",
+      "publication_raw": "2026-11-17T09:13:00+00:00",
+      "topic": "EL ESPAÑOL · España",
+      "source_id": "elespanol",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Encuesta Victoria, Australia (Roy Morgan 30 oct): la coalición liberal-nacional lidera y alcanzaría la mayoría absoluta",
+      "url": "https://electomania.es/encuesta-australia-victoria-roy-morgan-30-oct/",
+      "discovery_url": "https://electomania.es/encuesta-australia-victoria-roy-morgan-30-oct/",
+      "published": "2026-11-17T08:50:47+00:00",
+      "publication_raw": "2026-11-17T08:50:47+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Primera cita electoral en la Comunidad Valenciana tras la riada que acabó con la vida de 234 personas: ¿habrá un efecto dana?",
+      "url": "https://elpais.com/espana/elecciones-generales/2026-11-17/primera-cita-electoral-en-la-comunidad-valenciana-tras-la-dana-las-encuestas-dan-una-amplia-mayoria-a-la-derecha.html",
+      "discovery_url": "https://elpais.com/espana/elecciones-generales/2026-11-17/primera-cita-electoral-en-la-comunidad-valenciana-tras-la-dana-las-encuestas-dan-una-amplia-mayoria-a-la-derecha.html",
+      "published": "2026-11-17T04:30:01+00:00",
+      "publication_raw": "2026-11-17T04:30:01+00:00",
+      "topic": "EL PAÍS · España",
+      "source_id": "elpais",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
     {
       "title": "Encuesta Reino Unido (Deltapoll 16 nov): el Labour lidera y Reform UK es segundo",
       "url": "https://electomania.es/encuesta-reino-unido-deltapoll-16-nov/",
@@ -178,17 +211,6 @@
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Elecciones generales 29-N, en directo | Última hora de la entrevista a Pedro Sánchez, encuestas y la campaña electoral de PP, PSOE y Vox",
-      "url": "https://www.elespanol.com/espana/20261116/elecciones-generales-directo-encuestas-sondeos-ultima-hora-campana-pp-psoe-vox/1003744459294_10.html",
-      "discovery_url": "https://www.elespanol.com/espana/20261116/elecciones-generales-directo-encuestas-sondeos-ultima-hora-campana-pp-psoe-vox/1003744459294_10.html",
-      "published": "2026-11-16T14:39:00+00:00",
-      "publication_raw": "2026-11-16T14:39:00+00:00",
-      "topic": "EL ESPAÑOL · España",
-      "source_id": "elespanol",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
       "title": "La media de encuestas: la izquierda crece y la derecha cae, pero mantiene la mayoría",
       "url": "https://www.eldiario.es/politica/media-encuestas-izquierda-crece-derecha-cae-mantiene-mayoria_1_13666796.html",
       "discovery_url": "https://www.eldiario.es/politica/media-encuestas-izquierda-crece-derecha-cae-mantiene-mayoria_1_13666796.html",
@@ -196,17 +218,6 @@
       "publication_raw": "2026-11-16T10:44:24+00:00",
       "topic": "elDiario.es · política",
       "source_id": "eldiario",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Sondeo a dos semanas del 29-N: el PSOE recorta medio punto al PP pero la derecha se mantiene en 199 escaños frente a 148 de Sánchez y todos sus socios",
-      "url": "https://www.elespanol.com/espana/politica/20261115/sondeo-semanas-psoe-recorta-medio-punto-pp-derecha-mantiene-escanos-frente-sanchez-socios/1003744459132_0.html",
-      "discovery_url": "https://www.elespanol.com/espana/politica/20261115/sondeo-semanas-psoe-recorta-medio-punto-pp-derecha-mantiene-escanos-frente-sanchez-socios/1003744459132_0.html",
-      "published": "2026-11-15T18:12:50+00:00",
-      "publication_raw": "2026-11-15T18:12:50+00:00",
-      "topic": "EL ESPAÑOL · España",
-      "source_id": "elespanol",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
