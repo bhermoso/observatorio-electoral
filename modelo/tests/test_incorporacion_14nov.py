@@ -10,7 +10,7 @@ class Incorporacion14Nov(unittest.TestCase):
   self.assertTrue(any(e['estudio']=='sigma-dos-2026-11-12-tracking' and 'posterior' in e['motivo'] for e in rejected))
 
  def test_tracking_40db_posterior_sustituye_oleadas_solapadas(self):
-  accepted,rejected=F.seleccion_pronostico(F.todas())
+  accepted,rejected=F.seleccion_pronostico([e for e in F.todas() if e.get('publicacion') and e['publicacion']<=date(2026,11,15)])
   ids={e['estudio'] for e in accepted}
   self.assertIn('40db-2026-11-15-tracking-dia03',ids)
   for old in ['40db-2026-11-13-tracking-dia01','40db-2026-11-14-tracking-dia02']:
@@ -19,3 +19,10 @@ class Incorporacion14Nov(unittest.TestCase):
   e=next(e for e in accepted if e['estudio']=='40db-2026-11-15-tracking-dia03')
   self.assertEqual(set(e['voto']),{'PP','PSOE','VOX','SALF'})
   self.assertEqual(e['n'],2000)
+
+ def test_tracking_dia4_no_suma_muestras_anteriores(self):
+  accepted,rejected=F.seleccion_pronostico(F.todas())
+  rows=[e for e in accepted if e['estudio'].startswith('40db-2026-11-') and 'tracking' in e['estudio']]
+  self.assertEqual([e['estudio'] for e in rows],['40db-2026-11-16-tracking-dia04'])
+  self.assertEqual(rows[0]['n'],2500)
+  self.assertEqual(rows[0]['voto']['PSOE'],30.3)

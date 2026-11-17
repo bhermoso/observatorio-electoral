@@ -1,0 +1,16 @@
+{
+  "id": "40db-2026-11-16-tracking-dia04",
+  "source": "https://elpais.com/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia04.pdf",
+  "publicationSource": "https://elpais.com/espana/elecciones-generales/2026-11-16/el-psoe-remonta-pero-no-altera-la-mayoria-de-la-derecha.html",
+  "verified": "2026-11-16",
+  "sha256": "5613846c30c11ef074f9c46d20c066d20465ab9d7ac750c0c199138fe2c0e49a",
+  "pages": {
+    "vote": 6,
+    "seats": 8,
+    "technical": 24
+  },
+  "fieldStart": "2026-11-10",
+  "fieldEnd": "2026-11-15",
+  "sample": 2500,
+  "limitations": "Oleada acumulada y solapada con las entregas anteriores: no son muestras independientes ni se suman sus entrevistas. Se conservan candidaturas territoriales separadas y solo las equivalencias ya admitidas por el motor. Campo según página 24; los rótulos abreviados de la serie de página 7 no sustituyen la ficha. No permite atribuir efectos causales al 11N. Margen declarado en PDF: ±2,0 % (95 %)."
+}

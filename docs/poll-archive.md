@@ -115,3 +115,8 @@ El archivo alcanza 29 encuestas de 15 institutos: se añaden el tracking día 1 
 ## Revisión del 16 de noviembre de 2026
 
 Se incorporan los días 2 y 3 del tracking de 40dB., publicados el 14 y el 15: 1.500 entrevistas hasta el 13 y 2.000 hasta el 14, ambas desde el 10 de noviembre, CAWI. El archivo alcanza 31 fichas de 15 institutos. Son oleadas acumuladas, no muestras independientes: la selección operativa excluye las anteriores solapadas. Se mantienen categorías territoriales, puntos, ceros y horquillas del original, sin inferir escaños provinciales. Fuentes, huellas y localizadores en `data/sources/tracking-40db-14-15nov.json`. La discrepancia del margen de error del día 2 entre noticia y PDF queda anotada; prevalece la ficha técnica.
+
+
+### Cuarta entrega, publicada el 16 de noviembre
+
+Se verifica también el día 4 de 40dB.: 2.500 entrevistas CAWI del 10 al 15 de noviembre. El archivo conserva 32 fichas de 15 institutos, sin sumar las muestras acumuladas. Voto, escaños y ficha cotejados en páginas 6, 8 y 24 del PDF original; huella y procedencia en `data/sources/tracking-40db-16nov.json`. La selección operativa conserva esta entrega y excluye las anteriores solapadas.
