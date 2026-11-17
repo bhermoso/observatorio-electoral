@@ -15,3 +15,14 @@ test('el resumen distingue archivo, laboratorio, enlaces y entradas reales; ause
  assert.match(renderUpdateSummary(),/sin confirmar/);assert.doesNotMatch(renderUpdateSummary(),/undefined|NaN/);
  assert.match(renderPollUpdate(),/Run workflow/);assert.match(renderPollUpdate(),/no confirma/);
 });
+
+import {consultationFeedback} from '../encuestas-servicio.mjs';
+test('consultar diferencia primera carga, mismo informe y publicaciones añadidas sin afirmar nueva búsqueda',()=>{
+ const before={checked_at:'2026-11-17T12:00:00Z',last_attempt_at:'2026-11-17T12:00:00Z',results:[{url:'https://a.es/1'}],report_origin:'GitHub'};
+ assert.match(consultationFeedback(null,before),/Informe cargado: 1/);
+ const same=consultationFeedback(before,structuredClone(before));assert.match(same,/Mismo informe/);assert.match(same,/Consultado a las/);assert.match(same,/no inicia otra búsqueda/);
+ assert.match(consultationFeedback(before,{...before,checked_at:'2026-11-17T13:00:00Z',results:[...before.results,{url:'https://a.es/2'}]}),/1 publicación nueva/);
+});
+test('consulta versionada usa URL nueva para evitar reutilizar la copia CDN',async()=>{
+ let url;await readUpdateData('data/vigilancia/microdatos.json',{fetcher:async u=>{url=u;return {ok:true,json:async()=>({})}}});assert.ok(new URL(url).searchParams.has('consulta'));
+});
