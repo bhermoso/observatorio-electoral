@@ -19,7 +19,7 @@ try{
   const context=await browser.newContext({viewport:{width,height:1000}});const page=await context.newPage();
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   const forbidden=[];page.on('request',r=>{if(new URL(r.url()).hostname.endsWith('supabase.co'))forbidden.push(r.url());});
-  await page.route('**/data/vigilancia/*.json',r=>{
+  await page.route(url=>/\/data\/vigilancia\/[^/]+\.json$/.test(url.pathname),r=>{
    const file=new URL(r.request().url()).pathname.split('/').at(-1);
    return r.fulfill({status:200,contentType:'application/json',body:fs.readFileSync('data/vigilancia/'+file,'utf8')});
   });
@@ -54,7 +54,7 @@ try{
    await page.route('**/data/polls.json',r=>r.fulfill({status:200,contentType:'application/json',body:JSON.stringify(archive)}));
    await page.goto(base+'#encuestas-actualizar');await page.click('#reload-polls');await page.waitForFunction(()=>document.querySelector('#poll-reload-status').textContent.includes('1 corregidas'));
    await page.goto(base+'#encuestas-visual');await page.click('#poll-reset');await page.fill('#poll-search',archive[0].id);await page.getByRole('tab',{name:'Tabla y fichas',exact:true}).click();await page.locator('#poll-table [data-poll]').first().click();assert.match(await page.locator('#poll-detail').innerText(),/PRUEBA DE RECARGA/);await page.locator('.poll-dialog-close').click();await page.goto(base+'#encuestas-actualizar');
-   await page.route('**/data/vigilancia/candidatos.json',r=>r.fulfill({status:200,contentType:'application/json',body:JSON.stringify({status:'failed',checked_at:'2026-11-10T10:00:00Z',last_attempt_at:'2026-11-11T10:00:00Z',results:[],sources:[]})}));
+   await page.route(url=>url.pathname.endsWith('/data/vigilancia/candidatos.json'),r=>r.fulfill({status:200,contentType:'application/json',body:JSON.stringify({status:'failed',checked_at:'2026-11-10T10:00:00Z',last_attempt_at:'2026-11-11T10:00:00Z',results:[],sources:[]})}));
    await page.click('#dispatch-polls');await page.waitForFunction(()=>document.querySelector('#poll-candidates-list').textContent.includes('Búsqueda fallida'));
    assert.match(await page.locator('#poll-candidates-list').innerText(),/Se conserva la búsqueda anterior/);
    assert.deepEqual(forbidden,[],'El cliente no debe depender de Supabase');
