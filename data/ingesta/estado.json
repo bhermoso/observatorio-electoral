@@ -1,8 +1,8 @@
 {
  "esquema": 1,
- "generado": "2026-11-17T13:45:54.489835+00:00",
- "ejecucion": "https://github.com/bhermoso/observatorio-electoral/actions/runs/44095874926",
- "ultima_busqueda": "2026-11-17T13:45:32.908668+00:00",
+ "generado": "2026-11-17T13:46:29.532021+00:00",
+ "ejecucion": "https://github.com/bhermoso/observatorio-electoral/actions/runs/44095927207",
+ "ultima_busqueda": "2026-11-17T13:46:12.565475+00:00",
  "candidatos_detectados": 42,
  "naturaleza_candidatos": "Publicaciones de medios y productores consultados directamente. Candidatos sin cifras verificadas.",
  "errores_busqueda": [
