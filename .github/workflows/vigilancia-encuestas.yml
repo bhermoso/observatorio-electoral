@@ -16,6 +16,10 @@ jobs:
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
+        with:
+          # La cola puede empezar tras otra búsqueda: leer main al arrancar,
+          # no el SHA antiguo que tenía cuando se solicitó la ejecución.
+          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
