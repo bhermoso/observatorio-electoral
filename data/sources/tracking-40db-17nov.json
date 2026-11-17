@@ -1,0 +1,16 @@
+{
+  "id": "40db-2026-11-17-tracking-dia05",
+  "source": "https://elpais.com/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia05.pdf",
+  "verified": "2026-11-17",
+  "sha256": "09d83c68273ce3eaf8135f04ef8d7e8fe3fbb7a3a6ea6936318d9c8e6404fa59",
+  "pages": {
+    "date": 1,
+    "vote": 6,
+    "seats": 8,
+    "technical": 24
+  },
+  "fieldStart": "2026-11-12",
+  "fieldEnd": "2026-11-16",
+  "sample": 2000,
+  "limitations": "La ficha declara 2.000 entrevistas CAWI del 12 al 16 de noviembre: cambia el inicio de campo y reduce el tamaño respecto al día 4. No se supone una ampliación acumulativa ni un volumen de entrevistas nuevas. Oleada solapada: la selección conserva la posterior, sin sumar muestras. Se mantienen candidaturas territoriales separadas y las equivalencias ya admitidas por el motor. Margen declarado: ±2,2 % (95 %), no intervalo predictivo. Campo posterior al 11N, sin identificación de efectos causales."
+}

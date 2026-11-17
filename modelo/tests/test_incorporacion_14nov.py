@@ -21,8 +21,18 @@ class Incorporacion14Nov(unittest.TestCase):
   self.assertEqual(e['n'],2000)
 
  def test_tracking_dia4_no_suma_muestras_anteriores(self):
-  accepted,rejected=F.seleccion_pronostico(F.todas())
+  accepted,rejected=F.seleccion_pronostico([e for e in F.todas() if e.get('publicacion') and e['publicacion']<=date(2026,11,16)])
   rows=[e for e in accepted if e['estudio'].startswith('40db-2026-11-') and 'tracking' in e['estudio']]
   self.assertEqual([e['estudio'] for e in rows],['40db-2026-11-16-tracking-dia04'])
   self.assertEqual(rows[0]['n'],2500)
   self.assertEqual(rows[0]['voto']['PSOE'],30.3)
+
+ def test_tracking_dia5_conserva_nuevo_campo_y_muestra(self):
+  accepted,rejected=F.seleccion_pronostico(F.todas())
+  rows=[e for e in accepted if e['estudio'].startswith('40db-2026-11-') and 'tracking' in e['estudio']]
+  self.assertEqual([e['estudio'] for e in rows],['40db-2026-11-17-tracking-dia05'])
+  e=rows[0]
+  self.assertEqual(e['n'],2000)
+  self.assertEqual((e['campo_ini'],e['campo_fin']),(date(2026,11,12),date(2026,11,16)))
+  self.assertEqual(set(e['voto']),{'PP','PSOE','VOX','SALF'})
+  self.assertEqual(e['voto']['PSOE'],30.6)
