@@ -412,5 +412,17 @@
     },
     "notes": "Cifras contrastadas con el texto y el gráfico original de La Razón, no con el recopilador: PP 32,6 % y 136–138, frente a otros valores secundarios. El artículo se publica el 9 y el gráfico está fechado el 8 de noviembre. El texto sitúa el campo del 2 al 5. No se han verificado muestra, modo y ficha completa: se conserva como estimación documentada, fuera del archivo de encuestas verificadas. Esta referencia no añade una observación al motor: el estudio ya figuraba en la serie de prensa con tamaño supuesto explícito, que aquí no se transforma en muestra verificada.",
     "methodology": "Encuesta atribuida a NC Report. La publicación accesible no permite reconstruir la ficha completa; no se supone el tamaño de 1.000 entrevistas de la recopilación secundaria."
+  },
+  {
+    "id": "gesop-2026-10-12-ficha-incompleta",
+    "kind": "editorial-analysis",
+    "name": "GESOP / El Periódico · estudio con ficha pendiente",
+    "publisher": "GESOP / El Periódico",
+    "published": "2026-10-12",
+    "verified": "2026-11-17",
+    "status": "pending-technical-sheet",
+    "source": "https://gesop.net/es/2026/10/12/encuesta-elecciones-generales-29n-para-el-periodico/",
+    "methodology": "Informe completo enlazado por el instituto: https://gesop-1937-epe-octubre.share.connect.posit.cloud/ . Acceso no completado por timeout; universo y modo pendientes de verificación.",
+    "notes": "Fuente institucional verificada, con muestra y campo publicados. No se incorpora como encuesta ni como entrevistas adicionales mientras falte la ficha completa. Las cifras principales del texto no se sustituyen por tablas de recopiladores. No entra en el promedio ni en el pronóstico."
   }
 ]
