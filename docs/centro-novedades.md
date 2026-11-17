@@ -14,3 +14,7 @@ La tarea existente incorpora exclusivamente fichas contrastadas de `data/ingesta
 El titular de Panorama identifica expresamente su base en estimaciones publicadas. El laboratorio de entrevistas individuales no alimenta el pronóstico principal.
 
 Verificación: pruebas unitarias de clasificación, fuentes alternativas y estados desconocidos; pruebas Python de descubrimiento documental y varias páginas por productor; navegador móvil/escritorio con cobertura parcial simulada, filtros, microdatos y WCAG AA. Los originales privados no se modifican.
+
+## Confirmación de la consulta
+
+«Consultar novedades» muestra hora de consulta, fecha de la búsqueda y origen del informe. Compara con la consulta anterior: distingue primera carga, mismo informe y publicaciones nuevas por URL. Usa URLs de consulta nuevas para evitar reutilizar la copia CDN. Las publicaciones aparecen sin esperar a los otros informes; el estado de publicación se consulta aparte y con tiempo límite, para que una conexión lenta no bloquee el botón. Si la consulta falla, conserva el informe anterior y su fecha. La auditoría de navegador pulsa el botón con informe idéntico y con una publicación añadida, en móvil y escritorio.
