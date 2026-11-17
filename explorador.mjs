@@ -58,7 +58,7 @@ export function bindWorkspace(route,root){
   group('Explorar sondeos',['#encuestas-archivo'],'encuestas-visual');
   group('Comparar y ponderar',['#encuestas-promedios'],'encuestas-promedios');
   group('Promedios y fuentes',['#encuestas-todas','#analisis-externos'],'encuestas-todas');
-  group('Vigilancia',['#encuestas-actualizar'],'encuestas-actualizar');
+  group('Novedades',['#encuestas-actualizar'],'encuestas-actualizar');
  }
  if(route==='metodologia'){
   group('Herramientas',['.herramientas-destacadas','.methods-split'],'metodologia');

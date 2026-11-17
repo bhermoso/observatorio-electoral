@@ -35,3 +35,19 @@ class TestVigilancia(unittest.TestCase):
   good={**SOURCE,'ok':True,'items':[x,x],'attempts':1,'count':2}
   bad={**SOURCE,'ok':False,'items':[],'attempts':2,'count':0,'error':'timeout'}
   r=assemble([good,bad],now='AHORA');self.assertEqual(r['status'],'partial');self.assertEqual(len(r['results']),1)
+
+class TestNuevasFuentes(unittest.TestCase):
+ def test_documentacion_y_contexto_sin_promover_a_encuesta(self):
+  rows=parse('<a href="/cuestionario">Cuestionario del estudio</a><a href="/paro">Huelga general</a><a href="/media">Promedio de encuestas</a>'.encode(),SOURCE)
+  self.assertEqual(len(rows),3)
+  self.assertTrue(all(not x['original_verified'] for x in rows))
+ def test_microdatos_revisa_varias_paginas_por_productor(self):
+  from unittest.mock import patch
+  from scripts.vigilar_microdatos import scan
+  catalog={'estudios':[{'fecha':str(i),'productor':'cis','pagina':f'https://cis.es/{i}'} for i in range(5)],'fuentes':[]}
+  seen=[]
+  def fetch(s):
+   seen.append(s['url']);return {**s,'ok':True,'items':[]}
+  with patch('scripts.vigilar_microdatos.fetch_source',fetch):r=scan(catalog)
+  self.assertEqual(len(seen),3);self.assertIn('https://cis.es/4',seen)
+  self.assertEqual(r['summary']['matrices_analizadas'],0)

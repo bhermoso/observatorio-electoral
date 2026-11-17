@@ -10,14 +10,15 @@ except ModuleNotFoundError:
 ROOT=Path(__file__).resolve().parents[1]
 
 def scan(catalog,previous=None):
- pages={}
+ pages={};counts={}
  for row in sorted(catalog['estudios'],key=lambda x:x.get('fecha',''),reverse=True):
-  if row.get('pagina') and row.get('productor') not in pages:
-   pages[row['productor']]={'id':row['productor'],'name':row['productor'],'url':row['pagina'],'format':'html'}
+  if row.get('pagina') and row['pagina'] not in pages and counts.get(row.get('productor'),0)<3:
+   counts[row['productor']]=counts.get(row['productor'],0)+1
+   pages[row['pagina']]={'id':row['productor'],'name':row['productor'],'url':row['pagina'],'format':'html'}
  for row in catalog['fuentes']:
   if row.get('portal') and row['id'] not in pages:pages[row['id']]={'id':row['id'],'name':row['nombre'],'url':row['portal'],'format':'html'}
  known={x.get('archivo','').split('?')[0] for x in catalog['estudios']}
- with ThreadPoolExecutor(max_workers=4) as pool:checks=list(pool.map(fetch_source,list(pages.values())[:12]))
+ with ThreadPoolExecutor(max_workers=4) as pool:checks=list(pool.map(fetch_source,list(pages.values())[:30]))
  now=datetime.now(timezone.utc).isoformat();items={}
  for r in checks:
   for x in r['items']:
