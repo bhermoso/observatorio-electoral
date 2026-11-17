@@ -68,7 +68,7 @@ export function renderTitular(forecast){
  const lead=`<p class="portada-titular-cifra">${h(name(first[0]))}, primera fuerza estimada: <strong>${fmt(m,0)} escaños</strong></p>`;
  const range=`Entre ${fmt(lo,0)} y ${fmt(hi,0)} en el 90 % de las simulaciones${second?`; ${fmt(m-second[1].escanos[0],0)} más que ${h(name(second[0]))} en la estimación central`:''}.`;
  const firstShare=Number.isFinite(first[1].primero)?` Queda primero sin empate en ${share(first[1].primero)} de las simulaciones.`:'';
- return `${lead}<p class="portada-titular-texto">${range}${firstShare}</p>`;
+ return `<p class="eyebrow">Pronóstico del Observatorio · basado en estimaciones publicadas</p>${lead}<p class="portada-titular-texto">${range}${firstShare}</p>`;
 }
 
 function renderFechas(forecast,polls){
@@ -96,7 +96,7 @@ function drawHub(ctx){
  const set=(sel,html)=>{const el=document.querySelector(sel);if(el)el.innerHTML=html;};
  set('#hub-hemiciclo',renderHemiciclo(ctx.forecast));
  set('#hub-promedio',renderPromedio(ctx.prom,ctx.forecast,ctx.baseModelo));
- set('#portada-archivo',`<a href="#encuestas">${ctx.polls.length} encuestas · ${new Set(ctx.polls.map(p=>p.institute)).size} institutos · abrir archivo →</a>`);
+ set('#portada-archivo',`<a href="#encuestas">${ctx.polls.length} encuestas · ${new Set(ctx.polls.map(p=>p.institute)).size} institutos · abrir archivo →</a> · <a href="#encuestas-actualizar">Buscar novedades ↗</a>`);
  set('#hub-institutos',[...new Set(ctx.polls.map(p=>p.institute))].sort((a,b)=>a.localeCompare(b,'es')).map(i=>`<a href="?instituto=${encodeURIComponent(i)}#encuestas">${h(i)} <small>${ctx.polls.filter(p=>p.institute===i).length}</small></a>`).join(''));
  set('#hub-recuento','La última publicación de tres institutos. Las cifras pertenecen a cada fuente.');
  const desde=new Date(Date.parse(ctx.corte+'T12:00:00Z')-14*86400000).toISOString().slice(0,10);

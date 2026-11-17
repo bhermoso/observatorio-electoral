@@ -15,7 +15,7 @@ import sys
 import xml.etree.ElementTree as ET
 
 ROOT=Path(__file__).resolve().parents[1]
-WORDS=re.compile(r'encuesta|sondeo|bar[oó]metro|estimaci[oó]n|demoscop|microdato|pulso.electoral',re.I)
+WORDS=re.compile(r'encuesta|sondeo|bar[oó]metro|estimaci[oó]n|demoscop|microdato|pulso.electoral|promedio|cuestionario|ficha.t[eé]cnica|ponderaci[oó]n|huelga|debate.electoral',re.I)
 FILES=re.compile(r'\.(?:zip|sav|dta|xlsx|csv)(?:$|\?)',re.I)
 LIMIT=2_000_000
 
