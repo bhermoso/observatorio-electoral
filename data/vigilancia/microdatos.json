@@ -1,7 +1,7 @@
 {
   "schema": 2,
-  "checked_at": "2026-11-17T09:44:02.043937+00:00",
-  "last_attempt_at": "2026-11-17T09:44:02.043937+00:00",
+  "checked_at": "2026-11-17T13:32:21.134971+00:00",
+  "last_attempt_at": "2026-11-17T13:32:21.134971+00:00",
   "status": "partial",
   "candidates": [
     {
@@ -62,11 +62,43 @@
     },
     {
       "tipo": "enlace_a_archivo",
-      "url": "https://www.gad3.com/wp-content/uploads/2026/05/GAD3-Microdatos-ABC-Andalucia-2026.xlsx",
-      "titulo": "pinchando aquí.",
-      "fuente": "gad3",
-      "pagina": "https://www.gad3.com/barometro-abc-estimacion-de-voto-autonomico-en-andalucia-mayo/",
-      "estado": "ya_catalogado"
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/od_26sv88/opendata/26sv88.csv",
+      "titulo": "Descargar Fichero de datos _ en formato CSV (580.52 KB ) - Fichero de datos _",
+      "fuente": "sociometro-vasco",
+      "pagina": "https://opendata.euskadi.eus/catalogo/-/informes-estudios/sociometro-88/",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/od_26sv88/opendata/26sv88_etik.sav",
+      "titulo": "Descargar Fichero de datos _ en formato SAV (337.02 KB ) - Fichero de datos _",
+      "fuente": "sociometro-vasco",
+      "pagina": "https://opendata.euskadi.eus/catalogo/-/informes-estudios/sociometro-88/",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/od_26sv88/opendata/26sv88.xlsx",
+      "titulo": "Descargar Colectivos _ en formato XLSX (1.27 MB ) - Colectivos _",
+      "fuente": "sociometro-vasco",
+      "pagina": "https://opendata.euskadi.eus/catalogo/-/informes-estudios/sociometro-88/",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/od_25sv87/opendata/25sv87.csv",
+      "titulo": "Descargar Fichero de datos _ en formato CSV (580.86 KB ) - Fichero de datos _",
+      "fuente": "sociometro-vasco",
+      "pagina": "https://opendata.euskadi.eus/catalogo/-/informes-estudios/sociometro-87/",
+      "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/od_25sv87/opendata/25sv87_etik.sav",
+      "titulo": "Descargar Fichero de datos en formato SAV (338.46 KB ) - Fichero de datos",
+      "fuente": "sociometro-vasco",
+      "pagina": "https://opendata.euskadi.eus/catalogo/-/informes-estudios/sociometro-87/",
+      "estado": "nuevo_enlace_sin_auditar"
     },
     {
       "tipo": "enlace_a_archivo",
@@ -74,6 +106,22 @@
       "titulo": "en un archivo al que el lector puede acceder a través de este enlace",
       "fuente": "sociometrica",
       "pagina": "https://www.elespanol.com/espana/politica/20250902/espanol-publica-microdatos-encuesta-electoral-sociometrica-puede-consultarlos/1003743908447_0.html",
+      "estado": "ya_catalogado"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://s1.elespanol.com/upload/redaccion/2025/07/28/track_sociometrica_elespanol_23-27_jul25.sav?utm_cmp_rs=linksinline",
+      "titulo": "en un archivo al que el lector puede acceder a través de este enlace",
+      "fuente": "sociometrica",
+      "pagina": "https://www.elespanol.com/espana/politica/20250728/espanol-publica-microdatos-encuesta-electoral-sociometrica-puede-consultarlos/1003743865244_0.html",
+      "estado": "ya_catalogado"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://s1.elespanol.com/upload/redaccion/2025/06/23/track_sociometrica_elespanol_18-21_jun25.sav?utm_cmp_rs=linksinline",
+      "titulo": "en un archivo al que el lector puede acceder a través de este enlace",
+      "fuente": "sociometrica",
+      "pagina": "https://www.elespanol.com/espana/politica/20250623/espanol-publica-microdatos-encuesta-electoral-sociometrica-puede-consultarlos/1003743818002_0.html",
       "estado": "ya_catalogado"
     },
     {
@@ -219,14 +267,29 @@
       "fuente": "ceo",
       "pagina": "https://web.gencat.cat/es/generalitat/dades-indicadors/centre-estudis-opinio/microdades",
       "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://www.icps.cat/repositorio/bbdd/sondeig-d-opinio-catalunya/Enquesta Política a Catalunya (1991 a 2019).zip",
+      "titulo": "Archivo enlazado por el productor",
+      "fuente": "icps",
+      "pagina": "https://www.icps.cat/recerca/sondeigs-i-dades/basedadesintegrada",
+      "estado": "nuevo_enlace_sin_auditar"
     }
   ],
   "errors": [
-    "40db: HTTP 403"
+    "40db: HTTP 403",
+    "40db: HTTP 403",
+    "40db: HTTP 403",
+    "gad3: ValueError: HTTP 202",
+    "gad3: ValueError: HTTP 202",
+    "gad3: ValueError: HTTP 202",
+    "40dB.: HTTP 403",
+    "GAD3: ValueError: HTTP 202"
   ],
   "summary": {
-    "paginas_consultadas": 9,
-    "paginas_accesibles": 8,
+    "paginas_consultadas": 30,
+    "paginas_accesibles": 22,
     "ficheros_descargados": 0,
     "matrices_analizadas": 0
   }
