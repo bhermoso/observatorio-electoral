@@ -565,11 +565,10 @@
     {
       "id": "cis-preelectoral",
       "titulo": "Preelectoral del CIS",
-      "estado": "Publicación pendiente",
-      "fecha_prevista": "2026-11-12",
-      "procedencia_fecha": "Aviso del usuario el 11 de noviembre; fecha pendiente de confirmación en el anuncio oficial.",
-      "detalle": "Previsto para el 12 de noviembre de 2026 según aviso del usuario. Cuando se publique: contrastar estimación, ficha técnica, campo, muestra, cuestionario, tablas y disponibilidad de microdatos. No se anticipan cifras.",
-      "url": "https://www.cis.es/es/estudios"
+      "estado": "Estimación publicada e incorporada · microdatos individuales pendientes",
+      "detalle": "CIS 3584: estimación y ficha incorporadas al archivo; 45.074 entrevistas, campo del 7 al 30 de octubre. Puede compararse con la reestimación de Ateneo como otra lectura de la misma muestra. La matriz individual del preelectoral no está incorporada al laboratorio ni se ha aplicado una receta propia a sus entrevistas. Consultar el estado de los originales antes de afirmar disponibilidad de microdatos.",
+      "url": "https://bhermoso.github.io/observatorio-electoral/misma-muestra.html?estudio=cis-3584",
+      "ultima_publicacion": "2026-11-12"
     }
   ]
 }
