@@ -1,7 +1,7 @@
 {
   "schema": 2,
-  "checked_at": "2026-11-17T21:54:22.902541+00:00",
-  "last_attempt_at": "2026-11-17T21:54:22.902541+00:00",
+  "checked_at": "2026-11-18T09:08:14.312270+00:00",
+  "last_attempt_at": "2026-11-18T09:08:14.312270+00:00",
   "status": "partial",
   "candidates": [
     {
@@ -86,6 +86,14 @@
     },
     {
       "tipo": "enlace_a_archivo",
+      "url": "https://www.gad3.com/wp-content/uploads/2026/05/GAD3-Microdatos-ABC-Andalucia-2026.xlsx",
+      "titulo": "pinchando aquí.",
+      "fuente": "gad3",
+      "pagina": "https://www.gad3.com/barometro-abc-estimacion-de-voto-autonomico-en-andalucia-mayo/",
+      "estado": "ya_catalogado"
+    },
+    {
+      "tipo": "enlace_a_archivo",
       "url": "https://opendata.euskadi.eus/contenidos/ds_informes_estudios/od_26sv88/opendata/26sv88.csv",
       "titulo": "Descargar Fichero de datos _ en formato CSV (580.52 KB ) - Fichero de datos _",
       "fuente": "sociometro-vasco",
@@ -107,6 +115,22 @@
       "fuente": "sociometro-vasco",
       "pagina": "https://opendata.euskadi.eus/catalogo/-/informes-estudios/sociometro-88/",
       "estado": "nuevo_enlace_sin_auditar"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://www.gad3.com/wp-content/uploads/2026/02/GAD3-FORTA-CARTV-8F-Microdatos.xlsx",
+      "titulo": "pinchando aquí.",
+      "fuente": "gad3",
+      "pagina": "https://www.gad3.com/rindiendo-cuentas-precision-de-escanos-en-las-elecciones-de-aragon/",
+      "estado": "ya_catalogado"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://www.gad3.com/wp-content/uploads/2026/01/GAD3xHOY-ARAGON-Microdatos-estimacion-de-voto.xlsx",
+      "titulo": "pinchando aquí.",
+      "fuente": "gad3",
+      "pagina": "https://www.gad3.com/barometro-hoy-aragon-estimacion-de-voto-autonomico-en-aragon/",
+      "estado": "ya_catalogado"
     },
     {
       "tipo": "enlace_a_archivo",
@@ -302,15 +326,11 @@
     }
   ],
   "errors": [
-    "gad3: ValueError: HTTP 202",
-    "gad3: ValueError: HTTP 202",
-    "gad3: ValueError: HTTP 202",
-    "40dB.: HTTP 403",
-    "GAD3: ValueError: HTTP 202"
+    "40dB.: HTTP 403"
   ],
   "summary": {
     "paginas_consultadas": 30,
-    "paginas_accesibles": 25,
+    "paginas_accesibles": 29,
     "ficheros_descargados": 0,
     "matrices_analizadas": 0
   }

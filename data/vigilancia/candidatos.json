@@ -1,10 +1,10 @@
 {
   "schema": 2,
-  "checked_at": "2026-11-17T21:54:14.599091+00:00",
-  "last_attempt_at": "2026-11-17T21:54:14.599091+00:00",
+  "checked_at": "2026-11-18T09:08:04.709298+00:00",
+  "last_attempt_at": "2026-11-18T09:08:04.709298+00:00",
   "status": "partial",
   "searches": 15,
-  "sources_ok": 13,
+  "sources_ok": 14,
   "sources": [
     {
       "id": "elpais",
@@ -13,7 +13,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 0
+      "count": 1
     },
     {
       "id": "elmundo",
@@ -38,10 +38,9 @@
       "name": "GAD3 · publicaciones",
       "url": "https://www.gad3.com/",
       "format": "html",
-      "ok": false,
+      "ok": true,
       "attempts": 1,
-      "count": 0,
-      "error": "ValueError: HTTP 202"
+      "count": 9
     },
     {
       "id": "cis",
@@ -86,7 +85,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 1
+      "count": 3
     },
     {
       "id": "larazon",
@@ -105,7 +104,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 2
+      "count": 3
     },
     {
       "id": "electomania",
@@ -146,13 +145,68 @@
   ],
   "results": [
     {
-      "title": "Elecciones generales 29-N, en directo | Última hora de la campaña electoral de PP, PSOE y Vox, encuestas y Pedro Sánchez",
-      "url": "https://www.elespanol.com/espana/20261117/elecciones-generales-directo-ultima-hora-campana-electoral-pp-psoe-vox-encuestas-pedro-sanchez/1003744460739_10.html",
-      "discovery_url": "https://www.elespanol.com/espana/20261117/elecciones-generales-directo-ultima-hora-campana-electoral-pp-psoe-vox-encuestas-pedro-sanchez/1003744460739_10.html",
-      "published": "2026-11-17T20:48:00+00:00",
-      "publication_raw": "2026-11-17T20:48:00+00:00",
+      "title": "\n         Los controladores de Adif desconvocan la huelga de este jueves mientras los maquinistas de Renfe mantienen la del lunes \n    ",
+      "url": "https://www.20minutos.es/nacional/los-controladores-adif-desconvocan-huelga-este-jueves-mientras-los-maquinistas-renfe-mantienen-lunes_7062448_0.html",
+      "discovery_url": "https://www.20minutos.es/nacional/los-controladores-adif-desconvocan-huelga-este-jueves-mientras-los-maquinistas-renfe-mantienen-lunes_7062448_0.html",
+      "published": "2026-11-18T08:23:15+00:00",
+      "publication_raw": "2026-11-18T08:23:15+00:00",
+      "topic": "20minutos · nacional",
+      "source_id": "20minutos",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Encuesta Suecia (Novus 18 nov): Moderaterna lideran y Liberalerna se quedaría fuera del Riksdag",
+      "url": "https://electomania.es/encuesta-suecia-novus-18-nov/",
+      "discovery_url": "https://electomania.es/encuesta-suecia-novus-18-nov/",
+      "published": "2026-11-18T06:47:21+00:00",
+      "publication_raw": "2026-11-18T06:47:21+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Elecciones generales 29-N, en directo | Encuestas y última hora de Pedro Sánchez y la campaña de PP, PSOE y Vox",
+      "url": "https://www.elespanol.com/espana/20261118/elecciones-generales-directo-ultima-hora-pedro-sanchez-encuestas-sondeos-actos-campana-pp-psoe-vox-2026-partidos-voto-correo-electoral/1003744462289_10.html",
+      "discovery_url": "https://www.elespanol.com/espana/20261118/elecciones-generales-directo-ultima-hora-pedro-sanchez-encuestas-sondeos-actos-campana-pp-psoe-vox-2026-partidos-voto-correo-electoral/1003744462289_10.html",
+      "published": "2026-11-18T06:16:30+00:00",
+      "publication_raw": "2026-11-18T06:16:30+00:00",
       "topic": "EL ESPAÑOL · España",
       "source_id": "elespanol",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Los profesores anti-Ayuso presionan para expulsar de la negociación al sindicato que no secunda la huelga",
+      "url": "https://okdiario.com/madrid/profesores-anti-ayuso-presionan-expulsar-negociacion-sindicato-que-no-secunda-huelga-21041875",
+      "discovery_url": "https://okdiario.com/madrid/profesores-anti-ayuso-presionan-expulsar-negociacion-sindicato-que-no-secunda-huelga-21041875",
+      "published": "2026-11-18T04:45:29+00:00",
+      "publication_raw": "2026-11-18T04:45:29+00:00",
+      "topic": "OKDIARIO · España",
+      "source_id": "okdiario",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "El mapa del voto táctico para que el último escaño por provincia se lo lleve la derecha o la izquierda: ¿qué dicen las encuestas?",
+      "url": "https://elpais.com/espana/elecciones-generales/2026-11-18/el-mapa-del-voto-tactico-para-que-el-ultimo-escano-por-provincia-se-lo-lleve-la-derecha-o-la-izquierda-que-dicen-las-encuestas.html",
+      "discovery_url": "https://elpais.com/espana/elecciones-generales/2026-11-18/el-mapa-del-voto-tactico-para-que-el-ultimo-escano-por-provincia-se-lo-lleve-la-derecha-o-la-izquierda-que-dicen-las-encuestas.html",
+      "published": "2026-11-18T04:30:01+00:00",
+      "publication_raw": "2026-11-18T04:30:01+00:00",
+      "topic": "EL PAÍS · España",
+      "source_id": "elpais",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "\n         Así será mañana el cara a cara entre Sánchez y Feijóo: el debate más esperado de la campaña electoral \n    ",
+      "url": "https://www.20minutos.es/nacional/asi-sera-cara-cara-pedro-sanchez-feijoo-debate-electoral-mas-esperado-elecciones-generales-29n_7062051_0.html",
+      "discovery_url": "https://www.20minutos.es/nacional/asi-sera-cara-cara-pedro-sanchez-feijoo-debate-electoral-mas-esperado-elecciones-generales-29n_7062051_0.html",
+      "published": "2026-11-18T04:06:13+00:00",
+      "publication_raw": "2026-11-18T04:06:13+00:00",
+      "topic": "20minutos · nacional",
+      "source_id": "20minutos",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
@@ -223,28 +277,6 @@
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Encuesta Italia (Ixè 17 nov): Fratelli d’Italia lidera y el centrodestra alcanzaría la mayoría absoluta",
-      "url": "https://electomania.es/encuesta-italia-ixe-17-nov/",
-      "discovery_url": "https://electomania.es/encuesta-italia-ixe-17-nov/",
-      "published": "2026-11-17T15:19:29+00:00",
-      "publication_raw": "2026-11-17T15:19:29+00:00",
-      "topic": "Electomanía · publicaciones",
-      "source_id": "electomania",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "\n         El Gobierno fija descansos y jornada máxima para los controladores de la circulación en el día de la huelga ferroviaria \n    ",
-      "url": "https://www.20minutos.es/nacional/gobierno-fija-descansos-jornada-maxima-para-los-controladores-circulacion-dia-huelga-ferroviaria_7062165_0.html",
-      "discovery_url": "https://www.20minutos.es/nacional/gobierno-fija-descansos-jornada-maxima-para-los-controladores-circulacion-dia-huelga-ferroviaria_7062165_0.html",
-      "published": "2026-11-17T14:22:02+00:00",
-      "publication_raw": "2026-11-17T14:22:02+00:00",
-      "topic": "20minutos · nacional",
-      "source_id": "20minutos",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
       "title": "Detenidos otros 5 implicados en los disturbios de la huelga general en Castellón que dejaron 4 policías heridos",
       "url": "https://okdiario.com/comunidad-valenciana/detenidos-otros-5-implicados-disturbios-huelga-general-castellon-que-dejaron-4-policias-heridos-21020310",
       "discovery_url": "https://okdiario.com/comunidad-valenciana/detenidos-otros-5-implicados-disturbios-huelga-general-castellon-que-dejaron-4-policias-heridos-21020310",
@@ -252,17 +284,6 @@
       "publication_raw": "2026-11-17T13:59:46+00:00",
       "topic": "OKDIARIO · España",
       "source_id": "okdiario",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "\n         Bloqueo total de los Cercanías en Madrid por la huelga y enfado de los viajeros: \"Es una vergüenza que no haya servicios mínimos\" \n    ",
-      "url": "https://www.20minutos.es/nacional/bloqueo-total-los-cercanias-madrid-por-incumplimiento-los-servicios-minimos-solo-han-pasado-dos-trenes-por-manana_7061977_0.html",
-      "discovery_url": "https://www.20minutos.es/nacional/bloqueo-total-los-cercanias-madrid-por-incumplimiento-los-servicios-minimos-solo-han-pasado-dos-trenes-por-manana_7061977_0.html",
-      "published": "2026-11-17T10:44:28+00:00",
-      "publication_raw": "2026-11-17T10:44:28+00:00",
-      "topic": "20minutos · nacional",
-      "source_id": "20minutos",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
@@ -285,6 +306,50 @@
       "publication_raw": "2026-11-17T00:59:12+00:00",
       "topic": "20minutos · nacional",
       "source_id": "20minutos",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Archivo enlazado por el productor",
+      "url": "https://www.gad3.com/barometro-abc-i-estimacion-de-voto-al-senado-noviembre-2026/",
+      "discovery_url": "https://www.gad3.com/barometro-abc-i-estimacion-de-voto-al-senado-noviembre-2026/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "GAD3 · publicaciones",
+      "source_id": "gad3",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Archivo enlazado por el productor",
+      "url": "https://www.gad3.com/barometro-abc-i-estimacion-de-voto-nacional-noviembre-2026/",
+      "discovery_url": "https://www.gad3.com/barometro-abc-i-estimacion-de-voto-nacional-noviembre-2026/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "GAD3 · publicaciones",
+      "source_id": "gad3",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Archivo enlazado por el productor",
+      "url": "https://www.gad3.com/estudio-cgate-iii-barometro-vivienda-y-dignidad/",
+      "discovery_url": "https://www.gad3.com/estudio-cgate-iii-barometro-vivienda-y-dignidad/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "GAD3 · publicaciones",
+      "source_id": "gad3",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Archivo enlazado por el productor",
+      "url": "https://www.gad3.com/narciso-michavila-en-la-presentacion-del-barometro-del-empresario-2026-en-denia/",
+      "discovery_url": "https://www.gad3.com/narciso-michavila-en-la-presentacion-del-barometro-del-empresario-2026-en-denia/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "GAD3 · publicaciones",
+      "source_id": "gad3",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
@@ -388,6 +453,28 @@
       "tipo": "enlace_a_archivo"
     },
     {
+      "title": "Huelga de médicos en Andalucía este mes de noviembre: quién la convoca, qué se pide, servicios mínimos y hasta cuándo dura",
+      "url": "https://www.elconfidencial.com/espana/andalucia/2026-11-18/huelga-medicos-andalucia-fechas-y-detalles-1qrt_4467244/",
+      "discovery_url": "https://www.elconfidencial.com/espana/andalucia/2026-11-18/huelga-medicos-andalucia-fechas-y-detalles-1qrt_4467244/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Confidencial · España",
+      "source_id": "elconfidencial",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "​Incidencias de Renfe hoy: retrasos, trenes cancelados y cómo reclamar tras la huelga",
+      "url": "https://www.elconfidencial.com/espana/cataluna/2026-11-18/incidencias-trenes-renfe-huelga-cataluna-1tna-1tps_4467220/",
+      "discovery_url": "https://www.elconfidencial.com/espana/cataluna/2026-11-18/incidencias-trenes-renfe-huelga-cataluna-1tna-1tps_4467220/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Confidencial · España",
+      "source_id": "elconfidencial",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
       "title": "¿Qué dicen las encuestas sobre el 29-N? La carrera hacia la mayoría absoluta, en seis gráficos",
       "url": "https://www.elconfidencial.com/espana/2026-11-10/encuestas-elecciones-generales-29n-mayoria-absoluta-graficos-cbtr_4460274/",
       "discovery_url": "https://www.elconfidencial.com/espana/2026-11-10/encuestas-elecciones-generales-29n-mayoria-absoluta-graficos-cbtr_4460274/",
@@ -488,10 +575,6 @@
     }
   ],
   "errors": [
-    {
-      "source": "GAD3 · publicaciones",
-      "detail": "ValueError: HTTP 202"
-    },
     {
       "source": "La Razón · España",
       "detail": "HTTP 503"
