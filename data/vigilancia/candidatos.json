@@ -1,7 +1,7 @@
 {
   "schema": 2,
-  "checked_at": "2026-11-18T09:08:04.709298+00:00",
-  "last_attempt_at": "2026-11-18T09:08:04.709298+00:00",
+  "checked_at": "2026-11-18T21:36:10.271405+00:00",
+  "last_attempt_at": "2026-11-18T21:36:10.271405+00:00",
   "status": "partial",
   "searches": 15,
   "sources_ok": 14,
@@ -13,7 +13,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 1
+      "count": 2
     },
     {
       "id": "elmundo",
@@ -31,7 +31,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 2
+      "count": 1
     },
     {
       "id": "gad3",
@@ -67,7 +67,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 1
+      "count": 2
     },
     {
       "id": "20minutos",
@@ -76,7 +76,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 5
+      "count": 4
     },
     {
       "id": "elconfidencial",
@@ -85,7 +85,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 3
+      "count": 1
     },
     {
       "id": "larazon",
@@ -104,7 +104,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 3
+      "count": 1
     },
     {
       "id": "electomania",
@@ -113,7 +113,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 3
+      "count": 4
     },
     {
       "id": "swdemoscopia",
@@ -145,35 +145,112 @@
   ],
   "results": [
     {
-      "title": "\n         Los controladores de Adif desconvocan la huelga de este jueves mientras los maquinistas de Renfe mantienen la del lunes \n    ",
-      "url": "https://www.20minutos.es/nacional/los-controladores-adif-desconvocan-huelga-este-jueves-mientras-los-maquinistas-renfe-mantienen-lunes_7062448_0.html",
-      "discovery_url": "https://www.20minutos.es/nacional/los-controladores-adif-desconvocan-huelga-este-jueves-mientras-los-maquinistas-renfe-mantienen-lunes_7062448_0.html",
-      "published": "2026-11-18T08:23:15+00:00",
-      "publication_raw": "2026-11-18T08:23:15+00:00",
-      "topic": "20minutos · nacional",
-      "source_id": "20minutos",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Encuesta Suecia (Novus 18 nov): Moderaterna lideran y Liberalerna se quedaría fuera del Riksdag",
-      "url": "https://electomania.es/encuesta-suecia-novus-18-nov/",
-      "discovery_url": "https://electomania.es/encuesta-suecia-novus-18-nov/",
-      "published": "2026-11-18T06:47:21+00:00",
-      "publication_raw": "2026-11-18T06:47:21+00:00",
+      "title": "Encuesta Argentina (Proyección 14 nov): Milei lidera la primera vuelta y el balotaje queda en empate técnico",
+      "url": "https://electomania.es/encuesta-argentina-proyeccion-14-nov/",
+      "discovery_url": "https://electomania.es/encuesta-argentina-proyeccion-14-nov/",
+      "published": "2026-11-18T21:24:31+00:00",
+      "publication_raw": "2026-11-18T21:24:31+00:00",
       "topic": "Electomanía · publicaciones",
       "source_id": "electomania",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Elecciones generales 29-N, en directo | Encuestas y última hora de Pedro Sánchez y la campaña de PP, PSOE y Vox",
+      "title": "Elecciones generales del 29-N, en directo | Bustinduy urge al PSOE a aprobar \"ya\" la prestación universal por crianza: \"No hay ninguna razón para no hacerlo\"",
       "url": "https://www.elespanol.com/espana/20261118/elecciones-generales-directo-ultima-hora-pedro-sanchez-encuestas-sondeos-actos-campana-pp-psoe-vox-2026-partidos-voto-correo-electoral/1003744462289_10.html",
       "discovery_url": "https://www.elespanol.com/espana/20261118/elecciones-generales-directo-ultima-hora-pedro-sanchez-encuestas-sondeos-actos-campana-pp-psoe-vox-2026-partidos-voto-correo-electoral/1003744462289_10.html",
-      "published": "2026-11-18T06:16:30+00:00",
-      "publication_raw": "2026-11-18T06:16:30+00:00",
+      "published": "2026-11-18T19:33:00+00:00",
+      "publication_raw": "2026-11-18T19:33:00+00:00",
       "topic": "EL ESPAÑOL · España",
       "source_id": "elespanol",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Tracking SW Demoscopia (18 nov): “PP y Vox no suman”",
+      "url": "https://electomania.es/tracking-sw-demoscopia-18-nov-pp-y-vox-no-suman/",
+      "discovery_url": "https://electomania.es/tracking-sw-demoscopia-18-nov-pp-y-vox-no-suman/",
+      "published": "2026-11-18T19:08:00+00:00",
+      "publication_raw": "2026-11-18T19:08:00+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "La media de las encuestas: caída mínima del Frente Amplio que no altera la diferencia entre bloques",
+      "url": "https://www.eldiario.es/politica/media-encuestas-caida-minima-frente-amplio-no-altera-diferencia-bloques_1_13675156.html",
+      "discovery_url": "https://www.eldiario.es/politica/media-encuestas-caida-minima-frente-amplio-no-altera-diferencia-bloques_1_13675156.html",
+      "published": "2026-11-18T18:33:15+00:00",
+      "publication_raw": "2026-11-18T18:33:15+00:00",
+      "topic": "elDiario.es · política",
+      "source_id": "eldiario",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "CC OO acudirá a los tribunales por la actuación policial en la huelga general: “Buena parte de las personas golpeadas son de nuestro sindicato”",
+      "url": "https://elpais.com/espana/2026-11-18/cc-oo-acudira-a-los-tribunales-por-la-actuacion-policial-en-la-huelga-general-buena-parte-de-las-personas-golpeadas-son-de-nuestro-sindicato.html",
+      "discovery_url": "https://elpais.com/espana/2026-11-18/cc-oo-acudira-a-los-tribunales-por-la-actuacion-policial-en-la-huelga-general-buena-parte-de-las-personas-golpeadas-son-de-nuestro-sindicato.html",
+      "published": "2026-11-18T15:16:27+00:00",
+      "publication_raw": "2026-11-18T15:16:27+00:00",
+      "topic": "EL PAÍS · España",
+      "source_id": "elpais",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Encuesta Finlandia (Verian 18 nov): el SDP mantiene la cabeza y el Gobierno se queda a 25 escaños de la mayoría",
+      "url": "https://electomania.es/encuesta-finlandia-verian-18-nov/",
+      "discovery_url": "https://electomania.es/encuesta-finlandia-verian-18-nov/",
+      "published": "2026-11-18T12:39:30+00:00",
+      "publication_raw": "2026-11-18T12:39:30+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "\n         Cuerpo apunta a nuevos contactos \"hoy mismo\" para evitar la única huelga en pie, de maquinistas de Renfe el lunes que viene \n    ",
+      "url": "https://www.20minutos.es/nacional/cuerpo-apunta-nuevos-contactos-hoy-mismo-para-evitar-unica-huelga-pie-maquinistas-renfe-lunes-que-viene_7062599_0.html",
+      "discovery_url": "https://www.20minutos.es/nacional/cuerpo-apunta-nuevos-contactos-hoy-mismo-para-evitar-unica-huelga-pie-maquinistas-renfe-lunes-que-viene_7062599_0.html",
+      "published": "2026-11-18T11:49:05+00:00",
+      "publication_raw": "2026-11-18T11:49:05+00:00",
+      "topic": "20minutos · nacional",
+      "source_id": "20minutos",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "\n         Horario del debate electoral entre Pedro Sánchez y Alberto Núñez Feijóo y dónde ver online y por televisión en directo \n    ",
+      "url": "https://www.20minutos.es/nacional/horario-debate-electoral-pedro-sanchez-alberto-nunez-feijoo-elecciones-generales-donde-ver_7061066_0.html",
+      "discovery_url": "https://www.20minutos.es/nacional/horario-debate-electoral-pedro-sanchez-alberto-nunez-feijoo-elecciones-generales-donde-ver_7061066_0.html",
+      "published": "2026-11-18T11:23:51+00:00",
+      "publication_raw": "2026-11-18T11:23:51+00:00",
+      "topic": "20minutos · nacional",
+      "source_id": "20minutos",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "\n         Calendario de las huelgas en Renfe: estas son las fechas de los próximos paros \n    ",
+      "url": "https://www.20minutos.es/nacional/calendario-huelgas-renfe-estas-fechas-proximos-paros_7062509_0.html",
+      "discovery_url": "https://www.20minutos.es/nacional/calendario-huelgas-renfe-estas-fechas-proximos-paros_7062509_0.html",
+      "published": "2026-11-18T10:44:51+00:00",
+      "publication_raw": "2026-11-18T10:44:51+00:00",
+      "topic": "20minutos · nacional",
+      "source_id": "20minutos",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Encuesta Francia (Ifop 18 nov): Le Pen y Mélenchon se clasifican y Lisnard se acerca a Philippe",
+      "url": "https://electomania.es/encuesta-francia-ifop-18-nov/",
+      "discovery_url": "https://electomania.es/encuesta-francia-ifop-18-nov/",
+      "published": "2026-11-18T10:12:39+00:00",
+      "publication_raw": "2026-11-18T10:12:39+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
@@ -211,17 +288,6 @@
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Tracking SW Demoscopia (17 nov): “El PP sube, pero a costa de Vox”",
-      "url": "https://electomania.es/tracking-sw-demoscopia-17-nov-el-pp-sube-pero-a-costa-de-vox/",
-      "discovery_url": "https://electomania.es/tracking-sw-demoscopia-17-nov-el-pp-sube-pero-a-costa-de-vox/",
-      "published": "2026-11-17T20:01:50+00:00",
-      "publication_raw": "2026-11-17T20:01:50+00:00",
-      "topic": "Electomanía · publicaciones",
-      "source_id": "electomania",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
       "title": "La media de encuestas: la izquierda recorta distancias pero todavía está a 14 puntos de la suma de PP y Vox",
       "url": "https://www.eldiario.es/politica/media-encuestas-izquierda-recorta-distancias-todavia-14-puntos-suma-pp-vox_1_13670652.html",
       "discovery_url": "https://www.eldiario.es/politica/media-encuestas-izquierda-recorta-distancias-todavia-14-puntos-suma-pp-vox_1_13670652.html",
@@ -229,83 +295,6 @@
       "publication_raw": "2026-11-17T18:21:59+00:00",
       "topic": "elDiario.es · política",
       "source_id": "eldiario",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Encuesta Portugal (Pitagórica 16 nov): el PS lidera y ningún partido alcanza la mayoría absoluta",
-      "url": "https://electomania.es/encuesta-portugal-pitagorica-16-nov/",
-      "discovery_url": "https://electomania.es/encuesta-portugal-pitagorica-16-nov/",
-      "published": "2026-11-17T18:11:49+00:00",
-      "publication_raw": "2026-11-17T18:11:49+00:00",
-      "topic": "Electomanía · publicaciones",
-      "source_id": "electomania",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "\n         La huelga ferroviaria se salta servicios mínimos, para Cercanías y anula trenes por toda España para exigir mejoras en seguridad \n    ",
-      "url": "https://www.20minutos.es/nacional/huelga-ferroviaria-se-salta-servicios-minimos-para-cercanias-anula-trenes-por-toda-espana-para-exigir-mejoras-seguridad_7062222_0.html",
-      "discovery_url": "https://www.20minutos.es/nacional/huelga-ferroviaria-se-salta-servicios-minimos-para-cercanias-anula-trenes-por-toda-espana-para-exigir-mejoras-seguridad_7062222_0.html",
-      "published": "2026-11-17T17:55:55+00:00",
-      "publication_raw": "2026-11-17T17:55:55+00:00",
-      "topic": "20minutos · nacional",
-      "source_id": "20minutos",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Última hora en directo de la actualidad política en España: huelga de maquinistas de Renfe y campaña electoral de las elecciones generales del 29-N",
-      "url": "https://okdiario.com/espana/ultima-hora-directo-actualidad-politica-espana-huelga-maquinistas-renfe-campana-electoral-elecciones-generales-del-29-n-20974496",
-      "discovery_url": "https://okdiario.com/espana/ultima-hora-directo-actualidad-politica-espana-huelga-maquinistas-renfe-campana-electoral-elecciones-generales-del-29-n-20974496",
-      "published": "2026-11-17T17:49:05+00:00",
-      "publication_raw": "2026-11-17T17:49:05+00:00",
-      "topic": "OKDIARIO · España",
-      "source_id": "okdiario",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "\n         Los sindicatos convocan una huelga indefinida del servicio de limpieza en Barajas a partir del 25 de noviembre \n    ",
-      "url": "https://www.20minutos.es/nacional/los-sindicatos-convocan-una-huelga-indefinida-servicio-limpieza-barajas-partir-25-noviembre_7062275_0.html",
-      "discovery_url": "https://www.20minutos.es/nacional/los-sindicatos-convocan-una-huelga-indefinida-servicio-limpieza-barajas-partir-25-noviembre_7062275_0.html",
-      "published": "2026-11-17T16:45:36+00:00",
-      "publication_raw": "2026-11-17T16:45:36+00:00",
-      "topic": "20minutos · nacional",
-      "source_id": "20minutos",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Detenidos otros 5 implicados en los disturbios de la huelga general en Castellón que dejaron 4 policías heridos",
-      "url": "https://okdiario.com/comunidad-valenciana/detenidos-otros-5-implicados-disturbios-huelga-general-castellon-que-dejaron-4-policias-heridos-21020310",
-      "discovery_url": "https://okdiario.com/comunidad-valenciana/detenidos-otros-5-implicados-disturbios-huelga-general-castellon-que-dejaron-4-policias-heridos-21020310",
-      "published": "2026-11-17T13:59:46+00:00",
-      "publication_raw": "2026-11-17T13:59:46+00:00",
-      "topic": "OKDIARIO · España",
-      "source_id": "okdiario",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "El Frente Amplio promete la \"huelga de alquileres\": un inquilino podrá dejar de pagar alegando \"abusos\" de su casero",
-      "url": "https://www.elespanol.com/espana/20261117/frente-amplio-promete-huelga-alquileres-inquilino-podra-dejar-pagar-alegando-abusos-casero/1003744460620_0.html",
-      "discovery_url": "https://www.elespanol.com/espana/20261117/frente-amplio-promete-huelga-alquileres-inquilino-podra-dejar-pagar-alegando-abusos-casero/1003744460620_0.html",
-      "published": "2026-11-17T04:01:00+00:00",
-      "publication_raw": "2026-11-17T04:01:00+00:00",
-      "topic": "EL ESPAÑOL · España",
-      "source_id": "elespanol",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "\n         La huelga de trenes suprime el 97,64% de los servicios mínimos de Cercanías de Madrid y el 40% en Barcelona \n    ",
-      "url": "https://www.20minutos.es/nacional/huelga-trenes-directo-espana-afronta-este-martes-una-nueva-jornada-paros-24-horas-sector-ferroviario_7061734_6.html",
-      "discovery_url": "https://www.20minutos.es/nacional/huelga-trenes-directo-espana-afronta-este-martes-una-nueva-jornada-paros-24-horas-sector-ferroviario_7061734_6.html",
-      "published": "2026-11-17T00:59:12+00:00",
-      "publication_raw": "2026-11-17T00:59:12+00:00",
-      "topic": "20minutos · nacional",
-      "source_id": "20minutos",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
@@ -451,28 +440,6 @@
       "source_id": "mic",
       "original_verified": false,
       "tipo": "enlace_a_archivo"
-    },
-    {
-      "title": "Huelga de médicos en Andalucía este mes de noviembre: quién la convoca, qué se pide, servicios mínimos y hasta cuándo dura",
-      "url": "https://www.elconfidencial.com/espana/andalucia/2026-11-18/huelga-medicos-andalucia-fechas-y-detalles-1qrt_4467244/",
-      "discovery_url": "https://www.elconfidencial.com/espana/andalucia/2026-11-18/huelga-medicos-andalucia-fechas-y-detalles-1qrt_4467244/",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "El Confidencial · España",
-      "source_id": "elconfidencial",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "​Incidencias de Renfe hoy: retrasos, trenes cancelados y cómo reclamar tras la huelga",
-      "url": "https://www.elconfidencial.com/espana/cataluna/2026-11-18/incidencias-trenes-renfe-huelga-cataluna-1tna-1tps_4467220/",
-      "discovery_url": "https://www.elconfidencial.com/espana/cataluna/2026-11-18/incidencias-trenes-renfe-huelga-cataluna-1tna-1tps_4467220/",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "El Confidencial · España",
-      "source_id": "elconfidencial",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
     },
     {
       "title": "¿Qué dicen las encuestas sobre el 29-N? La carrera hacia la mayoría absoluta, en seis gráficos",

@@ -1,8 +1,8 @@
 {
   "schema": 2,
-  "checked_at": "2026-11-18T09:08:14.312270+00:00",
-  "last_attempt_at": "2026-11-18T09:08:14.312270+00:00",
-  "status": "partial",
+  "checked_at": "2026-11-18T21:36:17.822103+00:00",
+  "last_attempt_at": "2026-11-18T21:36:17.822103+00:00",
+  "status": "complete",
   "candidates": [
     {
       "tipo": "enlace_a_archivo",
@@ -325,12 +325,10 @@
       "estado": "nuevo_enlace_sin_auditar"
     }
   ],
-  "errors": [
-    "40dB.: HTTP 403"
-  ],
+  "errors": [],
   "summary": {
     "paginas_consultadas": 30,
-    "paginas_accesibles": 29,
+    "paginas_accesibles": 30,
     "ficheros_descargados": 0,
     "matrices_analizadas": 0
   }
