@@ -28,7 +28,7 @@ export function renderHomeImpact(references=[],events=[]){
  <div class="portada-cabecera">
   <p class="portada-cuenta" id="portada-cuenta">Elecciones generales · 29 de noviembre de 2026</p>
   <h1 id="impact-heading">Panorama 29N</h1>
-  <p><a href="metapromedio.html">Promedio de promedios →</a> · <a href="construye-estimacion.html#cocina-secuencia">Estimador experimental con microdatos →</a></p>
+  <p><a href="metapromedio.html">Promedio de promedios →</a> · <a href="del-sondeo-al-escano.html#maquina">Estimador experimental con microdatos →</a></p>
   <p id="portada-archivo" class="portada-archivo"></p>
   <div class="portada-titular" id="portada-titular" aria-live="polite"><p>Cargando la estimación publicada…</p></div>
   <p class="portada-fechas" id="portada-fechas"></p>
