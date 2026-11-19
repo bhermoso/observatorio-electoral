@@ -1,7 +1,7 @@
 {
   "schema": 2,
-  "checked_at": "2026-11-18T21:36:10.271405+00:00",
-  "last_attempt_at": "2026-11-18T21:36:10.271405+00:00",
+  "checked_at": "2026-11-19T09:29:56.736708+00:00",
+  "last_attempt_at": "2026-11-19T09:29:56.736708+00:00",
   "status": "partial",
   "searches": 15,
   "sources_ok": 14,
@@ -13,7 +13,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 2
+      "count": 1
     },
     {
       "id": "elmundo",
@@ -67,7 +67,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 2
+      "count": 1
     },
     {
       "id": "20minutos",
@@ -76,7 +76,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 4
+      "count": 1
     },
     {
       "id": "elconfidencial",
@@ -85,7 +85,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 1
+      "count": 2
     },
     {
       "id": "larazon",
@@ -104,7 +104,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 1
+      "count": 0
     },
     {
       "id": "electomania",
@@ -113,7 +113,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 4
+      "count": 2
     },
     {
       "id": "swdemoscopia",
@@ -145,6 +145,28 @@
   ],
   "results": [
     {
+      "title": "\n         Calendario de las huelgas en Renfe: estas son las fechas de los próximos paros \n    ",
+      "url": "https://www.20minutos.es/nacional/calendario-huelgas-renfe-estas-son-fechas-proximos-paros_7062509_0.html",
+      "discovery_url": "https://www.20minutos.es/nacional/calendario-huelgas-renfe-estas-son-fechas-proximos-paros_7062509_0.html",
+      "published": "2026-11-19T08:33:00+00:00",
+      "publication_raw": "2026-11-19T08:33:00+00:00",
+      "topic": "20minutos · nacional",
+      "source_id": "20minutos",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Elecciones generales 29-N, en directo |  Debate entre Sánchez y Feijóo y última hora de la campaña electoral del PP, PSOE y Vox",
+      "url": "https://www.elespanol.com/espana/20261119/elecciones-generales-directo-ultima-hora-pedro-sanchez-sondeos-actos-campana-psoe-pp-vox-partidos-voto-correo-2026-encuestas/1003744463824_10.html",
+      "discovery_url": "https://www.elespanol.com/espana/20261119/elecciones-generales-directo-ultima-hora-pedro-sanchez-sondeos-actos-campana-psoe-pp-vox-partidos-voto-correo-2026-encuestas/1003744463824_10.html",
+      "published": "2026-11-19T08:25:00+00:00",
+      "publication_raw": "2026-11-19T08:25:00+00:00",
+      "topic": "EL ESPAÑOL · España",
+      "source_id": "elespanol",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
       "title": "Encuesta Argentina (Proyección 14 nov): Milei lidera la primera vuelta y el balotaje queda en empate técnico",
       "url": "https://electomania.es/encuesta-argentina-proyeccion-14-nov/",
       "discovery_url": "https://electomania.es/encuesta-argentina-proyeccion-14-nov/",
@@ -152,17 +174,6 @@
       "publication_raw": "2026-11-18T21:24:31+00:00",
       "topic": "Electomanía · publicaciones",
       "source_id": "electomania",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Elecciones generales del 29-N, en directo | Bustinduy urge al PSOE a aprobar \"ya\" la prestación universal por crianza: \"No hay ninguna razón para no hacerlo\"",
-      "url": "https://www.elespanol.com/espana/20261118/elecciones-generales-directo-ultima-hora-pedro-sanchez-encuestas-sondeos-actos-campana-pp-psoe-vox-2026-partidos-voto-correo-electoral/1003744462289_10.html",
-      "discovery_url": "https://www.elespanol.com/espana/20261118/elecciones-generales-directo-ultima-hora-pedro-sanchez-encuestas-sondeos-actos-campana-pp-psoe-vox-2026-partidos-voto-correo-electoral/1003744462289_10.html",
-      "published": "2026-11-18T19:33:00+00:00",
-      "publication_raw": "2026-11-18T19:33:00+00:00",
-      "topic": "EL ESPAÑOL · España",
-      "source_id": "elespanol",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
@@ -189,83 +200,6 @@
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "CC OO acudirá a los tribunales por la actuación policial en la huelga general: “Buena parte de las personas golpeadas son de nuestro sindicato”",
-      "url": "https://elpais.com/espana/2026-11-18/cc-oo-acudira-a-los-tribunales-por-la-actuacion-policial-en-la-huelga-general-buena-parte-de-las-personas-golpeadas-son-de-nuestro-sindicato.html",
-      "discovery_url": "https://elpais.com/espana/2026-11-18/cc-oo-acudira-a-los-tribunales-por-la-actuacion-policial-en-la-huelga-general-buena-parte-de-las-personas-golpeadas-son-de-nuestro-sindicato.html",
-      "published": "2026-11-18T15:16:27+00:00",
-      "publication_raw": "2026-11-18T15:16:27+00:00",
-      "topic": "EL PAÍS · España",
-      "source_id": "elpais",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Encuesta Finlandia (Verian 18 nov): el SDP mantiene la cabeza y el Gobierno se queda a 25 escaños de la mayoría",
-      "url": "https://electomania.es/encuesta-finlandia-verian-18-nov/",
-      "discovery_url": "https://electomania.es/encuesta-finlandia-verian-18-nov/",
-      "published": "2026-11-18T12:39:30+00:00",
-      "publication_raw": "2026-11-18T12:39:30+00:00",
-      "topic": "Electomanía · publicaciones",
-      "source_id": "electomania",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "\n         Cuerpo apunta a nuevos contactos \"hoy mismo\" para evitar la única huelga en pie, de maquinistas de Renfe el lunes que viene \n    ",
-      "url": "https://www.20minutos.es/nacional/cuerpo-apunta-nuevos-contactos-hoy-mismo-para-evitar-unica-huelga-pie-maquinistas-renfe-lunes-que-viene_7062599_0.html",
-      "discovery_url": "https://www.20minutos.es/nacional/cuerpo-apunta-nuevos-contactos-hoy-mismo-para-evitar-unica-huelga-pie-maquinistas-renfe-lunes-que-viene_7062599_0.html",
-      "published": "2026-11-18T11:49:05+00:00",
-      "publication_raw": "2026-11-18T11:49:05+00:00",
-      "topic": "20minutos · nacional",
-      "source_id": "20minutos",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "\n         Horario del debate electoral entre Pedro Sánchez y Alberto Núñez Feijóo y dónde ver online y por televisión en directo \n    ",
-      "url": "https://www.20minutos.es/nacional/horario-debate-electoral-pedro-sanchez-alberto-nunez-feijoo-elecciones-generales-donde-ver_7061066_0.html",
-      "discovery_url": "https://www.20minutos.es/nacional/horario-debate-electoral-pedro-sanchez-alberto-nunez-feijoo-elecciones-generales-donde-ver_7061066_0.html",
-      "published": "2026-11-18T11:23:51+00:00",
-      "publication_raw": "2026-11-18T11:23:51+00:00",
-      "topic": "20minutos · nacional",
-      "source_id": "20minutos",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "\n         Calendario de las huelgas en Renfe: estas son las fechas de los próximos paros \n    ",
-      "url": "https://www.20minutos.es/nacional/calendario-huelgas-renfe-estas-fechas-proximos-paros_7062509_0.html",
-      "discovery_url": "https://www.20minutos.es/nacional/calendario-huelgas-renfe-estas-fechas-proximos-paros_7062509_0.html",
-      "published": "2026-11-18T10:44:51+00:00",
-      "publication_raw": "2026-11-18T10:44:51+00:00",
-      "topic": "20minutos · nacional",
-      "source_id": "20minutos",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Encuesta Francia (Ifop 18 nov): Le Pen y Mélenchon se clasifican y Lisnard se acerca a Philippe",
-      "url": "https://electomania.es/encuesta-francia-ifop-18-nov/",
-      "discovery_url": "https://electomania.es/encuesta-francia-ifop-18-nov/",
-      "published": "2026-11-18T10:12:39+00:00",
-      "publication_raw": "2026-11-18T10:12:39+00:00",
-      "topic": "Electomanía · publicaciones",
-      "source_id": "electomania",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Los profesores anti-Ayuso presionan para expulsar de la negociación al sindicato que no secunda la huelga",
-      "url": "https://okdiario.com/madrid/profesores-anti-ayuso-presionan-expulsar-negociacion-sindicato-que-no-secunda-huelga-21041875",
-      "discovery_url": "https://okdiario.com/madrid/profesores-anti-ayuso-presionan-expulsar-negociacion-sindicato-que-no-secunda-huelga-21041875",
-      "published": "2026-11-18T04:45:29+00:00",
-      "publication_raw": "2026-11-18T04:45:29+00:00",
-      "topic": "OKDIARIO · España",
-      "source_id": "okdiario",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
       "title": "El mapa del voto táctico para que el último escaño por provincia se lo lleve la derecha o la izquierda: ¿qué dicen las encuestas?",
       "url": "https://elpais.com/espana/elecciones-generales/2026-11-18/el-mapa-del-voto-tactico-para-que-el-ultimo-escano-por-provincia-se-lo-lleve-la-derecha-o-la-izquierda-que-dicen-las-encuestas.html",
       "discovery_url": "https://elpais.com/espana/elecciones-generales/2026-11-18/el-mapa-del-voto-tactico-para-que-el-ultimo-escano-por-provincia-se-lo-lleve-la-derecha-o-la-izquierda-que-dicen-las-encuestas.html",
@@ -273,28 +207,6 @@
       "publication_raw": "2026-11-18T04:30:01+00:00",
       "topic": "EL PAÍS · España",
       "source_id": "elpais",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "\n         Así será mañana el cara a cara entre Sánchez y Feijóo: el debate más esperado de la campaña electoral \n    ",
-      "url": "https://www.20minutos.es/nacional/asi-sera-cara-cara-pedro-sanchez-feijoo-debate-electoral-mas-esperado-elecciones-generales-29n_7062051_0.html",
-      "discovery_url": "https://www.20minutos.es/nacional/asi-sera-cara-cara-pedro-sanchez-feijoo-debate-electoral-mas-esperado-elecciones-generales-29n_7062051_0.html",
-      "published": "2026-11-18T04:06:13+00:00",
-      "publication_raw": "2026-11-18T04:06:13+00:00",
-      "topic": "20minutos · nacional",
-      "source_id": "20minutos",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "La media de encuestas: la izquierda recorta distancias pero todavía está a 14 puntos de la suma de PP y Vox",
-      "url": "https://www.eldiario.es/politica/media-encuestas-izquierda-recorta-distancias-todavia-14-puntos-suma-pp-vox_1_13670652.html",
-      "discovery_url": "https://www.eldiario.es/politica/media-encuestas-izquierda-recorta-distancias-todavia-14-puntos-suma-pp-vox_1_13670652.html",
-      "published": "2026-11-17T18:21:59+00:00",
-      "publication_raw": "2026-11-17T18:21:59+00:00",
-      "topic": "elDiario.es · política",
-      "source_id": "eldiario",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
@@ -440,6 +352,17 @@
       "source_id": "mic",
       "original_verified": false,
       "tipo": "enlace_a_archivo"
+    },
+    {
+      "title": "Huelga de maquinistas el 23 de noviembre: quién la convoca, por qué protestan y qué se sabe de los servicios mínimos",
+      "url": "https://www.elconfidencial.com/espana/2026-11-19/huelga-maquinistas-23-noviembre-1qrt_4468077/",
+      "discovery_url": "https://www.elconfidencial.com/espana/2026-11-19/huelga-maquinistas-23-noviembre-1qrt_4468077/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Confidencial · España",
+      "source_id": "elconfidencial",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
     },
     {
       "title": "¿Qué dicen las encuestas sobre el 29-N? La carrera hacia la mayoría absoluta, en seis gráficos",
