@@ -58,6 +58,7 @@ jobs:
           node scripts/auditar-estructura-simple.mjs
           node scripts/auditar-actualizacion-14nov.mjs
           node scripts/auditar-novedades.mjs
+          OEE_SITE=http://127.0.0.1:4173 node scripts/auditar-metapromedio.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
