@@ -28,7 +28,7 @@ class Incorporacion14Nov(unittest.TestCase):
   self.assertEqual(rows[0]['voto']['PSOE'],30.3)
 
  def test_tracking_dia5_conserva_nuevo_campo_y_muestra(self):
-  accepted,rejected=F.seleccion_pronostico(F.todas())
+  accepted,rejected=F.seleccion_pronostico([e for e in F.todas() if e.get('publicacion') and e['publicacion']<=date(2026,11,17)])
   rows=[e for e in accepted if e['estudio'].startswith('40db-2026-11-') and 'tracking' in e['estudio']]
   self.assertEqual([e['estudio'] for e in rows],['40db-2026-11-17-tracking-dia05'])
   e=rows[0]
@@ -36,3 +36,11 @@ class Incorporacion14Nov(unittest.TestCase):
   self.assertEqual((e['campo_ini'],e['campo_fin']),(date(2026,11,12),date(2026,11,16)))
   self.assertEqual(set(e['voto']),{'PP','PSOE','VOX','SALF'})
   self.assertEqual(e['voto']['PSOE'],30.6)
+
+ def test_tracking_dia7_sustituye_campos_solapados(self):
+  accepted,rejected=F.seleccion_pronostico([e for e in F.todas() if e.get('publicacion') and e['publicacion']<=date(2026,11,19)])
+  rows=[e for e in accepted if e['estudio'].startswith('40db-2026-11-') and 'tracking' in e['estudio']]
+  latest=next(e for e in rows if e['estudio']=='40db-2026-11-19-tracking-dia07')
+  self.assertEqual((latest['n'],latest['campo_ini'],latest['campo_fin']),(2000,date(2026,11,14),date(2026,11,18)))
+  self.assertTrue(all(e is latest or e['campo_fin'] < latest['campo_ini'] for e in rows))
+  self.assertTrue(any(e['estudio']=='40db-2026-11-18-tracking-dia06' for e in rejected))
