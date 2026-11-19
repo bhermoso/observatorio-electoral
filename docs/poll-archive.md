@@ -134,4 +134,4 @@ Se contrasta la publicación institucional del 12 de octubre para El Periódico.
 
 ## Entregas del 18 y 19 de noviembre de 2026
 
-Se verifican los días 6 y 7 del tracking de 40dB.: 2.000 entrevistas CAWI del 13–17 y 14–18, respectivamente. El archivo alcanza 35 fichas de 15 institutos; la selección descarta las entregas con campo directamente solapado con otra posterior; puede conservar otras con campo sin solape. Se cotejan voto, escaños y ficha en páginas 6, 8 y 25 de cada PDF, y se conservan sus huellas en `data/sources/tracking-40db-18-19nov.json`. No se sustituyen sus categorías por agregados ni se infieren escaños provinciales.
+Se verifican los días 6 y 7 del tracking de 40dB.: 2.000 entrevistas CAWI del 13–17 y 14–18, respectivamente. El archivo alcanza 35 fichas de 15 institutos; la selección descarta entregas con campo directamente solapado con otra posterior y puede conservar otras sin solape. Se cotejan voto, escaños y ficha en páginas 6, 8 y 25 de cada PDF, y se conservan sus huellas en `data/sources/tracking-40db-18-19nov.json`. No se sustituyen categorías por agregados ni se infieren escaños provinciales.
