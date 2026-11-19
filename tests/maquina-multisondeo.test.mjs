@@ -8,14 +8,14 @@ const sources=registry.studies.map(s=>JSON.parse(fs.readFileSync(s.file)));
 const election=JSON.parse(fs.readFileSync('data/election.json'));
 const near=(a,b,e=1e-6)=>assert.ok(Math.abs(a-b)<e,`${a} != ${b}`);
 test('Selector multisondeo: originales únicos, dos casas y noviembre como apertura',()=>{
- assert.equal(sources.length,12);
- assert.equal(registry.default,'40db-2026-11-14');
+ assert.equal(sources.length,13);
+ assert.equal(registry.default,'40db-2026-11-19');
  assert.equal(new Set(registry.studies.map(s=>s.house)).size,2);
- assert.equal(new Set(registry.studies.map(s=>s.sha256_zip)).size,12);
+ assert.equal(new Set(registry.studies.map(s=>s.sha256_zip)).size,13);
  for(let i=1;i<registry.studies.length;i++)assert.ok(registry.studies[i-1].published>=registry.studies[i].published);
  for(const d of sources){assert.equal(d.n,Object.values(d.categories).reduce((a,b)=>a+b,0));assert.ok(d.meta.variables.recall);assert.equal(d.meta.id,d.study);}
 });
-test('Las 384 combinaciones conservan sus masas, sus bases y su imputación',()=>{
+test('Las 416 combinaciones conservan sus masas, sus bases y su imputación',()=>{
  for(const d of sources)for(const o of Object.values(d.scenarios)){
   near(Object.values(o.shares).reduce((a,b)=>a+b,0),100);
   near(Object.values(o.masses).reduce((a,b)=>a+b,0),o.denominator);
@@ -26,6 +26,15 @@ test('Las 384 combinaciones conservan sus masas, sus bases y su imputación',()=
    near(Object.entries(o.imputation_groups).reduce((a,[g,x])=>a+x.mass*(o.transfers[g][p]||0),0),o.imputed[p]);
   }
  }
+});
+test('Última matriz de 40dB conserva las respuestas y el tratamiento declarado de ausencias',()=>{
+ const d=sources.find(d=>d.study==='40db-2026-11-19');
+ assert.equal(d.n,2000);
+ assert.equal(d.scenarios['00000'].counts.PSOE,591);
+ assert.equal(d.scenarios['00000'].counts.PP,465);
+ assert.equal(d.scenarios['00000'].counts.VOX,324);
+ assert.equal(d.diagnostic.invalid_probability,37);
+ assert.match(d.meta.overlap,/no son muestras independientes/i);
 });
 test('Recuerdo: cada operación reproduce el producto por grupo, también en historias de 2019',()=>{
  for(const d of sources){

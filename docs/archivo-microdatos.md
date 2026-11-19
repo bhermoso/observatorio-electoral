@@ -1,5 +1,11 @@
 # Archivo de microdatos de encuestas españolas
 
+## Actualización del estimador: 20 de noviembre de 2026
+
+Se incorpora al selector de recetas la matriz DTA del [tracking de 40dB. del 19 de noviembre](https://elpais.com/espana/elecciones-generales/2026-11-19/90-minutos-cara-a-cara-sanchez-busca-remontar-los-dos-puntos-que-le-separan-del-pp-y-feijoo-repetir-el-exito-de-2023.html), enlazada en «Resultados completos de la encuesta». Contiene 2.000 registros; campo del 14 al 18. Se identifican peso `ponde`, intención `p2`, simpatía `p3`, recuerdo `p5` y participación `p1`. La huella del ZIP y el origen figuran en `data/microdatos/maquina/index.json`; únicamente se publican sumas y resultados agregados.
+
+La intención directa ponderada reproduce, al redondear, los valores principales publicados en la página 17 del informe: PSOE 29,6 %, PP 22,8 % y Vox 16,3 % sobre todas las entrevistas. Las 37 respuestas sin probabilidad válida reciben 0,5 en las recetas que activan ese ingrediente: es un supuesto explícito, no una respuesta observada. Las 32 combinaciones son experimentales y no la fórmula interna de 40dB. Esta es la misma muestra del día 7 ya incluida en el archivo de encuestas, no una encuesta adicional; los trackings diarios se solapan. El reparto de escaños es una simulación con geografía 2023.
+
 **Actualizado el 5 de noviembre de 2026.** Inventario **parcial y ampliable**: [fuentes y fichas en JSON](../data/microdatos/catalogo-publico.json). Se presenta en las pestañas **Encuestas** y **Cocina**. Contiene **9 fuentes y 76 entradas documentales**, pero no 62 encuestas distintas: algunas entradas agrupan varios estudios o describen repositorios y series acumuladas.
 
 ## Qué se considera microdato
