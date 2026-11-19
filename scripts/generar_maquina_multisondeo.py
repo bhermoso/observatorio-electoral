@@ -28,6 +28,7 @@ CIS={
  '3411':('Preelectoral 23J · examen histórico','2023-07-05','2023-06-08','2023-06-27'),
  '3415':('Flash 23J · examen histórico','2023-07-17','2023-07-10','2023-07-12')}
 FORTY=[
+ ('40db-2026-11-19','40dB_tracking_dia07.zip','Tracking 29N · día 7','2026-11-19','2026-11-14','2026-11-18','p2','p3','p5','p1'),
  ('40db-2026-11-14','40dB_tracking_dia02.zip','Tracking 29N · día 2','2026-11-14','2026-11-10','2026-11-13','p2','p3','p5','p1'),
  ('40db-2026-11-13','40dB_tracking_dia01.zip','Tracking 29N · día 1','2026-11-13','2026-11-10','2026-11-12','p2','p3','p5','p1'),
  ('40db-2026-11-09','2026_11_preelectoral_descargables.zip','Preelectoral noviembre 2026','2026-11-09','2026-11-02','2026-11-04','p3','p4','p6','p2'),
@@ -125,7 +126,8 @@ def main():
   path=folder/fname
   if not path.exists():pending.append(dict(id=ident,title=title,reason='Original no descargado; no se calculan recetas.'));continue
   rows,valid,names,extra=read40(path,(v,s,r,p));modern='FA' in valid;fourth='FA' if modern else 'SUMAR'
-  source= ('https://elpais.com/espana/elecciones-generales/2026-11-14/la-diferencia-entre-pp-y-psoe-se-estrecha-segun-el-tracking-diario-de-40db.html' if ident.endswith('11-14') else
+  source= ('https://elpais.com/espana/elecciones-generales/2026-11-19/90-minutos-cara-a-cara-sanchez-busca-remontar-los-dos-puntos-que-le-separan-del-pp-y-feijoo-repetir-el-exito-de-2023.html' if ident.endswith('11-19') else
+          'https://elpais.com/espana/elecciones-generales/2026-11-14/la-diferencia-entre-pp-y-psoe-se-estrecha-segun-el-tracking-diario-de-40db.html' if ident.endswith('11-14') else
           'https://elpais.com/espana/elecciones-generales/2026-11-13/la-campana-arranca-con-la-derecha-en-el-horizonte-de-los-190-escanos.html' if ident.endswith('11-13') else
           'https://elpais.com/espana/2026-11-09/consulte-todos-los-datos-internos-del-sondeo-preeelectoral-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html' if ident.endswith('11-09') else
           next(x['pagina'] for x in json.load(open(ROOT/'data/microdatos/fuentes-40db.json'))['fuentes'] if x['publicacion']==published))
@@ -142,7 +144,7 @@ def main():
    meta['discrepancies']=['La presentación publica N=305 para intención PP; la matriz DTA contiene '+str(actual)+' registros. Se conserva el recuento del fichero original.'] if actual!=305 else []
   index.append(build(rows,meta,valid,official,names,extra))
  index.sort(key=lambda x:(x['published'],x['fieldEnd'],x['id']),reverse=True)
- dumps(OUT/'index.json',dict(schema=2,updated='2026-11-14',studies=index,pending=pending,default=index[0]['id'],catalog='data/microdatos/catalogo-publico.json'))
+ dumps(OUT/'index.json',dict(schema=2,updated='2026-11-20',studies=index,pending=pending,default=index[0]['id'],catalog='data/microdatos/catalogo-publico.json'))
  print(len(index),'matrices originales calculadas;',len(index)*32,'recetas;',len(pending),'pendientes.')
 
 
