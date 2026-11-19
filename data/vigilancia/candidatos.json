@@ -1,7 +1,7 @@
 {
   "schema": 2,
-  "checked_at": "2026-11-19T09:29:56.736708+00:00",
-  "last_attempt_at": "2026-11-19T09:29:56.736708+00:00",
+  "checked_at": "2026-11-19T21:49:19.092797+00:00",
+  "last_attempt_at": "2026-11-19T21:49:19.092797+00:00",
   "status": "partial",
   "searches": 15,
   "sources_ok": 14,
@@ -13,7 +13,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 1
+      "count": 0
     },
     {
       "id": "elmundo",
@@ -31,7 +31,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 1
+      "count": 0
     },
     {
       "id": "gad3",
@@ -67,7 +67,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 1
+      "count": 2
     },
     {
       "id": "20minutos",
@@ -85,7 +85,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 2
+      "count": 0
     },
     {
       "id": "larazon",
@@ -104,7 +104,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 0
+      "count": 2
     },
     {
       "id": "electomania",
@@ -131,7 +131,7 @@
       "format": "html",
       "ok": true,
       "attempts": 1,
-      "count": 0
+      "count": 2
     },
     {
       "id": "cis-novedades",
@@ -145,46 +145,68 @@
   ],
   "results": [
     {
-      "title": "\n         Calendario de las huelgas en Renfe: estas son las fechas de los próximos paros \n    ",
-      "url": "https://www.20minutos.es/nacional/calendario-huelgas-renfe-estas-son-fechas-proximos-paros_7062509_0.html",
-      "discovery_url": "https://www.20minutos.es/nacional/calendario-huelgas-renfe-estas-son-fechas-proximos-paros_7062509_0.html",
-      "published": "2026-11-19T08:33:00+00:00",
-      "publication_raw": "2026-11-19T08:33:00+00:00",
+      "title": "ENCUESTA | ¿Quién está ganando el cara a cara entre Sánchez y Feijóo?",
+      "url": "https://www.eldiario.es/politica/encuesta-ganando-cara-cara-sanchez-feijoo_11_13674665.html",
+      "discovery_url": "https://www.eldiario.es/politica/encuesta-ganando-cara-cara-sanchez-feijoo_11_13674665.html",
+      "published": "2026-11-19T21:39:26+00:00",
+      "publication_raw": "2026-11-19T21:39:26+00:00",
+      "topic": "elDiario.es · política",
+      "source_id": "eldiario",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Dónde ver el debate electoral 2026 entre Pedro Sánchez y Alberto Núñez Feijóo en directo y a qué hora empieza por TV online y cuánto dura el debate de hoy en vivo",
+      "url": "https://okdiario.com/espana/que-hora-debate-pedro-sanchez-alberto-nunez-feijoo-horario-donde-verlo-directo-tv-online-21120198",
+      "discovery_url": "https://okdiario.com/espana/que-hora-debate-pedro-sanchez-alberto-nunez-feijoo-horario-donde-verlo-directo-tv-online-21120198",
+      "published": "2026-11-19T21:30:50+00:00",
+      "publication_raw": "2026-11-19T21:30:50+00:00",
+      "topic": "OKDIARIO · España",
+      "source_id": "okdiario",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Sánchez, abucheado al llegar al debate electoral pese al amplio cordón de seguridad",
+      "url": "https://okdiario.com/espana/sanchez-abucheado-llegar-debate-electoral-pese-amplio-cordon-seguridad-21190485",
+      "discovery_url": "https://okdiario.com/espana/sanchez-abucheado-llegar-debate-electoral-pese-amplio-cordon-seguridad-21190485",
+      "published": "2026-11-19T20:03:30+00:00",
+      "publication_raw": "2026-11-19T20:03:30+00:00",
+      "topic": "OKDIARIO · España",
+      "source_id": "okdiario",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Tracking SW Demoscopia (19 nov): subida del PP",
+      "url": "https://electomania.es/tracking-sw-demoscopia-19-nov-subida-del-pp/",
+      "discovery_url": "https://electomania.es/tracking-sw-demoscopia-19-nov-subida-del-pp/",
+      "published": "2026-11-19T18:33:00+00:00",
+      "publication_raw": "2026-11-19T18:33:00+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Encuesta generales en R. Murcia (UCAM 19 nov): Vox superaría al PSOE",
+      "url": "https://electomania.es/encuesta-generales-en-r-murcia-ucam-19-nov-vox-superaria-al-psoe/",
+      "discovery_url": "https://electomania.es/encuesta-generales-en-r-murcia-ucam-19-nov-vox-superaria-al-psoe/",
+      "published": "2026-11-19T15:30:26+00:00",
+      "publication_raw": "2026-11-19T15:30:26+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "\n         Debate electoral Pedro Sánchez - Alberto Núñez Feijóo, en directo: última hora del cara a cara de las elecciones generales del 29N \n    ",
+      "url": "https://www.20minutos.es/nacional/debate-electoral-pedro-sanchez-feijoo-directo-ultima-hora-cara-cara-las-elecciones-generales-29n_7063153_6.html",
+      "discovery_url": "https://www.20minutos.es/nacional/debate-electoral-pedro-sanchez-feijoo-directo-ultima-hora-cara-cara-las-elecciones-generales-29n_7063153_6.html",
+      "published": "2026-11-19T13:01:30+00:00",
+      "publication_raw": "2026-11-19T13:01:30+00:00",
       "topic": "20minutos · nacional",
       "source_id": "20minutos",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Elecciones generales 29-N, en directo |  Debate entre Sánchez y Feijóo y última hora de la campaña electoral del PP, PSOE y Vox",
-      "url": "https://www.elespanol.com/espana/20261119/elecciones-generales-directo-ultima-hora-pedro-sanchez-sondeos-actos-campana-psoe-pp-vox-partidos-voto-correo-2026-encuestas/1003744463824_10.html",
-      "discovery_url": "https://www.elespanol.com/espana/20261119/elecciones-generales-directo-ultima-hora-pedro-sanchez-sondeos-actos-campana-psoe-pp-vox-partidos-voto-correo-2026-encuestas/1003744463824_10.html",
-      "published": "2026-11-19T08:25:00+00:00",
-      "publication_raw": "2026-11-19T08:25:00+00:00",
-      "topic": "EL ESPAÑOL · España",
-      "source_id": "elespanol",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Encuesta Argentina (Proyección 14 nov): Milei lidera la primera vuelta y el balotaje queda en empate técnico",
-      "url": "https://electomania.es/encuesta-argentina-proyeccion-14-nov/",
-      "discovery_url": "https://electomania.es/encuesta-argentina-proyeccion-14-nov/",
-      "published": "2026-11-18T21:24:31+00:00",
-      "publication_raw": "2026-11-18T21:24:31+00:00",
-      "topic": "Electomanía · publicaciones",
-      "source_id": "electomania",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Tracking SW Demoscopia (18 nov): “PP y Vox no suman”",
-      "url": "https://electomania.es/tracking-sw-demoscopia-18-nov-pp-y-vox-no-suman/",
-      "discovery_url": "https://electomania.es/tracking-sw-demoscopia-18-nov-pp-y-vox-no-suman/",
-      "published": "2026-11-18T19:08:00+00:00",
-      "publication_raw": "2026-11-18T19:08:00+00:00",
-      "topic": "Electomanía · publicaciones",
-      "source_id": "electomania",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
@@ -196,17 +218,6 @@
       "publication_raw": "2026-11-18T18:33:15+00:00",
       "topic": "elDiario.es · política",
       "source_id": "eldiario",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "El mapa del voto táctico para que el último escaño por provincia se lo lleve la derecha o la izquierda: ¿qué dicen las encuestas?",
-      "url": "https://elpais.com/espana/elecciones-generales/2026-11-18/el-mapa-del-voto-tactico-para-que-el-ultimo-escano-por-provincia-se-lo-lleve-la-derecha-o-la-izquierda-que-dicen-las-encuestas.html",
-      "discovery_url": "https://elpais.com/espana/elecciones-generales/2026-11-18/el-mapa-del-voto-tactico-para-que-el-ultimo-escano-por-provincia-se-lo-lleve-la-derecha-o-la-izquierda-que-dicen-las-encuestas.html",
-      "published": "2026-11-18T04:30:01+00:00",
-      "publication_raw": "2026-11-18T04:30:01+00:00",
-      "topic": "EL PAÍS · España",
-      "source_id": "elpais",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
@@ -354,28 +365,6 @@
       "tipo": "enlace_a_archivo"
     },
     {
-      "title": "Huelga de maquinistas el 23 de noviembre: quién la convoca, por qué protestan y qué se sabe de los servicios mínimos",
-      "url": "https://www.elconfidencial.com/espana/2026-11-19/huelga-maquinistas-23-noviembre-1qrt_4468077/",
-      "discovery_url": "https://www.elconfidencial.com/espana/2026-11-19/huelga-maquinistas-23-noviembre-1qrt_4468077/",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "El Confidencial · España",
-      "source_id": "elconfidencial",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "¿Qué dicen las encuestas sobre el 29-N? La carrera hacia la mayoría absoluta, en seis gráficos",
-      "url": "https://www.elconfidencial.com/espana/2026-11-10/encuestas-elecciones-generales-29n-mayoria-absoluta-graficos-cbtr_4460274/",
-      "discovery_url": "https://www.elconfidencial.com/espana/2026-11-10/encuestas-elecciones-generales-29n-mayoria-absoluta-graficos-cbtr_4460274/",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "El Confidencial · España",
-      "source_id": "elconfidencial",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
       "title": "Saltar al contenido",
       "url": "https://swdemoscopia.com/#main-content",
       "discovery_url": "https://swdemoscopia.com/#main-content",
@@ -427,6 +416,17 @@
       "publication_raw": "Fecha no indicada en el índice",
       "topic": "SW Demoscopia · productor del tracking",
       "source_id": "swdemoscopia",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Ver las encuestas",
+      "url": "https://laseptima.com/el-observatorio/",
+      "discovery_url": "https://laseptima.com/el-observatorio/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "La Séptima · canal del tracking",
+      "source_id": "laseptima",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
