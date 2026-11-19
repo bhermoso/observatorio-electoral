@@ -135,3 +135,9 @@ Se contrasta la publicación institucional del 12 de octubre para El Periódico.
 ## Entregas del 18 y 19 de noviembre de 2026
 
 Se verifican los días 6 y 7 del tracking de 40dB.: 2.000 entrevistas CAWI del 13–17 y 14–18, respectivamente. El archivo alcanza 35 fichas de 15 institutos; la selección descarta entregas con campo directamente solapado con otra posterior y puede conservar otras sin solape. Se cotejan voto, escaños y ficha en páginas 6, 8 y 25 de cada PDF, y se conservan sus huellas en `data/sources/tracking-40db-18-19nov.json`. No se sustituyen categorías por agregados ni se infieren escaños provinciales.
+
+## SW Demoscopia / La Séptima: entrega del 18 de noviembre
+
+La revisión del 20 de noviembre incorpora el barómetro n.º 14: 10.000 entrevistas telefónicas acumuladas del 26 de octubre al 17 de noviembre. Se verifica la tabla de voto, reparto central y percentiles 25–75 en la página 6 del archivo y la ficha completa en la página 15; la huella y el enlace original figuran en `data/sources/sw-demoscopia-18nov.json`. El punto central y la mediana no se confunden: por ejemplo, el reparto central del PSOE es 134 y la mediana de las simulaciones es 131. Las horquillas publicadas son percentiles de simulaciones del error muestral, no garantías predictivas.
+
+El estudio comparte entrevistas con las entregas acumuladas anteriores, que se conservan como archivo sin sumarlas como muestras independientes. PP–UPN aparece separado y Frente Amplio incluye Compromís: Front Valencià y UPC; el informe declara que usa el mapa de 2026. El archivo alcanza 36 fichas de 15 institutos.
