@@ -1,9 +1,17 @@
 {
   "schema": 2,
-  "checked_at": "2026-11-20T09:11:30.222942+00:00",
-  "last_attempt_at": "2026-11-20T09:11:30.222942+00:00",
+  "checked_at": "2026-11-20T21:32:04.728358+00:00",
+  "last_attempt_at": "2026-11-20T21:32:04.728358+00:00",
   "status": "partial",
   "candidates": [
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-08-barometro-flash/2026_10_08_barometro_flash_descargables.zip",
+      "titulo": "Datos completos",
+      "fuente": "40db",
+      "pagina": "https://elpais.com/espana/2026-10-09/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
+      "estado": "ya_catalogado"
+    },
     {
       "tipo": "enlace_a_archivo",
       "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/10-barometro/2026_10_barometro_descargables.zip",
@@ -11,6 +19,14 @@
       "fuente": "40db",
       "pagina": "https://elpais.com/espana/2026-10-05/consulte-todos-los-datos-internos-de-la-encuesta-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html",
       "estado": "ya_catalogado"
+    },
+    {
+      "tipo": "enlace_a_archivo",
+      "url": "https://moreincommon.es/data/microdatos-2026-11.zip",
+      "titulo": "Descargar (ZIP)",
+      "fuente": "more-in-common",
+      "pagina": "https://moreincommon.es/pulso-electoral.html",
+      "estado": "nuevo_enlace_sin_auditar"
     },
     {
       "tipo": "enlace_a_archivo",
@@ -318,7 +334,7 @@
     }
   ],
   "errors": [
-    "40db: HTTP 403"
+    "40dB.: HTTP 403"
   ],
   "summary": {
     "paginas_consultadas": 30,
