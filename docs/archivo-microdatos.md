@@ -89,3 +89,5 @@ Son **frecuencias simples de las preguntas cerradas**: `IV_GEN` (mayo, junio, se
 
 **Acceso GAD3:** los tres XLSX públicos de Aragón y Andalucía están localizados en el catálogo, pero el servidor cerró las conexiones de descarga tanto en el entorno local como en GitHub Actions. Permanecen **documentados, no analizados**. Una copia descargada por el usuario permitirá completar su homologación sin omitir las comprobaciones de SHA-256, n, preguntas y pesos.
 
+
+El tracking 40dB. día 8 (15–19 de noviembre de 2026; 2.000 entrevistas) incorpora 32 combinaciones. En 34 registros la probabilidad de participación está ausente o no es válida y, al activar esa receta experimental, se imputa 0,5. La presentación declara 463 votantes del PP en intención directa; el fichero DTA contiene 462. El cálculo conserva el fichero original y muestra la discrepancia. Esta entrega comparte entrevistas con las oleadas contiguas.

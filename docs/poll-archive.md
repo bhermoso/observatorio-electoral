@@ -141,3 +141,7 @@ Se verifican los días 6 y 7 del tracking de 40dB.: 2.000 entrevistas CAWI del 1
 La revisión del 20 de noviembre incorpora el barómetro n.º 14: 10.000 entrevistas telefónicas acumuladas del 26 de octubre al 17 de noviembre. Se verifica la tabla de voto, reparto central y percentiles 25–75 en la página 6 del archivo y la ficha completa en la página 15; la huella y el enlace original figuran en `data/sources/sw-demoscopia-18nov.json`. El punto central y la mediana no se confunden: por ejemplo, el reparto central del PSOE es 134 y la mediana de las simulaciones es 131. Las horquillas publicadas son percentiles de simulaciones del error muestral, no garantías predictivas.
 
 El estudio comparte entrevistas con las entregas acumuladas anteriores, que se conservan como archivo sin sumarlas como muestras independientes. PP–UPN aparece separado y Frente Amplio incluye Compromís: Front Valencià y UPC; el informe declara que usa el mapa de 2026. El archivo alcanza 36 fichas de 15 institutos.
+
+### 20 de noviembre de 2026 · 40dB., tracking día 8
+
+Informe original: https://elpais.com/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia08.pdf (portada, páginas 6, 8 y 25). Campo 15–19 de noviembre, 2.000 entrevistas CAWI; oleada solapada con entregas anteriores, sin sumar entrevistas. El artículo enlazado está fechado el 19 a las 20:00 CET y la portada del informe consultado lleva fecha 20: se usa esta última, sin asumir cuándo se enlazó la versión. La cobertura alcanza 37 fichas y 15 institutos.

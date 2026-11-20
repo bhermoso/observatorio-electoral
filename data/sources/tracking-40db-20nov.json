@@ -1,0 +1,18 @@
+{
+  "title": "40dB. · tracking día 8",
+  "verified": "2026-11-20",
+  "article": "https://elpais.com/espana/elecciones-generales/2026-11-19/la-encuesta-antes-del-debate-ligera-ventaja-del-pp-y-muy-clara-del-bloque-derechista.html",
+  "report": "https://elpais.com/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia08.pdf",
+  "articleDate": "2026-11-19T20:00:00+01:00",
+  "reportCoverDate": "2026-11-20",
+  "note": "Fecha exacta de enlace de esta versión del informe no verificada. Se utiliza la fecha de portada.",
+  "reportSha256": "69bd249a00e85d57992d366b387464da68b4db37dc1b0c547ce17ad2b1a7d59f",
+  "microdataSha256": "14407cf89feb82731a9f3a37329f7c1aa13a6ae036d8551666f7d421536d2cec",
+  "pages": {
+    "cover": 1,
+    "estimatedVote": 6,
+    "seats": 8,
+    "technical": 25
+  },
+  "microdata": "https://ep00.epimg.net/infografias/encuestas40db/2026/11-tracking-electoral/40dB_tracking_dia08.zip"
+}

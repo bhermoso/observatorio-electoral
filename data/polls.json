@@ -2664,5 +2664,113 @@
     },
     "seatNotes": "Puntos centrales de reparto y percentiles 25–75 de 40.000 simulaciones del error muestral, página 6 del archivo. La mediana es distinta del reparto central; no se usa como punto. Los intervalos no se suman.",
     "notes": "Tracking acumulado de 10.000 entrevistas entre el 26 de octubre y el 17 de noviembre, no una muestra adicional independiente de las entregas anteriores. El recuerdo de voto se usa en análisis y no en ponderación. El informe declara margen ±1,0 puntos al 95 % y mapa de 2026 (Madrid 38 y Cádiz 8). PP–UPN se conserva separado. No se infieren escaños provinciales desde voto nacional."
+  },
+  {
+    "kind": "poll-estimate",
+    "coverage": "partial",
+    "verified": "2026-11-20",
+    "scope": "España, excepto Ceuta y Melilla",
+    "universe": "Población general residente en España, excepto Ceuta y Melilla, de 18 años o más con derecho a voto",
+    "denominator": "Estimación de voto sobre voto válido",
+    "verification": "PDF original cotejado por extracción y revisión visual el 20 de noviembre de 2026.",
+    "id": "40db-2026-11-20-tracking-dia08",
+    "institute": "40dB.",
+    "publisher": "EL PAÍS / Cadena SER",
+    "title": "Tracking 29-N · día 8",
+    "fieldStart": "2026-11-15",
+    "fieldEnd": "2026-11-19",
+    "published": "2026-11-20",
+    "sample": 2000,
+    "mode": "CAWI",
+    "source": "https://elpais.com/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia08.pdf",
+    "technical": "https://elpais.com/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia08.pdf",
+    "publicationSource": "https://elpais.com/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia08.pdf",
+    "scenario": "Frente Amplio nacional separado de Compromís: Front Valencià, Ara Més y UPC; Podemos fuera de las coaliciones territoriales; UPN-PP separado en escaños.",
+    "values": {
+      "PP": 32.2,
+      "PSOE": 30.2,
+      "VOX": 17.6,
+      "Frente Amplio (sin candidaturas territoriales)": 3.6,
+      "SALF": 1.7,
+      "Podemos (fuera de candidaturas territoriales)": 1.1,
+      "Compromís: Front Valencià": 1.2,
+      "Ara Més-Front Ampli": 0.2,
+      "UPC": 0.3,
+      "Otro + Blanco": 11.9
+    },
+    "sourceLabels": {
+      "Frente Amplio (sin candidaturas territoriales)": "Frente Amplio",
+      "Podemos (fuera de candidaturas territoriales)": "Podemos"
+    },
+    "seats": {
+      "PP": {
+        "point": 132,
+        "min": 125,
+        "max": 137
+      },
+      "PSOE": {
+        "point": 120,
+        "min": 115,
+        "max": 123
+      },
+      "VOX": {
+        "point": 58,
+        "min": 56,
+        "max": 62
+      },
+      "Frente Amplio (sin candidaturas territoriales)": {
+        "point": 5,
+        "min": 5,
+        "max": 6
+      },
+      "Podemos (fuera de candidaturas territoriales)": {
+        "point": 0,
+        "min": 0,
+        "max": 1
+      },
+      "Compromís: Front Valencià": {
+        "point": 3,
+        "min": 3,
+        "max": 3
+      },
+      "Ara Més-Front Ampli": {
+        "point": 1,
+        "min": 0,
+        "max": 1
+      },
+      "UPC": {
+        "point": 0,
+        "min": 0,
+        "max": 1
+      },
+      "ERC": {
+        "point": 10
+      },
+      "EH Bildu": {
+        "point": 7
+      },
+      "Junts": {
+        "point": 3
+      },
+      "PNV": {
+        "point": 3
+      },
+      "Adelante Andalucía": {
+        "point": 3
+      },
+      "BNG": {
+        "point": 2
+      },
+      "UPN-PP (Navarra)": {
+        "point": 2
+      },
+      "CC": {
+        "point": 1
+      }
+    },
+    "sourcePages": "PDF original: portada (fecha), página 6 (voto), página 8 (escaños) y página 25 (ficha técnica).",
+    "notes": "La ficha declara 2.000 entrevistas CAWI del 15 al 19 de noviembre. Es una oleada solapada: la selección conserva la posterior sin sumar muestras. El artículo enlazado está fechado el 19 y la portada del informe el 20; no se ha verificado cuándo se enlazó esta versión. Margen declarado ±2,2 % (95 %), no intervalo predictivo.",
+    "seatNotes": "Puntos y horquillas de la página 8. Los puntos desglosados suman 350; no se duplican Otros ni el grupo territorial junto a sus componentes.",
+    "publicationNote": "El artículo enlazado está fechado el 19 de noviembre a las 20:00 CET; la portada del informe consultado lleva fecha 20. Se usa la fecha del informe porque no se ha verificado cuándo se enlazó esta versión."
   }
 ]
