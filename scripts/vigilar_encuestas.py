@@ -55,7 +55,13 @@ def parse(body,source):
         rows=[(t,u,None) for t,u in parser.rows]
     for title,raw,published in rows:
         url=safe_url(raw,source['url'])
-        if not url or not (WORDS.search(title+' '+url) or FILES.search(url)):continue
+        if not url or raw.startswith('#'):continue
+        title=' '.join(title.split())
+        file=bool(FILES.search(url))
+        if not file and (not title or title.casefold() in {'saltar al contenido','inicio','menú','menu','editorial','opinión','opinion','pp','psoe','vox','podemos','sumar','29n','elecciones','elecciones generales 2026'}):continue
+        # No usar el dominio: «demoscopia» en el host no convierte cada menú en un hallazgo.
+        target=urlsplit(url)
+        if not (WORDS.search(title+' '+target.path+' '+target.query) or file):continue
         found.append({'title':title[:500] or 'Archivo enlazado por el productor','url':url,'discovery_url':url,
                       'published':published,'publication_raw':published or 'Fecha no indicada en el índice',
                       'topic':source['name'],'source_id':source['id'],'original_verified':False,

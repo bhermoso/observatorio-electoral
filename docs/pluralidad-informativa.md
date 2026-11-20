@@ -7,6 +7,7 @@ Entre las incorporaciones figuran ABC, El Debate, Libertad Digital, The Objectiv
 ## Reglas comunes
 
 - El rastreo aplica el mismo filtro temático a todas las fuentes: encuestas, estimaciones, elecciones, partidos, documentación y contexto electoral. Se amplían términos en lenguas cooficiales; no se seleccionan titulares por su valoración favorable o desfavorable de un partido.
+- Se descartan enlaces vacíos, saltos de navegación y etiquetas genéricas de menú. El dominio de una empresa demoscópica no basta para convertir todos sus enlaces en hallazgos.
 - Se conserva fuente original, URL, fecha cuando consta y estado de consulta. Una respuesta bloqueada o una fuente sin hallazgos no se presenta como un medio ausente del directorio ni como una búsqueda completa.
 - El informe limitado a 150 candidatos y la lista visible limitada a 45 alternan fuentes por turnos, conservando recencia dentro de cada una. Así un medio con muchos titulares fechados no expulsa automáticamente a páginas sin fecha RSS. Es una regla de presentación y descubrimiento, no una ponderación del motor.
 - El filtro «Medio o productor» permite inspeccionar una fuente concreta; el apartado de cobertura muestra también las fuentes fallidas y sus enlaces.

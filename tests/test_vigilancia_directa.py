@@ -64,3 +64,9 @@ class TestPluralidad(unittest.TestCase):
   ids=[x['id'] for x in rows];self.assertEqual(len(ids),len(set(ids)))
   for x in ['okdiario','elespanol','abc','eldebate','libertaddigital','publico','infolibre','ctxt','elsalto','elpais','elmundo','rtve','efe','europapress','cadenaser','cope','esradio','lavanguardia','naiz','prazagal']:
    self.assertIn(x,ids)
+
+class TestRuidoNavegacion(unittest.TestCase):
+ def test_dominio_no_convierte_menus_ni_imagenes_sin_titulo_en_noticias(self):
+  source={**SOURCE,'url':'https://demoscopia.es/'}
+  body=b'<a href="#main">Saltar al contenido</a><a href="/contacto">Contacto</a><a href="/sondeo"><img src="x"></a><a href="/voto.zip">Datos</a><a href="/nueva">Sondeo electoral nuevo</a>'
+  rows=parse(body,source);self.assertEqual([x['title'] for x in rows],['Datos','Sondeo electoral nuevo'])
