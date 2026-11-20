@@ -44,3 +44,12 @@ class Incorporacion14Nov(unittest.TestCase):
   self.assertEqual((latest['n'],latest['campo_ini'],latest['campo_fin']),(2000,date(2026,11,14),date(2026,11,18)))
   self.assertTrue(all(e is latest or e['campo_fin'] < latest['campo_ini'] for e in rows))
   self.assertTrue(any(e['estudio']=='40db-2026-11-18-tracking-dia06' for e in rejected))
+
+ def test_tracking_dia8_excluye_oleadas_solapadas(self):
+  accepted,rejected=F.seleccion_pronostico([e for e in F.todas() if e.get('publicacion') and e['publicacion']<=date(2026,11,20)])
+  rows=[e for e in accepted if e['estudio'].startswith('40db-2026-11-') and 'tracking' in e['estudio']]
+  latest=next(e for e in rows if e['estudio']=='40db-2026-11-20-tracking-dia08')
+  self.assertEqual((latest['n'],latest['campo_ini'],latest['campo_fin']),(2000,date(2026,11,15),date(2026,11,19)))
+  self.assertEqual((latest['voto']['PP'],latest['voto']['PSOE'],latest['voto']['VOX']),(32.2,30.2,17.6))
+  self.assertTrue(all(e is latest or e['campo_fin'] < latest['campo_ini'] for e in rows))
+  self.assertTrue(any(e['estudio']=='40db-2026-11-19-tracking-dia07' for e in rejected))

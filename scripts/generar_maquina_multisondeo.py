@@ -28,6 +28,7 @@ CIS={
  '3411':('Preelectoral 23J · examen histórico','2023-07-05','2023-06-08','2023-06-27'),
  '3415':('Flash 23J · examen histórico','2023-07-17','2023-07-10','2023-07-12')}
 FORTY=[
+ ('40db-2026-11-20','40dB_tracking_dia08.zip','Tracking 29N · día 8','2026-11-20','2026-11-15','2026-11-19','p2','p3','p5','p1'),
  ('40db-2026-11-19','40dB_tracking_dia07.zip','Tracking 29N · día 7','2026-11-19','2026-11-14','2026-11-18','p2','p3','p5','p1'),
  ('40db-2026-11-14','40dB_tracking_dia02.zip','Tracking 29N · día 2','2026-11-14','2026-11-10','2026-11-13','p2','p3','p5','p1'),
  ('40db-2026-11-13','40dB_tracking_dia01.zip','Tracking 29N · día 1','2026-11-13','2026-11-10','2026-11-12','p2','p3','p5','p1'),
@@ -126,7 +127,8 @@ def main():
   path=folder/fname
   if not path.exists():pending.append(dict(id=ident,title=title,reason='Original no descargado; no se calculan recetas.'));continue
   rows,valid,names,extra=read40(path,(v,s,r,p));modern='FA' in valid;fourth='FA' if modern else 'SUMAR'
-  source= ('https://elpais.com/espana/elecciones-generales/2026-11-19/90-minutos-cara-a-cara-sanchez-busca-remontar-los-dos-puntos-que-le-separan-del-pp-y-feijoo-repetir-el-exito-de-2023.html' if ident.endswith('11-19') else
+  source= ('https://elpais.com/espana/elecciones-generales/2026-11-19/la-encuesta-antes-del-debate-ligera-ventaja-del-pp-y-muy-clara-del-bloque-derechista.html' if ident.endswith('11-20') else
+          'https://elpais.com/espana/elecciones-generales/2026-11-19/90-minutos-cara-a-cara-sanchez-busca-remontar-los-dos-puntos-que-le-separan-del-pp-y-feijoo-repetir-el-exito-de-2023.html' if ident.endswith('11-19') else
           'https://elpais.com/espana/elecciones-generales/2026-11-14/la-diferencia-entre-pp-y-psoe-se-estrecha-segun-el-tracking-diario-de-40db.html' if ident.endswith('11-14') else
           'https://elpais.com/espana/elecciones-generales/2026-11-13/la-campana-arranca-con-la-derecha-en-el-horizonte-de-los-190-escanos.html' if ident.endswith('11-13') else
           'https://elpais.com/espana/2026-11-09/consulte-todos-los-datos-internos-del-sondeo-preeelectoral-de-el-pais-cuestionarios-cruces-y-respuestas-individuales.html' if ident.endswith('11-09') else
@@ -139,6 +141,9 @@ def main():
   official=resultado_23j()
   for row in rows:
    if row['recuerdo'] not in official and row['recuerdo'] not in ('ABSTENCION','NUEVO','NR'):row['recuerdo']='OTROS'
+  if ident=='40db-2026-11-20':
+   actual=sum(1 for x in rows if x['intencion']=='PP')
+   meta['discrepancies']=['La presentación publica N=463 para intención PP; la matriz DTA contiene '+str(actual)+' registros. Se conserva el recuento del fichero original.'] if actual!=463 else []
   if ident=='40db-2026-11-14':
    actual=sum(1 for x in rows if x['intencion']=='PP')
    meta['discrepancies']=['La presentación publica N=305 para intención PP; la matriz DTA contiene '+str(actual)+' registros. Se conserva el recuento del fichero original.'] if actual!=305 else []

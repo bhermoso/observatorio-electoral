@@ -8,14 +8,14 @@ const sources=registry.studies.map(s=>JSON.parse(fs.readFileSync(s.file)));
 const election=JSON.parse(fs.readFileSync('data/election.json'));
 const near=(a,b,e=1e-6)=>assert.ok(Math.abs(a-b)<e,`${a} != ${b}`);
 test('Selector multisondeo: originales únicos, dos casas y noviembre como apertura',()=>{
- assert.equal(sources.length,13);
- assert.equal(registry.default,'40db-2026-11-19');
+ assert.equal(sources.length,14);
+ assert.equal(registry.default,'40db-2026-11-20');
  assert.equal(new Set(registry.studies.map(s=>s.house)).size,2);
- assert.equal(new Set(registry.studies.map(s=>s.sha256_zip)).size,13);
+ assert.equal(new Set(registry.studies.map(s=>s.sha256_zip)).size,14);
  for(let i=1;i<registry.studies.length;i++)assert.ok(registry.studies[i-1].published>=registry.studies[i].published);
  for(const d of sources){assert.equal(d.n,Object.values(d.categories).reduce((a,b)=>a+b,0));assert.ok(d.meta.variables.recall);assert.equal(d.meta.id,d.study);}
 });
-test('Las 416 combinaciones conservan sus masas, sus bases y su imputación',()=>{
+test('Las 448 combinaciones conservan sus masas, sus bases y su imputación',()=>{
  for(const d of sources)for(const o of Object.values(d.scenarios)){
   near(Object.values(o.shares).reduce((a,b)=>a+b,0),100);
   near(Object.values(o.masses).reduce((a,b)=>a+b,0),o.denominator);
@@ -76,4 +76,9 @@ test('Los interruptores actualizan la receta completa aunque esté abierto un pa
   const unchanged=recipeComparison(data,after,after);
   assert.ok(Object.values(unchanged.delta).every(x=>x===0));
  }
+});
+
+test('Día 8 conserva la matriz y explicita la diferencia con la presentación',()=>{
+ const d=sources.find(d=>d.study==='40db-2026-11-20');
+ assert.equal(d.n,2000);assert.equal(d.scenarios['00000'].counts.PSOE,578);assert.equal(d.scenarios['00000'].counts.PP,462);assert.equal(d.scenarios['00000'].counts.VOX,335);assert.equal(d.scenarios['00000'].counts.FA,64);assert.equal(d.diagnostic.invalid_probability,34);assert.match(d.meta.discrepancies[0],/463.*462/);assert.match(d.meta.overlap,/no son muestras independientes/i);
 });
