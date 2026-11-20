@@ -51,3 +51,16 @@ class TestNuevasFuentes(unittest.TestCase):
   with patch('scripts.vigilar_microdatos.fetch_source',fetch):r=scan(catalog)
   self.assertEqual(len(seen),3);self.assertIn('https://cis.es/4',seen)
   self.assertEqual(r['summary']['matrices_analizadas'],0)
+
+class TestPluralidad(unittest.TestCase):
+ def test_turnos_no_expulsan_fuentes_sin_fecha_al_limitar_el_informe(self):
+  a={**SOURCE,'ok':True,'count':160,'items':[{'url':f'https://a.es/{i}','source_id':'a','published':'2026-11-17'} for i in range(160)]}
+  b={**SOURCE,'id':'b','ok':True,'count':1,'items':[{'url':'https://b.es/1','source_id':'b','published':None}]}
+  r=assemble([a,b],now='AHORA');self.assertEqual(len(r['results']),150)
+  self.assertEqual({x['source_id'] for x in r['results'][:2]},{'a','b'})
+ def test_directorio_incluye_medios_nacionales_territoriales_y_audiovisuales(self):
+  from pathlib import Path
+  rows=json.loads((Path(__file__).resolve().parents[1]/'data/vigilancia/fuentes.json').read_text())
+  ids=[x['id'] for x in rows];self.assertEqual(len(ids),len(set(ids)))
+  for x in ['okdiario','elespanol','abc','eldebate','libertaddigital','publico','infolibre','ctxt','elsalto','elpais','elmundo','rtve','efe','europapress','cadenaser','cope','esradio','lavanguardia','naiz','prazagal']:
+   self.assertIn(x,ids)

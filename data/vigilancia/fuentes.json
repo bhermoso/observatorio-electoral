@@ -88,5 +88,203 @@
     "name": "CIS · novedades y anuncios",
     "url": "https://www.cis.es/",
     "format": "html"
+  },
+  {
+    "id": "abc",
+    "name": "ABC",
+    "url": "https://www.abc.es/rss/feeds/abc_EspanaEspana.xml",
+    "format": "rss"
+  },
+  {
+    "id": "libertaddigital",
+    "name": "Libertad Digital",
+    "url": "https://www.libertaddigital.com/rss/nacional.xml",
+    "format": "rss"
+  },
+  {
+    "id": "eldebate",
+    "name": "El Debate",
+    "url": "https://www.eldebate.com/espana/",
+    "format": "html"
+  },
+  {
+    "id": "theobjective",
+    "name": "The Objective",
+    "url": "https://theobjective.com/espana/",
+    "format": "html"
+  },
+  {
+    "id": "vozpopuli",
+    "name": "Vozpópuli",
+    "url": "https://www.vozpopuli.com/espana.html",
+    "format": "html"
+  },
+  {
+    "id": "elindependiente",
+    "name": "El Independiente",
+    "url": "https://www.elindependiente.com/espana/",
+    "format": "html"
+  },
+  {
+    "id": "publico",
+    "name": "Público",
+    "url": "https://www.publico.es/politica",
+    "format": "html"
+  },
+  {
+    "id": "infolibre",
+    "name": "infoLibre",
+    "url": "https://www.infolibre.es/politica/",
+    "format": "html"
+  },
+  {
+    "id": "elplural",
+    "name": "El Plural",
+    "url": "https://www.elplural.com/politica",
+    "format": "html"
+  },
+  {
+    "id": "ctxt",
+    "name": "CTXT",
+    "url": "https://ctxt.es/",
+    "format": "html"
+  },
+  {
+    "id": "elsalto",
+    "name": "El Salto",
+    "url": "https://www.elsaltodiario.com/",
+    "format": "html"
+  },
+  {
+    "id": "gaceta",
+    "name": "La Gaceta",
+    "url": "https://gaceta.es/espana/",
+    "format": "html"
+  },
+  {
+    "id": "rtve",
+    "name": "RTVE",
+    "url": "https://www.rtve.es/noticias/espana/",
+    "format": "html"
+  },
+  {
+    "id": "efe",
+    "name": "Agencia EFE",
+    "url": "https://efe.com/espana/feed/",
+    "format": "rss"
+  },
+  {
+    "id": "europapress",
+    "name": "Europa Press",
+    "url": "https://www.europapress.es/rss/rss.aspx?ch=00066",
+    "format": "rss"
+  },
+  {
+    "id": "lavanguardia",
+    "name": "La Vanguardia",
+    "url": "https://www.lavanguardia.com/rss/politica.xml",
+    "format": "rss"
+  },
+  {
+    "id": "elperiodico",
+    "name": "El Periódico",
+    "url": "https://www.elperiodico.com/es/rss/politica/rss.xml",
+    "format": "rss"
+  },
+  {
+    "id": "elcorreo",
+    "name": "El Correo",
+    "url": "https://www.elcorreo.com/politica/",
+    "format": "html"
+  },
+  {
+    "id": "lavozdegalicia",
+    "name": "La Voz de Galicia",
+    "url": "https://www.lavozdegalicia.es/espana/",
+    "format": "html"
+  },
+  {
+    "id": "elnacional",
+    "name": "El Nacional",
+    "url": "https://www.elnacional.cat/es/politica",
+    "format": "html"
+  },
+  {
+    "id": "naiz",
+    "name": "Naiz",
+    "url": "https://www.naiz.eus/es/",
+    "format": "html"
+  },
+  {
+    "id": "vilaweb",
+    "name": "VilaWeb",
+    "url": "https://www.vilaweb.cat/",
+    "format": "html"
+  },
+  {
+    "id": "cadenaser",
+    "name": "Cadena SER",
+    "url": "https://cadenaser.com/",
+    "format": "html"
+  },
+  {
+    "id": "cope",
+    "name": "COPE",
+    "url": "https://www.cope.es/actualidad/espana",
+    "format": "html"
+  },
+  {
+    "id": "ondacero",
+    "name": "Onda Cero",
+    "url": "https://www.ondacero.es/noticias/espana/",
+    "format": "html"
+  },
+  {
+    "id": "heraldo",
+    "name": "Heraldo de Aragón",
+    "url": "https://www.heraldo.es/",
+    "format": "html"
+  },
+  {
+    "id": "prazagal",
+    "name": "Praza.gal",
+    "url": "https://praza.gal/politica",
+    "format": "html"
+  },
+  {
+    "id": "diariosevilla",
+    "name": "Diario de Sevilla",
+    "url": "https://www.diariodesevilla.es/espana/",
+    "format": "html"
+  },
+  {
+    "id": "canarias7",
+    "name": "Canarias7",
+    "url": "https://www.canarias7.es/nacional/",
+    "format": "html"
+  },
+  {
+    "id": "esradio",
+    "name": "esRadio",
+    "url": "https://esradio.libertaddigital.com/",
+    "format": "html"
+  },
+  {
+    "id": "lasexta",
+    "name": "laSexta",
+    "url": "https://www.lasexta.com/noticias/nacional/",
+    "format": "html"
+  },
+  {
+    "id": "antena3",
+    "name": "Antena 3 Noticias",
+    "url": "https://www.antena3.com/noticias/espana/",
+    "format": "html"
+  },
+  {
+    "id": "telecinco",
+    "name": "Informativos Telecinco",
+    "url": "https://www.telecinco.es/noticias/espana/",
+    "format": "html"
   }
 ]
