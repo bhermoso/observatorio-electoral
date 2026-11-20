@@ -1,12 +1,14 @@
 {
  "esquema": 1,
- "generado": "2026-11-19T21:49:43.877518+00:00",
- "ejecucion": "https://github.com/bhermoso/observatorio-electoral/actions/runs/44622545529",
- "ultima_busqueda": "2026-11-19T21:49:19.092797+00:00",
- "candidatos_detectados": 29,
+ "generado": "2026-11-20T09:11:47.214587+00:00",
+ "ejecucion": "https://github.com/bhermoso/observatorio-electoral/actions/runs/44708527964",
+ "ultima_busqueda": "2026-11-20T09:11:21.722305+00:00",
+ "candidatos_detectados": 150,
  "naturaleza_candidatos": "Publicaciones de medios y productores consultados directamente. Candidatos sin cifras verificadas.",
  "errores_busqueda": [
-  "La Razón · España: HTTP 503"
+  "La Razón · España: HTTP 503",
+  "Agencia EFE: HTTP 500",
+  "El Periódico: HTTP 406"
  ],
  "bandeja_validadas": 5,
  "incorporadas": [],
@@ -18,8 +20,8 @@
   "sw-demoscopia-2026-11-10"
  ],
  "rechazadas": [],
- "registros_antes": 35,
- "registros_despues": 35,
+ "registros_antes": 37,
+ "registros_despues": 37,
  "ultima_incorporacion_efectiva": "2026-11-11T21:59:19.082108+00:00",
  "recalculo_lanzado": false,
  "ultimo_recalculo_lanzado": "2026-11-03T14:19:39.208246+00:00"
