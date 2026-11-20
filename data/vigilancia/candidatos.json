@@ -1,10 +1,10 @@
 {
   "schema": 2,
-  "checked_at": "2026-11-19T21:49:19.092797+00:00",
-  "last_attempt_at": "2026-11-19T21:49:19.092797+00:00",
+  "checked_at": "2026-11-20T07:09:12.824616+00:00",
+  "last_attempt_at": "2026-11-20T07:09:12.824616+00:00",
   "status": "partial",
-  "searches": 15,
-  "sources_ok": 14,
+  "searches": 48,
+  "sources_ok": 44,
   "sources": [
     {
       "id": "elpais",
@@ -13,7 +13,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 0
+      "count": 10
     },
     {
       "id": "elmundo",
@@ -22,7 +22,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 0
+      "count": 15
     },
     {
       "id": "elespanol",
@@ -31,7 +31,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 0
+      "count": 8
     },
     {
       "id": "gad3",
@@ -40,7 +40,7 @@
       "format": "html",
       "ok": true,
       "attempts": 1,
-      "count": 9
+      "count": 8
     },
     {
       "id": "cis",
@@ -58,7 +58,7 @@
       "format": "html",
       "ok": true,
       "attempts": 1,
-      "count": 11
+      "count": 10
     },
     {
       "id": "eldiario",
@@ -67,7 +67,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 2
+      "count": 11
     },
     {
       "id": "20minutos",
@@ -76,7 +76,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 1
+      "count": 13
     },
     {
       "id": "elconfidencial",
@@ -85,7 +85,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 0
+      "count": 3
     },
     {
       "id": "larazon",
@@ -104,7 +104,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 2
+      "count": 14
     },
     {
       "id": "electomania",
@@ -113,7 +113,7 @@
       "format": "rss",
       "ok": true,
       "attempts": 1,
-      "count": 2
+      "count": 8
     },
     {
       "id": "swdemoscopia",
@@ -122,7 +122,7 @@
       "format": "html",
       "ok": true,
       "attempts": 1,
-      "count": 25
+      "count": 1
     },
     {
       "id": "laseptima",
@@ -140,124 +140,435 @@
       "format": "html",
       "ok": true,
       "attempts": 1,
-      "count": 3
+      "count": 5
+    },
+    {
+      "id": "abc",
+      "name": "ABC",
+      "url": "https://www.abc.es/rss/feeds/abc_EspanaEspana.xml",
+      "format": "rss",
+      "ok": true,
+      "attempts": 1,
+      "count": 4
+    },
+    {
+      "id": "libertaddigital",
+      "name": "Libertad Digital",
+      "url": "https://www.libertaddigital.com/rss/nacional.xml",
+      "format": "rss",
+      "ok": true,
+      "attempts": 1,
+      "count": 10
+    },
+    {
+      "id": "eldebate",
+      "name": "El Debate",
+      "url": "https://www.eldebate.com/espana/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 12
+    },
+    {
+      "id": "theobjective",
+      "name": "The Objective",
+      "url": "https://theobjective.com/espana/",
+      "format": "html",
+      "ok": false,
+      "attempts": 1,
+      "count": 0,
+      "error": "HTTP 403"
+    },
+    {
+      "id": "vozpopuli",
+      "name": "Vozpópuli",
+      "url": "https://www.vozpopuli.com/espana.html",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 44
+    },
+    {
+      "id": "elindependiente",
+      "name": "El Independiente",
+      "url": "https://www.elindependiente.com/espana/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 7
+    },
+    {
+      "id": "publico",
+      "name": "Público",
+      "url": "https://www.publico.es/politica",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 17
+    },
+    {
+      "id": "infolibre",
+      "name": "infoLibre",
+      "url": "https://www.infolibre.es/politica/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 13
+    },
+    {
+      "id": "elplural",
+      "name": "El Plural",
+      "url": "https://www.elplural.com/politica",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 14
+    },
+    {
+      "id": "ctxt",
+      "name": "CTXT",
+      "url": "https://ctxt.es/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 31
+    },
+    {
+      "id": "elsalto",
+      "name": "El Salto",
+      "url": "https://www.elsaltodiario.com/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 10
+    },
+    {
+      "id": "gaceta",
+      "name": "La Gaceta",
+      "url": "https://gaceta.es/espana/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 8
+    },
+    {
+      "id": "rtve",
+      "name": "RTVE",
+      "url": "https://www.rtve.es/noticias/espana/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 11
+    },
+    {
+      "id": "efe",
+      "name": "Agencia EFE",
+      "url": "https://efe.com/espana/feed/",
+      "format": "rss",
+      "ok": false,
+      "attempts": 2,
+      "count": 0,
+      "error": "HTTP 500"
+    },
+    {
+      "id": "europapress",
+      "name": "Europa Press",
+      "url": "https://www.europapress.es/rss/rss.aspx?ch=00066",
+      "format": "rss",
+      "ok": true,
+      "attempts": 1,
+      "count": 4
+    },
+    {
+      "id": "lavanguardia",
+      "name": "La Vanguardia",
+      "url": "https://www.lavanguardia.com/rss/politica.xml",
+      "format": "rss",
+      "ok": true,
+      "attempts": 1,
+      "count": 37
+    },
+    {
+      "id": "elperiodico",
+      "name": "El Periódico",
+      "url": "https://www.elperiodico.com/es/rss/politica/rss.xml",
+      "format": "rss",
+      "ok": false,
+      "attempts": 1,
+      "count": 0,
+      "error": "HTTP 406"
+    },
+    {
+      "id": "elcorreo",
+      "name": "El Correo",
+      "url": "https://www.elcorreo.com/politica/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 9
+    },
+    {
+      "id": "lavozdegalicia",
+      "name": "La Voz de Galicia",
+      "url": "https://www.lavozdegalicia.es/espana/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 10
+    },
+    {
+      "id": "elnacional",
+      "name": "El Nacional",
+      "url": "https://www.elnacional.cat/es/politica",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 0
+    },
+    {
+      "id": "naiz",
+      "name": "Naiz",
+      "url": "https://www.naiz.eus/es/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 5
+    },
+    {
+      "id": "vilaweb",
+      "name": "VilaWeb",
+      "url": "https://www.vilaweb.cat/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 49
+    },
+    {
+      "id": "cadenaser",
+      "name": "Cadena SER",
+      "url": "https://cadenaser.com/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 12
+    },
+    {
+      "id": "cope",
+      "name": "COPE",
+      "url": "https://www.cope.es/actualidad/espana",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 15
+    },
+    {
+      "id": "ondacero",
+      "name": "Onda Cero",
+      "url": "https://www.ondacero.es/noticias/espana/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 24
+    },
+    {
+      "id": "heraldo",
+      "name": "Heraldo de Aragón",
+      "url": "https://www.heraldo.es/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 31
+    },
+    {
+      "id": "prazagal",
+      "name": "Praza.gal",
+      "url": "https://praza.gal/politica",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 4
+    },
+    {
+      "id": "diariosevilla",
+      "name": "Diario de Sevilla",
+      "url": "https://www.diariodesevilla.es/espana/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 23
+    },
+    {
+      "id": "canarias7",
+      "name": "Canarias7",
+      "url": "https://www.canarias7.es/nacional/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 4
+    },
+    {
+      "id": "esradio",
+      "name": "esRadio",
+      "url": "https://esradio.libertaddigital.com/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 2
+    },
+    {
+      "id": "lasexta",
+      "name": "laSexta",
+      "url": "https://www.lasexta.com/noticias/nacional/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 27
+    },
+    {
+      "id": "antena3",
+      "name": "Antena 3 Noticias",
+      "url": "https://www.antena3.com/noticias/espana/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 10
+    },
+    {
+      "id": "telecinco",
+      "name": "Informativos Telecinco",
+      "url": "https://www.telecinco.es/noticias/espana/",
+      "format": "html",
+      "ok": true,
+      "attempts": 1,
+      "count": 8
     }
   ],
   "results": [
     {
-      "title": "ENCUESTA | ¿Quién está ganando el cara a cara entre Sánchez y Feijóo?",
-      "url": "https://www.eldiario.es/politica/encuesta-ganando-cara-cara-sanchez-feijoo_11_13674665.html",
-      "discovery_url": "https://www.eldiario.es/politica/encuesta-ganando-cara-cara-sanchez-feijoo_11_13674665.html",
-      "published": "2026-11-19T21:39:26+00:00",
-      "publication_raw": "2026-11-19T21:39:26+00:00",
-      "topic": "elDiario.es · política",
-      "source_id": "eldiario",
+      "title": "El Sindicato de Maquinistas desconvoca la huelga del 23 de noviembre tras llegar a un acuerdo en seguridad ferroviaria",
+      "url": "https://www.libertaddigital.com/espana/2026-11-20/el-sindicato-de-maquinistas-desconvoca-la-huelga-del-23-de-noviembre-tras-llegar-a-un-acuerdo-en-seguridad-ferroviaria-7495042/?utm_source=rss&utm_medium=feed&utm_campaign=Libertad+Digital%3A+Espa%C3%B1a",
+      "discovery_url": "https://www.libertaddigital.com/espana/2026-11-20/el-sindicato-de-maquinistas-desconvoca-la-huelga-del-23-de-noviembre-tras-llegar-a-un-acuerdo-en-seguridad-ferroviaria-7495042/?utm_source=rss&utm_medium=feed&utm_campaign=Libertad+Digital%3A+Espa%C3%B1a",
+      "published": "2026-11-20T06:57:01+00:00",
+      "publication_raw": "2026-11-20T06:57:01+00:00",
+      "topic": "Libertad Digital",
+      "source_id": "libertaddigital",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Dónde ver el debate electoral 2026 entre Pedro Sánchez y Alberto Núñez Feijóo en directo y a qué hora empieza por TV online y cuánto dura el debate de hoy en vivo",
-      "url": "https://okdiario.com/espana/que-hora-debate-pedro-sanchez-alberto-nunez-feijoo-horario-donde-verlo-directo-tv-online-21120198",
-      "discovery_url": "https://okdiario.com/espana/que-hora-debate-pedro-sanchez-alberto-nunez-feijoo-horario-donde-verlo-directo-tv-online-21120198",
-      "published": "2026-11-19T21:30:50+00:00",
-      "publication_raw": "2026-11-19T21:30:50+00:00",
-      "topic": "OKDIARIO · España",
-      "source_id": "okdiario",
+      "title": "Cara a cara Sánchez - Feijóo, en directo: ganador del debate por las elecciones generales, resultado y reacciones hoy",
+      "url": "https://www.abc.es/espana/debate-pedro-sanchez-feijoo-directo-resultado-ganador-20261119200902-di.html",
+      "discovery_url": "https://www.abc.es/espana/debate-pedro-sanchez-feijoo-directo-resultado-ganador-20261119200902-di.html",
+      "published": "2026-11-20T06:48:27+00:00",
+      "publication_raw": "2026-11-20T06:48:27+00:00",
+      "topic": "ABC",
+      "source_id": "abc",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Sánchez, abucheado al llegar al debate electoral pese al amplio cordón de seguridad",
-      "url": "https://okdiario.com/espana/sanchez-abucheado-llegar-debate-electoral-pese-amplio-cordon-seguridad-21190485",
-      "discovery_url": "https://okdiario.com/espana/sanchez-abucheado-llegar-debate-electoral-pese-amplio-cordon-seguridad-21190485",
-      "published": "2026-11-19T20:03:30+00:00",
-      "publication_raw": "2026-11-19T20:03:30+00:00",
-      "topic": "OKDIARIO · España",
-      "source_id": "okdiario",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Tracking SW Demoscopia (19 nov): subida del PP",
-      "url": "https://electomania.es/tracking-sw-demoscopia-19-nov-subida-del-pp/",
-      "discovery_url": "https://electomania.es/tracking-sw-demoscopia-19-nov-subida-del-pp/",
-      "published": "2026-11-19T18:33:00+00:00",
-      "publication_raw": "2026-11-19T18:33:00+00:00",
+      "title": "Así ha sido el cara a cara: vivienda lo más repetido, 16 alusiones a Vox de Sánchez y 26 interrupciones de Feijóo",
+      "url": "https://electomania.es/asi-ha-sido-el-cara-a-cara-vivienda-lo-mas-repetido-16-alusiones-a-vox-de-sanchez-y-26-interrupciones-de-feijoo/",
+      "discovery_url": "https://electomania.es/asi-ha-sido-el-cara-a-cara-vivienda-lo-mas-repetido-16-alusiones-a-vox-de-sanchez-y-26-interrupciones-de-feijoo/",
+      "published": "2026-11-20T06:48:18+00:00",
+      "publication_raw": "2026-11-20T06:48:18+00:00",
       "topic": "Electomanía · publicaciones",
       "source_id": "electomania",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Encuesta generales en R. Murcia (UCAM 19 nov): Vox superaría al PSOE",
-      "url": "https://electomania.es/encuesta-generales-en-r-murcia-ucam-19-nov-vox-superaria-al-psoe/",
-      "discovery_url": "https://electomania.es/encuesta-generales-en-r-murcia-ucam-19-nov-vox-superaria-al-psoe/",
-      "published": "2026-11-19T15:30:26+00:00",
-      "publication_raw": "2026-11-19T15:30:26+00:00",
-      "topic": "Electomanía · publicaciones",
-      "source_id": "electomania",
+      "title": "Elecciones generales 29N: última hora de la campaña electoral, los candidatos y el debate entre Sánchez y Feijóo",
+      "url": "https://www.lavanguardia.com/politica/20261120/11687945/elecciones-generales-29n-2026-campana-electoral-viernes-20-noviembre-en-directo.html",
+      "discovery_url": "https://www.lavanguardia.com/politica/20261120/11687945/elecciones-generales-29n-2026-campana-electoral-viernes-20-noviembre-en-directo.html",
+      "published": "2026-11-20T06:32:34+00:00",
+      "publication_raw": "2026-11-20T06:32:34+00:00",
+      "topic": "La Vanguardia",
+      "source_id": "lavanguardia",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "\n         Debate electoral Pedro Sánchez - Alberto Núñez Feijóo, en directo: última hora del cara a cara de las elecciones generales del 29N \n    ",
-      "url": "https://www.20minutos.es/nacional/debate-electoral-pedro-sanchez-feijoo-directo-ultima-hora-cara-cara-las-elecciones-generales-29n_7063153_6.html",
-      "discovery_url": "https://www.20minutos.es/nacional/debate-electoral-pedro-sanchez-feijoo-directo-ultima-hora-cara-cara-las-elecciones-generales-29n_7063153_6.html",
-      "published": "2026-11-19T13:01:30+00:00",
-      "publication_raw": "2026-11-19T13:01:30+00:00",
+      "title": "Elecciones generales 29-N, en directo | Última hora y ganador del debate entre Pedro Sánchez y Feijóo, encuestas y campaña de PSOE, PP y Vox",
+      "url": "https://www.elespanol.com/espana/20261120/elecciones-generales-directo-ultima-hora-pedro-sanchez-feijoo-reacciones-debate-campana-encuestas-sondeos-voto-correo/1003744465426_10.html",
+      "discovery_url": "https://www.elespanol.com/espana/20261120/elecciones-generales-directo-ultima-hora-pedro-sanchez-feijoo-reacciones-debate-campana-encuestas-sondeos-voto-correo/1003744465426_10.html",
+      "published": "2026-11-20T06:13:59+00:00",
+      "publication_raw": "2026-11-20T06:13:59+00:00",
+      "topic": "EL ESPAÑOL · España",
+      "source_id": "elespanol",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Los maquinistas desconvocan la huelga del 23 de noviembre tras alcanzar acuerdo en seguridad ferroviaria",
+      "url": "https://www.20minutos.es/nacional/los-maquinistas-desconvocan-huelga-23-noviembre-tras-alcanzar-acuerdo-seguridad-ferroviaria_7063429_0.html",
+      "discovery_url": "https://www.20minutos.es/nacional/los-maquinistas-desconvocan-huelga-23-noviembre-tras-alcanzar-acuerdo-seguridad-ferroviaria_7063429_0.html",
+      "published": "2026-11-20T06:13:26+00:00",
+      "publication_raw": "2026-11-20T06:13:26+00:00",
       "topic": "20minutos · nacional",
       "source_id": "20minutos",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "La media de las encuestas: caída mínima del Frente Amplio que no altera la diferencia entre bloques",
-      "url": "https://www.eldiario.es/politica/media-encuestas-caida-minima-frente-amplio-no-altera-diferencia-bloques_1_13675156.html",
-      "discovery_url": "https://www.eldiario.es/politica/media-encuestas-caida-minima-frente-amplio-no-altera-diferencia-bloques_1_13675156.html",
-      "published": "2026-11-18T18:33:15+00:00",
-      "publication_raw": "2026-11-18T18:33:15+00:00",
+      "title": "La eutanasia, en el aire si la derecha gana las elecciones",
+      "url": "https://elpais.com/sociedad/2026-11-20/la-eutanasia-en-el-aire-si-la-derecha-gana-las-elecciones.html",
+      "discovery_url": "https://elpais.com/sociedad/2026-11-20/la-eutanasia-en-el-aire-si-la-derecha-gana-las-elecciones.html",
+      "published": "2026-11-20T04:30:01+00:00",
+      "publication_raw": "2026-11-20T04:30:01+00:00",
+      "topic": "EL PAÍS · España",
+      "source_id": "elpais",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "El regalo de Puigdemont a PP y Vox",
+      "url": "https://www.eldiario.es/catalunya/regalo-puigdemont-pp-vox_129_13678194.html",
+      "discovery_url": "https://www.eldiario.es/catalunya/regalo-puigdemont-pp-vox_129_13678194.html",
+      "published": "2026-11-20T00:43:18+00:00",
+      "publication_raw": "2026-11-20T00:43:18+00:00",
       "topic": "elDiario.es · política",
       "source_id": "eldiario",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Archivo enlazado por el productor",
-      "url": "https://www.gad3.com/barometro-abc-i-estimacion-de-voto-al-senado-noviembre-2026/",
-      "discovery_url": "https://www.gad3.com/barometro-abc-i-estimacion-de-voto-al-senado-noviembre-2026/",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "GAD3 · publicaciones",
-      "source_id": "gad3",
+      "title": "Decepción en la izquierda con el papel de Sánchez en el debate: del \"te come Feijóo\" a la \"falta de contundencia\" contra el PP",
+      "url": "https://www.elmundo.es/elecciones/elecciones-generales/2026/11/20/6aff88a4fc6c831c7c8b459d.html",
+      "discovery_url": "https://www.elmundo.es/elecciones/elecciones-generales/2026/11/20/6aff88a4fc6c831c7c8b459d.html",
+      "published": "2026-11-20T00:04:29+00:00",
+      "publication_raw": "2026-11-20T00:04:29+00:00",
+      "topic": "EL MUNDO · España",
+      "source_id": "elmundo",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Archivo enlazado por el productor",
-      "url": "https://www.gad3.com/barometro-abc-i-estimacion-de-voto-nacional-noviembre-2026/",
-      "discovery_url": "https://www.gad3.com/barometro-abc-i-estimacion-de-voto-nacional-noviembre-2026/",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "GAD3 · publicaciones",
-      "source_id": "gad3",
+      "title": "El decálogo de mentiras de Sánchez: de la construcción inexistente de 1 millón de viviendas a inventarse el programa del PP",
+      "url": "https://okdiario.com/espana/decalogo-mentiras-sanchez-construccion-inexistente-1-millon-viviendas-inventarse-programa-del-pp-21190860",
+      "discovery_url": "https://okdiario.com/espana/decalogo-mentiras-sanchez-construccion-inexistente-1-millon-viviendas-inventarse-programa-del-pp-21190860",
+      "published": "2026-11-19T23:55:04+00:00",
+      "publication_raw": "2026-11-19T23:55:04+00:00",
+      "topic": "OKDIARIO · España",
+      "source_id": "okdiario",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Archivo enlazado por el productor",
-      "url": "https://www.gad3.com/estudio-cgate-iii-barometro-vivienda-y-dignidad/",
-      "discovery_url": "https://www.gad3.com/estudio-cgate-iii-barometro-vivienda-y-dignidad/",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "GAD3 · publicaciones",
-      "source_id": "gad3",
+      "title": "Feijóo celebra el resultado con decenas de cargos y militantes del PP pero avisa: \"Esto no ha acabado\"",
+      "url": "https://www.europapress.es/nacional/noticia-feijoo-celebra-resultado-decenas-cargos-militantes-pp-avisa-esto-no-acabado-20261120005343.html",
+      "discovery_url": "https://www.europapress.es/nacional/noticia-feijoo-celebra-resultado-decenas-cargos-militantes-pp-avisa-esto-no-acabado-20261120005343.html",
+      "published": "2026-11-19T23:53:43+00:00",
+      "publication_raw": "2026-11-19T23:53:43+00:00",
+      "topic": "Europa Press",
+      "source_id": "europapress",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Archivo enlazado por el productor",
-      "url": "https://www.gad3.com/narciso-michavila-en-la-presentacion-del-barometro-del-empresario-2026-en-denia/",
-      "discovery_url": "https://www.gad3.com/narciso-michavila-en-la-presentacion-del-barometro-del-empresario-2026-en-denia/",
+      "title": "Análisis electoral",
+      "url": "https://www.gad3.com/analisis-electoral/",
+      "discovery_url": "https://www.gad3.com/analisis-electoral/",
       "published": null,
       "publication_raw": "Fecha no indicada en el índice",
       "topic": "GAD3 · publicaciones",
@@ -288,130 +599,20 @@
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Abrir la presentación",
-      "url": "https://moreincommon.es/pdfs/pulso-electoral/pulso-electoral-octubre-2026.pdf",
-      "discovery_url": "https://moreincommon.es/pdfs/pulso-electoral/pulso-electoral-octubre-2026.pdf",
+      "title": "Miriam González, candidata al 29-N: \"No soy equidistante entre PP y PSOE, soy distante de los dos; sus gobiernos han sido desastrosos\"",
+      "url": "https://www.elconfidencial.com/espana/2026-11-19/entrevista-contraluz-miriam-gonzalez-democracia21-cbtrntrv_4467030/",
+      "discovery_url": "https://www.elconfidencial.com/espana/2026-11-19/entrevista-contraluz-miriam-gonzalez-democracia21-cbtrntrv_4467030/",
       "published": null,
       "publication_raw": "Fecha no indicada en el índice",
-      "topic": "More in Common · Pulso electoral",
-      "source_id": "mic",
+      "topic": "El Confidencial · España",
+      "source_id": "elconfidencial",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Análisis electoral Nuestro artículo detallado donde desgranamos las tendencias, los movimientos entre bloques y lo que revelan las encuestas sobre el panorama electoral español. Leer en Substack →",
-      "url": "https://moreincommones.substack.com/p/rumbo-al-29n-una-radiografia-de-la",
-      "discovery_url": "https://moreincommones.substack.com/p/rumbo-al-29n-una-radiografia-de-la",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "More in Common · Pulso electoral",
-      "source_id": "mic",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Informe metodológico Documento técnico que detalla la metodología de nuestro modelo de estimación: fuentes de datos, ponderación, tratamiento de la incertidumbre y validación. Descargar PDF",
-      "url": "https://moreincommon.es/pdfs/informe-metodologico-electoral.pdf",
-      "discovery_url": "https://moreincommon.es/pdfs/informe-metodologico-electoral.pdf",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "More in Common · Pulso electoral",
-      "source_id": "mic",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Descargar (ZIP)",
-      "url": "https://moreincommon.es/data/microdatos-2026-10.zip",
-      "discovery_url": "https://moreincommon.es/data/microdatos-2026-10.zip",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "More in Common · Pulso electoral",
-      "source_id": "mic",
-      "original_verified": false,
-      "tipo": "enlace_a_archivo"
-    },
-    {
-      "title": "Descargar (ZIP)",
-      "url": "https://moreincommon.es/data/microdatos-2026-09.zip",
-      "discovery_url": "https://moreincommon.es/data/microdatos-2026-09.zip",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "More in Common · Pulso electoral",
-      "source_id": "mic",
-      "original_verified": false,
-      "tipo": "enlace_a_archivo"
-    },
-    {
-      "title": "Descargar (ZIP)",
-      "url": "https://moreincommon.es/data/microdatos-2026-07.zip",
-      "discovery_url": "https://moreincommon.es/data/microdatos-2026-07.zip",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "More in Common · Pulso electoral",
-      "source_id": "mic",
-      "original_verified": false,
-      "tipo": "enlace_a_archivo"
-    },
-    {
-      "title": "Descargar (ZIP)",
-      "url": "https://moreincommon.es/data/microdatos-2026-05.zip",
-      "discovery_url": "https://moreincommon.es/data/microdatos-2026-05.zip",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "More in Common · Pulso electoral",
-      "source_id": "mic",
-      "original_verified": false,
-      "tipo": "enlace_a_archivo"
-    },
-    {
-      "title": "Saltar al contenido",
-      "url": "https://swdemoscopia.com/#main-content",
-      "discovery_url": "https://swdemoscopia.com/#main-content",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "SW Demoscopia · productor del tracking",
-      "source_id": "swdemoscopia",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Archivo enlazado por el productor",
-      "url": "https://swdemoscopia.com/index.html",
-      "discovery_url": "https://swdemoscopia.com/index.html",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "SW Demoscopia · productor del tracking",
-      "source_id": "swdemoscopia",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Servicios",
-      "url": "https://swdemoscopia.com/servicios.html",
-      "discovery_url": "https://swdemoscopia.com/servicios.html",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "SW Demoscopia · productor del tracking",
-      "source_id": "swdemoscopia",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Política de Cookies",
-      "url": "https://swdemoscopia.com/cookies.html",
-      "discovery_url": "https://swdemoscopia.com/cookies.html",
-      "published": null,
-      "publication_raw": "Fecha no indicada en el índice",
-      "topic": "SW Demoscopia · productor del tracking",
-      "source_id": "swdemoscopia",
-      "original_verified": false,
-      "tipo": "publicacion_candidata"
-    },
-    {
-      "title": "Política de Privacidad",
-      "url": "https://swdemoscopia.com/privacidad.html",
-      "discovery_url": "https://swdemoscopia.com/privacidad.html",
+      "title": "SW Demoscopia",
+      "url": "https://swdemoscopia.com/servicios.html#investigacion",
+      "discovery_url": "https://swdemoscopia.com/servicios.html#investigacion",
       "published": null,
       "publication_raw": "Fecha no indicada en el índice",
       "topic": "SW Demoscopia · productor del tracking",
@@ -431,6 +632,446 @@
       "tipo": "publicacion_candidata"
     },
     {
+      "title": "Advance on study results 3584 'Preelectoral elecciones generales 2026'",
+      "url": "https://www.cis.es/en/w/avance-de-resultados-del-estudio-3584-preelectoral-elecciones-generales-2026-",
+      "discovery_url": "https://www.cis.es/en/w/avance-de-resultados-del-estudio-3584-preelectoral-elecciones-generales-2026-",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "CIS · novedades y anuncios",
+      "source_id": "cis-novedades",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "podemos 29N",
+      "url": "https://www.eldebate.com/espana/comunidad-valenciana/20261119/encuestas-electorales-29n-confirman-unica-provincia-podemos-logra-escano-costa-psoe_482657.html",
+      "discovery_url": "https://www.eldebate.com/espana/comunidad-valenciana/20261119/encuestas-electorales-29n-confirman-unica-provincia-podemos-logra-escano-costa-psoe_482657.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Debate",
+      "source_id": "eldebate",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Programa electoral PP",
+      "url": "https://www.vozpopuli.com/espana/programa-electoral-del-pp-y-alberto-nunez-feijoo-en-las-elecciones-generales-del-29-n-medidas-en-vivienda-transporte-pensiones-inmigracion-y-corrupcion.html",
+      "discovery_url": "https://www.vozpopuli.com/espana/programa-electoral-del-pp-y-alberto-nunez-feijoo-en-las-elecciones-generales-del-29-n-medidas-en-vivienda-transporte-pensiones-inmigracion-y-corrupcion.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Vozpópuli",
+      "source_id": "vozpopuli",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Feijóo",
+      "url": "https://www.elindependiente.com/espana/2026/11/18/feijoo-aspira-a-captar-mas-apoyos-del-votante-moderado-del-psoe-en-un-debate-que-el-pp-preve-duro/",
+      "discovery_url": "https://www.elindependiente.com/espana/2026/11/18/feijoo-aspira-a-captar-mas-apoyos-del-votante-moderado-del-psoe-en-un-debate-que-el-pp-preve-duro/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Independiente",
+      "source_id": "elindependiente",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Memoria democrática",
+      "url": "https://www.publico.es/sociedad/ofensiva-pp-vox-memoria-disfraza-concordia-negacionismo-dictadura.html",
+      "discovery_url": "https://www.publico.es/sociedad/ofensiva-pp-vox-memoria-disfraza-concordia-negacionismo-dictadura.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Público",
+      "source_id": "publico",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Ayuso invoca la \"neutralidad\" para prohibir a los profesores promover la huelga educativa en las aulas",
+      "url": "https://www.infolibre.es/politica/ayuso-invoca-neutralidad-prohibir-profesores-promover-huelga-educativa-aulas_1_2240470.html",
+      "discovery_url": "https://www.infolibre.es/politica/ayuso-invoca-neutralidad-prohibir-profesores-promover-huelga-educativa-aulas_1_2240470.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "infoLibre",
+      "source_id": "infolibre",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "JEC",
+      "url": "https://www.elplural.com/politica/espana/jec-abre-expediente-tellado-rechaza-recurso-psoe-uso-ia-pp-inadmite-denuncias-vox-contra-rtve_804740102",
+      "discovery_url": "https://www.elplural.com/politica/espana/jec-abre-expediente-tellado-rechaza-recurso-psoe-uso-ia-pp-inadmite-denuncias-vox-contra-rtve_804740102",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Plural",
+      "source_id": "elplural",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Lo de la selva",
+      "url": "https://ctxt.es/es/20261101/Politica/55805/Guillem-Martinez-la-selva-Puigdemont-apoyo-PSOE-Junts-elecciones-PP.htm",
+      "discovery_url": "https://ctxt.es/es/20261101/Politica/55805/Guillem-Martinez-la-selva-Puigdemont-apoyo-PSOE-Junts-elecciones-PP.htm",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "CTXT",
+      "source_id": "ctxt",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Amnistía Internacional pide que la investigación de la violencia en la huelga alcance a los mandos policiales",
+      "url": "https://www.elsaltodiario.com/politica/amnistia-internacional-denuncia-61-casos-violencia-policial-durante-huelga-del-11-noviembre",
+      "discovery_url": "https://www.elsaltodiario.com/politica/amnistia-internacional-denuncia-61-casos-violencia-policial-durante-huelga-del-11-noviembre",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Salto",
+      "source_id": "elsalto",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Carlos H. Quero lamenta que los españoles no hayan podido escuchar en el debate las propuestas de prioridad nacional, desregulación y remigración de VOX: «No se ha hablado de un mensaje de esperanza»",
+      "url": "https://gaceta.es/espana/carlos-h-quero-lamenta-que-los-espanoles-no-hayan-podido-escuchar-en-el-debate-las-propuestas-de-prioridad-nacional-desregulacion-y-remigracion-de-vox-no-se-ha-hablado-de-un-mensaje-de-esperanza-20261120-0114/",
+      "discovery_url": "https://gaceta.es/espana/carlos-h-quero-lamenta-que-los-espanoles-no-hayan-podido-escuchar-en-el-debate-las-propuestas-de-prioridad-nacional-desregulacion-y-remigracion-de-vox-no-se-ha-hablado-de-un-mensaje-de-esperanza-20261120-0114/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "La Gaceta",
+      "source_id": "gaceta",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Debate S�nchez Feij�o",
+      "url": "https://www.rtve.es/noticias/20261119/debate-electoral-pedro-sanchez-feijoo-directo-elecciones-2026/17318412.shtml",
+      "discovery_url": "https://www.rtve.es/noticias/20261119/debate-electoral-pedro-sanchez-feijoo-directo-elecciones-2026/17318412.shtml",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "RTVE",
+      "source_id": "rtve",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Cara a cara Sánchez-Feijóo",
+      "url": "https://www.elcorreo.com/elecciones/generales/feijoo-golpea-armado-traje-gestor-corrupcion-sanchez-20261119004225-ntrc.html",
+      "discovery_url": "https://www.elcorreo.com/elecciones/generales/feijoo-golpea-armado-traje-gestor-corrupcion-sanchez-20261119004225-ntrc.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Correo",
+      "source_id": "elcorreo",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Feijoo acorrala a S�nchez y pone al presidente a la defensiva",
+      "url": "https://www.lavozdegalicia.es/noticia/elecciones-29n/2026/11/20/debate-feijoo-acorrala-sanchez-pone-presidente-defensiva/0003_202611G20P2991.htm",
+      "discovery_url": "https://www.lavozdegalicia.es/noticia/elecciones-29n/2026/11/20/debate-feijoo-acorrala-sanchez-pone-presidente-defensiva/0003_202611G20P2991.htm",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "La Voz de Galicia",
+      "source_id": "lavozdegalicia",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "29N, elecciones estatales",
+      "url": "https://www.naiz.eus/eu/info_sek/a29-hauteskundeak",
+      "discovery_url": "https://www.naiz.eus/eu/info_sek/a29-hauteskundeak",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Naiz",
+      "source_id": "naiz",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "test",
+      "url": "https://www.vilaweb.cat/noticies/qui-votar-eleccions-29-n-test-questionari-electoral-vilaweb/",
+      "discovery_url": "https://www.vilaweb.cat/noticies/qui-votar-eleccions-29-n-test-questionari-electoral-vilaweb/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "VilaWeb",
+      "source_id": "vilaweb",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Así te hemos contado el debate cara a cara entre Sánchez y Feijóo, minuto a minuto",
+      "url": "https://cadenaser.com/nacional/2026/11/19/el-cara-a-cara-entre-sanchez-y-feijoo-en-directo-sigue-el-minuto-a-minuto-del-debate-electoral-cadena-ser/",
+      "discovery_url": "https://cadenaser.com/nacional/2026/11/19/el-cara-a-cara-entre-sanchez-y-feijoo-en-directo-sigue-el-minuto-a-minuto-del-debate-electoral-cadena-ser/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Cadena SER",
+      "source_id": "cadenaser",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "TODO SOBRE LAS Elecciones DEL 29N",
+      "url": "https://www.cope.es/tag/elecciones29n",
+      "discovery_url": "https://www.cope.es/tag/elecciones29n",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "COPE",
+      "source_id": "cope",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Última hora de campaña electoral",
+      "url": "https://www.ondacero.es/elecciones/generales/dia-6-campana-electoral-sanchez-feijoo-colau-abascal-debate_202611186afd407ba6f8072789ed351c.html",
+      "discovery_url": "https://www.ondacero.es/elecciones/generales/dia-6-campana-electoral-sanchez-feijoo-colau-abascal-debate_202611186afd407ba6f8072789ed351c.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Onda Cero",
+      "source_id": "ondacero",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Últimas encuestas electorales",
+      "url": "https://www.heraldo.es/noticias/nacional/2026/11/16/quien-ganara-elecciones-generales-encuestas-electorales-psoe-pp-vox-frente-amplio-2056626.html",
+      "discovery_url": "https://www.heraldo.es/noticias/nacional/2026/11/16/quien-ganara-elecciones-generales-encuestas-electorales-psoe-pp-vox-frente-amplio-2056626.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Heraldo de Aragón",
+      "source_id": "heraldo",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Enésimo cuestionamento de Feijóo á eutanasia: \"Fronte a un PP desatado, o PSOE garántea\"",
+      "url": "https://praza.gal/politica/enesimo-cuestionamento-de-feijoo-a-eutanasia-fronte-a-un-pp-desatado-o-psoe-garantea",
+      "discovery_url": "https://praza.gal/politica/enesimo-cuestionamento-de-feijoo-a-eutanasia-fronte-a-un-pp-desatado-o-psoe-garantea",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Praza.gal",
+      "source_id": "prazagal",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Denuncia Vox",
+      "url": "https://www.diariodesevilla.es/doshermanas/vox-denuncia-adelante-andalucia-junta_0_2008535238.html",
+      "discovery_url": "https://www.diariodesevilla.es/doshermanas/vox-denuncia-adelante-andalucia-junta_0_2008535238.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Diario de Sevilla",
+      "source_id": "diariosevilla",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Elecciones generales",
+      "url": "https://www.canarias7.es/elecciones/generales/",
+      "discovery_url": "https://www.canarias7.es/elecciones/generales/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Canarias7",
+      "source_id": "canarias7",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Contrato público odiómetro",
+      "url": "https://www.libertaddigital.com/libremercado/2026-11-20/sanchez-adjudica-antes-de-las-elecciones-dos-millones-a-dedo-para-rastrear-las-redes-sociales-con-un-odiometro-7493387/",
+      "discovery_url": "https://www.libertaddigital.com/libremercado/2026-11-20/sanchez-adjudica-antes-de-las-elecciones-dos-millones-a-dedo-para-rastrear-las-redes-sociales-con-un-odiometro-7493387/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "esRadio",
+      "source_id": "esradio",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Cara a cara Sánchez Feijóo",
+      "url": "https://www.lasexta.com/elecciones/generales/debate-sanchezfeijoo-cara-cara-directo-cuenta-atras-primer-ultimo-debate-grandes-candidatos-presidencia-gobierno_202611196afea2bef6b335433bb57b9a.html",
+      "discovery_url": "https://www.lasexta.com/elecciones/generales/debate-sanchezfeijoo-cara-cara-directo-cuenta-atras-primer-ultimo-debate-grandes-candidatos-presidencia-gobierno_202611196afea2bef6b335433bb57b9a.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "laSexta",
+      "source_id": "lasexta",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Última hora de las elecciones generales, en directo: ¿Quién ha ganado el cara a cara? la pregunta tras el debate electoral",
+      "url": "https://www.antena3.com/noticias/espana/ultima-hora-elecciones-generales-directo_202611206affdfccc0d5c85b96c2d56b.html",
+      "discovery_url": "https://www.antena3.com/noticias/espana/ultima-hora-elecciones-generales-directo_202611206affdfccc0d5c85b96c2d56b.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Antena 3 Noticias",
+      "source_id": "antena3",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Entrevista completa Irene Montero",
+      "url": "https://www.telecinco.es/noticias/espana/20261118/irene-montero-entrevista-carlos-franganillo-informativos-elecciones-generales-2026_19_020750083.html#utm_source=menu&utm_medium=hamburguesa&utm_campaign=hotlinks",
+      "discovery_url": "https://www.telecinco.es/noticias/espana/20261118/irene-montero-entrevista-carlos-franganillo-informativos-elecciones-generales-2026_19_020750083.html#utm_source=menu&utm_medium=hamburguesa&utm_campaign=hotlinks",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Informativos Telecinco",
+      "source_id": "telecinco",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "El acosador de Jon Echeverría en Eibar es un habitual en los mítines del PSOE",
+      "url": "https://www.libertaddigital.com/espana/politica/2026-11-20/el-acosador-de-jon-echeverria-en-eibar-es-un-habitual-en-los-mitines-del-psoe-7495041/?utm_source=rss&utm_medium=feed&utm_campaign=Libertad+Digital%3A+Espa%C3%B1a",
+      "discovery_url": "https://www.libertaddigital.com/espana/politica/2026-11-20/el-acosador-de-jon-echeverria-en-eibar-es-un-habitual-en-los-mitines-del-psoe-7495041/?utm_source=rss&utm_medium=feed&utm_campaign=Libertad+Digital%3A+Espa%C3%B1a",
+      "published": "2026-11-20T06:56:38+00:00",
+      "publication_raw": "2026-11-20T06:56:38+00:00",
+      "topic": "Libertad Digital",
+      "source_id": "libertaddigital",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Ganador del debate Cara a cara Sánchez - Feijóo, en directo: reacciones y últimas noticias de las elecciones generales 29N hoy",
+      "url": "https://www.abc.es/espana/ganador-debate-cara-cara-sanchez-feijoo-directo-20261120074658-di.html",
+      "discovery_url": "https://www.abc.es/espana/ganador-debate-cara-cara-sanchez-feijoo-directo-20261120074658-di.html",
+      "published": "2026-11-20T06:47:01+00:00",
+      "publication_raw": "2026-11-20T06:47:01+00:00",
+      "topic": "ABC",
+      "source_id": "abc",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Tracking 40dB (19 nov): “ligera ventaja del PP y muy clara del bloque derechista”",
+      "url": "https://electomania.es/tracking-40db-19-nov-ligera-ventaja-del-pp-y-muy-clara-del-bloque-derechista/",
+      "discovery_url": "https://electomania.es/tracking-40db-19-nov-ligera-ventaja-del-pp-y-muy-clara-del-bloque-derechista/",
+      "published": "2026-11-19T19:28:00+00:00",
+      "publication_raw": "2026-11-19T19:28:00+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Santiago Abascal, el patrón de Vox",
+      "url": "https://www.lavanguardia.com/politica/20261120/11688486/santiago-abascal-patron-vox.html",
+      "discovery_url": "https://www.lavanguardia.com/politica/20261120/11688486/santiago-abascal-patron-vox.html",
+      "published": "2026-11-20T05:00:00+00:00",
+      "publication_raw": "2026-11-20T05:00:00+00:00",
+      "topic": "La Vanguardia",
+      "source_id": "lavanguardia",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Rufián asume que Feijóo se ha \"comido\" a un Sánchez \"mal asesorado\" y Vox cree que la \"baza del miedo\" ha fracasado",
+      "url": "https://www.elespanol.com/espana/politica/20261120/rufian-asume-feijoo-comido-sanchez-mal-asesorado-vox-cree-baza-miedo-fracasado/1003744465533_0.html",
+      "discovery_url": "https://www.elespanol.com/espana/politica/20261120/rufian-asume-feijoo-comido-sanchez-mal-asesorado-vox-cree-baza-miedo-fracasado/1003744465533_0.html",
+      "published": "2026-11-20T00:45:53+00:00",
+      "publication_raw": "2026-11-20T00:45:53+00:00",
+      "topic": "EL ESPAÑOL · España",
+      "source_id": "elespanol",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Amnistía Internacional denuncia un uso excesivo de la fuerza policial durante la huelga general del 11N",
+      "url": "https://www.20minutos.es/nacional/amnistia-internacional-denuncia-un-uso-excesivo-fuerza-policial-durante-huelga-general-11n_7063333_0.html",
+      "discovery_url": "https://www.20minutos.es/nacional/amnistia-internacional-denuncia-un-uso-excesivo-fuerza-policial-durante-huelga-general-11n_7063333_0.html",
+      "published": "2026-11-20T04:00:15+00:00",
+      "publication_raw": "2026-11-20T04:00:15+00:00",
+      "topic": "20minutos · nacional",
+      "source_id": "20minutos",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Zahara: “¿La gente está saturada de la campaña? Yo estoy dentrísimo”",
+      "url": "https://elpais.com/espana/elecciones-generales/2026-11-20/zahara-la-gente-esta-saturada-de-la-campana-yo-estoy-dentrisimo.html",
+      "discovery_url": "https://elpais.com/espana/elecciones-generales/2026-11-20/zahara-la-gente-esta-saturada-de-la-campana-yo-estoy-dentrisimo.html",
+      "published": "2026-11-20T04:30:01+00:00",
+      "publication_raw": "2026-11-20T04:30:01+00:00",
+      "topic": "EL PAÍS · España",
+      "source_id": "elpais",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Feijóo imita el estilo más duro de Abascal y Sánchez no le responde con la misma energía",
+      "url": "https://www.eldiario.es/politica/feijoo-sanchez-debate-campana-elecciones_129_13678923.html",
+      "discovery_url": "https://www.eldiario.es/politica/feijoo-sanchez-debate-campana-elecciones_129_13678923.html",
+      "published": "2026-11-19T23:17:26+00:00",
+      "publication_raw": "2026-11-19T23:17:26+00:00",
+      "topic": "elDiario.es · política",
+      "source_id": "eldiario",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Carles Puigdemont: \"Si Vox llama a la puerta de Junts el portazo lo recordarán toda su vida\"",
+      "url": "https://www.elmundo.es/espana/2026/11/19/6aff350ae85ece75168b4594.html",
+      "discovery_url": "https://www.elmundo.es/espana/2026/11/19/6aff350ae85ece75168b4594.html",
+      "published": "2026-11-19T18:01:34+00:00",
+      "publication_raw": "2026-11-19T18:01:34+00:00",
+      "topic": "EL MUNDO · España",
+      "source_id": "elmundo",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Debate electoral 29-N Sánchez Feijóo: cómo ha quedado el debate, resumen del cara a cara, quién ha ganado y las claves del enfrentamiento",
+      "url": "https://okdiario.com/espana/debate-sanchez-feijoo-directo-cuanto-dura-debate-hoy-del-cara-cara-donde-ver-tiempo-real-declaraciones-enfrentamiento-lideres-politicos-vivo-21189754",
+      "discovery_url": "https://okdiario.com/espana/debate-sanchez-feijoo-directo-cuanto-dura-debate-hoy-del-cara-cara-donde-ver-tiempo-real-declaraciones-enfrentamiento-lideres-politicos-vivo-21189754",
+      "published": "2026-11-19T22:35:16+00:00",
+      "publication_raw": "2026-11-19T22:35:16+00:00",
+      "topic": "OKDIARIO · España",
+      "source_id": "okdiario",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Feijóo ataca a Sánchez con la corrupción y las \"guarradas\" del Gobierno y el presidente rechaza lecciones del PP",
+      "url": "https://www.europapress.es/nacional/noticia-feijoo-ataca-sanchez-corrupcion-guarradas-gobierno-presidente-rechaza-lecciones-pp-20261119233103.html",
+      "discovery_url": "https://www.europapress.es/nacional/noticia-feijoo-ataca-sanchez-corrupcion-guarradas-gobierno-presidente-rechaza-lecciones-pp-20261119233103.html",
+      "published": "2026-11-19T22:31:03+00:00",
+      "publication_raw": "2026-11-19T22:31:03+00:00",
+      "topic": "Europa Press",
+      "source_id": "europapress",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Barómetro ABC I Estimación de voto al Senado. Noviembre 2026.",
+      "url": "https://www.gad3.com/barometro-abc-i-estimacion-de-voto-al-senado-noviembre-2026/",
+      "discovery_url": "https://www.gad3.com/barometro-abc-i-estimacion-de-voto-al-senado-noviembre-2026/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "GAD3 · publicaciones",
+      "source_id": "gad3",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Abrir la presentación",
+      "url": "https://moreincommon.es/pdfs/pulso-electoral/pulso-electoral-octubre-2026.pdf",
+      "discovery_url": "https://moreincommon.es/pdfs/pulso-electoral/pulso-electoral-octubre-2026.pdf",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "More in Common · Pulso electoral",
+      "source_id": "mic",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Jon Echeverría, el joven del PP: \"Estamos revistiendo de aura a Feijóo: Anotop At es el nuevo Perro Sanxe\"",
+      "url": "https://www.elconfidencial.com/espana/2026-11-17/jon-echeverria-joven-pp-entrevista-contraluz-cbtrntrv_4466107/",
+      "discovery_url": "https://www.elconfidencial.com/espana/2026-11-17/jon-echeverria-joven-pp-entrevista-contraluz-cbtrntrv_4466107/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Confidencial · España",
+      "source_id": "elconfidencial",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
       "title": "Study available 3574 'Barómetro Sanitario 2026 (segunda oleada)'",
       "url": "https://www.cis.es/en/surveys/barometro-sanitario-2026-segunda-oleada-",
       "discovery_url": "https://www.cis.es/en/surveys/barometro-sanitario-2026-segunda-oleada-",
@@ -438,6 +1079,435 @@
       "publication_raw": "Fecha no indicada en el índice",
       "topic": "CIS · novedades y anuncios",
       "source_id": "cis-novedades",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "móviles 29N",
+      "url": "https://www.eldebate.com/espana/20261119/quiere-sanchez-movil-cada-mesa-electoral-conexion-internet-geolocalizacion-memoria-gigantesca-control-remoto_482637.html",
+      "discovery_url": "https://www.eldebate.com/espana/20261119/quiere-sanchez-movil-cada-mesa-electoral-conexion-internet-geolocalizacion-memoria-gigantesca-control-remoto_482637.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Debate",
+      "source_id": "eldebate",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Programa electoral del PSOE",
+      "url": "https://www.vozpopuli.com/espana/programa-electoral-del-psoe-y-pedro-sanchez-en-las-elecciones-generales-del-29-n-cambios-en-vivienda-impuestos-violencia-contra-la-mujer-transporte-ferroviario-sanidad-inmigracion-y-pensiones.html",
+      "discovery_url": "https://www.vozpopuli.com/espana/programa-electoral-del-psoe-y-pedro-sanchez-en-las-elecciones-generales-del-29-n-cambios-en-vivienda-impuestos-violencia-contra-la-mujer-transporte-ferroviario-sanidad-inmigracion-y-pensiones.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Vozpópuli",
+      "source_id": "vozpopuli",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Pérez Reverte",
+      "url": "https://www.elindependiente.com/series-y-television/2026/11/18/perez-reverte-apunta-a-vox-como-posible-salvavidas-politico-de-sanchez-tras-las-elecciones/",
+      "discovery_url": "https://www.elindependiente.com/series-y-television/2026/11/18/perez-reverte-apunta-a-vox-como-posible-salvavidas-politico-de-sanchez-tras-las-elecciones/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Independiente",
+      "source_id": "elindependiente",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Semaf desconvoca la huelga de maquinistas del 23 de noviembre tras alcanzar un acuerdo en seguridad ferroviaria",
+      "url": "https://www.publico.es/politica/semaf-desconvoca-huelga-maquinistas-23-noviembre-alcanzar-acuerdo-seguridad-ferroviaria.html",
+      "discovery_url": "https://www.publico.es/politica/semaf-desconvoca-huelga-maquinistas-23-noviembre-alcanzar-acuerdo-seguridad-ferroviaria.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Público",
+      "source_id": "publico",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Lo que las encuestas no saben de las elecciones del 29N y nadie debería dar por hecho",
+      "url": "https://www.infolibre.es/politica/encuestas-no-elecciones-29n-nadie-deberia-dar-hecho_1_2240281.html",
+      "discovery_url": "https://www.infolibre.es/politica/encuestas-no-elecciones-29n-nadie-deberia-dar-hecho_1_2240281.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "infoLibre",
+      "source_id": "infolibre",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Programa electoral Frente Amplio",
+      "url": "https://www.elplural.com/politica/espana/programa-electoral-frente-amplio-elecciones-2026-pisos-publicos-impuestos-grandes-fortunas-32-horas-semanales_804710102",
+      "discovery_url": "https://www.elplural.com/politica/espana/programa-electoral-frente-amplio-elecciones-2026-pisos-publicos-impuestos-grandes-fortunas-32-horas-semanales_804710102",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Plural",
+      "source_id": "elplural",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "De nazis, fascistas y colaboracionistas",
+      "url": "https://ctxt.es/es/20261101/Firmas/55775/Victor-Alonso-Rocafort-nazis-Nucleo-Nacional-extrema-derecha-elecciones-Vox.htm",
+      "discovery_url": "https://ctxt.es/es/20261101/Firmas/55775/Victor-Alonso-Rocafort-nazis-Nucleo-Nacional-extrema-derecha-elecciones-Vox.htm",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "CTXT",
+      "source_id": "ctxt",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Seis de cada diez votantes de PP y Vox creen que los ricos deben pagar más impuestos",
+      "url": "https://www.elsaltodiario.com/desigualdad/seis-cada-diez-votantes-pp-vox-creen-ricos-deben-pagar-impuestos",
+      "discovery_url": "https://www.elsaltodiario.com/desigualdad/seis-cada-diez-votantes-pp-vox-creen-ricos-deben-pagar-impuestos",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Salto",
+      "source_id": "elsalto",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "El PSOE propone en su programa «reforzar» y ampliar con el dinero de todos los españoles el sistema de acogida de inmigrantes",
+      "url": "https://gaceta.es/espana/el-psoe-propone-ampliar-los-visados-humanitarios-y-reforzar-el-sistema-de-acogida-de-inmigrantes-en-su-programa-electoral-20261120-0040/",
+      "discovery_url": "https://gaceta.es/espana/el-psoe-propone-ampliar-los-visados-humanitarios-y-reforzar-el-sistema-de-acogida-de-inmigrantes-en-su-programa-electoral-20261120-0040/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "La Gaceta",
+      "source_id": "gaceta",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Comparador programas electorales",
+      "url": "https://www.rtve.es/noticias/asistente-ia/comparador-programas-electorales/",
+      "discovery_url": "https://www.rtve.es/noticias/asistente-ia/comparador-programas-electorales/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "RTVE",
+      "source_id": "rtve",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "El líder del PP empuja al presidente a pedir perdón a las víctimas de los trenes",
+      "url": "https://www.elcorreo.com/elecciones/generales/sanchez-pido-perdon-victimas-accidentes-20261119232243-ntrc.html",
+      "discovery_url": "https://www.elcorreo.com/elecciones/generales/sanchez-pido-perdon-victimas-accidentes-20261119232243-ntrc.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Correo",
+      "source_id": "elcorreo",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Las elecciones del 2000 | Aznar, en la cima: una mayor�a absoluta con el �Espa�a va bien�",
+      "url": "https://www.lavozdegalicia.es/noticia/elecciones-29n/2026/11/20/aznar-cima-mayoria-absoluta-espana-va-bien/0003_202611G20P9992.htm",
+      "discovery_url": "https://www.lavozdegalicia.es/noticia/elecciones-29n/2026/11/20/aznar-cima-mayoria-absoluta-espana-va-bien/0003_202611G20P9992.htm",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "La Voz de Galicia",
+      "source_id": "lavozdegalicia",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "EH Bildu alza la voz contra la derecha desde Lizarra, «memoria viva de la represión fascista»",
+      "url": "https://www.naiz.eus/es/info/noticia/20261119/eh-bildu-alza-la-voz-contra-la-derecha-desde-lizarra-memoria-viva-de-la-represion-fascista",
+      "discovery_url": "https://www.naiz.eus/es/info/noticia/20261119/eh-bildu-alza-la-voz-contra-la-derecha-desde-lizarra-memoria-viva-de-la-represion-fascista",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Naiz",
+      "source_id": "naiz",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Diari de les eleccions",
+      "url": "https://www.vilaweb.cat/noticies/compromis-front-valencia-visites-illustres-i-equilibris-delicats-en-un-dia-de-maxima-visibilitat/",
+      "discovery_url": "https://www.vilaweb.cat/noticies/compromis-front-valencia-visites-illustres-i-equilibris-delicats-en-un-dia-de-maxima-visibilitat/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "VilaWeb",
+      "source_id": "vilaweb",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "El minuto de oro de Sánchez: \"Quien pueda hacer que haga, y quien pueda votar, que vote\"",
+      "url": "https://cadenaser.com/nacional/2026/11/19/asi-ha-sido-el-minuto-de-oro-de-pedro-sanchez-en-el-debate-cara-a-cara-de-las-elecciones-generales-con-alberto-nunez-feijoo-cadena-ser/",
+      "discovery_url": "https://cadenaser.com/nacional/2026/11/19/asi-ha-sido-el-minuto-de-oro-de-pedro-sanchez-en-el-debate-cara-a-cara-de-las-elecciones-generales-con-alberto-nunez-feijoo-cadena-ser/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Cadena SER",
+      "source_id": "cadenaser",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "El sector ferroviario protagoniza hoy otra huelga para exigir mayor seguridad en la red",
+      "url": "https://www.cope.es/actualidad/espana/noticias/sector-ferroviario-protagoniza-hoy-huelga-exigir-mayor-seguridad-red-20261117_3476299.html",
+      "discovery_url": "https://www.cope.es/actualidad/espana/noticias/sector-ferroviario-protagoniza-hoy-huelga-exigir-mayor-seguridad-red-20261117_3476299.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "COPE",
+      "source_id": "cope",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Encuestas 29N",
+      "url": "https://www.ondacero.es/elecciones/generales/como-van-encuestas-sondeos-elecciones-generales-evolucion-voto-estimado-escanos-psoe-vox-frente-amplio_202611166afaa456d3bddc0868b2fb96.html",
+      "discovery_url": "https://www.ondacero.es/elecciones/generales/como-van-encuestas-sondeos-elecciones-generales-evolucion-voto-estimado-escanos-psoe-vox-frente-amplio_202611166afaa456d3bddc0868b2fb96.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Onda Cero",
+      "source_id": "ondacero",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Quién ganó el cara a cara entre Sánchez y Núñez Feijóo",
+      "url": "https://www.heraldo.es/noticias/nacional/2026/11/20/quien-gano-debate-pedro-sanchez-alberto-nunez-feijoo-resultado-cara-psoe-pp-2069924.html",
+      "discovery_url": "https://www.heraldo.es/noticias/nacional/2026/11/20/quien-gano-debate-pedro-sanchez-alberto-nunez-feijoo-resultado-cara-psoe-pp-2069924.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Heraldo de Aragón",
+      "source_id": "heraldo",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "O BNG pon Lugo no albo para o 29N co \"efecto Rodil\"",
+      "url": "https://praza.gal/politica/o-bng-pon-lugo-no-albo-para-o-29n-co-efecto-rodil",
+      "discovery_url": "https://praza.gal/politica/o-bng-pon-lugo-no-albo-para-o-29n-co-efecto-rodil",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Praza.gal",
+      "source_id": "prazagal",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Díaz Ayuso",
+      "url": "https://www.diariodesevilla.es/andalucia/polemica-ayuso-llamar-garrapateros-andaluces-pp-a-defender_0_2008529788.html",
+      "discovery_url": "https://www.diariodesevilla.es/andalucia/polemica-ayuso-llamar-garrapateros-andaluces-pp-a-defender_0_2008529788.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Diario de Sevilla",
+      "source_id": "diariosevilla",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "El PSOE desafía a Pedraz y entrega solo parte de los pagos a sus abogados porque alega que se pueden filtrar en plena campaña",
+      "url": "https://www.canarias7.es/nacional/politica/psoe-entrega-pedraz-tres-cajas-pendrive-pagos-20261118120025-ntrc.html",
+      "discovery_url": "https://www.canarias7.es/nacional/politica/psoe-entrega-pedraz-tres-cajas-pendrive-pagos-20261118120025-ntrc.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Canarias7",
+      "source_id": "canarias7",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "El implacable cuestionario de Carlos Cuesta a Pedro Sánchez: de la corrupción a los pactos con Bildu La Noche de Cuesta",
+      "url": "https://www.libertaddigital.com/espana/politica/2026-11-19/el-implacable-cuestionario-de-carlos-cuesta-a-pedro-sanchez-de-la-corrupcion-a-los-pactos-con-bildu-7494814/",
+      "discovery_url": "https://www.libertaddigital.com/espana/politica/2026-11-19/el-implacable-cuestionario-de-carlos-cuesta-a-pedro-sanchez-de-la-corrupcion-a-los-pactos-con-bildu-7494814/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "esRadio",
+      "source_id": "esradio",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Campaña 29N",
+      "url": "https://www.lasexta.com/elecciones/generales/campana-elecciones-29n_202611136af6af504196933d7edb8ebd.html",
+      "discovery_url": "https://www.lasexta.com/elecciones/generales/campana-elecciones-29n_202611136af6af504196933d7edb8ebd.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "laSexta",
+      "source_id": "lasexta",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "¿Cómo puedo consultar mi colegio electoral para votar el 29N?",
+      "url": "https://www.antena3.com/noticias/espana/como-puedo-consultar-colegio-electoral-votar-29n_202611206affeffdf6da642efef6570b.html",
+      "discovery_url": "https://www.antena3.com/noticias/espana/como-puedo-consultar-colegio-electoral-votar-29n_202611206affeffdf6da642efef6570b.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Antena 3 Noticias",
+      "source_id": "antena3",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "La celebración y el aviso de Feijóo con militantes y cargos del PP tras su cara a cara con Pedro Sánchez: \"Esto no ha acabado\"",
+      "url": "https://www.telecinco.es/noticias/espana/20261120/celebracion-feijoo-militantes-cargos-pp-cara-debate-pedro-sanchez_18_020764782.html",
+      "discovery_url": "https://www.telecinco.es/noticias/espana/20261120/celebracion-feijoo-militantes-cargos-pp-cara-debate-pedro-sanchez_18_020764782.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Informativos Telecinco",
+      "source_id": "telecinco",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "El aval de Conde-Pumpido al &#039;decretazo&#039; da oxígeno a Sánchez hasta las elecciones generales del 29-N",
+      "url": "https://www.libertaddigital.com/espana/2026-11-20/el-aval-de-conde-pumpido-al-decretazo-da-oxigeno-a-sanchez-hasta-las-elecciones-generales-del-29-n-7492149/?utm_source=rss&utm_medium=feed&utm_campaign=Libertad+Digital%3A+Espa%C3%B1a",
+      "discovery_url": "https://www.libertaddigital.com/espana/2026-11-20/el-aval-de-conde-pumpido-al-decretazo-da-oxigeno-a-sanchez-hasta-las-elecciones-generales-del-29-n-7492149/?utm_source=rss&utm_medium=feed&utm_campaign=Libertad+Digital%3A+Espa%C3%B1a",
+      "published": "2026-11-20T05:01:46+00:00",
+      "publication_raw": "2026-11-20T05:01:46+00:00",
+      "topic": "Libertad Digital",
+      "source_id": "libertaddigital",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "El voto CERA en Córdoba puede ser decisivo para el último escaño de las elecciones generales del 29N",
+      "url": "https://www.abc.es/espana/andalucia/cordoba/voto-cera-puede-decisivo-ultimo-escano-cordoba-20261120064452-nts.html",
+      "discovery_url": "https://www.abc.es/espana/andalucia/cordoba/voto-cera-puede-decisivo-ultimo-escano-cordoba-20261120064452-nts.html",
+      "published": "2026-11-20T05:44:52+00:00",
+      "publication_raw": "2026-11-20T05:44:52+00:00",
+      "topic": "ABC",
+      "source_id": "abc",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Tracking Sigma Dos (19 nov): “El PP coge fuerza a costa de Vox y Sánchez llega al cara a cara a 4p de Feijóo”",
+      "url": "https://electomania.es/tracking-sigma-dos-19-nov-pp-y-psoe-al-alza-mientras-vox-desciende/",
+      "discovery_url": "https://electomania.es/tracking-sigma-dos-19-nov-pp-y-psoe-al-alza-mientras-vox-desciende/",
+      "published": "2026-11-19T19:02:42+00:00",
+      "publication_raw": "2026-11-19T19:02:42+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Debate Sánchez-Feijóo, en directo | Termina un tenso cara a cara marcado por los reproches, la corrupción y las constantes interrupciones",
+      "url": "https://www.lavanguardia.com/politica/20261119/11688338/cara-cara-sanchez-feijoo-directo-ultima-hora-debate-candidatos-psoe-pp.html",
+      "discovery_url": "https://www.lavanguardia.com/politica/20261119/11688338/cara-cara-sanchez-feijoo-directo-ultima-hora-debate-candidatos-psoe-pp.html",
+      "published": "2026-11-19T21:41:42+00:00",
+      "publication_raw": "2026-11-19T21:41:42+00:00",
+      "topic": "La Vanguardia",
+      "source_id": "lavanguardia",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "El juez abre una causa a Adriana Lastra, 'número 1' del PSOE por Asturias, por unos altercados contra un mitin de Vox",
+      "url": "https://www.elespanol.com/espana/tribunales/20261119/juez-abre-causa-adriana-lastra-numero-psoe-asturias-disturbios-mitin-vox/1003744465252_0.html",
+      "discovery_url": "https://www.elespanol.com/espana/tribunales/20261119/juez-abre-causa-adriana-lastra-numero-psoe-asturias-disturbios-mitin-vox/1003744465252_0.html",
+      "published": "2026-11-19T18:40:23+00:00",
+      "publication_raw": "2026-11-19T18:40:23+00:00",
+      "topic": "EL ESPAÑOL · España",
+      "source_id": "elespanol",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "El PSOE confía en movilizar a indecisos tras el debate mientras el PP contiene la euforia y pide no confiarse para ampliar su mayoría",
+      "url": "https://www.20minutos.es/nacional/psoe-confia-movilizar-indecisos-tras-debate-mientras-pp-contiene-euforia-pide-no-confiarse-para-ampliar-su-mayoria_7063349_0.html",
+      "discovery_url": "https://www.20minutos.es/nacional/psoe-confia-movilizar-indecisos-tras-debate-mientras-pp-contiene-euforia-pide-no-confiarse-para-ampliar-su-mayoria_7063349_0.html",
+      "published": "2026-11-20T04:00:00+00:00",
+      "publication_raw": "2026-11-20T04:00:00+00:00",
+      "topic": "20minutos · nacional",
+      "source_id": "20minutos",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "“Volarle la cabeza a Sánchez”: la conversación que convenció al PSOE de personarse en la causa contra Núcleo Nacional",
+      "url": "https://elpais.com/espana/2026-11-19/no-es-una-simple-provocacion-es-una-amenaza-real-asi-el-psoe-decidio-personarse-en-la-causa-contra-nucleo-nacional.html",
+      "discovery_url": "https://elpais.com/espana/2026-11-19/no-es-una-simple-provocacion-es-una-amenaza-real-asi-el-psoe-decidio-personarse-en-la-causa-contra-nucleo-nacional.html",
+      "published": "2026-11-19T12:58:21+00:00",
+      "publication_raw": "2026-11-19T12:58:21+00:00",
+      "topic": "EL PAÍS · España",
+      "source_id": "elpais",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Amnistía Internacional contabiliza 61 casos de \"uso excesivo de la fuerza\" policial durante la huelga general",
+      "url": "https://www.eldiario.es/politica/amnistia-internacional-contabiliza-61-casos-excesivo-fuerza-policial-durante-huelga-general_1_13676557.html",
+      "discovery_url": "https://www.eldiario.es/politica/amnistia-internacional-contabiliza-61-casos-excesivo-fuerza-policial-durante-huelga-general_1_13676557.html",
+      "published": "2026-11-19T23:00:50+00:00",
+      "publication_raw": "2026-11-19T23:00:50+00:00",
+      "topic": "elDiario.es · política",
+      "source_id": "eldiario",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Carles Puigdemont: \"El PSOE me propuso una foto con Sánchez en los pasillos del Parlamento Europeo\"",
+      "url": "https://www.elmundo.es/espana/2026/11/19/6aff26e3e85ece240e8b4592.html",
+      "discovery_url": "https://www.elmundo.es/espana/2026/11/19/6aff26e3e85ece240e8b4592.html",
+      "published": "2026-11-19T18:01:30+00:00",
+      "publication_raw": "2026-11-19T18:01:30+00:00",
+      "topic": "EL MUNDO · España",
+      "source_id": "elmundo",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "El PP trolea a Sánchez recordando quién le acompañó al debate de 2019: Ábalos, Koldo, Salazar y Cerdán",
+      "url": "https://okdiario.com/espana/pp-trolea-sanchez-recordando-quien-acompano-debate-2019-abalos-koldo-salazar-cerdan-21191033",
+      "discovery_url": "https://okdiario.com/espana/pp-trolea-sanchez-recordando-quien-acompano-debate-2019-abalos-koldo-salazar-cerdan-21191033",
+      "published": "2026-11-19T21:41:37+00:00",
+      "publication_raw": "2026-11-19T21:41:37+00:00",
+      "topic": "OKDIARIO · España",
+      "source_id": "okdiario",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Sánchez pregunta si el PP hará recortes para cumplir el 5% en Defensa y Feijóo garantiza los servicios públicos",
+      "url": "https://www.europapress.es/nacional/noticia-sanchez-pregunta-si-pp-hara-recortes-cumplir-defensa-feijoo-garantiza-servicios-publicos-20261119232427.html",
+      "discovery_url": "https://www.europapress.es/nacional/noticia-sanchez-pregunta-si-pp-hara-recortes-cumplir-defensa-feijoo-garantiza-servicios-publicos-20261119232427.html",
+      "published": "2026-11-19T22:24:27+00:00",
+      "publication_raw": "2026-11-19T22:24:27+00:00",
+      "topic": "Europa Press",
+      "source_id": "europapress",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Barómetro ABC I Estimación de voto nacional. Noviembre 2026",
+      "url": "https://www.gad3.com/barometro-abc-i-estimacion-de-voto-nacional-noviembre-2026/",
+      "discovery_url": "https://www.gad3.com/barometro-abc-i-estimacion-de-voto-nacional-noviembre-2026/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "GAD3 · publicaciones",
+      "source_id": "gad3",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Análisis electoral Nuestro artículo detallado donde desgranamos las tendencias, los movimientos entre bloques y lo que revelan las encuestas sobre el panorama electoral español. Leer en Substack →",
+      "url": "https://moreincommones.substack.com/p/rumbo-al-29n-una-radiografia-de-la",
+      "discovery_url": "https://moreincommones.substack.com/p/rumbo-al-29n-una-radiografia-de-la",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "More in Common · Pulso electoral",
+      "source_id": "mic",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "¿Qué dicen las encuestas sobre el 29-N? La carrera hacia la mayoría absoluta, en seis gráficos",
+      "url": "https://www.elconfidencial.com/espana/2026-11-10/encuestas-elecciones-generales-29n-mayoria-absoluta-graficos-cbtr_4460274/",
+      "discovery_url": "https://www.elconfidencial.com/espana/2026-11-10/encuestas-elecciones-generales-29n-mayoria-absoluta-graficos-cbtr_4460274/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Confidencial · España",
+      "source_id": "elconfidencial",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     },
@@ -453,13 +1523,574 @@
       "tipo": "publicacion_candidata"
     },
     {
-      "title": "Access to FAQs",
-      "url": "https://www.cis.es/estudios/preguntas-frecuentes-proceso-encuestacion",
-      "discovery_url": "https://www.cis.es/estudios/preguntas-frecuentes-proceso-encuestacion",
+      "title": "Elecciones generales 29N",
+      "url": "https://www.eldebate.com/temas/elecciones-generales/",
+      "discovery_url": "https://www.eldebate.com/temas/elecciones-generales/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Debate",
+      "source_id": "eldebate",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Jon Echeverría",
+      "url": "https://www.vozpopuli.com/dolcevita/quien-es-jon-echeverria-el-joven-politico-del-pp-vasco-su-edad-estudios-y-unos-padres-con-reticencia-a-la-politica.html",
+      "discovery_url": "https://www.vozpopuli.com/dolcevita/quien-es-jon-echeverria-el-joven-politico-del-pp-vasco-su-edad-estudios-y-unos-padres-con-reticencia-a-la-politica.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Vozpópuli",
+      "source_id": "vozpopuli",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Vox, a las puertas de irrumpir por primera vez en el bastión gallego del PP y en el del independentismo catalán",
+      "url": "https://www.elindependiente.com/espana/2026/11/20/vox-pp-galicia-coruna-girona-independentismo-sondeos-escanos-29n/",
+      "discovery_url": "https://www.elindependiente.com/espana/2026/11/20/vox-pp-galicia-coruna-girona-independentismo-sondeos-escanos-29n/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Independiente",
+      "source_id": "elindependiente",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Marina Rodríguez, candidata de CHA-Frente Amplio Aragón: \"El PP gana todas las encuestas menos el día de las elecciones\"",
+      "url": "https://www.publico.es/politica/pp-gana-todas-encuestas-dia-elecciones.html",
+      "discovery_url": "https://www.publico.es/politica/pp-gana-todas-encuestas-dia-elecciones.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Público",
+      "source_id": "publico",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Moncloa espera un cara a cara “embarrado” y el PP reta a Sánchez a demostrar que es el “puto amo” de la comunicación",
+      "url": "https://www.infolibre.es/politica/moncloa-espera-debate-embarrado-pp-reta-sanchez-demostrar-puto-amo-comunicacion_1_2240389.html",
+      "discovery_url": "https://www.infolibre.es/politica/moncloa-espera-debate-embarrado-pp-reta-sanchez-demostrar-puto-amo-comunicacion_1_2240389.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "infoLibre",
+      "source_id": "infolibre",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Las 15 preguntas sin responder del PP sobre su papel en la cloaca de Koldo",
+      "url": "https://www.elplural.com/politica/espana/preguntas-sin-responder-pp-papel-cloaca-koldo_804765102",
+      "discovery_url": "https://www.elplural.com/politica/espana/preguntas-sin-responder-pp-papel-cloaca-koldo_804765102",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Plural",
+      "source_id": "elplural",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Porque fueron, tenemos que ser",
+      "url": "https://ctxt.es/es/20261101/Firmas/55768/carta-a-la-comunidad-vanesa-jimenez-huelga-general-29n.htm",
+      "discovery_url": "https://ctxt.es/es/20261101/Firmas/55768/carta-a-la-comunidad-vanesa-jimenez-huelga-general-29n.htm",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "CTXT",
+      "source_id": "ctxt",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Unidad para luchar, independencia de clase para vencer: ¿cómo seguir tras el éxito de la huelga del 11N?",
+      "url": "https://www.elsaltodiario.com/tribuna/unidad-luchar-independencia-clase-vencer-seguir-exito-huelga-del-11n",
+      "discovery_url": "https://www.elsaltodiario.com/tribuna/unidad-luchar-independencia-clase-vencer-seguir-exito-huelga-del-11n",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Salto",
+      "source_id": "elsalto",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Ignacio Garriga, ante la violencia contra VOX en Sabadell: «No hay libertad política en Cataluña y el dispositivo policial no la garantiza. Es una vergüenza»",
+      "url": "https://gaceta.es/espana/ignacio-garriga-ante-la-violencia-contra-vox-en-sabadell-no-hay-libertad-politica-en-cataluna-y-el-dispositivo-policial-no-la-garantiza-es-una-verguenza-20261119-2223/",
+      "discovery_url": "https://gaceta.es/espana/ignacio-garriga-ante-la-violencia-contra-vox-en-sabadell-no-hay-libertad-politica-en-cataluna-y-el-dispositivo-policial-no-la-garantiza-es-una-verguenza-20261119-2223/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "La Gaceta",
+      "source_id": "gaceta",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Izquierda elecciones",
+      "url": "https://www.rtve.es/noticias/20261119/izquierda-dividida-elecciones-29n-previsiones-electorales-baja/17286151.shtml",
+      "discovery_url": "https://www.rtve.es/noticias/20261119/izquierda-dividida-elecciones-29n-previsiones-electorales-baja/17286151.shtml",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "RTVE",
+      "source_id": "rtve",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "El verificador: verdades, falsedades e imprecisiones",
+      "url": "https://www.elcorreo.com/elecciones/generales/verificador-verdades-imprecisiones-falsedades-cara-cara-20261119222051-ntrc.html",
+      "discovery_url": "https://www.elcorreo.com/elecciones/generales/verificador-verdades-imprecisiones-falsedades-cara-cara-20261119222051-ntrc.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Correo",
+      "source_id": "elcorreo",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Oportunidad perdida para un S�nchez plano",
+      "url": "https://www.lavozdegalicia.es/noticia/elecciones-29n/2026/11/20/oportunidad-perdida-sanchez-plano/00031795130031934447798.htm",
+      "discovery_url": "https://www.lavozdegalicia.es/noticia/elecciones-29n/2026/11/20/oportunidad-perdida-sanchez-plano/00031795130031934447798.htm",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "La Voz de Galicia",
+      "source_id": "lavozdegalicia",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Euskal Herria «Vil, ruin y mezquino»; el delirante fuego amigo entre Vox y PP en Gipuzkoa",
+      "url": "https://www.naiz.eus/es/info/noticia/20261116/vil-ruin-y-mezquino-delirante-fuego-amigo-entre-vox-y-pp-en-gipuzkoa",
+      "discovery_url": "https://www.naiz.eus/es/info/noticia/20261116/vil-ruin-y-mezquino-delirante-fuego-amigo-entre-vox-y-pp-en-gipuzkoa",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Naiz",
+      "source_id": "naiz",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Carme Gomila",
+      "url": "https://www.vilaweb.cat/noticies/entrevista-carme-gomila-ara-mes-front-ampli-eleccions-espanyoles/",
+      "discovery_url": "https://www.vilaweb.cat/noticies/entrevista-carme-gomila-ara-mes-front-ampli-eleccions-espanyoles/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "VilaWeb",
+      "source_id": "vilaweb",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "\"Ni robo, ni miento ni me voy de vacaciones”: así ha sido el minuto de oro de Feijóo",
+      "url": "https://cadenaser.com/nacional/2026/11/19/asi-ha-sido-el-minuto-de-oro-de-alberto-nunez-feijoo-en-el-debate-cara-a-cara-de-las-elecciones-generales-con-pedro-sanchez-cadena-ser/",
+      "discovery_url": "https://cadenaser.com/nacional/2026/11/19/asi-ha-sido-el-minuto-de-oro-de-alberto-nunez-feijoo-en-el-debate-cara-a-cara-de-las-elecciones-generales-con-pedro-sanchez-cadena-ser/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Cadena SER",
+      "source_id": "cadenaser",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Ricardo Rodríguez, analista: \"Un nuevo gobierno del PSOE destinará un 1% del PIB para garantizar el acceso a una casa\"",
+      "url": "https://www.cope.es/actualidad/espana/noticias/ricardo-rodriguez-analista-nuevo-gobierno-psoe-destinara-1-pib-garantizar-acceso-casa-20261116_3475545.html",
+      "discovery_url": "https://www.cope.es/actualidad/espana/noticias/ricardo-rodriguez-analista-nuevo-gobierno-psoe-destinara-1-pib-garantizar-acceso-casa-20261116_3475545.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "COPE",
+      "source_id": "cope",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Pedro Sánchez admite su responsabilidad en los casos de corrupción",
+      "url": "https://www.ondacero.es/elecciones/generales/pedro-sanchez-admite-que-responsable-politico-casos-corrupcion-que-afectan-pero-diferencia-reales-ficticios_202611186afd6f7f21e74551e81deec2.html",
+      "discovery_url": "https://www.ondacero.es/elecciones/generales/pedro-sanchez-admite-que-responsable-politico-casos-corrupcion-que-afectan-pero-diferencia-reales-ficticios_202611186afd6f7f21e74551e81deec2.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Onda Cero",
+      "source_id": "ondacero",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Las frases más ácidas: \"Voy a bajarle del cohete\"",
+      "url": "https://www.heraldo.es/noticias/nacional/2026/11/19/elecciones-29n-frases-sanchez-feijoo-debate-rtve-voy-bajarle-cohete-2070217.html",
+      "discovery_url": "https://www.heraldo.es/noticias/nacional/2026/11/19/elecciones-29n-frases-sanchez-feijoo-debate-rtve-voy-bajarle-cohete-2070217.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Heraldo de Aragón",
+      "source_id": "heraldo",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Pontón e Besteiro alertan do risco de Vox para a igualdade e Rueda di que fan \"electoralismo barato\"",
+      "url": "https://praza.gal/politica/ponton-e-besteiro-alertan-do-risco-de-vox-para-a-igualdade-e-rueda-di-que-fan-electoralismo-barato",
+      "discovery_url": "https://praza.gal/politica/ponton-e-besteiro-alertan-do-risco-de-vox-para-a-igualdade-e-rueda-di-que-fan-electoralismo-barato",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Praza.gal",
+      "source_id": "prazagal",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Bono Joven",
+      "url": "https://www.diariodesevilla.es/espana/elecciones/pedro-sanchez-anuncia-bono-joven_0_2008539869.html",
+      "discovery_url": "https://www.diariodesevilla.es/espana/elecciones/pedro-sanchez-anuncia-bono-joven_0_2008539869.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Diario de Sevilla",
+      "source_id": "diariosevilla",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Las siete provincias en las que Frente Amplio pugna por el último escaño con PP y Vox",
+      "url": "https://www.canarias7.es/nacional/politica/siete-provincias-frente-amplio-pugna-ultimo-escano-20261118172122-ntrc.html",
+      "discovery_url": "https://www.canarias7.es/nacional/politica/siete-provincias-frente-amplio-pugna-ultimo-escano-20261118172122-ntrc.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Canarias7",
+      "source_id": "canarias7",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Encuestas elecciones",
+      "url": "https://www.lasexta.com/elecciones/generales/encuestas-sondeos-2026_202611106af2b8b39a31a65adcd6a3fa.html",
+      "discovery_url": "https://www.lasexta.com/elecciones/generales/encuestas-sondeos-2026_202611106af2b8b39a31a65adcd6a3fa.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "laSexta",
+      "source_id": "lasexta",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Elecciones generales",
+      "url": "https://www.antena3.com/noticias/espana/video-feijoo-satisfecho-actuacion-debate-dice-militancia-sabeis-que-miento_202611206affe7aaff6fec2921968199.html",
+      "discovery_url": "https://www.antena3.com/noticias/espana/video-feijoo-satisfecho-actuacion-debate-dice-militancia-sabeis-que-miento_202611206affe7aaff6fec2921968199.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Antena 3 Noticias",
+      "source_id": "antena3",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Cómo se eligen los diputados y senadores de Baleares: las diferencias entre las islas",
+      "url": "https://www.telecinco.es/noticias/espana/20261120/elecciones-generales-2026-diputados-senadores-baleares-reparto-islas_18_020635792.html",
+      "discovery_url": "https://www.telecinco.es/noticias/espana/20261120/elecciones-generales-2026-diputados-senadores-baleares-reparto-islas_18_020635792.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Informativos Telecinco",
+      "source_id": "telecinco",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "El umbral del 3 % en las elecciones del 29-N: por qué miles de votos se quedan sin representación en el Congreso",
+      "url": "https://www.libertaddigital.com/espana/politica/2026-11-20/el-umbral-del-3-por-ciento-en-las-elecciones-del-29-n-por-que-miles-de-votos-se-quedan-sin-representacion-en-el-congreso-7494114/?utm_source=rss&utm_medium=feed&utm_campaign=Libertad+Digital%3A+Espa%C3%B1a",
+      "discovery_url": "https://www.libertaddigital.com/espana/politica/2026-11-20/el-umbral-del-3-por-ciento-en-las-elecciones-del-29-n-por-que-miles-de-votos-se-quedan-sin-representacion-en-el-congreso-7494114/?utm_source=rss&utm_medium=feed&utm_campaign=Libertad+Digital%3A+Espa%C3%B1a",
+      "published": "2026-11-20T03:00:22+00:00",
+      "publication_raw": "2026-11-20T03:00:22+00:00",
+      "topic": "Libertad Digital",
+      "source_id": "libertaddigital",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Encuestas elecciones generales en el País Vasco: resultados de PSOE, PP, Bildu y PNV y ganador según los sondeos el 29N",
+      "url": "https://www.abc.es/espana/pais-vasco/encuestas-elecciones-generales-pais-vasco-resultados-psoe-20261120051500-nt.html",
+      "discovery_url": "https://www.abc.es/espana/pais-vasco/encuestas-elecciones-generales-pais-vasco-resultados-psoe-20261120051500-nt.html",
+      "published": "2026-11-20T04:15:05+00:00",
+      "publication_raw": "2026-11-20T04:15:05+00:00",
+      "topic": "ABC",
+      "source_id": "abc",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Tracking SW Demoscopia (19 nov): subida del PP",
+      "url": "https://electomania.es/tracking-sw-demoscopia-19-nov-subida-del-pp/",
+      "discovery_url": "https://electomania.es/tracking-sw-demoscopia-19-nov-subida-del-pp/",
+      "published": "2026-11-19T18:33:00+00:00",
+      "publication_raw": "2026-11-19T18:33:00+00:00",
+      "topic": "Electomanía · publicaciones",
+      "source_id": "electomania",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Sánchez esquiva la bronca para intentar llegar a los votantes indecisos",
+      "url": "https://www.lavanguardia.com/politica/20261119/11688569/sanchez-admite-errores-gobierno-reivindica-gestion-frente-involucion-pp-vox.html",
+      "discovery_url": "https://www.lavanguardia.com/politica/20261119/11688569/sanchez-admite-errores-gobierno-reivindica-gestion-frente-involucion-pp-vox.html",
+      "published": "2026-11-19T21:14:44+00:00",
+      "publication_raw": "2026-11-19T21:14:44+00:00",
+      "topic": "La Vanguardia",
+      "source_id": "lavanguardia",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "La Junta Electoral desestima la denuncia del PSOE contra el PP por el vídeo que recreó con IA a Ábalos, Leire, Cerdán y Begoña",
+      "url": "https://www.elespanol.com/espana/politica/20261119/junta-electoral-desestima-denuncia-psoe-pp-video-recreo-ia-abalos-leire-begona-gomez/1003744465195_0.html",
+      "discovery_url": "https://www.elespanol.com/espana/politica/20261119/junta-electoral-desestima-denuncia-psoe-pp-video-recreo-ia-abalos-leire-begona-gomez/1003744465195_0.html",
+      "published": "2026-11-19T17:58:02+00:00",
+      "publication_raw": "2026-11-19T17:58:02+00:00",
+      "topic": "EL ESPAÑOL · España",
+      "source_id": "elespanol",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Transportes y maquinistas afrontan otro fin de semana clave para evitar una nueva huelga de conductores de Renfe el lunes",
+      "url": "https://www.20minutos.es/nacional/transportes-maquinistas-afrontan-otro-fin-semana-clave-para-evitar-una-nueva-huelga-conductores-renfe-lunes_7063279_0.html",
+      "discovery_url": "https://www.20minutos.es/nacional/transportes-maquinistas-afrontan-otro-fin-semana-clave-para-evitar-una-nueva-huelga-conductores-renfe-lunes_7063279_0.html",
+      "published": "2026-11-20T04:00:00+00:00",
+      "publication_raw": "2026-11-20T04:00:00+00:00",
+      "topic": "20minutos · nacional",
+      "source_id": "20minutos",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "El primer gran bulo de la campaña se derrumba: Alvise, un garaje en Burgos y un “ataque violento” en un domicilio",
+      "url": "https://elpais.com/espana/elecciones-generales/2026-11-19/el-primer-gran-bulo-de-la-campana-se-derrumba-alvise-un-garaje-en-burgos-y-un-ataque-violento-en-un-domicilio.html",
+      "discovery_url": "https://elpais.com/espana/elecciones-generales/2026-11-19/el-primer-gran-bulo-de-la-campana-se-derrumba-alvise-un-garaje-en-burgos-y-un-ataque-violento-en-un-domicilio.html",
+      "published": "2026-11-19T12:22:58+00:00",
+      "publication_raw": "2026-11-19T12:22:58+00:00",
+      "topic": "EL PAÍS · España",
+      "source_id": "elpais",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "ENCUESTA | ¿Quién ha ganado el cara a cara entre Sánchez y Feijóo?",
+      "url": "https://www.eldiario.es/politica/encuesta-ganando-cara-cara-sanchez-feijoo_11_13674665.html",
+      "discovery_url": "https://www.eldiario.es/politica/encuesta-ganando-cara-cara-sanchez-feijoo_11_13674665.html",
+      "published": "2026-11-19T21:39:26+00:00",
+      "publication_raw": "2026-11-19T21:39:26+00:00",
+      "topic": "elDiario.es · política",
+      "source_id": "eldiario",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Abascal marca distancias con Feijóo a horas del 'cara a cara': \"Allí falto yo para que realmente haya diferencia de pareceres\"",
+      "url": "https://www.elmundo.es/elecciones/elecciones-generales/2026/11/19/6aff127afdddff42268b45c7.html",
+      "discovery_url": "https://www.elmundo.es/elecciones/elecciones-generales/2026/11/19/6aff127afdddff42268b45c7.html",
+      "published": "2026-11-19T15:18:37+00:00",
+      "publication_raw": "2026-11-19T15:18:37+00:00",
+      "topic": "EL MUNDO · España",
+      "source_id": "elmundo",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Dónde ver el debate electoral 2026 entre Pedro Sánchez y Alberto Núñez Feijóo en directo y a qué hora empieza por TV online y cuánto dura el debate de hoy en vivo",
+      "url": "https://okdiario.com/espana/que-hora-debate-pedro-sanchez-alberto-nunez-feijoo-horario-donde-verlo-directo-tv-online-21120198",
+      "discovery_url": "https://okdiario.com/espana/que-hora-debate-pedro-sanchez-alberto-nunez-feijoo-horario-donde-verlo-directo-tv-online-21120198",
+      "published": "2026-11-19T21:30:50+00:00",
+      "publication_raw": "2026-11-19T21:30:50+00:00",
+      "topic": "OKDIARIO · España",
+      "source_id": "okdiario",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Debate entre Sánchez y Feijóo, en directo: última hora del cara a cara de las elecciones generales del 29N",
+      "url": "https://www.europapress.es/nacional/noticia-ultima-hora-directo-elecciones-generales-29n-actualidad-politica-dia-debate-sanchez-feijoo-20261119082438.html",
+      "discovery_url": "https://www.europapress.es/nacional/noticia-ultima-hora-directo-elecciones-generales-29n-actualidad-politica-dia-debate-sanchez-feijoo-20261119082438.html",
+      "published": "2026-11-19T07:24:38+00:00",
+      "publication_raw": "2026-11-19T07:24:38+00:00",
+      "topic": "Europa Press",
+      "source_id": "europapress",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Estudio CGATE III Barómetro Vivienda y Dignidad",
+      "url": "https://www.gad3.com/estudio-cgate-iii-barometro-vivienda-y-dignidad/",
+      "discovery_url": "https://www.gad3.com/estudio-cgate-iii-barometro-vivienda-y-dignidad/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "GAD3 · publicaciones",
+      "source_id": "gad3",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Informe metodológico Documento técnico que detalla la metodología de nuestro modelo de estimación: fuentes de datos, ponderación, tratamiento de la incertidumbre y validación. Descargar PDF",
+      "url": "https://moreincommon.es/pdfs/informe-metodologico-electoral.pdf",
+      "discovery_url": "https://moreincommon.es/pdfs/informe-metodologico-electoral.pdf",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "More in Common · Pulso electoral",
+      "source_id": "mic",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "El PSOE lograría el 33,3% de los votos en las elecciones generales del 29N",
+      "url": "https://www.cis.es/en/w/el-psoe-lograr%C3%ADa-el-33-3-de-los-votos-en-las-elecciones-generales-del-29n",
+      "discovery_url": "https://www.cis.es/en/w/el-psoe-lograr%C3%ADa-el-33-3-de-los-votos-en-las-elecciones-generales-del-29n",
       "published": null,
       "publication_raw": "Fecha no indicada en el índice",
       "topic": "CIS · novedades y anuncios",
       "source_id": "cis-novedades",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Las diez preguntas de El Debate a los expertos en ciberseguridad sobre los móviles que el Gobierno quiere meter en las mesas electorales",
+      "url": "https://www.eldebate.com/espana/20261119/diez-preguntas-debate-expertos-ciberseguridad-sobre-moviles-gobierno-quiere-meter-mesas-electorales_482629.html",
+      "discovery_url": "https://www.eldebate.com/espana/20261119/diez-preguntas-debate-expertos-ciberseguridad-sobre-moviles-gobierno-quiere-meter-mesas-electorales_482629.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Debate",
+      "source_id": "eldebate",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "En directo Sigue el debate electoral entre Feijóo y Sánchez",
+      "url": "https://www.vozpopuli.com/espana/debate-electoral-2026-en-directo-sigue-el-cara-a-cara-entre-feijoo-y-pedro-sanchez-y-la-ultima-hora-de-las-elecciones-generales-del-29-n-hoy.html",
+      "discovery_url": "https://www.vozpopuli.com/espana/debate-electoral-2026-en-directo-sigue-el-cara-a-cara-entre-feijoo-y-pedro-sanchez-y-la-ultima-hora-de-las-elecciones-generales-del-29-n-hoy.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Vozpópuli",
+      "source_id": "vozpopuli",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Sánchez desperdicia su gran baza para remontar frente a Feijóo",
+      "url": "https://www.elindependiente.com/espana/2026/11/20/debate-cara-cara-sanchez-feijoo-academia-tv-elecciones-29n/",
+      "discovery_url": "https://www.elindependiente.com/espana/2026/11/20/debate-cara-cara-sanchez-feijoo-academia-tv-elecciones-29n/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Independiente",
+      "source_id": "elindependiente",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Así busca Vox penetrar en el cinturón rojo de Barcelona el 29N",
+      "url": "https://www.publico.es/politica/partidos/asi-busca-vox-penetrar-cinturon-rojo-barcelona-29n.html",
+      "discovery_url": "https://www.publico.es/politica/partidos/asi-busca-vox-penetrar-cinturon-rojo-barcelona-29n.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Público",
+      "source_id": "publico",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "La líder de la conservadora APM, que participa en actos del PP, opta a presidir el Tribunal Superior de Madrid",
+      "url": "https://www.infolibre.es/politica/lider-conservadora-apm-participa-actos-pp-opta-presidir-tribunal-superior-madrid_1_2240311.html",
+      "discovery_url": "https://www.infolibre.es/politica/lider-conservadora-apm-participa-actos-pp-opta-presidir-tribunal-superior-madrid_1_2240311.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "infoLibre",
+      "source_id": "infolibre",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "ENCUESTA: ¿Quién ha ganado el cara a cara entre Pedro Sánchez y Alberto Núñez Feijóo?",
+      "url": "https://www.elplural.com/politica/espana/encuesta-quien-ha-ganado-cara-cara-entre-pedro-sanchez-alberto-nunez-feijoo_804653102",
+      "discovery_url": "https://www.elplural.com/politica/espana/encuesta-quien-ha-ganado-cara-cara-entre-pedro-sanchez-alberto-nunez-feijoo_804653102",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Plural",
+      "source_id": "elplural",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Lo de las desapariciones",
+      "url": "https://ctxt.es/es/20261101/Politica/55797/Guillem-Martinez-elecciones-29N-jueces-reaccionarios-ultraderecha-Cayetana-Alvarez-de-Toledo-Albiol.htm",
+      "discovery_url": "https://ctxt.es/es/20261101/Politica/55797/Guillem-Martinez-elecciones-29N-jueces-reaccionarios-ultraderecha-Cayetana-Alvarez-de-Toledo-Albiol.htm",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "CTXT",
+      "source_id": "ctxt",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "El voto útil y la izquierda inútil",
+      "url": "https://www.elsaltodiario.com/elecciones/voto-util-izquierda-inutil",
+      "discovery_url": "https://www.elsaltodiario.com/elecciones/voto-util-izquierda-inutil",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Salto",
+      "source_id": "elsalto",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Santiago Abascal denuncia en Gijón la ausencia de VOX en el debate entre Sánchez y Feijoo: «Hay algo muy importante que va a faltar y son los mensajes de prioridad nacional, desregulación y remigración»",
+      "url": "https://gaceta.es/espana/santiago-abascal-denuncia-en-gijon-la-ausencia-de-vox-en-el-debate-entre-sanchez-y-feijoo-hay-algo-muy-importante-y-son-los-mensajes-de-prioridad-nacional-desregulacion-y-remigracion-20261119-2117/",
+      "discovery_url": "https://gaceta.es/espana/santiago-abascal-denuncia-en-gijon-la-ausencia-de-vox-en-el-debate-entre-sanchez-y-feijoo-hay-algo-muy-importante-y-son-los-mensajes-de-prioridad-nacional-desregulacion-y-remigracion-20261119-2117/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "La Gaceta",
+      "source_id": "gaceta",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "La Comentada",
+      "url": "https://www.rtve.es/noticias/20261118/comentada-trastienda-debates-electorales-horario-donde-ver/17319109.shtml",
+      "discovery_url": "https://www.rtve.es/noticias/20261118/comentada-trastienda-debates-electorales-horario-donde-ver/17319109.shtml",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "RTVE",
+      "source_id": "rtve",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "«¿Qué le debe usted a Marruecos, señor Sánchez?»",
+      "url": "https://www.elcorreo.com/elecciones/generales/debe-marruecos-senor-sanchez-20261119001144-ntrc.html",
+      "discovery_url": "https://www.elcorreo.com/elecciones/generales/debe-marruecos-senor-sanchez-20261119001144-ntrc.html",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "El Correo",
+      "source_id": "elcorreo",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "S�nchez agita el miedo a un gobierno PP-Vox y elude responder sobre la corrupci�n",
+      "url": "https://www.lavozdegalicia.es/noticia/espana/2026/11/19/sanchez-agita-miedo-gobierno-pp-vox-elude-responder-sobre-corrupcion/00031795129173176770107.htm",
+      "discovery_url": "https://www.lavozdegalicia.es/noticia/espana/2026/11/19/sanchez-agita-miedo-gobierno-pp-vox-elude-responder-sobre-corrupcion/00031795129173176770107.htm",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "La Voz de Galicia",
+      "source_id": "lavozdegalicia",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Mundo «Hay empate entre bloques, muchas encuestas siguen a semanas por detrás de la realidad»",
+      "url": "https://www.naiz.eus/es/info/noticia/20261116/hay-empate-entre-bloques-muchas-encuestas-siguen-a-semanas-por-detras-de-la-realidad",
+      "discovery_url": "https://www.naiz.eus/es/info/noticia/20261116/hay-empate-entre-bloques-muchas-encuestas-siguen-a-semanas-por-detras-de-la-realidad",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "Naiz",
+      "source_id": "naiz",
+      "original_verified": false,
+      "tipo": "publicacion_candidata"
+    },
+    {
+      "title": "Entre una vida remarcable i una campanya electoral prescindible És trist de constatar fins a quin punt, en deu anys, hem canviat aquelles assemblees memorables on la gent discutia com havia de ser la república fins al més mínim detall i amb exigència per aquest circ virtual que tenim avui. Però resta el consol de saber que una nació no depèn mai d’un sol episodi, i encara menys d’una nit electoral",
+      "url": "https://www.vilaweb.cat/noticies/una-vida-remarcable-contra-una-campanya-electoral-prescindible/",
+      "discovery_url": "https://www.vilaweb.cat/noticies/una-vida-remarcable-contra-una-campanya-electoral-prescindible/",
+      "published": null,
+      "publication_raw": "Fecha no indicada en el índice",
+      "topic": "VilaWeb",
+      "source_id": "vilaweb",
       "original_verified": false,
       "tipo": "publicacion_candidata"
     }
@@ -468,6 +2099,18 @@
     {
       "source": "La Razón · España",
       "detail": "HTTP 503"
+    },
+    {
+      "source": "The Objective",
+      "detail": "HTTP 403"
+    },
+    {
+      "source": "Agencia EFE",
+      "detail": "HTTP 500"
+    },
+    {
+      "source": "El Periódico",
+      "detail": "HTTP 406"
     }
   ],
   "policy": "Solo descubrimiento. Revisar original, campo, muestra, cifras y denominador antes de incorporar.",

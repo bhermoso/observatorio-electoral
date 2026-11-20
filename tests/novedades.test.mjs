@@ -26,3 +26,9 @@ test('consultar diferencia primera carga, mismo informe y publicaciones añadida
 test('consulta versionada usa URL nueva para evitar reutilizar la copia CDN',async()=>{
  let url;await readUpdateData('data/vigilancia/microdatos.json',{fetcher:async u=>{url=u;return {ok:true,json:async()=>({})}}});assert.ok(new URL(url).searchParams.has('consulta'));
 });
+
+import {diverseCandidates} from '../encuestas-servicio.mjs';
+test('la lista visible conserva fuentes minoritarias aunque un medio aporte más titulares',()=>{
+ const rows=[...Array.from({length:60},(_,i)=>({source_id:'a',title:String(i)})),{source_id:'b',title:'B'},{source_id:'c',title:'C'}];
+ assert.deepEqual(diverseCandidates(rows,3).map(x=>x.source_id),['a','b','c']);assert.equal(diverseCandidates(rows,45).length,45);
+});

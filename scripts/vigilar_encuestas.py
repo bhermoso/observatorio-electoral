@@ -3,6 +3,7 @@ Publica metadatos auditables y conserva la última búsqueda útil ante un fallo
 """
 from __future__ import annotations
 from concurrent.futures import ThreadPoolExecutor
+from collections import deque
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from html.parser import HTMLParser
@@ -15,7 +16,7 @@ import sys
 import xml.etree.ElementTree as ET
 
 ROOT=Path(__file__).resolve().parents[1]
-WORDS=re.compile(r'encuesta|sondeo|bar[oó]metro|estimaci[oó]n|demoscop|microdato|pulso.electoral|promedio|cuestionario|ficha.t[eé]cnica|ponderaci[oó]n|huelga|debate.electoral',re.I)
+WORDS=re.compile(r'encuesta|sondeo|bar[oó]metro|estimaci[oó]n|demoscop|microdato|pulso.electoral|promedio|cuestionario|ficha.t[eé]cnica|ponderaci[oó]n|huelga|debate.electoral|elecci[oó]n|electoral|enquest|sondeig|hauteskunde|inkesta|PSOE|\bPP\b|\bVox\b|\bSumar\b|\bPodemos\b|\bPNV\b|\bBildu\b|\bJunts\b|\bERC\b|\bBNG\b',re.I)
 FILES=re.compile(r'\.(?:zip|sav|dta|xlsx|csv)(?:$|\?)',re.I)
 LIMIT=2_000_000
 
@@ -54,7 +55,13 @@ def parse(body,source):
         rows=[(t,u,None) for t,u in parser.rows]
     for title,raw,published in rows:
         url=safe_url(raw,source['url'])
-        if not url or not (WORDS.search(title+' '+url) or FILES.search(url)):continue
+        if not url or raw.startswith('#'):continue
+        title=' '.join(title.split())
+        file=bool(FILES.search(url))
+        if not file and (not title or title.casefold() in {'saltar al contenido','inicio','menú','menu','editorial','opinión','opinion','pp','psoe','vox','podemos','sumar','29n','elecciones','elecciones generales 2026'}):continue
+        # No usar el dominio: «demoscopia» en el host no convierte cada menú en un hallazgo.
+        target=urlsplit(url)
+        if not (WORDS.search(title+' '+target.path+' '+target.query) or file):continue
         found.append({'title':title[:500] or 'Archivo enlazado por el productor','url':url,'discovery_url':url,
                       'published':published,'publication_raw':published or 'Fecha no indicada en el índice',
                       'topic':source['name'],'source_id':source['id'],'original_verified':False,
@@ -86,7 +93,14 @@ def assemble(results,previous=None,now=None):
         for x in source['items']:
             key=x['url'].split('#')[0]
             if key not in unique:unique[key]=x
-    items=sorted(unique.values(),key=lambda x:x.get('published') or '',reverse=True)[:150]
+    # Turnos por fuente: los RSS fechados no expulsan a productores o páginas HTML.
+    buckets={}
+    for item in sorted(unique.values(),key=lambda x:x.get('published') or '',reverse=True):
+        buckets.setdefault(item.get('source_id') or item.get('topic') or 'sin-fuente',deque()).append(item)
+    items=[]
+    while any(buckets.values()) and len(items)<150:
+        for bucket in buckets.values():
+            if bucket and len(items)<150:items.append(bucket.popleft())
     # On total failure the old timestamp and old candidates stay visibly old.
     return {'schema':2,'checked_at':now if successful else previous.get('checked_at'),
             'last_attempt_at':now,'status':'complete' if len(successful)==len(results) else 'partial' if successful else 'failed',

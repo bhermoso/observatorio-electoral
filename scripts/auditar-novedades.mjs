@@ -9,7 +9,7 @@ try{for(const width of [390,1440]){
  // Deterministic partial discovery, with actual archive/model and one failed source.
  await page.route('https://raw.githubusercontent.com/**',async route=>{
   const local=new URL(route.request().url()).pathname.split('/main/')[1];
-  if(local==='data/vigilancia/candidatos.json')return route.fulfill({json:{results:[{title:'Microdatos nuevos',url:'https://productor.es/base.zip'},{title:'Promedio de encuestas',url:'https://productor.es/media'},...(revision?[{title:'Nueva noticia',url:'https://productor.es/nueva'}]:[])],sources:[{name:'Productor',ok:true,count:2,attempts:1},{name:'Otro',ok:false,error:'HTTP 503',attempts:2}],status:'partial',checked_at:revision?'2026-11-17T09:00:00Z':'2026-11-17T08:00:00Z'}});
+  if(local==='data/vigilancia/candidatos.json')return route.fulfill({json:{results:[{title:'Microdatos nuevos',source_id:'p1',url:'https://productor.es/base.zip'},{title:'Promedio de encuestas',source_id:'p2',url:'https://productor.es/media'},...(revision?[{title:'Nueva noticia',source_id:'p1',url:'https://productor.es/nueva'}]:[])],sources:[{id:'p1',name:'Productor',ok:true,count:2,attempts:1},{id:'p2',name:'Otro medio',ok:true,count:1,attempts:1},{id:'p3',name:'Fuente fallida',ok:false,error:'HTTP 503',attempts:2}],status:'partial',checked_at:revision?'2026-11-17T09:00:00Z':'2026-11-17T08:00:00Z'}});
   if(local&&fs.existsSync(local))return route.fulfill({contentType:'application/json',body:fs.readFileSync(local,'utf8')});return route.abort();
  });
  await page.goto((process.env.BROWSER_URL||'http://127.0.0.1:4173/')+'#encuestas-actualizar',{waitUntil:'domcontentloaded'});
@@ -19,6 +19,7 @@ try{for(const width of [390,1440]){
  revision=1;await page.locator('#dispatch-polls').click();await page.waitForFunction(()=>!document.querySelector('#dispatch-polls').disabled);assert.match(await page.locator('#poll-dispatch-status').innerText(),/1 publicación nueva/);
  assert.equal(await page.getByRole('tab',{name:'Novedades',exact:true}).getAttribute('aria-selected'),'true');
  assert.match(await page.locator('#launch-discovery').getAttribute('href'),/vigilancia-encuestas.yml$/);assert.match(await page.locator('#update-summary').innerText(),/no alimentan el pronóstico principal/);
+ await page.selectOption('#discovery-source','p2');assert.equal(await page.locator('.news-candidates article').count(),1);assert.match(await page.locator('.news-candidates').innerText(),/Promedio/);await page.selectOption('#discovery-source','');
  await page.selectOption('#discovery-type','Microdatos');assert.equal(await page.locator('.news-candidates article').count(),1);assert.match(await page.locator('#poll-candidates-list').innerText(),/Cobertura parcial/);
  await page.selectOption('#discovery-type','Promedios');assert.equal(await page.locator('.news-candidates article').count(),1);assert.match(await page.locator('.news-candidates').innerText(),/Promedio/);
  await page.locator('#discovery-microdata > summary').click();assert.match(await page.locator('#discovery-microdata-results').innerText(),/0 matrices descargadas/);
