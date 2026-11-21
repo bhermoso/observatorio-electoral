@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102a2a"><meta name="description" content="Estimación electoral autónoma desde microdatos del CIS y 40dB, con cocina, pesos, validación y trazabilidad.">
+<title>Estimación desde microdatos · Observatorio Electoral</title>
+<link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="editorial.css">
+<style>
+.audit{max-width:1120px;margin:auto;padding:24px 4% 76px;color:#173b32}.audit a{color:#17604a}.audit .top{display:flex;justify-content:space-between;gap:12px;margin:4px 0 26px}.audit .top a{font-weight:700;text-decoration:none}
+.audit .hero{background:#153d32;color:#fff;border-radius:18px;padding:clamp(24px,5vw,48px);margin-bottom:20px}.audit .hero h1{font-size:clamp(2.2rem,5vw,4rem);line-height:1.05;max-width:850px;margin:.4em 0}.audit .hero p{max-width:78ch;line-height:1.65}.audit .hero a{color:#e2f3bd}.eyebrow{font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;opacity:.8}.badge{display:inline-block;border:1px solid #cce5a0;border-radius:99px;padding:7px 12px;font-size:.86rem}
+.audit section{margin:18px 0;padding:clamp(18px,3vw,30px);border:1px solid #ceded1;border-radius:15px;background:#fff}.audit h2{font-size:clamp(1.4rem,3vw,2.1rem);margin:.25em 0 .55em}.audit h3{font-size:1.1rem}.audit p{line-height:1.62}.lede{font-size:1.05rem;color:#36584b}.result-grid,.grid2,.grid3{display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr));margin:18px 0}.grid2{grid-template-columns:repeat(2,minmax(0,1fr))}.card,.definition{padding:16px;border:1px solid #d5e2d5;border-radius:12px;background:#f7faf4}.card strong{display:block;font-size:clamp(2rem,4vw,3.1rem);font-variant-numeric:tabular-nums}.card small{display:block;color:#54695d;line-height:1.45;margin-top:6px}
+.metric-row{display:flex;gap:8px;flex-wrap:wrap}.metric,.tag{border:1px solid #c9ddca;border-radius:9px;padding:8px 10px;background:#f8fbf6}.tag{font-size:.8rem;font-weight:700}.notice{background:#fff5d9;border-left:5px solid #ad7e24;border-radius:7px;padding:13px 16px;margin:14px 0}.good{background:#eff6e7;border-left:5px solid #668c4d;border-radius:7px;padding:13px 16px;margin:14px 0}.formula{font: .93rem ui-monospace,monospace;background:#f3f6f1;border:1px solid #d9e1d6;border-radius:10px;padding:14px;overflow-wrap:anywhere}.table-wrap{overflow-x:auto}.audit table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}.audit th,.audit td{padding:9px 11px;text-align:left;vertical-align:top;border-bottom:1px solid #dce6dc}.audit thead th{background:#eff5eb}.audit td.num,.audit th.num{text-align:right;white-space:nowrap}.audit small{display:block;color:#5b7064;margin-top:4px}.controls{display:flex;flex-wrap:wrap;gap:14px;align-items:end;margin:14px 0}.controls label{font-weight:700;display:flex;flex-direction:column;gap:6px}.audit select{font:inherit;padding:9px 11px;border:1px solid #99b7a0;border-radius:8px;color:#173b32;background:white}.chart{overflow-x:auto;margin:14px 0}.audit svg{display:block;max-width:100%;height:auto}.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.88rem;color:#50695b}.swatch{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:5px;background:#2869a6}.swatch.red{background:#b52d38}.swatch.green{background:#678c30}.foot{font-size:.9rem;color:#566b5f}.audit details{border-top:1px solid #dce6dc;padding:12px 0}.audit summary{cursor:pointer;font-weight:750}.audit :focus-visible{outline:3px solid #a27312;outline-offset:3px}.navlinks{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px}
+@media(max-width:700px){.result-grid,.grid2,.grid3{grid-template-columns:1fr}.audit .hero{border-radius:13px}.audit th,.audit td{padding:8px}}
+</style><script type="module" src="estimacion-microdatos.mjs"></script></head>
+<body class="editorial-document"><a class="skip" href="#main">Saltar al contenido</a><main id="main" class="audit">
+<div class="top"><a href="./">← Observatorio Electoral</a><span class="tag">AUDITORÍA · COCINA AUTÓNOMA</span></div>
+<header class="hero"><span class="eyebrow">Estimación del Observatorio desde microdatos · versión experimental</span><h1>La cifra sale de las respuestas.</h1>
+<p>Esta página calcula una estimación propia desde matrices individuales procesadas del CIS y 40dB. La cifra final que publica cada instituto no alimenta este cálculo. Aquí se ven las muestras, las ponderaciones, las operaciones, la validación y la huella de cada archivo.</p><p><span id="status" class="badge">Cargando matrices verificadas…</span></p><div id="headline" aria-live="polite"></div></header>
+
+<section><span class="eyebrow">01 / Resultado</span><h2>Voto declarado, agrupado desde microdatos</h2>
+<p class="lede">La receta central aplica el peso de diseño de cada estudio y suma las masas de respuestas válidas. Una semivida temporal de 14 días da más peso al campo reciente. No imputa NS/NC, no calibra recuerdo ni infiere escaños: es una estimación experimental de voto declarado, no una predicción completa del resultado.</p>
+<div id="result"></div><div class="notice"><strong>Última matriz disponible:</strong> tracking 40dB día 8, campo hasta el 19 de noviembre. El día 9 se publicó el 20, pero no consta aquí su matriz individual; no sustituyo microdatos ausentes por la cifra publicada.</div>
+<div class="good"><strong>Regla de independencia:</strong> los archivos de los días 1, 2 y 7 del tracking se solapan con la muestra posterior. Se retiene solo el día 8, la última matriz accesible. Los microdatos CIS y las demás muestras de 40dB mantienen sus fechas y hashes.</div></section>
+
+<section><span class="eyebrow">02 / La cuenta reproducible</span><h2>De respuestas ponderadas a la cifra</h2>
+<p>En cada matriz, el escenario <code>10000</code> aplica el peso original de la muestra y conserva la respuesta declarada. No usa los porcentajes publicados por la casa.</p>
+<div class="formula">masa(s, partido) = Σ peso_de_diseñoᵢ × 1(respuestaᵢ = partido)<br>
+λ(s) = 2<sup>−edad_media_del_campo(s) / 14</sup><br>
+estimación(partido) = 100 × Σₛ λ(s)·masa(s, partido) / Σₛ λ(s)·denominador_válido(s)</div>
+<p>Solo se agrupan PP, PSOE y Vox en la cifra común: sus códigos son comparables en CIS y 40dB. Las coaliciones y marcas territoriales se conservan en cada fuente; no se fusionan para fabricar un total homogéneo.</p>
+<div id="timeline" class="chart" aria-label="Gráfico de respuestas ponderadas por fecha de campo"></div>
+<div class="legend"><span><i class="swatch"></i> PP</span><span><i class="swatch red"></i> PSOE</span><span><i class="swatch green"></i> Vox</span><span>puntos = matrices; línea discontinua = cifra combinada</span></div>
+<div id="ledger"></div></section>
+
+<section><span class="eyebrow">03 / No son lo mismo</span><h2>Promedio, promedio de promedios y estimación con cocina</h2>
+<div class="grid2">
+<article class="definition"><h3>Promedio de encuestas</h3><p>Combina cifras finales de voto publicadas por casas demoscópicas. Cada entrada es una estimación ya cocinada por su productor, no una entrevista individual.</p><div class="formula">Σ (peso × estimación publicada) / Σ pesos</div></article>
+<article class="definition"><h3>Promedio de promedios</h3><p>Combina instantáneas de agregadores. Pueden compartir encuestas y métodos: sus promedios no son muestras independientes ni “n” adicional. <a href="metapromedio.html">Instrumento separado →</a></p></article>
+<article class="definition"><h3>Promedio de estimaciones</h3><p>Combina pronósticos de varios modelos o variantes. Cada valor de entrada es una salida modelada, no un promedio de entrevistas.</p></article>
+<article class="definition"><h3>Nuestra estimación desde microdatos</h3><p>Empieza en respuestas individuales, aplica el peso de la muestra y agrega respuestas compatibles con un descuento temporal declarado. Las cifras publicadas por los institutos quedan fuera de la cuenta.</p></article>
+</div></section>
+
+<section><span class="eyebrow">04 / Abrir la receta</span><h2>Cuánto mueve cada ingrediente</h2>
+<p>Las alternativas se calculan sobre la misma matriz; no representan encuestas nuevas. La cifra principal usa peso de diseño. Recuerdo, simpatía, indecisos y participación quedan como sensibilidad hasta que una validación amplia justifique incluirlos.</p>
+<div class="controls"><label for="source-select">Matriz<select id="source-select"></select></label><label for="party-select">Partido<select id="party-select"><option>PP</option><option>PSOE</option><option>VOX</option></select></label></div>
+<div id="recipe-chart" class="chart"></div><div id="recipe-table"></div>
+<p class="foot">La columna central muestra el porcentaje bajo el denominador de cada escenario. Numerador y denominador pueden cambiar al activar una operación; los cambios no deben leerse como transferencias directas entre partidos.</p></section>
+
+<section><span class="eyebrow">05 / Validación retrospectiva</span><h2>Qué ingredientes acertaron mejor ante el 23J</h2>
+<p>El histórico disponible cubre dos estudios CIS y tres estudios 40dB de una sola elección. Es evidencia útil para comparar recetas, pero no constituye cinco elecciones independientes ni valida el pronóstico de 2026.</p><div id="validation"></div>
+<div class="notice"><strong>Decisión provisional:</strong> la ponderación de diseño se conserva; la calibración por recuerdo y la receta completa se dejan fuera del centro porque elevaron el error observado. No se escoge una transformación por acercarse a las cifras publicadas en noviembre.</div></section>
+
+<section><span class="eyebrow">06 / Comparador aislado</span><h2>El motor anterior, solo como referencia</h2>
+<p>El motor operativo existente usa las estimaciones publicadas por las casas. Esta comparación permite ver qué cambia al comenzar desde las respuestas. La cifra publicada no interviene en el modelo microdatos.</p><div id="comparison"></div></section>
+
+<section><span class="eyebrow">07 / Registro de límites</span><h2>Qué falta para un pronóstico autónomo completo</h2>
+<ul><li>Tratar indecisos y participación con reglas preinscritas y validación en varias elecciones.</li><li>Obtener y procesar el microdato del día 9 de 40dB para cerrar el último tramo de campo.</li><li>Homologar las candidaturas antes de estimar bloques y escaños; por ahora solo se agrupan PP, PSOE y Vox.</li><li>La ficha CIS 3582 declara 5.025 entrevistas; el ZIP procesado contiene 5.024 registros. La diferencia queda visible, sin fabricar una entrevista.</li><li>La semivida es un parámetro experimental; la página muestra alternativas de 21 y 30 días para revisar la sensibilidad.</li></ul>
+<details><summary>Fuentes, variables y huellas SHA-256</summary><div id="provenance"></div></details>
+<div class="navlinks"><a href="del-sondeo-al-escano.html#maquina">Abrir laboratorio de recetas por estudio →</a><a href="flujograma.html">Ver algoritmo general →</a><a href="https://github.com/bhermoso/observatorio-electoral">Código y agregados abiertos ↗</a></div></section>
+</main><script type="module" src="estimacion-microdatos.mjs"></script></body></html>
