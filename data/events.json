@@ -286,5 +286,31 @@
       "postFieldworkFrom": "2026-11-12",
       "registeredAt": "2026-11-11"
     }
+  },
+  {
+    "id": "debate-cara-a-cara-sanchez-feijoo-2026-11-19",
+    "kind": "documented-event",
+    "date": "2026-11-19",
+    "datePrecision": "day",
+    "title": "Debate cara a cara entre Pedro Sánchez y Alberto Núñez Feijóo",
+    "shortTitle": "Cara a cara Sánchez–Feijóo",
+    "category": "Campaña electoral",
+    "location": "Madrid Content City, Tres Cantos (Madrid)",
+    "scope": "España · campaña de las elecciones generales del 29N",
+    "summary": "Debate televisado organizado por la Academia de Televisión y moderado por María Casado. Incluyó cinco bloques: vivienda; economía y fiscalidad; política social y servicios públicos; corrupción y regeneración democrática; migración y política exterior. El hecho y su contenido se registran en la cronología; las encuestas posteriores se consignan por separado.",
+    "verified": "2026-11-21",
+    "sources": [
+      {
+        "publisher": "RTVE Play · señal completa",
+        "published": "2026-11-19",
+        "url": "https://www.rtve.es/play/videos/especiales-informativos/debate-cara-pedro-sanchez-feijoo-elecciones-2026/17322618/"
+      },
+      {
+        "publisher": "RTVE · DatosRTVE",
+        "published": "2026-11-20",
+        "url": "https://www.rtve.es/noticias/20261120/debate-sanchez-feijoo-analisis-tiempo-elecciones-2026/17322757.shtml"
+      }
+    ],
+    "notes": "Se documenta la celebración del debate, no su impacto electoral. Las 500 entrevistas posteriores del informe 40dB forman parte de una encuesta con campo 16–20/11 y no permiten atribuir causalidad por sí solas."
   }
 ]
