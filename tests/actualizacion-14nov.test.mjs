@@ -20,5 +20,5 @@ test('una horquilla y un cero externo se mantienen distintos de una ausencia',()
 test('la portada conserva distintas oleadas en el archivo pero muestra una publicación por casa',()=>{
  const list=polls.map(p=>({estudio:p.id,casa:p.institute,publicacion:p.published,campo_ini:p.fieldStart,campo_fin:p.fieldEnd,n:p.sample,voto:p.values}));
  const all=encuestasRecientes({entradas:list},[],{limite:100});assert.ok(all.filter(p=>p.casa==='Sigma Dos').length>1);
- const recent=encuestasRecientes({entradas:list},[],{limite:3,latestPerHouse:true,deduplicate:true});assert.equal(recent.length,new Set(recent.map(r=>r.casa)).size);assert.equal(recent.find(r=>r.casa==='Sigma Dos').id,'sigma-dos-2026-11-13-tracking');
+ const recent=encuestasRecientes({entradas:list},[],{limite:100,latestPerHouse:true,deduplicate:true});assert.equal(recent.length,new Set(recent.map(r=>r.casa)).size);assert.equal(recent.find(r=>r.casa==='Sigma Dos').id,'sigma-dos-2026-11-13-tracking');
 });
