@@ -9,6 +9,22 @@
 .audit section{margin:18px 0;padding:clamp(18px,3vw,30px);border:1px solid #ceded1;border-radius:15px;background:#fff}.audit h2{font-size:clamp(1.4rem,3vw,2.1rem);margin:.25em 0 .55em}.audit h3{font-size:1.1rem}.audit p{line-height:1.62}.lede{font-size:1.05rem;color:#36584b}.result-grid,.grid2,.grid3{display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr));margin:18px 0}.grid2{grid-template-columns:repeat(2,minmax(0,1fr))}.card,.definition{padding:16px;border:1px solid #d5e2d5;border-radius:12px;background:#f7faf4}.card strong{display:block;font-size:clamp(2rem,4vw,3.1rem);font-variant-numeric:tabular-nums}.card small{display:block;color:#54695d;line-height:1.45;margin-top:6px}
 .metric-row{display:flex;gap:8px;flex-wrap:wrap}.metric,.tag{border:1px solid #c9ddca;border-radius:9px;padding:8px 10px;background:#f8fbf6}.tag{font-size:.8rem;font-weight:700}.notice{background:#fff5d9;border-left:5px solid #ad7e24;border-radius:7px;padding:13px 16px;margin:14px 0}.good{background:#eff6e7;border-left:5px solid #668c4d;border-radius:7px;padding:13px 16px;margin:14px 0}.formula{font: .93rem ui-monospace,monospace;background:#f3f6f1;border:1px solid #d9e1d6;border-radius:10px;padding:14px;overflow-wrap:anywhere}.table-wrap{overflow-x:auto}.audit table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}.audit th,.audit td{padding:9px 11px;text-align:left;vertical-align:top;border-bottom:1px solid #dce6dc}.audit thead th{background:#eff5eb}.audit td.num,.audit th.num{text-align:right;white-space:nowrap}.audit small{display:block;color:#5b7064;margin-top:4px}.controls{display:flex;flex-wrap:wrap;gap:14px;align-items:end;margin:14px 0}.controls label{font-weight:700;display:flex;flex-direction:column;gap:6px}.audit select{font:inherit;padding:9px 11px;border:1px solid #99b7a0;border-radius:8px;color:#173b32;background:white}.chart{overflow-x:auto;margin:14px 0}.audit svg{display:block;max-width:100%;height:auto}.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.88rem;color:#50695b}.swatch{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:5px;background:#2869a6}.swatch.red{background:#b52d38}.swatch.green{background:#678c30}.foot{font-size:.9rem;color:#566b5f}.audit details{border-top:1px solid #dce6dc;padding:12px 0}.audit summary{cursor:pointer;font-weight:750}.audit :focus-visible{outline:3px solid #a27312;outline-offset:3px}.navlinks{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px}
 @media(max-width:700px){.result-grid,.grid2,.grid3{grid-template-columns:1fr}.audit .hero{border-radius:13px}.audit th,.audit td{padding:8px}}
+
+/* Cabecera de auditoría: evita que la cuadrícula editorial estreche las cifras. */
+.audit header.hero{display:block!important;grid-template-columns:none!important;align-items:initial!important;text-align:left!important}
+.audit header.hero>.eyebrow{display:block;color:#d9eab8;opacity:1}
+.audit header.hero>p{max-width:78ch;color:#eef5e8}
+.audit header.hero #headline{display:block;width:100%;margin-top:24px}
+.audit header.hero .result-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px;width:100%;max-width:none}
+.audit header.hero .card{display:block!important;min-width:0;background:#fffefa!important;color:#173b32!important;padding:16px!important;border-radius:12px}
+.audit header.hero .card span,.audit header.hero .card strong,.audit header.hero .card small{display:block;color:#173b32!important}
+.audit header.hero .card span{font-weight:800}
+.audit header.hero .card strong{font-size:clamp(2rem,4vw,3rem);line-height:1.08;margin:.2em 0}
+.audit header.hero .card small{line-height:1.45}
+.audit header.hero .metric-row{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0;color:#fff}
+.audit header.hero .metric{border:1px solid #b9d2bd;border-radius:999px;padding:6px 10px;color:#fff}
+.audit header.hero .foot{color:#edf5e8}
+@media(max-width:700px){.audit header.hero .result-grid{grid-template-columns:1fr!important}}
 </style><script type="module" src="estimacion-microdatos.mjs"></script></head>
 <body class="editorial-document"><a class="skip" href="#main">Saltar al contenido</a><main id="main" class="audit">
 <div class="top"><a href="./">← Observatorio Electoral</a><span class="tag">AUDITORÍA · COCINA AUTÓNOMA</span></div>
