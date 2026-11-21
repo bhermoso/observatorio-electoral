@@ -1353,7 +1353,7 @@
     "source": "https://media.licdn.com/dms/document/media/v2/D4E1FAQGg7xbSrdGpkg/feedshare-document-pdf-analyzed/B4EaGw8W1yIgAc-/0/1793969976552?e=1795046400&t=8IpctmM2_0m4UDTAj-75v3nzr5JpthVu4MZSqSdDO0I&v=beta",
     "technical": "https://media.licdn.com/dms/document/media/v2/D4E1FAQGg7xbSrdGpkg/feedshare-document-pdf-analyzed/B4EaGw8W1yIgAc-/0/1793969976552?e=1795046400&t=8IpctmM2_0m4UDTAj-75v3nzr5JpthVu4MZSqSdDO0I&v=beta",
     "values": {
-      "PSOE": 31.0,
+      "PSOE": 31,
       "PP": 28.3,
       "VOX": 17.2,
       "Frente Amplio": 7.6,
@@ -1366,7 +1366,7 @@
       "CC": 0.4,
       "PP–UPN (Navarra)": 0.2,
       "Podemos": 1.2,
-      "SALF": 2.0,
+      "SALF": 2,
       "Teruel Existe": 0.1,
       "Otras candidaturas": 3.7
     },
@@ -1538,7 +1538,7 @@
       "Adelante Andalucía": 1.5,
       "Junts": 1.2,
       "Podemos (fuera de ERC-Podemos)": 1.1,
-      "BNG": 1.0,
+      "BNG": 1,
       "PNV": 0.7,
       "UPC": 0.4,
       "Ara Més-Front Ampli": 0.2,
@@ -1772,7 +1772,7 @@
       "VOX": 19.6,
       "Frente Amplio": 7.3,
       "Podemos": 1.4,
-      "Adelante Andalucía": 2.0
+      "Adelante Andalucía": 2
     },
     "seats": {
       "PP": {
@@ -1843,7 +1843,7 @@
     "technical": "https://www.elmundo.es/elecciones/elecciones-generales/2026/11/13/6af73a35fdddffb36c8b45a0.html",
     "scenario": "Frente Amplio agregado con sus marcas valenciana y canaria, según el texto original; no equivale al Frente Amplio nacional desglosado de otros estudios.",
     "values": {
-      "PP": 31.0,
+      "PP": 31,
       "PSOE": 25.4,
       "VOX": 19.7,
       "Frente Amplio": 7.3,
@@ -2135,14 +2135,14 @@
     "values": {
       "PP": 31.5,
       "PSOE": 30.3,
-      "VOX": 18.0,
+      "VOX": 18,
       "Frente Amplio (sin candidaturas territoriales)": 3.7,
       "SALF": 1.7,
       "Podemos (fuera de candidaturas territoriales)": 1.1,
       "Compromís: Front Valencià": 1.2,
       "Ara Més-Front Ampli": 0.2,
       "UPC": 0.3,
-      "Otro + Blanco": 12.0
+      "Otro + Blanco": 12
     },
     "sourceLabels": {
       "Frente Amplio (sin candidaturas territoriales)": "Frente Amplio",
@@ -2249,7 +2249,7 @@
       "Compromís: Front Valencià": 1.2,
       "Ara Més-Front Ampli": 0.2,
       "UPC": 0.3,
-      "Otro + Blanco": 12.0
+      "Otro + Blanco": 12
     },
     "sourceLabels": {
       "Frente Amplio (sin candidaturas territoriales)": "Frente Amplio",
@@ -2349,14 +2349,14 @@
     "values": {
       "PP": 32.2,
       "PSOE": 30.7,
-      "VOX": 17.0,
+      "VOX": 17,
       "Frente Amplio (sin candidaturas territoriales)": 3.5,
       "SALF": 1.7,
       "Podemos (fuera de candidaturas territoriales)": 1.2,
       "Compromís: Front Valencià": 1.2,
       "Ara Més-Front Ampli": 0.2,
       "UPC": 0.3,
-      "Otro + Blanco": 12.0
+      "Otro + Blanco": 12
     },
     "sourceLabels": {
       "Frente Amplio (sin candidaturas territoriales)": "Frente Amplio",
@@ -2772,5 +2772,152 @@
     "notes": "La ficha declara 2.000 entrevistas CAWI del 15 al 19 de noviembre. Es una oleada solapada: la selección conserva la posterior sin sumar muestras. El artículo enlazado está fechado el 19 y la portada del informe el 20; no se ha verificado cuándo se enlazó esta versión. Margen declarado ±2,2 % (95 %), no intervalo predictivo.",
     "seatNotes": "Puntos y horquillas de la página 8. Los puntos desglosados suman 350; no se duplican Otros ni el grupo territorial junto a sus componentes.",
     "publicationNote": "El artículo enlazado está fechado el 19 de noviembre a las 20:00 CET; la portada del informe consultado lleva fecha 20. Se usa la fecha del informe porque no se ha verificado cuándo se enlazó esta versión."
+  },
+  {
+    "kind": "poll-estimate",
+    "coverage": "partial",
+    "verified": "2026-11-21",
+    "scope": "España, excepto Ceuta y Melilla",
+    "universe": "Población general residente en España (excepto Ceuta y Melilla) de 18 años o más con derecho a voto",
+    "denominator": "Estimación de voto sobre voto válido",
+    "verification": "PDF original del día 9 consultado; estimación comprobada en pp. 6–8 y ficha técnica en p. 33.",
+    "id": "40db-2026-11-20-tracking-dia09",
+    "institute": "40dB.",
+    "publisher": "EL PAÍS / Cadena SER",
+    "title": "Tracking 29-N · día 9",
+    "fieldStart": "2026-11-16",
+    "fieldEnd": "2026-11-20",
+    "published": "2026-11-20",
+    "sample": 2000,
+    "mode": "CAWI",
+    "source": "https://ep00.epimg.net/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia09.pdf",
+    "technical": "https://ep00.epimg.net/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia09.pdf",
+    "publicationSource": "https://ep00.epimg.net/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia09.pdf",
+    "scenario": "Frente Amplio nacional separado de Compromís: Front Valencià, Ara Més y UPC; Podemos fuera de las coaliciones territoriales; UPN-PP separado en escaños.",
+    "values": {
+      "PP": 31.9,
+      "PSOE": 31.2,
+      "VOX": 17.1,
+      "Frente Amplio (sin candidaturas territoriales)": 3.8,
+      "SALF": 1.5,
+      "Podemos (fuera de candidaturas territoriales)": 1.1,
+      "Otras coaliciones territoriales de izquierda": 1.8,
+      "Otro + Blanco": 11.6
+    },
+    "sourceLabels": {
+      "Frente Amplio (sin candidaturas territoriales)": "Frente Amplio",
+      "Podemos (fuera de candidaturas territoriales)": "Podemos"
+    },
+    "seats": {
+      "PP": {
+        "point": 131,
+        "min": 125,
+        "max": 135
+      },
+      "PSOE": {
+        "point": 124,
+        "min": 121,
+        "max": 129
+      },
+      "VOX": {
+        "point": 56,
+        "min": 50,
+        "max": 60
+      },
+      "Otros": {
+        "point": 31,
+        "min": 31,
+        "max": 33
+      },
+      "Compromís: Front Valencià": {
+        "point": 3,
+        "min": 3,
+        "max": 5
+      },
+      "Frente Amplio": {
+        "point": 5,
+        "min": 5,
+        "max": 6
+      },
+      "Podemos": {
+        "point": 0,
+        "min": 0,
+        "max": 1
+      },
+      "Ara Més": {
+        "point": 0,
+        "min": 0,
+        "max": 1
+      },
+      "UPC": {
+        "point": 0,
+        "min": 0,
+        "max": 1
+      },
+      "ERC": {
+        "point": 10
+      },
+      "EH Bildu": {
+        "point": 7
+      },
+      "Junts": {
+        "point": 3
+      },
+      "PNV": {
+        "point": 3
+      },
+      "Adelante Andalucía": {
+        "point": 3
+      },
+      "BNG": {
+        "point": 2
+      },
+      "UPN-PP (Navarra)": {
+        "point": 2
+      },
+      "CC": {
+        "point": 1
+      }
+    },
+    "sourcePages": "PDF original: p. 6 (voto), p. 8 (escaños), p. 33 (ficha técnica).",
+    "notes": "La ficha declara 2.000 entrevistas CAWI del 16 al 20 de noviembre; las 500 últimas se realizaron después del cara a cara, entre las 23:43 del 19 y las 08:27 del 20. Es una entrega solapada del tracking: se conserva como una sola ola publicada, sin sumar tamaños ni tratarla como muestra independiente. Margen declarado ±2,2 % (95 %), no intervalo predictivo. El dato sobre la percepción del debate procede de esas 500 entrevistas y no identifica un efecto causal en la intención de voto.",
+    "seatNotes": "Puntos y horquillas de la página 8. No se suman los agregados territoriales junto a sus componentes."
+  },
+  {
+    "kind": "poll-estimate",
+    "coverage": "full",
+    "verified": "2026-11-21",
+    "scope": "España",
+    "universe": "Población mayor de edad residente en España y con derecho a voto",
+    "denominator": "Estimación de voto sobre voto válido",
+    "verification": "PDF original de noviembre y página oficial de descargas consultados; cifras cotejadas en el informe.",
+    "id": "more-in-common-2026-11-20",
+    "institute": "More in Common",
+    "publisher": "More in Common España",
+    "title": "Pulso electoral: rumbo al 29N · noviembre 2026",
+    "fieldStart": "2026-11-16",
+    "fieldEnd": "2026-11-19",
+    "published": "2026-11-20",
+    "sample": 2315,
+    "mode": "CAWI",
+    "source": "https://moreincommon.es/pdfs/pulso-electoral/pulso-electoral-noviembre-2026.pdf",
+    "technical": "https://moreincommon.es/pdfs/informe-metodologico-electoral.pdf",
+    "microdata": "https://moreincommon.es/data/microdatos-2026-11.zip",
+    "catalog": "https://moreincommon.es/pulso-electoral.html",
+    "publicationSource": "https://moreincommon.es/pulso-electoral.html",
+    "scenario": "Estimación del modelo propio de More in Common. Frente Amplio incluye las opciones territoriales señaladas por el informe; Regionales agrupa ERC, Junts, PNV, EH Bildu, CC, BNG, Adelante Andalucía y Drago Canarias; UPN se incluye en PP.",
+    "values": {
+      "PP": 28.9,
+      "PSOE": 28,
+      "VOX": 19.8,
+      "Regionales": 8.9,
+      "Frente Amplio": 7.1,
+      "SALF": 2.3,
+      "Podemos": 1.7,
+      "Otros+Blanco": 3.4
+    },
+    "weight": "Variables demográficas y recuerdo de voto de 2023",
+    "sourcePages": "PDF original: portada y ficha técnica (trabajo de campo y muestra), sección «Estimación de voto para el 29N» (estimaciones e intervalos).",
+    "notes": "Estimación propia, no voto directo. Campo del 16 al 19 de noviembre, anterior al cara a cara del día 19; no mide su posible efecto. La categoría Regionales agrega candidaturas con comportamiento territorial distinto; el Frente Amplio incluye componentes territoriales según la nota del informe. El PDF también ofrece intervalos, simulaciones y escenarios, que no se presentan como predicciones del Observatorio. La fuente oficial ofrece microdatos y codebook en el ZIP enlazado; el archivo queda pendiente de auditoría e incorporación al laboratorio."
   }
 ]
