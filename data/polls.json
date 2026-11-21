@@ -2918,6 +2918,7 @@
     },
     "weight": "Variables demográficas y recuerdo de voto de 2023",
     "sourcePages": "PDF original: portada y ficha técnica (trabajo de campo y muestra), sección «Estimación de voto para el 29N» (estimaciones e intervalos).",
-    "notes": "Estimación propia, no voto directo. Campo del 16 al 19 de noviembre, anterior al cara a cara del día 19; no mide su posible efecto. La categoría Regionales agrega candidaturas con comportamiento territorial distinto; el Frente Amplio incluye componentes territoriales según la nota del informe. El PDF también ofrece intervalos, simulaciones y escenarios, que no se presentan como predicciones del Observatorio. La fuente oficial ofrece microdatos y codebook en el ZIP enlazado; el archivo queda pendiente de auditoría e incorporación al laboratorio."
+    "notes": "Estimación propia, no voto directo. Campo del 16 al 19 de noviembre, anterior al cara a cara del día 19; no mide su posible efecto. La categoría Regionales agrega candidaturas con comportamiento territorial distinto; el Frente Amplio incluye componentes territoriales según la nota del informe. El PDF también ofrece intervalos, simulaciones y escenarios, que no se presentan como predicciones del Observatorio. La fuente oficial ofrece microdatos y codebook en el ZIP enlazado; el archivo queda pendiente de auditoría e incorporación al laboratorio.",
+    "seats": null
   }
 ]
