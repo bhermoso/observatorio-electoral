@@ -2,10 +2,10 @@
   {
     "id": "tracking-laseptima",
     "titulo": "Tracking diario · La Séptima / SW Demoscopia",
-    "estado": "Pendiente de informe primario posterior al 10/11",
-    "ultima_publicacion": "2026-11-11",
-    "detalle": "Corte comprobado e incorporado: informe SW del 10/11, campo hasta el 9/11 (6.000 entrevistas). Entrega de prensa del 11/11 citada con PP 28,1; PSOE 31,4; Vox 17,5; FA 7,4, aún sin ficha original primaria contrastada. En la búsqueda del 12/11 no se ha confirmado un informe primario posterior. No introducir cifras de prensa en el pronóstico ni contar cada día del tracking como muestra independiente.",
-    "url": "https://electomania.es/tracking-sw-demoscopia-11-nov-pp-y-vox-pierden-la-mayoria-absoluta/"
+    "estado": "Último informe primario verificado: 18/11 · sin entrega posterior comprobada",
+    "ultima_publicacion": "2026-11-18",
+    "detalle": "Corte primario incorporado: Barómetro n.º 14, publicado el 18/11, con 10.000 entrevistas acumuladas y campo hasta el 17/11. Tracking acumulado: sus entregas comparten muestra y no son independientes. La búsqueda de esta actualización no localizó un informe primario posterior. No sumar olas ni inferir escaños provinciales desde el voto nacional.",
+    "url": "https://laseptima.com/wp-content/uploads/2026/11/barometro-n14-17nov2026.pdf"
   },
   {
     "id": "cis-preelectoral",
@@ -14,5 +14,22 @@
     "detalle": "CIS 3584: estimación y ficha incorporadas al archivo; 45.074 entrevistas, campo del 7 al 30 de octubre. Puede compararse con la reestimación de Ateneo como otra lectura de la misma muestra. La matriz individual del preelectoral no está incorporada al laboratorio ni se ha aplicado una receta propia a sus entrevistas. Consultar el estado de los originales antes de afirmar disponibilidad de microdatos.",
     "url": "https://bhermoso.github.io/observatorio-electoral/misma-muestra.html?estudio=cis-3584",
     "ultima_publicacion": "2026-11-12"
+  },
+  {
+    "id": "tracking-40db-29n",
+    "titulo": "Tracking 29N · 40dB. / EL PAÍS / Cadena SER",
+    "estado": "Día 9 verificado e incorporado · microdatos individuales de esta ola no localizados",
+    "ultima_publicacion": "2026-11-20",
+    "detalle": "Informe primario del día 9 incorporado al archivo: 2.000 entrevistas CAWI, campo 16–20/11, con las 500 últimas posteriores al cara a cara. La entrega se solapa con las anteriores; no se suman sus muestras. El PDF publica resultados y un bloque de 500 respuestas sobre el debate. No se ha localizado en la página consultada un archivo individual descargable (.dta/.sav/CSV) para esta ola; no se fabrica una matriz a partir de tablas agregadas.",
+    "url": "https://ep00.epimg.net/infografias/encuestas40db/2026/11-tracking-electoral/informe_tracking_dia09.pdf"
+  },
+  {
+    "id": "more-in-common-noviembre-2026",
+    "titulo": "Pulso electoral de noviembre · More in Common",
+    "estado": "Estimación publicada y enlace de microdatos verificado · descarga, auditoría e incorporación pendientes",
+    "ultima_publicacion": "2026-11-20",
+    "detalle": "Informe propio publicado el 20/11, con campo del 16 al 19/11 (N=2.315), anterior al cara a cara. La página oficial confirma que el ZIP contiene microdatos y codebook. El enlace queda registrado en la ficha de encuesta; los microdatos aún no se han descargado ni procesado en el laboratorio. No mezclar categorías territoriales ni dar por reproducida la estimación de More in Common.",
+    "url": "https://moreincommon.es/data/microdatos-2026-11.zip",
+    "pagina": "https://moreincommon.es/pulso-electoral.html"
   }
 ]
