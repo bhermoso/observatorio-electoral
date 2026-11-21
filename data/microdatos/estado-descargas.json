@@ -544,6 +544,74 @@
       "verificado_en": "2026-11-09T14:09:25+00:00"
     },
     {
+      "id": "hallazgo-934aef3dcba711da",
+      "productor": "more-in-common",
+      "fecha": "2026-11-20",
+      "url": "https://moreincommon.es/data/microdatos-2026-11.zip",
+      "estado": "matriz_detectada_pendiente_homologacion",
+      "es_pronostico": false,
+      "bytes": 397308,
+      "sha256": "b5d1d6217fbef80bad588a33f24fb661f1a859dc34b5dc22806d4778ad62c0cb",
+      "estructura": {
+        "tipo": "zip",
+        "miembros": 3,
+        "ficheros_tabulares": 2,
+        "matrices": [
+          {
+            "tipo": "csv",
+            "columnas": 89,
+            "filas_aproximadas": 2315,
+            "variables_clave": [
+              "participacion_2023_raw",
+              "participacion_2023_final",
+              "voto_2023_raw",
+              "voto_2023_final",
+              "prob_voto_declarada",
+              "intencion_voto_raw",
+              "intencion_voto_simpatia",
+              "intencion_voto_final",
+              "simpatia_partido",
+              "prob_voto_pp",
+              "prob_voto_psoe",
+              "prob_voto_vox",
+              "prob_voto_frente_amplio",
+              "prob_voto_erc",
+              "prob_voto_junts",
+              "prob_voto_pnv",
+              "prob_voto_bildu",
+              "prob_voto_cc"
+            ]
+          },
+          {
+            "tipo": "sav",
+            "filas": 2315,
+            "columnas": 89,
+            "variables_clave": [
+              "participacion_2023_raw",
+              "participacion_2023_final",
+              "voto_2023_raw",
+              "voto_2023_final",
+              "prob_voto_declarada",
+              "intencion_voto_raw",
+              "intencion_voto_simpatia",
+              "intencion_voto_final",
+              "simpatia_partido",
+              "prob_voto_pp",
+              "prob_voto_psoe",
+              "prob_voto_vox",
+              "prob_voto_frente_amplio",
+              "prob_voto_erc",
+              "prob_voto_junts",
+              "prob_voto_pnv",
+              "prob_voto_bildu",
+              "prob_voto_cc"
+            ]
+          }
+        ]
+      },
+      "verificado_en": "2026-11-21T13:38:04+00:00"
+    },
+    {
       "id": "hallazgo-fb42daa738873a2a",
       "productor": "40db",
       "fecha": "2026-11-08",
